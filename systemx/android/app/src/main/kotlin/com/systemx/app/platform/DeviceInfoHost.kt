@@ -19,6 +19,7 @@ class DeviceInfoHost(context: Context) : DeviceInfoApi {
     private val hardware = HardwareProbe(ctx)
     private val network = NetworkProbe(ctx)
     private val peripherals = PeripheralProbe(ctx)
+    private val liveProbe = LiveProbe(ctx)
 
     override fun identity() = system.identity()
     override fun system() = system.system()
@@ -35,6 +36,7 @@ class DeviceInfoHost(context: Context) : DeviceInfoApi {
     override fun media() = peripherals.media()
     override fun features() = peripherals.features()
     override fun security() = system.security()
+    override fun live() = liveProbe.live()
 
     override fun openSettings(action: String): Boolean {
         val intent = when (action) {

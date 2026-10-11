@@ -1873,6 +1873,134 @@ class SecurityInfo {
   }
 }
 
+/// Values that change second to second, read on every live tick.
+class LiveStats {
+  LiveStats({
+    required this.timeMs,
+    required this.cpuKhz,
+    required this.cpuMaxKhz,
+    required this.memTotal,
+    required this.memAvailable,
+    required this.batteryLevel,
+    required this.batteryStatus,
+    required this.plugged,
+    required this.batteryTempC,
+    required this.voltageMv,
+    this.currentNowMa,
+    required this.rxBytes,
+    required this.txBytes,
+    required this.thermalStatus,
+    this.thermalHeadroom,
+    this.cpuTempC,
+  });
+
+  /// SystemClock.elapsedRealtime when read.
+  int timeMs;
+
+  /// Current clock per core in kHz; 0 when the core is offline or hidden.
+  List<int> cpuKhz;
+
+  List<int> cpuMaxKhz;
+
+  int memTotal;
+
+  int memAvailable;
+
+  int batteryLevel;
+
+  int batteryStatus;
+
+  int plugged;
+
+  double batteryTempC;
+
+  int voltageMv;
+
+  /// Milliamps, positive while charging.
+  int? currentNowMa;
+
+  /// Bytes since boot on all interfaces; -1 when unsupported.
+  int rxBytes;
+
+  int txBytes;
+
+  /// PowerManager.THERMAL_STATUS_* (0 none … 6 shutdown), -1 before Android 10.
+  int thermalStatus;
+
+  /// Thermal headroom (Android 11+): 1.0 means severe throttling is reached.
+  double? thermalHeadroom;
+
+  /// Hottest CPU thermal zone, when the phone lets apps read it.
+  double? cpuTempC;
+
+  List<Object?> _toList() {
+    return <Object?>[
+      timeMs,
+      cpuKhz,
+      cpuMaxKhz,
+      memTotal,
+      memAvailable,
+      batteryLevel,
+      batteryStatus,
+      plugged,
+      batteryTempC,
+      voltageMv,
+      currentNowMa,
+      rxBytes,
+      txBytes,
+      thermalStatus,
+      thermalHeadroom,
+      cpuTempC,
+    ];
+  }
+
+  Object encode() {
+    return _toList();  }
+
+  static LiveStats decode(Object result) {
+    result as List<Object?>;
+    return LiveStats(
+      timeMs: result[0]! as int,
+      cpuKhz: (result[1]! as List<Object?>).cast<int>(),
+      cpuMaxKhz: (result[2]! as List<Object?>).cast<int>(),
+      memTotal: result[3]! as int,
+      memAvailable: result[4]! as int,
+      batteryLevel: result[5]! as int,
+      batteryStatus: result[6]! as int,
+      plugged: result[7]! as int,
+      batteryTempC: result[8]! as double,
+      voltageMv: result[9]! as int,
+      currentNowMa: result[10] as int?,
+      rxBytes: result[11]! as int,
+      txBytes: result[12]! as int,
+      thermalStatus: result[13]! as int,
+      thermalHeadroom: result[14] as double?,
+      cpuTempC: result[15] as double?,
+    );
+  }
+
+  @override
+  // ignore: avoid_equals_and_hash_code_on_mutable_classes
+  bool operator ==(Object other) {
+    if (other is! LiveStats || other.runtimeType != runtimeType) {
+      return false;
+    }
+    if (identical(this, other)) {
+      return true;
+    }
+    return _deepEquals(timeMs, other.timeMs) && _deepEquals(cpuKhz, other.cpuKhz) && _deepEquals(cpuMaxKhz, other.cpuMaxKhz) && _deepEquals(memTotal, other.memTotal) && _deepEquals(memAvailable, other.memAvailable) && _deepEquals(batteryLevel, other.batteryLevel) && _deepEquals(batteryStatus, other.batteryStatus) && _deepEquals(plugged, other.plugged) && _deepEquals(batteryTempC, other.batteryTempC) && _deepEquals(voltageMv, other.voltageMv) && _deepEquals(currentNowMa, other.currentNowMa) && _deepEquals(rxBytes, other.rxBytes) && _deepEquals(txBytes, other.txBytes) && _deepEquals(thermalStatus, other.thermalStatus) && _deepEquals(thermalHeadroom, other.thermalHeadroom) && _deepEquals(cpuTempC, other.cpuTempC);
+  }
+
+  @override
+  // ignore: avoid_equals_and_hash_code_on_mutable_classes
+  int get hashCode => _deepHash(<Object?>[runtimeType, ..._toList()]);
+
+  @override
+  String toString() {
+    return 'LiveStats(timeMs: $timeMs, cpuKhz: $cpuKhz, cpuMaxKhz: $cpuMaxKhz, memTotal: $memTotal, memAvailable: $memAvailable, batteryLevel: $batteryLevel, batteryStatus: $batteryStatus, plugged: $plugged, batteryTempC: $batteryTempC, voltageMv: $voltageMv, currentNowMa: $currentNowMa, rxBytes: $rxBytes, txBytes: $txBytes, thermalStatus: $thermalStatus, thermalHeadroom: $thermalHeadroom, cpuTempC: $cpuTempC)';
+  }
+}
+
 
 class _PigeonCodec extends StandardMessageCodec {
   const _PigeonCodec();
@@ -1938,6 +2066,9 @@ class _PigeonCodec extends StandardMessageCodec {
     }    else if (value is SecurityInfo) {
       buffer.putUint8(147);
       writeValue(buffer, value.encode());
+    }    else if (value is LiveStats) {
+      buffer.putUint8(148);
+      writeValue(buffer, value.encode());
     } else {
       super.writeValue(buffer, value);
     }
@@ -1984,6 +2115,8 @@ class _PigeonCodec extends StandardMessageCodec {
         return FeaturesInfo.decode(readValue(buffer)!);
       case 147:
         return SecurityInfo.decode(readValue(buffer)!);
+      case 148:
+        return LiveStats.decode(readValue(buffer)!);
       default:
         return super.readValueOfType(type, buffer);
     }
@@ -2286,6 +2419,25 @@ class DeviceInfoApi {
     )
     ;
     return pigeonVar_replyValue! as SecurityInfo;
+  }
+
+  Future<LiveStats> live() async {
+    final pigeonVar_channelName = 'dev.flutter.pigeon.systemx.DeviceInfoApi.live$pigeonVar_messageChannelSuffix';
+    final pigeonVar_channel = BasicMessageChannel<Object?>(
+      pigeonVar_channelName,
+      pigeonChannelCodec,
+      binaryMessenger: pigeonVar_binaryMessenger,
+    );
+    final Future<Object?> pigeonVar_sendFuture = pigeonVar_channel.send(null);
+    final pigeonVar_replyList = await pigeonVar_sendFuture as List<Object?>?;
+
+    final Object? pigeonVar_replyValue = _extractReplyValueOrThrow(
+        pigeonVar_replyList,
+        pigeonVar_channelName,
+        isNullValid: false,
+    )
+    ;
+    return pigeonVar_replyValue! as LiveStats;
   }
 
   /// Opens a system settings screen by intent action. Returns false if the

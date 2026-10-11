@@ -422,6 +422,55 @@ class SecurityInfo {
   String biometricStatus;
 }
 
+/// Values that change second to second, read on every live tick.
+class LiveStats {
+  LiveStats({
+    required this.timeMs,
+    required this.cpuKhz,
+    required this.cpuMaxKhz,
+    required this.memTotal,
+    required this.memAvailable,
+    required this.batteryLevel,
+    required this.batteryStatus,
+    required this.plugged,
+    required this.batteryTempC,
+    required this.voltageMv,
+    required this.rxBytes,
+    required this.txBytes,
+    required this.thermalStatus,
+  });
+
+  /// SystemClock.elapsedRealtime when read.
+  int timeMs;
+
+  /// Current clock per core in kHz; 0 when the core is offline or hidden.
+  List<int> cpuKhz;
+  List<int> cpuMaxKhz;
+  int memTotal;
+  int memAvailable;
+  int batteryLevel;
+  int batteryStatus;
+  int plugged;
+  double batteryTempC;
+  int voltageMv;
+
+  /// Milliamps, positive while charging.
+  int? currentNowMa;
+
+  /// Bytes since boot on all interfaces; -1 when unsupported.
+  int rxBytes;
+  int txBytes;
+
+  /// PowerManager.THERMAL_STATUS_* (0 none … 6 shutdown), -1 before Android 10.
+  int thermalStatus;
+
+  /// Thermal headroom (Android 11+): 1.0 means severe throttling is reached.
+  double? thermalHeadroom;
+
+  /// Hottest CPU thermal zone, when the phone lets apps read it.
+  double? cpuTempC;
+}
+
 @HostApi()
 abstract class DeviceInfoApi {
   @TaskQueue(type: TaskQueueType.serialBackgroundThread)
@@ -454,6 +503,8 @@ abstract class DeviceInfoApi {
   FeaturesInfo features();
   @TaskQueue(type: TaskQueueType.serialBackgroundThread)
   SecurityInfo security();
+  @TaskQueue(type: TaskQueueType.serialBackgroundThread)
+  LiveStats live();
 
   /// Opens a system settings screen by intent action. Returns false if the
   /// phone has no screen for that action.

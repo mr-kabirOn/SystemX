@@ -112,4 +112,31 @@ class SysParsersTest {
         assertNull(SysParsers.vulkanVersion(0))
         assertTrue(SysParsers.vulkanVersion(1 shl 22)!!.startsWith("1.0"))
     }
+
+    @Test
+    fun cpuThermalZonesSkipGpuBatteryAndSkin() {
+        val zones = SysParsers.cpuThermalZones(
+            mapOf(
+                0 to "aoss0-usr",
+                1 to "cpu-0-0-usr",
+                2 to "cpu-1-3-usr",
+                3 to "gpuss-0-usr",
+                4 to "battery",
+                5 to "mtktscpu",
+                6 to "skin-therm",
+                7 to "cpuss-0-usr",
+                8 to "BIG",
+            ),
+        )
+        assertEquals(listOf(1, 2, 5, 7, 8), zones)
+    }
+
+    @Test
+    fun thermalReadingsAcceptMillidegreesOrDegrees() {
+        assertEquals(41.5, SysParsers.thermalC(41_500)!!, 0.001)
+        assertEquals(38.0, SysParsers.thermalC(38)!!, 0.001)
+        assertNull(SysParsers.thermalC(0))
+        assertNull(SysParsers.thermalC(-40_000))
+        assertNull(SysParsers.thermalC(255_000))
+    }
 }

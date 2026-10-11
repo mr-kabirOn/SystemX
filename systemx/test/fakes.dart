@@ -349,6 +349,41 @@ class FakeDeviceApi extends DeviceInfoApi {
         biometricStatus: 'enrolled',
       ));
 
+  /// Advances on every [live] call so rates and charts have changing data.
+  int liveTicks = 0;
+
+  @override
+  Future<LiveStats> live() => _r('live', () {
+        final t = liveTicks++;
+        return LiveStats(
+          timeMs: 1000000 + t * 1000,
+          cpuKhz: [
+            for (var i = 0; i < 4; i++) 852000 + (t % 3) * 100000,
+            for (var i = 0; i < 4; i++) 1183000,
+            0,
+          ],
+          cpuMaxKhz: [
+            for (var i = 0; i < 4; i++) 1704000,
+            for (var i = 0; i < 4; i++) 2367000,
+            2914000,
+          ],
+          memTotal: 7816 * 1024 * 1024,
+          memAvailable: 2970 * 1024 * 1024,
+          batteryLevel: 78,
+          batteryStatus: 2,
+          plugged: 1,
+          batteryTempC: 33.1,
+          voltageMv: 4210,
+          currentNowMa: 2140,
+          // 2.5 MB down and 200 KB up per second.
+          rxBytes: 5000000000 + t * 2500000,
+          txBytes: 800000000 + t * 200000,
+          thermalStatus: 0,
+          thermalHeadroom: 0.36,
+          cpuTempC: 41.5,
+        );
+      });
+
   @override
   Future<bool> openSettings(String action) async {
     opened.add(action);

@@ -1633,6 +1633,114 @@ data class SecurityInfo (
     return "SecurityInfo(screenLock=$screenLock, encryption=$encryption, securityPatch=$securityPatch, devOptions=$devOptions, adb=$adb, verifiedBoot=$verifiedBoot, bootloaderLocked=$bootloaderLocked, rootDetected=$rootDetected, biometricStatus=$biometricStatus)"
   }
 }
+
+/**
+ * Values that change second to second, read on every live tick.
+ *
+ * Generated class from Pigeon that represents data sent in messages.
+ */
+data class LiveStats (
+  /** SystemClock.elapsedRealtime when read. */
+  val timeMs: Long,
+  /** Current clock per core in kHz; 0 when the core is offline or hidden. */
+  val cpuKhz: List<Long>,
+  val cpuMaxKhz: List<Long>,
+  val memTotal: Long,
+  val memAvailable: Long,
+  val batteryLevel: Long,
+  val batteryStatus: Long,
+  val plugged: Long,
+  val batteryTempC: Double,
+  val voltageMv: Long,
+  /** Milliamps, positive while charging. */
+  val currentNowMa: Long? = null,
+  /** Bytes since boot on all interfaces; -1 when unsupported. */
+  val rxBytes: Long,
+  val txBytes: Long,
+  /** PowerManager.THERMAL_STATUS_* (0 none … 6 shutdown), -1 before Android 10. */
+  val thermalStatus: Long,
+  /** Thermal headroom (Android 11+): 1.0 means severe throttling is reached. */
+  val thermalHeadroom: Double? = null,
+  /** Hottest CPU thermal zone, when the phone lets apps read it. */
+  val cpuTempC: Double? = null
+)
+ {
+  companion object {
+    fun fromList(pigeonVar_list: List<Any?>): LiveStats {
+      val timeMs = pigeonVar_list[0] as Long
+      val cpuKhz = pigeonVar_list[1] as List<Long>
+      val cpuMaxKhz = pigeonVar_list[2] as List<Long>
+      val memTotal = pigeonVar_list[3] as Long
+      val memAvailable = pigeonVar_list[4] as Long
+      val batteryLevel = pigeonVar_list[5] as Long
+      val batteryStatus = pigeonVar_list[6] as Long
+      val plugged = pigeonVar_list[7] as Long
+      val batteryTempC = pigeonVar_list[8] as Double
+      val voltageMv = pigeonVar_list[9] as Long
+      val currentNowMa = pigeonVar_list[10] as Long?
+      val rxBytes = pigeonVar_list[11] as Long
+      val txBytes = pigeonVar_list[12] as Long
+      val thermalStatus = pigeonVar_list[13] as Long
+      val thermalHeadroom = pigeonVar_list[14] as Double?
+      val cpuTempC = pigeonVar_list[15] as Double?
+      return LiveStats(timeMs, cpuKhz, cpuMaxKhz, memTotal, memAvailable, batteryLevel, batteryStatus, plugged, batteryTempC, voltageMv, currentNowMa, rxBytes, txBytes, thermalStatus, thermalHeadroom, cpuTempC)
+    }
+  }
+  fun toList(): List<Any?> {
+    return listOf(
+      timeMs,
+      cpuKhz,
+      cpuMaxKhz,
+      memTotal,
+      memAvailable,
+      batteryLevel,
+      batteryStatus,
+      plugged,
+      batteryTempC,
+      voltageMv,
+      currentNowMa,
+      rxBytes,
+      txBytes,
+      thermalStatus,
+      thermalHeadroom,
+      cpuTempC,
+    )
+  }
+  override fun equals(other: Any?): Boolean {
+    if (other == null || other.javaClass != javaClass) {
+      return false
+    }
+    if (this === other) {
+      return true
+    }
+    val other = other as LiveStats
+    return DeviceApiPigeonUtils.deepEquals(this.timeMs, other.timeMs) && DeviceApiPigeonUtils.deepEquals(this.cpuKhz, other.cpuKhz) && DeviceApiPigeonUtils.deepEquals(this.cpuMaxKhz, other.cpuMaxKhz) && DeviceApiPigeonUtils.deepEquals(this.memTotal, other.memTotal) && DeviceApiPigeonUtils.deepEquals(this.memAvailable, other.memAvailable) && DeviceApiPigeonUtils.deepEquals(this.batteryLevel, other.batteryLevel) && DeviceApiPigeonUtils.deepEquals(this.batteryStatus, other.batteryStatus) && DeviceApiPigeonUtils.deepEquals(this.plugged, other.plugged) && DeviceApiPigeonUtils.deepEquals(this.batteryTempC, other.batteryTempC) && DeviceApiPigeonUtils.deepEquals(this.voltageMv, other.voltageMv) && DeviceApiPigeonUtils.deepEquals(this.currentNowMa, other.currentNowMa) && DeviceApiPigeonUtils.deepEquals(this.rxBytes, other.rxBytes) && DeviceApiPigeonUtils.deepEquals(this.txBytes, other.txBytes) && DeviceApiPigeonUtils.deepEquals(this.thermalStatus, other.thermalStatus) && DeviceApiPigeonUtils.deepEquals(this.thermalHeadroom, other.thermalHeadroom) && DeviceApiPigeonUtils.deepEquals(this.cpuTempC, other.cpuTempC)
+  }
+
+  override fun hashCode(): Int {
+    var result = javaClass.hashCode()
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.timeMs)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.cpuKhz)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.cpuMaxKhz)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.memTotal)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.memAvailable)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.batteryLevel)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.batteryStatus)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.plugged)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.batteryTempC)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.voltageMv)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.currentNowMa)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.rxBytes)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.txBytes)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.thermalStatus)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.thermalHeadroom)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.cpuTempC)
+    return result
+  }
+  override fun toString(): String {
+    return "LiveStats(timeMs=$timeMs, cpuKhz=$cpuKhz, cpuMaxKhz=$cpuMaxKhz, memTotal=$memTotal, memAvailable=$memAvailable, batteryLevel=$batteryLevel, batteryStatus=$batteryStatus, plugged=$plugged, batteryTempC=$batteryTempC, voltageMv=$voltageMv, currentNowMa=$currentNowMa, rxBytes=$rxBytes, txBytes=$txBytes, thermalStatus=$thermalStatus, thermalHeadroom=$thermalHeadroom, cpuTempC=$cpuTempC)"
+  }
+}
 private open class DeviceApiPigeonCodec : StandardMessageCodec() {
   override fun readValueOfType(type: Byte, buffer: ByteBuffer): Any? {
     return when (type) {
@@ -1731,6 +1839,11 @@ private open class DeviceApiPigeonCodec : StandardMessageCodec() {
           SecurityInfo.fromList(it)
         }
       }
+      148.toByte() -> {
+        return (readValue(buffer) as? List<Any?>)?.let {
+          LiveStats.fromList(it)
+        }
+      }
       else -> super.readValueOfType(type, buffer)
     }
   }
@@ -1812,6 +1925,10 @@ private open class DeviceApiPigeonCodec : StandardMessageCodec() {
         stream.write(147)
         writeValue(stream, value.toList())
       }
+      is LiveStats -> {
+        stream.write(148)
+        writeValue(stream, value.toList())
+      }
       else -> super.writeValue(stream, value)
     }
   }
@@ -1835,6 +1952,7 @@ interface DeviceInfoApi {
   fun media(): MediaInfo
   fun features(): FeaturesInfo
   fun security(): SecurityInfo
+  fun live(): LiveStats
   /**
    * Opens a system settings screen by intent action. Returns false if the
    * phone has no screen for that action.
@@ -2069,6 +2187,21 @@ interface DeviceInfoApi {
           channel.setMessageHandler { _, reply ->
             val wrapped: List<Any?> = try {
               listOf(api.security())
+            } catch (exception: Throwable) {
+              DeviceApiPigeonUtils.wrapError(exception)
+            }
+            reply.reply(wrapped)
+          }
+        } else {
+          channel.setMessageHandler(null)
+        }
+      }
+      run {
+        val channel = BasicMessageChannel<Any?>(binaryMessenger, "dev.flutter.pigeon.systemx.DeviceInfoApi.live$separatedMessageChannelSuffix", codec, taskQueue)
+        if (api != null) {
+          channel.setMessageHandler { _, reply ->
+            val wrapped: List<Any?> = try {
+              listOf(api.live())
             } catch (exception: Throwable) {
               DeviceApiPigeonUtils.wrapError(exception)
             }

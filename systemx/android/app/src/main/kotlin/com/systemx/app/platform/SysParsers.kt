@@ -75,6 +75,27 @@ internal object SysParsers {
         return "${packed shr 22}.${(packed shr 12) and 0x3ff}.${packed and 0xfff}"
     }
 
+    /**
+     * Thermal zones that measure the CPU, from each zone's "type" file
+     * (e.g. "cpu-1-0-usr", "mtktscpu", "cpuss-0", "soc_thermal"). GPU, battery,
+     * skin and modem sensors are left out.
+     */
+    fun cpuThermalZones(types: Map<Int, String>): List<Int> = types.filter { (_, raw) ->
+        val t = raw.lowercase()
+        val cpuLike = t.startsWith("cpu") || t.contains("tscpu") || t.contains("cpu_therm") ||
+            t.contains("cpuss") || t == "soc_thermal" || t.startsWith("big") || t.startsWith("little") ||
+            t.startsWith("mid") || t.startsWith("tsens_tz_sensor")
+        val excluded = listOf("gpu", "batt", "skin", "modem", "pa_", "xo", "usb", "charger", "camera")
+            .any { t.contains(it) }
+        cpuLike && !excluded
+    }.keys.sorted()
+
+    /** A thermal zone reading in °C (files hold millidegrees or degrees), or null if implausible. */
+    fun thermalC(raw: Long): Double? {
+        val c = if (kotlin.math.abs(raw) >= 1000) raw / 1000.0 else raw.toDouble()
+        return c.takeIf { it > 0 && it < 150 }
+    }
+
     private val ARM_PARTS = mapOf(
         0xd03 to "Cortex-A53", 0xd04 to "Cortex-A35", 0xd05 to "Cortex-A55", 0xd07 to "Cortex-A57",
         0xd08 to "Cortex-A72", 0xd09 to "Cortex-A73", 0xd0a to "Cortex-A75", 0xd0b to "Cortex-A76",
