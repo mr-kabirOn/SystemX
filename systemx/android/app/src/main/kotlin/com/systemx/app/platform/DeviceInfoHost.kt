@@ -54,6 +54,16 @@ class DeviceInfoHost(context: Context) : DeviceInfoApi {
         }
     }
 
+    override fun openLink(url: String): Boolean {
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url)).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        return try {
+            ctx.startActivity(intent)
+            true
+        } catch (_: ActivityNotFoundException) {
+            false
+        }
+    }
+
     override fun dial(code: String) {
         val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + Uri.encode(code)))
             .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)

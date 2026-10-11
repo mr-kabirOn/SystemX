@@ -397,6 +397,12 @@ class FakeDeviceApi extends DeviceInfoApi {
 
   @override
   Future<void> dial(String code) async => dialed.add(code);
+
+  @override
+  Future<bool> openLink(String url) async {
+    opened.add(url);
+    return true;
+  }
 }
 
 /// Grants or denies permissions without a phone, and updates [api] so the

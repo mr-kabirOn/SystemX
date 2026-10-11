@@ -512,6 +512,9 @@ abstract class DeviceInfoApi {
 
   /// Opens the dialer with a USSD code filled in (no call permission needed).
   void dial(String code);
+
+  /// Opens a web page or mail link in another app. False if none can.
+  bool openLink(String url);
 }
 
 /// Runtime permissions, asked from the current activity.

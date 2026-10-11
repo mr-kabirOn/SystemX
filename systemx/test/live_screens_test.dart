@@ -88,6 +88,18 @@ void main() {
     expect(find.text('Download'), findsOneWidget);
   });
 
+  testWidgets('Wi-Fi meter shows the live signal and the best so far',
+      (tester) async {
+    await pumpApp(tester);
+    await go(tester, Routes.wifiMeter);
+    await tester.pump(const Duration(seconds: 1));
+    expect(find.text('-52'), findsOneWidget);
+    expect(find.text('Excellent'), findsOneWidget);
+    expect(find.text('-52 dBm'), findsOneWidget);
+    expect(find.text('5 GHz'), findsOneWidget);
+    await tester.pumpWidget(const SizedBox());
+  });
+
   testWidgets('a phone without current or CPU temperature says so',
       (tester) async {
     final c = await pumpApp(tester, api: _NoSensorsApi());

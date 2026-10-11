@@ -4543,6 +4543,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'max {temp}'**
   String maxTemp(String temp);
+
+  /// No description provided for @wifiMeter.
+  ///
+  /// In en, this message translates to:
+  /// **'Wi-Fi signal meter'**
+  String get wifiMeter;
+
+  /// No description provided for @wifiMeterOff.
+  ///
+  /// In en, this message translates to:
+  /// **'Connect to Wi-Fi to measure its signal.'**
+  String get wifiMeterOff;
+
+  /// No description provided for @wifiMeterHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Walk around slowly. The ring fills as the signal gets stronger, so you can find the best spot for working or placing your router.'**
+  String get wifiMeterHint;
+
+  /// No description provided for @bestHere.
+  ///
+  /// In en, this message translates to:
+  /// **'Best so far'**
+  String get bestHere;
 }
 
 class _AppLocalizationsDelegate

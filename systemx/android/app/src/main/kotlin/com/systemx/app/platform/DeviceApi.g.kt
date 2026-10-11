@@ -2207,6 +2207,8 @@ interface DeviceInfoApi {
   fun openSettings(action: String): Boolean
   /** Opens the dialer with a USSD code filled in (no call permission needed). */
   fun dial(code: String)
+  /** Opens a web page or mail link in another app. False if none can. */
+  fun openLink(url: String): Boolean
 
   companion object {
     /** The codec used by DeviceInfoApi. */
@@ -2484,6 +2486,23 @@ interface DeviceInfoApi {
             val wrapped: List<Any?> = try {
               api.dial(codeArg)
               listOf(null)
+            } catch (exception: Throwable) {
+              DeviceApiPigeonUtils.wrapError(exception)
+            }
+            reply.reply(wrapped)
+          }
+        } else {
+          channel.setMessageHandler(null)
+        }
+      }
+      run {
+        val channel = BasicMessageChannel<Any?>(binaryMessenger, "dev.flutter.pigeon.systemx.DeviceInfoApi.openLink$separatedMessageChannelSuffix", codec)
+        if (api != null) {
+          channel.setMessageHandler { message, reply ->
+            val args = message as List<Any?>
+            val urlArg = args[0] as String
+            val wrapped: List<Any?> = try {
+              listOf(api.openLink(urlArg))
             } catch (exception: Throwable) {
               DeviceApiPigeonUtils.wrapError(exception)
             }

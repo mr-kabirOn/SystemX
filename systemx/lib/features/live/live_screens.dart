@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../core/format.dart';
+import '../../core/router.dart';
 import '../../core/settings/settings.dart';
 import '../../core/theme/sx_colors.dart';
 import '../../core/theme/sx_type.dart';
@@ -208,6 +210,12 @@ class LiveDetailScreen extends ConsumerWidget {
           ),
           const SizedBox(height: 10),
           Text(l.networkSpeedHint, style: context.text.bodySmall),
+          const SizedBox(height: 12),
+          OutlinedButton.icon(
+            onPressed: () => context.push(Routes.wifiMeter),
+            icon: const Icon(Icons.wifi_find_rounded),
+            label: Text(l.wifiMeter),
+          ),
         ]),
       )),
       ..._specs(context, ref, DeviceCategory.network),

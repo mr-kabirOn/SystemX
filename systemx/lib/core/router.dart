@@ -9,6 +9,7 @@ import '../features/device/device_screen.dart';
 import '../features/device/search_screen.dart';
 import '../features/home/home_screen.dart';
 import '../features/live/live_screens.dart';
+import '../features/live/wifi_meter.dart';
 import '../features/monitor/monitor_screen.dart';
 import '../features/onboarding/onboarding_screen.dart';
 import '../features/settings/privacy_screen.dart';
@@ -31,6 +32,7 @@ abstract final class Routes {
   static const privacy = '/settings/privacy';
   static const alerts = '/settings/alerts';
   static const sessions = '/sessions';
+  static const wifiMeter = '/tools/wifi';
 
   static String category(DeviceCategory c) => '$device/${c.name}';
   static String live(LiveMetric m) => '/live/${m.name}';
@@ -92,6 +94,7 @@ final routerProvider = Provider<GoRouter>((ref) {
       ),
       GoRoute(path: Routes.checkup, builder: (_, _) => const CheckupScreen()),
       GoRoute(path: Routes.sessions, builder: (_, _) => const SessionsScreen()),
+      GoRoute(path: Routes.wifiMeter, builder: (_, _) => const WifiMeterScreen()),
       GoRoute(
         path: '/test/:test',
         redirect: (_, state) =>

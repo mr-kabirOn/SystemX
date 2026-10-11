@@ -2468,4 +2468,17 @@ class AppLocalizationsEn extends AppLocalizations {
   String maxTemp(String temp) {
     return 'max $temp';
   }
+
+  @override
+  String get wifiMeter => 'Wi-Fi signal meter';
+
+  @override
+  String get wifiMeterOff => 'Connect to Wi-Fi to measure its signal.';
+
+  @override
+  String get wifiMeterHint =>
+      'Walk around slowly. The ring fills as the signal gets stronger, so you can find the best spot for working or placing your router.';
+
+  @override
+  String get bestHere => 'Best so far';
 }

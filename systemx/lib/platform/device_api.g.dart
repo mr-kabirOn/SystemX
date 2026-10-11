@@ -2757,6 +2757,26 @@ class DeviceInfoApi {
     )
     ;
   }
+
+  /// Opens a web page or mail link in another app. False if none can.
+  Future<bool> openLink(String url) async {
+    final pigeonVar_channelName = 'dev.flutter.pigeon.systemx.DeviceInfoApi.openLink$pigeonVar_messageChannelSuffix';
+    final pigeonVar_channel = BasicMessageChannel<Object?>(
+      pigeonVar_channelName,
+      pigeonChannelCodec,
+      binaryMessenger: pigeonVar_binaryMessenger,
+    );
+    final Future<Object?> pigeonVar_sendFuture = pigeonVar_channel.send(<Object?>[url]);
+    final pigeonVar_replyList = await pigeonVar_sendFuture as List<Object?>?;
+
+    final Object? pigeonVar_replyValue = _extractReplyValueOrThrow(
+        pigeonVar_replyList,
+        pigeonVar_channelName,
+        isNullValid: false,
+    )
+    ;
+    return pigeonVar_replyValue! as bool;
+  }
 }
 
 /// Runtime permissions, asked from the current activity.
