@@ -1,6 +1,7 @@
 // Renders every main screen to PNG with the real fonts, for design review.
 // Run:  flutter test screenshots --update-goldens
 // Output: screenshots/out/*.png
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -16,6 +17,9 @@ import 'package:systemx/core/settings/settings.dart';
 import 'package:systemx/features/device/device_data.dart';
 import 'package:systemx/features/live/live_data.dart';
 import 'package:systemx/features/live/live_screens.dart';
+import 'package:systemx/features/tests/impl/system_tests.dart';
+import 'package:systemx/features/tests/test_catalog.dart';
+import 'package:systemx/features/tests/test_results.dart';
 import 'package:systemx/platform/platform.dart';
 
 import '../test/fakes.dart';
@@ -58,6 +62,9 @@ Future<void> _shoot(
     deviceApiProvider.overrideWithValue(api),
     permissionApiProvider.overrideWithValue(FakePermissionApi(api)),
     livePollingProvider.overrideWithValue(false),
+    hardwareTestApiProvider.overrideWithValue(FakeHardwareTestApi()),
+    resultsStoreProvider.overrideWithValue(_sampleResults()),
+    tempDirProvider.overrideWithValue(() async => Directory.systemTemp),
   ]);
   if (onboarded) await c.read(settingsProvider.notifier).completeOnboarding();
   await c.read(settingsProvider.notifier).setThemeMode(theme);
@@ -86,6 +93,27 @@ Future<void> _shoot(
   c.dispose();
 }
 
+/// A checkup like the design mockup: 30 passed, earpiece failed, GPS skipped.
+MemoryResultsStore _sampleResults() {
+  final at = DateTime.now().subtract(const Duration(hours: 2));
+  final results = [
+    for (final t in HwTest.values)
+      switch (t) {
+        HwTest.earpiece => TestResult(t, TestStatus.failed, note: 'Very quiet', at: at),
+        HwTest.gps => TestResult(t, TestStatus.skipped, note: 'Skipped because Location is off', at: at),
+        HwTest.touchGrid => TestResult(t, TestStatus.passed, note: 'All 96 zones respond', at: at),
+        HwTest.charging => TestResult(t, TestStatus.passed, note: 'Detected · Charger · 2140 mA peak', at: at),
+        _ => TestResult(t, TestStatus.passed, at: at),
+      },
+  ];
+  final c = Checkup(at, results);
+  return MemoryResultsStore()
+    ..data = jsonEncode(TestHistory(
+      latest: {for (final r in results) r.test: r},
+      checkups: [c],
+    ).toJson());
+}
+
 void main() {
   setUpAll(_loadFonts);
 
@@ -111,6 +139,9 @@ void main() {
     await _shoot(tester, '15_live_battery', Routes.live(LiveMetric.battery));
     await _shoot(tester, '16_live_network', Routes.live(LiveMetric.network));
     await _shoot(tester, '17_live_thermal', Routes.live(LiveMetric.thermal));
+    await _shoot(tester, '18_report', Routes.report(0));
+    await _shoot(tester, '19_test_multitouch', Routes.runTest(HwTest.multiTouch));
+    await _shoot(tester, '20_checkup_intro', Routes.checkup);
     addTearDown(tester.view.reset);
   });
 }
