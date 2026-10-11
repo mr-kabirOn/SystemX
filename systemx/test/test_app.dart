@@ -19,6 +19,7 @@ Future<ProviderContainer> pumpApp(
   FakePermissionApi? permissions,
   bool onboarded = true,
   List<(String, String)>? shared,
+  Stream<List<double>> Function(int type)? sensorReadings,
 }) async {
   SharedPreferencesAsyncPlatform.instance =
       InMemorySharedPreferencesAsync.empty();
@@ -34,6 +35,8 @@ Future<ProviderContainer> pumpApp(
         .overrideWithValue(permissions ?? FakePermissionApi(device)),
     shareTextProvider.overrideWithValue(
         (text, subject) async => shared?.add((text, subject))),
+    sensorReadingsProvider.overrideWithValue(
+        sensorReadings ?? (_) => const Stream.empty()),
   ]);
   addTearDown(c.dispose);
   if (onboarded) await c.read(settingsProvider.notifier).completeOnboarding();

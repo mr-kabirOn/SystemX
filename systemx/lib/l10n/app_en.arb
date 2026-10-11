@@ -460,5 +460,15 @@
   "balanceTitle": "Check balance",
   "balanceBody": "Opens your dialer with the code filled in. Nothing is dialed until you press call.",
   "balanceButton": "{carrier} · {code}",
-  "@balanceButton": {"placeholders": {"carrier": {"type": "String"}, "code": {"type": "String"}}}
+  "@balanceButton": {"placeholders": {"carrier": {"type": "String"}, "code": {"type": "String"}}},
+  "liveReading": "Live reading",
+  "sensorWaiting": "Waiting for a reading. Some sensors only report when something changes, like covering the proximity sensor.",
+  "sensorOnChange": "When the value changes",
+  "sensorRange": "Maximum range",
+  "sensorResolution": "Resolution",
+  "sensorPower": "Power use",
+  "sensorRate": "Fastest rate",
+  "sensorWakeUp": "Wake-up sensor",
+  "sensorWakeUpHint": "Can wake the phone from sleep to report",
+  "sensorVersion": "Driver version"
 }

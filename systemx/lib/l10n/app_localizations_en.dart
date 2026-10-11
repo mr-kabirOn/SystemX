@@ -1403,4 +1403,35 @@ class AppLocalizationsEn extends AppLocalizations {
   String balanceButton(String carrier, String code) {
     return '$carrier · $code';
   }
+
+  @override
+  String get liveReading => 'Live reading';
+
+  @override
+  String get sensorWaiting =>
+      'Waiting for a reading. Some sensors only report when something changes, like covering the proximity sensor.';
+
+  @override
+  String get sensorOnChange => 'When the value changes';
+
+  @override
+  String get sensorRange => 'Maximum range';
+
+  @override
+  String get sensorResolution => 'Resolution';
+
+  @override
+  String get sensorPower => 'Power use';
+
+  @override
+  String get sensorRate => 'Fastest rate';
+
+  @override
+  String get sensorWakeUp => 'Wake-up sensor';
+
+  @override
+  String get sensorWakeUpHint => 'Can wake the phone from sleep to report';
+
+  @override
+  String get sensorVersion => 'Driver version';
 }

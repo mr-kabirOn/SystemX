@@ -5,6 +5,7 @@ import 'package:systemx/core/format.dart';
 import 'package:systemx/core/settings/settings.dart';
 import 'package:systemx/features/device/carriers.dart';
 import 'package:systemx/features/device/device_data.dart';
+import 'package:systemx/features/device/sensor_sheet.dart';
 import 'package:systemx/features/device/spec_sheets.dart';
 import 'package:systemx/features/device/specs.dart';
 import 'package:systemx/l10n/app_localizations.dart';
@@ -224,6 +225,13 @@ void main() {
     expect(chip.map((r) => r.$2.label), contains('Chip'));
     expect(searchSpecs(sheets, 'tensor g9'), isEmpty);
     expect(searchSpecs(sheets, '   '), isEmpty);
+  });
+
+  test('sensor readings show axes and units', () {
+    expect(sensorUnit(1), 'm/s²');
+    expect(sensorUnit(5), 'lx');
+    expect(sensorValues(1, [1, 2, 3]), [('X', 1.0), ('Y', 2.0), ('Z', 3.0)]);
+    expect(sensorValues(5, [120]), [('', 120.0)]);
   });
 
   test('carriers resolve from MCC+MNC or the SIM name', () {

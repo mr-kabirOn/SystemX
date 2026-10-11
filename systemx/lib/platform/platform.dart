@@ -14,3 +14,7 @@ const _sensorChannel = EventChannel('systemx/sensor');
 Stream<List<double>> sensorReadings(int type) => _sensorChannel
     .receiveBroadcastStream(type)
     .map((e) => (e as List).cast<num>().map((n) => n.toDouble()).toList());
+
+/// [sensorReadings], swappable in tests.
+final sensorReadingsProvider =
+    Provider<Stream<List<double>> Function(int type)>((ref) => sensorReadings);

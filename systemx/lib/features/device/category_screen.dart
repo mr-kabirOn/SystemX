@@ -12,6 +12,7 @@ import '../../ui/widgets/cards.dart';
 import '../../ui/widgets/page_scaffold.dart';
 import 'carriers.dart';
 import 'device_data.dart';
+import 'sensor_sheet.dart';
 import 'share.dart';
 import 'spec_sheets.dart';
 import 'spec_view.dart';
@@ -79,8 +80,8 @@ class _CategoryScreenState extends ConsumerState<CategoryScreen> {
         await openSystemSettings(context, ref, action);
       case AskPermission(:final kind):
         await _askPermission(kind);
-      case ShowSensor():
-        showComingSoon(context);
+      case ShowSensor(:final sensor):
+        await showSensorSheet(context, sensor);
     }
   }
 

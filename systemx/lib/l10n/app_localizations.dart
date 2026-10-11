@@ -2659,6 +2659,66 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{carrier} · {code}'**
   String balanceButton(String carrier, String code);
+
+  /// No description provided for @liveReading.
+  ///
+  /// In en, this message translates to:
+  /// **'Live reading'**
+  String get liveReading;
+
+  /// No description provided for @sensorWaiting.
+  ///
+  /// In en, this message translates to:
+  /// **'Waiting for a reading. Some sensors only report when something changes, like covering the proximity sensor.'**
+  String get sensorWaiting;
+
+  /// No description provided for @sensorOnChange.
+  ///
+  /// In en, this message translates to:
+  /// **'When the value changes'**
+  String get sensorOnChange;
+
+  /// No description provided for @sensorRange.
+  ///
+  /// In en, this message translates to:
+  /// **'Maximum range'**
+  String get sensorRange;
+
+  /// No description provided for @sensorResolution.
+  ///
+  /// In en, this message translates to:
+  /// **'Resolution'**
+  String get sensorResolution;
+
+  /// No description provided for @sensorPower.
+  ///
+  /// In en, this message translates to:
+  /// **'Power use'**
+  String get sensorPower;
+
+  /// No description provided for @sensorRate.
+  ///
+  /// In en, this message translates to:
+  /// **'Fastest rate'**
+  String get sensorRate;
+
+  /// No description provided for @sensorWakeUp.
+  ///
+  /// In en, this message translates to:
+  /// **'Wake-up sensor'**
+  String get sensorWakeUp;
+
+  /// No description provided for @sensorWakeUpHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Can wake the phone from sleep to report'**
+  String get sensorWakeUpHint;
+
+  /// No description provided for @sensorVersion.
+  ///
+  /// In en, this message translates to:
+  /// **'Driver version'**
+  String get sensorVersion;
 }
 
 class _AppLocalizationsDelegate

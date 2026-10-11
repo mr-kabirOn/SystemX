@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
@@ -124,6 +126,32 @@ void main() {
     // The raw feature-flag list is left out of the shared sheet.
     expect(text, isNot(contains('android.hardware.uwb')));
     expect(text, endsWith('Made with SystemX'));
+  });
+
+  testWidgets('a sensor opens with details and a live reading',
+      (tester) async {
+    final readings = StreamController<List<double>>();
+    addTearDown(readings.close);
+    final asked = <int>[];
+    await pumpApp(tester, sensorReadings: (type) {
+      asked.add(type);
+      return readings.stream;
+    });
+    await go(tester, Routes.category(DeviceCategory.sensors));
+
+    expect(find.text('2 SENSORS'), findsOneWidget);
+    await tester.tap(find.text('LSM6DSV Accelerometer'));
+    await tester.pumpAndSettle();
+    expect(asked, [1]);
+    expect(find.textContaining('Waiting for a reading'), findsOneWidget);
+    expect(find.text('78.4 m/s²'), findsOneWidget);
+    expect(find.text('416 Hz'), findsOneWidget);
+
+    readings.add([0.12, 9.81, -0.3]);
+    await tester.pump();
+    await tester.pump();
+    expect(find.textContaining('9.81'), findsOneWidget);
+    expect(find.textContaining('Waiting'), findsNothing);
   });
 
   testWidgets('a failed probe shows a clear message', (tester) async {
