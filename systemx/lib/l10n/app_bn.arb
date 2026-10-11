@@ -430,9 +430,8 @@
   "statusAllowed": "অনুমতি আছে",
   "statusNotAllowed": "অনুমতি নেই",
   "statusBlocked": "সেটিংসে বন্ধ",
-  "balanceTitle": "ব্যালেন্স দেখুন",
-  "balanceBody": "কোড বসানো অবস্থায় ডায়ালার খোলে। আপনি কল চাপার আগে কিছুই ডায়াল হয় না।",
-  "balanceButton": "{carrier} · {code}",
+  "balanceTitle": "ব্যালেন্স ও দরকারি কোড",
+  "balanceBody": "কোড ট্যাপ করলে সেটি বসানো অবস্থায় ডায়ালার খুলবে। আপনি কল চাপার আগে কিছুই ডায়াল হয় না।",
   "liveReading": "লাইভ রিডিং",
   "sensorWaiting": "রিডিংয়ের অপেক্ষা। কিছু সেন্সর শুধু কোনো পরিবর্তন হলে জানায়, যেমন প্রক্সিমিটি সেন্সর ঢাকলে।",
   "sensorOnChange": "মান বদলালে",
@@ -755,5 +754,14 @@
   "bestHere": "এখন পর্যন্ত সেরা",
   "healthScoreSpoken": "স্বাস্থ্য স্কোর ১০০-এর মধ্যে {score}, {word}",
   "privacyPolicy": "প্রাইভেসি পলিসি",
-  "sendFeedback": "মতামত পাঠান"
+  "sendFeedback": "মতামত পাঠান",
+  "codeBalance": "ব্যালেন্স",
+  "codeInternet": "ইন্টারনেট",
+  "codeMinutes": "মিনিট",
+  "codeSms": "SMS",
+  "codeOwnNumber": "আমার নম্বর",
+  "codeMenu": "মেনু ও অফার",
+  "codeEmergency": "ইমার্জেন্সি ব্যালেন্স",
+  "codeCare": "কাস্টমার কেয়ার",
+  "codeButton": "{label} · {code}"
 }

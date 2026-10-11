@@ -1384,16 +1384,11 @@ class AppLocalizationsEn extends AppLocalizations {
   String get statusBlocked => 'Off in settings';
 
   @override
-  String get balanceTitle => 'Check balance';
+  String get balanceTitle => 'Balance and quick codes';
 
   @override
   String get balanceBody =>
-      'Opens your dialer with the code filled in. Nothing is dialed until you press call.';
-
-  @override
-  String balanceButton(String carrier, String code) {
-    return '$carrier · $code';
-  }
+      'Tap a code to open your dialer with it filled in. Nothing is dialed until you press call.';
 
   @override
   String get liveReading => 'Live reading';
@@ -2492,4 +2487,33 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get sendFeedback => 'Send feedback';
+
+  @override
+  String get codeBalance => 'Balance';
+
+  @override
+  String get codeInternet => 'Internet';
+
+  @override
+  String get codeMinutes => 'Minutes';
+
+  @override
+  String get codeSms => 'SMS';
+
+  @override
+  String get codeOwnNumber => 'My number';
+
+  @override
+  String get codeMenu => 'Menu & offers';
+
+  @override
+  String get codeEmergency => 'Emergency balance';
+
+  @override
+  String get codeCare => 'Customer care';
+
+  @override
+  String codeButton(String label, String code) {
+    return '$label · $code';
+  }
 }

@@ -235,7 +235,17 @@ void main() {
   });
 
   test('carriers resolve from MCC+MNC or the SIM name', () {
-    expect(carrierFor(mccMnc: '47001')?.balanceCode, '*121#');
+    expect(carrierFor(mccMnc: '47001')?.balanceCode, '*566#');
+    expect(carrierFor(mccMnc: '47003')?.balanceCode, '*124#');
+    expect(carrierFor(mccMnc: '47004')?.balanceCode, '*152#');
+    expect(carrierFor(mccMnc: '47007')?.balanceCode, '*778#');
+    // Every carrier has a balance and own-number code, and each is unique.
+    for (final mccMnc in ['47001', '47002', '47003', '47004', '47007']) {
+      final c = carrierFor(mccMnc: mccMnc)!;
+      final kinds = c.codes.map((x) => x.kind).toList();
+      expect(kinds, containsAll([CodeKind.balance, CodeKind.ownNumber]), reason: c.name);
+      expect(kinds.toSet().length, kinds.length, reason: c.name);
+    }
     expect(carrierFor(name: 'Robi Axiata')?.name, 'Robi');
     expect(carrierFor(name: 'GP')?.name, 'Grameenphone');
     expect(carrierFor(mccMnc: '31026', name: 'T-Mobile'), isNull);

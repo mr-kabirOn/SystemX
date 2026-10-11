@@ -162,7 +162,8 @@ class _CategoryScreenState extends ConsumerState<CategoryScreen> {
   }
 }
 
-/// Opens the dialer with each Bangladeshi carrier's balance code.
+/// Carrier codes (balance, internet, minutes, own number and more) for each
+/// Bangladeshi SIM. Each opens the dialer with the code filled in.
 class _BalanceCard extends ConsumerWidget {
   const _BalanceCard({required this.sim});
 
@@ -184,6 +185,17 @@ class _BalanceCard extends ConsumerWidget {
     return found.values.toList();
   }
 
+  static String _label(AppLocalizations l, CodeKind k) => switch (k) {
+        CodeKind.balance => l.codeBalance,
+        CodeKind.internet => l.codeInternet,
+        CodeKind.minutes => l.codeMinutes,
+        CodeKind.sms => l.codeSms,
+        CodeKind.ownNumber => l.codeOwnNumber,
+        CodeKind.menu => l.codeMenu,
+        CodeKind.emergency => l.codeEmergency,
+        CodeKind.care => l.codeCare,
+      };
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final carriers = _carriers;
@@ -198,15 +210,30 @@ class _BalanceCard extends ConsumerWidget {
           const SizedBox(height: 4),
           Text(l.balanceBody,
               style: context.text.bodySmall?.copyWith(color: sx.muted)),
-          const SizedBox(height: 12),
-          Wrap(spacing: 8, runSpacing: 8, children: [
-            for (final c in carriers)
-              FilledButton.tonalIcon(
-                onPressed: () => ref.read(deviceApiProvider).dial(c.balanceCode),
-                icon: const Icon(Icons.dialpad_rounded, size: 18),
-                label: Text(l.balanceButton(c.name, c.balanceCode)),
-              ),
-          ]),
+          for (final c in carriers) ...[
+            const SizedBox(height: 14),
+            Eyebrow(c.name, color: sx.network),
+            const SizedBox(height: 8),
+            Wrap(spacing: 8, runSpacing: 8, children: [
+              for (final code in c.codes)
+                FilledButton.tonalIcon(
+                  style: FilledButton.styleFrom(
+                    minimumSize: const Size(0, 40),
+                    padding: const EdgeInsets.symmetric(horizontal: 12),
+                    visualDensity: VisualDensity.compact,
+                    textStyle: context.text.labelLarge,
+                  ),
+                  onPressed: () => ref.read(deviceApiProvider).dial(code.code),
+                  icon: Icon(
+                    code.kind == CodeKind.care
+                        ? Icons.support_agent_rounded
+                        : Icons.dialpad_rounded,
+                    size: 18,
+                  ),
+                  label: Text(l.codeButton(_label(l, code.kind), code.code)),
+                ),
+            ]),
+          ],
         ],
       ),
     ));

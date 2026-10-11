@@ -82,15 +82,24 @@ void main() {
     await go(tester, Routes.category(DeviceCategory.sim));
 
     // Known from the SIM's MCC+MNC even without the permission.
-    await tester.tap(find.text('Grameenphone · *121#'));
-    expect(api.dialed, ['*121#']);
+    expect(find.text('GRAMEENPHONE'), findsOneWidget);
+    await tester.tap(find.text('Balance · *566#'));
+    await tester.tap(find.text('Internet · *121*1*4#'));
+    await tester.tap(find.text('My number · *2#'));
+    expect(api.dialed, ['*566#', '*121*1*4#', '*2#']);
 
+    final list = find.byType(Scrollable).last;
+    await tester.scrollUntilVisible(find.text('SIM details'), 300, scrollable: list);
     await tester.tap(find.text('SIM details'));
     await tester.pumpAndSettle();
     await tester.tap(find.text('Allow'));
     await tester.pumpAndSettle();
+    // With the permission, both SIMs get their codes.
+    await tester.scrollUntilVisible(find.text('ROBI'), -300, scrollable: list);
+    expect(find.text('Balance · *222#'), findsOneWidget);
+    expect(find.text('Internet · *8444*88#'), findsOneWidget);
+    await tester.scrollUntilVisible(find.text('SIM 1'), 300, scrollable: list);
     expect(find.text('SIM 1'), findsOneWidget);
-    expect(find.text('Robi · *222#'), findsOneWidget);
   });
 
   testWidgets('Privacy screen shows and changes real statuses',

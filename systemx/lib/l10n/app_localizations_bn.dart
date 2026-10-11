@@ -1376,16 +1376,11 @@ class AppLocalizationsBn extends AppLocalizations {
   String get statusBlocked => 'সেটিংসে বন্ধ';
 
   @override
-  String get balanceTitle => 'ব্যালেন্স দেখুন';
+  String get balanceTitle => 'ব্যালেন্স ও দরকারি কোড';
 
   @override
   String get balanceBody =>
-      'কোড বসানো অবস্থায় ডায়ালার খোলে। আপনি কল চাপার আগে কিছুই ডায়াল হয় না।';
-
-  @override
-  String balanceButton(String carrier, String code) {
-    return '$carrier · $code';
-  }
+      'কোড ট্যাপ করলে সেটি বসানো অবস্থায় ডায়ালার খুলবে। আপনি কল চাপার আগে কিছুই ডায়াল হয় না।';
 
   @override
   String get liveReading => 'লাইভ রিডিং';
@@ -2477,4 +2472,33 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get sendFeedback => 'মতামত পাঠান';
+
+  @override
+  String get codeBalance => 'ব্যালেন্স';
+
+  @override
+  String get codeInternet => 'ইন্টারনেট';
+
+  @override
+  String get codeMinutes => 'মিনিট';
+
+  @override
+  String get codeSms => 'SMS';
+
+  @override
+  String get codeOwnNumber => 'আমার নম্বর';
+
+  @override
+  String get codeMenu => 'মেনু ও অফার';
+
+  @override
+  String get codeEmergency => 'ইমার্জেন্সি ব্যালেন্স';
+
+  @override
+  String get codeCare => 'কাস্টমার কেয়ার';
+
+  @override
+  String codeButton(String label, String code) {
+    return '$label · $code';
+  }
 }

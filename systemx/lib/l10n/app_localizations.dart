@@ -2633,20 +2633,14 @@ abstract class AppLocalizations {
   /// No description provided for @balanceTitle.
   ///
   /// In en, this message translates to:
-  /// **'Check balance'**
+  /// **'Balance and quick codes'**
   String get balanceTitle;
 
   /// No description provided for @balanceBody.
   ///
   /// In en, this message translates to:
-  /// **'Opens your dialer with the code filled in. Nothing is dialed until you press call.'**
+  /// **'Tap a code to open your dialer with it filled in. Nothing is dialed until you press call.'**
   String get balanceBody;
-
-  /// No description provided for @balanceButton.
-  ///
-  /// In en, this message translates to:
-  /// **'{carrier} · {code}'**
-  String balanceButton(String carrier, String code);
 
   /// No description provided for @liveReading.
   ///
@@ -4585,6 +4579,60 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Send feedback'**
   String get sendFeedback;
+
+  /// No description provided for @codeBalance.
+  ///
+  /// In en, this message translates to:
+  /// **'Balance'**
+  String get codeBalance;
+
+  /// No description provided for @codeInternet.
+  ///
+  /// In en, this message translates to:
+  /// **'Internet'**
+  String get codeInternet;
+
+  /// No description provided for @codeMinutes.
+  ///
+  /// In en, this message translates to:
+  /// **'Minutes'**
+  String get codeMinutes;
+
+  /// No description provided for @codeSms.
+  ///
+  /// In en, this message translates to:
+  /// **'SMS'**
+  String get codeSms;
+
+  /// No description provided for @codeOwnNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'My number'**
+  String get codeOwnNumber;
+
+  /// No description provided for @codeMenu.
+  ///
+  /// In en, this message translates to:
+  /// **'Menu & offers'**
+  String get codeMenu;
+
+  /// No description provided for @codeEmergency.
+  ///
+  /// In en, this message translates to:
+  /// **'Emergency balance'**
+  String get codeEmergency;
+
+  /// No description provided for @codeCare.
+  ///
+  /// In en, this message translates to:
+  /// **'Customer care'**
+  String get codeCare;
+
+  /// No description provided for @codeButton.
+  ///
+  /// In en, this message translates to:
+  /// **'{label} · {code}'**
+  String codeButton(String label, String code);
 }
 
 class _AppLocalizationsDelegate

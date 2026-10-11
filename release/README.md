@@ -82,10 +82,9 @@ Before each upload, raise `version:` in `pubspec.yaml` (for example
 
 - Set `AppLinks.feedbackEmail` in `systemx/lib/core/links.dart` to your
   public email to show "Send feedback" in Settings.
-- Check the carrier balance codes in
-  `systemx/lib/features/device/carriers.dart` against your carriers' current
-  codes (Grameenphone `*121#` opens its menu; its direct balance code is
-  `*566#`; Airtel's is `*778#`).
+- The carrier codes in `systemx/lib/features/device/carriers.dart` were
+  checked against public lists in October 2026. Dial a few on your own SIMs;
+  if an operator changes one, it's a one-line edit there.
 
 ## Phone test checklist
 
