@@ -1,6 +1,9 @@
 package com.systemx.app
 
 import android.content.Intent
+import com.systemx.app.background.BackgroundBridge
+import com.systemx.app.platform.BackgroundApi
+import com.systemx.app.platform.BackgroundHost
 import com.systemx.app.platform.DeviceInfoApi
 import com.systemx.app.platform.DeviceInfoHost
 import com.systemx.app.platform.GnssStreamHandler
@@ -24,6 +27,8 @@ class MainActivity : FlutterActivity() {
         hardware = HardwareTestHost(this)
         HardwareTestApi.setUp(messenger, hardware)
         EventChannel(messenger, "systemx/gnss").setStreamHandler(GnssStreamHandler(this))
+        BackgroundApi.setUp(messenger, BackgroundHost(this))
+        BackgroundBridge.onAppStart(this)
         DeviceInfoApi.setUp(messenger, DeviceInfoHost(this))
         PermissionApi.setUp(messenger, permissions)
         EventChannel(messenger, "systemx/sensor").setStreamHandler(SensorStreamHandler(this))

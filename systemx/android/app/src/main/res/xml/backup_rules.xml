@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Android 8–11: back up settings only. History stays on the device. -->
+<!-- Android 8–11: back up settings only. History and test results stay on
+     the device, and permission bookkeeping is per device. -->
 <full-backup-content>
     <include domain="sharedpref" path="." />
+    <exclude domain="sharedpref" path="systemx_permissions.xml" />
+    <!-- App settings (Flutter shared_preferences uses DataStore). -->
+    <include domain="file" path="datastore/" />
 </full-backup-content>

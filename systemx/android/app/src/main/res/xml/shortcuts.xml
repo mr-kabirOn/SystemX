@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+        android:shortcutId="checkup"
+        android:enabled="true"
+        android:icon="@drawable/ic_launcher_monochrome"
+        android:shortcutShortLabel="@string/sc_checkup">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:data="systemx://open/checkup"
+            android:targetClass="com.systemx.app.MainActivity"
+            android:targetPackage="com.systemx.app" />
+    </shortcut>
+    <shortcut
+        android:shortcutId="battery"
+        android:enabled="true"
+        android:icon="@drawable/ic_launcher_monochrome"
+        android:shortcutShortLabel="@string/sc_battery">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:data="systemx://open/live/battery"
+            android:targetClass="com.systemx.app.MainActivity"
+            android:targetPackage="com.systemx.app" />
+    </shortcut>
+    <shortcut
+        android:shortcutId="monitor"
+        android:enabled="true"
+        android:icon="@drawable/ic_launcher_monochrome"
+        android:shortcutShortLabel="@string/sc_monitor">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:data="systemx://open/monitor"
+            android:targetClass="com.systemx.app.MainActivity"
+            android:targetPackage="com.systemx.app" />
+    </shortcut>
+</shortcuts>

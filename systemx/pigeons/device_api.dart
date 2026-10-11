@@ -567,3 +567,108 @@ abstract class HardwareTestApi {
   @async
   bool saveDocument(String fileName, String mimeType, Uint8List bytes);
 }
+
+/// Alerts, live status and values the background code needs from the app.
+/// Stored natively so workers and receivers can read it without Flutter.
+class BackgroundConfig {
+  BackgroundConfig({
+    required this.liveStatus,
+    required this.statusIcon,
+    required this.chargeAlarm,
+    required this.chargeLimit,
+    required this.batteryLow,
+    required this.lowLevel,
+    required this.batteryHot,
+    required this.hotC,
+    required this.chargingDone,
+    required this.storageFull,
+    required this.storagePercent,
+    required this.weeklySummary,
+    required this.checkupReminder,
+    required this.fahrenheit,
+    required this.lastCheckupMs,
+  });
+
+  bool liveStatus;
+
+  /// What the status bar icon shows: "battery_level", "battery_temp" or
+  /// "net_speed".
+  String statusIcon;
+  bool chargeAlarm;
+  int chargeLimit;
+  bool batteryLow;
+  int lowLevel;
+  bool batteryHot;
+  int hotC;
+  bool chargingDone;
+  bool storageFull;
+  int storagePercent;
+  bool weeklySummary;
+  bool checkupReminder;
+  bool fahrenheit;
+
+  /// When the last checkup finished; 0 if never.
+  int lastCheckupMs;
+}
+
+class HistorySample {
+  HistorySample({
+    required this.timeMs,
+    required this.level,
+    required this.tempC,
+    required this.memUsed,
+    required this.charging,
+  });
+
+  /// Wall-clock time (ms since epoch).
+  int timeMs;
+  int level;
+  double tempC;
+
+  /// Fraction of RAM in use, 0–1.
+  double memUsed;
+  bool charging;
+}
+
+class ChargeSession {
+  ChargeSession({
+    required this.startMs,
+    required this.startLevel,
+    required this.endLevel,
+    required this.maxTempC,
+  });
+
+  int startMs;
+
+  /// null while still charging.
+  int? endMs;
+  int startLevel;
+  int endLevel;
+  int? peakMa;
+  int? avgMa;
+  double maxTempC;
+}
+
+@HostApi()
+abstract class BackgroundApi {
+  BackgroundConfig getConfig();
+
+  /// Saves the config and starts or stops the live status service and the
+  /// background work to match.
+  void setConfig(BackgroundConfig config);
+
+  @TaskQueue(type: TaskQueueType.serialBackgroundThread)
+  List<HistorySample> history(int sinceMs);
+
+  @TaskQueue(type: TaskQueueType.serialBackgroundThread)
+  List<ChargeSession> sessions(int limit);
+
+  @TaskQueue(type: TaskQueueType.serialBackgroundThread)
+  void clearHistory();
+
+  /// Redraws the home screen widgets now.
+  void refreshWidgets();
+
+  /// Whether Android lets this app post notifications at all.
+  bool notificationsEnabled();
+}

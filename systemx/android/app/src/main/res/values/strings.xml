@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false">SystemX</string>
+
+    <!-- Notification channels -->
+    <string name="ch_live">Live status</string>
+    <string name="ch_battery">Battery alerts</string>
+    <string name="ch_storage">Storage alerts</string>
+    <string name="ch_summary">Summaries and reminders</string>
+
+    <!-- Live status notification -->
+    <string name="live_charging_w">charging %1$s W</string>
+    <string name="live_text">↓ %1$s · ↑ %2$s · RAM %3$d%%</string>
+    <string name="live_stop">Stop live status</string>
+
+    <!-- Alerts -->
+    <string name="n_limit_title">Charged to %1$d%%</string>
+    <string name="n_limit_text">Unplug now to protect battery health.</string>
+    <string name="n_full_title">Charging finished</string>
+    <string name="n_full_text">%1$d%% to %2$d%% in %3$d h %4$d min</string>
+    <string name="n_peak">peak %1$d mA</string>
+    <string name="n_low_title">Battery at %1$d%%</string>
+    <string name="n_low_text">Plug in soon, or turn on Battery Saver.</string>
+    <string name="n_hot_title">Phone is warm (%1$s)</string>
+    <string name="n_hot_text">Close heavy apps or take off the case for a while.</string>
+    <string name="n_storage_title">Storage is %1$d%% full</string>
+    <string name="n_storage_text">Free up space to keep apps and updates working.</string>
+    <string name="n_weekly_title">Your week in battery</string>
+    <string name="n_weekly_text">%1$d charges · hottest %2$s · lowest %3$d%%</string>
+    <string name="n_reminder_title">Time for a checkup</string>
+    <string name="n_reminder_text">Your last checkup was a month ago. It takes about 6 minutes.</string>
+
+    <!-- Widgets -->
+    <string name="w_small_name">Battery</string>
+    <string name="w_medium_name">Dashboard</string>
+    <string name="w_small_desc">Battery level and temperature</string>
+    <string name="w_medium_desc">Battery, temperature, memory and free storage</string>
+    <string name="w_charging">Charging</string>
+    <string name="w_battery">On battery</string>
+    <string name="w_ram">RAM %1$d%%</string>
+    <string name="w_free">%1$s free</string>
+
+    <!-- Shortcuts -->
+    <string name="sc_checkup">Run checkup</string>
+    <string name="sc_battery">Battery</string>
+    <string name="sc_monitor">Monitor</string>
+
+    <!-- Foreground service declaration shown to Play reviewers -->
+    <string name="fgs_reason" translatable="false">Optional live device status (battery, temperature, charging power, network speed, memory) that the user turns on in Settings and can stop from the notification.</string>
+</resources>

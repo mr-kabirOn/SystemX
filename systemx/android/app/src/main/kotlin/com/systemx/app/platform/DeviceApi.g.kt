@@ -1741,6 +1741,226 @@ data class LiveStats (
     return "LiveStats(timeMs=$timeMs, cpuKhz=$cpuKhz, cpuMaxKhz=$cpuMaxKhz, memTotal=$memTotal, memAvailable=$memAvailable, batteryLevel=$batteryLevel, batteryStatus=$batteryStatus, plugged=$plugged, batteryTempC=$batteryTempC, voltageMv=$voltageMv, currentNowMa=$currentNowMa, rxBytes=$rxBytes, txBytes=$txBytes, thermalStatus=$thermalStatus, thermalHeadroom=$thermalHeadroom, cpuTempC=$cpuTempC)"
   }
 }
+
+/**
+ * Alerts, live status and values the background code needs from the app.
+ * Stored natively so workers and receivers can read it without Flutter.
+ *
+ * Generated class from Pigeon that represents data sent in messages.
+ */
+data class BackgroundConfig (
+  val liveStatus: Boolean,
+  /**
+   * What the status bar icon shows: "battery_level", "battery_temp" or
+   * "net_speed".
+   */
+  val statusIcon: String,
+  val chargeAlarm: Boolean,
+  val chargeLimit: Long,
+  val batteryLow: Boolean,
+  val lowLevel: Long,
+  val batteryHot: Boolean,
+  val hotC: Long,
+  val chargingDone: Boolean,
+  val storageFull: Boolean,
+  val storagePercent: Long,
+  val weeklySummary: Boolean,
+  val checkupReminder: Boolean,
+  val fahrenheit: Boolean,
+  /** When the last checkup finished; 0 if never. */
+  val lastCheckupMs: Long
+)
+ {
+  companion object {
+    fun fromList(pigeonVar_list: List<Any?>): BackgroundConfig {
+      val liveStatus = pigeonVar_list[0] as Boolean
+      val statusIcon = pigeonVar_list[1] as String
+      val chargeAlarm = pigeonVar_list[2] as Boolean
+      val chargeLimit = pigeonVar_list[3] as Long
+      val batteryLow = pigeonVar_list[4] as Boolean
+      val lowLevel = pigeonVar_list[5] as Long
+      val batteryHot = pigeonVar_list[6] as Boolean
+      val hotC = pigeonVar_list[7] as Long
+      val chargingDone = pigeonVar_list[8] as Boolean
+      val storageFull = pigeonVar_list[9] as Boolean
+      val storagePercent = pigeonVar_list[10] as Long
+      val weeklySummary = pigeonVar_list[11] as Boolean
+      val checkupReminder = pigeonVar_list[12] as Boolean
+      val fahrenheit = pigeonVar_list[13] as Boolean
+      val lastCheckupMs = pigeonVar_list[14] as Long
+      return BackgroundConfig(liveStatus, statusIcon, chargeAlarm, chargeLimit, batteryLow, lowLevel, batteryHot, hotC, chargingDone, storageFull, storagePercent, weeklySummary, checkupReminder, fahrenheit, lastCheckupMs)
+    }
+  }
+  fun toList(): List<Any?> {
+    return listOf(
+      liveStatus,
+      statusIcon,
+      chargeAlarm,
+      chargeLimit,
+      batteryLow,
+      lowLevel,
+      batteryHot,
+      hotC,
+      chargingDone,
+      storageFull,
+      storagePercent,
+      weeklySummary,
+      checkupReminder,
+      fahrenheit,
+      lastCheckupMs,
+    )
+  }
+  override fun equals(other: Any?): Boolean {
+    if (other == null || other.javaClass != javaClass) {
+      return false
+    }
+    if (this === other) {
+      return true
+    }
+    val other = other as BackgroundConfig
+    return DeviceApiPigeonUtils.deepEquals(this.liveStatus, other.liveStatus) && DeviceApiPigeonUtils.deepEquals(this.statusIcon, other.statusIcon) && DeviceApiPigeonUtils.deepEquals(this.chargeAlarm, other.chargeAlarm) && DeviceApiPigeonUtils.deepEquals(this.chargeLimit, other.chargeLimit) && DeviceApiPigeonUtils.deepEquals(this.batteryLow, other.batteryLow) && DeviceApiPigeonUtils.deepEquals(this.lowLevel, other.lowLevel) && DeviceApiPigeonUtils.deepEquals(this.batteryHot, other.batteryHot) && DeviceApiPigeonUtils.deepEquals(this.hotC, other.hotC) && DeviceApiPigeonUtils.deepEquals(this.chargingDone, other.chargingDone) && DeviceApiPigeonUtils.deepEquals(this.storageFull, other.storageFull) && DeviceApiPigeonUtils.deepEquals(this.storagePercent, other.storagePercent) && DeviceApiPigeonUtils.deepEquals(this.weeklySummary, other.weeklySummary) && DeviceApiPigeonUtils.deepEquals(this.checkupReminder, other.checkupReminder) && DeviceApiPigeonUtils.deepEquals(this.fahrenheit, other.fahrenheit) && DeviceApiPigeonUtils.deepEquals(this.lastCheckupMs, other.lastCheckupMs)
+  }
+
+  override fun hashCode(): Int {
+    var result = javaClass.hashCode()
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.liveStatus)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.statusIcon)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.chargeAlarm)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.chargeLimit)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.batteryLow)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.lowLevel)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.batteryHot)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.hotC)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.chargingDone)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.storageFull)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.storagePercent)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.weeklySummary)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.checkupReminder)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.fahrenheit)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.lastCheckupMs)
+    return result
+  }
+  override fun toString(): String {
+    return "BackgroundConfig(liveStatus=$liveStatus, statusIcon=$statusIcon, chargeAlarm=$chargeAlarm, chargeLimit=$chargeLimit, batteryLow=$batteryLow, lowLevel=$lowLevel, batteryHot=$batteryHot, hotC=$hotC, chargingDone=$chargingDone, storageFull=$storageFull, storagePercent=$storagePercent, weeklySummary=$weeklySummary, checkupReminder=$checkupReminder, fahrenheit=$fahrenheit, lastCheckupMs=$lastCheckupMs)"
+  }
+}
+
+/** Generated class from Pigeon that represents data sent in messages. */
+data class HistorySample (
+  /** Wall-clock time (ms since epoch). */
+  val timeMs: Long,
+  val level: Long,
+  val tempC: Double,
+  /** Fraction of RAM in use, 0–1. */
+  val memUsed: Double,
+  val charging: Boolean
+)
+ {
+  companion object {
+    fun fromList(pigeonVar_list: List<Any?>): HistorySample {
+      val timeMs = pigeonVar_list[0] as Long
+      val level = pigeonVar_list[1] as Long
+      val tempC = pigeonVar_list[2] as Double
+      val memUsed = pigeonVar_list[3] as Double
+      val charging = pigeonVar_list[4] as Boolean
+      return HistorySample(timeMs, level, tempC, memUsed, charging)
+    }
+  }
+  fun toList(): List<Any?> {
+    return listOf(
+      timeMs,
+      level,
+      tempC,
+      memUsed,
+      charging,
+    )
+  }
+  override fun equals(other: Any?): Boolean {
+    if (other == null || other.javaClass != javaClass) {
+      return false
+    }
+    if (this === other) {
+      return true
+    }
+    val other = other as HistorySample
+    return DeviceApiPigeonUtils.deepEquals(this.timeMs, other.timeMs) && DeviceApiPigeonUtils.deepEquals(this.level, other.level) && DeviceApiPigeonUtils.deepEquals(this.tempC, other.tempC) && DeviceApiPigeonUtils.deepEquals(this.memUsed, other.memUsed) && DeviceApiPigeonUtils.deepEquals(this.charging, other.charging)
+  }
+
+  override fun hashCode(): Int {
+    var result = javaClass.hashCode()
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.timeMs)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.level)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.tempC)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.memUsed)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.charging)
+    return result
+  }
+  override fun toString(): String {
+    return "HistorySample(timeMs=$timeMs, level=$level, tempC=$tempC, memUsed=$memUsed, charging=$charging)"
+  }
+}
+
+/** Generated class from Pigeon that represents data sent in messages. */
+data class ChargeSession (
+  val startMs: Long,
+  /** null while still charging. */
+  val endMs: Long? = null,
+  val startLevel: Long,
+  val endLevel: Long,
+  val peakMa: Long? = null,
+  val avgMa: Long? = null,
+  val maxTempC: Double
+)
+ {
+  companion object {
+    fun fromList(pigeonVar_list: List<Any?>): ChargeSession {
+      val startMs = pigeonVar_list[0] as Long
+      val endMs = pigeonVar_list[1] as Long?
+      val startLevel = pigeonVar_list[2] as Long
+      val endLevel = pigeonVar_list[3] as Long
+      val peakMa = pigeonVar_list[4] as Long?
+      val avgMa = pigeonVar_list[5] as Long?
+      val maxTempC = pigeonVar_list[6] as Double
+      return ChargeSession(startMs, endMs, startLevel, endLevel, peakMa, avgMa, maxTempC)
+    }
+  }
+  fun toList(): List<Any?> {
+    return listOf(
+      startMs,
+      endMs,
+      startLevel,
+      endLevel,
+      peakMa,
+      avgMa,
+      maxTempC,
+    )
+  }
+  override fun equals(other: Any?): Boolean {
+    if (other == null || other.javaClass != javaClass) {
+      return false
+    }
+    if (this === other) {
+      return true
+    }
+    val other = other as ChargeSession
+    return DeviceApiPigeonUtils.deepEquals(this.startMs, other.startMs) && DeviceApiPigeonUtils.deepEquals(this.endMs, other.endMs) && DeviceApiPigeonUtils.deepEquals(this.startLevel, other.startLevel) && DeviceApiPigeonUtils.deepEquals(this.endLevel, other.endLevel) && DeviceApiPigeonUtils.deepEquals(this.peakMa, other.peakMa) && DeviceApiPigeonUtils.deepEquals(this.avgMa, other.avgMa) && DeviceApiPigeonUtils.deepEquals(this.maxTempC, other.maxTempC)
+  }
+
+  override fun hashCode(): Int {
+    var result = javaClass.hashCode()
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.startMs)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.endMs)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.startLevel)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.endLevel)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.peakMa)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.avgMa)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.maxTempC)
+    return result
+  }
+  override fun toString(): String {
+    return "ChargeSession(startMs=$startMs, endMs=$endMs, startLevel=$startLevel, endLevel=$endLevel, peakMa=$peakMa, avgMa=$avgMa, maxTempC=$maxTempC)"
+  }
+}
 private open class DeviceApiPigeonCodec : StandardMessageCodec() {
   override fun readValueOfType(type: Byte, buffer: ByteBuffer): Any? {
     return when (type) {
@@ -1844,6 +2064,21 @@ private open class DeviceApiPigeonCodec : StandardMessageCodec() {
           LiveStats.fromList(it)
         }
       }
+      149.toByte() -> {
+        return (readValue(buffer) as? List<Any?>)?.let {
+          BackgroundConfig.fromList(it)
+        }
+      }
+      150.toByte() -> {
+        return (readValue(buffer) as? List<Any?>)?.let {
+          HistorySample.fromList(it)
+        }
+      }
+      151.toByte() -> {
+        return (readValue(buffer) as? List<Any?>)?.let {
+          ChargeSession.fromList(it)
+        }
+      }
       else -> super.readValueOfType(type, buffer)
     }
   }
@@ -1927,6 +2162,18 @@ private open class DeviceApiPigeonCodec : StandardMessageCodec() {
       }
       is LiveStats -> {
         stream.write(148)
+        writeValue(stream, value.toList())
+      }
+      is BackgroundConfig -> {
+        stream.write(149)
+        writeValue(stream, value.toList())
+      }
+      is HistorySample -> {
+        stream.write(150)
+        writeValue(stream, value.toList())
+      }
+      is ChargeSession -> {
+        stream.write(151)
         writeValue(stream, value.toList())
       }
       else -> super.writeValue(stream, value)
@@ -2568,6 +2815,149 @@ interface HardwareTestApi {
                 reply.reply(DeviceApiPigeonUtils.wrapResult(data))
               }
             }
+          }
+        } else {
+          channel.setMessageHandler(null)
+        }
+      }
+    }
+  }
+}
+/** Generated interface from Pigeon that represents a handler of messages from Flutter. */
+interface BackgroundApi {
+  fun getConfig(): BackgroundConfig
+  /**
+   * Saves the config and starts or stops the live status service and the
+   * background work to match.
+   */
+  fun setConfig(config: BackgroundConfig)
+  fun history(sinceMs: Long): List<HistorySample>
+  fun sessions(limit: Long): List<ChargeSession>
+  fun clearHistory()
+  /** Redraws the home screen widgets now. */
+  fun refreshWidgets()
+  /** Whether Android lets this app post notifications at all. */
+  fun notificationsEnabled(): Boolean
+
+  companion object {
+    /** The codec used by BackgroundApi. */
+    val codec: MessageCodec<Any?> by lazy {
+      DeviceApiPigeonCodec()
+    }
+    /** Sets up an instance of `BackgroundApi` to handle messages through the `binaryMessenger`. */
+    @JvmOverloads
+    fun setUp(binaryMessenger: BinaryMessenger, api: BackgroundApi?, messageChannelSuffix: String = "") {
+      val separatedMessageChannelSuffix = if (messageChannelSuffix.isNotEmpty()) ".$messageChannelSuffix" else ""
+      val taskQueue = binaryMessenger.makeBackgroundTaskQueue()
+      run {
+        val channel = BasicMessageChannel<Any?>(binaryMessenger, "dev.flutter.pigeon.systemx.BackgroundApi.getConfig$separatedMessageChannelSuffix", codec)
+        if (api != null) {
+          channel.setMessageHandler { _, reply ->
+            val wrapped: List<Any?> = try {
+              listOf(api.getConfig())
+            } catch (exception: Throwable) {
+              DeviceApiPigeonUtils.wrapError(exception)
+            }
+            reply.reply(wrapped)
+          }
+        } else {
+          channel.setMessageHandler(null)
+        }
+      }
+      run {
+        val channel = BasicMessageChannel<Any?>(binaryMessenger, "dev.flutter.pigeon.systemx.BackgroundApi.setConfig$separatedMessageChannelSuffix", codec)
+        if (api != null) {
+          channel.setMessageHandler { message, reply ->
+            val args = message as List<Any?>
+            val configArg = args[0] as BackgroundConfig
+            val wrapped: List<Any?> = try {
+              api.setConfig(configArg)
+              listOf(null)
+            } catch (exception: Throwable) {
+              DeviceApiPigeonUtils.wrapError(exception)
+            }
+            reply.reply(wrapped)
+          }
+        } else {
+          channel.setMessageHandler(null)
+        }
+      }
+      run {
+        val channel = BasicMessageChannel<Any?>(binaryMessenger, "dev.flutter.pigeon.systemx.BackgroundApi.history$separatedMessageChannelSuffix", codec, taskQueue)
+        if (api != null) {
+          channel.setMessageHandler { message, reply ->
+            val args = message as List<Any?>
+            val sinceMsArg = args[0] as Long
+            val wrapped: List<Any?> = try {
+              listOf(api.history(sinceMsArg))
+            } catch (exception: Throwable) {
+              DeviceApiPigeonUtils.wrapError(exception)
+            }
+            reply.reply(wrapped)
+          }
+        } else {
+          channel.setMessageHandler(null)
+        }
+      }
+      run {
+        val channel = BasicMessageChannel<Any?>(binaryMessenger, "dev.flutter.pigeon.systemx.BackgroundApi.sessions$separatedMessageChannelSuffix", codec, taskQueue)
+        if (api != null) {
+          channel.setMessageHandler { message, reply ->
+            val args = message as List<Any?>
+            val limitArg = args[0] as Long
+            val wrapped: List<Any?> = try {
+              listOf(api.sessions(limitArg))
+            } catch (exception: Throwable) {
+              DeviceApiPigeonUtils.wrapError(exception)
+            }
+            reply.reply(wrapped)
+          }
+        } else {
+          channel.setMessageHandler(null)
+        }
+      }
+      run {
+        val channel = BasicMessageChannel<Any?>(binaryMessenger, "dev.flutter.pigeon.systemx.BackgroundApi.clearHistory$separatedMessageChannelSuffix", codec, taskQueue)
+        if (api != null) {
+          channel.setMessageHandler { _, reply ->
+            val wrapped: List<Any?> = try {
+              api.clearHistory()
+              listOf(null)
+            } catch (exception: Throwable) {
+              DeviceApiPigeonUtils.wrapError(exception)
+            }
+            reply.reply(wrapped)
+          }
+        } else {
+          channel.setMessageHandler(null)
+        }
+      }
+      run {
+        val channel = BasicMessageChannel<Any?>(binaryMessenger, "dev.flutter.pigeon.systemx.BackgroundApi.refreshWidgets$separatedMessageChannelSuffix", codec)
+        if (api != null) {
+          channel.setMessageHandler { _, reply ->
+            val wrapped: List<Any?> = try {
+              api.refreshWidgets()
+              listOf(null)
+            } catch (exception: Throwable) {
+              DeviceApiPigeonUtils.wrapError(exception)
+            }
+            reply.reply(wrapped)
+          }
+        } else {
+          channel.setMessageHandler(null)
+        }
+      }
+      run {
+        val channel = BasicMessageChannel<Any?>(binaryMessenger, "dev.flutter.pigeon.systemx.BackgroundApi.notificationsEnabled$separatedMessageChannelSuffix", codec)
+        if (api != null) {
+          channel.setMessageHandler { _, reply ->
+            val wrapped: List<Any?> = try {
+              listOf(api.notificationsEnabled())
+            } catch (exception: Throwable) {
+              DeviceApiPigeonUtils.wrapError(exception)
+            }
+            reply.reply(wrapped)
           }
         } else {
           channel.setMessageHandler(null)

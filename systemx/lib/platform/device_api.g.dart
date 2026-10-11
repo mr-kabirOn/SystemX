@@ -2001,6 +2001,269 @@ class LiveStats {
   }
 }
 
+/// Alerts, live status and values the background code needs from the app.
+/// Stored natively so workers and receivers can read it without Flutter.
+class BackgroundConfig {
+  BackgroundConfig({
+    required this.liveStatus,
+    required this.statusIcon,
+    required this.chargeAlarm,
+    required this.chargeLimit,
+    required this.batteryLow,
+    required this.lowLevel,
+    required this.batteryHot,
+    required this.hotC,
+    required this.chargingDone,
+    required this.storageFull,
+    required this.storagePercent,
+    required this.weeklySummary,
+    required this.checkupReminder,
+    required this.fahrenheit,
+    required this.lastCheckupMs,
+  });
+
+  bool liveStatus;
+
+  /// What the status bar icon shows: "battery_level", "battery_temp" or
+  /// "net_speed".
+  String statusIcon;
+
+  bool chargeAlarm;
+
+  int chargeLimit;
+
+  bool batteryLow;
+
+  int lowLevel;
+
+  bool batteryHot;
+
+  int hotC;
+
+  bool chargingDone;
+
+  bool storageFull;
+
+  int storagePercent;
+
+  bool weeklySummary;
+
+  bool checkupReminder;
+
+  bool fahrenheit;
+
+  /// When the last checkup finished; 0 if never.
+  int lastCheckupMs;
+
+  List<Object?> _toList() {
+    return <Object?>[
+      liveStatus,
+      statusIcon,
+      chargeAlarm,
+      chargeLimit,
+      batteryLow,
+      lowLevel,
+      batteryHot,
+      hotC,
+      chargingDone,
+      storageFull,
+      storagePercent,
+      weeklySummary,
+      checkupReminder,
+      fahrenheit,
+      lastCheckupMs,
+    ];
+  }
+
+  Object encode() {
+    return _toList();  }
+
+  static BackgroundConfig decode(Object result) {
+    result as List<Object?>;
+    return BackgroundConfig(
+      liveStatus: result[0]! as bool,
+      statusIcon: result[1]! as String,
+      chargeAlarm: result[2]! as bool,
+      chargeLimit: result[3]! as int,
+      batteryLow: result[4]! as bool,
+      lowLevel: result[5]! as int,
+      batteryHot: result[6]! as bool,
+      hotC: result[7]! as int,
+      chargingDone: result[8]! as bool,
+      storageFull: result[9]! as bool,
+      storagePercent: result[10]! as int,
+      weeklySummary: result[11]! as bool,
+      checkupReminder: result[12]! as bool,
+      fahrenheit: result[13]! as bool,
+      lastCheckupMs: result[14]! as int,
+    );
+  }
+
+  @override
+  // ignore: avoid_equals_and_hash_code_on_mutable_classes
+  bool operator ==(Object other) {
+    if (other is! BackgroundConfig || other.runtimeType != runtimeType) {
+      return false;
+    }
+    if (identical(this, other)) {
+      return true;
+    }
+    return _deepEquals(liveStatus, other.liveStatus) && _deepEquals(statusIcon, other.statusIcon) && _deepEquals(chargeAlarm, other.chargeAlarm) && _deepEquals(chargeLimit, other.chargeLimit) && _deepEquals(batteryLow, other.batteryLow) && _deepEquals(lowLevel, other.lowLevel) && _deepEquals(batteryHot, other.batteryHot) && _deepEquals(hotC, other.hotC) && _deepEquals(chargingDone, other.chargingDone) && _deepEquals(storageFull, other.storageFull) && _deepEquals(storagePercent, other.storagePercent) && _deepEquals(weeklySummary, other.weeklySummary) && _deepEquals(checkupReminder, other.checkupReminder) && _deepEquals(fahrenheit, other.fahrenheit) && _deepEquals(lastCheckupMs, other.lastCheckupMs);
+  }
+
+  @override
+  // ignore: avoid_equals_and_hash_code_on_mutable_classes
+  int get hashCode => _deepHash(<Object?>[runtimeType, ..._toList()]);
+
+  @override
+  String toString() {
+    return 'BackgroundConfig(liveStatus: $liveStatus, statusIcon: $statusIcon, chargeAlarm: $chargeAlarm, chargeLimit: $chargeLimit, batteryLow: $batteryLow, lowLevel: $lowLevel, batteryHot: $batteryHot, hotC: $hotC, chargingDone: $chargingDone, storageFull: $storageFull, storagePercent: $storagePercent, weeklySummary: $weeklySummary, checkupReminder: $checkupReminder, fahrenheit: $fahrenheit, lastCheckupMs: $lastCheckupMs)';
+  }
+}
+
+class HistorySample {
+  HistorySample({
+    required this.timeMs,
+    required this.level,
+    required this.tempC,
+    required this.memUsed,
+    required this.charging,
+  });
+
+  /// Wall-clock time (ms since epoch).
+  int timeMs;
+
+  int level;
+
+  double tempC;
+
+  /// Fraction of RAM in use, 0–1.
+  double memUsed;
+
+  bool charging;
+
+  List<Object?> _toList() {
+    return <Object?>[
+      timeMs,
+      level,
+      tempC,
+      memUsed,
+      charging,
+    ];
+  }
+
+  Object encode() {
+    return _toList();  }
+
+  static HistorySample decode(Object result) {
+    result as List<Object?>;
+    return HistorySample(
+      timeMs: result[0]! as int,
+      level: result[1]! as int,
+      tempC: result[2]! as double,
+      memUsed: result[3]! as double,
+      charging: result[4]! as bool,
+    );
+  }
+
+  @override
+  // ignore: avoid_equals_and_hash_code_on_mutable_classes
+  bool operator ==(Object other) {
+    if (other is! HistorySample || other.runtimeType != runtimeType) {
+      return false;
+    }
+    if (identical(this, other)) {
+      return true;
+    }
+    return _deepEquals(timeMs, other.timeMs) && _deepEquals(level, other.level) && _deepEquals(tempC, other.tempC) && _deepEquals(memUsed, other.memUsed) && _deepEquals(charging, other.charging);
+  }
+
+  @override
+  // ignore: avoid_equals_and_hash_code_on_mutable_classes
+  int get hashCode => _deepHash(<Object?>[runtimeType, ..._toList()]);
+
+  @override
+  String toString() {
+    return 'HistorySample(timeMs: $timeMs, level: $level, tempC: $tempC, memUsed: $memUsed, charging: $charging)';
+  }
+}
+
+class ChargeSession {
+  ChargeSession({
+    required this.startMs,
+    this.endMs,
+    required this.startLevel,
+    required this.endLevel,
+    this.peakMa,
+    this.avgMa,
+    required this.maxTempC,
+  });
+
+  int startMs;
+
+  /// null while still charging.
+  int? endMs;
+
+  int startLevel;
+
+  int endLevel;
+
+  int? peakMa;
+
+  int? avgMa;
+
+  double maxTempC;
+
+  List<Object?> _toList() {
+    return <Object?>[
+      startMs,
+      endMs,
+      startLevel,
+      endLevel,
+      peakMa,
+      avgMa,
+      maxTempC,
+    ];
+  }
+
+  Object encode() {
+    return _toList();  }
+
+  static ChargeSession decode(Object result) {
+    result as List<Object?>;
+    return ChargeSession(
+      startMs: result[0]! as int,
+      endMs: result[1] as int?,
+      startLevel: result[2]! as int,
+      endLevel: result[3]! as int,
+      peakMa: result[4] as int?,
+      avgMa: result[5] as int?,
+      maxTempC: result[6]! as double,
+    );
+  }
+
+  @override
+  // ignore: avoid_equals_and_hash_code_on_mutable_classes
+  bool operator ==(Object other) {
+    if (other is! ChargeSession || other.runtimeType != runtimeType) {
+      return false;
+    }
+    if (identical(this, other)) {
+      return true;
+    }
+    return _deepEquals(startMs, other.startMs) && _deepEquals(endMs, other.endMs) && _deepEquals(startLevel, other.startLevel) && _deepEquals(endLevel, other.endLevel) && _deepEquals(peakMa, other.peakMa) && _deepEquals(avgMa, other.avgMa) && _deepEquals(maxTempC, other.maxTempC);
+  }
+
+  @override
+  // ignore: avoid_equals_and_hash_code_on_mutable_classes
+  int get hashCode => _deepHash(<Object?>[runtimeType, ..._toList()]);
+
+  @override
+  String toString() {
+    return 'ChargeSession(startMs: $startMs, endMs: $endMs, startLevel: $startLevel, endLevel: $endLevel, peakMa: $peakMa, avgMa: $avgMa, maxTempC: $maxTempC)';
+  }
+}
+
 
 class _PigeonCodec extends StandardMessageCodec {
   const _PigeonCodec();
@@ -2069,6 +2332,15 @@ class _PigeonCodec extends StandardMessageCodec {
     }    else if (value is LiveStats) {
       buffer.putUint8(148);
       writeValue(buffer, value.encode());
+    }    else if (value is BackgroundConfig) {
+      buffer.putUint8(149);
+      writeValue(buffer, value.encode());
+    }    else if (value is HistorySample) {
+      buffer.putUint8(150);
+      writeValue(buffer, value.encode());
+    }    else if (value is ChargeSession) {
+      buffer.putUint8(151);
+      writeValue(buffer, value.encode());
     } else {
       super.writeValue(buffer, value);
     }
@@ -2117,6 +2389,12 @@ class _PigeonCodec extends StandardMessageCodec {
         return SecurityInfo.decode(readValue(buffer)!);
       case 148:
         return LiveStats.decode(readValue(buffer)!);
+      case 149:
+        return BackgroundConfig.decode(readValue(buffer)!);
+      case 150:
+        return HistorySample.decode(readValue(buffer)!);
+      case 151:
+        return ChargeSession.decode(readValue(buffer)!);
       default:
         return super.readValueOfType(type, buffer);
     }
@@ -2775,6 +3053,154 @@ class HardwareTestApi {
       binaryMessenger: pigeonVar_binaryMessenger,
     );
     final Future<Object?> pigeonVar_sendFuture = pigeonVar_channel.send(<Object?>[fileName, mimeType, bytes]);
+    final pigeonVar_replyList = await pigeonVar_sendFuture as List<Object?>?;
+
+    final Object? pigeonVar_replyValue = _extractReplyValueOrThrow(
+        pigeonVar_replyList,
+        pigeonVar_channelName,
+        isNullValid: false,
+    )
+    ;
+    return pigeonVar_replyValue! as bool;
+  }
+}
+
+class BackgroundApi {
+  /// Constructor for [BackgroundApi]. The [binaryMessenger] named argument is
+  /// available for dependency injection. If it is left null, the default
+  /// BinaryMessenger will be used which routes to the host platform.
+  BackgroundApi({BinaryMessenger? binaryMessenger, String messageChannelSuffix = ''})
+      : pigeonVar_binaryMessenger = binaryMessenger,
+        pigeonVar_messageChannelSuffix = messageChannelSuffix.isNotEmpty ? '.$messageChannelSuffix' : '';
+  final BinaryMessenger? pigeonVar_binaryMessenger;
+
+  static const MessageCodec<Object?> pigeonChannelCodec = _PigeonCodec();
+
+  final String pigeonVar_messageChannelSuffix;
+
+  Future<BackgroundConfig> getConfig() async {
+    final pigeonVar_channelName = 'dev.flutter.pigeon.systemx.BackgroundApi.getConfig$pigeonVar_messageChannelSuffix';
+    final pigeonVar_channel = BasicMessageChannel<Object?>(
+      pigeonVar_channelName,
+      pigeonChannelCodec,
+      binaryMessenger: pigeonVar_binaryMessenger,
+    );
+    final Future<Object?> pigeonVar_sendFuture = pigeonVar_channel.send(null);
+    final pigeonVar_replyList = await pigeonVar_sendFuture as List<Object?>?;
+
+    final Object? pigeonVar_replyValue = _extractReplyValueOrThrow(
+        pigeonVar_replyList,
+        pigeonVar_channelName,
+        isNullValid: false,
+    )
+    ;
+    return pigeonVar_replyValue! as BackgroundConfig;
+  }
+
+  /// Saves the config and starts or stops the live status service and the
+  /// background work to match.
+  Future<void> setConfig(BackgroundConfig config) async {
+    final pigeonVar_channelName = 'dev.flutter.pigeon.systemx.BackgroundApi.setConfig$pigeonVar_messageChannelSuffix';
+    final pigeonVar_channel = BasicMessageChannel<Object?>(
+      pigeonVar_channelName,
+      pigeonChannelCodec,
+      binaryMessenger: pigeonVar_binaryMessenger,
+    );
+    final Future<Object?> pigeonVar_sendFuture = pigeonVar_channel.send(<Object?>[config]);
+    final pigeonVar_replyList = await pigeonVar_sendFuture as List<Object?>?;
+
+    _extractReplyValueOrThrow(
+        pigeonVar_replyList,
+        pigeonVar_channelName,
+        isNullValid: true,
+    )
+    ;
+  }
+
+  Future<List<HistorySample>> history(int sinceMs) async {
+    final pigeonVar_channelName = 'dev.flutter.pigeon.systemx.BackgroundApi.history$pigeonVar_messageChannelSuffix';
+    final pigeonVar_channel = BasicMessageChannel<Object?>(
+      pigeonVar_channelName,
+      pigeonChannelCodec,
+      binaryMessenger: pigeonVar_binaryMessenger,
+    );
+    final Future<Object?> pigeonVar_sendFuture = pigeonVar_channel.send(<Object?>[sinceMs]);
+    final pigeonVar_replyList = await pigeonVar_sendFuture as List<Object?>?;
+
+    final Object? pigeonVar_replyValue = _extractReplyValueOrThrow(
+        pigeonVar_replyList,
+        pigeonVar_channelName,
+        isNullValid: false,
+    )
+    ;
+    return (pigeonVar_replyValue! as List<Object?>).cast<HistorySample>();
+  }
+
+  Future<List<ChargeSession>> sessions(int limit) async {
+    final pigeonVar_channelName = 'dev.flutter.pigeon.systemx.BackgroundApi.sessions$pigeonVar_messageChannelSuffix';
+    final pigeonVar_channel = BasicMessageChannel<Object?>(
+      pigeonVar_channelName,
+      pigeonChannelCodec,
+      binaryMessenger: pigeonVar_binaryMessenger,
+    );
+    final Future<Object?> pigeonVar_sendFuture = pigeonVar_channel.send(<Object?>[limit]);
+    final pigeonVar_replyList = await pigeonVar_sendFuture as List<Object?>?;
+
+    final Object? pigeonVar_replyValue = _extractReplyValueOrThrow(
+        pigeonVar_replyList,
+        pigeonVar_channelName,
+        isNullValid: false,
+    )
+    ;
+    return (pigeonVar_replyValue! as List<Object?>).cast<ChargeSession>();
+  }
+
+  Future<void> clearHistory() async {
+    final pigeonVar_channelName = 'dev.flutter.pigeon.systemx.BackgroundApi.clearHistory$pigeonVar_messageChannelSuffix';
+    final pigeonVar_channel = BasicMessageChannel<Object?>(
+      pigeonVar_channelName,
+      pigeonChannelCodec,
+      binaryMessenger: pigeonVar_binaryMessenger,
+    );
+    final Future<Object?> pigeonVar_sendFuture = pigeonVar_channel.send(null);
+    final pigeonVar_replyList = await pigeonVar_sendFuture as List<Object?>?;
+
+    _extractReplyValueOrThrow(
+        pigeonVar_replyList,
+        pigeonVar_channelName,
+        isNullValid: true,
+    )
+    ;
+  }
+
+  /// Redraws the home screen widgets now.
+  Future<void> refreshWidgets() async {
+    final pigeonVar_channelName = 'dev.flutter.pigeon.systemx.BackgroundApi.refreshWidgets$pigeonVar_messageChannelSuffix';
+    final pigeonVar_channel = BasicMessageChannel<Object?>(
+      pigeonVar_channelName,
+      pigeonChannelCodec,
+      binaryMessenger: pigeonVar_binaryMessenger,
+    );
+    final Future<Object?> pigeonVar_sendFuture = pigeonVar_channel.send(null);
+    final pigeonVar_replyList = await pigeonVar_sendFuture as List<Object?>?;
+
+    _extractReplyValueOrThrow(
+        pigeonVar_replyList,
+        pigeonVar_channelName,
+        isNullValid: true,
+    )
+    ;
+  }
+
+  /// Whether Android lets this app post notifications at all.
+  Future<bool> notificationsEnabled() async {
+    final pigeonVar_channelName = 'dev.flutter.pigeon.systemx.BackgroundApi.notificationsEnabled$pigeonVar_messageChannelSuffix';
+    final pigeonVar_channel = BasicMessageChannel<Object?>(
+      pigeonVar_channelName,
+      pigeonChannelCodec,
+      binaryMessenger: pigeonVar_binaryMessenger,
+    );
+    final Future<Object?> pigeonVar_sendFuture = pigeonVar_channel.send(null);
     final pigeonVar_replyList = await pigeonVar_sendFuture as List<Object?>?;
 
     final Object? pigeonVar_replyValue = _extractReplyValueOrThrow(
