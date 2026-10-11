@@ -2251,7 +2251,7 @@ interface DeviceInfoApi {
 }
 /**
  * Runtime permissions, asked from the current activity.
- * [kind] is "location", "phone" or "notifications".
+ * [kind] is "location", "phone", "camera", "microphone" or "notifications".
  * Status is "granted", "denied" or "blocked" (denied with "don't ask again";
  * only the system settings screen can change it).
  *
@@ -2294,6 +2294,272 @@ interface PermissionApi {
             val args = message as List<Any?>
             val kindArg = args[0] as String
             api.request(kindArg) { result: Result<String> ->
+              val error = result.exceptionOrNull()
+              if (error != null) {
+                reply.reply(DeviceApiPigeonUtils.wrapError(error))
+              } else {
+                val data = result.getOrNull()
+                reply.reply(DeviceApiPigeonUtils.wrapResult(data))
+              }
+            }
+          }
+        } else {
+          channel.setMessageHandler(null)
+        }
+      }
+    }
+  }
+}
+/**
+ * Hardware actions for the diagnostics.
+ *
+ * Generated interface from Pigeon that represents a handler of messages from Flutter.
+ */
+interface HardwareTestApi {
+  /** Vibrates with alternating on/off durations in milliseconds. */
+  fun vibrate(pattern: List<Long>)
+  fun hasVibrator(): Boolean
+  fun hasTorch(): Boolean
+  /** Returns false when no torch could be switched. */
+  fun setTorch(on: Boolean): Boolean
+  /** Window brightness 0–1, or -1 to follow the system setting again. */
+  fun setBrightness(level: Double)
+  /** "on", "off" or "none" (no Bluetooth hardware). */
+  fun bluetoothState(): String
+  fun playTone(freqHz: Double, durationMs: Long, earpiece: Boolean, callback: (Result<Unit>) -> Unit)
+  /** Records from the microphone; returns the peak level in dBFS. */
+  fun recordClip(durationMs: Long, callback: (Result<Double>) -> Unit)
+  /** Plays the last recorded clip on the loudspeaker. */
+  fun playClip(callback: (Result<Unit>) -> Unit)
+  /**
+   * Plays a tone on the speaker while recording; returns how much louder
+   * the tone frequency was than the silence before it, in dB.
+   */
+  fun loopback(freqHz: Double, callback: (Result<Double>) -> Unit)
+  /**
+   * System biometric prompt: "success", "cancelled", "none_enrolled" or
+   * "unavailable". The app never sees biometric data.
+   */
+  fun authenticate(title: String, subtitle: String, cancel: String, callback: (Result<String>) -> Unit)
+  /** Asks where to save a file (system file picker); false if cancelled. */
+  fun saveDocument(fileName: String, mimeType: String, bytes: ByteArray, callback: (Result<Boolean>) -> Unit)
+
+  companion object {
+    /** The codec used by HardwareTestApi. */
+    val codec: MessageCodec<Any?> by lazy {
+      DeviceApiPigeonCodec()
+    }
+    /** Sets up an instance of `HardwareTestApi` to handle messages through the `binaryMessenger`. */
+    @JvmOverloads
+    fun setUp(binaryMessenger: BinaryMessenger, api: HardwareTestApi?, messageChannelSuffix: String = "") {
+      val separatedMessageChannelSuffix = if (messageChannelSuffix.isNotEmpty()) ".$messageChannelSuffix" else ""
+      run {
+        val channel = BasicMessageChannel<Any?>(binaryMessenger, "dev.flutter.pigeon.systemx.HardwareTestApi.vibrate$separatedMessageChannelSuffix", codec)
+        if (api != null) {
+          channel.setMessageHandler { message, reply ->
+            val args = message as List<Any?>
+            val patternArg = args[0] as List<Long>
+            val wrapped: List<Any?> = try {
+              api.vibrate(patternArg)
+              listOf(null)
+            } catch (exception: Throwable) {
+              DeviceApiPigeonUtils.wrapError(exception)
+            }
+            reply.reply(wrapped)
+          }
+        } else {
+          channel.setMessageHandler(null)
+        }
+      }
+      run {
+        val channel = BasicMessageChannel<Any?>(binaryMessenger, "dev.flutter.pigeon.systemx.HardwareTestApi.hasVibrator$separatedMessageChannelSuffix", codec)
+        if (api != null) {
+          channel.setMessageHandler { _, reply ->
+            val wrapped: List<Any?> = try {
+              listOf(api.hasVibrator())
+            } catch (exception: Throwable) {
+              DeviceApiPigeonUtils.wrapError(exception)
+            }
+            reply.reply(wrapped)
+          }
+        } else {
+          channel.setMessageHandler(null)
+        }
+      }
+      run {
+        val channel = BasicMessageChannel<Any?>(binaryMessenger, "dev.flutter.pigeon.systemx.HardwareTestApi.hasTorch$separatedMessageChannelSuffix", codec)
+        if (api != null) {
+          channel.setMessageHandler { _, reply ->
+            val wrapped: List<Any?> = try {
+              listOf(api.hasTorch())
+            } catch (exception: Throwable) {
+              DeviceApiPigeonUtils.wrapError(exception)
+            }
+            reply.reply(wrapped)
+          }
+        } else {
+          channel.setMessageHandler(null)
+        }
+      }
+      run {
+        val channel = BasicMessageChannel<Any?>(binaryMessenger, "dev.flutter.pigeon.systemx.HardwareTestApi.setTorch$separatedMessageChannelSuffix", codec)
+        if (api != null) {
+          channel.setMessageHandler { message, reply ->
+            val args = message as List<Any?>
+            val onArg = args[0] as Boolean
+            val wrapped: List<Any?> = try {
+              listOf(api.setTorch(onArg))
+            } catch (exception: Throwable) {
+              DeviceApiPigeonUtils.wrapError(exception)
+            }
+            reply.reply(wrapped)
+          }
+        } else {
+          channel.setMessageHandler(null)
+        }
+      }
+      run {
+        val channel = BasicMessageChannel<Any?>(binaryMessenger, "dev.flutter.pigeon.systemx.HardwareTestApi.setBrightness$separatedMessageChannelSuffix", codec)
+        if (api != null) {
+          channel.setMessageHandler { message, reply ->
+            val args = message as List<Any?>
+            val levelArg = args[0] as Double
+            val wrapped: List<Any?> = try {
+              api.setBrightness(levelArg)
+              listOf(null)
+            } catch (exception: Throwable) {
+              DeviceApiPigeonUtils.wrapError(exception)
+            }
+            reply.reply(wrapped)
+          }
+        } else {
+          channel.setMessageHandler(null)
+        }
+      }
+      run {
+        val channel = BasicMessageChannel<Any?>(binaryMessenger, "dev.flutter.pigeon.systemx.HardwareTestApi.bluetoothState$separatedMessageChannelSuffix", codec)
+        if (api != null) {
+          channel.setMessageHandler { _, reply ->
+            val wrapped: List<Any?> = try {
+              listOf(api.bluetoothState())
+            } catch (exception: Throwable) {
+              DeviceApiPigeonUtils.wrapError(exception)
+            }
+            reply.reply(wrapped)
+          }
+        } else {
+          channel.setMessageHandler(null)
+        }
+      }
+      run {
+        val channel = BasicMessageChannel<Any?>(binaryMessenger, "dev.flutter.pigeon.systemx.HardwareTestApi.playTone$separatedMessageChannelSuffix", codec)
+        if (api != null) {
+          channel.setMessageHandler { message, reply ->
+            val args = message as List<Any?>
+            val freqHzArg = args[0] as Double
+            val durationMsArg = args[1] as Long
+            val earpieceArg = args[2] as Boolean
+            api.playTone(freqHzArg, durationMsArg, earpieceArg) { result: Result<Unit> ->
+              val error = result.exceptionOrNull()
+              if (error != null) {
+                reply.reply(DeviceApiPigeonUtils.wrapError(error))
+              } else {
+                reply.reply(DeviceApiPigeonUtils.wrapResult(null))
+              }
+            }
+          }
+        } else {
+          channel.setMessageHandler(null)
+        }
+      }
+      run {
+        val channel = BasicMessageChannel<Any?>(binaryMessenger, "dev.flutter.pigeon.systemx.HardwareTestApi.recordClip$separatedMessageChannelSuffix", codec)
+        if (api != null) {
+          channel.setMessageHandler { message, reply ->
+            val args = message as List<Any?>
+            val durationMsArg = args[0] as Long
+            api.recordClip(durationMsArg) { result: Result<Double> ->
+              val error = result.exceptionOrNull()
+              if (error != null) {
+                reply.reply(DeviceApiPigeonUtils.wrapError(error))
+              } else {
+                val data = result.getOrNull()
+                reply.reply(DeviceApiPigeonUtils.wrapResult(data))
+              }
+            }
+          }
+        } else {
+          channel.setMessageHandler(null)
+        }
+      }
+      run {
+        val channel = BasicMessageChannel<Any?>(binaryMessenger, "dev.flutter.pigeon.systemx.HardwareTestApi.playClip$separatedMessageChannelSuffix", codec)
+        if (api != null) {
+          channel.setMessageHandler { _, reply ->
+            api.playClip{ result: Result<Unit> ->
+              val error = result.exceptionOrNull()
+              if (error != null) {
+                reply.reply(DeviceApiPigeonUtils.wrapError(error))
+              } else {
+                reply.reply(DeviceApiPigeonUtils.wrapResult(null))
+              }
+            }
+          }
+        } else {
+          channel.setMessageHandler(null)
+        }
+      }
+      run {
+        val channel = BasicMessageChannel<Any?>(binaryMessenger, "dev.flutter.pigeon.systemx.HardwareTestApi.loopback$separatedMessageChannelSuffix", codec)
+        if (api != null) {
+          channel.setMessageHandler { message, reply ->
+            val args = message as List<Any?>
+            val freqHzArg = args[0] as Double
+            api.loopback(freqHzArg) { result: Result<Double> ->
+              val error = result.exceptionOrNull()
+              if (error != null) {
+                reply.reply(DeviceApiPigeonUtils.wrapError(error))
+              } else {
+                val data = result.getOrNull()
+                reply.reply(DeviceApiPigeonUtils.wrapResult(data))
+              }
+            }
+          }
+        } else {
+          channel.setMessageHandler(null)
+        }
+      }
+      run {
+        val channel = BasicMessageChannel<Any?>(binaryMessenger, "dev.flutter.pigeon.systemx.HardwareTestApi.authenticate$separatedMessageChannelSuffix", codec)
+        if (api != null) {
+          channel.setMessageHandler { message, reply ->
+            val args = message as List<Any?>
+            val titleArg = args[0] as String
+            val subtitleArg = args[1] as String
+            val cancelArg = args[2] as String
+            api.authenticate(titleArg, subtitleArg, cancelArg) { result: Result<String> ->
+              val error = result.exceptionOrNull()
+              if (error != null) {
+                reply.reply(DeviceApiPigeonUtils.wrapError(error))
+              } else {
+                val data = result.getOrNull()
+                reply.reply(DeviceApiPigeonUtils.wrapResult(data))
+              }
+            }
+          }
+        } else {
+          channel.setMessageHandler(null)
+        }
+      }
+      run {
+        val channel = BasicMessageChannel<Any?>(binaryMessenger, "dev.flutter.pigeon.systemx.HardwareTestApi.saveDocument$separatedMessageChannelSuffix", codec)
+        if (api != null) {
+          channel.setMessageHandler { message, reply ->
+            val args = message as List<Any?>
+            val fileNameArg = args[0] as String
+            val mimeTypeArg = args[1] as String
+            val bytesArg = args[2] as ByteArray
+            api.saveDocument(fileNameArg, mimeTypeArg, bytesArg) { result: Result<Boolean> ->
               val error = result.exceptionOrNull()
               if (error != null) {
                 reply.reply(DeviceApiPigeonUtils.wrapError(error))

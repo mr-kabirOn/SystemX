@@ -18,3 +18,26 @@ Stream<List<double>> sensorReadings(int type) => _sensorChannel
 /// [sensorReadings], swappable in tests.
 final sensorReadingsProvider =
     Provider<Stream<List<double>> Function(int type)>((ref) => sensorReadings);
+
+final hardwareTestApiProvider =
+    Provider<HardwareTestApi>((ref) => HardwareTestApi());
+
+/// GNSS status while listened to; ends at once without Location permission
+/// or with Location off.
+typedef GnssStatus = ({int seen, int used, double? accuracy});
+
+const _gnssChannel = EventChannel('systemx/gnss');
+
+Stream<GnssStatus> gnssStatus() =>
+    _gnssChannel.receiveBroadcastStream().map((e) {
+      final m = (e as Map).cast<String, Object?>();
+      return (
+        seen: (m['seen'] as num?)?.toInt() ?? 0,
+        used: (m['used'] as num?)?.toInt() ?? 0,
+        accuracy: (m['accuracy'] as num?)?.toDouble(),
+      );
+    });
+
+/// [gnssStatus], swappable in tests.
+final gnssStatusProvider =
+    Provider<Stream<GnssStatus> Function()>((ref) => gnssStatus);

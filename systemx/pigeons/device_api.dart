@@ -515,7 +515,7 @@ abstract class DeviceInfoApi {
 }
 
 /// Runtime permissions, asked from the current activity.
-/// [kind] is "location", "phone" or "notifications".
+/// [kind] is "location", "phone", "camera", "microphone" or "notifications".
 /// Status is "granted", "denied" or "blocked" (denied with "don't ask again";
 /// only the system settings screen can change it).
 @HostApi()
@@ -523,4 +523,47 @@ abstract class PermissionApi {
   String status(String kind);
   @async
   String request(String kind);
+}
+
+/// Hardware actions for the diagnostics.
+@HostApi()
+abstract class HardwareTestApi {
+  /// Vibrates with alternating on/off durations in milliseconds.
+  void vibrate(List<int> pattern);
+  bool hasVibrator();
+  bool hasTorch();
+
+  /// Returns false when no torch could be switched.
+  bool setTorch(bool on);
+
+  /// Window brightness 0–1, or -1 to follow the system setting again.
+  void setBrightness(double level);
+
+  /// "on", "off" or "none" (no Bluetooth hardware).
+  String bluetoothState();
+
+  @async
+  void playTone(double freqHz, int durationMs, bool earpiece);
+
+  /// Records from the microphone; returns the peak level in dBFS.
+  @async
+  double recordClip(int durationMs);
+
+  /// Plays the last recorded clip on the loudspeaker.
+  @async
+  void playClip();
+
+  /// Plays a tone on the speaker while recording; returns how much louder
+  /// the tone frequency was than the silence before it, in dB.
+  @async
+  double loopback(double freqHz);
+
+  /// System biometric prompt: "success", "cancelled", "none_enrolled" or
+  /// "unavailable". The app never sees biometric data.
+  @async
+  String authenticate(String title, String subtitle, String cancel);
+
+  /// Asks where to save a file (system file picker); false if cancelled.
+  @async
+  bool saveDocument(String fileName, String mimeType, Uint8List bytes);
 }
