@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:systemx/platform/platform.dart';
 
 /// Pixel 8 style readings, so tests don't need a phone.
@@ -421,5 +423,49 @@ class FakePermissionApi extends PermissionApi {
       if (kind == 'location') api.locationGranted = true;
     }
     return answer;
+  }
+}
+
+/// Hardware actions without hardware: records what was asked.
+class FakeHardwareTestApi extends HardwareTestApi {
+  final List<String> calls = [];
+  String bluetooth = 'on';
+  double loopbackDb = 24;
+  double clipPeak = -14;
+  String authResult = 'success';
+  bool saveResult = true;
+  Uint8List? saved;
+
+  @override
+  Future<void> vibrate(List<int> pattern) async => calls.add('vibrate');
+  @override
+  Future<bool> hasVibrator() async => true;
+  @override
+  Future<bool> hasTorch() async => true;
+  @override
+  Future<bool> setTorch(bool on) async {
+    calls.add('torch $on');
+    return true;
+  }
+
+  @override
+  Future<void> setBrightness(double level) async {}
+  @override
+  Future<String> bluetoothState() async => bluetooth;
+  @override
+  Future<void> playTone(double freqHz, int durationMs, bool earpiece) async =>
+      calls.add(earpiece ? 'earpiece' : 'speaker');
+  @override
+  Future<double> recordClip(int durationMs) async => clipPeak;
+  @override
+  Future<void> playClip() async => calls.add('playClip');
+  @override
+  Future<double> loopback(double freqHz) async => loopbackDb;
+  @override
+  Future<String> authenticate(String title, String subtitle, String cancel) async => authResult;
+  @override
+  Future<bool> saveDocument(String fileName, String mimeType, Uint8List bytes) async {
+    saved = bytes;
+    return saveResult;
   }
 }

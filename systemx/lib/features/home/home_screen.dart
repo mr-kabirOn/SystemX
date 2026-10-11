@@ -16,6 +16,7 @@ import '../device/spec_view.dart';
 import '../live/health.dart';
 import '../live/live_data.dart';
 import '../live/live_screens.dart';
+import '../tests/test_results.dart';
 
 /// Words for a health score.
 String scoreWord(AppLocalizations l, int score) => score >= 90
@@ -25,6 +26,15 @@ String scoreWord(AppLocalizations l, int score) => score >= 90
         : score >= 50
             ? l.scoreFair
             : l.scorePoor;
+
+/// "2 h ago" style age of a past event.
+String timeAgo(AppLocalizations l, DateTime at, [DateTime? now]) {
+  final d = (now ?? DateTime.now()).difference(at);
+  if (d.inMinutes < 1) return l.justNow;
+  if (d.inHours < 1) return l.minutesAgo(d.inMinutes);
+  if (d.inDays < 1) return l.hoursAgo(d.inHours);
+  return l.daysAgo(d.inDays);
+}
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -44,11 +54,13 @@ class HomeScreen extends ConsumerWidget {
     final live = ref.watch(liveProvider);
     final snap = ref.watch(fullSnapshotProvider).value;
     final s = live.latest;
+    final lastCheckup = ref.watch(testHistoryProvider).value?.lastCheckup;
 
     final score = healthScore(
       battery: snap?.battery,
       storage: snap?.storage,
       live: s,
+      checkupScore: lastCheckup?.score,
     );
     final tip = pickTips(
       live: s,
@@ -115,14 +127,22 @@ class HomeScreen extends ConsumerWidget {
                       Text(score == null ? l.homeYourPhone : scoreWord(l, score.score),
                           style: context.text.titleLarge),
                       const SizedBox(height: 4),
-                      Text(l.noCheckupYet, style: context.text.bodySmall),
+                      Text(
+                        lastCheckup == null
+                            ? l.noCheckupYet
+                            : l.lastCheckupLine(
+                                timeAgo(l, lastCheckup.at),
+                                lastCheckup.count(TestStatus.passed),
+                                lastCheckup.results.length),
+                        style: context.text.bodySmall,
+                      ),
                       const SizedBox(height: 12),
                       FilledButton.icon(
                         style: FilledButton.styleFrom(
                           minimumSize: const Size(0, 42),
                           padding: const EdgeInsets.symmetric(horizontal: 16),
                         ),
-                        onPressed: () => context.go(Routes.tests),
+                        onPressed: () => context.push(Routes.checkup),
                         icon: const Icon(Icons.play_arrow_rounded, size: 20),
                         label: Text(l.runCheckup),
                       ),

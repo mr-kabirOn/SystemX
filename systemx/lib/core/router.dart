@@ -12,6 +12,9 @@ import '../features/onboarding/onboarding_screen.dart';
 import '../features/settings/privacy_screen.dart';
 import '../features/settings/settings_screen.dart';
 import '../features/shell/app_shell.dart';
+import '../features/tests/checkup_screen.dart';
+import '../features/tests/report_screen.dart';
+import '../features/tests/test_catalog.dart';
 import '../features/tests/tests_screen.dart';
 import 'settings/settings.dart';
 
@@ -27,6 +30,9 @@ abstract final class Routes {
 
   static String category(DeviceCategory c) => '$device/${c.name}';
   static String live(LiveMetric m) => '/live/${m.name}';
+  static const checkup = '/checkup';
+  static String runTest(HwTest t) => '/test/${t.name}';
+  static String report(int index) => '/report/$index';
 }
 
 final routerProvider = Provider<GoRouter>((ref) {
@@ -79,6 +85,19 @@ final routerProvider = Provider<GoRouter>((ref) {
                 path: Routes.monitor, builder: (_, _) => const MonitorScreen()),
           ]),
         ],
+      ),
+      GoRoute(path: Routes.checkup, builder: (_, _) => const CheckupScreen()),
+      GoRoute(
+        path: '/test/:test',
+        redirect: (_, state) =>
+            HwTest.byName(state.pathParameters['test']!) == null ? Routes.tests : null,
+        builder: (_, state) =>
+            SingleTestScreen(test: HwTest.byName(state.pathParameters['test']!)!),
+      ),
+      GoRoute(
+        path: '/report/:index',
+        builder: (_, state) =>
+            ReportScreen(index: int.tryParse(state.pathParameters['index']!) ?? 0),
       ),
       GoRoute(
         path: '/live/:metric',

@@ -1671,4 +1671,632 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get gPower => 'Charging & storage';
+
+  @override
+  String get automaticTests => 'Automatic tests';
+
+  @override
+  String get automaticTestsBody =>
+      'These run on their own. Keep the phone still and the room quiet for the speaker test.';
+
+  @override
+  String get bioNoDataNote =>
+      'Android checks your fingerprint or face. SystemX only learns whether it matched.';
+
+  @override
+  String get bioPromptTitle => 'Biometrics test';
+
+  @override
+  String get bioPromptSubtitle => 'Touch the sensor or look at the screen';
+
+  @override
+  String get buttonDoesNothing => 'The button does nothing';
+
+  @override
+  String get cancel => 'Cancel';
+
+  @override
+  String get checkupIntro =>
+      'Automatic tests run first. Then each test tells you what to do, and you can skip any of them.';
+
+  @override
+  String get checkupPrep =>
+      'Have wired headphones, a USB audio device and a charger nearby if you can. Location helps the GPS test.';
+
+  @override
+  String get done => 'Done';
+
+  @override
+  String get fixAudio =>
+      'Clean the grille with a soft dry brush, remove any case or screen protector covering it, and test again.';
+
+  @override
+  String get fixBiometrics =>
+      'Clean the sensor and your finger, re-enroll in Settings › Security, and test again.';
+
+  @override
+  String get fixCamera =>
+      'Clean the lens and check nothing covers it. If the image stays blurry, the camera may need service.';
+
+  @override
+  String get fixCharging =>
+      'Try another cable and charger, and clean the port gently with a wooden toothpick.';
+
+  @override
+  String get fixConnectivity =>
+      'Turn it off and on in Quick Settings, restart the phone, and test again.';
+
+  @override
+  String get fixConnector => 'Clean the port and try another device.';
+
+  @override
+  String get fixDisplay =>
+      'Restart the phone and test again. Marks that stay usually mean the screen needs service.';
+
+  @override
+  String get fixHaptics =>
+      'Restart the phone and test again. If it still fails, the part may need service.';
+
+  @override
+  String get fixSensor => 'Remove the case, restart the phone and test again.';
+
+  @override
+  String get fixStorage => 'Free up some space and test again.';
+
+  @override
+  String get flashOn => 'Flashlight is on';
+
+  @override
+  String get flashTurningOn => 'Turning on the flashlight…';
+
+  @override
+  String get gpsStarting => 'Looking for satellites…';
+
+  @override
+  String get holdPhone => 'Hold the phone in your hand';
+
+  @override
+  String get holdToEar => 'Hold the phone to your ear, then tap Play';
+
+  @override
+  String get iAccelerometer =>
+      'Tilt the phone to roll the ball into all four corners.';
+
+  @override
+  String get iBiometrics =>
+      'Tap Start and use your fingerprint or face as you do to unlock.';
+
+  @override
+  String get iBrightness => 'Watch the screen dim and brighten.';
+
+  @override
+  String get iCharging =>
+      'Plug in a charger. SystemX measures the charging current for a few seconds.';
+
+  @override
+  String get iCompass =>
+      'Turn around slowly in a full circle while holding the phone flat.';
+
+  @override
+  String get iEarpiece =>
+      'This tone plays through the small speaker you hold to your ear on calls.';
+
+  @override
+  String get iFlashlight => 'Look at the back of the phone.';
+
+  @override
+  String get iFrontCamera =>
+      'Point the front camera at your face, tap to focus, then take a photo.';
+
+  @override
+  String get iGps =>
+      'Stand near a window or go outside. Finding satellites can take a minute.';
+
+  @override
+  String get iGyroscope =>
+      'Rotate the phone in any direction, like turning a steering wheel.';
+
+  @override
+  String get iHeadphones => 'Plug wired headphones into the headphone jack.';
+
+  @override
+  String get iLight =>
+      'Cover the top of the screen with your hand, then uncover it or hold it under a light.';
+
+  @override
+  String get iMicrophone =>
+      'Tap Record and say a few words. SystemX plays it back right away.';
+
+  @override
+  String get iMultiTouch => 'Put as many fingers on the screen as you can.';
+
+  @override
+  String get iProximity =>
+      'Cover the top of the screen near the earpiece with your hand, then move it away.';
+
+  @override
+  String get iRearCamera =>
+      'Point the rear camera at something with detail, tap to focus, then take a photo.';
+
+  @override
+  String get iSpeaker => 'A tone plays through the loudspeaker.';
+
+  @override
+  String get iUsbAudio => 'Connect USB-C headphones or a USB audio adapter.';
+
+  @override
+  String get iVibration => 'The phone vibrates in a short pattern.';
+
+  @override
+  String get iVolumeDown => 'Press the volume down button.';
+
+  @override
+  String get iVolumeUp => 'Press the volume up button.';
+
+  @override
+  String get itDoesntWork => 'It doesn\'t recognise me';
+
+  @override
+  String get keepGoing => 'Keep going';
+
+  @override
+  String get lastCheckup => 'Last checkup';
+
+  @override
+  String get listen => 'Listen';
+
+  @override
+  String get measuring => 'Measuring…';
+
+  @override
+  String get nBanding => 'Visible color bands';
+
+  @override
+  String get nBluetoothOff => 'Bluetooth is off';
+
+  @override
+  String get nBrightnessBad => 'Brightness didn\'t change smoothly';
+
+  @override
+  String get nBrightnessOk => 'Full range works';
+
+  @override
+  String get nBurnIn => 'Ghost images visible';
+
+  @override
+  String get nButtonNoResponse => 'No response';
+
+  @override
+  String get nCameraError => 'The camera couldn\'t start';
+
+  @override
+  String get nConnected => 'Connected';
+
+  @override
+  String get nCouldNotRead => 'Couldn\'t read the hardware state';
+
+  @override
+  String get nDeadPixels => 'Dots that don\'t change color';
+
+  @override
+  String get nFlashBad => 'Didn\'t light up';
+
+  @override
+  String get nFlashOk => 'Lights up';
+
+  @override
+  String get nGpsNone => 'No satellites found';
+
+  @override
+  String get nLoopFail => 'The microphone didn\'t pick up the speaker tone';
+
+  @override
+  String get nMicError => 'The microphone is busy or unavailable';
+
+  @override
+  String get nNfcOff => 'NFC is off';
+
+  @override
+  String get nNoBiometrics => 'No fingerprint or face hardware';
+
+  @override
+  String get nNoBluetooth => 'No Bluetooth on this phone';
+
+  @override
+  String get nNoBurnIn => 'No ghost images';
+
+  @override
+  String get nNoCharger => 'No charger at hand';
+
+  @override
+  String get nNoDeadPixels => 'No dead pixels';
+
+  @override
+  String get nNoFrontCamera => 'No front camera';
+
+  @override
+  String get nNoHeadphones => 'No headphones at hand';
+
+  @override
+  String get nNoNfc => 'No NFC on this phone';
+
+  @override
+  String get nNoRearCamera => 'No rear camera';
+
+  @override
+  String get nNoSensor => 'This phone doesn\'t have this sensor';
+
+  @override
+  String get nNoSignal => 'No mobile signal';
+
+  @override
+  String get nNoSignalInfo => 'The phone doesn\'t report signal strength';
+
+  @override
+  String get nNoSim => 'No SIM card';
+
+  @override
+  String get nNoUsbAudio => 'No USB audio device at hand';
+
+  @override
+  String get nNoneEnrolled => 'No fingerprint or face is set up';
+
+  @override
+  String get nNotRecognised => 'Not recognised';
+
+  @override
+  String get nOnNotConnected => 'On, not connected';
+
+  @override
+  String get nPermissionDenied => 'Permission not allowed';
+
+  @override
+  String get nPhotoBad => 'Blurry or broken photo';
+
+  @override
+  String get nPhotoOk => 'Preview and photo work';
+
+  @override
+  String get nRecognised => 'Recognised';
+
+  @override
+  String get nSensorNoResponse => 'The sensor didn\'t respond';
+
+  @override
+  String get nSensorResponds => 'Responds to movement';
+
+  @override
+  String get nSmooth => 'Smooth gradients';
+
+  @override
+  String get nStorageError => 'Couldn\'t write a test file';
+
+  @override
+  String get nStorageMismatch => 'Data read back didn\'t match';
+
+  @override
+  String get nToneHeard => 'Tone heard';
+
+  @override
+  String get nToneNotHeard => 'Tone not heard';
+
+  @override
+  String get nVeryQuiet => 'Very quiet';
+
+  @override
+  String get nVibrationBad => 'No vibration felt';
+
+  @override
+  String get nVibrationOk => 'Vibration felt';
+
+  @override
+  String get nWifiOff => 'Wi-Fi is off';
+
+  @override
+  String get noChargerAtHand => 'No charger at hand';
+
+  @override
+  String get noHeadphonesAtHand => 'No headphones at hand';
+
+  @override
+  String get noUsbAudioAtHand => 'No USB audio at hand';
+
+  @override
+  String get ofHundred => 'of 100';
+
+  @override
+  String get pastCheckups => 'Past checkups';
+
+  @override
+  String get playAgain => 'Play again';
+
+  @override
+  String get playTone => 'Play tone';
+
+  @override
+  String get playing => 'Playing…';
+
+  @override
+  String get playingBack => 'Playing it back…';
+
+  @override
+  String get pressTheButton => 'Press the button';
+
+  @override
+  String get qBanding => 'Do the colors fade smoothly, without stripes?';
+
+  @override
+  String get qBrightness => 'Did the screen get dimmer and brighter?';
+
+  @override
+  String get qBurnIn =>
+      'Did you see faint shapes that stay, like a status bar or keyboard?';
+
+  @override
+  String get qDeadPixels =>
+      'Did you see any dots that stayed black, white or a different color?';
+
+  @override
+  String get qFeltVibration => 'Did you feel the vibration?';
+
+  @override
+  String get qFlashOn => 'Is the flashlight shining?';
+
+  @override
+  String get qHeardTone => 'Did you hear the tone clearly?';
+
+  @override
+  String get qHeardVoice => 'Did you hear your voice clearly?';
+
+  @override
+  String get qPhotoClear => 'Is the photo clear and in focus?';
+
+  @override
+  String get record3s => 'Record 3 seconds';
+
+  @override
+  String get recordAgain => 'Record again';
+
+  @override
+  String get recording => 'Recording… speak now';
+
+  @override
+  String get reportDisclaimer =>
+      'Made on this phone by SystemX. Interactive results reflect the answers given during the checkup.';
+
+  @override
+  String get reportGreat => 'Your phone is in great shape';
+
+  @override
+  String get reportNeedsWork => 'Some parts need attention';
+
+  @override
+  String get reportNotSaved => 'Not saved';
+
+  @override
+  String get reportOk => 'Mostly good, with a few issues';
+
+  @override
+  String get reportPhone => 'Phone';
+
+  @override
+  String get reportResults => 'Results';
+
+  @override
+  String get reportSaved => 'Report saved';
+
+  @override
+  String get reportShareSubject => 'SystemX checkup report';
+
+  @override
+  String get reportTitle => 'Checkup report';
+
+  @override
+  String get retake => 'Retake';
+
+  @override
+  String get savePdf => 'Save PDF';
+
+  @override
+  String get sensorNotResponding => 'The sensor doesn\'t respond';
+
+  @override
+  String get shareReport => 'Share report';
+
+  @override
+  String get showAgain => 'Show again';
+
+  @override
+  String get skip => 'Skip';
+
+  @override
+  String get skippedByYou => 'Skipped';
+
+  @override
+  String get speakAfterTap => 'Tap Record, then speak';
+
+  @override
+  String get start => 'Start';
+
+  @override
+  String get statusFailed => 'Failed';
+
+  @override
+  String get statusNotRun => 'Not run';
+
+  @override
+  String get statusPassed => 'Passed';
+
+  @override
+  String get statusSkipped => 'Skipped';
+
+  @override
+  String get stop => 'Stop';
+
+  @override
+  String get stopCheckupBody => 'Results so far are saved in a report.';
+
+  @override
+  String get stopCheckupTitle => 'Stop the checkup?';
+
+  @override
+  String get takePhoto => 'Take photo';
+
+  @override
+  String get tapToContinue => 'Tap to continue';
+
+  @override
+  String get testAgain => 'Test again';
+
+  @override
+  String get testingAutomatically => 'Testing…';
+
+  @override
+  String get touchEveryZone => 'Touch every square';
+
+  @override
+  String get tryAgain => 'Try again';
+
+  @override
+  String get vibrateAgain => 'Vibrate again';
+
+  @override
+  String get waitingForCharger => 'Waiting for a charger';
+
+  @override
+  String get waitingToConnect => 'Waiting for it to connect';
+
+  @override
+  String gpsSatellites(int seen, int used) {
+    return '$seen satellites seen · $used in use';
+  }
+
+  @override
+  String maxTouches(int count) {
+    return 'Most at once: $count';
+  }
+
+  @override
+  String nAllZones(int total) {
+    return 'All $total zones respond';
+  }
+
+  @override
+  String nSomeZones(int hit, int total) {
+    return '$hit of $total zones responded';
+  }
+
+  @override
+  String nChargingDetected(String source) {
+    return 'Detected · $source';
+  }
+
+  @override
+  String nChargingPeak(String source, int peak) {
+    return 'Detected · $source · $peak mA peak';
+  }
+
+  @override
+  String nGpsFix(int used, int accuracy) {
+    return 'Fix · $used satellites · ±$accuracy m';
+  }
+
+  @override
+  String nGpsNoFix(int seen) {
+    return '$seen satellites seen, no fix yet. Try outdoors.';
+  }
+
+  @override
+  String nImplausible(String value) {
+    return 'Implausible reading: $value';
+  }
+
+  @override
+  String nLoopOk(int db) {
+    return 'Tone heard (+$db dB)';
+  }
+
+  @override
+  String nLuxRange(int min, int max) {
+    return '$min–$max lx';
+  }
+
+  @override
+  String nPeakLevel(int db) {
+    return 'Peak $db dBFS';
+  }
+
+  @override
+  String nStorageSpeed(int write, int read) {
+    return 'Write $write MB/s · read $read MB/s';
+  }
+
+  @override
+  String nTouches(int count) {
+    return 'Up to $count touches at once';
+  }
+
+  @override
+  String passedOf(int passed, int total) {
+    return '$passed of $total passed';
+  }
+
+  @override
+  String progressOf(int done, int total) {
+    return '$done of $total';
+  }
+
+  @override
+  String reportCounts(int passed, int failed, int skipped) {
+    return '$passed passed · $failed failed · $skipped skipped';
+  }
+
+  @override
+  String secondsElapsed(int seconds) {
+    return '$seconds s';
+  }
+
+  @override
+  String get nDetected => 'Detected';
+
+  @override
+  String get nNoVibrator => 'No vibration motor';
+
+  @override
+  String get nButtonWorks => 'Button works';
+
+  @override
+  String get nNoFlash => 'No flashlight on this phone';
+
+  @override
+  String get nLocationOff => 'Skipped because Location is off';
+
+  @override
+  String get justNow => 'just now';
+
+  @override
+  String minutesAgo(int n) {
+    return '$n min ago';
+  }
+
+  @override
+  String hoursAgo(int n) {
+    return '$n h ago';
+  }
+
+  @override
+  String daysAgo(int n) {
+    String _temp0 = intl.Intl.pluralLogic(
+      n,
+      locale: localeName,
+      other: '$n days ago',
+      one: 'yesterday',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String lastCheckupLine(String ago, int passed, int total) {
+    return 'Last checkup $ago · $passed of $total passed';
+  }
 }

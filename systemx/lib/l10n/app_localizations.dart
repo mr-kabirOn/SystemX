@@ -3157,6 +3157,1110 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Charging & storage'**
   String get gPower;
+
+  /// No description provided for @automaticTests.
+  ///
+  /// In en, this message translates to:
+  /// **'Automatic tests'**
+  String get automaticTests;
+
+  /// No description provided for @automaticTestsBody.
+  ///
+  /// In en, this message translates to:
+  /// **'These run on their own. Keep the phone still and the room quiet for the speaker test.'**
+  String get automaticTestsBody;
+
+  /// No description provided for @bioNoDataNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Android checks your fingerprint or face. SystemX only learns whether it matched.'**
+  String get bioNoDataNote;
+
+  /// No description provided for @bioPromptTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Biometrics test'**
+  String get bioPromptTitle;
+
+  /// No description provided for @bioPromptSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Touch the sensor or look at the screen'**
+  String get bioPromptSubtitle;
+
+  /// No description provided for @buttonDoesNothing.
+  ///
+  /// In en, this message translates to:
+  /// **'The button does nothing'**
+  String get buttonDoesNothing;
+
+  /// No description provided for @cancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancel;
+
+  /// No description provided for @checkupIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Automatic tests run first. Then each test tells you what to do, and you can skip any of them.'**
+  String get checkupIntro;
+
+  /// No description provided for @checkupPrep.
+  ///
+  /// In en, this message translates to:
+  /// **'Have wired headphones, a USB audio device and a charger nearby if you can. Location helps the GPS test.'**
+  String get checkupPrep;
+
+  /// No description provided for @done.
+  ///
+  /// In en, this message translates to:
+  /// **'Done'**
+  String get done;
+
+  /// No description provided for @fixAudio.
+  ///
+  /// In en, this message translates to:
+  /// **'Clean the grille with a soft dry brush, remove any case or screen protector covering it, and test again.'**
+  String get fixAudio;
+
+  /// No description provided for @fixBiometrics.
+  ///
+  /// In en, this message translates to:
+  /// **'Clean the sensor and your finger, re-enroll in Settings › Security, and test again.'**
+  String get fixBiometrics;
+
+  /// No description provided for @fixCamera.
+  ///
+  /// In en, this message translates to:
+  /// **'Clean the lens and check nothing covers it. If the image stays blurry, the camera may need service.'**
+  String get fixCamera;
+
+  /// No description provided for @fixCharging.
+  ///
+  /// In en, this message translates to:
+  /// **'Try another cable and charger, and clean the port gently with a wooden toothpick.'**
+  String get fixCharging;
+
+  /// No description provided for @fixConnectivity.
+  ///
+  /// In en, this message translates to:
+  /// **'Turn it off and on in Quick Settings, restart the phone, and test again.'**
+  String get fixConnectivity;
+
+  /// No description provided for @fixConnector.
+  ///
+  /// In en, this message translates to:
+  /// **'Clean the port and try another device.'**
+  String get fixConnector;
+
+  /// No description provided for @fixDisplay.
+  ///
+  /// In en, this message translates to:
+  /// **'Restart the phone and test again. Marks that stay usually mean the screen needs service.'**
+  String get fixDisplay;
+
+  /// No description provided for @fixHaptics.
+  ///
+  /// In en, this message translates to:
+  /// **'Restart the phone and test again. If it still fails, the part may need service.'**
+  String get fixHaptics;
+
+  /// No description provided for @fixSensor.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove the case, restart the phone and test again.'**
+  String get fixSensor;
+
+  /// No description provided for @fixStorage.
+  ///
+  /// In en, this message translates to:
+  /// **'Free up some space and test again.'**
+  String get fixStorage;
+
+  /// No description provided for @flashOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Flashlight is on'**
+  String get flashOn;
+
+  /// No description provided for @flashTurningOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Turning on the flashlight…'**
+  String get flashTurningOn;
+
+  /// No description provided for @gpsStarting.
+  ///
+  /// In en, this message translates to:
+  /// **'Looking for satellites…'**
+  String get gpsStarting;
+
+  /// No description provided for @holdPhone.
+  ///
+  /// In en, this message translates to:
+  /// **'Hold the phone in your hand'**
+  String get holdPhone;
+
+  /// No description provided for @holdToEar.
+  ///
+  /// In en, this message translates to:
+  /// **'Hold the phone to your ear, then tap Play'**
+  String get holdToEar;
+
+  /// No description provided for @iAccelerometer.
+  ///
+  /// In en, this message translates to:
+  /// **'Tilt the phone to roll the ball into all four corners.'**
+  String get iAccelerometer;
+
+  /// No description provided for @iBiometrics.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap Start and use your fingerprint or face as you do to unlock.'**
+  String get iBiometrics;
+
+  /// No description provided for @iBrightness.
+  ///
+  /// In en, this message translates to:
+  /// **'Watch the screen dim and brighten.'**
+  String get iBrightness;
+
+  /// No description provided for @iCharging.
+  ///
+  /// In en, this message translates to:
+  /// **'Plug in a charger. SystemX measures the charging current for a few seconds.'**
+  String get iCharging;
+
+  /// No description provided for @iCompass.
+  ///
+  /// In en, this message translates to:
+  /// **'Turn around slowly in a full circle while holding the phone flat.'**
+  String get iCompass;
+
+  /// No description provided for @iEarpiece.
+  ///
+  /// In en, this message translates to:
+  /// **'This tone plays through the small speaker you hold to your ear on calls.'**
+  String get iEarpiece;
+
+  /// No description provided for @iFlashlight.
+  ///
+  /// In en, this message translates to:
+  /// **'Look at the back of the phone.'**
+  String get iFlashlight;
+
+  /// No description provided for @iFrontCamera.
+  ///
+  /// In en, this message translates to:
+  /// **'Point the front camera at your face, tap to focus, then take a photo.'**
+  String get iFrontCamera;
+
+  /// No description provided for @iGps.
+  ///
+  /// In en, this message translates to:
+  /// **'Stand near a window or go outside. Finding satellites can take a minute.'**
+  String get iGps;
+
+  /// No description provided for @iGyroscope.
+  ///
+  /// In en, this message translates to:
+  /// **'Rotate the phone in any direction, like turning a steering wheel.'**
+  String get iGyroscope;
+
+  /// No description provided for @iHeadphones.
+  ///
+  /// In en, this message translates to:
+  /// **'Plug wired headphones into the headphone jack.'**
+  String get iHeadphones;
+
+  /// No description provided for @iLight.
+  ///
+  /// In en, this message translates to:
+  /// **'Cover the top of the screen with your hand, then uncover it or hold it under a light.'**
+  String get iLight;
+
+  /// No description provided for @iMicrophone.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap Record and say a few words. SystemX plays it back right away.'**
+  String get iMicrophone;
+
+  /// No description provided for @iMultiTouch.
+  ///
+  /// In en, this message translates to:
+  /// **'Put as many fingers on the screen as you can.'**
+  String get iMultiTouch;
+
+  /// No description provided for @iProximity.
+  ///
+  /// In en, this message translates to:
+  /// **'Cover the top of the screen near the earpiece with your hand, then move it away.'**
+  String get iProximity;
+
+  /// No description provided for @iRearCamera.
+  ///
+  /// In en, this message translates to:
+  /// **'Point the rear camera at something with detail, tap to focus, then take a photo.'**
+  String get iRearCamera;
+
+  /// No description provided for @iSpeaker.
+  ///
+  /// In en, this message translates to:
+  /// **'A tone plays through the loudspeaker.'**
+  String get iSpeaker;
+
+  /// No description provided for @iUsbAudio.
+  ///
+  /// In en, this message translates to:
+  /// **'Connect USB-C headphones or a USB audio adapter.'**
+  String get iUsbAudio;
+
+  /// No description provided for @iVibration.
+  ///
+  /// In en, this message translates to:
+  /// **'The phone vibrates in a short pattern.'**
+  String get iVibration;
+
+  /// No description provided for @iVolumeDown.
+  ///
+  /// In en, this message translates to:
+  /// **'Press the volume down button.'**
+  String get iVolumeDown;
+
+  /// No description provided for @iVolumeUp.
+  ///
+  /// In en, this message translates to:
+  /// **'Press the volume up button.'**
+  String get iVolumeUp;
+
+  /// No description provided for @itDoesntWork.
+  ///
+  /// In en, this message translates to:
+  /// **'It doesn\'t recognise me'**
+  String get itDoesntWork;
+
+  /// No description provided for @keepGoing.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep going'**
+  String get keepGoing;
+
+  /// No description provided for @lastCheckup.
+  ///
+  /// In en, this message translates to:
+  /// **'Last checkup'**
+  String get lastCheckup;
+
+  /// No description provided for @listen.
+  ///
+  /// In en, this message translates to:
+  /// **'Listen'**
+  String get listen;
+
+  /// No description provided for @measuring.
+  ///
+  /// In en, this message translates to:
+  /// **'Measuring…'**
+  String get measuring;
+
+  /// No description provided for @nBanding.
+  ///
+  /// In en, this message translates to:
+  /// **'Visible color bands'**
+  String get nBanding;
+
+  /// No description provided for @nBluetoothOff.
+  ///
+  /// In en, this message translates to:
+  /// **'Bluetooth is off'**
+  String get nBluetoothOff;
+
+  /// No description provided for @nBrightnessBad.
+  ///
+  /// In en, this message translates to:
+  /// **'Brightness didn\'t change smoothly'**
+  String get nBrightnessBad;
+
+  /// No description provided for @nBrightnessOk.
+  ///
+  /// In en, this message translates to:
+  /// **'Full range works'**
+  String get nBrightnessOk;
+
+  /// No description provided for @nBurnIn.
+  ///
+  /// In en, this message translates to:
+  /// **'Ghost images visible'**
+  String get nBurnIn;
+
+  /// No description provided for @nButtonNoResponse.
+  ///
+  /// In en, this message translates to:
+  /// **'No response'**
+  String get nButtonNoResponse;
+
+  /// No description provided for @nCameraError.
+  ///
+  /// In en, this message translates to:
+  /// **'The camera couldn\'t start'**
+  String get nCameraError;
+
+  /// No description provided for @nConnected.
+  ///
+  /// In en, this message translates to:
+  /// **'Connected'**
+  String get nConnected;
+
+  /// No description provided for @nCouldNotRead.
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn\'t read the hardware state'**
+  String get nCouldNotRead;
+
+  /// No description provided for @nDeadPixels.
+  ///
+  /// In en, this message translates to:
+  /// **'Dots that don\'t change color'**
+  String get nDeadPixels;
+
+  /// No description provided for @nFlashBad.
+  ///
+  /// In en, this message translates to:
+  /// **'Didn\'t light up'**
+  String get nFlashBad;
+
+  /// No description provided for @nFlashOk.
+  ///
+  /// In en, this message translates to:
+  /// **'Lights up'**
+  String get nFlashOk;
+
+  /// No description provided for @nGpsNone.
+  ///
+  /// In en, this message translates to:
+  /// **'No satellites found'**
+  String get nGpsNone;
+
+  /// No description provided for @nLoopFail.
+  ///
+  /// In en, this message translates to:
+  /// **'The microphone didn\'t pick up the speaker tone'**
+  String get nLoopFail;
+
+  /// No description provided for @nMicError.
+  ///
+  /// In en, this message translates to:
+  /// **'The microphone is busy or unavailable'**
+  String get nMicError;
+
+  /// No description provided for @nNfcOff.
+  ///
+  /// In en, this message translates to:
+  /// **'NFC is off'**
+  String get nNfcOff;
+
+  /// No description provided for @nNoBiometrics.
+  ///
+  /// In en, this message translates to:
+  /// **'No fingerprint or face hardware'**
+  String get nNoBiometrics;
+
+  /// No description provided for @nNoBluetooth.
+  ///
+  /// In en, this message translates to:
+  /// **'No Bluetooth on this phone'**
+  String get nNoBluetooth;
+
+  /// No description provided for @nNoBurnIn.
+  ///
+  /// In en, this message translates to:
+  /// **'No ghost images'**
+  String get nNoBurnIn;
+
+  /// No description provided for @nNoCharger.
+  ///
+  /// In en, this message translates to:
+  /// **'No charger at hand'**
+  String get nNoCharger;
+
+  /// No description provided for @nNoDeadPixels.
+  ///
+  /// In en, this message translates to:
+  /// **'No dead pixels'**
+  String get nNoDeadPixels;
+
+  /// No description provided for @nNoFrontCamera.
+  ///
+  /// In en, this message translates to:
+  /// **'No front camera'**
+  String get nNoFrontCamera;
+
+  /// No description provided for @nNoHeadphones.
+  ///
+  /// In en, this message translates to:
+  /// **'No headphones at hand'**
+  String get nNoHeadphones;
+
+  /// No description provided for @nNoNfc.
+  ///
+  /// In en, this message translates to:
+  /// **'No NFC on this phone'**
+  String get nNoNfc;
+
+  /// No description provided for @nNoRearCamera.
+  ///
+  /// In en, this message translates to:
+  /// **'No rear camera'**
+  String get nNoRearCamera;
+
+  /// No description provided for @nNoSensor.
+  ///
+  /// In en, this message translates to:
+  /// **'This phone doesn\'t have this sensor'**
+  String get nNoSensor;
+
+  /// No description provided for @nNoSignal.
+  ///
+  /// In en, this message translates to:
+  /// **'No mobile signal'**
+  String get nNoSignal;
+
+  /// No description provided for @nNoSignalInfo.
+  ///
+  /// In en, this message translates to:
+  /// **'The phone doesn\'t report signal strength'**
+  String get nNoSignalInfo;
+
+  /// No description provided for @nNoSim.
+  ///
+  /// In en, this message translates to:
+  /// **'No SIM card'**
+  String get nNoSim;
+
+  /// No description provided for @nNoUsbAudio.
+  ///
+  /// In en, this message translates to:
+  /// **'No USB audio device at hand'**
+  String get nNoUsbAudio;
+
+  /// No description provided for @nNoneEnrolled.
+  ///
+  /// In en, this message translates to:
+  /// **'No fingerprint or face is set up'**
+  String get nNoneEnrolled;
+
+  /// No description provided for @nNotRecognised.
+  ///
+  /// In en, this message translates to:
+  /// **'Not recognised'**
+  String get nNotRecognised;
+
+  /// No description provided for @nOnNotConnected.
+  ///
+  /// In en, this message translates to:
+  /// **'On, not connected'**
+  String get nOnNotConnected;
+
+  /// No description provided for @nPermissionDenied.
+  ///
+  /// In en, this message translates to:
+  /// **'Permission not allowed'**
+  String get nPermissionDenied;
+
+  /// No description provided for @nPhotoBad.
+  ///
+  /// In en, this message translates to:
+  /// **'Blurry or broken photo'**
+  String get nPhotoBad;
+
+  /// No description provided for @nPhotoOk.
+  ///
+  /// In en, this message translates to:
+  /// **'Preview and photo work'**
+  String get nPhotoOk;
+
+  /// No description provided for @nRecognised.
+  ///
+  /// In en, this message translates to:
+  /// **'Recognised'**
+  String get nRecognised;
+
+  /// No description provided for @nSensorNoResponse.
+  ///
+  /// In en, this message translates to:
+  /// **'The sensor didn\'t respond'**
+  String get nSensorNoResponse;
+
+  /// No description provided for @nSensorResponds.
+  ///
+  /// In en, this message translates to:
+  /// **'Responds to movement'**
+  String get nSensorResponds;
+
+  /// No description provided for @nSmooth.
+  ///
+  /// In en, this message translates to:
+  /// **'Smooth gradients'**
+  String get nSmooth;
+
+  /// No description provided for @nStorageError.
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn\'t write a test file'**
+  String get nStorageError;
+
+  /// No description provided for @nStorageMismatch.
+  ///
+  /// In en, this message translates to:
+  /// **'Data read back didn\'t match'**
+  String get nStorageMismatch;
+
+  /// No description provided for @nToneHeard.
+  ///
+  /// In en, this message translates to:
+  /// **'Tone heard'**
+  String get nToneHeard;
+
+  /// No description provided for @nToneNotHeard.
+  ///
+  /// In en, this message translates to:
+  /// **'Tone not heard'**
+  String get nToneNotHeard;
+
+  /// No description provided for @nVeryQuiet.
+  ///
+  /// In en, this message translates to:
+  /// **'Very quiet'**
+  String get nVeryQuiet;
+
+  /// No description provided for @nVibrationBad.
+  ///
+  /// In en, this message translates to:
+  /// **'No vibration felt'**
+  String get nVibrationBad;
+
+  /// No description provided for @nVibrationOk.
+  ///
+  /// In en, this message translates to:
+  /// **'Vibration felt'**
+  String get nVibrationOk;
+
+  /// No description provided for @nWifiOff.
+  ///
+  /// In en, this message translates to:
+  /// **'Wi-Fi is off'**
+  String get nWifiOff;
+
+  /// No description provided for @noChargerAtHand.
+  ///
+  /// In en, this message translates to:
+  /// **'No charger at hand'**
+  String get noChargerAtHand;
+
+  /// No description provided for @noHeadphonesAtHand.
+  ///
+  /// In en, this message translates to:
+  /// **'No headphones at hand'**
+  String get noHeadphonesAtHand;
+
+  /// No description provided for @noUsbAudioAtHand.
+  ///
+  /// In en, this message translates to:
+  /// **'No USB audio at hand'**
+  String get noUsbAudioAtHand;
+
+  /// No description provided for @ofHundred.
+  ///
+  /// In en, this message translates to:
+  /// **'of 100'**
+  String get ofHundred;
+
+  /// No description provided for @pastCheckups.
+  ///
+  /// In en, this message translates to:
+  /// **'Past checkups'**
+  String get pastCheckups;
+
+  /// No description provided for @playAgain.
+  ///
+  /// In en, this message translates to:
+  /// **'Play again'**
+  String get playAgain;
+
+  /// No description provided for @playTone.
+  ///
+  /// In en, this message translates to:
+  /// **'Play tone'**
+  String get playTone;
+
+  /// No description provided for @playing.
+  ///
+  /// In en, this message translates to:
+  /// **'Playing…'**
+  String get playing;
+
+  /// No description provided for @playingBack.
+  ///
+  /// In en, this message translates to:
+  /// **'Playing it back…'**
+  String get playingBack;
+
+  /// No description provided for @pressTheButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Press the button'**
+  String get pressTheButton;
+
+  /// No description provided for @qBanding.
+  ///
+  /// In en, this message translates to:
+  /// **'Do the colors fade smoothly, without stripes?'**
+  String get qBanding;
+
+  /// No description provided for @qBrightness.
+  ///
+  /// In en, this message translates to:
+  /// **'Did the screen get dimmer and brighter?'**
+  String get qBrightness;
+
+  /// No description provided for @qBurnIn.
+  ///
+  /// In en, this message translates to:
+  /// **'Did you see faint shapes that stay, like a status bar or keyboard?'**
+  String get qBurnIn;
+
+  /// No description provided for @qDeadPixels.
+  ///
+  /// In en, this message translates to:
+  /// **'Did you see any dots that stayed black, white or a different color?'**
+  String get qDeadPixels;
+
+  /// No description provided for @qFeltVibration.
+  ///
+  /// In en, this message translates to:
+  /// **'Did you feel the vibration?'**
+  String get qFeltVibration;
+
+  /// No description provided for @qFlashOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Is the flashlight shining?'**
+  String get qFlashOn;
+
+  /// No description provided for @qHeardTone.
+  ///
+  /// In en, this message translates to:
+  /// **'Did you hear the tone clearly?'**
+  String get qHeardTone;
+
+  /// No description provided for @qHeardVoice.
+  ///
+  /// In en, this message translates to:
+  /// **'Did you hear your voice clearly?'**
+  String get qHeardVoice;
+
+  /// No description provided for @qPhotoClear.
+  ///
+  /// In en, this message translates to:
+  /// **'Is the photo clear and in focus?'**
+  String get qPhotoClear;
+
+  /// No description provided for @record3s.
+  ///
+  /// In en, this message translates to:
+  /// **'Record 3 seconds'**
+  String get record3s;
+
+  /// No description provided for @recordAgain.
+  ///
+  /// In en, this message translates to:
+  /// **'Record again'**
+  String get recordAgain;
+
+  /// No description provided for @recording.
+  ///
+  /// In en, this message translates to:
+  /// **'Recording… speak now'**
+  String get recording;
+
+  /// No description provided for @reportDisclaimer.
+  ///
+  /// In en, this message translates to:
+  /// **'Made on this phone by SystemX. Interactive results reflect the answers given during the checkup.'**
+  String get reportDisclaimer;
+
+  /// No description provided for @reportGreat.
+  ///
+  /// In en, this message translates to:
+  /// **'Your phone is in great shape'**
+  String get reportGreat;
+
+  /// No description provided for @reportNeedsWork.
+  ///
+  /// In en, this message translates to:
+  /// **'Some parts need attention'**
+  String get reportNeedsWork;
+
+  /// No description provided for @reportNotSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Not saved'**
+  String get reportNotSaved;
+
+  /// No description provided for @reportOk.
+  ///
+  /// In en, this message translates to:
+  /// **'Mostly good, with a few issues'**
+  String get reportOk;
+
+  /// No description provided for @reportPhone.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone'**
+  String get reportPhone;
+
+  /// No description provided for @reportResults.
+  ///
+  /// In en, this message translates to:
+  /// **'Results'**
+  String get reportResults;
+
+  /// No description provided for @reportSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Report saved'**
+  String get reportSaved;
+
+  /// No description provided for @reportShareSubject.
+  ///
+  /// In en, this message translates to:
+  /// **'SystemX checkup report'**
+  String get reportShareSubject;
+
+  /// No description provided for @reportTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Checkup report'**
+  String get reportTitle;
+
+  /// No description provided for @retake.
+  ///
+  /// In en, this message translates to:
+  /// **'Retake'**
+  String get retake;
+
+  /// No description provided for @savePdf.
+  ///
+  /// In en, this message translates to:
+  /// **'Save PDF'**
+  String get savePdf;
+
+  /// No description provided for @sensorNotResponding.
+  ///
+  /// In en, this message translates to:
+  /// **'The sensor doesn\'t respond'**
+  String get sensorNotResponding;
+
+  /// No description provided for @shareReport.
+  ///
+  /// In en, this message translates to:
+  /// **'Share report'**
+  String get shareReport;
+
+  /// No description provided for @showAgain.
+  ///
+  /// In en, this message translates to:
+  /// **'Show again'**
+  String get showAgain;
+
+  /// No description provided for @skip.
+  ///
+  /// In en, this message translates to:
+  /// **'Skip'**
+  String get skip;
+
+  /// No description provided for @skippedByYou.
+  ///
+  /// In en, this message translates to:
+  /// **'Skipped'**
+  String get skippedByYou;
+
+  /// No description provided for @speakAfterTap.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap Record, then speak'**
+  String get speakAfterTap;
+
+  /// No description provided for @start.
+  ///
+  /// In en, this message translates to:
+  /// **'Start'**
+  String get start;
+
+  /// No description provided for @statusFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed'**
+  String get statusFailed;
+
+  /// No description provided for @statusNotRun.
+  ///
+  /// In en, this message translates to:
+  /// **'Not run'**
+  String get statusNotRun;
+
+  /// No description provided for @statusPassed.
+  ///
+  /// In en, this message translates to:
+  /// **'Passed'**
+  String get statusPassed;
+
+  /// No description provided for @statusSkipped.
+  ///
+  /// In en, this message translates to:
+  /// **'Skipped'**
+  String get statusSkipped;
+
+  /// No description provided for @stop.
+  ///
+  /// In en, this message translates to:
+  /// **'Stop'**
+  String get stop;
+
+  /// No description provided for @stopCheckupBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Results so far are saved in a report.'**
+  String get stopCheckupBody;
+
+  /// No description provided for @stopCheckupTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Stop the checkup?'**
+  String get stopCheckupTitle;
+
+  /// No description provided for @takePhoto.
+  ///
+  /// In en, this message translates to:
+  /// **'Take photo'**
+  String get takePhoto;
+
+  /// No description provided for @tapToContinue.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap to continue'**
+  String get tapToContinue;
+
+  /// No description provided for @testAgain.
+  ///
+  /// In en, this message translates to:
+  /// **'Test again'**
+  String get testAgain;
+
+  /// No description provided for @testingAutomatically.
+  ///
+  /// In en, this message translates to:
+  /// **'Testing…'**
+  String get testingAutomatically;
+
+  /// No description provided for @touchEveryZone.
+  ///
+  /// In en, this message translates to:
+  /// **'Touch every square'**
+  String get touchEveryZone;
+
+  /// No description provided for @tryAgain.
+  ///
+  /// In en, this message translates to:
+  /// **'Try again'**
+  String get tryAgain;
+
+  /// No description provided for @vibrateAgain.
+  ///
+  /// In en, this message translates to:
+  /// **'Vibrate again'**
+  String get vibrateAgain;
+
+  /// No description provided for @waitingForCharger.
+  ///
+  /// In en, this message translates to:
+  /// **'Waiting for a charger'**
+  String get waitingForCharger;
+
+  /// No description provided for @waitingToConnect.
+  ///
+  /// In en, this message translates to:
+  /// **'Waiting for it to connect'**
+  String get waitingToConnect;
+
+  /// No description provided for @gpsSatellites.
+  ///
+  /// In en, this message translates to:
+  /// **'{seen} satellites seen · {used} in use'**
+  String gpsSatellites(int seen, int used);
+
+  /// No description provided for @maxTouches.
+  ///
+  /// In en, this message translates to:
+  /// **'Most at once: {count}'**
+  String maxTouches(int count);
+
+  /// No description provided for @nAllZones.
+  ///
+  /// In en, this message translates to:
+  /// **'All {total} zones respond'**
+  String nAllZones(int total);
+
+  /// No description provided for @nSomeZones.
+  ///
+  /// In en, this message translates to:
+  /// **'{hit} of {total} zones responded'**
+  String nSomeZones(int hit, int total);
+
+  /// No description provided for @nChargingDetected.
+  ///
+  /// In en, this message translates to:
+  /// **'Detected · {source}'**
+  String nChargingDetected(String source);
+
+  /// No description provided for @nChargingPeak.
+  ///
+  /// In en, this message translates to:
+  /// **'Detected · {source} · {peak} mA peak'**
+  String nChargingPeak(String source, int peak);
+
+  /// No description provided for @nGpsFix.
+  ///
+  /// In en, this message translates to:
+  /// **'Fix · {used} satellites · ±{accuracy} m'**
+  String nGpsFix(int used, int accuracy);
+
+  /// No description provided for @nGpsNoFix.
+  ///
+  /// In en, this message translates to:
+  /// **'{seen} satellites seen, no fix yet. Try outdoors.'**
+  String nGpsNoFix(int seen);
+
+  /// No description provided for @nImplausible.
+  ///
+  /// In en, this message translates to:
+  /// **'Implausible reading: {value}'**
+  String nImplausible(String value);
+
+  /// No description provided for @nLoopOk.
+  ///
+  /// In en, this message translates to:
+  /// **'Tone heard (+{db} dB)'**
+  String nLoopOk(int db);
+
+  /// No description provided for @nLuxRange.
+  ///
+  /// In en, this message translates to:
+  /// **'{min}–{max} lx'**
+  String nLuxRange(int min, int max);
+
+  /// No description provided for @nPeakLevel.
+  ///
+  /// In en, this message translates to:
+  /// **'Peak {db} dBFS'**
+  String nPeakLevel(int db);
+
+  /// No description provided for @nStorageSpeed.
+  ///
+  /// In en, this message translates to:
+  /// **'Write {write} MB/s · read {read} MB/s'**
+  String nStorageSpeed(int write, int read);
+
+  /// No description provided for @nTouches.
+  ///
+  /// In en, this message translates to:
+  /// **'Up to {count} touches at once'**
+  String nTouches(int count);
+
+  /// No description provided for @passedOf.
+  ///
+  /// In en, this message translates to:
+  /// **'{passed} of {total} passed'**
+  String passedOf(int passed, int total);
+
+  /// No description provided for @progressOf.
+  ///
+  /// In en, this message translates to:
+  /// **'{done} of {total}'**
+  String progressOf(int done, int total);
+
+  /// No description provided for @reportCounts.
+  ///
+  /// In en, this message translates to:
+  /// **'{passed} passed · {failed} failed · {skipped} skipped'**
+  String reportCounts(int passed, int failed, int skipped);
+
+  /// No description provided for @secondsElapsed.
+  ///
+  /// In en, this message translates to:
+  /// **'{seconds} s'**
+  String secondsElapsed(int seconds);
+
+  /// No description provided for @nDetected.
+  ///
+  /// In en, this message translates to:
+  /// **'Detected'**
+  String get nDetected;
+
+  /// No description provided for @nNoVibrator.
+  ///
+  /// In en, this message translates to:
+  /// **'No vibration motor'**
+  String get nNoVibrator;
+
+  /// No description provided for @nButtonWorks.
+  ///
+  /// In en, this message translates to:
+  /// **'Button works'**
+  String get nButtonWorks;
+
+  /// No description provided for @nNoFlash.
+  ///
+  /// In en, this message translates to:
+  /// **'No flashlight on this phone'**
+  String get nNoFlash;
+
+  /// No description provided for @nLocationOff.
+  ///
+  /// In en, this message translates to:
+  /// **'Skipped because Location is off'**
+  String get nLocationOff;
+
+  /// No description provided for @justNow.
+  ///
+  /// In en, this message translates to:
+  /// **'just now'**
+  String get justNow;
+
+  /// No description provided for @minutesAgo.
+  ///
+  /// In en, this message translates to:
+  /// **'{n} min ago'**
+  String minutesAgo(int n);
+
+  /// No description provided for @hoursAgo.
+  ///
+  /// In en, this message translates to:
+  /// **'{n} h ago'**
+  String hoursAgo(int n);
+
+  /// No description provided for @daysAgo.
+  ///
+  /// In en, this message translates to:
+  /// **'{n, plural, =1{yesterday} other{{n} days ago}}'**
+  String daysAgo(int n);
+
+  /// No description provided for @lastCheckupLine.
+  ///
+  /// In en, this message translates to:
+  /// **'Last checkup {ago} · {passed} of {total} passed'**
+  String lastCheckupLine(String ago, int passed, int total);
 }
 
 class _AppLocalizationsDelegate

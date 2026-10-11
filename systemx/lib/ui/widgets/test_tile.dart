@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../core/theme/app_theme.dart';
 import '../../core/theme/sx_colors.dart';
+import '../../features/tests/test_results.dart';
 import 'cards.dart';
-
-enum TestStatus { notRun, passed, failed, skipped }
 
 /// Grid tile for a single hardware test. The dot shows the last result.
 class TestTile extends StatelessWidget {
@@ -14,6 +13,7 @@ class TestTile extends StatelessWidget {
     required this.color,
     required this.label,
     this.status = TestStatus.notRun,
+    this.statusLabel,
     this.onTap,
   });
 
@@ -21,6 +21,9 @@ class TestTile extends StatelessWidget {
   final Color color;
   final String label;
   final TestStatus status;
+
+  /// Spoken with the label, since the dot is color only.
+  final String? statusLabel;
   final VoidCallback? onTap;
 
   @override
@@ -32,7 +35,11 @@ class TestTile extends StatelessWidget {
       TestStatus.skipped => sx.muted,
       TestStatus.notRun => null,
     };
-    return SxCard(
+    return Semantics(
+      label: statusLabel == null ? label : '$label, $statusLabel',
+      button: onTap != null,
+      excludeSemantics: true,
+      child: SxCard(
       onTap: onTap,
       radius: SxRadius.tile,
       padding: const EdgeInsets.fromLTRB(8, 14, 8, 12),
@@ -62,6 +69,7 @@ class TestTile extends StatelessWidget {
             ),
           ),
       ]),
+      ),
     );
   }
 }

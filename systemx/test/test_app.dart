@@ -8,6 +8,11 @@ import 'package:systemx/app.dart';
 import 'package:systemx/core/settings/settings.dart';
 import 'package:systemx/features/device/share.dart';
 import 'package:systemx/features/live/live_data.dart';
+import 'package:systemx/features/tests/impl/system_tests.dart';
+import 'package:systemx/features/tests/report_pdf.dart';
+import 'package:systemx/features/tests/test_results.dart';
+import 'dart:io';
+import 'dart:typed_data';
 import 'package:systemx/platform/platform.dart';
 
 import 'fakes.dart';
@@ -21,6 +26,9 @@ Future<ProviderContainer> pumpApp(
   bool onboarded = true,
   List<(String, String)>? shared,
   Stream<List<double>> Function(int type)? sensorReadings,
+  FakeHardwareTestApi? hardware,
+  MemoryResultsStore? results,
+  List<(Uint8List, String)>? sharedFiles,
 }) async {
   SharedPreferencesAsyncPlatform.instance =
       InMemorySharedPreferencesAsync.empty();
@@ -37,6 +45,17 @@ Future<ProviderContainer> pumpApp(
     shareTextProvider.overrideWithValue(
         (text, subject) async => shared?.add((text, subject))),
     livePollingProvider.overrideWithValue(false),
+    hardwareTestApiProvider.overrideWithValue(hardware ?? FakeHardwareTestApi()),
+    resultsStoreProvider.overrideWithValue(results ?? MemoryResultsStore()),
+    gnssStatusProvider.overrideWithValue(() => const Stream.empty()),
+    // Real file I/O can't finish in widget-test fake time; the speed test
+    // has its own unit test.
+    tempDirProvider.overrideWithValue(
+        () async => throw const FileSystemException('no temp dir in widget tests')),
+    shareFileProvider.overrideWithValue((bytes, name, subject) async {
+      sharedFiles?.add((bytes, name));
+      return true;
+    }),
     sensorReadingsProvider.overrideWithValue(
         sensorReadings ?? (_) => const Stream.empty()),
   ]);

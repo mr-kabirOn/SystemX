@@ -1,38 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
+import '../../core/format.dart';
+import '../../core/router.dart';
 import '../../core/theme/sx_colors.dart';
 import '../../l10n/app_localizations.dart';
-import '../../ui/sx_icons.dart';
 import '../../ui/widgets/cards.dart';
 import '../../ui/widgets/page_scaffold.dart';
 import '../../ui/widgets/test_tile.dart';
+import 'checkup_screen.dart';
+import 'test_catalog.dart';
+import 'test_results.dart';
+import 'test_runner.dart';
 
-class TestsScreen extends StatelessWidget {
+class TestsScreen extends ConsumerWidget {
   const TestsScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final l = AppLocalizations.of(context);
     final sx = context.sx;
-
-    final tests = <(IconData, Color, String)>[
-      (SxIcons.brightness, sx.display, l.testDisplay),
-      (SxIcons.touch, sx.accent, l.testTouch),
-      (SxIcons.speaker, sx.network, l.testSpeaker),
-      (SxIcons.earpiece, sx.network, l.testEarpiece),
-      (SxIcons.mic, sx.ram, l.testMicrophone),
-      (SxIcons.vibration, sx.cpu, l.testVibration),
-      (SxIcons.camera, sx.camera, l.testCameras),
-      (SxIcons.flashlight, sx.warn, l.testFlashlight),
-      (SxIcons.sensors, sx.sensors, l.testSensors),
-      (SxIcons.buttons, sx.storage, l.testButtons),
-      (SxIcons.network, sx.network, l.testWifi),
-      (SxIcons.bluetooth, sx.storage, l.testBluetooth),
-      (SxIcons.gps, sx.good, l.testGps),
-      (SxIcons.fingerprint, sx.accent, l.testFingerprint),
-      (SxIcons.charging, sx.battery, l.testCharging),
-      (SxIcons.speed, sx.storage, l.testStorage),
-    ];
+    final history = ref.watch(testHistoryProvider).value ?? const TestHistory();
+    final last = history.lastCheckup;
 
     return PageScaffold(
       title: l.testsTitle,
@@ -45,7 +35,7 @@ class TestsScreen extends StatelessWidget {
             children: [
               Eyebrow(l.checkupTitle, color: sx.onHero),
               const SizedBox(height: 8),
-              Text(l.checkupMeta(32, 4),
+              Text(l.checkupMeta(HwTest.values.length, checkupMinutes),
                   style: context.text.titleLarge?.copyWith(color: Colors.white)),
               const SizedBox(height: 6),
               Text(l.checkupBody,
@@ -58,7 +48,7 @@ class TestsScreen extends StatelessWidget {
                     backgroundColor: sx.onHero,
                     foregroundColor: sx.heroEnd,
                   ),
-                  onPressed: () => showComingSoon(context),
+                  onPressed: () => context.push(Routes.checkup),
                   icon: const Icon(Icons.play_arrow_rounded),
                   label: Text(l.startCheckup),
                 ),
@@ -66,25 +56,66 @@ class TestsScreen extends StatelessWidget {
             ],
           ),
         )),
-        SliverToBoxAdapter(child: SectionLabel(l.singleTests)),
-        SliverGrid.builder(
-          itemCount: tests.length,
-          gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-            maxCrossAxisExtent: 130,
-            mainAxisExtent: 112,
-            mainAxisSpacing: 10,
-            crossAxisSpacing: 10,
+        if (last != null)
+          Box(SxCard(
+            onTap: () => context.push(Routes.report(0)),
+            child: Row(children: [
+              Text('${last.score}', style: context.text.displaySmall),
+              const SizedBox(width: 16),
+              Expanded(
+                child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                  Text(l.lastCheckup, style: context.text.titleSmall),
+                  Text(
+                    '${formatDate(last.at, l.localeName)} · ${l.passedOf(last.count(TestStatus.passed), last.results.length)}',
+                    style: context.text.bodySmall,
+                  ),
+                ]),
+              ),
+              Icon(Icons.chevron_right_rounded, color: sx.muted),
+            ]),
+          )),
+        for (final g in TestGroup.values) ...[
+          SliverToBoxAdapter(child: SectionLabel(groupTitle(l, g))),
+          SliverGrid.builder(
+            itemCount: HwTest.values.where((t) => t.group == g).length,
+            gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+              maxCrossAxisExtent: 130,
+              mainAxisExtent: 112,
+              mainAxisSpacing: 10,
+              crossAxisSpacing: 10,
+            ),
+            itemBuilder: (context, i) {
+              final t = HwTest.values.where((t) => t.group == g).elementAt(i);
+              final status = history.latest[t]?.status ?? TestStatus.notRun;
+              return TestTile(
+                icon: t.icon,
+                color: t.color(sx),
+                label: t.title(l),
+                status: status,
+                statusLabel: statusLook(context, status).$3,
+                onTap: () => context.push(Routes.runTest(t)),
+              );
+            },
           ),
-          itemBuilder: (context, i) {
-            final t = tests[i];
-            return TestTile(
-              icon: t.$1,
-              color: t.$2,
-              label: t.$3,
-              onTap: () => showComingSoon(context),
-            );
-          },
-        ),
+        ],
+        if (history.checkups.length > 1) ...[
+          SliverToBoxAdapter(child: SectionLabel(l.pastCheckups)),
+          Box(
+            SxCard(
+              padding: const EdgeInsets.symmetric(vertical: 6),
+              child: Column(children: [
+                for (final (i, c) in history.checkups.indexed)
+                  ListTile(
+                    title: Text(formatDate(c.at, l.localeName)),
+                    subtitle: Text(l.passedOf(c.count(TestStatus.passed), c.results.length)),
+                    trailing: Text('${c.score}', style: context.text.titleLarge),
+                    onTap: () => context.push(Routes.report(i)),
+                  ),
+              ]),
+            ),
+            bottom: 0,
+          ),
+        ],
       ],
     );
   }
