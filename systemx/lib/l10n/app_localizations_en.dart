@@ -1361,4 +1361,46 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get specSheetFooter => 'Made with SystemX';
+
+  @override
+  String get permLocationTitle => 'Show the Wi-Fi name';
+
+  @override
+  String get permLocationReason =>
+      'Android only shares the Wi-Fi network name with apps that have Location permission. SystemX uses it for this value and the GPS test, and never tracks where you are.';
+
+  @override
+  String get permPhoneTitle => 'Show SIM details';
+
+  @override
+  String get permPhoneReason =>
+      'Phone permission lets SystemX read your SIM slots, carrier names and mobile network type. It can\'t make calls or read your phone number.';
+
+  @override
+  String get permBlocked =>
+      'You turned this off earlier, so Android won\'t ask again. Open Settings › Permissions to allow it.';
+
+  @override
+  String get permOpenSettings => 'Open settings';
+
+  @override
+  String get statusAllowed => 'Allowed';
+
+  @override
+  String get statusNotAllowed => 'Not allowed';
+
+  @override
+  String get statusBlocked => 'Off in settings';
+
+  @override
+  String get balanceTitle => 'Check balance';
+
+  @override
+  String get balanceBody =>
+      'Opens your dialer with the code filled in. Nothing is dialed until you press call.';
+
+  @override
+  String balanceButton(String carrier, String code) {
+    return '$carrier · $code';
+  }
 }

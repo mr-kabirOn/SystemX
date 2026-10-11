@@ -12,13 +12,17 @@ Future<bool> showPermissionSheet(
   required Color color,
   required String title,
   required String reason,
+  String? allowLabel,
 }) async {
   final result = await showModalBottomSheet<bool>(
     context: context,
+    // Lets long reasons and large font sizes scroll instead of pushing the
+    // buttons off screen.
+    isScrollControlled: true,
     builder: (context) {
       final l = AppLocalizations.of(context);
       return SafeArea(
-        child: Padding(
+        child: SingleChildScrollView(
           padding: const EdgeInsets.fromLTRB(24, 0, 24, 20),
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -41,7 +45,7 @@ Future<bool> showPermissionSheet(
                 Expanded(
                   child: FilledButton(
                     onPressed: () => Navigator.pop(context, true),
-                    child: Text(l.permAllow),
+                    child: Text(allowLabel ?? l.permAllow),
                   ),
                 ),
               ]),

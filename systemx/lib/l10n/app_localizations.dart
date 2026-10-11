@@ -2587,6 +2587,78 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Made with SystemX'**
   String get specSheetFooter;
+
+  /// No description provided for @permLocationTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Show the Wi-Fi name'**
+  String get permLocationTitle;
+
+  /// No description provided for @permLocationReason.
+  ///
+  /// In en, this message translates to:
+  /// **'Android only shares the Wi-Fi network name with apps that have Location permission. SystemX uses it for this value and the GPS test, and never tracks where you are.'**
+  String get permLocationReason;
+
+  /// No description provided for @permPhoneTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Show SIM details'**
+  String get permPhoneTitle;
+
+  /// No description provided for @permPhoneReason.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone permission lets SystemX read your SIM slots, carrier names and mobile network type. It can\'t make calls or read your phone number.'**
+  String get permPhoneReason;
+
+  /// No description provided for @permBlocked.
+  ///
+  /// In en, this message translates to:
+  /// **'You turned this off earlier, so Android won\'t ask again. Open Settings › Permissions to allow it.'**
+  String get permBlocked;
+
+  /// No description provided for @permOpenSettings.
+  ///
+  /// In en, this message translates to:
+  /// **'Open settings'**
+  String get permOpenSettings;
+
+  /// No description provided for @statusAllowed.
+  ///
+  /// In en, this message translates to:
+  /// **'Allowed'**
+  String get statusAllowed;
+
+  /// No description provided for @statusNotAllowed.
+  ///
+  /// In en, this message translates to:
+  /// **'Not allowed'**
+  String get statusNotAllowed;
+
+  /// No description provided for @statusBlocked.
+  ///
+  /// In en, this message translates to:
+  /// **'Off in settings'**
+  String get statusBlocked;
+
+  /// No description provided for @balanceTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Check balance'**
+  String get balanceTitle;
+
+  /// No description provided for @balanceBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Opens your dialer with the code filled in. Nothing is dialed until you press call.'**
+  String get balanceBody;
+
+  /// No description provided for @balanceButton.
+  ///
+  /// In en, this message translates to:
+  /// **'{carrier} · {code}'**
+  String balanceButton(String carrier, String code);
 }
 
 class _AppLocalizationsDelegate

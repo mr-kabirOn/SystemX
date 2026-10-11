@@ -447,5 +447,18 @@
   "@specSheetHeader": {"placeholders": {"device": {"type": "String"}, "date": {"type": "String"}}},
   "specSheetSubject": "{device} specs",
   "@specSheetSubject": {"placeholders": {"device": {"type": "String"}}},
-  "specSheetFooter": "Made with SystemX"
+  "specSheetFooter": "Made with SystemX",
+  "permLocationTitle": "Show the Wi-Fi name",
+  "permLocationReason": "Android only shares the Wi-Fi network name with apps that have Location permission. SystemX uses it for this value and the GPS test, and never tracks where you are.",
+  "permPhoneTitle": "Show SIM details",
+  "permPhoneReason": "Phone permission lets SystemX read your SIM slots, carrier names and mobile network type. It can't make calls or read your phone number.",
+  "permBlocked": "You turned this off earlier, so Android won't ask again. Open Settings › Permissions to allow it.",
+  "permOpenSettings": "Open settings",
+  "statusAllowed": "Allowed",
+  "statusNotAllowed": "Not allowed",
+  "statusBlocked": "Off in settings",
+  "balanceTitle": "Check balance",
+  "balanceBody": "Opens your dialer with the code filled in. Nothing is dialed until you press call.",
+  "balanceButton": "{carrier} · {code}",
+  "@balanceButton": {"placeholders": {"carrier": {"type": "String"}, "code": {"type": "String"}}}
 }

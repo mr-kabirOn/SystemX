@@ -3,11 +3,14 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../core/permissions.dart';
 import '../../core/settings/settings.dart';
 import '../../core/theme/sx_colors.dart';
 import '../../l10n/app_localizations.dart';
+import '../../platform/platform.dart';
 import '../../ui/widgets/cards.dart';
 import '../../ui/widgets/page_scaffold.dart';
+import 'carriers.dart';
 import 'device_data.dart';
 import 'share.dart';
 import 'spec_sheets.dart';
@@ -74,9 +77,26 @@ class _CategoryScreenState extends ConsumerState<CategoryScreen> {
     switch (action) {
       case OpenSettings(:final action):
         await openSystemSettings(context, ref, action);
-      case AskPermission():
+      case AskPermission(:final kind):
+        await _askPermission(kind);
       case ShowSensor():
         showComingSoon(context);
+    }
+  }
+
+  Future<void> _askPermission(String kind) async {
+    final permission = AppPermission.byName(kind);
+    if (permission == null) return;
+    final status = await ref.read(permissionApiProvider).status(kind);
+    if (!mounted) return;
+    if (status == 'granted' && permission == AppPermission.location) {
+      // Allowed already, so the name is hidden because Location is off.
+      await openSystemSettings(context, ref, SettingsActions.location);
+      return;
+    }
+    if (await requestPermission(context, ref, permission)) {
+      _refresh();
+      ref.invalidate(fullSnapshotProvider);
     }
   }
 
@@ -127,12 +147,67 @@ class _CategoryScreenState extends ConsumerState<CategoryScreen> {
             ),
           ],
           error: (_, _) => [const Box(SpecsUnavailable())],
-          data: (_) {
+          data: (snap) {
             if (sections.isEmpty) return [const Box(SpecsUnavailable())];
-            return [SpecSections(sections: sections, onAction: _onAction)];
+            return [
+              if (c == DeviceCategory.sim && snap.sim != null)
+                _BalanceCard(sim: snap.sim!),
+              SpecSections(sections: sections, onAction: _onAction),
+            ];
           },
         ),
       ],
     );
+  }
+}
+
+/// Opens the dialer with each Bangladeshi carrier's balance code.
+class _BalanceCard extends ConsumerWidget {
+  const _BalanceCard({required this.sim});
+
+  final SimInfo sim;
+
+  List<Carrier> get _carriers {
+    final found = <String, Carrier>{};
+    for (final card in sim.cards) {
+      final mccMnc = card.mcc != null && card.mnc != null
+          ? '${card.mcc}${card.mnc}'
+          : null;
+      final c = carrierFor(mccMnc: mccMnc, name: card.carrier);
+      if (c != null) found[c.name] = c;
+    }
+    if (found.isEmpty) {
+      final c = carrierFor(mccMnc: sim.simOperator, name: sim.simOperatorName);
+      if (c != null) found[c.name] = c;
+    }
+    return found.values.toList();
+  }
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final carriers = _carriers;
+    if (carriers.isEmpty) return const SliverToBoxAdapter();
+    final l = AppLocalizations.of(context);
+    final sx = context.sx;
+    return Box(SxCard(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(l.balanceTitle, style: context.text.titleMedium),
+          const SizedBox(height: 4),
+          Text(l.balanceBody,
+              style: context.text.bodySmall?.copyWith(color: sx.muted)),
+          const SizedBox(height: 12),
+          Wrap(spacing: 8, runSpacing: 8, children: [
+            for (final c in carriers)
+              FilledButton.tonalIcon(
+                onPressed: () => ref.read(deviceApiProvider).dial(c.balanceCode),
+                icon: const Icon(Icons.dialpad_rounded, size: 18),
+                label: Text(l.balanceButton(c.name, c.balanceCode)),
+              ),
+          ]),
+        ],
+      ),
+    ));
   }
 }
