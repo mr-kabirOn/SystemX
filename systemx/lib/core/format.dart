@@ -181,8 +181,8 @@ String opticalFormat(double widthMm, double heightMm) {
   final diag = math.sqrt(widthMm * widthMm + heightMm * heightMm);
   if (diag <= 0) return '';
   final inches = diag / 16;
-  if (inches >= 1) return '${formatDouble(inches)}″';
-  return '1/${formatDouble(1 / inches)}″';
+  if (inches >= 1) return '${formatDouble(inches)}"';
+  return '1/${formatDouble(1 / inches)}"';
 }
 
 /// Groups cores by top speed, fastest first: "1×2.91 + 4×2.37 + 4×1.7 GHz".

@@ -221,22 +221,33 @@ class InfoRow extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 16),
-            if (statusIcon != null) ...[
-              Padding(
-                padding: const EdgeInsets.only(top: 1),
-                child: Icon(statusIcon, size: 16, color: color),
-              ),
-              const SizedBox(width: 6),
-            ],
-            Flexible(
-              child: Text(
-                value,
-                textAlign: TextAlign.end,
-                style: SxText.readout(13.5, color, weight: FontWeight.w500),
+            // Value, its status icon and the chevron hug the right edge.
+            Expanded(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  if (statusIcon != null) ...[
+                    Padding(
+                      padding: const EdgeInsets.only(top: 1),
+                      child: Icon(statusIcon, size: 16, color: color),
+                    ),
+                    const SizedBox(width: 6),
+                  ],
+                  Flexible(
+                    child: Text(
+                      value,
+                      textAlign: TextAlign.end,
+                      style: SxText.readout(13.5, color,
+                          weight: FontWeight.w500),
+                    ),
+                  ),
+                  if (onTap != null)
+                    Icon(Icons.chevron_right_rounded,
+                        size: 20, color: sx.muted),
+                ],
               ),
             ),
-            if (onTap != null)
-              Icon(Icons.chevron_right_rounded, size: 20, color: sx.muted),
           ],
         ),
       ),

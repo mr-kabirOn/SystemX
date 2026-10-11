@@ -62,7 +62,7 @@ void main() {
       expect(densityBucket(160), 'mdpi');
       expect(megapixels(8160, 6144), '50 MP');
       expect(megapixels(4032, 3024), '12.2 MP');
-      expect(opticalFormat(9.8, 7.4), '1/1.3″');
+      expect(opticalFormat(9.8, 7.4), '1/1.3"');
     });
 
     test('clusters group cores by top speed, fastest first', () {
@@ -196,7 +196,7 @@ void main() {
       expect(b.summary(DeviceCategory.storage, snap), '128 GB · 41 GB free');
       expect(
         b.summary(DeviceCategory.display, snap),
-        '6.2″ · 1080×2400 · 120 Hz',
+        '6.2" · 1080×2400 · 120 Hz',
       );
       expect(
         b.summary(DeviceCategory.network, snap),

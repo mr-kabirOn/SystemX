@@ -232,7 +232,7 @@ class SpecBuilder {
     }
     _opt(
       l.specCoreTypes,
-      parts.entries.map((e) => '${e.value}× ${e.key}').join(' · '),
+      parts.entries.map((e) => '${e.value}× ${e.key}').join('\n'),
     );
     _add(l.specGovernor, c.governor);
     _add(l.specArchitecture, c.arch);
@@ -459,7 +459,7 @@ class SpecBuilder {
     _add(l.specResolution, '${d.width} × ${d.height}');
     _add(
       l.specSize,
-      inches > 0 ? '${inches.toStringAsFixed(1)}″' : null,
+      inches > 0 ? '${inches.toStringAsFixed(1)}"' : null,
       hint: l.sizeHint,
     );
     _add(l.specAspect, aspectRatio(d.width, d.height));
@@ -938,7 +938,7 @@ class SpecBuilder {
     );
     _add(
       l.specVerifiedBoot,
-      s.verifiedBoot,
+      s.verifiedBoot == null ? null : prettyIdentifier(s.verifiedBoot!),
       tone: switch (s.verifiedBoot) {
         'green' => SpecTone.good,
         'yellow' || 'orange' => SpecTone.warn,
@@ -1008,7 +1008,7 @@ class SpecBuilder {
         if (v == null) return null;
         final inches = displayInches(v.width, v.height, v.xdpi, v.ydpi);
         return join([
-          if (inches > 0) '${inches.toStringAsFixed(1)}″',
+          if (inches > 0) '${inches.toStringAsFixed(1)}"',
           '${v.width}×${v.height}',
           '${math.max(v.refreshRate, v.refreshRates.fold<double>(0, math.max)).round()} Hz',
         ]);
