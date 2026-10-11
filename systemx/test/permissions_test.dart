@@ -100,7 +100,7 @@ void main() {
     await pumpApp(tester, api: api, permissions: perms);
     await go(tester, Routes.privacy);
 
-    expect(find.text('Not allowed'), findsNWidgets(4));
+    expect(find.text('Not allowed'), findsNWidgets(5));
     await tester.tap(find.text('Location'));
     await tester.pumpAndSettle();
     await tester.tap(find.text('Allow'));

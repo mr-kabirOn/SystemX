@@ -4261,6 +4261,288 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Last checkup {ago} · {passed} of {total} passed'**
   String lastCheckupLine(String ago, int passed, int total);
+
+  /// No description provided for @alertsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Alerts and live status'**
+  String get alertsTitle;
+
+  /// No description provided for @alertsRowSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Charge alarm, battery and storage alerts, live notification'**
+  String get alertsRowSub;
+
+  /// No description provided for @alertsUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Alerts are not available on this phone.'**
+  String get alertsUnavailable;
+
+  /// No description provided for @alertsIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Everything here is off until you turn it on. Each type has its own notification channel, so you can also mute it in Android settings.'**
+  String get alertsIntro;
+
+  /// No description provided for @secLiveStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'Live status'**
+  String get secLiveStatus;
+
+  /// No description provided for @secBatteryAlerts.
+  ///
+  /// In en, this message translates to:
+  /// **'Battery'**
+  String get secBatteryAlerts;
+
+  /// No description provided for @secStorageAlerts.
+  ///
+  /// In en, this message translates to:
+  /// **'Storage'**
+  String get secStorageAlerts;
+
+  /// No description provided for @secSummaries.
+  ///
+  /// In en, this message translates to:
+  /// **'Summaries and reminders'**
+  String get secSummaries;
+
+  /// No description provided for @secAlerts.
+  ///
+  /// In en, this message translates to:
+  /// **'Alerts'**
+  String get secAlerts;
+
+  /// No description provided for @liveStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'Live status notification'**
+  String get liveStatus;
+
+  /// No description provided for @liveStatusSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Battery, temperature, charging power, network speed and RAM, with a Stop button. Uses a little battery.'**
+  String get liveStatusSub;
+
+  /// No description provided for @statusBarShows.
+  ///
+  /// In en, this message translates to:
+  /// **'Status bar shows'**
+  String get statusBarShows;
+
+  /// No description provided for @chargeAlarm.
+  ///
+  /// In en, this message translates to:
+  /// **'Charge alarm'**
+  String get chargeAlarm;
+
+  /// No description provided for @notifyAt.
+  ///
+  /// In en, this message translates to:
+  /// **'Notify at'**
+  String get notifyAt;
+
+  /// No description provided for @chargingDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Charging finished'**
+  String get chargingDone;
+
+  /// No description provided for @chargingDoneSub.
+  ///
+  /// In en, this message translates to:
+  /// **'With a summary of the charge'**
+  String get chargingDoneSub;
+
+  /// No description provided for @batteryLowAlert.
+  ///
+  /// In en, this message translates to:
+  /// **'Battery low'**
+  String get batteryLowAlert;
+
+  /// No description provided for @batteryHotAlert.
+  ///
+  /// In en, this message translates to:
+  /// **'Battery hot'**
+  String get batteryHotAlert;
+
+  /// No description provided for @storageAlert.
+  ///
+  /// In en, this message translates to:
+  /// **'Storage almost full'**
+  String get storageAlert;
+
+  /// No description provided for @weeklySummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Weekly summary'**
+  String get weeklySummary;
+
+  /// No description provided for @weeklySummarySub.
+  ///
+  /// In en, this message translates to:
+  /// **'Charges, hottest temperature and lowest level, every week'**
+  String get weeklySummarySub;
+
+  /// No description provided for @checkupReminder.
+  ///
+  /// In en, this message translates to:
+  /// **'Monthly checkup reminder'**
+  String get checkupReminder;
+
+  /// No description provided for @checkupReminderSub.
+  ///
+  /// In en, this message translates to:
+  /// **'When your last checkup is a month old'**
+  String get checkupReminderSub;
+
+  /// No description provided for @alertsFootnote.
+  ///
+  /// In en, this message translates to:
+  /// **'Without live status, SystemX checks every 15 minutes, and every 2 minutes while charging. History is kept on this phone for 8 days.'**
+  String get alertsFootnote;
+
+  /// No description provided for @notificationsNeeded.
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications are off for SystemX, so this can\'t be turned on.'**
+  String get notificationsNeeded;
+
+  /// No description provided for @permNotifTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Allow notifications'**
+  String get permNotifTitle;
+
+  /// No description provided for @permNotifReason.
+  ///
+  /// In en, this message translates to:
+  /// **'SystemX only notifies you about the alerts you turn on here, and shows live status if you start it.'**
+  String get permNotifReason;
+
+  /// No description provided for @history.
+  ///
+  /// In en, this message translates to:
+  /// **'History'**
+  String get history;
+
+  /// No description provided for @range24h.
+  ///
+  /// In en, this message translates to:
+  /// **'24 h'**
+  String get range24h;
+
+  /// No description provided for @range7d.
+  ///
+  /// In en, this message translates to:
+  /// **'7 days'**
+  String get range7d;
+
+  /// No description provided for @historyEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'History builds up in the background. Check back in an hour.'**
+  String get historyEmpty;
+
+  /// No description provided for @chargingSessions.
+  ///
+  /// In en, this message translates to:
+  /// **'Charging sessions'**
+  String get chargingSessions;
+
+  /// No description provided for @chargingSessionsSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Each charge with its speed and temperature'**
+  String get chargingSessionsSub;
+
+  /// No description provided for @sessionsEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No charges recorded yet. Plug in your phone to start.'**
+  String get sessionsEmpty;
+
+  /// No description provided for @clearHistory.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear all history'**
+  String get clearHistory;
+
+  /// No description provided for @clearHistorySub.
+  ///
+  /// In en, this message translates to:
+  /// **'Battery history, charging sessions and test results'**
+  String get clearHistorySub;
+
+  /// No description provided for @clearHistoryConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'This deletes battery history, charging sessions and all test results from this phone. Settings are kept.'**
+  String get clearHistoryConfirm;
+
+  /// No description provided for @clear.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear'**
+  String get clear;
+
+  /// No description provided for @historyCleared.
+  ///
+  /// In en, this message translates to:
+  /// **'History cleared'**
+  String get historyCleared;
+
+  /// No description provided for @chargeAlarmSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Notify when the battery reaches {level}%'**
+  String chargeAlarmSub(int level);
+
+  /// No description provided for @batteryLowSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Notify at {level}% when not charging'**
+  String batteryLowSub(int level);
+
+  /// No description provided for @batteryHotSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Notify at {temp}'**
+  String batteryHotSub(String temp);
+
+  /// No description provided for @storageAlertSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Notify when storage is {percent}% full'**
+  String storageAlertSub(int percent);
+
+  /// No description provided for @historyNote.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} readings, taken every 15 minutes in the background'**
+  String historyNote(int count);
+
+  /// No description provided for @avgCurrent.
+  ///
+  /// In en, this message translates to:
+  /// **'avg {ma} mA'**
+  String avgCurrent(int ma);
+
+  /// No description provided for @peakCurrent.
+  ///
+  /// In en, this message translates to:
+  /// **'peak {ma} mA'**
+  String peakCurrent(int ma);
+
+  /// No description provided for @maxTemp.
+  ///
+  /// In en, this message translates to:
+  /// **'max {temp}'**
+  String maxTemp(String temp);
 }
 
 class _AppLocalizationsDelegate

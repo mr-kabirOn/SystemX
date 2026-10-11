@@ -46,7 +46,7 @@ class _PrivacyScreenState extends ConsumerState<PrivacyScreen> {
     // Permissions with a feature behind them today; the rest arrive with
     // later stages and only explain themselves for now.
     final perms = <(IconData, Color, String, String, AppPermission?)>[
-      (SxIcons.notifications, sx.accent, l.permNotifications, l.permNotificationsSub, null),
+      (SxIcons.notifications, sx.accent, l.permNotifications, l.permNotificationsSub, AppPermission.notifications),
       (SxIcons.gps, sx.network, l.permLocation, l.permLocationSub, AppPermission.location),
       (SxIcons.device, sx.cpu, l.permPhone, l.permPhoneSub, AppPermission.phone),
       (SxIcons.camera, sx.camera, l.permCamera, l.permCameraSub, AppPermission.camera),

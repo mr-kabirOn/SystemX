@@ -7,6 +7,7 @@ import 'package:shared_preferences_platform_interface/shared_preferences_async_p
 import 'package:systemx/app.dart';
 import 'package:systemx/core/settings/settings.dart';
 import 'package:systemx/features/device/share.dart';
+import 'package:systemx/features/background/background.dart';
 import 'package:systemx/features/live/live_data.dart';
 import 'package:systemx/features/tests/impl/system_tests.dart';
 import 'package:systemx/features/tests/report_pdf.dart';
@@ -29,6 +30,7 @@ Future<ProviderContainer> pumpApp(
   FakeHardwareTestApi? hardware,
   MemoryResultsStore? results,
   List<(Uint8List, String)>? sharedFiles,
+  FakeBackgroundApi? background,
 }) async {
   SharedPreferencesAsyncPlatform.instance =
       InMemorySharedPreferencesAsync.empty();
@@ -45,6 +47,7 @@ Future<ProviderContainer> pumpApp(
     shareTextProvider.overrideWithValue(
         (text, subject) async => shared?.add((text, subject))),
     livePollingProvider.overrideWithValue(false),
+    backgroundApiProvider.overrideWithValue(background ?? FakeBackgroundApi()),
     hardwareTestApiProvider.overrideWithValue(hardware ?? FakeHardwareTestApi()),
     resultsStoreProvider.overrideWithValue(results ?? MemoryResultsStore()),
     gnssStatusProvider.overrideWithValue(() => const Stream.empty()),

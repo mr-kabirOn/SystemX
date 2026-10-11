@@ -1,6 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../features/background/alerts_screen.dart';
+import '../features/background/history_widgets.dart';
 import '../features/device/category_screen.dart';
 import '../features/device/device_data.dart';
 import '../features/device/device_screen.dart';
@@ -27,6 +29,8 @@ abstract final class Routes {
   static const monitor = '/monitor';
   static const settings = '/settings';
   static const privacy = '/settings/privacy';
+  static const alerts = '/settings/alerts';
+  static const sessions = '/sessions';
 
   static String category(DeviceCategory c) => '$device/${c.name}';
   static String live(LiveMetric m) => '/live/${m.name}';
@@ -87,6 +91,7 @@ final routerProvider = Provider<GoRouter>((ref) {
         ],
       ),
       GoRoute(path: Routes.checkup, builder: (_, _) => const CheckupScreen()),
+      GoRoute(path: Routes.sessions, builder: (_, _) => const SessionsScreen()),
       GoRoute(
         path: '/test/:test',
         redirect: (_, state) =>
@@ -115,6 +120,7 @@ final routerProvider = Provider<GoRouter>((ref) {
         builder: (_, _) => const SettingsScreen(),
         routes: [
           GoRoute(path: 'privacy', builder: (_, _) => const PrivacyScreen()),
+          GoRoute(path: 'alerts', builder: (_, _) => const AlertsScreen()),
         ],
       ),
     ],

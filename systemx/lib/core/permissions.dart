@@ -12,19 +12,22 @@ enum AppPermission {
   location,
   phone,
   camera,
-  microphone;
+  microphone,
+  notifications;
 
   IconData get icon => switch (this) {
         location => SxIcons.gps,
         phone => SxIcons.sim,
         camera => SxIcons.camera,
         microphone => SxIcons.mic,
+        notifications => SxIcons.notifications,
       };
 
   Color color(SxColors sx) => switch (this) {
         location || phone => sx.network,
         camera => sx.camera,
         microphone => sx.ram,
+        notifications => sx.accent,
       };
 
   String title(AppLocalizations l) => switch (this) {
@@ -32,6 +35,7 @@ enum AppPermission {
         phone => l.permPhoneTitle,
         camera => l.permCameraTitle,
         microphone => l.permMicTitle,
+        notifications => l.permNotifTitle,
       };
 
   String reason(AppLocalizations l) => switch (this) {
@@ -39,6 +43,7 @@ enum AppPermission {
         phone => l.permPhoneReason,
         camera => l.permCameraReason,
         microphone => l.permMicReason,
+        notifications => l.permNotifReason,
       };
 
   static AppPermission? byName(String name) {

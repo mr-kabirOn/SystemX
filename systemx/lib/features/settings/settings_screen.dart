@@ -11,6 +11,8 @@ import '../../l10n/app_localizations.dart';
 import '../../ui/sx_icons.dart';
 import '../../ui/widgets/cards.dart';
 import '../../ui/widgets/page_scaffold.dart';
+import '../background/background.dart';
+import '../tests/test_results.dart';
 
 final _packageInfoProvider =
     FutureProvider<PackageInfo>((ref) => PackageInfo.fromPlatform());
@@ -18,6 +20,32 @@ final _packageInfoProvider =
 /// Wallpaper colors exist on Android 12+ only.
 final _dynamicSupportedProvider = FutureProvider<bool>(
     (ref) async => await DynamicColorPlugin.getCorePalette() != null);
+
+/// Deletes history, charging sessions and test results after confirming.
+Future<void> _confirmClear(BuildContext context, WidgetRef ref) async {
+  final l = AppLocalizations.of(context);
+  final ok = await showDialog<bool>(
+    context: context,
+    builder: (context) => AlertDialog(
+      title: Text(l.clearHistory),
+      content: Text(l.clearHistoryConfirm),
+      actions: [
+        TextButton(onPressed: () => Navigator.pop(context, false), child: Text(l.cancel)),
+        TextButton(onPressed: () => Navigator.pop(context, true), child: Text(l.clear)),
+      ],
+    ),
+  );
+  if (ok != true) return;
+  try {
+    await ref.read(backgroundApiProvider).clearHistory();
+  } catch (_) {}
+  await ref.read(testHistoryProvider.notifier).clear();
+  ref.invalidate(historyProvider);
+  ref.invalidate(sessionsProvider);
+  if (context.mounted) {
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(l.historyCleared)));
+  }
+}
 
 class SettingsScreen extends ConsumerWidget {
   const SettingsScreen({super.key});
@@ -117,17 +145,39 @@ class SettingsScreen extends ConsumerWidget {
             ]),
           ),
 
+          // Alerts
+          SectionLabel(l.secAlerts),
+          SxCard(
+            padding: const EdgeInsets.symmetric(vertical: 6),
+            child: ListTile(
+              leading: IconBadge(SxIcons.notifications, color: sx.accent, size: 36),
+              title: Text(l.alertsTitle),
+              subtitle: Text(l.alertsRowSub),
+              trailing: const Icon(Icons.chevron_right_rounded),
+              onTap: () => context.push(Routes.alerts),
+            ),
+          ),
+
           // Privacy
           SectionLabel(l.secPrivacy),
           SxCard(
             padding: const EdgeInsets.symmetric(vertical: 6),
-            child: ListTile(
-              leading: IconBadge(SxIcons.security, color: sx.good, size: 36),
-              title: Text(l.privacyPermissions),
-              subtitle: Text(l.privacyPermissionsSub),
-              trailing: const Icon(Icons.chevron_right_rounded),
-              onTap: () => context.push(Routes.privacy),
-            ),
+            child: Column(children: [
+              ListTile(
+                leading: IconBadge(SxIcons.security, color: sx.good, size: 36),
+                title: Text(l.privacyPermissions),
+                subtitle: Text(l.privacyPermissionsSub),
+                trailing: const Icon(Icons.chevron_right_rounded),
+                onTap: () => context.push(Routes.privacy),
+              ),
+              const Divider(indent: 66, endIndent: 14),
+              ListTile(
+                leading: IconBadge(Icons.delete_outline_rounded, color: sx.bad, size: 36),
+                title: Text(l.clearHistory),
+                subtitle: Text(l.clearHistorySub),
+                onTap: () => _confirmClear(context, ref),
+              ),
+            ]),
           ),
 
           // About

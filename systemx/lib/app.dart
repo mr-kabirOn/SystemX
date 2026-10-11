@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'core/router.dart';
+import 'features/background/background.dart';
 import 'core/settings/settings.dart';
 import 'core/theme/app_theme.dart';
 import 'core/theme/sx_colors.dart';
@@ -15,6 +16,8 @@ class SystemXApp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final settings = ref.watch(settingsProvider);
     final router = ref.watch(routerProvider);
+    // Keeps the native config in sync (temperature unit, last checkup).
+    ref.listen(backgroundConfigProvider, (_, _) {});
 
     return DynamicColorBuilder(builder: (lightDynamic, darkDynamic) {
       var dark = settings.pureBlack ? SxColors.amoled : SxColors.dark;

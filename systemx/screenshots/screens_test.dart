@@ -15,6 +15,7 @@ import 'package:systemx/app.dart';
 import 'package:systemx/core/router.dart';
 import 'package:systemx/core/settings/settings.dart';
 import 'package:systemx/features/device/device_data.dart';
+import 'package:systemx/features/background/background.dart';
 import 'package:systemx/features/live/live_data.dart';
 import 'package:systemx/features/live/live_screens.dart';
 import 'package:systemx/features/tests/impl/system_tests.dart';
@@ -62,6 +63,7 @@ Future<void> _shoot(
     deviceApiProvider.overrideWithValue(api),
     permissionApiProvider.overrideWithValue(FakePermissionApi(api)),
     livePollingProvider.overrideWithValue(false),
+    backgroundApiProvider.overrideWithValue(FakeBackgroundApi()),
     hardwareTestApiProvider.overrideWithValue(FakeHardwareTestApi()),
     resultsStoreProvider.overrideWithValue(_sampleResults()),
     tempDirProvider.overrideWithValue(() async => Directory.systemTemp),

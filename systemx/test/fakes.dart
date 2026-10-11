@@ -469,3 +469,76 @@ class FakeHardwareTestApi extends HardwareTestApi {
     return saveResult;
   }
 }
+
+/// Background config, history and sessions in memory.
+class FakeBackgroundApi extends BackgroundApi {
+  BackgroundConfig config = BackgroundConfig(
+    liveStatus: false,
+    statusIcon: 'battery_level',
+    chargeAlarm: false,
+    chargeLimit: 80,
+    batteryLow: false,
+    lowLevel: 15,
+    batteryHot: false,
+    hotC: 45,
+    chargingDone: false,
+    storageFull: false,
+    storagePercent: 90,
+    weeklySummary: false,
+    checkupReminder: false,
+    fahrenheit: false,
+    lastCheckupMs: 0,
+  );
+  final List<BackgroundConfig> saved = [];
+  bool cleared = false;
+
+  /// One sample every 15 minutes for the last 24 hours.
+  List<HistorySample> samples = [
+    for (var i = 0; i < 96; i++)
+      HistorySample(
+        timeMs: DateTime(2026, 10, 12).millisecondsSinceEpoch - (96 - i) * 900000,
+        level: 100 - i ~/ 2,
+        tempC: 30 + (i % 10) / 2,
+        memUsed: 0.55 + (i % 7) / 50,
+        charging: false,
+      ),
+  ];
+
+  List<ChargeSession> chargeSessions = [
+    ChargeSession(
+      startMs: DateTime(2026, 10, 11, 22, 10).millisecondsSinceEpoch,
+      endMs: DateTime(2026, 10, 11, 23, 52).millisecondsSinceEpoch,
+      startLevel: 23,
+      endLevel: 100,
+      peakMa: 2140,
+      avgMa: 1630,
+      maxTempC: 36.4,
+    ),
+  ];
+
+  @override
+  Future<BackgroundConfig> getConfig() async => config;
+
+  @override
+  Future<void> setConfig(BackgroundConfig c) async {
+    config = c;
+    saved.add(c);
+  }
+
+  @override
+  Future<List<HistorySample>> history(int sinceMs) async =>
+      cleared ? [] : samples;
+
+  @override
+  Future<List<ChargeSession>> sessions(int limit) async =>
+      cleared ? [] : chargeSessions;
+
+  @override
+  Future<void> clearHistory() async => cleared = true;
+
+  @override
+  Future<void> refreshWidgets() async {}
+
+  @override
+  Future<bool> notificationsEnabled() async => true;
+}

@@ -11,6 +11,7 @@ import '../../l10n/app_localizations.dart';
 import '../../ui/widgets/cards.dart';
 import '../../ui/widgets/live_chart.dart';
 import '../../ui/widgets/page_scaffold.dart';
+import '../background/history_widgets.dart';
 import '../live/live_data.dart';
 import '../live/live_screens.dart';
 
@@ -100,6 +101,9 @@ class MonitorScreen extends ConsumerWidget {
             );
           },
         ),
+        const SliverToBoxAdapter(child: SizedBox(height: 12)),
+        const Box(HistoryCard()),
+        const Box(SessionsTile(), bottom: 0),
       ],
     );
   }

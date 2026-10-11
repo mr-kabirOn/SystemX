@@ -2299,4 +2299,173 @@ class AppLocalizationsEn extends AppLocalizations {
   String lastCheckupLine(String ago, int passed, int total) {
     return 'Last checkup $ago · $passed of $total passed';
   }
+
+  @override
+  String get alertsTitle => 'Alerts and live status';
+
+  @override
+  String get alertsRowSub =>
+      'Charge alarm, battery and storage alerts, live notification';
+
+  @override
+  String get alertsUnavailable => 'Alerts are not available on this phone.';
+
+  @override
+  String get alertsIntro =>
+      'Everything here is off until you turn it on. Each type has its own notification channel, so you can also mute it in Android settings.';
+
+  @override
+  String get secLiveStatus => 'Live status';
+
+  @override
+  String get secBatteryAlerts => 'Battery';
+
+  @override
+  String get secStorageAlerts => 'Storage';
+
+  @override
+  String get secSummaries => 'Summaries and reminders';
+
+  @override
+  String get secAlerts => 'Alerts';
+
+  @override
+  String get liveStatus => 'Live status notification';
+
+  @override
+  String get liveStatusSub =>
+      'Battery, temperature, charging power, network speed and RAM, with a Stop button. Uses a little battery.';
+
+  @override
+  String get statusBarShows => 'Status bar shows';
+
+  @override
+  String get chargeAlarm => 'Charge alarm';
+
+  @override
+  String get notifyAt => 'Notify at';
+
+  @override
+  String get chargingDone => 'Charging finished';
+
+  @override
+  String get chargingDoneSub => 'With a summary of the charge';
+
+  @override
+  String get batteryLowAlert => 'Battery low';
+
+  @override
+  String get batteryHotAlert => 'Battery hot';
+
+  @override
+  String get storageAlert => 'Storage almost full';
+
+  @override
+  String get weeklySummary => 'Weekly summary';
+
+  @override
+  String get weeklySummarySub =>
+      'Charges, hottest temperature and lowest level, every week';
+
+  @override
+  String get checkupReminder => 'Monthly checkup reminder';
+
+  @override
+  String get checkupReminderSub => 'When your last checkup is a month old';
+
+  @override
+  String get alertsFootnote =>
+      'Without live status, SystemX checks every 15 minutes, and every 2 minutes while charging. History is kept on this phone for 8 days.';
+
+  @override
+  String get notificationsNeeded =>
+      'Notifications are off for SystemX, so this can\'t be turned on.';
+
+  @override
+  String get permNotifTitle => 'Allow notifications';
+
+  @override
+  String get permNotifReason =>
+      'SystemX only notifies you about the alerts you turn on here, and shows live status if you start it.';
+
+  @override
+  String get history => 'History';
+
+  @override
+  String get range24h => '24 h';
+
+  @override
+  String get range7d => '7 days';
+
+  @override
+  String get historyEmpty =>
+      'History builds up in the background. Check back in an hour.';
+
+  @override
+  String get chargingSessions => 'Charging sessions';
+
+  @override
+  String get chargingSessionsSub =>
+      'Each charge with its speed and temperature';
+
+  @override
+  String get sessionsEmpty =>
+      'No charges recorded yet. Plug in your phone to start.';
+
+  @override
+  String get clearHistory => 'Clear all history';
+
+  @override
+  String get clearHistorySub =>
+      'Battery history, charging sessions and test results';
+
+  @override
+  String get clearHistoryConfirm =>
+      'This deletes battery history, charging sessions and all test results from this phone. Settings are kept.';
+
+  @override
+  String get clear => 'Clear';
+
+  @override
+  String get historyCleared => 'History cleared';
+
+  @override
+  String chargeAlarmSub(int level) {
+    return 'Notify when the battery reaches $level%';
+  }
+
+  @override
+  String batteryLowSub(int level) {
+    return 'Notify at $level% when not charging';
+  }
+
+  @override
+  String batteryHotSub(String temp) {
+    return 'Notify at $temp';
+  }
+
+  @override
+  String storageAlertSub(int percent) {
+    return 'Notify when storage is $percent% full';
+  }
+
+  @override
+  String historyNote(int count) {
+    return '$count readings, taken every 15 minutes in the background';
+  }
+
+  @override
+  String avgCurrent(int ma) {
+    return 'avg $ma mA';
+  }
+
+  @override
+  String peakCurrent(int ma) {
+    return 'peak $ma mA';
+  }
+
+  @override
+  String maxTemp(String temp) {
+    return 'max $temp';
+  }
 }
