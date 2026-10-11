@@ -142,7 +142,7 @@ class LiveMonitor extends Notifier<LiveState> {
         up: state.up,
       );
 
-  @visibleForTesting
+  /// Takes one reading. Called by the timer; tests call it directly.
   Future<void> tick() async {
     if (_busy || state.paused) return;
     _busy = true;
