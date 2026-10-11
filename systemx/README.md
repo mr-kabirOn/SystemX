@@ -19,13 +19,26 @@ Plan and designs: `../plan/systemx-plan.html`
 
 ```
 lib/
-  core/        theme tokens, typography, settings, router, formatting
-  features/    one folder per screen (home, device, tests, monitor, settings, onboarding)
-  ui/          shared widgets (gauges, cards, tiles, sheets) and icons
-  l10n/        translations
-android/       app id com.systemx.app, icon, splash, release config
-screenshots/   renders every screen to PNG for design review
+  core/        theme, typography, settings, router, permissions, formatting
+  platform/    Pigeon bindings to the Kotlin layer (device_api.g.dart)
+  features/
+    device/      15 spec categories, search, share, SIM balance check
+    live/        live monitor, health score, tips, CPU/battery/network/thermal, Wi-Fi meter
+    tests/       32 hardware tests, guided checkup, report and PDF
+    background/  alerts and live status settings, history, charging sessions
+    home/ monitor/ settings/ onboarding/ shell/ play/
+  ui/          shared widgets (gauges, live chart, cards, tiles, sheets)
+  l10n/        English and Bangla
+android/app/src/main/kotlin/com/systemx/app/
+  platform/    probes, hardware test host, Pigeon hosts, pure parsers (unit tested)
+  background/  live status service, WorkManager sampling and alerts, widgets, tile
+screenshots/   renders every screen and the Play Store graphics to PNG
 ```
+
+The Dart side never talks to Android directly: every call goes through the
+Pigeon contract in `pigeons/device_api.dart`, and tests replace it with fakes
+(`test/fakes.dart`). Regenerate after editing the contract:
+`dart run pigeon --input pigeons/device_api.dart`.
 
 ## Commands
 
@@ -33,10 +46,15 @@ screenshots/   renders every screen to PNG for design review
 flutter run                                  # run on a connected phone
 flutter test                                 # unit + widget tests (fake phone data)
 cd android && ./gradlew :app:testDebugUnitTest  # Kotlin parser tests
-flutter test screenshots --update-goldens    # render screens to screenshots/out
+flutter test screenshots --update-goldens    # render screens and store graphics
 flutter build apk --release --split-per-abi  # installable test APKs
 flutter build appbundle --release            # .aab for Play Console
 ```
+
+## Release
+
+Step-by-step Play Store guide, listing texts and form answers:
+`../release/README.md`. Privacy policy page: `../docs/privacy.html`.
 
 ## Release signing
 
