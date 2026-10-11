@@ -11,6 +11,8 @@ import com.systemx.app.platform.HardwareTestApi
 import com.systemx.app.platform.HardwareTestHost
 import com.systemx.app.platform.PermissionApi
 import com.systemx.app.platform.PermissionHost
+import com.systemx.app.platform.PlayApi
+import com.systemx.app.platform.PlayHost
 import com.systemx.app.platform.SensorStreamHandler
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
@@ -28,6 +30,7 @@ class MainActivity : FlutterActivity() {
         HardwareTestApi.setUp(messenger, hardware)
         EventChannel(messenger, "systemx/gnss").setStreamHandler(GnssStreamHandler(this))
         BackgroundApi.setUp(messenger, BackgroundHost(this))
+        PlayApi.setUp(messenger, PlayHost(this))
         BackgroundBridge.onAppStart(this)
         DeviceInfoApi.setUp(messenger, DeviceInfoHost(this))
         PermissionApi.setUp(messenger, permissions)

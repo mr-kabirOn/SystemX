@@ -9,6 +9,7 @@ import 'package:systemx/core/settings/settings.dart';
 import 'package:systemx/features/device/share.dart';
 import 'package:systemx/features/background/background.dart';
 import 'package:systemx/features/live/live_data.dart';
+import 'package:systemx/features/play/play.dart';
 import 'package:systemx/features/tests/impl/system_tests.dart';
 import 'package:systemx/features/tests/report_pdf.dart';
 import 'package:systemx/features/tests/test_results.dart';
@@ -31,6 +32,7 @@ Future<ProviderContainer> pumpApp(
   MemoryResultsStore? results,
   List<(Uint8List, String)>? sharedFiles,
   FakeBackgroundApi? background,
+  FakePlayApi? play,
 }) async {
   SharedPreferencesAsyncPlatform.instance =
       InMemorySharedPreferencesAsync.empty();
@@ -47,6 +49,7 @@ Future<ProviderContainer> pumpApp(
     shareTextProvider.overrideWithValue(
         (text, subject) async => shared?.add((text, subject))),
     livePollingProvider.overrideWithValue(false),
+    playApiProvider.overrideWithValue(play ?? FakePlayApi()),
     backgroundApiProvider.overrideWithValue(background ?? FakeBackgroundApi()),
     hardwareTestApiProvider.overrideWithValue(hardware ?? FakeHardwareTestApi()),
     resultsStoreProvider.overrideWithValue(results ?? MemoryResultsStore()),

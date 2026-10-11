@@ -76,6 +76,10 @@ flutter {
 dependencies {
     // History sampling, charger watch and summaries while the app is closed.
     implementation("androidx.work:work-runtime-ktx:2.10.1")
+    // In-app review and updates through the Play Store app (no network
+    // access of our own).
+    implementation("com.google.android.play:review:2.0.2")
+    implementation("com.google.android.play:app-update:2.1.0")
     // Plain JVM tests for the system file parsers: ./gradlew :app:testDebugUnitTest
     testImplementation("junit:junit:4.13.2")
 }

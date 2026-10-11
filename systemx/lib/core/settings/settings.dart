@@ -76,6 +76,9 @@ class SettingsNotifier extends Notifier<AppSettings> {
   static const _kLocale = 'locale';
   static const _kRefresh = 'refresh_rate';
 
+  /// When the app last asked Play for a review (ms since epoch).
+  static const reviewAskedKey = 'review_asked_ms';
+
   static const keys = {
     _kOnboarding,
     _kTheme,
@@ -84,6 +87,7 @@ class SettingsNotifier extends Notifier<AppSettings> {
     _kTemp,
     _kLocale,
     _kRefresh,
+    reviewAskedKey,
   };
 
   SharedPreferencesWithCache get _p => ref.read(prefsProvider);

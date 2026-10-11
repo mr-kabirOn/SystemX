@@ -6,6 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:path_provider/path_provider.dart';
 
 import '../../core/log.dart';
+import '../play/play.dart';
 import 'test_catalog.dart';
 
 enum TestStatus { notRun, passed, failed, skipped }
@@ -203,6 +204,7 @@ class TestHistoryNotifier extends AsyncNotifier<TestHistory> {
       latest: latest,
       checkups: [c, ...h.checkups].take(maxCheckups).toList(),
     ));
+    await maybeAskForReview(ref, c);
   }
 
   Future<void> clear() async {

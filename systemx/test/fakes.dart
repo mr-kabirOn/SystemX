@@ -548,3 +548,14 @@ class FakeBackgroundApi extends BackgroundApi {
   @override
   Future<bool> notificationsEnabled() async => true;
 }
+
+class FakePlayApi extends PlayApi {
+  int reviews = 0;
+  int updateChecks = 0;
+
+  @override
+  Future<void> requestReview() async => reviews++;
+
+  @override
+  Future<void> checkForUpdate() async => updateChecks++;
+}

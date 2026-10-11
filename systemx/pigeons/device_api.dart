@@ -675,3 +675,14 @@ abstract class BackgroundApi {
   /// Whether Android lets this app post notifications at all.
   bool notificationsEnabled();
 }
+
+/// Google Play in-app review and updates.
+@HostApi()
+abstract class PlayApi {
+  /// Shows Play's rating card if Play decides to (it limits how often).
+  void requestReview();
+
+  /// Offers a flexible update when Play has a newer version; installs it
+  /// once downloaded.
+  void checkForUpdate();
+}
