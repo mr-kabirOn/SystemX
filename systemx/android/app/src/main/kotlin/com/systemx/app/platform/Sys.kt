@@ -8,11 +8,7 @@ internal object Sys {
     private val props: Map<String, String> by lazy {
         try {
             val process = ProcessBuilder("getprop").redirectErrorStream(true).start()
-            val regex = Regex("""^\[(.+?)]: \[(.*)]$""")
-            val map = process.inputStream.bufferedReader().useLines { lines ->
-                lines.mapNotNull { regex.find(it)?.destructured }
-                    .associate { (k, v) -> k to v }
-            }
+            val map = process.inputStream.bufferedReader().useLines { SysParsers.getprop(it) }
             process.waitFor()
             map
         } catch (_: Exception) {
@@ -37,11 +33,7 @@ internal object Sys {
 
     /** Values from /proc/meminfo in kB, keyed by name ("MemTotal"...). */
     fun meminfo(): Map<String, Long> = try {
-        File("/proc/meminfo").readLines().mapNotNull { line ->
-            val parts = line.split(Regex("\\s+"))
-            if (parts.size >= 2) parts[0].trimEnd(':') to (parts[1].toLongOrNull() ?: return@mapNotNull null)
-            else null
-        }.toMap()
+        SysParsers.meminfo(File("/proc/meminfo").readLines())
     } catch (_: Exception) {
         emptyMap()
     }

@@ -15,7 +15,6 @@ import android.provider.Settings
 import android.util.DisplayMetrics
 import android.view.Display
 import java.io.File
-import kotlin.math.abs
 
 /** Memory, storage, battery and display. */
 internal class HardwareProbe(private val ctx: Context) {
@@ -72,10 +71,7 @@ internal class HardwareProbe(private val ctx: Context) {
     }
 
     private fun dataFsType(): String? = Sys.safe {
-        File("/proc/mounts").readLines()
-            .map { it.split(' ') }
-            .firstOrNull { it.size > 2 && it[1] == "/data" }
-            ?.get(2)
+        SysParsers.mountFsType(File("/proc/mounts").readLines(), "/data")
     }
 
     fun battery(): BatteryInfo {
@@ -84,6 +80,8 @@ internal class HardwareProbe(private val ctx: Context) {
         val level = intent?.getIntExtra(BatteryManager.EXTRA_LEVEL, -1) ?: -1
         val scale = intent?.getIntExtra(BatteryManager.EXTRA_SCALE, 100) ?: 100
         val status = intent?.getIntExtra(BatteryManager.EXTRA_STATUS, -1) ?: -1
+        val charging = status == BatteryManager.BATTERY_STATUS_CHARGING ||
+            status == BatteryManager.BATTERY_STATUS_FULL
 
         fun prop(id: Int): Int? = Sys.safe { bm.getIntProperty(id) }
             ?.takeIf { it != Int.MIN_VALUE && it != 0 }
@@ -94,13 +92,12 @@ internal class HardwareProbe(private val ctx: Context) {
             plugged = (intent?.getIntExtra(BatteryManager.EXTRA_PLUGGED, 0) ?: 0).toLong(),
             health = (intent?.getIntExtra(BatteryManager.EXTRA_HEALTH, -1) ?: -1).toLong(),
             tempC = (intent?.getIntExtra(BatteryManager.EXTRA_TEMPERATURE, 0) ?: 0) / 10.0,
-            voltageMv = normaliseVoltage(intent?.getIntExtra(BatteryManager.EXTRA_VOLTAGE, 0) ?: 0).toLong(),
+            voltageMv = SysParsers.voltageMv(intent?.getIntExtra(BatteryManager.EXTRA_VOLTAGE, 0) ?: 0).toLong(),
             technology = intent?.getStringExtra(BatteryManager.EXTRA_TECHNOLOGY)?.ifBlank { null },
             present = intent?.getBooleanExtra(BatteryManager.EXTRA_PRESENT, true) ?: true,
-            currentNowMa = prop(BatteryManager.BATTERY_PROPERTY_CURRENT_NOW)?.let { normaliseCurrent(it, status) },
-            currentAvgMa = prop(BatteryManager.BATTERY_PROPERTY_CURRENT_AVERAGE)?.let { normaliseCurrent(it, status) },
-            chargeCounterMah = prop(BatteryManager.BATTERY_PROPERTY_CHARGE_COUNTER)
-                ?.let { (if (it > 100_000) it / 1000 else it).toLong() },
+            currentNowMa = prop(BatteryManager.BATTERY_PROPERTY_CURRENT_NOW)?.let { SysParsers.currentMa(it, charging) },
+            currentAvgMa = prop(BatteryManager.BATTERY_PROPERTY_CURRENT_AVERAGE)?.let { SysParsers.currentMa(it, charging) },
+            chargeCounterMah = prop(BatteryManager.BATTERY_PROPERTY_CHARGE_COUNTER)?.let { SysParsers.chargeCounterMah(it) },
             chargeTimeRemainingMs = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
                 Sys.safe { bm.computeChargeTimeRemaining() }?.takeIf { it > 0 }
             } else null,
@@ -109,24 +106,6 @@ internal class HardwareProbe(private val ctx: Context) {
             } else null,
             designCapacityMah = designCapacity(),
         )
-    }
-
-    /** Some phones report volts instead of millivolts. */
-    private fun normaliseVoltage(v: Int): Int = if (v in 1..20) v * 1000 else v
-
-    /**
-     * Android specifies microamps with positive = charging, but many phones report
-     * milliamps and some flip the sign. Returns milliamps, positive while charging.
-     */
-    private fun normaliseCurrent(raw: Int, status: Int): Long {
-        val ma = if (abs(raw) > 20_000) raw / 1000 else raw
-        val charging = status == BatteryManager.BATTERY_STATUS_CHARGING ||
-            status == BatteryManager.BATTERY_STATUS_FULL
-        return when {
-            charging && ma < 0 -> -ma
-            !charging && ma > 0 -> -ma
-            else -> ma
-        }.toLong()
     }
 
     /** No public API exists; PowerProfile is read by reflection and may be missing. */
