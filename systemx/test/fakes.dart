@@ -352,6 +352,9 @@ class FakeDeviceApi extends DeviceInfoApi {
   /// Advances on every [live] call so rates and charts have changing data.
   int liveTicks = 0;
 
+  /// Adds wobble to live readings so screenshot charts aren't flat lines.
+  bool vary = false;
+
   @override
   Future<LiveStats> live() => _r('live', () {
         final t = liveTicks++;
@@ -372,11 +375,11 @@ class FakeDeviceApi extends DeviceInfoApi {
           batteryLevel: 78,
           batteryStatus: 2,
           plugged: 1,
-          batteryTempC: 33.1,
+          batteryTempC: vary ? 33.1 + (t % 7) * 0.1 : 33.1,
           voltageMv: 4210,
-          currentNowMa: 2140,
+          currentNowMa: vary ? 2140 - (t * 37) % 300 : 2140,
           // 2.5 MB down and 200 KB up per second.
-          rxBytes: 5000000000 + t * 2500000,
+          rxBytes: 5000000000 + t * 2500000 + (vary ? (t * t % 5) * 400000 : 0),
           txBytes: 800000000 + t * 200000,
           thermalStatus: 0,
           thermalHeadroom: 0.36,

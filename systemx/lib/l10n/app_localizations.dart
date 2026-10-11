@@ -206,23 +206,11 @@ abstract class AppLocalizations {
   /// **'Your phone'**
   String get homeYourPhone;
 
-  /// No description provided for @previewBanner.
-  ///
-  /// In en, this message translates to:
-  /// **'Preview build: the values on this screen are samples.'**
-  String get previewBanner;
-
   /// No description provided for @healthExcellent.
   ///
   /// In en, this message translates to:
   /// **'Excellent health'**
   String get healthExcellent;
-
-  /// No description provided for @healthSample.
-  ///
-  /// In en, this message translates to:
-  /// **'Sample: {passed} of {total} tests passed'**
-  String healthSample(int passed, int total);
 
   /// No description provided for @healthScoreLabel.
   ///
@@ -653,7 +641,7 @@ abstract class AppLocalizations {
   /// No description provided for @monitorBody.
   ///
   /// In en, this message translates to:
-  /// **'Live charts for every part of your phone. In this preview the charts show sample data.'**
+  /// **'Live charts for every part of your phone. Drag across a chart to read earlier values.'**
   String get monitorBody;
 
   /// No description provided for @monitorCpu.
@@ -2719,6 +2707,288 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Driver version'**
   String get sensorVersion;
+
+  /// No description provided for @thermalLight.
+  ///
+  /// In en, this message translates to:
+  /// **'Light'**
+  String get thermalLight;
+
+  /// No description provided for @thermalModerate.
+  ///
+  /// In en, this message translates to:
+  /// **'Moderate'**
+  String get thermalModerate;
+
+  /// No description provided for @thermalSevere.
+  ///
+  /// In en, this message translates to:
+  /// **'Severe'**
+  String get thermalSevere;
+
+  /// No description provided for @thermalCritical.
+  ///
+  /// In en, this message translates to:
+  /// **'Critical'**
+  String get thermalCritical;
+
+  /// No description provided for @thermalEmergency.
+  ///
+  /// In en, this message translates to:
+  /// **'Emergency'**
+  String get thermalEmergency;
+
+  /// No description provided for @thermalShutdown.
+  ///
+  /// In en, this message translates to:
+  /// **'Shutting down'**
+  String get thermalShutdown;
+
+  /// No description provided for @pause.
+  ///
+  /// In en, this message translates to:
+  /// **'Pause'**
+  String get pause;
+
+  /// No description provided for @resume.
+  ///
+  /// In en, this message translates to:
+  /// **'Resume'**
+  String get resume;
+
+  /// No description provided for @paused.
+  ///
+  /// In en, this message translates to:
+  /// **'Paused'**
+  String get paused;
+
+  /// No description provided for @avgClock.
+  ///
+  /// In en, this message translates to:
+  /// **'Average clock'**
+  String get avgClock;
+
+  /// No description provided for @loadEstimate.
+  ///
+  /// In en, this message translates to:
+  /// **'Load (estimate)'**
+  String get loadEstimate;
+
+  /// No description provided for @chartClockLast60.
+  ///
+  /// In en, this message translates to:
+  /// **'Average clock · last 60 readings'**
+  String get chartClockLast60;
+
+  /// No description provided for @loadEstimateHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Android 8 and later hide real CPU usage from apps, so load is estimated from clock speeds.'**
+  String get loadEstimateHint;
+
+  /// No description provided for @chartCurrent.
+  ///
+  /// In en, this message translates to:
+  /// **'Charge current'**
+  String get chartCurrent;
+
+  /// No description provided for @currentUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Your phone doesn\'t report charging current.'**
+  String get currentUnavailable;
+
+  /// No description provided for @chartTemperature.
+  ///
+  /// In en, this message translates to:
+  /// **'Battery temperature'**
+  String get chartTemperature;
+
+  /// No description provided for @download.
+  ///
+  /// In en, this message translates to:
+  /// **'Download'**
+  String get download;
+
+  /// No description provided for @upload.
+  ///
+  /// In en, this message translates to:
+  /// **'Upload'**
+  String get upload;
+
+  /// No description provided for @chartNetwork.
+  ///
+  /// In en, this message translates to:
+  /// **'Network speed'**
+  String get chartNetwork;
+
+  /// No description provided for @networkSpeedHint.
+  ///
+  /// In en, this message translates to:
+  /// **'All traffic on this phone, from every app. This is not a speed test.'**
+  String get networkSpeedHint;
+
+  /// No description provided for @thermalStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'Thermal status'**
+  String get thermalStatus;
+
+  /// No description provided for @thermalHeadroom.
+  ///
+  /// In en, this message translates to:
+  /// **'Headroom before slowdown'**
+  String get thermalHeadroom;
+
+  /// No description provided for @chartBatteryTemp.
+  ///
+  /// In en, this message translates to:
+  /// **'Battery temperature'**
+  String get chartBatteryTemp;
+
+  /// No description provided for @chartCpuTemp.
+  ///
+  /// In en, this message translates to:
+  /// **'CPU temperature'**
+  String get chartCpuTemp;
+
+  /// No description provided for @cpuTempUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Your phone doesn\'t let apps read the CPU temperature. Battery temperature and thermal status are shown instead.'**
+  String get cpuTempUnavailable;
+
+  /// No description provided for @thermalHint.
+  ///
+  /// In en, this message translates to:
+  /// **'When the phone gets hot, Android slows the processor to cool down. Headroom shows how close it is to that point.'**
+  String get thermalHint;
+
+  /// No description provided for @details.
+  ///
+  /// In en, this message translates to:
+  /// **'Details'**
+  String get details;
+
+  /// No description provided for @scoreGood.
+  ///
+  /// In en, this message translates to:
+  /// **'Good health'**
+  String get scoreGood;
+
+  /// No description provided for @scoreFair.
+  ///
+  /// In en, this message translates to:
+  /// **'Fair health'**
+  String get scoreFair;
+
+  /// No description provided for @scorePoor.
+  ///
+  /// In en, this message translates to:
+  /// **'Needs attention'**
+  String get scorePoor;
+
+  /// No description provided for @noCheckupYet.
+  ///
+  /// In en, this message translates to:
+  /// **'No checkup yet. Run one to include it in the score.'**
+  String get noCheckupYet;
+
+  /// No description provided for @scoreHow.
+  ///
+  /// In en, this message translates to:
+  /// **'How the score works'**
+  String get scoreHow;
+
+  /// No description provided for @scoreExplain.
+  ///
+  /// In en, this message translates to:
+  /// **'The score combines what your phone reports right now. Anything Android doesn\'t share is left out instead of guessed.'**
+  String get scoreExplain;
+
+  /// No description provided for @factorBattery.
+  ///
+  /// In en, this message translates to:
+  /// **'Battery health'**
+  String get factorBattery;
+
+  /// No description provided for @factorTemperature.
+  ///
+  /// In en, this message translates to:
+  /// **'Temperature'**
+  String get factorTemperature;
+
+  /// No description provided for @factorStorage.
+  ///
+  /// In en, this message translates to:
+  /// **'Free storage'**
+  String get factorStorage;
+
+  /// No description provided for @factorMemory.
+  ///
+  /// In en, this message translates to:
+  /// **'Free memory'**
+  String get factorMemory;
+
+  /// No description provided for @factorCheckup.
+  ///
+  /// In en, this message translates to:
+  /// **'Last checkup'**
+  String get factorCheckup;
+
+  /// No description provided for @tipNoScreenLock.
+  ///
+  /// In en, this message translates to:
+  /// **'No screen lock is set. Anyone who picks up your phone can open it.'**
+  String get tipNoScreenLock;
+
+  /// No description provided for @tipMemoryLow.
+  ///
+  /// In en, this message translates to:
+  /// **'Memory is almost full, so Android is closing background apps.'**
+  String get tipMemoryLow;
+
+  /// No description provided for @tipOpen.
+  ///
+  /// In en, this message translates to:
+  /// **'Open'**
+  String get tipOpen;
+
+  /// No description provided for @monitorTemp.
+  ///
+  /// In en, this message translates to:
+  /// **'Temperature'**
+  String get monitorTemp;
+
+  /// No description provided for @weightN.
+  ///
+  /// In en, this message translates to:
+  /// **'weight {weight}'**
+  String weightN(int weight);
+
+  /// No description provided for @tipBatteryHot.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone is warm ({temp}). Close heavy apps or take off the case for a while.'**
+  String tipBatteryHot(String temp);
+
+  /// No description provided for @tipStorageLow.
+  ///
+  /// In en, this message translates to:
+  /// **'Storage is {percent}% full. Free up space to keep apps fast.'**
+  String tipStorageLow(int percent);
+
+  /// No description provided for @tipPatchOld.
+  ///
+  /// In en, this message translates to:
+  /// **'Security patch is {months} months old. Check for a system update.'**
+  String tipPatchOld(int months);
+
+  /// No description provided for @tipUnplug.
+  ///
+  /// In en, this message translates to:
+  /// **'Charged to {level}%. Unplugging around 80% slows battery wear.'**
+  String tipUnplug(int level);
 }
 
 class _AppLocalizationsDelegate

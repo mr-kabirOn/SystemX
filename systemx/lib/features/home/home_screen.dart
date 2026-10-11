@@ -11,13 +11,20 @@ import '../../l10n/app_localizations.dart';
 import '../../ui/sx_icons.dart';
 import '../../ui/widgets/cards.dart';
 import '../../ui/widgets/gauges.dart';
+import '../device/device_data.dart';
+import '../device/spec_view.dart';
+import '../live/health.dart';
+import '../live/live_data.dart';
+import '../live/live_screens.dart';
 
-/// Sample readings for the Stage 1 preview. Replaced by live data in Stage 3.
-abstract final class _Sample {
-  static const cpuGhz = [1.2, 1.5, 1.35, 1.9, 1.6, 2.1, 1.7, 1.95, 1.55, 2.05, 1.82];
-  static const netMbs = [0.4, 0.9, 2.8, 2.2, 1.1, 3.1, 2.6, 1.8, 2.9, 2.2, 2.4];
-  static const batteryC = 31.4;
-}
+/// Words for a health score.
+String scoreWord(AppLocalizations l, int score) => score >= 90
+    ? l.healthExcellent
+    : score >= 75
+        ? l.scoreGood
+        : score >= 50
+            ? l.scoreFair
+            : l.scorePoor;
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -34,6 +41,27 @@ class HomeScreen extends ConsumerWidget {
     final l = AppLocalizations.of(context);
     final sx = context.sx;
     final unit = ref.watch(settingsProvider.select((s) => s.tempUnit));
+    final live = ref.watch(liveProvider);
+    final snap = ref.watch(fullSnapshotProvider).value;
+    final s = live.latest;
+
+    final score = healthScore(
+      battery: snap?.battery,
+      storage: snap?.storage,
+      live: s,
+    );
+    final tip = pickTips(
+      live: s,
+      storage: snap?.storage,
+      security: snap?.security,
+    ).first;
+
+    final memUsed = s == null ? 0 : s.memTotal - s.memAvailable;
+    final storage = snap?.storage;
+    final storageUsed = storage == null ? 0 : storage.total - storage.free;
+    final load = live.cpuLoad.isEmpty ? null : live.cpuLoad.last;
+    final ma = s?.currentNowMa;
+    final headroom = live.headroom;
 
     return Scaffold(
       body: SafeArea(
@@ -49,7 +77,8 @@ class HomeScreen extends ConsumerWidget {
                   children: [
                     Text(_greeting(l), style: context.text.bodyMedium?.copyWith(color: sx.muted)),
                     const SizedBox(height: 2),
-                    Text(l.homeYourPhone, style: context.text.headlineMedium),
+                    Text(snap?.identity?.marketName ?? l.homeYourPhone,
+                        style: context.text.headlineMedium),
                   ],
                 ),
               ),
@@ -61,20 +90,20 @@ class HomeScreen extends ConsumerWidget {
               ),
             ]),
             const SizedBox(height: 14),
-            _PreviewBanner(text: l.previewBanner),
-            const SizedBox(height: 12),
 
             // Health score
             SxCard(
               padding: const EdgeInsets.all(18),
+              onTap: score == null ? null : () => _showScore(context, score),
               child: Row(children: [
                 GaugeRing(
-                  value: 0.92,
-                  color: sx.good,
+                  value: (score?.score ?? 0) / 100,
+                  color: _scoreColor(sx, score?.score),
                   size: 104,
                   stroke: 11,
                   child: Column(mainAxisSize: MainAxisSize.min, children: [
-                    Text('92', style: context.text.displaySmall),
+                    Text(score == null ? '–' : '${score.score}',
+                        style: context.text.displaySmall),
                     Eyebrow(l.healthScoreLabel),
                   ]),
                 ),
@@ -83,9 +112,10 @@ class HomeScreen extends ConsumerWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(l.healthExcellent, style: context.text.titleLarge),
+                      Text(score == null ? l.homeYourPhone : scoreWord(l, score.score),
+                          style: context.text.titleLarge),
                       const SizedBox(height: 4),
-                      Text(l.healthSample(30, 32), style: context.text.bodySmall),
+                      Text(l.noCheckupYet, style: context.text.bodySmall),
                       const SizedBox(height: 12),
                       FilledButton.icon(
                         style: FilledButton.styleFrom(
@@ -107,80 +137,173 @@ class HomeScreen extends ConsumerWidget {
             _TileRow(
               left: StatTile(
                 label: l.metricCpu,
-                value: '1.82',
+                value: s == null ? '–' : avgGhz(s.cpuKhz).toStringAsFixed(2),
                 unit: 'GHz',
                 color: sx.cpu,
-                sub: '8 cores',
-                visual: Sparkline(values: _Sample.cpuGhz, color: sx.cpu),
-                onTap: () => showComingSoon(context),
+                sub: load == null ? null : '${l.loadEstimate} ${(load * 100).round()}%',
+                visual: Sparkline(values: live.cpuGhz, color: sx.cpu),
+                onTap: () => context.push(Routes.live(LiveMetric.cpu)),
               ),
               right: StatTile(
                 label: l.metricMemory,
-                value: '5.1',
-                unit: '/ 8 GB',
+                value: s == null ? '–' : formatDouble(memUsed / (1 << 30)),
+                unit: s == null ? null : '/ ${formatAdvertisedRam(s.memTotal)}',
                 color: sx.ram,
-                sub: l.freeAmount(formatBytes(2.9 * 1024 * 1024 * 1024)),
-                visual: MeterBar(value: 0.64, color: sx.ram),
-                onTap: () => showComingSoon(context),
+                sub: s == null ? null : l.freeAmount(formatBytes(s.memAvailable)),
+                visual: MeterBar(
+                    value: s == null || s.memTotal == 0 ? 0 : memUsed / s.memTotal,
+                    color: sx.ram),
+                onTap: () => context.push(Routes.category(DeviceCategory.memory)),
               ),
             ),
             _TileRow(
               left: StatTile(
                 label: l.metricBattery,
-                value: '78',
+                value: s == null ? '–' : '${s.batteryLevel}',
                 unit: '%',
                 color: sx.battery,
-                sub: formatTemp(_Sample.batteryC, unit),
-                visual: MeterBar(value: 0.78, color: sx.battery),
-                onTap: () => showComingSoon(context),
+                sub: s == null
+                    ? null
+                    : [
+                        formatTemp(s.batteryTempC, unit),
+                        if (ma != null && ma > 0)
+                          '${formatDouble(ma * s.voltageMv / 1e6)} W',
+                      ].join(' · '),
+                visual: MeterBar(value: (s?.batteryLevel ?? 0) / 100, color: sx.battery),
+                onTap: () => context.push(Routes.live(LiveMetric.battery)),
               ),
               right: StatTile(
                 label: l.metricStorage,
-                value: '87',
-                unit: '/ 128 GB',
+                value: storage == null ? '–' : formatStorage(storageUsed).split(' ').first,
+                unit: storage == null ? null : '/ ${formatStorage(storage.total)}',
                 color: sx.storage,
-                sub: l.freeAmount('41 GB'),
-                visual: MeterBar(value: 0.68, color: sx.storage),
-                onTap: () => showComingSoon(context),
+                sub: storage == null ? null : l.freeAmount(formatStorage(storage.free)),
+                visual: MeterBar(
+                    value: storage == null || storage.total == 0
+                        ? 0
+                        : storageUsed / storage.total,
+                    color: sx.storage),
+                onTap: () => context.push(Routes.category(DeviceCategory.storage)),
               ),
             ),
             _TileRow(
               left: StatTile(
                 label: l.metricNetwork,
-                value: '2.4',
-                unit: 'MB/s',
+                value: '↓ ${formatRate(live.downBps)}',
                 color: sx.network,
-                sub: '↑ 180 KB/s · Wi-Fi 6',
-                visual: Sparkline(values: _Sample.netMbs, color: sx.network),
-                onTap: () => showComingSoon(context),
+                sub: '↑ ${formatRate(live.upBps)}',
+                visual: Sparkline(values: live.down, color: sx.network),
+                onTap: () => context.push(Routes.live(LiveMetric.network)),
               ),
               right: StatTile(
                 label: l.metricThermal,
-                value: l.thermalNormal,
+                value: s == null ? '–' : thermalStatusName(l, s.thermalStatus),
                 color: sx.thermal,
-                sub: l.headroom(64),
-                visual: MeterBar(value: 0.36, color: sx.thermal),
-                onTap: () => showComingSoon(context),
+                sub: headroom == null
+                    ? (s == null ? null : formatTemp(s.batteryTempC, unit))
+                    : l.headroom(headroomPercent(headroom)),
+                visual: MeterBar(value: headroom?.clamp(0.0, 1.0) ?? 0, color: sx.thermal),
+                onTap: () => context.push(Routes.live(LiveMetric.thermal)),
               ),
             ),
 
-            // Tip
-            SxCard(
-              color: sx.cardAlt,
-              padding: const EdgeInsets.fromLTRB(14, 12, 8, 12),
-              child: Row(children: [
-                IconBadge(SxIcons.battery, color: sx.battery),
-                const SizedBox(width: 12),
-                Expanded(child: Text(l.tipChargeLimit, style: context.text.bodyMedium)),
-                TextButton(
-                  onPressed: () => showComingSoon(context),
-                  child: Text(l.tipSetAlarm),
-                ),
-              ]),
-            ),
+            // One tip at a time, most urgent first.
+            _TipCard(tip: tip),
           ],
         ),
       ),
+    );
+  }
+
+  static Color _scoreColor(SxColors sx, int? score) => score == null
+      ? sx.muted
+      : score >= 75
+          ? sx.good
+          : score >= 50
+              ? sx.warn
+              : sx.bad;
+
+  void _showScore(BuildContext context, HealthScore score) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      builder: (context) {
+        final l = AppLocalizations.of(context);
+        final sx = context.sx;
+        String name(HealthFactor f) => switch (f) {
+              HealthFactor.battery => l.factorBattery,
+              HealthFactor.temperature => l.factorTemperature,
+              HealthFactor.storage => l.factorStorage,
+              HealthFactor.memory => l.factorMemory,
+              HealthFactor.checkup => l.factorCheckup,
+            };
+        return SafeArea(
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.fromLTRB(24, 0, 24, 20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(l.scoreHow, style: context.text.headlineSmall),
+                const SizedBox(height: 8),
+                Text(l.scoreExplain, style: context.text.bodyMedium),
+                const SizedBox(height: 16),
+                for (final p in score.parts) ...[
+                  Row(children: [
+                    Expanded(child: Text(name(p.factor), style: context.text.titleSmall)),
+                    Text(l.weightN(p.weight), style: context.text.bodySmall),
+                    const SizedBox(width: 12),
+                    Text('${(p.value * 100).round()}',
+                        style: SxText.readout(14, _scoreColor(sx, (p.value * 100).round()))),
+                  ]),
+                  const SizedBox(height: 6),
+                  MeterBar(value: p.value, color: _scoreColor(sx, (p.value * 100).round())),
+                  const SizedBox(height: 14),
+                ],
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
+
+class _TipCard extends ConsumerWidget {
+  const _TipCard({required this.tip});
+
+  final Tip tip;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final l = AppLocalizations.of(context);
+    final sx = context.sx;
+    final unit = ref.watch(settingsProvider.select((s) => s.tempUnit));
+    final v = tip.value;
+    final (icon, color, text) = switch (tip.kind) {
+      TipKind.batteryHot => (SxIcons.thermal, sx.thermal,
+          l.tipBatteryHot(formatTemp((v ?? 0).toDouble(), unit))),
+      TipKind.storageLow => (SxIcons.storage, sx.storage, l.tipStorageLow(v?.toInt() ?? 0)),
+      TipKind.noScreenLock => (SxIcons.security, sx.bad, l.tipNoScreenLock),
+      TipKind.patchOld => (SxIcons.system, sx.warn, l.tipPatchOld(v?.toInt() ?? 0)),
+      TipKind.memoryLow => (SxIcons.ram, sx.ram, l.tipMemoryLow),
+      TipKind.unplug => (SxIcons.charging, sx.battery, l.tipUnplug(v?.toInt() ?? 0)),
+      TipKind.chargeHabit => (SxIcons.battery, sx.battery, l.tipChargeLimit),
+    };
+    final action = tip.settingsAction;
+    return SxCard(
+      color: sx.cardAlt,
+      padding: EdgeInsets.fromLTRB(14, 12, action == null ? 14 : 8, 12),
+      child: Row(children: [
+        IconBadge(icon, color: color),
+        const SizedBox(width: 12),
+        Expanded(child: Text(text, style: context.text.bodyMedium)),
+        if (action != null)
+          TextButton(
+            onPressed: () => openSystemSettings(context, ref, action),
+            child: Text(l.tipOpen),
+          ),
+      ]),
     );
   }
 }
@@ -206,30 +329,4 @@ class _TileRow extends StatelessWidget {
           ),
         ),
       );
-}
-
-class _PreviewBanner extends StatelessWidget {
-  const _PreviewBanner({required this.text});
-
-  final String text;
-
-  @override
-  Widget build(BuildContext context) {
-    final sx = context.sx;
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-      decoration: BoxDecoration(
-        color: sx.warn.withValues(alpha: 0.12),
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: Row(children: [
-        Icon(Icons.science_outlined, size: 18, color: sx.warn),
-        const SizedBox(width: 8),
-        Expanded(
-          child: Text(text,
-              style: sxStyle(SxFonts.body, 12.5, FontWeight.w500, color: sx.warn)),
-        ),
-      ]),
-    );
-  }
 }

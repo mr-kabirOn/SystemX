@@ -6,6 +6,7 @@ import '../features/device/device_data.dart';
 import '../features/device/device_screen.dart';
 import '../features/device/search_screen.dart';
 import '../features/home/home_screen.dart';
+import '../features/live/live_screens.dart';
 import '../features/monitor/monitor_screen.dart';
 import '../features/onboarding/onboarding_screen.dart';
 import '../features/settings/privacy_screen.dart';
@@ -25,6 +26,7 @@ abstract final class Routes {
   static const privacy = '/settings/privacy';
 
   static String category(DeviceCategory c) => '$device/${c.name}';
+  static String live(LiveMetric m) => '/live/${m.name}';
 }
 
 final routerProvider = Provider<GoRouter>((ref) {
@@ -77,6 +79,17 @@ final routerProvider = Provider<GoRouter>((ref) {
                 path: Routes.monitor, builder: (_, _) => const MonitorScreen()),
           ]),
         ],
+      ),
+      GoRoute(
+        path: '/live/:metric',
+        redirect: (_, state) => LiveMetric.values
+                .any((m) => m.name == state.pathParameters['metric'])
+            ? null
+            : Routes.home,
+        builder: (_, state) => LiveDetailScreen(
+          metric: LiveMetric.values
+              .byName(state.pathParameters['metric']!),
+        ),
       ),
       GoRoute(
         path: Routes.settings,

@@ -68,7 +68,7 @@ void main() {
 
     await tester.tap(find.text('Skip'));
     await tester.pumpAndSettle();
-    expect(find.text('Your phone'), findsOneWidget);
+    expect(find.text('Pixel 8'), findsOneWidget);
     expect(find.text('Run checkup'), findsOneWidget);
 
     await tester.tap(find.text('Device'));

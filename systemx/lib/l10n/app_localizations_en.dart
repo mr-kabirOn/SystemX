@@ -66,16 +66,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get homeYourPhone => 'Your phone';
 
   @override
-  String get previewBanner =>
-      'Preview build: the values on this screen are samples.';
-
-  @override
   String get healthExcellent => 'Excellent health';
-
-  @override
-  String healthSample(int passed, int total) {
-    return 'Sample: $passed of $total tests passed';
-  }
 
   @override
   String get healthScoreLabel => 'Score';
@@ -299,7 +290,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get monitorBody =>
-      'Live charts for every part of your phone. In this preview the charts show sample data.';
+      'Live charts for every part of your phone. Drag across a chart to read earlier values.';
 
   @override
   String get monitorCpu => 'Processor clock';
@@ -1434,4 +1425,164 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get sensorVersion => 'Driver version';
+
+  @override
+  String get thermalLight => 'Light';
+
+  @override
+  String get thermalModerate => 'Moderate';
+
+  @override
+  String get thermalSevere => 'Severe';
+
+  @override
+  String get thermalCritical => 'Critical';
+
+  @override
+  String get thermalEmergency => 'Emergency';
+
+  @override
+  String get thermalShutdown => 'Shutting down';
+
+  @override
+  String get pause => 'Pause';
+
+  @override
+  String get resume => 'Resume';
+
+  @override
+  String get paused => 'Paused';
+
+  @override
+  String get avgClock => 'Average clock';
+
+  @override
+  String get loadEstimate => 'Load (estimate)';
+
+  @override
+  String get chartClockLast60 => 'Average clock · last 60 readings';
+
+  @override
+  String get loadEstimateHint =>
+      'Android 8 and later hide real CPU usage from apps, so load is estimated from clock speeds.';
+
+  @override
+  String get chartCurrent => 'Charge current';
+
+  @override
+  String get currentUnavailable =>
+      'Your phone doesn\'t report charging current.';
+
+  @override
+  String get chartTemperature => 'Battery temperature';
+
+  @override
+  String get download => 'Download';
+
+  @override
+  String get upload => 'Upload';
+
+  @override
+  String get chartNetwork => 'Network speed';
+
+  @override
+  String get networkSpeedHint =>
+      'All traffic on this phone, from every app. This is not a speed test.';
+
+  @override
+  String get thermalStatus => 'Thermal status';
+
+  @override
+  String get thermalHeadroom => 'Headroom before slowdown';
+
+  @override
+  String get chartBatteryTemp => 'Battery temperature';
+
+  @override
+  String get chartCpuTemp => 'CPU temperature';
+
+  @override
+  String get cpuTempUnavailable =>
+      'Your phone doesn\'t let apps read the CPU temperature. Battery temperature and thermal status are shown instead.';
+
+  @override
+  String get thermalHint =>
+      'When the phone gets hot, Android slows the processor to cool down. Headroom shows how close it is to that point.';
+
+  @override
+  String get details => 'Details';
+
+  @override
+  String get scoreGood => 'Good health';
+
+  @override
+  String get scoreFair => 'Fair health';
+
+  @override
+  String get scorePoor => 'Needs attention';
+
+  @override
+  String get noCheckupYet =>
+      'No checkup yet. Run one to include it in the score.';
+
+  @override
+  String get scoreHow => 'How the score works';
+
+  @override
+  String get scoreExplain =>
+      'The score combines what your phone reports right now. Anything Android doesn\'t share is left out instead of guessed.';
+
+  @override
+  String get factorBattery => 'Battery health';
+
+  @override
+  String get factorTemperature => 'Temperature';
+
+  @override
+  String get factorStorage => 'Free storage';
+
+  @override
+  String get factorMemory => 'Free memory';
+
+  @override
+  String get factorCheckup => 'Last checkup';
+
+  @override
+  String get tipNoScreenLock =>
+      'No screen lock is set. Anyone who picks up your phone can open it.';
+
+  @override
+  String get tipMemoryLow =>
+      'Memory is almost full, so Android is closing background apps.';
+
+  @override
+  String get tipOpen => 'Open';
+
+  @override
+  String get monitorTemp => 'Temperature';
+
+  @override
+  String weightN(int weight) {
+    return 'weight $weight';
+  }
+
+  @override
+  String tipBatteryHot(String temp) {
+    return 'Phone is warm ($temp). Close heavy apps or take off the case for a while.';
+  }
+
+  @override
+  String tipStorageLow(int percent) {
+    return 'Storage is $percent% full. Free up space to keep apps fast.';
+  }
+
+  @override
+  String tipPatchOld(int months) {
+    return 'Security patch is $months months old. Check for a system update.';
+  }
+
+  @override
+  String tipUnplug(int level) {
+    return 'Charged to $level%. Unplugging around 80% slows battery wear.';
+  }
 }

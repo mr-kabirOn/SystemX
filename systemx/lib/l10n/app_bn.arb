@@ -20,9 +20,7 @@
   "greetingAfternoon": "শুভ অপরাহ্ন",
   "greetingEvening": "শুভ সন্ধ্যা",
   "homeYourPhone": "আপনার ফোন",
-  "previewBanner": "প্রিভিউ বিল্ড: এই স্ক্রিনের মানগুলো নমুনা।",
   "healthExcellent": "চমৎকার অবস্থা",
-  "healthSample": "নমুনা: {total}টির মধ্যে {passed}টি টেস্ট পাস",
   "healthScoreLabel": "স্কোর",
   "runCheckup": "চেকআপ চালান",
   "metricCpu": "সিপিইউ",
@@ -97,7 +95,6 @@
   "testStorage": "স্টোরেজ স্পিড",
 
   "monitorTitle": "মনিটর",
-  "monitorBody": "ফোনের প্রতিটি অংশের লাইভ চার্ট। এই প্রিভিউতে চার্টগুলো নমুনা ডেটা দেখাচ্ছে।",
   "monitorCpu": "প্রসেসর ক্লক",
   "monitorRam": "মেমরি ব্যবহার",
   "monitorBattery": "ব্যাটারি কারেন্ট",

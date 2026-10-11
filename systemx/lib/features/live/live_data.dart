@@ -84,6 +84,10 @@ List<double> _push(List<double> list, double? v) {
   return out.length > liveHistory ? out.sublist(out.length - liveHistory) : out;
 }
 
+/// Whether [LiveMonitor] polls on a timer. Tests and screenshot renders turn
+/// it off and call [LiveMonitor.tick] themselves.
+final livePollingProvider = Provider<bool>((ref) => true);
+
 /// Polls [DeviceInfoApi.live] at the chosen refresh rate while anything
 /// watches it, and pauses while the app is in the background.
 class LiveMonitor extends Notifier<LiveState> {
@@ -117,7 +121,7 @@ class LiveMonitor extends Notifier<LiveState> {
 
   void _schedule(RefreshRate rate) {
     _timer?.cancel();
-    if (_background) return;
+    if (_background || !ref.read(livePollingProvider)) return;
     _timer = Timer.periodic(Duration(milliseconds: rate.millis), (_) => tick());
   }
 

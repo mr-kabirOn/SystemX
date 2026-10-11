@@ -7,6 +7,7 @@ import 'package:shared_preferences_platform_interface/shared_preferences_async_p
 import 'package:systemx/app.dart';
 import 'package:systemx/core/settings/settings.dart';
 import 'package:systemx/features/device/share.dart';
+import 'package:systemx/features/live/live_data.dart';
 import 'package:systemx/platform/platform.dart';
 
 import 'fakes.dart';
@@ -35,6 +36,7 @@ Future<ProviderContainer> pumpApp(
         .overrideWithValue(permissions ?? FakePermissionApi(device)),
     shareTextProvider.overrideWithValue(
         (text, subject) async => shared?.add((text, subject))),
+    livePollingProvider.overrideWithValue(false),
     sensorReadingsProvider.overrideWithValue(
         sensorReadings ?? (_) => const Stream.empty()),
   ]);

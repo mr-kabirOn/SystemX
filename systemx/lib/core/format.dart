@@ -206,3 +206,10 @@ String prettyIdentifier(String id) {
   if (s.isEmpty) return s;
   return s[0].toUpperCase() + s.substring(1);
 }
+
+/// Transfer speed in bytes per second, base 1000 ("2.4 MB/s").
+String formatRate(double bytesPerSec) {
+  if (bytesPerSec < 1000) return '${bytesPerSec.round()} B/s';
+  if (bytesPerSec < 1e6) return '${formatDouble(bytesPerSec / 1000, decimals: bytesPerSec < 1e4 ? 1 : 0)} KB/s';
+  return '${formatDouble(bytesPerSec / 1e6, decimals: 1)} MB/s';
+}
