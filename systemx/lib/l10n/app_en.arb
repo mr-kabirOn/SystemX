@@ -45,7 +45,6 @@
   "deviceTitle": "Device",
   "deviceSearch": "Search specs",
   "deviceHeroTitle": "This phone",
-  "deviceHeroSub": "Full specs arrive in the next update",
   "catDevice": "Device",
   "catDeviceSub": "Model, maker, codename",
   "catSystem": "System",
@@ -433,5 +432,10 @@
   "checksPassed": "{passed} of {total} checks passed",
   "@checksPassed": {"placeholders": {"passed": {"type": "int"}, "total": {"type": "int"}}},
   "secAllFeatures": "All system features ({count})",
-  "@secAllFeatures": {"placeholders": {"count": {"type": "int"}}}
+  "@secAllFeatures": {"placeholders": {"count": {"type": "int"}}},
+  "live": "Live",
+  "securityPatchOn": "Security patch {date}",
+  "@securityPatchOn": {"placeholders": {"date": {"type": "String"}}},
+  "specsUnavailable": "Android didn't share this information on your phone.",
+  "settingsUnavailable": "Your phone doesn't have this settings screen."
 }

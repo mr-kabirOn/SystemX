@@ -136,9 +136,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get deviceHeroTitle => 'This phone';
 
   @override
-  String get deviceHeroSub => 'Full specs arrive in the next update';
-
-  @override
   String get catDevice => 'Device';
 
   @override
@@ -1320,4 +1317,20 @@ class AppLocalizationsEn extends AppLocalizations {
   String secAllFeatures(int count) {
     return 'All system features ($count)';
   }
+
+  @override
+  String get live => 'Live';
+
+  @override
+  String securityPatchOn(String date) {
+    return 'Security patch $date';
+  }
+
+  @override
+  String get specsUnavailable =>
+      'Android didn\'t share this information on your phone.';
+
+  @override
+  String get settingsUnavailable =>
+      'Your phone doesn\'t have this settings screen.';
 }

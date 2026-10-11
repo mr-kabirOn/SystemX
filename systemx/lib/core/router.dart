@@ -1,6 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../features/device/category_screen.dart';
+import '../features/device/device_data.dart';
 import '../features/device/device_screen.dart';
 import '../features/home/home_screen.dart';
 import '../features/monitor/monitor_screen.dart';
@@ -19,6 +21,8 @@ abstract final class Routes {
   static const monitor = '/monitor';
   static const settings = '/settings';
   static const privacy = '/settings/privacy';
+
+  static String category(DeviceCategory c) => '$device/${c.name}';
 }
 
 final routerProvider = Provider<GoRouter>((ref) {
@@ -41,7 +45,23 @@ final routerProvider = Provider<GoRouter>((ref) {
           ]),
           StatefulShellBranch(routes: [
             GoRoute(
-                path: Routes.device, builder: (_, _) => const DeviceScreen()),
+              path: Routes.device,
+              builder: (_, _) => const DeviceScreen(),
+              routes: [
+                GoRoute(
+                  path: ':category',
+                  redirect: (_, state) =>
+                      DeviceCategory.byName(state.pathParameters['category']!) ==
+                              null
+                          ? Routes.device
+                          : null,
+                  builder: (_, state) => CategoryScreen(
+                    category: DeviceCategory.byName(
+                        state.pathParameters['category']!)!,
+                  ),
+                ),
+              ],
+            ),
           ]),
           StatefulShellBranch(routes: [
             GoRoute(path: Routes.tests, builder: (_, _) => const TestsScreen()),

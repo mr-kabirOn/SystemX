@@ -332,12 +332,6 @@ abstract class AppLocalizations {
   /// **'This phone'**
   String get deviceHeroTitle;
 
-  /// No description provided for @deviceHeroSub.
-  ///
-  /// In en, this message translates to:
-  /// **'Full specs arrive in the next update'**
-  String get deviceHeroSub;
-
   /// No description provided for @catDevice.
   ///
   /// In en, this message translates to:
@@ -2527,6 +2521,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'All system features ({count})'**
   String secAllFeatures(int count);
+
+  /// No description provided for @live.
+  ///
+  /// In en, this message translates to:
+  /// **'Live'**
+  String get live;
+
+  /// No description provided for @securityPatchOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Security patch {date}'**
+  String securityPatchOn(String date);
+
+  /// No description provided for @specsUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Android didn\'t share this information on your phone.'**
+  String get specsUnavailable;
+
+  /// No description provided for @settingsUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Your phone doesn\'t have this settings screen.'**
+  String get settingsUnavailable;
 }
 
 class _AppLocalizationsDelegate

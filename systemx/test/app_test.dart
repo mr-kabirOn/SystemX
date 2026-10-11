@@ -4,9 +4,10 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shared_preferences_platform_interface/in_memory_shared_preferences_async.dart';
 import 'package:shared_preferences_platform_interface/shared_preferences_async_platform_interface.dart';
-import 'package:systemx/app.dart';
 import 'package:systemx/core/format.dart';
 import 'package:systemx/core/settings/settings.dart';
+
+import 'test_app.dart';
 
 Future<ProviderContainer> _container() async {
   final prefs = await SharedPreferencesWithCache.create(
@@ -62,12 +63,7 @@ void main() {
 
   testWidgets('first launch shows onboarding, then the dashboard',
       (tester) async {
-    final c = await _container();
-    await tester.pumpWidget(UncontrolledProviderScope(
-      container: c,
-      child: const SystemXApp(),
-    ));
-    await tester.pumpAndSettle();
+    await pumpApp(tester, onboarded: false);
     expect(find.text('Know your phone, inside out'), findsOneWidget);
 
     await tester.tap(find.text('Skip'));

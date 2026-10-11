@@ -169,7 +169,8 @@ class StatTile extends StatelessWidget {
   }
 }
 
-/// Key / value row for spec lists. Long-press copies the value.
+/// Key / value row for spec lists. Long-press copies the value. An optional
+/// [statusIcon] repeats the value's status so it isn't shown by color alone.
 class InfoRow extends StatelessWidget {
   const InfoRow({
     super.key,
@@ -177,27 +178,35 @@ class InfoRow extends StatelessWidget {
     required this.value,
     this.hint,
     this.valueColor,
+    this.statusIcon,
+    this.onTap,
   });
 
   final String label;
   final String value;
   final String? hint;
   final Color? valueColor;
+  final IconData? statusIcon;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
     final sx = context.sx;
+    final color = valueColor ?? sx.ink;
     return InkWell(
-      onLongPress: () {
-        Clipboard.setData(ClipboardData(text: value));
-        HapticFeedback.selectionClick();
-        ScaffoldMessenger.of(context)
-          ..hideCurrentSnackBar()
-          ..showSnackBar(SnackBar(
-              content: Text(AppLocalizations.of(context).copied(label))));
-      },
+      onTap: onTap,
+      onLongPress: value.isEmpty
+          ? null
+          : () {
+              Clipboard.setData(ClipboardData(text: value));
+              HapticFeedback.selectionClick();
+              ScaffoldMessenger.of(context)
+                ..hideCurrentSnackBar()
+                ..showSnackBar(SnackBar(
+                    content: Text(AppLocalizations.of(context).copied(label))));
+            },
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+        padding: EdgeInsets.fromLTRB(16, 12, onTap == null ? 16 : 8, 12),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -212,14 +221,22 @@ class InfoRow extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 16),
+            if (statusIcon != null) ...[
+              Padding(
+                padding: const EdgeInsets.only(top: 1),
+                child: Icon(statusIcon, size: 16, color: color),
+              ),
+              const SizedBox(width: 6),
+            ],
             Flexible(
               child: Text(
                 value,
                 textAlign: TextAlign.end,
-                style: SxText.readout(13.5, valueColor ?? sx.ink,
-                    weight: FontWeight.w500),
+                style: SxText.readout(13.5, color, weight: FontWeight.w500),
               ),
             ),
+            if (onTap != null)
+              Icon(Icons.chevron_right_rounded, size: 20, color: sx.muted),
           ],
         ),
       ),
