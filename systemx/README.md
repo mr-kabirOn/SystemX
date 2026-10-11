@@ -10,7 +10,8 @@ Plan and designs: `../plan/systemx-plan.html`
 
 - Flutter 3.41 (Dart 3.11), Android only for now
 - Riverpod (state), go_router (navigation), shared_preferences (settings)
-- Kotlin platform layer for system data (from Stage 2)
+- Kotlin platform layer for system data, called through Pigeon
+  (`pigeons/device_api.dart`)
 - English and Bangla (`lib/l10n/*.arb`)
 - minSdk 26 (Android 8.0), target/compile SDK 36
 
@@ -30,7 +31,8 @@ screenshots/   renders every screen to PNG for design review
 
 ```bash
 flutter run                                  # run on a connected phone
-flutter test                                 # unit + widget tests
+flutter test                                 # unit + widget tests (fake phone data)
+cd android && ./gradlew :app:testDebugUnitTest  # Kotlin parser tests
 flutter test screenshots --update-goldens    # render screens to screenshots/out
 flutter build apk --release --split-per-abi  # installable test APKs
 flutter build appbundle --release            # .aab for Play Console
@@ -51,6 +53,10 @@ Without it, release builds are signed with the debug key so they still install
 for testing.
 
 ## Notes
+
+- Spec labels added in Stage 2 are English only; the Bangla build falls back
+  to English for them until the Stage 6 translation pass.
+- Carrier balance codes live in `lib/features/device/carriers.dart`.
 
 - `android/gradle.properties` sets `kotlin.incremental=false` because the
   project and the pub cache are on different drives on the dev machine.

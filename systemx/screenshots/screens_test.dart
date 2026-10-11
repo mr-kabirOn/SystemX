@@ -13,6 +13,10 @@ import 'package:shared_preferences_platform_interface/shared_preferences_async_p
 import 'package:systemx/app.dart';
 import 'package:systemx/core/router.dart';
 import 'package:systemx/core/settings/settings.dart';
+import 'package:systemx/features/device/device_data.dart';
+import 'package:systemx/platform/platform.dart';
+
+import '../test/fakes.dart';
 
 Future<void> _loadFonts() async {
   Future<void> load(String family, String path) async {
@@ -37,14 +41,19 @@ Future<void> _shoot(
   bool onboarded = true,
   ThemeMode theme = ThemeMode.dark,
 }) async {
+  final api = FakeDeviceApi()..phoneGranted = true;
   SharedPreferencesAsyncPlatform.instance =
       InMemorySharedPreferencesAsync.empty();
   final prefs = await SharedPreferencesWithCache.create(
     cacheOptions: const SharedPreferencesWithCacheOptions(
         allowList: SettingsNotifier.keys),
   );
-  final c = ProviderContainer(
-      overrides: [prefsProvider.overrideWithValue(prefs)]);
+  final c = ProviderContainer(overrides: [
+    prefsProvider.overrideWithValue(prefs),
+    // Pixel 8 sample values, since tests have no phone to read.
+    deviceApiProvider.overrideWithValue(api),
+    permissionApiProvider.overrideWithValue(FakePermissionApi(api)),
+  ]);
   if (onboarded) await c.read(settingsProvider.notifier).completeOnboarding();
   await c.read(settingsProvider.notifier).setThemeMode(theme);
 
@@ -79,6 +88,15 @@ void main() {
     await _shoot(tester, '6_settings', Routes.settings);
     await _shoot(tester, '7_privacy', Routes.privacy);
     await _shoot(tester, '8_home_light', Routes.home, theme: ThemeMode.light);
+    await _shoot(tester, '9_device_processor',
+        Routes.category(DeviceCategory.processor));
+    await _shoot(
+        tester, '10_device_battery', Routes.category(DeviceCategory.battery));
+    await _shoot(
+        tester, '11_device_network', Routes.category(DeviceCategory.network));
+    await _shoot(tester, '12_device_security',
+        Routes.category(DeviceCategory.security));
+    await _shoot(tester, '13_device_sim', Routes.category(DeviceCategory.sim));
     addTearDown(tester.view.reset);
   });
 }
