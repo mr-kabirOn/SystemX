@@ -14,6 +14,8 @@ import 'package:systemx/app.dart';
 import 'package:systemx/core/router.dart';
 import 'package:systemx/core/settings/settings.dart';
 import 'package:systemx/features/device/device_data.dart';
+import 'package:systemx/features/live/live_data.dart';
+import 'package:systemx/features/live/live_screens.dart';
 import 'package:systemx/platform/platform.dart';
 
 import '../test/fakes.dart';
@@ -41,7 +43,9 @@ Future<void> _shoot(
   bool onboarded = true,
   ThemeMode theme = ThemeMode.dark,
 }) async {
-  final api = FakeDeviceApi()..phoneGranted = true;
+  final api = FakeDeviceApi()
+    ..phoneGranted = true
+    ..vary = true;
   SharedPreferencesAsyncPlatform.instance =
       InMemorySharedPreferencesAsync.empty();
   final prefs = await SharedPreferencesWithCache.create(
@@ -53,6 +57,7 @@ Future<void> _shoot(
     // Pixel 8 sample values, since tests have no phone to read.
     deviceApiProvider.overrideWithValue(api),
     permissionApiProvider.overrideWithValue(FakePermissionApi(api)),
+    livePollingProvider.overrideWithValue(false),
   ]);
   if (onboarded) await c.read(settingsProvider.notifier).completeOnboarding();
   await c.read(settingsProvider.notifier).setThemeMode(theme);
@@ -70,6 +75,11 @@ Future<void> _shoot(
     c.read(routerProvider).go(route);
     await tester.pumpAndSettle();
   }
+  // A minute of live readings so charts have a shape.
+  for (var i = 0; i < 40; i++) {
+    await tester.runAsync(() => c.read(liveProvider.notifier).tick());
+  }
+  await tester.pumpAndSettle();
   await tester.pump(const Duration(seconds: 2));
   await expectLater(
       find.byType(MaterialApp), matchesGoldenFile('out/$name.png'));
@@ -97,6 +107,10 @@ void main() {
     await _shoot(tester, '12_device_security',
         Routes.category(DeviceCategory.security));
     await _shoot(tester, '13_device_sim', Routes.category(DeviceCategory.sim));
+    await _shoot(tester, '14_live_cpu', Routes.live(LiveMetric.cpu));
+    await _shoot(tester, '15_live_battery', Routes.live(LiveMetric.battery));
+    await _shoot(tester, '16_live_network', Routes.live(LiveMetric.network));
+    await _shoot(tester, '17_live_thermal', Routes.live(LiveMetric.thermal));
     addTearDown(tester.view.reset);
   });
 }
