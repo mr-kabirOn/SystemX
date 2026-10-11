@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import '../features/device/category_screen.dart';
 import '../features/device/device_data.dart';
 import '../features/device/device_screen.dart';
+import '../features/device/search_screen.dart';
 import '../features/home/home_screen.dart';
 import '../features/monitor/monitor_screen.dart';
 import '../features/onboarding/onboarding_screen.dart';
@@ -17,6 +18,7 @@ abstract final class Routes {
   static const welcome = '/welcome';
   static const home = '/home';
   static const device = '/device';
+  static const search = '/device/search';
   static const tests = '/tests';
   static const monitor = '/monitor';
   static const settings = '/settings';
@@ -48,6 +50,10 @@ final routerProvider = Provider<GoRouter>((ref) {
               path: Routes.device,
               builder: (_, _) => const DeviceScreen(),
               routes: [
+                GoRoute(
+                  path: 'search',
+                  builder: (_, _) => const SearchScreen(),
+                ),
                 GoRoute(
                   path: ':category',
                   redirect: (_, state) =>

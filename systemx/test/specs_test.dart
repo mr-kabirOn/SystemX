@@ -215,6 +215,17 @@ void main() {
     });
   });
 
+  test('search matches every word, across label, value and section', () {
+    final b = builder();
+    final sheets = {for (final c in DeviceCategory.values) c: b.build(c, snap)};
+    final vulkan = searchSpecs(sheets, 'VULKAN');
+    expect(vulkan.map((r) => r.$1), contains(DeviceCategory.gpu));
+    final chip = searchSpecs(sheets, 'tensor g3');
+    expect(chip.map((r) => r.$2.label), contains('Chip'));
+    expect(searchSpecs(sheets, 'tensor g9'), isEmpty);
+    expect(searchSpecs(sheets, '   '), isEmpty);
+  });
+
   test('carriers resolve from MCC+MNC or the SIM name', () {
     expect(carrierFor(mccMnc: '47001')?.balanceCode, '*121#');
     expect(carrierFor(name: 'Robi Axiata')?.name, 'Robi');

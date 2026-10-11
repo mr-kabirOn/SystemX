@@ -2545,6 +2545,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Your phone doesn\'t have this settings screen.'**
   String get settingsUnavailable;
+
+  /// No description provided for @shareSpecs.
+  ///
+  /// In en, this message translates to:
+  /// **'Share spec sheet'**
+  String get shareSpecs;
+
+  /// No description provided for @clearSearch.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear'**
+  String get clearSearch;
+
+  /// No description provided for @searchHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search every spec on this phone, like \"Vulkan\", \"5 GHz\" or \"patch\".'**
+  String get searchHint;
+
+  /// No description provided for @searchNoResults.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing matches \"{query}\".'**
+  String searchNoResults(String query);
+
+  /// No description provided for @specSheetHeader.
+  ///
+  /// In en, this message translates to:
+  /// **'{device} spec sheet · {date}'**
+  String specSheetHeader(String device, String date);
+
+  /// No description provided for @specSheetSubject.
+  ///
+  /// In en, this message translates to:
+  /// **'{device} specs'**
+  String specSheetSubject(String device);
+
+  /// No description provided for @specSheetFooter.
+  ///
+  /// In en, this message translates to:
+  /// **'Made with SystemX'**
+  String get specSheetFooter;
 }
 
 class _AppLocalizationsDelegate

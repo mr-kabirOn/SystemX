@@ -6,6 +6,7 @@ import 'package:shared_preferences_platform_interface/in_memory_shared_preferenc
 import 'package:shared_preferences_platform_interface/shared_preferences_async_platform_interface.dart';
 import 'package:systemx/app.dart';
 import 'package:systemx/core/settings/settings.dart';
+import 'package:systemx/features/device/share.dart';
 import 'package:systemx/platform/platform.dart';
 
 import 'fakes.dart';
@@ -17,6 +18,7 @@ Future<ProviderContainer> pumpApp(
   FakeDeviceApi? api,
   FakePermissionApi? permissions,
   bool onboarded = true,
+  List<(String, String)>? shared,
 }) async {
   SharedPreferencesAsyncPlatform.instance =
       InMemorySharedPreferencesAsync.empty();
@@ -30,6 +32,8 @@ Future<ProviderContainer> pumpApp(
     deviceApiProvider.overrideWithValue(device),
     permissionApiProvider
         .overrideWithValue(permissions ?? FakePermissionApi(device)),
+    shareTextProvider.overrideWithValue(
+        (text, subject) async => shared?.add((text, subject))),
   ]);
   addTearDown(c.dispose);
   if (onboarded) await c.read(settingsProvider.notifier).completeOnboarding();

@@ -10,6 +10,7 @@ import '../../ui/sx_icons.dart';
 import '../../ui/widgets/cards.dart';
 import '../../ui/widgets/page_scaffold.dart';
 import 'device_data.dart';
+import 'share.dart';
 import 'spec_sheets.dart';
 
 class DeviceScreen extends ConsumerWidget {
@@ -39,10 +40,22 @@ class DeviceScreen extends ConsumerWidget {
 
     return PageScaffold(
       title: l.deviceTitle,
+      actions: [
+        IconButton(
+          tooltip: l.shareSpecs,
+          icon: const Icon(Icons.share_outlined),
+          onPressed: snap == null
+              ? null
+              : () => ref.read(shareTextProvider)(
+                    fullSpecSheet(builder, snap, DateTime.now()),
+                    shareSubject(l, snap),
+                  ),
+        ),
+      ],
       slivers: [
         Box(TextField(
           readOnly: true,
-          onTap: () => showComingSoon(context),
+          onTap: () => context.push(Routes.search),
           decoration: InputDecoration(
             hintText: l.deviceSearch,
             prefixIcon: Icon(Icons.search_rounded, color: sx.muted),

@@ -84,6 +84,48 @@ void main() {
     await unmount(tester);
   });
 
+  testWidgets('search finds a spec in any category and opens it',
+      (tester) async {
+    await pumpApp(tester);
+    await openDeviceTab(tester);
+    await tester.tap(find.byType(TextField));
+    await tester.pumpAndSettle();
+    expect(find.textContaining('Search every spec'), findsOneWidget);
+
+    await tester.enterText(find.byType(TextField), 'vulkan');
+    await tester.pumpAndSettle();
+    expect(find.text('1.3.278'), findsOneWidget);
+    expect(find.text('GRAPHICS'), findsOneWidget);
+
+    await tester.enterText(find.byType(TextField), 'zzzz');
+    await tester.pumpAndSettle();
+    expect(find.textContaining('Nothing matches'), findsOneWidget);
+
+    await tester.enterText(find.byType(TextField), 'codename');
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('shiba'));
+    await tester.pumpAndSettle();
+    expect(find.text('Model number'), findsOneWidget);
+  });
+
+  testWidgets('the whole spec sheet can be shared as text', (tester) async {
+    final shared = <(String, String)>[];
+    await pumpApp(tester, shared: shared);
+    await openDeviceTab(tester);
+    await tester.tap(find.byTooltip('Share spec sheet'));
+    await tester.pump();
+
+    final (text, subject) = shared.single;
+    expect(subject, 'Pixel 8 specs');
+    expect(text, startsWith('Pixel 8 spec sheet'));
+    expect(text, contains('== Processor =='));
+    expect(text, contains('Chip: Google Tensor G3'));
+    expect(text, contains('Vulkan: 1.3.278'));
+    // The raw feature-flag list is left out of the shared sheet.
+    expect(text, isNot(contains('android.hardware.uwb')));
+    expect(text, endsWith('Made with SystemX'));
+  });
+
   testWidgets('a failed probe shows a clear message', (tester) async {
     await pumpApp(tester, api: FakeDeviceApi(failing: {'gpu'}));
     await go(tester, Routes.category(DeviceCategory.gpu));

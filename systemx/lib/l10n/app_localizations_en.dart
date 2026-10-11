@@ -1333,4 +1333,32 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get settingsUnavailable =>
       'Your phone doesn\'t have this settings screen.';
+
+  @override
+  String get shareSpecs => 'Share spec sheet';
+
+  @override
+  String get clearSearch => 'Clear';
+
+  @override
+  String get searchHint =>
+      'Search every spec on this phone, like \"Vulkan\", \"5 GHz\" or \"patch\".';
+
+  @override
+  String searchNoResults(String query) {
+    return 'Nothing matches \"$query\".';
+  }
+
+  @override
+  String specSheetHeader(String device, String date) {
+    return '$device spec sheet · $date';
+  }
+
+  @override
+  String specSheetSubject(String device) {
+    return '$device specs';
+  }
+
+  @override
+  String get specSheetFooter => 'Made with SystemX';
 }

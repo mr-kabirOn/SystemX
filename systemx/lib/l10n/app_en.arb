@@ -437,5 +437,15 @@
   "securityPatchOn": "Security patch {date}",
   "@securityPatchOn": {"placeholders": {"date": {"type": "String"}}},
   "specsUnavailable": "Android didn't share this information on your phone.",
-  "settingsUnavailable": "Your phone doesn't have this settings screen."
+  "settingsUnavailable": "Your phone doesn't have this settings screen.",
+  "shareSpecs": "Share spec sheet",
+  "clearSearch": "Clear",
+  "searchHint": "Search every spec on this phone, like \"Vulkan\", \"5 GHz\" or \"patch\".",
+  "searchNoResults": "Nothing matches \"{query}\".",
+  "@searchNoResults": {"placeholders": {"query": {"type": "String"}}},
+  "specSheetHeader": "{device} spec sheet · {date}",
+  "@specSheetHeader": {"placeholders": {"device": {"type": "String"}, "date": {"type": "String"}}},
+  "specSheetSubject": "{device} specs",
+  "@specSheetSubject": {"placeholders": {"device": {"type": "String"}}},
+  "specSheetFooter": "Made with SystemX"
 }

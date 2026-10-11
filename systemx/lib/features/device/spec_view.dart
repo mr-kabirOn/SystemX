@@ -36,10 +36,13 @@ class SpecSections extends ConsumerWidget {
 }
 
 class SpecRow extends StatelessWidget {
-  const SpecRow({super.key, required this.spec, this.onAction});
+  const SpecRow({super.key, required this.spec, this.onAction, this.onTap});
 
   final Spec spec;
   final void Function(SpecAction action)? onAction;
+
+  /// Replaces the spec's own action (used by search to open the category).
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +60,8 @@ class SpecRow extends StatelessWidget {
       hint: spec.hint,
       valueColor: color,
       statusIcon: icon,
-      onTap: action == null || onAction == null ? null : () => onAction!(action),
+      onTap: onTap ??
+          (action == null || onAction == null ? null : () => onAction!(action)),
     );
   }
 }

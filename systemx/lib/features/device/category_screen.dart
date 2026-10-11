@@ -9,6 +9,7 @@ import '../../l10n/app_localizations.dart';
 import '../../ui/widgets/cards.dart';
 import '../../ui/widgets/page_scaffold.dart';
 import 'device_data.dart';
+import 'share.dart';
 import 'spec_sheets.dart';
 import 'spec_view.dart';
 import 'specs.dart';
@@ -87,6 +88,10 @@ class _CategoryScreenState extends ConsumerState<CategoryScreen> {
     final c = widget.category;
     final snapshot = ref.watch(categorySnapshotProvider(c));
     final unit = ref.watch(settingsProvider.select((s) => s.tempUnit));
+    final sections = switch (snapshot.value) {
+      final snap? => SpecBuilder(l, tempUnit: unit).build(c, snap),
+      null => const <SpecSection>[],
+    };
 
     return PageScaffold(
       title: c.title(l),
@@ -99,6 +104,16 @@ class _CategoryScreenState extends ConsumerState<CategoryScreen> {
               child: StatusChip(l.live, color: c.color(sx), icon: Icons.circle),
             ),
           ),
+        IconButton(
+          tooltip: l.shareSpecs,
+          icon: const Icon(Icons.share_outlined),
+          onPressed: sections.isEmpty
+              ? null
+              : () => ref.read(shareTextProvider)(
+                    specsToText(c.title(l), sections),
+                    shareSubject(l, snapshot.value),
+                  ),
+        ),
       ],
       slivers: [
         ...snapshot.when(
@@ -112,8 +127,7 @@ class _CategoryScreenState extends ConsumerState<CategoryScreen> {
             ),
           ],
           error: (_, _) => [const Box(SpecsUnavailable())],
-          data: (snap) {
-            final sections = SpecBuilder(l, tempUnit: unit).build(c, snap);
+          data: (_) {
             if (sections.isEmpty) return [const Box(SpecsUnavailable())];
             return [SpecSections(sections: sections, onAction: _onAction)];
           },
