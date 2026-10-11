@@ -49,8 +49,8 @@ class _PrivacyScreenState extends ConsumerState<PrivacyScreen> {
       (SxIcons.notifications, sx.accent, l.permNotifications, l.permNotificationsSub, null),
       (SxIcons.gps, sx.network, l.permLocation, l.permLocationSub, AppPermission.location),
       (SxIcons.device, sx.cpu, l.permPhone, l.permPhoneSub, AppPermission.phone),
-      (SxIcons.camera, sx.camera, l.permCamera, l.permCameraSub, null),
-      (SxIcons.mic, sx.ram, l.permMicrophone, l.permMicrophoneSub, null),
+      (SxIcons.camera, sx.camera, l.permCamera, l.permCameraSub, AppPermission.camera),
+      (SxIcons.mic, sx.ram, l.permMicrophone, l.permMicrophoneSub, AppPermission.microphone),
       (SxIcons.nearby, sx.storage, l.permNearby, l.permNearbySub, null),
     ];
 

@@ -2989,6 +2989,174 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Charged to {level}%. Unplugging around 80% slows battery wear.'**
   String tipUnplug(int level);
+
+  /// No description provided for @permCameraTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Test the cameras'**
+  String get permCameraTitle;
+
+  /// No description provided for @permCameraReason.
+  ///
+  /// In en, this message translates to:
+  /// **'SystemX opens the camera only during the camera test. Photos stay on screen and are never saved or uploaded.'**
+  String get permCameraReason;
+
+  /// No description provided for @permMicTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Test the microphone'**
+  String get permMicTitle;
+
+  /// No description provided for @permMicReason.
+  ///
+  /// In en, this message translates to:
+  /// **'SystemX records a few seconds only during the microphone tests, plays it back once, then discards it. Nothing is saved or uploaded.'**
+  String get permMicReason;
+
+  /// No description provided for @tDeadPixels.
+  ///
+  /// In en, this message translates to:
+  /// **'Dead pixels'**
+  String get tDeadPixels;
+
+  /// No description provided for @tColorBanding.
+  ///
+  /// In en, this message translates to:
+  /// **'Color banding'**
+  String get tColorBanding;
+
+  /// No description provided for @tBurnIn.
+  ///
+  /// In en, this message translates to:
+  /// **'Burn-in'**
+  String get tBurnIn;
+
+  /// No description provided for @tMultiTouch.
+  ///
+  /// In en, this message translates to:
+  /// **'Multi-touch'**
+  String get tMultiTouch;
+
+  /// No description provided for @tBrightness.
+  ///
+  /// In en, this message translates to:
+  /// **'Brightness range'**
+  String get tBrightness;
+
+  /// No description provided for @tSpeakerMic.
+  ///
+  /// In en, this message translates to:
+  /// **'Speaker to microphone'**
+  String get tSpeakerMic;
+
+  /// No description provided for @tHeadphones.
+  ///
+  /// In en, this message translates to:
+  /// **'Headphone jack'**
+  String get tHeadphones;
+
+  /// No description provided for @tUsbAudio.
+  ///
+  /// In en, this message translates to:
+  /// **'USB audio'**
+  String get tUsbAudio;
+
+  /// No description provided for @tVolumeUp.
+  ///
+  /// In en, this message translates to:
+  /// **'Volume up button'**
+  String get tVolumeUp;
+
+  /// No description provided for @tVolumeDown.
+  ///
+  /// In en, this message translates to:
+  /// **'Volume down button'**
+  String get tVolumeDown;
+
+  /// No description provided for @tRearCamera.
+  ///
+  /// In en, this message translates to:
+  /// **'Rear camera'**
+  String get tRearCamera;
+
+  /// No description provided for @tFrontCamera.
+  ///
+  /// In en, this message translates to:
+  /// **'Front camera'**
+  String get tFrontCamera;
+
+  /// No description provided for @tAccelerometer.
+  ///
+  /// In en, this message translates to:
+  /// **'Accelerometer'**
+  String get tAccelerometer;
+
+  /// No description provided for @tGyroscope.
+  ///
+  /// In en, this message translates to:
+  /// **'Gyroscope'**
+  String get tGyroscope;
+
+  /// No description provided for @tCompass.
+  ///
+  /// In en, this message translates to:
+  /// **'Compass'**
+  String get tCompass;
+
+  /// No description provided for @tProximity.
+  ///
+  /// In en, this message translates to:
+  /// **'Proximity sensor'**
+  String get tProximity;
+
+  /// No description provided for @tLight.
+  ///
+  /// In en, this message translates to:
+  /// **'Light sensor'**
+  String get tLight;
+
+  /// No description provided for @tBarometer.
+  ///
+  /// In en, this message translates to:
+  /// **'Barometer'**
+  String get tBarometer;
+
+  /// No description provided for @tMobileSignal.
+  ///
+  /// In en, this message translates to:
+  /// **'Mobile signal'**
+  String get tMobileSignal;
+
+  /// No description provided for @gAudio.
+  ///
+  /// In en, this message translates to:
+  /// **'Audio'**
+  String get gAudio;
+
+  /// No description provided for @gHaptics.
+  ///
+  /// In en, this message translates to:
+  /// **'Haptics & buttons'**
+  String get gHaptics;
+
+  /// No description provided for @gConnectivity.
+  ///
+  /// In en, this message translates to:
+  /// **'Connectivity'**
+  String get gConnectivity;
+
+  /// No description provided for @gBiometrics.
+  ///
+  /// In en, this message translates to:
+  /// **'Biometrics'**
+  String get gBiometrics;
+
+  /// No description provided for @gPower.
+  ///
+  /// In en, this message translates to:
+  /// **'Charging & storage'**
+  String get gPower;
 }
 
 class _AppLocalizationsDelegate

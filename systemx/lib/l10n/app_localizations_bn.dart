@@ -1586,4 +1586,90 @@ class AppLocalizationsBn extends AppLocalizations {
   String tipUnplug(int level) {
     return 'Charged to $level%. Unplugging around 80% slows battery wear.';
   }
+
+  @override
+  String get permCameraTitle => 'Test the cameras';
+
+  @override
+  String get permCameraReason =>
+      'SystemX opens the camera only during the camera test. Photos stay on screen and are never saved or uploaded.';
+
+  @override
+  String get permMicTitle => 'Test the microphone';
+
+  @override
+  String get permMicReason =>
+      'SystemX records a few seconds only during the microphone tests, plays it back once, then discards it. Nothing is saved or uploaded.';
+
+  @override
+  String get tDeadPixels => 'Dead pixels';
+
+  @override
+  String get tColorBanding => 'Color banding';
+
+  @override
+  String get tBurnIn => 'Burn-in';
+
+  @override
+  String get tMultiTouch => 'Multi-touch';
+
+  @override
+  String get tBrightness => 'Brightness range';
+
+  @override
+  String get tSpeakerMic => 'Speaker to microphone';
+
+  @override
+  String get tHeadphones => 'Headphone jack';
+
+  @override
+  String get tUsbAudio => 'USB audio';
+
+  @override
+  String get tVolumeUp => 'Volume up button';
+
+  @override
+  String get tVolumeDown => 'Volume down button';
+
+  @override
+  String get tRearCamera => 'Rear camera';
+
+  @override
+  String get tFrontCamera => 'Front camera';
+
+  @override
+  String get tAccelerometer => 'Accelerometer';
+
+  @override
+  String get tGyroscope => 'Gyroscope';
+
+  @override
+  String get tCompass => 'Compass';
+
+  @override
+  String get tProximity => 'Proximity sensor';
+
+  @override
+  String get tLight => 'Light sensor';
+
+  @override
+  String get tBarometer => 'Barometer';
+
+  @override
+  String get tMobileSignal => 'Mobile signal';
+
+  @override
+  String get gAudio => 'Audio';
+
+  @override
+  String get gHaptics => 'Haptics & buttons';
+
+  @override
+  String get gConnectivity => 'Connectivity';
+
+  @override
+  String get gBiometrics => 'Biometrics';
+
+  @override
+  String get gPower => 'Charging & storage';
 }

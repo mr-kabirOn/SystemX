@@ -10,25 +10,35 @@ import 'theme/sx_colors.dart';
 /// Runtime permissions SystemX asks for, matching the Kotlin PermissionApi.
 enum AppPermission {
   location,
-  phone;
+  phone,
+  camera,
+  microphone;
 
   IconData get icon => switch (this) {
         location => SxIcons.gps,
         phone => SxIcons.sim,
+        camera => SxIcons.camera,
+        microphone => SxIcons.mic,
       };
 
   Color color(SxColors sx) => switch (this) {
         location || phone => sx.network,
+        camera => sx.camera,
+        microphone => sx.ram,
       };
 
   String title(AppLocalizations l) => switch (this) {
         location => l.permLocationTitle,
         phone => l.permPhoneTitle,
+        camera => l.permCameraTitle,
+        microphone => l.permMicTitle,
       };
 
   String reason(AppLocalizations l) => switch (this) {
         location => l.permLocationReason,
         phone => l.permPhoneReason,
+        camera => l.permCameraReason,
+        microphone => l.permMicReason,
       };
 
   static AppPermission? byName(String name) {
