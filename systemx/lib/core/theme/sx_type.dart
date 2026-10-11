@@ -5,6 +5,9 @@ abstract final class SxFonts {
   static const display = 'Sora';
   static const body = 'Figtree';
   static const mono = 'JetBrainsMono';
+
+  /// Bengali letters, which the three fonts above don't have.
+  static const bengali = 'NotoSansBengali';
 }
 
 /// The bundled fonts are variable fonts, so the weight has to be passed as a
@@ -20,6 +23,7 @@ TextStyle sxStyle(
 }) {
   return TextStyle(
     fontFamily: family,
+    fontFamilyFallback: const [SxFonts.bengali],
     fontSize: size,
     fontWeight: weight,
     fontVariations: [FontVariation('wght', weight.value.toDouble())],

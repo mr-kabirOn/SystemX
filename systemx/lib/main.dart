@@ -27,7 +27,7 @@ Future<void> main() async {
 /// Bundled fonts are OFL-licensed; list them on the licenses page.
 void _registerFontLicenses() {
   LicenseRegistry.addLicense(() async* {
-    for (final font in const ['Sora', 'Figtree', 'JetBrainsMono']) {
+    for (final font in const ['Sora', 'Figtree', 'JetBrainsMono', 'NotoSansBengali']) {
       final text = await rootBundle.loadString('assets/fonts/OFL-$font.txt');
       yield LicenseEntryWithLineBreaks([font], text);
     }

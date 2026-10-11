@@ -40,6 +40,7 @@ ThemeData buildTheme(SxColors c, Brightness brightness) {
     scaffoldBackgroundColor: c.bg,
     canvasColor: c.bg,
     fontFamily: SxFonts.body,
+    fontFamilyFallback: const [SxFonts.bengali],
     textTheme: text,
     extensions: [c],
     splashFactory: InkSparkle.splashFactory,

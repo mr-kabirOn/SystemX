@@ -36,6 +36,7 @@ Future<void> _loadFonts() async {
   await load('Sora', 'assets/fonts/Sora.ttf');
   await load('Figtree', 'assets/fonts/Figtree.ttf');
   await load('JetBrainsMono', 'assets/fonts/JetBrainsMono.ttf');
+  await load('NotoSansBengali', 'assets/fonts/NotoSansBengali.ttf');
   final flutterRoot = Platform.environment['FLUTTER_ROOT']!;
   await load('MaterialIcons',
       '$flutterRoot/bin/cache/artifacts/material_fonts/MaterialIcons-Regular.otf');
@@ -47,6 +48,7 @@ Future<void> _shoot(
   String route, {
   bool onboarded = true,
   ThemeMode theme = ThemeMode.dark,
+  String? locale,
 }) async {
   final api = FakeDeviceApi()
     ..phoneGranted = true
@@ -70,6 +72,7 @@ Future<void> _shoot(
   ]);
   if (onboarded) await c.read(settingsProvider.notifier).completeOnboarding();
   await c.read(settingsProvider.notifier).setThemeMode(theme);
+  if (locale != null) await c.read(settingsProvider.notifier).setLocale(locale);
 
   tester.view.physicalSize = const Size(1080, 2400);
   tester.view.devicePixelRatio = 2.625;
@@ -144,6 +147,11 @@ void main() {
     await _shoot(tester, '18_report', Routes.report(0));
     await _shoot(tester, '19_test_multitouch', Routes.runTest(HwTest.multiTouch));
     await _shoot(tester, '20_checkup_intro', Routes.checkup);
+    await _shoot(tester, '21_alerts', Routes.alerts);
+    await _shoot(tester, '22_sessions', Routes.sessions);
+    await _shoot(tester, '23_wifi_meter', Routes.wifiMeter);
+    await _shoot(tester, '24_home_bangla', Routes.home, locale: 'bn');
+    await _shoot(tester, '25_report_light', Routes.report(0), theme: ThemeMode.light);
     addTearDown(tester.view.reset);
   });
 }

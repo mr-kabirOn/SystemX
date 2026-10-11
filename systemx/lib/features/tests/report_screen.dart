@@ -43,7 +43,9 @@ class ReportScreen extends ConsumerWidget {
     final snap = ref.watch(fullSnapshotProvider).value;
 
     Future<void> export({required bool share}) async {
-      final pdf = await buildReportPdf(c, l, snap);
+      // The PDF library can't shape Bengali conjuncts, so the report is
+      // always written in English.
+      final pdf = await buildReportPdf(c, lookupAppLocalizations(const Locale('en')), snap);
       if (!context.mounted) return;
       final name = reportFileName(c);
       final ok = share

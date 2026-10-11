@@ -40,6 +40,7 @@ flutter:
     - assets/fonts/OFL-Sora.txt
     - assets/fonts/OFL-Figtree.txt
     - assets/fonts/OFL-JetBrainsMono.txt
+    - assets/fonts/OFL-NotoSansBengali.txt
 
   fonts:
     - family: Sora
@@ -51,3 +52,6 @@ flutter:
     - family: JetBrainsMono
       fonts:
         - asset: assets/fonts/JetBrainsMono.ttf
+    - family: NotoSansBengali
+      fonts:
+        - asset: assets/fonts/NotoSansBengali.ttf
