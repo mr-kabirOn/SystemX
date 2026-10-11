@@ -291,7 +291,7 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get monitorBody =>
-      'Live charts for every part of your phone. Drag across a chart to read earlier values.';
+      'ফোনের প্রতিটি অংশের লাইভ চার্ট। আগের মান দেখতে চার্টের ওপর আঙুল টানুন।';
 
   @override
   String get monitorCpu => 'প্রসেসর ক্লক';
@@ -445,788 +445,787 @@ class AppLocalizationsBn extends AppLocalizations {
   }
 
   @override
-  String get notAvailable => 'Not available on this device';
+  String get notAvailable => 'এই ডিভাইসে পাওয়া যায় না';
 
   @override
-  String get yes => 'Yes';
+  String get yes => 'হ্যাঁ';
 
   @override
-  String get no => 'No';
+  String get no => 'না';
 
   @override
-  String get on => 'On';
+  String get on => 'চালু';
 
   @override
-  String get off => 'Off';
+  String get off => 'বন্ধ';
 
   @override
-  String get none => 'None';
+  String get none => 'নেই';
 
   @override
-  String get unknown => 'Unknown';
+  String get unknown => 'অজানা';
 
   @override
-  String get supported => 'Supported';
+  String get supported => 'সমর্থিত';
 
   @override
-  String get notSupported => 'Not supported';
+  String get notSupported => 'সমর্থিত নয়';
 
   @override
-  String get detected => 'Detected';
+  String get detected => 'পাওয়া গেছে';
 
   @override
-  String get notDetected => 'Not detected';
+  String get notDetected => 'পাওয়া যায়নি';
 
   @override
-  String get encrypted => 'Encrypted';
+  String get encrypted => 'এনক্রিপ্টেড';
 
   @override
-  String get notEncrypted => 'Not encrypted';
+  String get notEncrypted => 'এনক্রিপ্টেড নয়';
 
   @override
-  String get locked => 'Locked';
+  String get locked => 'লক করা';
 
   @override
-  String get unlocked => 'Unlocked';
+  String get unlocked => 'আনলক করা';
 
   @override
   String get secGooglePlay => 'Google Play';
 
   @override
-  String get secPlatform => 'Platform';
+  String get secPlatform => 'প্ল্যাটফর্ম';
 
   @override
-  String get secSession => 'Session';
+  String get secSession => 'সেশন';
 
   @override
-  String get secCores => 'Cores';
+  String get secCores => 'কোর';
 
   @override
-  String get secCharging => 'Charging';
+  String get secCharging => 'চার্জিং';
 
   @override
-  String get secCapacity => 'Capacity';
+  String get secCapacity => 'ক্ষমতা';
 
   @override
-  String get secSettings => 'Settings';
+  String get secSettings => 'সেটিংস';
 
   @override
-  String get secMobile => 'Mobile network';
+  String get secMobile => 'মোবাইল নেটওয়ার্ক';
 
   @override
-  String get secVolume => 'Storage volume';
+  String get secVolume => 'স্টোরেজ ভলিউম';
 
   @override
-  String get secDrm => 'Video protection (DRM)';
+  String get secDrm => 'ভিডিও সুরক্ষা (DRM)';
 
   @override
-  String get secAudio => 'Audio';
+  String get secAudio => 'অডিও';
 
   @override
-  String get secVideoCodecs => 'Video codecs';
+  String get secVideoCodecs => 'ভিডিও কোডেক';
 
   @override
-  String get secAudioCodecs => 'Audio codecs';
+  String get secAudioCodecs => 'অডিও কোডেক';
 
   @override
-  String get secHardware => 'Hardware';
+  String get secHardware => 'হার্ডওয়্যার';
 
   @override
-  String get specModelName => 'Model name';
+  String get specModelName => 'মডেলের নাম';
 
   @override
-  String get specManufacturer => 'Manufacturer';
+  String get specManufacturer => 'নির্মাতা';
 
   @override
-  String get specBrand => 'Brand';
+  String get specBrand => 'ব্র্যান্ড';
 
   @override
-  String get specModel => 'Model number';
+  String get specModel => 'মডেল নম্বর';
 
   @override
-  String get specCodename => 'Codename';
+  String get specCodename => 'কোডনেম';
 
   @override
-  String get specProduct => 'Product';
+  String get specProduct => 'প্রোডাক্ট';
 
   @override
-  String get specBoard => 'Board';
+  String get specBoard => 'বোর্ড';
 
   @override
-  String get specHardware => 'Hardware';
+  String get specHardware => 'হার্ডওয়্যার';
 
   @override
-  String get specDeviceType => 'Device type';
+  String get specDeviceType => 'ডিভাইসের ধরন';
 
   @override
-  String get devicePhone => 'Phone';
+  String get devicePhone => 'ফোন';
 
   @override
-  String get deviceTablet => 'Tablet';
+  String get deviceTablet => 'ট্যাবলেট';
 
   @override
-  String get specAndroidVersion => 'Android version';
+  String get specAndroidVersion => 'অ্যান্ড্রয়েড ভার্সন';
 
   @override
-  String get specApiLevel => 'API level';
+  String get specApiLevel => 'API লেভেল';
 
   @override
-  String get specSecurityPatch => 'Security patch';
+  String get specSecurityPatch => 'সিকিউরিটি প্যাচ';
 
   @override
-  String get specBuildNumber => 'Build number';
+  String get specBuildNumber => 'বিল্ড নম্বর';
 
   @override
-  String get specBuildDate => 'Build date';
+  String get specBuildDate => 'বিল্ডের তারিখ';
 
   @override
-  String get specBuildType => 'Build type';
+  String get specBuildType => 'বিল্ডের ধরন';
 
   @override
-  String get specIncremental => 'Incremental version';
+  String get specIncremental => 'ইনক্রিমেন্টাল ভার্সন';
 
   @override
-  String get specFingerprint => 'Build fingerprint';
+  String get specFingerprint => 'বিল্ড ফিঙ্গারপ্রিন্ট';
 
   @override
-  String get specPlayServices => 'Google Play services';
+  String get specPlayServices => 'Google Play সার্ভিস';
 
   @override
   String get specPlayStore => 'Play Store';
 
   @override
-  String get specPlaySystemUpdate => 'Google Play system update';
+  String get specPlaySystemUpdate => 'Google Play সিস্টেম আপডেট';
 
   @override
-  String get specKernel => 'Kernel';
+  String get specKernel => 'কার্নেল';
 
   @override
-  String get specBootloader => 'Bootloader';
+  String get specBootloader => 'বুটলোডার';
 
   @override
-  String get specBaseband => 'Baseband (modem)';
+  String get specBaseband => 'বেসব্যান্ড (মডেম)';
 
   @override
-  String get specRuntime => 'Runtime';
+  String get specRuntime => 'রানটাইম';
 
   @override
   String get specTreble => 'Project Treble';
 
   @override
-  String get specSeamlessUpdates => 'Seamless (A/B) updates';
+  String get specSeamlessUpdates => 'সিমলেস (A/B) আপডেট';
 
   @override
-  String get specDynamicPartitions => 'Dynamic partitions';
+  String get specDynamicPartitions => 'ডায়নামিক পার্টিশন';
 
   @override
-  String get specEncryption => 'Encryption';
+  String get specEncryption => 'এনক্রিপশন';
 
   @override
-  String get specRoot => 'Root access';
+  String get specRoot => 'রুট অ্যাক্সেস';
 
   @override
-  String get specUptime => 'Uptime';
+  String get specUptime => 'চালু থাকার সময়';
 
   @override
-  String get specLanguage => 'Language';
+  String get specLanguage => 'ভাষা';
 
   @override
-  String get specTimezone => 'Time zone';
+  String get specTimezone => 'টাইম জোন';
 
   @override
-  String get specChip => 'Chip';
+  String get specChip => 'চিপ';
 
   @override
-  String get specProcess => 'Process node';
+  String get specProcess => 'প্রসেস নোড';
 
   @override
-  String get specSocMaker => 'Chip maker';
+  String get specSocMaker => 'চিপ নির্মাতা';
 
   @override
-  String get specSocModel => 'Chip model code';
+  String get specSocModel => 'চিপের মডেল কোড';
 
   @override
-  String get specCores => 'Cores';
+  String get specCores => 'কোর';
 
   @override
-  String get specClusters => 'Clusters';
+  String get specClusters => 'ক্লাস্টার';
 
   @override
-  String get specCoreTypes => 'Core types';
+  String get specCoreTypes => 'কোরের ধরন';
 
   @override
-  String get specGovernor => 'Governor';
+  String get specGovernor => 'গভর্নর';
 
   @override
-  String get specArchitecture => 'Architecture';
+  String get specArchitecture => 'আর্কিটেকচার';
 
   @override
-  String get specAbis => 'Supported ABIs';
+  String get specAbis => 'সমর্থিত ABI';
 
   @override
-  String get specInstructions => 'Instruction features';
+  String get specInstructions => 'ইনস্ট্রাকশন ফিচার';
 
   @override
-  String get coreOffline => 'Offline (sleeping)';
+  String get coreOffline => 'অফলাইন (ঘুমন্ত)';
 
   @override
   String get specRenderer => 'GPU';
 
   @override
-  String get specVendor => 'Vendor';
+  String get specVendor => 'ভেন্ডর';
 
   @override
   String get specOpenGlEs => 'OpenGL ES';
 
   @override
-  String get specGlDriver => 'Driver version';
+  String get specGlDriver => 'ড্রাইভার ভার্সন';
 
   @override
   String get specVulkan => 'Vulkan';
 
   @override
-  String get specGlExtensions => 'OpenGL extensions';
+  String get specGlExtensions => 'OpenGL এক্সটেনশন';
 
   @override
-  String get specInstalled => 'Installed RAM';
+  String get specInstalled => 'ইনস্টল করা RAM';
 
   @override
-  String get specUsable => 'Usable by Android';
+  String get specUsable => 'অ্যান্ড্রয়েডের ব্যবহারযোগ্য';
 
   @override
-  String get usableHint => 'Part of the RAM is reserved for the modem and GPU';
+  String get usableHint => 'RAM-এর কিছু অংশ মডেম আর GPU-র জন্য রাখা থাকে';
 
   @override
-  String get specInUse => 'In use';
+  String get specInUse => 'ব্যবহৃত হচ্ছে';
 
   @override
-  String get specAvailable => 'Available';
+  String get specAvailable => 'খালি আছে';
 
   @override
-  String get specLowMemoryAt => 'Low-memory point';
+  String get specLowMemoryAt => 'কম মেমোরির সীমা';
 
   @override
   String get lowMemoryHint =>
-      'Android starts closing background apps below this';
+      'এর নিচে নামলে অ্যান্ড্রয়েড ব্যাকগ্রাউন্ড অ্যাপ বন্ধ করতে শুরু করে';
 
   @override
-  String get specLowMemoryNow => 'Low on memory now';
+  String get specLowMemoryNow => 'এখন মেমোরি কম';
 
   @override
-  String get specSwap => 'Swap (zRAM)';
+  String get specSwap => 'সোয়াপ (zRAM)';
 
   @override
-  String get specSwapUsed => 'Swap in use';
+  String get specSwapUsed => 'ব্যবহৃত সোয়াপ';
 
   @override
-  String get specTotal => 'Total';
+  String get specTotal => 'মোট';
 
   @override
-  String get specUsed => 'Used';
+  String get specUsed => 'ব্যবহৃত';
 
   @override
-  String get specFree => 'Free';
+  String get specFree => 'খালি';
 
   @override
-  String get specFileSystem => 'File system';
+  String get specFileSystem => 'ফাইল সিস্টেম';
 
   @override
-  String get specVolumeType => 'Type';
+  String get specVolumeType => 'ধরন';
 
   @override
-  String get specState => 'State';
+  String get specState => 'অবস্থা';
 
   @override
-  String get volumeInternal => 'Internal';
+  String get volumeInternal => 'ইন্টারনাল';
 
   @override
-  String get volumeRemovable => 'Removable (SD card or USB)';
+  String get volumeRemovable => 'খুলে ফেলা যায় (SD কার্ড বা USB)';
 
   @override
-  String get volumeOther => 'Other';
+  String get volumeOther => 'অন্যান্য';
 
   @override
-  String get specLevel => 'Level';
+  String get specLevel => 'লেভেল';
 
   @override
-  String get specStatus => 'Status';
+  String get specStatus => 'অবস্থা';
 
   @override
-  String get specPowerSource => 'Power source';
+  String get specPowerSource => 'পাওয়ারের উৎস';
 
   @override
-  String get specHealth => 'Health';
+  String get specHealth => 'স্বাস্থ্য';
 
   @override
-  String get specTemperature => 'Temperature';
+  String get specTemperature => 'তাপমাত্রা';
 
   @override
-  String get specVoltage => 'Voltage';
+  String get specVoltage => 'ভোল্টেজ';
 
   @override
-  String get specTechnology => 'Technology';
+  String get specTechnology => 'প্রযুক্তি';
 
   @override
-  String get specCurrentNow => 'Current now';
+  String get specCurrentNow => 'এখনকার কারেন্ট';
 
   @override
-  String get specCurrentAvg => 'Average current';
+  String get specCurrentAvg => 'গড় কারেন্ট';
 
   @override
-  String get specTimeToFull => 'Time to full';
+  String get specTimeToFull => 'পূর্ণ হতে বাকি';
 
   @override
-  String get specCycleCount => 'Charge cycles';
+  String get specCycleCount => 'চার্জ সাইকেল';
 
   @override
   String get cycleHint =>
-      'Reported on Android 14 and later, when the maker exposes it';
+      'অ্যান্ড্রয়েড ১৪ ও পরের ভার্সনে, নির্মাতা জানালে দেখা যায়';
 
   @override
-  String get specChargeCounter => 'Charge left';
+  String get specChargeCounter => 'বাকি চার্জ';
 
   @override
-  String get specEstCapacity => 'Estimated full capacity';
+  String get specEstCapacity => 'আনুমানিক পূর্ণ ক্ষমতা';
 
   @override
-  String get estCapacityHint => 'Estimate, from the charge counter';
+  String get estCapacityHint => 'আনুমানিক, চার্জ কাউন্টার থেকে হিসাব করা';
 
   @override
-  String get specDesignCapacity => 'Design capacity';
+  String get specDesignCapacity => 'ডিজাইন ক্ষমতা';
 
   @override
   String get designCapacityHint =>
-      'From the system power profile; some makers leave it wrong';
+      'সিস্টেম পাওয়ার প্রোফাইল থেকে; কিছু নির্মাতা ভুল মান রেখে দেয়';
 
   @override
-  String get batCharging => 'Charging';
+  String get batCharging => 'চার্জ হচ্ছে';
 
   @override
-  String get batDischarging => 'Discharging';
+  String get batDischarging => 'চার্জ কমছে';
 
   @override
-  String get batNotCharging => 'Plugged in, not charging';
+  String get batNotCharging => 'প্লাগ লাগানো, চার্জ হচ্ছে না';
 
   @override
-  String get batFull => 'Full';
+  String get batFull => 'পূর্ণ';
 
   @override
-  String get healthGood => 'Good';
+  String get healthGood => 'ভালো';
 
   @override
-  String get healthOverheat => 'Overheating';
+  String get healthOverheat => 'অতিরিক্ত গরম';
 
   @override
-  String get healthDead => 'Dead';
+  String get healthDead => 'নষ্ট';
 
   @override
-  String get healthOverVoltage => 'Over voltage';
+  String get healthOverVoltage => 'অতিরিক্ত ভোল্টেজ';
 
   @override
-  String get healthFailure => 'Failure';
+  String get healthFailure => 'ত্রুটি';
 
   @override
-  String get healthCold => 'Too cold';
+  String get healthCold => 'অতিরিক্ত ঠান্ডা';
 
   @override
-  String get plugBattery => 'On battery';
+  String get plugBattery => 'ব্যাটারিতে চলছে';
 
   @override
-  String get plugAc => 'Charger';
+  String get plugAc => 'চার্জার';
 
   @override
   String get plugUsb => 'USB';
 
   @override
-  String get plugWireless => 'Wireless';
+  String get plugWireless => 'ওয়্যারলেস';
 
   @override
-  String get plugDock => 'Dock';
+  String get plugDock => 'ডক';
 
   @override
-  String get specResolution => 'Resolution';
+  String get specResolution => 'রেজোলিউশন';
 
   @override
-  String get specSize => 'Screen size';
+  String get specSize => 'স্ক্রিনের আকার';
 
   @override
-  String get sizeHint => 'Calculated from the pixel density the screen reports';
+  String get sizeHint => 'স্ক্রিনের জানানো পিক্সেল ঘনত্ব থেকে হিসাব করা';
 
   @override
-  String get specAspect => 'Aspect ratio';
+  String get specAspect => 'অনুপাত';
 
   @override
-  String get specDensity => 'Pixel density';
+  String get specDensity => 'পিক্সেল ঘনত্ব';
 
   @override
-  String get specRefreshRate => 'Refresh rate now';
+  String get specRefreshRate => 'এখনকার রিফ্রেশ রেট';
 
   @override
-  String get specRefreshRates => 'Supported refresh rates';
+  String get specRefreshRates => 'সমর্থিত রিফ্রেশ রেট';
 
   @override
   String get specHdr => 'HDR';
 
   @override
-  String get specWideColor => 'Wide color';
+  String get specWideColor => 'ওয়াইড কালার';
 
   @override
-  String get specCutout => 'Camera cutout';
+  String get specCutout => 'ক্যামেরা কাটআউট';
 
   @override
-  String get specBrightness => 'Brightness level';
+  String get specBrightness => 'উজ্জ্বলতার মান';
 
   @override
-  String get brightnessHint => 'Raw value; the range depends on the maker';
+  String get brightnessHint => 'কাঁচা মান; পরিসর নির্মাতার ওপর নির্ভর করে';
 
   @override
-  String get specTimeout => 'Screen timeout';
+  String get specTimeout => 'স্ক্রিন বন্ধ হওয়ার সময়';
 
   @override
-  String get specFontScale => 'Font size';
+  String get specFontScale => 'ফন্টের আকার';
 
   @override
-  String get specConnection => 'Connection';
+  String get specConnection => 'সংযোগ';
 
   @override
-  String get specInternet => 'Internet';
+  String get specInternet => 'ইন্টারনেট';
 
   @override
-  String get netWorking => 'Working';
+  String get netWorking => 'চলছে';
 
   @override
-  String get netNoInternet => 'Connected, no internet';
+  String get netNoInternet => 'সংযুক্ত, ইন্টারনেট নেই';
 
   @override
-  String get netMobile => 'Mobile data';
+  String get netMobile => 'মোবাইল ডেটা';
 
   @override
-  String get netNone => 'Not connected';
+  String get netNone => 'সংযুক্ত নয়';
 
   @override
-  String get netOther => 'Other';
+  String get netOther => 'অন্যান্য';
 
   @override
-  String get specMetered => 'Metered';
+  String get specMetered => 'মিটারড';
 
   @override
   String get specVpn => 'VPN';
 
   @override
-  String get specInterface => 'Interface';
+  String get specInterface => 'ইন্টারফেস';
 
   @override
-  String get specIpv4 => 'IPv4 address';
+  String get specIpv4 => 'IPv4 ঠিকানা';
 
   @override
-  String get specIpv6 => 'IPv6 address';
+  String get specIpv6 => 'IPv6 ঠিকানা';
 
   @override
-  String get specGateway => 'Gateway';
+  String get specGateway => 'গেটওয়ে';
 
   @override
-  String get specDns => 'DNS servers';
+  String get specDns => 'DNS সার্ভার';
 
   @override
-  String get specPrivateDns => 'Private DNS';
+  String get specPrivateDns => 'প্রাইভেট DNS';
 
   @override
-  String get specBandwidth => 'Link capacity';
+  String get specBandwidth => 'সংযোগের ক্ষমতা';
 
   @override
   String get bandwidthHint =>
-      'Android\'s estimate of the connection\'s top speed, not a speed test';
+      'সংযোগের সর্বোচ্চ গতির ব্যাপারে অ্যান্ড্রয়েডের অনুমান, স্পিড টেস্ট নয়';
 
   @override
   String get specWifi => 'Wi-Fi';
 
   @override
-  String get specWifiName => 'Network name';
+  String get specWifiName => 'নেটওয়ার্কের নাম';
 
   @override
-  String get wifiNameHidden => 'Hidden by Android';
+  String get wifiNameHidden => 'অ্যান্ড্রয়েড লুকিয়ে রেখেছে';
 
   @override
-  String get wifiNameHint => 'Tap to allow Location and show it';
+  String get wifiNameHint => 'দেখতে ট্যাপ করে লোকেশনের অনুমতি দিন';
 
   @override
-  String get specSignal => 'Signal';
+  String get specSignal => 'সিগন্যাল';
 
   @override
-  String get signalExcellent => 'Excellent';
+  String get signalExcellent => 'চমৎকার';
 
   @override
-  String get signalGood => 'Good';
+  String get signalGood => 'ভালো';
 
   @override
-  String get signalFair => 'Fair';
+  String get signalFair => 'মোটামুটি';
 
   @override
-  String get signalWeak => 'Weak';
+  String get signalWeak => 'দুর্বল';
 
   @override
-  String get specWifiStandard => 'Wi-Fi standard';
+  String get specWifiStandard => 'Wi-Fi স্ট্যান্ডার্ড';
 
   @override
-  String get specFrequency => 'Frequency';
+  String get specFrequency => 'ফ্রিকোয়েন্সি';
 
   @override
-  String get specLinkSpeed => 'Link speed';
+  String get specLinkSpeed => 'লিংক স্পিড';
 
   @override
-  String get specTxRx => 'Send / receive';
+  String get specTxRx => 'পাঠানো / গ্রহণ';
 
   @override
-  String get specOperator => 'Operator';
+  String get specOperator => 'অপারেটর';
 
   @override
-  String get specCountry => 'Country';
+  String get specCountry => 'দেশ';
 
   @override
-  String get specRoaming => 'Roaming';
+  String get specRoaming => 'রোমিং';
 
   @override
-  String get specNetworkType => 'Network type';
+  String get specNetworkType => 'নেটওয়ার্কের ধরন';
 
   @override
-  String get needsPhone => 'Needs Phone permission';
+  String get needsPhone => 'ফোনের অনুমতি দরকার';
 
   @override
-  String get needsPhoneHint => 'Tap to allow it and show SIM details';
+  String get needsPhoneHint => 'সিমের তথ্য দেখতে ট্যাপ করে অনুমতি দিন';
 
   @override
-  String get specSlots => 'SIM slots';
+  String get specSlots => 'সিম স্লট';
 
   @override
-  String get specSimState => 'SIM status';
+  String get specSimState => 'সিমের অবস্থা';
 
   @override
   String get specMccMnc => 'MCC / MNC';
 
   @override
-  String get specSimDetails => 'SIM details';
+  String get specSimDetails => 'সিমের তথ্য';
 
   @override
-  String get specCarrier => 'Carrier';
+  String get specCarrier => 'ক্যারিয়ার';
 
   @override
-  String get specSimName => 'Name';
+  String get specSimName => 'নাম';
 
   @override
-  String get specSimType => 'Type';
+  String get specSimType => 'ধরন';
 
   @override
-  String get simPhysical => 'Physical SIM';
+  String get simPhysical => 'ফিজিক্যাল সিম';
 
   @override
-  String get specDataSim => 'Used for mobile data';
+  String get specDataSim => 'মোবাইল ডেটার জন্য ব্যবহৃত';
 
   @override
-  String get simAbsent => 'No SIM';
+  String get simAbsent => 'সিম নেই';
 
   @override
-  String get simPin => 'PIN required';
+  String get simPin => 'PIN দরকার';
 
   @override
-  String get simPuk => 'PUK required';
+  String get simPuk => 'PUK দরকার';
 
   @override
-  String get simLocked => 'Network locked';
+  String get simLocked => 'নেটওয়ার্ক লক করা';
 
   @override
-  String get simReady => 'Ready';
+  String get simReady => 'প্রস্তুত';
 
   @override
-  String get simNotReady => 'Not ready';
+  String get simNotReady => 'প্রস্তুত নয়';
 
   @override
-  String get simDisabled => 'Disabled';
+  String get simDisabled => 'বন্ধ করা';
 
   @override
-  String get simError => 'Card error';
+  String get simError => 'কার্ডে সমস্যা';
 
   @override
-  String get cameraRear => 'Rear camera';
+  String get cameraRear => 'পেছনের ক্যামেরা';
 
   @override
-  String get cameraFront => 'Front camera';
+  String get cameraFront => 'সামনের ক্যামেরা';
 
   @override
-  String get cameraExternal => 'External camera';
+  String get cameraExternal => 'এক্সটার্নাল ক্যামেরা';
 
   @override
-  String get specSensorSize => 'Sensor size';
+  String get specSensorSize => 'সেন্সরের আকার';
 
   @override
-  String get specAperture => 'Aperture';
+  String get specAperture => 'অ্যাপারচার';
 
   @override
-  String get specFocalLength => 'Focal length';
+  String get specFocalLength => 'ফোকাল লেংথ';
 
   @override
-  String get specOis => 'Optical stabilization (OIS)';
+  String get specOis => 'অপটিক্যাল স্টেবিলাইজেশন (OIS)';
 
   @override
-  String get specFlash => 'Flash';
+  String get specFlash => 'ফ্ল্যাশ';
 
   @override
-  String get specMaxVideo => 'Best video';
+  String get specMaxVideo => 'সেরা ভিডিও';
 
   @override
-  String get specRaw => 'RAW photos';
+  String get specRaw => 'RAW ছবি';
 
   @override
-  String get specCamera2Level => 'Camera2 API level';
+  String get specCamera2Level => 'Camera2 API লেভেল';
 
   @override
-  String get specMultiCamera => 'Combines several lenses';
+  String get specMultiCamera => 'একাধিক লেন্স একসাথে ব্যবহার করে';
 
   @override
-  String get specCameraId => 'Camera ID';
+  String get specCameraId => 'ক্যামেরা আইডি';
 
   @override
-  String get specWidevine => 'Widevine level';
+  String get specWidevine => 'Widevine লেভেল';
 
   @override
-  String get widevineL1Hint => 'L1 allows HD and 4K streaming';
+  String get widevineL1Hint => 'L1 থাকলে HD আর 4K স্ট্রিমিং চলে';
 
   @override
-  String get specWidevineVersion => 'Widevine version';
+  String get specWidevineVersion => 'Widevine ভার্সন';
 
   @override
-  String get specHdcp => 'Max HDCP';
+  String get specHdcp => 'সর্বোচ্চ HDCP';
 
   @override
-  String get specAudioOutputs => 'Audio outputs';
+  String get specAudioOutputs => 'অডিও আউটপুট';
 
   @override
-  String get specLowLatency => 'Low-latency audio';
+  String get specLowLatency => 'লো-ল্যাটেন্সি অডিও';
 
   @override
-  String get specProAudio => 'Pro audio';
+  String get specProAudio => 'প্রো অডিও';
 
   @override
-  String get specSpatial => 'Spatial audio';
+  String get specSpatial => 'স্প্যাশিয়াল অডিও';
 
   @override
-  String get codecDecode => 'Decode';
+  String get codecDecode => 'ডিকোড';
 
   @override
-  String get codecDecodeHw => 'Decode (hardware)';
+  String get codecDecodeHw => 'ডিকোড (হার্ডওয়্যার)';
 
   @override
-  String get codecDecodeSw => 'Decode (software)';
+  String get codecDecodeSw => 'ডিকোড (সফটওয়্যার)';
 
   @override
-  String get codecEncode => 'Encode';
+  String get codecEncode => 'এনকোড';
 
   @override
-  String get codecEncodeHw => 'Encode (hardware)';
+  String get codecEncodeHw => 'এনকোড (হার্ডওয়্যার)';
 
   @override
-  String get codecEncodeSw => 'Encode (software)';
+  String get codecEncodeSw => 'এনকোড (সফটওয়্যার)';
 
   @override
-  String get featUwb => 'Ultra-wideband (UWB)';
+  String get featUwb => 'আল্ট্রা-ওয়াইডব্যান্ড (UWB)';
 
   @override
-  String get featIr => 'IR blaster';
+  String get featIr => 'IR ব্লাস্টার';
 
   @override
-  String get featUsbHost => 'USB host (OTG)';
+  String get featUsbHost => 'USB হোস্ট (OTG)';
 
   @override
-  String get featFingerprint => 'Fingerprint';
+  String get featFingerprint => 'ফিঙ্গারপ্রিন্ট';
 
   @override
-  String get featFace => 'Face unlock hardware';
+  String get featFace => 'ফেস আনলক হার্ডওয়্যার';
 
   @override
-  String get featTelephony => 'Mobile network';
+  String get featTelephony => 'মোবাইল নেটওয়ার্ক';
 
   @override
-  String get featWifiRtt => 'Wi-Fi RTT (indoor location)';
+  String get featWifiRtt => 'Wi-Fi RTT (ঘরের ভেতরে লোকেশন)';
 
   @override
-  String get featLe2m => 'LE 2M PHY (faster)';
+  String get featLe2m => 'LE 2M PHY (দ্রুততর)';
 
   @override
-  String get featLeCoded => 'LE Coded PHY (long range)';
+  String get featLeCoded => 'LE Coded PHY (দূরপাল্লা)';
 
   @override
-  String get featLeExtAdv => 'LE extended advertising';
+  String get featLeExtAdv => 'LE এক্সটেন্ডেড অ্যাডভার্টাইজিং';
 
   @override
-  String get specScreenLock => 'Screen lock';
+  String get specScreenLock => 'স্ক্রিন লক';
 
   @override
-  String get lockSet => 'Set';
+  String get lockSet => 'সেট করা';
 
   @override
-  String get lockNotSet => 'Not set';
+  String get lockNotSet => 'সেট করা নেই';
 
   @override
-  String get lockHint => 'Anyone who picks up the phone can open it';
+  String get lockHint => 'যে কেউ ফোন হাতে নিলেই খুলতে পারবে';
 
   @override
-  String get specBiometrics => 'Biometrics';
+  String get specBiometrics => 'বায়োমেট্রিক্স';
 
   @override
-  String get bioEnrolled => 'Enrolled';
+  String get bioEnrolled => 'যুক্ত করা আছে';
 
   @override
-  String get bioNone => 'Not set up';
+  String get bioNone => 'সেট করা নেই';
 
   @override
-  String get bioNoHardware => 'No hardware';
+  String get bioNoHardware => 'হার্ডওয়্যার নেই';
 
   @override
-  String get specDevOptions => 'Developer options';
+  String get specDevOptions => 'ডেভেলপার অপশন';
 
   @override
-  String get specUsbDebugging => 'USB debugging';
+  String get specUsbDebugging => 'USB ডিবাগিং';
 
   @override
-  String get adbHint => 'Turn off when you are not developing';
+  String get adbHint => 'ডেভেলপমেন্ট না করলে বন্ধ রাখুন';
 
   @override
-  String get specVerifiedBoot => 'Verified boot';
+  String get specVerifiedBoot => 'ভেরিফায়েড বুট';
 
   @override
   String monthsOld(int months) {
     String _temp0 = intl.Intl.pluralLogic(
       months,
       locale: localeName,
-      other: '$months months old',
-      one: '1 month old',
-      zero: 'This month',
+      other: '$months মাস পুরোনো',
+      zero: 'এই মাসের',
     );
     return '$_temp0';
   }
 
   @override
   String coreN(int index) {
-    return 'Core $index';
+    return 'কোর $index';
   }
 
   @override
   String maxFreq(String freq) {
-    return 'max $freq';
+    return 'সর্বোচ্চ $freq';
   }
 
   @override
   String channelN(int channel) {
-    return 'channel $channel';
+    return 'চ্যানেল $channel';
   }
 
   @override
   String signalBars(int level) {
-    return '$level of 4 bars';
+    return '৪টির মধ্যে $levelটি দাগ';
   }
 
   @override
   String simN(int slot) {
-    return 'SIM $slot';
+    return 'সিম $slot';
   }
 
   @override
@@ -1234,8 +1233,7 @@ class AppLocalizationsBn extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$count sensors',
-      one: '1 sensor',
+      other: '$countটি সেন্সর',
     );
     return '$_temp0';
   }
@@ -1245,8 +1243,7 @@ class AppLocalizationsBn extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$count cores',
-      one: '1 core',
+      other: '$countটি কোর',
     );
     return '$_temp0';
   }
@@ -1256,8 +1253,7 @@ class AppLocalizationsBn extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$count cycles',
-      one: '1 cycle',
+      other: '$count সাইকেল',
     );
     return '$_temp0';
   }
@@ -1267,8 +1263,7 @@ class AppLocalizationsBn extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$count slots',
-      one: '1 slot',
+      other: '$countটি স্লট',
     );
     return '$_temp0';
   }
@@ -1278,15 +1273,14 @@ class AppLocalizationsBn extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$count cameras',
-      one: '1 camera',
+      other: '$countটি ক্যামেরা',
     );
     return '$_temp0';
   }
 
   @override
   String mainCamera(String mp) {
-    return '$mp main';
+    return '$mp মূল';
   }
 
   @override
@@ -1294,102 +1288,99 @@ class AppLocalizationsBn extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$count codecs',
-      one: '1 codec',
+      other: '$countটি কোডেক',
     );
     return '$_temp0';
   }
 
   @override
   String checksPassed(int passed, int total) {
-    return '$passed of $total checks passed';
+    return '$totalটির মধ্যে $passedটি চেক পাস';
   }
 
   @override
   String secAllFeatures(int count) {
-    return 'All system features ($count)';
+    return 'সব সিস্টেম ফিচার ($count)';
   }
 
   @override
-  String get live => 'Live';
+  String get live => 'লাইভ';
 
   @override
   String securityPatchOn(String date) {
-    return 'Security patch $date';
+    return 'সিকিউরিটি প্যাচ $date';
   }
 
   @override
-  String get specsUnavailable =>
-      'Android didn\'t share this information on your phone.';
+  String get specsUnavailable => 'আপনার ফোনে অ্যান্ড্রয়েড এই তথ্য দেয়নি।';
 
   @override
-  String get settingsUnavailable =>
-      'Your phone doesn\'t have this settings screen.';
+  String get settingsUnavailable => 'আপনার ফোনে এই সেটিংস স্ক্রিন নেই।';
 
   @override
-  String get shareSpecs => 'Share spec sheet';
+  String get shareSpecs => 'স্পেক শিট শেয়ার করুন';
 
   @override
-  String get clearSearch => 'Clear';
+  String get clearSearch => 'মুছুন';
 
   @override
   String get searchHint =>
-      'Search every spec on this phone, like \"Vulkan\", \"5 GHz\" or \"patch\".';
+      'এই ফোনের যেকোনো স্পেক খুঁজুন, যেমন \"Vulkan\", \"5 GHz\" বা \"patch\"।';
 
   @override
   String searchNoResults(String query) {
-    return 'Nothing matches \"$query\".';
+    return '\"$query\"-এর সাথে কিছু মেলেনি।';
   }
 
   @override
   String specSheetHeader(String device, String date) {
-    return '$device spec sheet · $date';
+    return '$device স্পেক শিট · $date';
   }
 
   @override
   String specSheetSubject(String device) {
-    return '$device specs';
+    return '$device-এর স্পেক';
   }
 
   @override
-  String get specSheetFooter => 'Made with SystemX';
+  String get specSheetFooter => 'SystemX দিয়ে তৈরি';
 
   @override
-  String get permLocationTitle => 'Show the Wi-Fi name';
+  String get permLocationTitle => 'Wi-Fi-এর নাম দেখান';
 
   @override
   String get permLocationReason =>
-      'Android only shares the Wi-Fi network name with apps that have Location permission. SystemX uses it for this value and the GPS test, and never tracks where you are.';
+      'অ্যান্ড্রয়েড শুধু লোকেশনের অনুমতি থাকা অ্যাপকে Wi-Fi নেটওয়ার্কের নাম জানায়। SystemX এটা শুধু এই তথ্য আর GPS টেস্টের জন্য ব্যবহার করে, আপনি কোথায় আছেন তা কখনো ট্র্যাক করে না।';
 
   @override
-  String get permPhoneTitle => 'Show SIM details';
+  String get permPhoneTitle => 'সিমের তথ্য দেখান';
 
   @override
   String get permPhoneReason =>
-      'Phone permission lets SystemX read your SIM slots, carrier names and mobile network type. It can\'t make calls or read your phone number.';
+      'ফোনের অনুমতি দিলে SystemX আপনার সিম স্লট, ক্যারিয়ারের নাম আর মোবাইল নেটওয়ার্কের ধরন পড়তে পারে। এটা দিয়ে কল করা বা আপনার ফোন নম্বর পড়া যায় না।';
 
   @override
   String get permBlocked =>
-      'You turned this off earlier, so Android won\'t ask again. Open Settings › Permissions to allow it.';
+      'আপনি আগে এটা বন্ধ করেছেন, তাই অ্যান্ড্রয়েড আর জিজ্ঞেস করবে না। অনুমতি দিতে সেটিংস › অনুমতি খুলুন।';
 
   @override
-  String get permOpenSettings => 'Open settings';
+  String get permOpenSettings => 'সেটিংস খুলুন';
 
   @override
-  String get statusAllowed => 'Allowed';
+  String get statusAllowed => 'অনুমতি আছে';
 
   @override
-  String get statusNotAllowed => 'Not allowed';
+  String get statusNotAllowed => 'অনুমতি নেই';
 
   @override
-  String get statusBlocked => 'Off in settings';
+  String get statusBlocked => 'সেটিংসে বন্ধ';
 
   @override
-  String get balanceTitle => 'Check balance';
+  String get balanceTitle => 'ব্যালেন্স দেখুন';
 
   @override
   String get balanceBody =>
-      'Opens your dialer with the code filled in. Nothing is dialed until you press call.';
+      'কোড বসানো অবস্থায় ডায়ালার খোলে। আপনি কল চাপার আগে কিছুই ডায়াল হয় না।';
 
   @override
   String balanceButton(String carrier, String code) {
@@ -1397,824 +1388,818 @@ class AppLocalizationsBn extends AppLocalizations {
   }
 
   @override
-  String get liveReading => 'Live reading';
+  String get liveReading => 'লাইভ রিডিং';
 
   @override
   String get sensorWaiting =>
-      'Waiting for a reading. Some sensors only report when something changes, like covering the proximity sensor.';
+      'রিডিংয়ের অপেক্ষা। কিছু সেন্সর শুধু কোনো পরিবর্তন হলে জানায়, যেমন প্রক্সিমিটি সেন্সর ঢাকলে।';
 
   @override
-  String get sensorOnChange => 'When the value changes';
+  String get sensorOnChange => 'মান বদলালে';
 
   @override
-  String get sensorRange => 'Maximum range';
+  String get sensorRange => 'সর্বোচ্চ পরিসর';
 
   @override
-  String get sensorResolution => 'Resolution';
+  String get sensorResolution => 'রেজোলিউশন';
 
   @override
-  String get sensorPower => 'Power use';
+  String get sensorPower => 'বিদ্যুৎ খরচ';
 
   @override
-  String get sensorRate => 'Fastest rate';
+  String get sensorRate => 'সর্বোচ্চ হার';
 
   @override
-  String get sensorWakeUp => 'Wake-up sensor';
+  String get sensorWakeUp => 'ওয়েক-আপ সেন্সর';
 
   @override
-  String get sensorWakeUpHint => 'Can wake the phone from sleep to report';
+  String get sensorWakeUpHint => 'জানাতে ফোনকে ঘুম থেকে জাগাতে পারে';
 
   @override
-  String get sensorVersion => 'Driver version';
+  String get sensorVersion => 'ড্রাইভার ভার্সন';
 
   @override
-  String get thermalLight => 'Light';
+  String get thermalLight => 'হালকা';
 
   @override
-  String get thermalModerate => 'Moderate';
+  String get thermalModerate => 'মাঝারি';
 
   @override
-  String get thermalSevere => 'Severe';
+  String get thermalSevere => 'তীব্র';
 
   @override
-  String get thermalCritical => 'Critical';
+  String get thermalCritical => 'সংকটজনক';
 
   @override
-  String get thermalEmergency => 'Emergency';
+  String get thermalEmergency => 'জরুরি';
 
   @override
-  String get thermalShutdown => 'Shutting down';
+  String get thermalShutdown => 'বন্ধ হয়ে যাচ্ছে';
 
   @override
-  String get pause => 'Pause';
+  String get pause => 'থামান';
 
   @override
-  String get resume => 'Resume';
+  String get resume => 'আবার চালান';
 
   @override
-  String get paused => 'Paused';
+  String get paused => 'থামানো';
 
   @override
-  String get avgClock => 'Average clock';
+  String get avgClock => 'গড় ক্লক';
 
   @override
-  String get loadEstimate => 'Load (estimate)';
+  String get loadEstimate => 'লোড (আনুমানিক)';
 
   @override
-  String get chartClockLast60 => 'Average clock · last 60 readings';
+  String get chartClockLast60 => 'গড় ক্লক · শেষ ৬০টি রিডিং';
 
   @override
   String get loadEstimateHint =>
-      'Android 8 and later hide real CPU usage from apps, so load is estimated from clock speeds.';
+      'অ্যান্ড্রয়েড ৮ ও পরের ভার্সন অ্যাপকে আসল CPU ব্যবহার দেখায় না, তাই লোড ক্লক স্পিড থেকে অনুমান করা।';
 
   @override
-  String get chartCurrent => 'Charge current';
+  String get chartCurrent => 'চার্জিং কারেন্ট';
 
   @override
-  String get currentUnavailable =>
-      'Your phone doesn\'t report charging current.';
+  String get currentUnavailable => 'আপনার ফোন চার্জিং কারেন্ট জানায় না।';
 
   @override
-  String get chartTemperature => 'Battery temperature';
+  String get chartTemperature => 'ব্যাটারির তাপমাত্রা';
 
   @override
-  String get download => 'Download';
+  String get download => 'ডাউনলোড';
 
   @override
-  String get upload => 'Upload';
+  String get upload => 'আপলোড';
 
   @override
-  String get chartNetwork => 'Network speed';
+  String get chartNetwork => 'নেটওয়ার্ক স্পিড';
 
   @override
   String get networkSpeedHint =>
-      'All traffic on this phone, from every app. This is not a speed test.';
+      'এই ফোনের সব অ্যাপের মোট ট্রাফিক। এটা স্পিড টেস্ট নয়।';
 
   @override
-  String get thermalStatus => 'Thermal status';
+  String get thermalStatus => 'তাপের অবস্থা';
 
   @override
-  String get thermalHeadroom => 'Headroom before slowdown';
+  String get thermalHeadroom => 'ধীর হওয়ার আগে বাকি';
 
   @override
-  String get chartBatteryTemp => 'Battery temperature';
+  String get chartBatteryTemp => 'ব্যাটারির তাপমাত্রা';
 
   @override
-  String get chartCpuTemp => 'CPU temperature';
+  String get chartCpuTemp => 'CPU-র তাপমাত্রা';
 
   @override
   String get cpuTempUnavailable =>
-      'Your phone doesn\'t let apps read the CPU temperature. Battery temperature and thermal status are shown instead.';
+      'আপনার ফোন অ্যাপকে CPU-র তাপমাত্রা পড়তে দেয় না। এর বদলে ব্যাটারির তাপমাত্রা আর তাপের অবস্থা দেখানো হচ্ছে।';
 
   @override
   String get thermalHint =>
-      'When the phone gets hot, Android slows the processor to cool down. Headroom shows how close it is to that point.';
+      'ফোন গরম হলে ঠান্ডা করতে অ্যান্ড্রয়েড প্রসেসরকে ধীর করে দেয়। হেডরুম দেখায় সেই সীমা থেকে কত দূরে আছে।';
 
   @override
-  String get details => 'Details';
+  String get details => 'বিস্তারিত';
 
   @override
-  String get scoreGood => 'Good health';
+  String get scoreGood => 'ভালো অবস্থা';
 
   @override
-  String get scoreFair => 'Fair health';
+  String get scoreFair => 'মোটামুটি অবস্থা';
 
   @override
-  String get scorePoor => 'Needs attention';
+  String get scorePoor => 'মনোযোগ দরকার';
 
   @override
-  String get noCheckupYet =>
-      'No checkup yet. Run one to include it in the score.';
+  String get noCheckupYet => 'এখনো চেকআপ হয়নি। স্কোরে যোগ করতে একটি চালান।';
 
   @override
-  String get scoreHow => 'How the score works';
+  String get scoreHow => 'স্কোর যেভাবে হিসাব হয়';
 
   @override
   String get scoreExplain =>
-      'The score combines what your phone reports right now. Anything Android doesn\'t share is left out instead of guessed.';
+      'এই মুহূর্তে আপনার ফোন যা জানায় তা মিলিয়ে স্কোর হয়। অ্যান্ড্রয়েড যা দেয় না তা অনুমান না করে বাদ রাখা হয়।';
 
   @override
-  String get factorBattery => 'Battery health';
+  String get factorBattery => 'ব্যাটারির স্বাস্থ্য';
 
   @override
-  String get factorTemperature => 'Temperature';
+  String get factorTemperature => 'তাপমাত্রা';
 
   @override
-  String get factorStorage => 'Free storage';
+  String get factorStorage => 'খালি স্টোরেজ';
 
   @override
-  String get factorMemory => 'Free memory';
+  String get factorMemory => 'খালি মেমোরি';
 
   @override
-  String get factorCheckup => 'Last checkup';
+  String get factorCheckup => 'শেষ চেকআপ';
 
   @override
   String get tipNoScreenLock =>
-      'No screen lock is set. Anyone who picks up your phone can open it.';
+      'কোনো স্ক্রিন লক সেট নেই। যে কেউ ফোন হাতে নিলেই খুলতে পারবে।';
 
   @override
   String get tipMemoryLow =>
-      'Memory is almost full, so Android is closing background apps.';
+      'মেমোরি প্রায় পূর্ণ, তাই অ্যান্ড্রয়েড ব্যাকগ্রাউন্ড অ্যাপ বন্ধ করছে।';
 
   @override
-  String get tipOpen => 'Open';
+  String get tipOpen => 'খুলুন';
 
   @override
-  String get monitorTemp => 'Temperature';
+  String get monitorTemp => 'তাপমাত্রা';
 
   @override
   String weightN(int weight) {
-    return 'weight $weight';
+    return 'গুরুত্ব $weight';
   }
 
   @override
   String tipBatteryHot(String temp) {
-    return 'Phone is warm ($temp). Close heavy apps or take off the case for a while.';
+    return 'ফোন গরম ($temp)। ভারী অ্যাপ বন্ধ করুন বা কিছুক্ষণ কভার খুলে রাখুন।';
   }
 
   @override
   String tipStorageLow(int percent) {
-    return 'Storage is $percent% full. Free up space to keep apps fast.';
+    return 'স্টোরেজ $percent% পূর্ণ। অ্যাপ দ্রুত রাখতে জায়গা খালি করুন।';
   }
 
   @override
   String tipPatchOld(int months) {
-    return 'Security patch is $months months old. Check for a system update.';
+    return 'সিকিউরিটি প্যাচ $months মাস পুরোনো। সিস্টেম আপডেট আছে কিনা দেখুন।';
   }
 
   @override
   String tipUnplug(int level) {
-    return 'Charged to $level%. Unplugging around 80% slows battery wear.';
+    return '$level% চার্জ হয়েছে। ৮০%-এর কাছাকাছি খুলে ফেললে ব্যাটারি কম ক্ষয় হয়।';
   }
 
   @override
-  String get permCameraTitle => 'Test the cameras';
+  String get permCameraTitle => 'ক্যামেরা পরীক্ষা করুন';
 
   @override
   String get permCameraReason =>
-      'SystemX opens the camera only during the camera test. Photos stay on screen and are never saved or uploaded.';
+      'SystemX শুধু ক্যামেরা টেস্টের সময় ক্যামেরা খোলে। ছবি স্ক্রিনেই থাকে, কখনো সেভ বা আপলোড হয় না।';
 
   @override
-  String get permMicTitle => 'Test the microphone';
+  String get permMicTitle => 'মাইক্রোফোন পরীক্ষা করুন';
 
   @override
   String get permMicReason =>
-      'SystemX records a few seconds only during the microphone tests, plays it back once, then discards it. Nothing is saved or uploaded.';
+      'SystemX শুধু মাইক্রোফোন টেস্টের সময় কয়েক সেকেন্ড রেকর্ড করে, একবার শুনিয়ে মুছে ফেলে। কিছুই সেভ বা আপলোড হয় না।';
 
   @override
-  String get tDeadPixels => 'Dead pixels';
+  String get tDeadPixels => 'ডেড পিক্সেল';
 
   @override
-  String get tColorBanding => 'Color banding';
+  String get tColorBanding => 'রঙের ব্যান্ডিং';
 
   @override
-  String get tBurnIn => 'Burn-in';
+  String get tBurnIn => 'বার্ন-ইন';
 
   @override
-  String get tMultiTouch => 'Multi-touch';
+  String get tMultiTouch => 'মাল্টি-টাচ';
 
   @override
-  String get tBrightness => 'Brightness range';
+  String get tBrightness => 'উজ্জ্বলতার পরিসর';
 
   @override
-  String get tSpeakerMic => 'Speaker to microphone';
+  String get tSpeakerMic => 'স্পিকার থেকে মাইক্রোফোন';
 
   @override
-  String get tHeadphones => 'Headphone jack';
+  String get tHeadphones => 'হেডফোন জ্যাক';
 
   @override
-  String get tUsbAudio => 'USB audio';
+  String get tUsbAudio => 'USB অডিও';
 
   @override
-  String get tVolumeUp => 'Volume up button';
+  String get tVolumeUp => 'ভলিউম বাড়ানোর বোতাম';
 
   @override
-  String get tVolumeDown => 'Volume down button';
+  String get tVolumeDown => 'ভলিউম কমানোর বোতাম';
 
   @override
-  String get tRearCamera => 'Rear camera';
+  String get tRearCamera => 'পেছনের ক্যামেরা';
 
   @override
-  String get tFrontCamera => 'Front camera';
+  String get tFrontCamera => 'সামনের ক্যামেরা';
 
   @override
-  String get tAccelerometer => 'Accelerometer';
+  String get tAccelerometer => 'অ্যাক্সেলেরোমিটার';
 
   @override
-  String get tGyroscope => 'Gyroscope';
+  String get tGyroscope => 'জাইরোস্কোপ';
 
   @override
-  String get tCompass => 'Compass';
+  String get tCompass => 'কম্পাস';
 
   @override
-  String get tProximity => 'Proximity sensor';
+  String get tProximity => 'প্রক্সিমিটি সেন্সর';
 
   @override
-  String get tLight => 'Light sensor';
+  String get tLight => 'আলো সেন্সর';
 
   @override
-  String get tBarometer => 'Barometer';
+  String get tBarometer => 'ব্যারোমিটার';
 
   @override
-  String get tMobileSignal => 'Mobile signal';
+  String get tMobileSignal => 'মোবাইল সিগন্যাল';
 
   @override
-  String get gAudio => 'Audio';
+  String get gAudio => 'অডিও';
 
   @override
-  String get gHaptics => 'Haptics & buttons';
+  String get gHaptics => 'ভাইব্রেশন ও বোতাম';
 
   @override
-  String get gConnectivity => 'Connectivity';
+  String get gConnectivity => 'সংযোগ';
 
   @override
-  String get gBiometrics => 'Biometrics';
+  String get gBiometrics => 'বায়োমেট্রিক্স';
 
   @override
-  String get gPower => 'Charging & storage';
+  String get gPower => 'চার্জিং ও স্টোরেজ';
 
   @override
-  String get automaticTests => 'Automatic tests';
+  String get automaticTests => 'স্বয়ংক্রিয় টেস্ট';
 
   @override
   String get automaticTestsBody =>
-      'These run on their own. Keep the phone still and the room quiet for the speaker test.';
+      'এগুলো নিজে নিজেই চলে। স্পিকার টেস্টের জন্য ফোন স্থির আর ঘর চুপচাপ রাখুন।';
 
   @override
   String get bioNoDataNote =>
-      'Android checks your fingerprint or face. SystemX only learns whether it matched.';
+      'অ্যান্ড্রয়েড আপনার ফিঙ্গারপ্রিন্ট বা মুখ যাচাই করে। SystemX শুধু জানে মিলেছে কিনা।';
 
   @override
-  String get bioPromptTitle => 'Biometrics test';
+  String get bioPromptTitle => 'বায়োমেট্রিক্স টেস্ট';
 
   @override
-  String get bioPromptSubtitle => 'Touch the sensor or look at the screen';
+  String get bioPromptSubtitle => 'সেন্সর ছুঁয়ে দিন বা স্ক্রিনের দিকে তাকান';
 
   @override
-  String get buttonDoesNothing => 'The button does nothing';
+  String get buttonDoesNothing => 'বোতামে কিছুই হয় না';
 
   @override
-  String get cancel => 'Cancel';
+  String get cancel => 'বাতিল';
 
   @override
   String get checkupIntro =>
-      'Automatic tests run first. Then each test tells you what to do, and you can skip any of them.';
+      'প্রথমে স্বয়ংক্রিয় টেস্টগুলো চলে। তারপর প্রতিটি টেস্ট আপনাকে কী করতে হবে বলে দেবে, আর যেকোনোটি বাদ দিতে পারবেন।';
 
   @override
   String get checkupPrep =>
-      'Have wired headphones, a USB audio device and a charger nearby if you can. Location helps the GPS test.';
+      'সম্ভব হলে তারের হেডফোন, একটি USB অডিও ডিভাইস আর চার্জার কাছে রাখুন। লোকেশন চালু থাকলে GPS টেস্টে সুবিধা হয়।';
 
   @override
-  String get done => 'Done';
+  String get done => 'হয়ে গেছে';
 
   @override
   String get fixAudio =>
-      'Clean the grille with a soft dry brush, remove any case or screen protector covering it, and test again.';
+      'নরম শুকনো ব্রাশ দিয়ে গ্রিল পরিষ্কার করুন, ঢেকে রাখা কভার বা স্ক্রিন প্রটেক্টর সরান, তারপর আবার পরীক্ষা করুন।';
 
   @override
   String get fixBiometrics =>
-      'Clean the sensor and your finger, re-enroll in Settings › Security, and test again.';
+      'সেন্সর আর আঙুল পরিষ্কার করুন, সেটিংস › নিরাপত্তায় আবার যুক্ত করুন, তারপর আবার পরীক্ষা করুন।';
 
   @override
   String get fixCamera =>
-      'Clean the lens and check nothing covers it. If the image stays blurry, the camera may need service.';
+      'লেন্স পরিষ্কার করুন আর কিছু ঢেকে আছে কিনা দেখুন। ছবি ঝাপসাই থাকলে ক্যামেরা সার্ভিসিং লাগতে পারে।';
 
   @override
   String get fixCharging =>
-      'Try another cable and charger, and clean the port gently with a wooden toothpick.';
+      'অন্য কেবল আর চার্জার দিয়ে চেষ্টা করুন, আর কাঠের খিলাল দিয়ে আলতো করে পোর্ট পরিষ্কার করুন।';
 
   @override
   String get fixConnectivity =>
-      'Turn it off and on in Quick Settings, restart the phone, and test again.';
+      'কুইক সেটিংসে বন্ধ করে আবার চালু করুন, ফোন রিস্টার্ট করুন, তারপর আবার পরীক্ষা করুন।';
 
   @override
-  String get fixConnector => 'Clean the port and try another device.';
+  String get fixConnector =>
+      'পোর্ট পরিষ্কার করে অন্য ডিভাইস দিয়ে চেষ্টা করুন।';
 
   @override
   String get fixDisplay =>
-      'Restart the phone and test again. Marks that stay usually mean the screen needs service.';
+      'ফোন রিস্টার্ট করে আবার পরীক্ষা করুন। দাগ থেকে গেলে সাধারণত স্ক্রিন সার্ভিসিং লাগে।';
 
   @override
   String get fixHaptics =>
-      'Restart the phone and test again. If it still fails, the part may need service.';
+      'ফোন রিস্টার্ট করে আবার পরীক্ষা করুন। তবুও ব্যর্থ হলে যন্ত্রাংশটি সার্ভিসিং লাগতে পারে।';
 
   @override
-  String get fixSensor => 'Remove the case, restart the phone and test again.';
+  String get fixSensor => 'কভার খুলে, ফোন রিস্টার্ট করে আবার পরীক্ষা করুন।';
 
   @override
-  String get fixStorage => 'Free up some space and test again.';
+  String get fixStorage => 'কিছু জায়গা খালি করে আবার পরীক্ষা করুন।';
 
   @override
-  String get flashOn => 'Flashlight is on';
+  String get flashOn => 'ফ্ল্যাশলাইট জ্বলছে';
 
   @override
-  String get flashTurningOn => 'Turning on the flashlight…';
+  String get flashTurningOn => 'ফ্ল্যাশলাইট চালু হচ্ছে…';
 
   @override
-  String get gpsStarting => 'Looking for satellites…';
+  String get gpsStarting => 'স্যাটেলাইট খোঁজা হচ্ছে…';
 
   @override
-  String get holdPhone => 'Hold the phone in your hand';
+  String get holdPhone => 'ফোনটি হাতে ধরে রাখুন';
 
   @override
-  String get holdToEar => 'Hold the phone to your ear, then tap Play';
+  String get holdToEar => 'ফোন কানে ধরুন, তারপর চালান চাপুন';
 
   @override
-  String get iAccelerometer =>
-      'Tilt the phone to roll the ball into all four corners.';
+  String get iAccelerometer => 'বলটিকে চার কোণে গড়িয়ে নিতে ফোন কাত করুন।';
 
   @override
   String get iBiometrics =>
-      'Tap Start and use your fingerprint or face as you do to unlock.';
+      'শুরু চাপুন আর আনলক করার মতো ফিঙ্গারপ্রিন্ট বা মুখ ব্যবহার করুন।';
 
   @override
-  String get iBrightness => 'Watch the screen dim and brighten.';
+  String get iBrightness => 'স্ক্রিন কম-বেশি উজ্জ্বল হওয়া লক্ষ্য করুন।';
 
   @override
   String get iCharging =>
-      'Plug in a charger. SystemX measures the charging current for a few seconds.';
+      'চার্জার লাগান। SystemX কয়েক সেকেন্ড চার্জিং কারেন্ট মাপবে।';
 
   @override
-  String get iCompass =>
-      'Turn around slowly in a full circle while holding the phone flat.';
+  String get iCompass => 'ফোন সমান করে ধরে ধীরে ধীরে পুরো এক চক্কর ঘুরুন।';
 
   @override
-  String get iEarpiece =>
-      'This tone plays through the small speaker you hold to your ear on calls.';
+  String get iEarpiece => 'এই শব্দটা বাজবে কলের সময় কানে ধরা ছোট স্পিকারে।';
 
   @override
-  String get iFlashlight => 'Look at the back of the phone.';
+  String get iFlashlight => 'ফোনের পেছনে তাকান।';
 
   @override
   String get iFrontCamera =>
-      'Point the front camera at your face, tap to focus, then take a photo.';
+      'সামনের ক্যামেরা মুখের দিকে ধরুন, ফোকাস করতে ট্যাপ করুন, তারপর ছবি তুলুন।';
 
   @override
   String get iGps =>
-      'Stand near a window or go outside. Finding satellites can take a minute.';
+      'জানালার কাছে দাঁড়ান বা বাইরে যান। স্যাটেলাইট খুঁজতে এক মিনিট লাগতে পারে।';
 
   @override
-  String get iGyroscope =>
-      'Rotate the phone in any direction, like turning a steering wheel.';
+  String get iGyroscope => 'স্টিয়ারিং ঘোরানোর মতো ফোনটি যেকোনো দিকে ঘোরান।';
 
   @override
-  String get iHeadphones => 'Plug wired headphones into the headphone jack.';
+  String get iHeadphones => 'হেডফোন জ্যাকে তারের হেডফোন লাগান।';
 
   @override
   String get iLight =>
-      'Cover the top of the screen with your hand, then uncover it or hold it under a light.';
+      'হাত দিয়ে স্ক্রিনের ওপরের অংশ ঢাকুন, তারপর সরিয়ে নিন বা আলোর নিচে ধরুন।';
 
   @override
   String get iMicrophone =>
-      'Tap Record and say a few words. SystemX plays it back right away.';
+      'রেকর্ড চেপে কয়েকটি কথা বলুন। SystemX সাথে সাথে শুনিয়ে দেবে।';
 
   @override
-  String get iMultiTouch => 'Put as many fingers on the screen as you can.';
+  String get iMultiTouch => 'যত বেশি পারেন আঙুল স্ক্রিনে রাখুন।';
 
   @override
   String get iProximity =>
-      'Cover the top of the screen near the earpiece with your hand, then move it away.';
+      'ইয়ারপিসের কাছে স্ক্রিনের ওপরের অংশ হাত দিয়ে ঢাকুন, তারপর সরিয়ে নিন।';
 
   @override
   String get iRearCamera =>
-      'Point the rear camera at something with detail, tap to focus, then take a photo.';
+      'পেছনের ক্যামেরা খুঁটিনাটি আছে এমন কিছুর দিকে ধরুন, ফোকাস করতে ট্যাপ করুন, তারপর ছবি তুলুন।';
 
   @override
-  String get iSpeaker => 'A tone plays through the loudspeaker.';
+  String get iSpeaker => 'লাউডস্পিকারে একটি শব্দ বাজবে।';
 
   @override
-  String get iUsbAudio => 'Connect USB-C headphones or a USB audio adapter.';
+  String get iUsbAudio => 'USB-C হেডফোন বা USB অডিও অ্যাডাপ্টার লাগান।';
 
   @override
-  String get iVibration => 'The phone vibrates in a short pattern.';
+  String get iVibration => 'ফোন অল্প সময়ের জন্য একটি ছন্দে ভাইব্রেট করবে।';
 
   @override
-  String get iVolumeDown => 'Press the volume down button.';
+  String get iVolumeDown => 'ভলিউম কমানোর বোতাম চাপুন।';
 
   @override
-  String get iVolumeUp => 'Press the volume up button.';
+  String get iVolumeUp => 'ভলিউম বাড়ানোর বোতাম চাপুন।';
 
   @override
-  String get itDoesntWork => 'It doesn\'t recognise me';
+  String get itDoesntWork => 'আমাকে চিনতে পারছে না';
 
   @override
-  String get keepGoing => 'Keep going';
+  String get keepGoing => 'চালিয়ে যান';
 
   @override
-  String get lastCheckup => 'Last checkup';
+  String get lastCheckup => 'শেষ চেকআপ';
 
   @override
-  String get listen => 'Listen';
+  String get listen => 'শুনুন';
 
   @override
-  String get measuring => 'Measuring…';
+  String get measuring => 'মাপা হচ্ছে…';
 
   @override
-  String get nBanding => 'Visible color bands';
+  String get nBanding => 'রঙের দাগ দেখা যায়';
 
   @override
-  String get nBluetoothOff => 'Bluetooth is off';
+  String get nBluetoothOff => 'ব্লুটুথ বন্ধ';
 
   @override
-  String get nBrightnessBad => 'Brightness didn\'t change smoothly';
+  String get nBrightnessBad => 'উজ্জ্বলতা মসৃণভাবে বদলায়নি';
 
   @override
-  String get nBrightnessOk => 'Full range works';
+  String get nBrightnessOk => 'পুরো পরিসর কাজ করে';
 
   @override
-  String get nBurnIn => 'Ghost images visible';
+  String get nBurnIn => 'ছায়ার মতো দাগ দেখা যায়';
 
   @override
-  String get nButtonNoResponse => 'No response';
+  String get nButtonNoResponse => 'সাড়া নেই';
 
   @override
-  String get nCameraError => 'The camera couldn\'t start';
+  String get nCameraError => 'ক্যামেরা চালু হয়নি';
 
   @override
-  String get nConnected => 'Connected';
+  String get nConnected => 'সংযুক্ত';
 
   @override
-  String get nCouldNotRead => 'Couldn\'t read the hardware state';
+  String get nCouldNotRead => 'হার্ডওয়্যারের অবস্থা পড়া যায়নি';
 
   @override
-  String get nDeadPixels => 'Dots that don\'t change color';
+  String get nDeadPixels => 'কিছু বিন্দুর রং বদলায় না';
 
   @override
-  String get nFlashBad => 'Didn\'t light up';
+  String get nFlashBad => 'জ্বলেনি';
 
   @override
-  String get nFlashOk => 'Lights up';
+  String get nFlashOk => 'জ্বলে';
 
   @override
-  String get nGpsNone => 'No satellites found';
+  String get nGpsNone => 'কোনো স্যাটেলাইট পাওয়া যায়নি';
 
   @override
-  String get nLoopFail => 'The microphone didn\'t pick up the speaker tone';
+  String get nLoopFail => 'মাইক্রোফোন স্পিকারের শব্দ ধরতে পারেনি';
 
   @override
-  String get nMicError => 'The microphone is busy or unavailable';
+  String get nMicError => 'মাইক্রোফোন ব্যস্ত বা পাওয়া যাচ্ছে না';
 
   @override
-  String get nNfcOff => 'NFC is off';
+  String get nNfcOff => 'NFC বন্ধ';
 
   @override
-  String get nNoBiometrics => 'No fingerprint or face hardware';
+  String get nNoBiometrics => 'ফিঙ্গারপ্রিন্ট বা ফেস হার্ডওয়্যার নেই';
 
   @override
-  String get nNoBluetooth => 'No Bluetooth on this phone';
+  String get nNoBluetooth => 'এই ফোনে ব্লুটুথ নেই';
 
   @override
-  String get nNoBurnIn => 'No ghost images';
+  String get nNoBurnIn => 'ছায়ার মতো দাগ নেই';
 
   @override
-  String get nNoCharger => 'No charger at hand';
+  String get nNoCharger => 'হাতের কাছে চার্জার নেই';
 
   @override
-  String get nNoDeadPixels => 'No dead pixels';
+  String get nNoDeadPixels => 'ডেড পিক্সেল নেই';
 
   @override
-  String get nNoFrontCamera => 'No front camera';
+  String get nNoFrontCamera => 'সামনের ক্যামেরা নেই';
 
   @override
-  String get nNoHeadphones => 'No headphones at hand';
+  String get nNoHeadphones => 'হাতের কাছে হেডফোন নেই';
 
   @override
-  String get nNoNfc => 'No NFC on this phone';
+  String get nNoNfc => 'এই ফোনে NFC নেই';
 
   @override
-  String get nNoRearCamera => 'No rear camera';
+  String get nNoRearCamera => 'পেছনের ক্যামেরা নেই';
 
   @override
-  String get nNoSensor => 'This phone doesn\'t have this sensor';
+  String get nNoSensor => 'এই ফোনে এই সেন্সর নেই';
 
   @override
-  String get nNoSignal => 'No mobile signal';
+  String get nNoSignal => 'মোবাইল সিগন্যাল নেই';
 
   @override
-  String get nNoSignalInfo => 'The phone doesn\'t report signal strength';
+  String get nNoSignalInfo => 'ফোন সিগন্যালের শক্তি জানায় না';
 
   @override
-  String get nNoSim => 'No SIM card';
+  String get nNoSim => 'সিম কার্ড নেই';
 
   @override
-  String get nNoUsbAudio => 'No USB audio device at hand';
+  String get nNoUsbAudio => 'হাতের কাছে USB অডিও ডিভাইস নেই';
 
   @override
-  String get nNoneEnrolled => 'No fingerprint or face is set up';
+  String get nNoneEnrolled => 'কোনো ফিঙ্গারপ্রিন্ট বা মুখ সেট করা নেই';
 
   @override
-  String get nNotRecognised => 'Not recognised';
+  String get nNotRecognised => 'চিনতে পারেনি';
 
   @override
-  String get nOnNotConnected => 'On, not connected';
+  String get nOnNotConnected => 'চালু, সংযুক্ত নয়';
 
   @override
-  String get nPermissionDenied => 'Permission not allowed';
+  String get nPermissionDenied => 'অনুমতি দেওয়া হয়নি';
 
   @override
-  String get nPhotoBad => 'Blurry or broken photo';
+  String get nPhotoBad => 'ঝাপসা বা ভাঙা ছবি';
 
   @override
-  String get nPhotoOk => 'Preview and photo work';
+  String get nPhotoOk => 'প্রিভিউ আর ছবি কাজ করে';
 
   @override
-  String get nRecognised => 'Recognised';
+  String get nRecognised => 'চিনতে পেরেছে';
 
   @override
-  String get nSensorNoResponse => 'The sensor didn\'t respond';
+  String get nSensorNoResponse => 'সেন্সর সাড়া দেয়নি';
 
   @override
-  String get nSensorResponds => 'Responds to movement';
+  String get nSensorResponds => 'নড়াচড়ায় সাড়া দেয়';
 
   @override
-  String get nSmooth => 'Smooth gradients';
+  String get nSmooth => 'মসৃণ গ্রেডিয়েন্ট';
 
   @override
-  String get nStorageError => 'Couldn\'t write a test file';
+  String get nStorageError => 'টেস্ট ফাইল লেখা যায়নি';
 
   @override
-  String get nStorageMismatch => 'Data read back didn\'t match';
+  String get nStorageMismatch => 'পড়া ডেটা মেলেনি';
 
   @override
-  String get nToneHeard => 'Tone heard';
+  String get nToneHeard => 'শব্দ শোনা গেছে';
 
   @override
-  String get nToneNotHeard => 'Tone not heard';
+  String get nToneNotHeard => 'শব্দ শোনা যায়নি';
 
   @override
-  String get nVeryQuiet => 'Very quiet';
+  String get nVeryQuiet => 'খুব আস্তে';
 
   @override
-  String get nVibrationBad => 'No vibration felt';
+  String get nVibrationBad => 'ভাইব্রেশন টের পাওয়া যায়নি';
 
   @override
-  String get nVibrationOk => 'Vibration felt';
+  String get nVibrationOk => 'ভাইব্রেশন টের পাওয়া গেছে';
 
   @override
-  String get nWifiOff => 'Wi-Fi is off';
+  String get nWifiOff => 'Wi-Fi বন্ধ';
 
   @override
-  String get noChargerAtHand => 'No charger at hand';
+  String get noChargerAtHand => 'হাতের কাছে চার্জার নেই';
 
   @override
-  String get noHeadphonesAtHand => 'No headphones at hand';
+  String get noHeadphonesAtHand => 'হাতের কাছে হেডফোন নেই';
 
   @override
-  String get noUsbAudioAtHand => 'No USB audio at hand';
+  String get noUsbAudioAtHand => 'হাতের কাছে USB অডিও নেই';
 
   @override
-  String get ofHundred => 'of 100';
+  String get ofHundred => '১০০-এর মধ্যে';
 
   @override
-  String get pastCheckups => 'Past checkups';
+  String get pastCheckups => 'আগের চেকআপ';
 
   @override
-  String get playAgain => 'Play again';
+  String get playAgain => 'আবার বাজান';
 
   @override
-  String get playTone => 'Play tone';
+  String get playTone => 'শব্দ বাজান';
 
   @override
-  String get playing => 'Playing…';
+  String get playing => 'বাজছে…';
 
   @override
-  String get playingBack => 'Playing it back…';
+  String get playingBack => 'শোনানো হচ্ছে…';
 
   @override
-  String get pressTheButton => 'Press the button';
+  String get pressTheButton => 'বোতামটি চাপুন';
 
   @override
-  String get qBanding => 'Do the colors fade smoothly, without stripes?';
+  String get qBanding => 'রংগুলো কি দাগ ছাড়া মসৃণভাবে মিলিয়ে যাচ্ছে?';
 
   @override
-  String get qBrightness => 'Did the screen get dimmer and brighter?';
+  String get qBrightness => 'স্ক্রিন কি কম আর বেশি উজ্জ্বল হয়েছে?';
 
   @override
   String get qBurnIn =>
-      'Did you see faint shapes that stay, like a status bar or keyboard?';
+      'স্ট্যাটাস বার বা কিবোর্ডের মতো হালকা কোনো আকার কি থেকে যাচ্ছে?';
 
   @override
-  String get qDeadPixels =>
-      'Did you see any dots that stayed black, white or a different color?';
+  String get qDeadPixels => 'কোনো বিন্দু কি কালো, সাদা বা অন্য রঙে আটকে ছিল?';
 
   @override
-  String get qFeltVibration => 'Did you feel the vibration?';
+  String get qFeltVibration => 'ভাইব্রেশন কি টের পেয়েছেন?';
 
   @override
-  String get qFlashOn => 'Is the flashlight shining?';
+  String get qFlashOn => 'ফ্ল্যাশলাইট কি জ্বলছে?';
 
   @override
-  String get qHeardTone => 'Did you hear the tone clearly?';
+  String get qHeardTone => 'শব্দটি কি পরিষ্কার শুনেছেন?';
 
   @override
-  String get qHeardVoice => 'Did you hear your voice clearly?';
+  String get qHeardVoice => 'নিজের কণ্ঠ কি পরিষ্কার শুনেছেন?';
 
   @override
-  String get qPhotoClear => 'Is the photo clear and in focus?';
+  String get qPhotoClear => 'ছবিটি কি পরিষ্কার আর ফোকাসে আছে?';
 
   @override
-  String get record3s => 'Record 3 seconds';
+  String get record3s => '৩ সেকেন্ড রেকর্ড করুন';
 
   @override
-  String get recordAgain => 'Record again';
+  String get recordAgain => 'আবার রেকর্ড করুন';
 
   @override
-  String get recording => 'Recording… speak now';
+  String get recording => 'রেকর্ড হচ্ছে… এখন বলুন';
 
   @override
   String get reportDisclaimer =>
-      'Made on this phone by SystemX. Interactive results reflect the answers given during the checkup.';
+      'এই ফোনে SystemX দিয়ে তৈরি। ইন্টারেক্টিভ ফলাফলগুলো চেকআপের সময় দেওয়া উত্তরের ওপর নির্ভর করে।';
 
   @override
-  String get reportGreat => 'Your phone is in great shape';
+  String get reportGreat => 'আপনার ফোন দারুণ অবস্থায় আছে';
 
   @override
-  String get reportNeedsWork => 'Some parts need attention';
+  String get reportNeedsWork => 'কিছু অংশে মনোযোগ দরকার';
 
   @override
-  String get reportNotSaved => 'Not saved';
+  String get reportNotSaved => 'সেভ হয়নি';
 
   @override
-  String get reportOk => 'Mostly good, with a few issues';
+  String get reportOk => 'মোটামুটি ভালো, কয়েকটি সমস্যা আছে';
 
   @override
-  String get reportPhone => 'Phone';
+  String get reportPhone => 'ফোন';
 
   @override
-  String get reportResults => 'Results';
+  String get reportResults => 'ফলাফল';
 
   @override
-  String get reportSaved => 'Report saved';
+  String get reportSaved => 'রিপোর্ট সেভ হয়েছে';
 
   @override
-  String get reportShareSubject => 'SystemX checkup report';
+  String get reportShareSubject => 'SystemX চেকআপ রিপোর্ট';
 
   @override
-  String get reportTitle => 'Checkup report';
+  String get reportTitle => 'চেকআপ রিপোর্ট';
 
   @override
-  String get retake => 'Retake';
+  String get retake => 'আবার তুলুন';
 
   @override
-  String get savePdf => 'Save PDF';
+  String get savePdf => 'PDF সেভ করুন';
 
   @override
-  String get sensorNotResponding => 'The sensor doesn\'t respond';
+  String get sensorNotResponding => 'সেন্সর সাড়া দিচ্ছে না';
 
   @override
-  String get shareReport => 'Share report';
+  String get shareReport => 'রিপোর্ট শেয়ার করুন';
 
   @override
-  String get showAgain => 'Show again';
+  String get showAgain => 'আবার দেখান';
 
   @override
-  String get skip => 'Skip';
+  String get skip => 'বাদ দিন';
 
   @override
-  String get skippedByYou => 'Skipped';
+  String get skippedByYou => 'বাদ দেওয়া হয়েছে';
 
   @override
-  String get speakAfterTap => 'Tap Record, then speak';
+  String get speakAfterTap => 'রেকর্ড চাপুন, তারপর বলুন';
 
   @override
-  String get start => 'Start';
+  String get start => 'শুরু করুন';
 
   @override
-  String get statusFailed => 'Failed';
+  String get statusFailed => 'ব্যর্থ';
 
   @override
-  String get statusNotRun => 'Not run';
+  String get statusNotRun => 'চালানো হয়নি';
 
   @override
-  String get statusPassed => 'Passed';
+  String get statusPassed => 'পাস';
 
   @override
-  String get statusSkipped => 'Skipped';
+  String get statusSkipped => 'বাদ দেওয়া';
 
   @override
-  String get stop => 'Stop';
+  String get stop => 'থামান';
 
   @override
-  String get stopCheckupBody => 'Results so far are saved in a report.';
+  String get stopCheckupBody => 'এ পর্যন্ত ফলাফল একটি রিপোর্টে সেভ থাকবে।';
 
   @override
-  String get stopCheckupTitle => 'Stop the checkup?';
+  String get stopCheckupTitle => 'চেকআপ থামাবেন?';
 
   @override
-  String get takePhoto => 'Take photo';
+  String get takePhoto => 'ছবি তুলুন';
 
   @override
-  String get tapToContinue => 'Tap to continue';
+  String get tapToContinue => 'চালিয়ে যেতে ট্যাপ করুন';
 
   @override
-  String get testAgain => 'Test again';
+  String get testAgain => 'আবার পরীক্ষা করুন';
 
   @override
-  String get testingAutomatically => 'Testing…';
+  String get testingAutomatically => 'পরীক্ষা চলছে…';
 
   @override
-  String get touchEveryZone => 'Touch every square';
+  String get touchEveryZone => 'প্রতিটি ঘর ছুঁয়ে দিন';
 
   @override
-  String get tryAgain => 'Try again';
+  String get tryAgain => 'আবার চেষ্টা করুন';
 
   @override
-  String get vibrateAgain => 'Vibrate again';
+  String get vibrateAgain => 'আবার ভাইব্রেট করুন';
 
   @override
-  String get waitingForCharger => 'Waiting for a charger';
+  String get waitingForCharger => 'চার্জারের অপেক্ষা';
 
   @override
-  String get waitingToConnect => 'Waiting for it to connect';
+  String get waitingToConnect => 'সংযুক্ত হওয়ার অপেক্ষা';
 
   @override
   String gpsSatellites(int seen, int used) {
-    return '$seen satellites seen · $used in use';
+    return '$seenটি স্যাটেলাইট দেখা গেছে · $usedটি ব্যবহৃত';
   }
 
   @override
   String maxTouches(int count) {
-    return 'Most at once: $count';
+    return 'একসাথে সর্বোচ্চ: $count';
   }
 
   @override
   String nAllZones(int total) {
-    return 'All $total zones respond';
+    return '$totalটি ঘরই সাড়া দেয়';
   }
 
   @override
   String nSomeZones(int hit, int total) {
-    return '$hit of $total zones responded';
+    return '$totalটির মধ্যে $hitটি ঘর সাড়া দিয়েছে';
   }
 
   @override
   String nChargingDetected(String source) {
-    return 'Detected · $source';
+    return 'পাওয়া গেছে · $source';
   }
 
   @override
   String nChargingPeak(String source, int peak) {
-    return 'Detected · $source · $peak mA peak';
+    return 'পাওয়া গেছে · $source · সর্বোচ্চ $peak mA';
   }
 
   @override
   String nGpsFix(int used, int accuracy) {
-    return 'Fix · $used satellites · ±$accuracy m';
+    return 'অবস্থান পাওয়া গেছে · $usedটি স্যাটেলাইট · ±$accuracy m';
   }
 
   @override
   String nGpsNoFix(int seen) {
-    return '$seen satellites seen, no fix yet. Try outdoors.';
+    return '$seenটি স্যাটেলাইট দেখা গেছে, এখনো অবস্থান পাওয়া যায়নি। বাইরে গিয়ে চেষ্টা করুন।';
   }
 
   @override
   String nImplausible(String value) {
-    return 'Implausible reading: $value';
+    return 'অস্বাভাবিক রিডিং: $value';
   }
 
   @override
   String nLoopOk(int db) {
-    return 'Tone heard (+$db dB)';
+    return 'শব্দ শোনা গেছে (+$db dB)';
   }
 
   @override
@@ -2224,65 +2209,65 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String nPeakLevel(int db) {
-    return 'Peak $db dBFS';
+    return 'সর্বোচ্চ $db dBFS';
   }
 
   @override
   String nStorageSpeed(int write, int read) {
-    return 'Write $write MB/s · read $read MB/s';
+    return 'লেখা $write MB/s · পড়া $read MB/s';
   }
 
   @override
   String nTouches(int count) {
-    return 'Up to $count touches at once';
+    return 'একসাথে সর্বোচ্চ $countটি স্পর্শ';
   }
 
   @override
   String passedOf(int passed, int total) {
-    return '$passed of $total passed';
+    return '$totalটির মধ্যে $passedটি পাস';
   }
 
   @override
   String progressOf(int done, int total) {
-    return '$done of $total';
+    return '$totalটির মধ্যে $doneটি';
   }
 
   @override
   String reportCounts(int passed, int failed, int skipped) {
-    return '$passed passed · $failed failed · $skipped skipped';
+    return '$passedটি পাস · $failedটি ব্যর্থ · $skippedটি বাদ';
   }
 
   @override
   String secondsElapsed(int seconds) {
-    return '$seconds s';
+    return '$seconds সে.';
   }
 
   @override
-  String get nDetected => 'Detected';
+  String get nDetected => 'পাওয়া গেছে';
 
   @override
-  String get nNoVibrator => 'No vibration motor';
+  String get nNoVibrator => 'ভাইব্রেশন মোটর নেই';
 
   @override
-  String get nButtonWorks => 'Button works';
+  String get nButtonWorks => 'বোতাম কাজ করে';
 
   @override
-  String get nNoFlash => 'No flashlight on this phone';
+  String get nNoFlash => 'এই ফোনে ফ্ল্যাশলাইট নেই';
 
   @override
-  String get nLocationOff => 'Skipped because Location is off';
+  String get nLocationOff => 'লোকেশন বন্ধ থাকায় বাদ দেওয়া হয়েছে';
 
   @override
-  String get justNow => 'just now';
+  String get justNow => 'এইমাত্র';
 
   @override
   String minutesAgo(int n) {
-    return '$n min ago';
+    return '$n মিনিট আগে';
   }
 
   @override
   String hoursAgo(int n) {
-    return '$n h ago';
+    return '$n ঘণ্টা আগে';
   }
 
   @override
@@ -2290,207 +2275,206 @@ class AppLocalizationsBn extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       n,
       locale: localeName,
-      other: '$n days ago',
-      one: 'yesterday',
+      other: '$n দিন আগে',
+      one: 'গতকাল',
     );
     return '$_temp0';
   }
 
   @override
   String lastCheckupLine(String ago, int passed, int total) {
-    return 'Last checkup $ago · $passed of $total passed';
+    return 'শেষ চেকআপ $ago · $totalটির মধ্যে $passedটি পাস';
   }
 
   @override
-  String get alertsTitle => 'Alerts and live status';
+  String get alertsTitle => 'অ্যালার্ট ও লাইভ স্ট্যাটাস';
 
   @override
   String get alertsRowSub =>
-      'Charge alarm, battery and storage alerts, live notification';
+      'চার্জ অ্যালার্ম, ব্যাটারি ও স্টোরেজ অ্যালার্ট, লাইভ নোটিফিকেশন';
 
   @override
-  String get alertsUnavailable => 'Alerts are not available on this phone.';
+  String get alertsUnavailable => 'এই ফোনে অ্যালার্ট পাওয়া যায় না।';
 
   @override
   String get alertsIntro =>
-      'Everything here is off until you turn it on. Each type has its own notification channel, so you can also mute it in Android settings.';
+      'আপনি চালু না করা পর্যন্ত এখানের সবকিছু বন্ধ থাকে। প্রতিটি ধরনের আলাদা নোটিফিকেশন চ্যানেল আছে, তাই অ্যান্ড্রয়েড সেটিংস থেকেও চুপ করাতে পারবেন।';
 
   @override
-  String get secLiveStatus => 'Live status';
+  String get secLiveStatus => 'লাইভ স্ট্যাটাস';
 
   @override
-  String get secBatteryAlerts => 'Battery';
+  String get secBatteryAlerts => 'ব্যাটারি';
 
   @override
-  String get secStorageAlerts => 'Storage';
+  String get secStorageAlerts => 'স্টোরেজ';
 
   @override
-  String get secSummaries => 'Summaries and reminders';
+  String get secSummaries => 'সারাংশ ও রিমাইন্ডার';
 
   @override
-  String get secAlerts => 'Alerts';
+  String get secAlerts => 'অ্যালার্ট';
 
   @override
-  String get liveStatus => 'Live status notification';
+  String get liveStatus => 'লাইভ স্ট্যাটাস নোটিফিকেশন';
 
   @override
   String get liveStatusSub =>
-      'Battery, temperature, charging power, network speed and RAM, with a Stop button. Uses a little battery.';
+      'ব্যাটারি, তাপমাত্রা, চার্জিং পাওয়ার, নেটওয়ার্ক স্পিড আর RAM, সাথে থামানোর বোতাম। সামান্য ব্যাটারি খরচ হয়।';
 
   @override
-  String get statusBarShows => 'Status bar shows';
+  String get statusBarShows => 'স্ট্যাটাস বারে দেখাবে';
 
   @override
-  String get chargeAlarm => 'Charge alarm';
+  String get chargeAlarm => 'চার্জ অ্যালার্ম';
 
   @override
-  String get notifyAt => 'Notify at';
+  String get notifyAt => 'কখন জানাবে';
 
   @override
-  String get chargingDone => 'Charging finished';
+  String get chargingDone => 'চার্জ শেষ';
 
   @override
-  String get chargingDoneSub => 'With a summary of the charge';
+  String get chargingDoneSub => 'চার্জের সারাংশসহ';
 
   @override
-  String get batteryLowAlert => 'Battery low';
+  String get batteryLowAlert => 'ব্যাটারি কম';
 
   @override
-  String get batteryHotAlert => 'Battery hot';
+  String get batteryHotAlert => 'ব্যাটারি গরম';
 
   @override
-  String get storageAlert => 'Storage almost full';
+  String get storageAlert => 'স্টোরেজ প্রায় পূর্ণ';
 
   @override
-  String get weeklySummary => 'Weekly summary';
+  String get weeklySummary => 'সাপ্তাহিক সারাংশ';
 
   @override
   String get weeklySummarySub =>
-      'Charges, hottest temperature and lowest level, every week';
+      'প্রতি সপ্তাহে চার্জের সংখ্যা, সর্বোচ্চ তাপমাত্রা আর সর্বনিম্ন লেভেল';
 
   @override
-  String get checkupReminder => 'Monthly checkup reminder';
+  String get checkupReminder => 'মাসিক চেকআপ রিমাইন্ডার';
 
   @override
-  String get checkupReminderSub => 'When your last checkup is a month old';
+  String get checkupReminderSub => 'শেষ চেকআপের এক মাস পর';
 
   @override
   String get alertsFootnote =>
-      'Without live status, SystemX checks every 15 minutes, and every 2 minutes while charging. History is kept on this phone for 8 days.';
+      'লাইভ স্ট্যাটাস ছাড়া SystemX প্রতি ১৫ মিনিটে, আর চার্জের সময় প্রতি ২ মিনিটে দেখে। ইতিহাস এই ফোনে ৮ দিন রাখা হয়।';
 
   @override
   String get notificationsNeeded =>
-      'Notifications are off for SystemX, so this can\'t be turned on.';
+      'SystemX-এর নোটিফিকেশন বন্ধ, তাই এটা চালু করা যাচ্ছে না।';
 
   @override
-  String get permNotifTitle => 'Allow notifications';
+  String get permNotifTitle => 'নোটিফিকেশনের অনুমতি দিন';
 
   @override
   String get permNotifReason =>
-      'SystemX only notifies you about the alerts you turn on here, and shows live status if you start it.';
+      'এখানে আপনি যে অ্যালার্ট চালু করবেন শুধু সেগুলোই SystemX জানাবে, আর আপনি চালু করলে লাইভ স্ট্যাটাস দেখাবে।';
 
   @override
-  String get history => 'History';
+  String get history => 'ইতিহাস';
 
   @override
-  String get range24h => '24 h';
+  String get range24h => '২৪ ঘণ্টা';
 
   @override
-  String get range7d => '7 days';
+  String get range7d => '৭ দিন';
 
   @override
   String get historyEmpty =>
-      'History builds up in the background. Check back in an hour.';
+      'ইতিহাস ব্যাকগ্রাউন্ডে তৈরি হয়। এক ঘণ্টা পর আবার দেখুন।';
 
   @override
-  String get chargingSessions => 'Charging sessions';
+  String get chargingSessions => 'চার্জিং সেশন';
 
   @override
-  String get chargingSessionsSub =>
-      'Each charge with its speed and temperature';
+  String get chargingSessionsSub => 'প্রতিটি চার্জের গতি আর তাপমাত্রা';
 
   @override
   String get sessionsEmpty =>
-      'No charges recorded yet. Plug in your phone to start.';
+      'এখনো কোনো চার্জ রেকর্ড হয়নি। শুরু করতে ফোন চার্জে লাগান।';
 
   @override
-  String get clearHistory => 'Clear all history';
+  String get clearHistory => 'সব ইতিহাস মুছুন';
 
   @override
   String get clearHistorySub =>
-      'Battery history, charging sessions and test results';
+      'ব্যাটারির ইতিহাস, চার্জিং সেশন আর টেস্টের ফলাফল';
 
   @override
   String get clearHistoryConfirm =>
-      'This deletes battery history, charging sessions and all test results from this phone. Settings are kept.';
+      'এতে এই ফোন থেকে ব্যাটারির ইতিহাস, চার্জিং সেশন আর সব টেস্টের ফলাফল মুছে যাবে। সেটিংস থেকে যাবে।';
 
   @override
-  String get clear => 'Clear';
+  String get clear => 'মুছুন';
 
   @override
-  String get historyCleared => 'History cleared';
+  String get historyCleared => 'ইতিহাস মোছা হয়েছে';
 
   @override
   String chargeAlarmSub(int level) {
-    return 'Notify when the battery reaches $level%';
+    return 'ব্যাটারি $level% হলে জানাবে';
   }
 
   @override
   String batteryLowSub(int level) {
-    return 'Notify at $level% when not charging';
+    return 'চার্জে না থাকলে $level%-এ জানাবে';
   }
 
   @override
   String batteryHotSub(String temp) {
-    return 'Notify at $temp';
+    return '$temp-এ জানাবে';
   }
 
   @override
   String storageAlertSub(int percent) {
-    return 'Notify when storage is $percent% full';
+    return 'স্টোরেজ $percent% পূর্ণ হলে জানাবে';
   }
 
   @override
   String historyNote(int count) {
-    return '$count readings, taken every 15 minutes in the background';
+    return '$countটি রিডিং, ব্যাকগ্রাউন্ডে প্রতি ১৫ মিনিটে নেওয়া';
   }
 
   @override
   String avgCurrent(int ma) {
-    return 'avg $ma mA';
+    return 'গড় $ma mA';
   }
 
   @override
   String peakCurrent(int ma) {
-    return 'peak $ma mA';
+    return 'সর্বোচ্চ $ma mA';
   }
 
   @override
   String maxTemp(String temp) {
-    return 'max $temp';
+    return 'সর্বোচ্চ $temp';
   }
 
   @override
-  String get wifiMeter => 'Wi-Fi signal meter';
+  String get wifiMeter => 'Wi-Fi সিগন্যাল মিটার';
 
   @override
-  String get wifiMeterOff => 'Connect to Wi-Fi to measure its signal.';
+  String get wifiMeterOff => 'সিগন্যাল মাপতে Wi-Fi-তে সংযুক্ত হন।';
 
   @override
   String get wifiMeterHint =>
-      'Walk around slowly. The ring fills as the signal gets stronger, so you can find the best spot for working or placing your router.';
+      'ধীরে ধীরে হাঁটুন। সিগন্যাল যত শক্তিশালী হবে রিং তত ভরবে, তাই কাজ করা বা রাউটার রাখার সেরা জায়গা খুঁজে পাবেন।';
 
   @override
-  String get bestHere => 'Best so far';
+  String get bestHere => 'এখন পর্যন্ত সেরা';
 
   @override
   String healthScoreSpoken(int score, String word) {
-    return 'Health score $score of 100, $word';
+    return 'স্বাস্থ্য স্কোর ১০০-এর মধ্যে $score, $word';
   }
 
   @override
-  String get privacyPolicy => 'Privacy policy';
+  String get privacyPolicy => 'প্রাইভেসি পলিসি';
 
   @override
-  String get sendFeedback => 'Send feedback';
+  String get sendFeedback => 'মতামত পাঠান';
 }

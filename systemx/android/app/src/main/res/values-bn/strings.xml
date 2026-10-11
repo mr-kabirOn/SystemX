@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ch_live">লাইভ স্ট্যাটাস</string>
+    <string name="ch_battery">ব্যাটারি অ্যালার্ট</string>
+    <string name="ch_storage">স্টোরেজ অ্যালার্ট</string>
+    <string name="ch_summary">সারাংশ ও রিমাইন্ডার</string>
+
+    <string name="live_charging_w">চার্জ হচ্ছে %1$s W</string>
+    <string name="live_text">↓ %1$s · ↑ %2$s · RAM %3$d%%</string>
+    <string name="live_stop">লাইভ স্ট্যাটাস থামান</string>
+
+    <string name="n_limit_title">%1$d%% চার্জ হয়েছে</string>
+    <string name="n_limit_text">ব্যাটারি ভালো রাখতে এখন চার্জার খুলে ফেলুন।</string>
+    <string name="n_full_title">চার্জ শেষ</string>
+    <string name="n_full_text">%1$d%% থেকে %2$d%%, %3$d ঘণ্টা %4$d মিনিটে</string>
+    <string name="n_peak">সর্বোচ্চ %1$d mA</string>
+    <string name="n_low_title">ব্যাটারি %1$d%%</string>
+    <string name="n_low_text">শিগগির চার্জে লাগান, বা ব্যাটারি সেভার চালু করুন।</string>
+    <string name="n_hot_title">ফোন গরম (%1$s)</string>
+    <string name="n_hot_text">ভারী অ্যাপ বন্ধ করুন বা কিছুক্ষণ কভার খুলে রাখুন।</string>
+    <string name="n_storage_title">স্টোরেজ %1$d%% পূর্ণ</string>
+    <string name="n_storage_text">অ্যাপ আর আপডেট ঠিকমতো চালাতে জায়গা খালি করুন।</string>
+    <string name="n_weekly_title">এই সপ্তাহের ব্যাটারি</string>
+    <string name="n_weekly_text">%1$d বার চার্জ · সর্বোচ্চ %2$s · সর্বনিম্ন %3$d%%</string>
+    <string name="n_reminder_title">চেকআপের সময় হয়েছে</string>
+    <string name="n_reminder_text">আপনার শেষ চেকআপ এক মাস আগে হয়েছিল। এতে প্রায় ৬ মিনিট লাগে।</string>
+
+    <string name="w_small_name">ব্যাটারি</string>
+    <string name="w_medium_name">ড্যাশবোর্ড</string>
+    <string name="w_small_desc">ব্যাটারির লেভেল আর তাপমাত্রা</string>
+    <string name="w_medium_desc">ব্যাটারি, তাপমাত্রা, মেমোরি আর খালি স্টোরেজ</string>
+    <string name="w_charging">চার্জ হচ্ছে</string>
+    <string name="w_battery">ব্যাটারিতে</string>
+    <string name="w_ram">RAM %1$d%%</string>
+    <string name="w_free">%1$s খালি</string>
+
+    <string name="sc_checkup">চেকআপ চালান</string>
+    <string name="sc_battery">ব্যাটারি</string>
+    <string name="sc_monitor">মনিটর</string>
+</resources>

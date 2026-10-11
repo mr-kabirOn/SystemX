@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
 import 'package:systemx/core/router.dart';
+import 'package:systemx/core/settings/settings.dart';
 import 'package:systemx/features/device/device_data.dart';
 import 'package:systemx/features/live/live_data.dart';
 import 'package:systemx/features/live/live_screens.dart';
@@ -52,6 +53,16 @@ void main() {
     tester.platformDispatcher.textScaleFactorTestValue = 2.0;
     addTearDown(tester.platformDispatcher.clearTextScaleFactorTestValue);
     final c = await pumpApp(tester, api: FakeDeviceApi()..phoneGranted = true);
+    await _visitAll(tester, c);
+  });
+
+  testWidgets('every screen fits in Bangla at 150% font size', (tester) async {
+    tester.platformDispatcher.textScaleFactorTestValue = 1.5;
+    addTearDown(tester.platformDispatcher.clearTextScaleFactorTestValue);
+    final c = await pumpApp(tester, api: FakeDeviceApi()..phoneGranted = true);
+    await c.read(settingsProvider.notifier).setLocale('bn');
+    await tester.pumpAndSettle();
+    expect(find.text('হোম'), findsOneWidget);
     await _visitAll(tester, c);
   });
 
