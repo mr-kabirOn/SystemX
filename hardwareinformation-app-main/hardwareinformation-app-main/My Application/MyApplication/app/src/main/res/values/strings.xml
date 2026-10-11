@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Application Name -->
+    <string name="app_name">Monitoring System</string>
+
+    <!-- Button Texts -->
+    <string name="btn_show_cpu_info">CPU Info</string>
+    <string name="btn_show_ram_info">RAM Info</string>
+    <string name="btn_show_storage_info">Storage Info</string>
+    <string name="btn_show_battery_info">Battery Info</string>
+    <string name="btn_show_network_info">Network Info</string>
+    <string name="btn_show_sim_info">SIM Info</string>
+    <string name="btn_show_balance_info">Balance Info</string>
+
+    <!-- CPU Info -->
+    <string name="cpu_info">CPU Info:\nModel Name: %1$s\nCores: %2$d\nFrequencies:\n%3$s\nManufacturer: %4$s</string>
+    <string name="cpu_info_placeholder">CPU Info will appear here</string>
+
+    <!-- RAM Info -->
+    <string name="ram_info">Total RAM: %1$s GB (%2$s MB)</string>
+    <string name="ram_info_placeholder">RAM Info will appear here</string>
+
+    <!-- Storage Info -->
+    <string name="storage_info">Total Storage: %1$s GB (%2$s MB)</string>
+    <string name="storage_info_placeholder">Storage Info will appear here</string>
+
+    <!-- Battery Info -->
+
+    <string name="battery_info_placeholder">Battery Info will appear here</string>
+
+    <!-- Network Info     <string name="network_info">Network Type: %1$s</string> -->
+
+    <string name="network_info_placeholder">Network Info will appear here</string>
+
+    <!-- SIM Info -->
+    <string name="sim_info">SIM Operator: %1$s</string>
+    <string name="sim_info_placeholder">SIM Info will appear here</string>
+
+    <!-- Balance Info  <string name="balance_info">%1$s</string> -->
+
+    <string name="balance_info_placeholder">Balance Info will appear here</string>
+    <string name="enhanced_storage_info">
+    Total Storage: %1$s\n
+    Used Storage: %2$s\n
+    Free Storage: %3$s\n
+    Percentage Used: %4$s
+    </string>
+    <string name="enhanced_ram_info">
+    Total RAM: %1$s\n
+    Used RAM: %2$s\n
+    Free RAM: %3$s\n
+    Percentage Used: %4$s
+    </string>
+
+    <string name="battery_info">
+    Battery Level: %1$d%%\n
+    Health: %2$s\n
+    Status: %3$s\n
+    Voltage: %4$s\n
+    Temperature: %5$s
+</string>
+
+    <string name="network_info">
+    Network Type: %1$s\n
+    Wi-Fi Details:\n%2$s\n
+    Mobile Network Details:\n%3$s
+</string>
+
+    <string name="balance_info">
+    SIM Slot: %1$s\n
+    Carrier: %2$s\n
+    Balance Code: %3$s
+</string>
+
+
+
+</resources>

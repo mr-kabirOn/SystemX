@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_color"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:gravity="center_horizontal">
+
+        <!-- Header -->
+        <TextView
+            android:id="@+id/headerText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/primary_text_color"
+            android:layout_marginBottom="16dp" />
+
+        <!-- CPU Chart Placeholder -->
+        <View
+            android:id="@+id/cpuChartContainer"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@color/card_background_color"
+            android:layout_marginBottom="16dp" />
+
+        <!-- CPU Section -->
+        <Button
+            android:id="@+id/btnCpu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_show_cpu_info"
+            android:backgroundTint="@color/button_color"
+            android:textColor="@color/button_text_color"
+            android:textSize="16sp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/cpuInfoText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cpu_info_placeholder"
+            android:textColor="@color/primary_text_color"
+            android:textSize="14sp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- RAM Chart Placeholder -->
+        <View
+            android:id="@+id/ramChartContainer"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@color/card_background_color"
+            android:layout_marginBottom="16dp" />
+
+        <!-- RAM Section -->
+        <Button
+            android:id="@+id/btnRam"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_show_ram_info"
+            android:backgroundTint="@color/button_color"
+            android:textColor="@color/button_text_color"
+            android:textSize="16sp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:id="@+id/ramInfoText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ram_info_placeholder"
+            android:textColor="@color/primary_text_color"
+            android:textSize="14sp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Storage Chart Placeholder -->
+        <View
+            android:id="@+id/storageChartContainer"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@color/card_background_color"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Storage Section -->
+        <Button
+            android:id="@+id/btnStorage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_show_storage_info"
+            android:backgroundTint="@color/button_color"
+            android:textColor="@color/button_text_color"
+            android:textSize="16sp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:id="@+id/storageInfoText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/storage_info_placeholder"
+            android:textColor="@color/primary_text_color"
+            android:textSize="14sp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Battery Section -->
+        <Button
+            android:id="@+id/btnBattery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_show_battery_info"
+            android:backgroundTint="@color/button_color"
+            android:textColor="@color/button_text_color"
+            android:textSize="16sp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:id="@+id/batteryInfoText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/battery_info_placeholder"
+            android:textColor="@color/primary_text_color"
+            android:textSize="14sp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Network Section -->
+        <Button
+            android:id="@+id/btnNetwork"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_show_network_info"
+            android:backgroundTint="@color/button_color"
+            android:textColor="@color/button_text_color"
+            android:textSize="16sp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:id="@+id/networkInfoText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/network_info_placeholder"
+            android:textColor="@color/primary_text_color"
+            android:textSize="14sp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- SIM Section -->
+        <Button
+            android:id="@+id/btnSim"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_show_sim_info"
+            android:backgroundTint="@color/button_color"
+            android:textColor="@color/button_text_color"
+            android:textSize="16sp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:id="@+id/simInfoText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sim_info_placeholder"
+            android:textColor="@color/primary_text_color"
+            android:textSize="14sp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Balance Section -->
+        <Button
+            android:id="@+id/btnBalance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_show_balance_info"
+            android:backgroundTint="@color/button_color"
+            android:textColor="@color/button_text_color"
+            android:textSize="16sp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:id="@+id/balanceInfoText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/balance_info_placeholder"
+            android:textColor="@color/primary_text_color"
+            android:textSize="14sp"
+            android:layout_marginBottom="16dp" />
+
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,822 @@
+<title>SystemX 2026 Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<style>
+/* Layout: one reading column (max 980px) with wide breakout rows for the phone mockups and tables.
+   Identity: "instrument panel" for the phone. Indigo signal accent, one hue per metric, mono for readouts. */
+:root{
+  --bg:#F4F5FA; --surface:#FFFFFF; --ink:#151829; --muted:#5B6180; --line:#E1E3EE;
+  --accent:#4553E0; --accent-soft:#E8EAFD; --accent-ink:#2C37B0;
+  --cpu:#E8711F; --ram:#8452F0; --bat:#14965A; --sto:#2B78E4; --net:#0B9AAE; --therm:#DD3E45;
+  --good:#14965A; --warn:#C27406; --bad:#D23A41;
+  --f-display:"Sora", "Segoe UI", system-ui, sans-serif;
+  --f-body:"Figtree", "Segoe UI", system-ui, sans-serif;
+  --f-mono:"JetBrains Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+  /* phone mockups: fixed app palette, same in both page themes (they depict the app) */
+  --p-frame:#05070C; --p-bg:#0B0E17; --p-card:#141928; --p-card2:#1B2133; --p-ink:#ECEEF8; --p-mut:#8C93AE; --p-line:#252B3E; --p-acc:#8E99FF;
+  --p-cpu:#FF9447; --p-ram:#A98BFF; --p-bat:#3DD68C; --p-sto:#5CA2FF; --p-net:#33D1E5; --p-therm:#FF6B6F; --p-warn:#FFB547;
+  --l-bg:#F5F6FB; --l-card:#FFFFFF; --l-ink:#161A2C; --l-mut:#5E6584; --l-line:#E3E5F0; --l-acc:#4553E0;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0D1018; --surface:#151926; --ink:#E8EAF4; --muted:#9BA1BA; --line:#262C3D;
+  --accent:#8E99FF; --accent-soft:#1F2444; --accent-ink:#B9C0FF;
+  --cpu:#FF9447; --ram:#A98BFF; --bat:#3DD68C; --sto:#5CA2FF; --net:#33D1E5; --therm:#FF6B6F;
+  --good:#3DD68C; --warn:#FFB547; --bad:#FF6B6F; color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#0D1018; --surface:#151926; --ink:#E8EAF4; --muted:#9BA1BA; --line:#262C3D;
+  --accent:#8E99FF; --accent-soft:#1F2444; --accent-ink:#B9C0FF;
+  --cpu:#FF9447; --ram:#A98BFF; --bat:#3DD68C; --sto:#5CA2FF; --net:#33D1E5; --therm:#FF6B6F;
+  --good:#3DD68C; --warn:#FFB547; --bad:#FF6B6F; color-scheme:dark }
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:16px/1.6 var(--f-body);-webkit-font-smoothing:antialiased}
+.wrap{max-width:1040px;margin:0 auto;padding-inline:20px;padding-block:40px 80px}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;line-height:1.2;margin:0}
+h1{font-size:clamp(2rem,5vw,3rem);font-weight:700;letter-spacing:-.02em}
+h2{font-size:1.55rem;font-weight:600;letter-spacing:-.01em}
+h3{font-size:1.08rem;font-weight:600}
+p{margin:0;max-width:68ch}
+a{color:var(--accent-ink)}
+code,.mono{font-family:var(--f-mono);font-size:.86em}
+code{background:var(--accent-soft);color:var(--accent-ink);padding:.08em .35em;border-radius:5px}
+.eyebrow{font:600 .74rem/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.muted{color:var(--muted)}
+section{display:flex;flex-direction:column;gap:18px;padding-block:44px;border-top:1px solid var(--line)}
+section:first-of-type{border-top:0}
+
+/* header */
+header{display:grid;gap:22px;padding-block:8px 36px}
+.lede{font-size:1.15rem;color:var(--muted);max-width:62ch}
+.toc{display:flex;flex-wrap:wrap;gap:8px}
+.toc a{font:500 .85rem/1 var(--f-body);text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);padding:8px 12px;border-radius:99px}
+.toc a:hover,.toc a:focus-visible{border-color:var(--accent);color:var(--accent-ink);outline:none}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+.fact{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px;display:grid;gap:4px}
+.fact b{font:600 1.05rem/1.3 var(--f-display)}
+.fact span{font-size:.86rem;color:var(--muted)}
+
+/* generic */
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px 20px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.card ul{margin:0;padding-left:1.1em;display:grid;gap:6px}
+.card li{font-size:.95rem}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:.92rem;min-width:620px}
+th,td{text-align:left;vertical-align:top;padding:11px 14px;border-bottom:1px solid var(--line)}
+th{font:600 .72rem/1.2 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:var(--bg)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:600;white-space:nowrap}
+.tag{display:inline-block;font:600 .7rem/1 var(--f-mono);padding:4px 7px;border-radius:6px;background:var(--accent-soft);color:var(--accent-ink);white-space:nowrap}
+.tag.warn{background:color-mix(in srgb,var(--warn) 16%,transparent);color:var(--warn)}
+.tag.bad{background:color-mix(in srgb,var(--bad) 14%,transparent);color:var(--bad)}
+.tag.good{background:color-mix(in srgb,var(--good) 15%,transparent);color:var(--good)}
+.callout{border:1px solid var(--line);border-left:4px solid var(--accent);background:var(--surface);border-radius:10px;padding:14px 18px}
+
+/* design system */
+.swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:10px}
+.sw{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--surface)}
+.sw i{display:block;height:54px}
+.sw div{padding:8px 10px;display:grid;gap:1px}
+.sw b{font-size:.84rem}
+.sw span{font:.72rem var(--f-mono);color:var(--muted)}
+.type-spec{display:grid;gap:14px}
+.type-row{display:grid;grid-template-columns:150px 1fr;gap:16px;align-items:baseline;border-bottom:1px dashed var(--line);padding-bottom:12px}
+.type-row:last-child{border:0}
+@media (max-width:560px){.type-row{grid-template-columns:1fr;gap:4px}}
+
+/* ===== phone mockups ===== */
+.phones{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:34px 20px;justify-items:center}
+figure{margin:0;display:flex;flex-direction:column;gap:12px;align-items:center}
+figcaption{font-size:.88rem;color:var(--muted);text-align:center;max-width:270px}
+figcaption b{color:var(--ink);display:block;font-family:var(--f-display);font-weight:600;font-size:.95rem}
+.phone{width:264px;height:556px;border-radius:40px;background:var(--p-frame);padding:9px;box-shadow:0 1px 0 #ffffff14 inset,0 18px 40px -18px #0b0e1799;flex:none}
+.scr{height:100%;border-radius:32px;background:var(--p-bg);color:var(--p-ink);overflow:hidden;display:flex;flex-direction:column;font:11px/1.35 var(--f-body);position:relative}
+.scr.light{background:var(--l-bg);color:var(--l-ink)}
+.sb{display:flex;justify-content:space-between;align-items:center;padding:11px 20px 3px;font:600 10px/1 var(--f-body)}
+.sb .dots{display:flex;gap:4px;align-items:center}
+.sb .dots i{width:11px;height:7px;border-radius:2px;background:currentColor;opacity:.85}
+.sb .dots i:first-child{width:8px;opacity:.6}
+.body{flex:1;padding:8px 12px 10px;display:flex;flex-direction:column;gap:8px;overflow:hidden;min-height:0}
+.top{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.top h4{font:600 17px/1.15 var(--f-display);margin:0;letter-spacing:-.01em}
+.top small{display:block;color:var(--p-mut);font-size:10px}
+.light .top small{color:var(--l-mut)}
+.ico{width:28px;height:28px;border-radius:9px;background:var(--p-card);display:grid;place-items:center;color:var(--p-mut);flex:none}
+.light .ico{background:var(--l-card);color:var(--l-mut);border:1px solid var(--l-line)}
+.ico svg{width:15px;height:15px}
+.c{background:var(--p-card);border-radius:16px;padding:10px 11px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.light .c{background:var(--l-card);border:1px solid var(--l-line)}
+.lbl{font:600 8.5px/1 var(--f-mono);letter-spacing:.09em;text-transform:uppercase;color:var(--p-mut)}
+.light .lbl{color:var(--l-mut)}
+.val{font:600 15px/1.1 var(--f-mono);letter-spacing:-.02em}
+.val small{font-size:9.5px;color:var(--p-mut);font-weight:500;letter-spacing:0}
+.sub{font-size:9.5px;color:var(--p-mut)}
+.light .sub{color:var(--l-mut)}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.bar{height:5px;border-radius:9px;background:var(--p-line);overflow:hidden}
+.bar i{display:block;height:100%;border-radius:9px;background:var(--k)}
+.spark{width:100%;height:24px;display:block}
+.chip{display:inline-flex;align-items:center;gap:5px;font:600 9.5px/1 var(--f-body);padding:6px 9px;border-radius:99px;background:var(--p-card2);color:var(--p-ink);white-space:nowrap}
+.chip.acc{background:var(--p-acc);color:#0B0E17}
+.btn{display:flex;justify-content:center;align-items:center;gap:6px;font:600 11px/1 var(--f-body);padding:10px;border-radius:12px;background:var(--p-acc);color:#0B0E17}
+.btn.ghost{background:var(--p-card2);color:var(--p-ink)}
+.ring{--v:70;--k:var(--p-acc);--t:9px;position:relative;width:76px;aspect-ratio:1;display:grid;place-items:center;flex:none}
+.ring::before{content:"";position:absolute;inset:0;border-radius:50%;background:conic-gradient(var(--k) calc(var(--v)*1%),var(--p-line) 0);-webkit-mask:radial-gradient(farthest-side,transparent calc(100% - var(--t)),#000 calc(100% - var(--t) + 1px));mask:radial-gradient(farthest-side,transparent calc(100% - var(--t)),#000 calc(100% - var(--t) + 1px))}
+.ring b{font:700 22px/1 var(--f-display);position:relative}
+.ring b small{display:block;font:600 7.5px/1.4 var(--f-mono);letter-spacing:.1em;color:var(--p-mut);text-align:center}
+.row{display:flex;align-items:center;gap:9px;padding:7px 0;border-bottom:1px solid var(--p-line)}
+.light .row{border-color:var(--l-line)}
+.row:last-child{border-bottom:0}
+.row .k{flex:1;min-width:0}
+.row .k b{display:block;font-weight:600;font-size:11px}
+.row .k span{font-size:9.5px;color:var(--p-mut)}
+.light .row .k span{color:var(--l-mut)}
+.row .v{font:500 10px var(--f-mono);color:var(--p-ink);text-align:right}
+.sq{width:26px;height:26px;border-radius:8px;display:grid;place-items:center;flex:none;background:color-mix(in srgb,var(--k) 18%,transparent);color:var(--k)}
+.sq svg{width:14px;height:14px}
+.nav{display:flex;justify-content:space-around;padding:7px 6px 13px;background:var(--p-card);border-top:1px solid var(--p-line)}
+.nav span{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:8.5px;color:var(--p-mut);font-weight:500}
+.nav span i{width:44px;height:24px;border-radius:99px;display:grid;place-items:center}
+.nav span.on{color:var(--p-ink)}
+.nav span.on i{background:color-mix(in srgb,var(--p-acc) 26%,transparent);color:var(--p-acc)}
+.nav svg{width:15px;height:15px}
+.search{display:flex;gap:7px;align-items:center;background:var(--p-card);border-radius:12px;padding:9px 11px;color:var(--p-mut);font-size:10.5px}
+.search svg{width:13px;height:13px}
+.cores{display:grid;grid-template-columns:repeat(9,1fr);gap:4px;align-items:end;height:62px}
+.cores i{display:block;border-radius:4px 4px 2px 2px;background:var(--k);opacity:.9}
+.cores.lab{height:auto;font:500 7.5px var(--f-mono);color:var(--p-mut);text-align:center}
+.tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.t{background:var(--p-card);border-radius:12px;padding:8px 6px;display:flex;flex-direction:column;align-items:center;gap:5px;font-size:9px;font-weight:600;position:relative}
+.t svg{width:16px;height:16px;color:var(--k)}
+.t::after{content:"";position:absolute;top:6px;right:6px;width:5px;height:5px;border-radius:50%;background:var(--s,transparent)}
+.st{width:18px;height:18px;border-radius:50%;display:grid;place-items:center;font:700 10px/1 var(--f-body);flex:none;color:#0B0E17;background:var(--k)}
+.wall{background:radial-gradient(120% 80% at 20% 0%,#3a3f8f 0%,#1a1d3d 45%,#0b0e17 100%)}
+.qs{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.qs i{height:34px;border-radius:12px;background:#ffffff1a;display:grid;place-items:center;font:600 8px var(--f-body);font-style:normal;color:#dfe2ff}
+.qs i.on{background:var(--p-acc);color:#0B0E17}
+.ntf{background:#161b2ce8;border-radius:16px;padding:10px 11px;display:grid;gap:4px;border:1px solid #ffffff12}
+.ntf .h{display:flex;align-items:center;gap:6px;font-size:9px;color:var(--p-mut)}
+.ntf .h b{color:var(--p-ink);font-weight:600}
+.ntf .ttl{font-weight:600;font-size:11.5px}
+.dot{width:16px;height:16px;border-radius:5px;background:var(--p-acc);display:grid;place-items:center;color:#0B0E17;font:700 9px/1 var(--f-display)}
+.widget{background:#141928f0;border-radius:22px;padding:12px;display:flex;gap:12px;align-items:center;border:1px solid #ffffff14}
+.toggle{width:30px;height:17px;border-radius:99px;background:var(--l-line);position:relative;flex:none}
+.toggle::after{content:"";position:absolute;top:2px;left:2px;width:13px;height:13px;border-radius:50%;background:#fff;box-shadow:0 1px 2px #0003}
+.toggle.on{background:var(--l-acc)}
+.toggle.on::after{left:15px}
+.pill{font:600 8.5px/1 var(--f-body);padding:4px 7px;border-radius:99px;background:var(--l-bg);color:var(--l-mut);border:1px solid var(--l-line);white-space:nowrap}
+.batt{width:60px;height:96px;border-radius:12px;border:2.5px solid var(--p-line);position:relative;padding:4px;display:flex;align-items:flex-end;flex:none}
+.batt::before{content:"";position:absolute;top:-7px;left:50%;transform:translateX(-50%);width:20px;height:5px;border-radius:3px 3px 0 0;background:var(--p-line)}
+.batt i{display:block;width:100%;height:78%;border-radius:7px;background:linear-gradient(180deg,#5af0a8,var(--p-bat))}
+
+/* roadmap */
+.stages{display:grid;gap:12px}
+.stage{display:grid;grid-template-columns:62px 1fr;gap:16px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px}
+.stage .n{font:700 1.6rem/1 var(--f-display);color:var(--accent);display:flex;flex-direction:column;gap:6px}
+.stage .n small{font:600 .66rem/1 var(--f-mono);letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
+.stage .bd{display:grid;gap:8px;min-width:0}
+.stage ul{margin:0;padding-left:1.1em;display:grid;gap:4px;font-size:.94rem}
+.stage .test{font-size:.9rem;color:var(--muted);border-top:1px dashed var(--line);padding-top:8px}
+.stage .test b{color:var(--ink)}
+.stage.done{border-color:color-mix(in srgb,var(--good) 45%,var(--line))}
+@media (max-width:520px){.stage{grid-template-columns:1fr;gap:8px}.stage .n{flex-direction:row;align-items:baseline;gap:10px}}
+
+.todo{display:grid;gap:10px;counter-reset:t}
+.todo li{list-style:none;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 16px 12px 52px;position:relative;counter-increment:t}
+.todo li::before{content:counter(t);position:absolute;left:14px;top:12px;width:26px;height:26px;border-radius:8px;background:var(--accent-soft);color:var(--accent-ink);font:700 .85rem/26px var(--f-display);text-align:center}
+.todo{padding:0;margin:0}
+.todo b{display:block}
+.todo span{color:var(--muted);font-size:.93rem}
+.when{font:600 .72rem/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:8px}
+pre.mermaid{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;overflow-x:auto;margin:0}
+@media (prefers-reduced-motion:no-preference){.toc a{transition:border-color .15s,color .15s}}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z" fill="currentColor"/></symbol>
+    <symbol id="i-dev" viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><rect x="10" y="18" width="4" height="1.6" rx=".8" fill="currentColor"/></symbol>
+    <symbol id="i-test" viewBox="0 0 24 24"><path d="M2 12h4l2.5-6 4 13 3-9 1.5 2H22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-mon" viewBox="0 0 24 24"><path d="M3 20h18M6 16v-5M11 16V6M16 16v-8M21 16v-3" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+    <symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-back" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="m16 16 5 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+    <symbol id="i-chip" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-ram" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M6 17v3M10 17v3M14 17v3M18 17v3M6 10v4M10 10v4M14 10v4M18 10v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-bat" viewBox="0 0 24 24"><rect x="2" y="7" width="18" height="10" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><rect x="4.5" y="9.5" width="10" height="5" rx="1" fill="currentColor"/><path d="M22 10.5v3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-sto" viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="8" ry="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+    <symbol id="i-net" viewBox="0 0 24 24"><path d="M2 9a15 15 0 0 1 20 0M5.5 12.5a10 10 0 0 1 13 0M9 16a5 5 0 0 1 6 0" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><circle cx="12" cy="19.5" r="1.6" fill="currentColor"/></symbol>
+    <symbol id="i-therm" viewBox="0 0 24 24"><path d="M10 4a2 2 0 0 1 4 0v9.5a4.5 4.5 0 1 1-4 0z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="17" r="2" fill="currentColor"/></symbol>
+    <symbol id="i-disp" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 21h8M12 17v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-cam" viewBox="0 0 24 24"><path d="M4 8h3l2-3h6l2 3h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="13.5" r="3.5" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+    <symbol id="i-sens" viewBox="0 0 24 24"><circle cx="12" cy="12" r="2.5" fill="currentColor"/><path d="M7.5 7.5a6.4 6.4 0 0 0 0 9M16.5 7.5a6.4 6.4 0 0 1 0 9M4.5 4.5a10.6 10.6 0 0 0 0 15M19.5 4.5a10.6 10.6 0 0 1 0 15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+    <symbol id="i-sys" viewBox="0 0 24 24"><path d="M5 17a7 7 0 1 1 14 0z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 7 6 4M16 7l2-3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="9.5" cy="13" r="1" fill="currentColor"/><circle cx="14.5" cy="13" r="1" fill="currentColor"/></symbol>
+    <symbol id="i-touch" viewBox="0 0 24 24"><path d="M9 11V5a2 2 0 0 1 4 0v5l4.5 1a2.5 2.5 0 0 1 2 2.8L19 19a3 3 0 0 1-3 2.6h-4.4a3 3 0 0 1-2.4-1.2L5.5 15.5a1.6 1.6 0 0 1 2.4-2.1L9 14.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+    <symbol id="i-spk" viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-mic" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-vib" viewBox="0 0 24 24"><rect x="8" y="4" width="8" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4 8v8M20 8v8M1.5 10v4M22.5 10v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-flash" viewBox="0 0 24 24"><path d="M13 2 5 13h6l-1 9 8-11h-6z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+    <symbol id="i-gps" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="9.5" r="2.5" fill="currentColor"/></symbol>
+    <symbol id="i-bt" viewBox="0 0 24 24"><path d="m7 7 10 10-5 4V3l5 4L7 17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-fp" viewBox="0 0 24 24"><path d="M6.5 18.5A9 9 0 0 1 5 13a7 7 0 0 1 14 0v1M9 20.5a12 12 0 0 1-1-7.5 4 4 0 0 1 8 0c0 2.5.4 4.6 1.3 6.5M12 13c0 3 .6 5.6 2 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-plug" viewBox="0 0 24 24"><path d="M9 2v5M15 2v5M6 7h12v4a6 6 0 0 1-12 0zM12 17v5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-btn" viewBox="0 0 24 24"><rect x="5" y="2" width="12" height="20" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 6v4M20 13v3" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4zM10 21h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="m8.5 12 2.5 2.5 4.5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  </defs>
+</svg>
+
+<div class="wrap">
+
+<header>
+  <span class="eyebrow">SystemX 2026 · Product &amp; design plan · 12 Oct 2026</span>
+  <h1>SystemX: device info and phone diagnostics, rebuilt for the Play Store</h1>
+  <p class="lede">This plan turns the current one-screen prototype into a full Android app. It shows live device stats, every spec the phone exposes, and a guided hardware checkup with a shareable report. Everything runs on the phone. There is no account, no server and no tracking.</p>
+  <div class="facts">
+    <div class="fact"><b>Flutter + Kotlin</b><span>Flutter draws the UI. A small Kotlin layer reads the system data Flutter packages can't reach. Android first.</span></div>
+    <div class="fact"><b>Local data only</b><span>Settings and history are stored on the phone. No cloud database is needed.</span></div>
+    <div class="fact"><b>7 build stages</b><span>Each stage ends with an APK you install and test on your phone.</span></div>
+    <div class="fact"><b>Target API 36</b><span>Required by Google Play for new apps and updates since 31 Aug 2026.</span></div>
+  </div>
+  <nav class="toc" aria-label="Sections">
+    <a href="#audit">Current code</a><a href="#principles">Principles</a><a href="#design">Design system</a><a href="#screens">Screens</a><a href="#ia">App structure</a><a href="#features">Features</a><a href="#notify">Notifications</a><a href="#security">Security &amp; Play policy</a><a href="#limits">Android limits</a><a href="#tech">Tech</a><a href="#roadmap">Roadmap</a><a href="#you">Your to-do</a><a href="#decide">Decisions</a>
+  </nav>
+</header>
+
+<!-- ========== AUDIT ========== -->
+<section id="audit">
+  <span class="eyebrow">What I found</span>
+  <h2>The current project is a prototype, and the README describes an app that doesn't exist yet</h2>
+  <p>The real app is one screen with seven buttons that fill text boxes. None of the libraries the README lists (OSHI, MPAndroidChart, ViewPager2) are in the build. Some of the code is useful as reference, but it can't be published as it is.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Issue</th><th>Where</th><th>Why it matters</th></tr></thead>
+    <tbody>
+      <tr><td>CPU usage is a random number</td><td><code>getCpuUsage()</code> returns 10–90 at random</td><td>Shows users fake data. Play reviewers and users treat that as deceptive.</td></tr>
+      <tr><td>Native function with no library</td><td><code>external fun getCpuFrequency</code></td><td>Crashes the app the first time anything calls it.</td></tr>
+      <tr><td>Package <code>com.example.myapplication</code></td><td><code>build.gradle.kts</code></td><td>Play Console rejects any package that starts with <code>com.example</code>.</td></tr>
+      <tr><td>Permissions asked at launch, some duplicated or unused</td><td><code>AndroidManifest.xml</code></td><td>Phone permission is requested on first open for no visible reason. <code>WRITE_EXTERNAL_STORAGE</code> and <code>INTERNET</code> are never used.</td></tr>
+      <tr><td>Wi-Fi name shows <code>&lt;unknown ssid&gt;</code></td><td><code>showNetworkInfo()</code></td><td>Android 10 and later only gives the Wi-Fi name to apps that hold the Location permission.</td></tr>
+      <tr><td>Reads the SIM phone number</td><td><code>showSimInfo()</code></td><td>The API is deprecated and the value is unreliable. Collecting it also makes the Play Data safety form harder.</td></tr>
+      <tr><td>Whole-number GB math</td><td>RAM and storage helpers</td><td>7.6 GB of RAM shows as "7 GB".</td></tr>
+      <tr><td>Unscoped coroutines</td><td><code>CoroutineScope(Dispatchers.IO).launch</code></td><td>The work keeps running after the screen closes, which leaks memory.</td></tr>
+      <tr><td>targetSdk 35, no code shrinking</td><td><code>build.gradle.kts</code></td><td>Play requires API 36 now. Release builds are unoptimized and easy to decompile.</td></tr>
+    </tbody>
+  </table></div>
+  <div class="callout"><b>Recommendation:</b> start a clean project in <code>SystemX2026/systemx/</code> and keep the old folder untouched as reference. Three pieces carry over: the <code>/proc/meminfo</code> reader, the per-core <code>cpufreq</code> reader and the Bangladeshi carrier balance codes.</div>
+</section>
+
+<!-- ========== PRINCIPLES ========== -->
+<section id="principles">
+  <span class="eyebrow">Product principles</span>
+  <h2>Five rules every feature has to follow</h2>
+  <div class="grid2">
+    <div class="card"><h3>1 · Honest numbers</h3><p class="muted">Every value comes from the system. Estimates are labelled as estimates, and anything Android blocks says "Not available on this device" instead of showing a guess.</p></div>
+    <div class="card"><h3>2 · Private by design</h3><p class="muted">No account, no analytics SDK and no server. Data never leaves the phone unless the user shares a report. The Play listing can then state "No data collected".</p></div>
+    <div class="card"><h3>3 · Works with zero permissions</h3><p class="muted">The core app needs no permissions. Each extra one is requested only when the user opens the feature that needs it, with a one-line reason.</p></div>
+    <div class="card"><h3>4 · No fake boosters</h3><p class="muted">No "RAM cleaner", "CPU cooler" or "battery doctor" buttons. They don't work on modern Android and they break Play's deceptive-behavior policy. SystemX gives real, actionable tips instead.</p></div>
+    <div class="card"><h3>5 · Glanceable first, deep second</h3><p class="muted">Each screen leads with one clear status, such as a health score or a battery state, and opens up to full detail for enthusiasts.</p></div>
+  </div>
+</section>
+
+<!-- ========== DESIGN SYSTEM ========== -->
+<section id="design">
+  <span class="eyebrow">Design system</span>
+  <h2>An instrument panel in your pocket</h2>
+  <p>The visual idea comes from lab instruments and cockpit gauges. Surfaces are dark and calm, readouts use a monospace face so digits don't jump while they update, and each hardware area has its own color, used the same way everywhere. Dark is the default theme. A light theme, a pure-black AMOLED theme and Material You wallpaper colors are all options in Settings.</p>
+
+  <h3>Metric colors, one per hardware area</h3>
+  <div class="swatches">
+    <div class="sw"><i style="background:var(--p-acc)"></i><div><b>Signal (brand)</b><span>#8E99FF / #4553E0</span></div></div>
+    <div class="sw"><i style="background:var(--p-cpu)"></i><div><b>Processor</b><span>#FF9447</span></div></div>
+    <div class="sw"><i style="background:var(--p-ram)"></i><div><b>Memory</b><span>#A98BFF</span></div></div>
+    <div class="sw"><i style="background:var(--p-bat)"></i><div><b>Battery</b><span>#3DD68C</span></div></div>
+    <div class="sw"><i style="background:var(--p-sto)"></i><div><b>Storage</b><span>#5CA2FF</span></div></div>
+    <div class="sw"><i style="background:var(--p-net)"></i><div><b>Network</b><span>#33D1E5</span></div></div>
+    <div class="sw"><i style="background:var(--p-therm)"></i><div><b>Thermal</b><span>#FF6B6F</span></div></div>
+    <div class="sw"><i style="background:var(--p-bg);border-bottom:1px solid var(--line)"></i><div><b>Ink (dark ground)</b><span>#0B0E17 / #141928</span></div></div>
+  </div>
+  <p class="muted" style="font-size:.92rem">Status colors are separate from the metric colors: green for good, amber for warning, red for critical. A state is never shown by color alone; it also gets an icon or a label, for color-blind users and for TalkBack.</p>
+
+  <h3>Type</h3>
+  <div class="card type-spec">
+    <div class="type-row"><span class="eyebrow">Display · Sora</span><span style="font:600 1.7rem/1.2 var(--f-display)">Pixel 8 · Excellent health</span></div>
+    <div class="type-row"><span class="eyebrow">Body · Figtree</span><span>Unplug at 80% to slow battery wear. Long-press any value to copy it.</span></div>
+    <div class="type-row"><span class="eyebrow">Readout · JetBrains Mono</span><span style="font:500 1.3rem/1.2 var(--f-mono)">2,140 mA · 33.1 °C · 1.82 GHz</span></div>
+  </div>
+  <p class="muted" style="font-size:.92rem">All three fonts are open source (OFL) and ship inside the app, so there are no network font downloads. Text scales with the system font size, up to 200%.</p>
+
+  <h3>Core components</h3>
+  <div class="grid2">
+    <div class="card"><b>Gauge ring</b><span class="muted">Health score, battery and storage. It animates once on first load, then updates in place.</span></div>
+    <div class="card"><b>Stat tile</b><span class="muted">Label, live value, unit and a sparkline or bar. Tapping it opens the detail screen.</span></div>
+    <div class="card"><b>Info row</b><span class="muted">Key and value with an optional "i" explainer. Long-press copies the value, and every row can be searched.</span></div>
+    <div class="card"><b>Test card</b><span class="muted">Icon, name and a status dot (not run, passed, failed or skipped) plus the last run date.</span></div>
+    <div class="card"><b>Permission sheet</b><span class="muted">A bottom sheet that explains why the permission is needed, with Allow and Not now buttons. It appears before Android's own dialog.</span></div>
+    <div class="card"><b>Live chart</b><span class="muted">Area chart with a faint grid and a highlighted latest point. Scrub to see values, pause and resume.</span></div>
+  </div>
+</section>
+
+<!-- ========== SCREENS ========== -->
+<section id="screens">
+  <span class="eyebrow">Key screens</span>
+  <h2>How the app looks</h2>
+  <p>These are design mockups with example values from a Pixel 8. The real app shows the user's own phone.</p>
+
+  <div class="phones">
+
+    <!-- 1 HOME -->
+    <figure>
+      <div class="phone"><div class="scr">
+        <div class="sb"><span>9:41</span><span class="dots"><i></i><i></i></span></div>
+        <div class="body">
+          <div class="top"><div><small>Good evening</small><h4>Pixel 8</h4></div><span class="ico"><svg><use href="#i-gear"/></svg></span></div>
+          <div class="c" style="flex-direction:row;align-items:center;gap:12px">
+            <div class="ring" style="--v:92;--k:var(--p-bat)"><b>92<small>SCORE</small></b></div>
+            <div style="display:grid;gap:5px">
+              <b style="font:600 13px var(--f-display)">Excellent health</b>
+              <span class="sub">Last checkup 2 h ago · 30 of 32 passed</span>
+              <span class="chip acc" style="justify-self:start">Run checkup</span>
+            </div>
+          </div>
+          <div class="tiles">
+            <div class="c"><span class="lbl" style="color:var(--p-cpu)">CPU</span><span class="val">1.82<small> GHz</small></span>
+              <svg class="spark" viewBox="0 0 100 24" preserveAspectRatio="none"><polyline points="0,18 10,14 20,16 30,9 40,12 50,6 60,11 70,8 80,13 90,7 100,10" fill="none" stroke="var(--p-cpu)" stroke-width="1.6" vector-effect="non-scaling-stroke"/></svg></div>
+            <div class="c"><span class="lbl" style="color:var(--p-ram)">Memory</span><span class="val">5.1<small> / 8 GB</small></span><div class="bar" style="--k:var(--p-ram)"><i style="width:64%"></i></div><span class="sub">2.9 GB free</span></div>
+            <div class="c"><span class="lbl" style="color:var(--p-bat)">Battery</span><span class="val">78<small> %</small></span><div class="bar" style="--k:var(--p-bat)"><i style="width:78%"></i></div><span class="sub">31.4 °C · 6 h 10 m left</span></div>
+            <div class="c"><span class="lbl" style="color:var(--p-sto)">Storage</span><span class="val">87<small> / 128 GB</small></span><div class="bar" style="--k:var(--p-sto)"><i style="width:68%"></i></div><span class="sub">41 GB free</span></div>
+            <div class="c"><span class="lbl" style="color:var(--p-net)">Network</span><span class="val" style="font-size:12.5px">↓ 2.4<small> MB/s</small></span><span class="sub">↑ 180 KB/s · Wi-Fi 6</span></div>
+            <div class="c"><span class="lbl" style="color:var(--p-therm)">Thermal</span><span class="val" style="font-size:13px">Normal</span><span class="sub">Headroom 64%</span></div>
+          </div>
+          <div class="c" style="flex-direction:row;gap:9px;align-items:center;background:var(--p-card2)">
+            <span class="sq" style="--k:var(--p-bat)"><svg><use href="#i-bat"/></svg></span>
+            <span class="sub" style="color:var(--p-ink)">Unplug at 80% to slow battery wear. <b style="color:var(--p-acc)">Set alarm</b></span>
+          </div>
+        </div>
+        <div class="nav"><span class="on"><i><svg><use href="#i-home"/></svg></i>Home</span><span><i><svg><use href="#i-dev"/></svg></i>Device</span><span><i><svg><use href="#i-test"/></svg></i>Tests</span><span><i><svg><use href="#i-mon"/></svg></i>Monitor</span></div>
+      </div></div>
+      <figcaption><b>Home dashboard</b>Health score first, then six live tiles. Each tile opens its detail screen. One tip at a time.</figcaption>
+    </figure>
+
+    <!-- 2 DEVICE -->
+    <figure>
+      <div class="phone"><div class="scr">
+        <div class="sb"><span>9:41</span><span class="dots"><i></i><i></i></span></div>
+        <div class="body">
+          <div class="top"><h4>Device</h4><span class="ico"><svg><use href="#i-dev"/></svg></span></div>
+          <div class="search"><svg><use href="#i-search"/></svg>Search 240+ specs</div>
+          <div class="c" style="background:linear-gradient(135deg,#2a3170,#161b2e)">
+            <span class="lbl" style="color:#c6cbff">Google · shiba</span>
+            <b style="font:600 15px var(--f-display)">Pixel 8</b>
+            <span class="sub" style="color:#c6cbff">Android 16 · Security patch 5 Sep 2026</span>
+          </div>
+          <div class="c" style="padding-block:2px">
+            <div class="row"><span class="sq" style="--k:var(--p-acc)"><svg><use href="#i-sys"/></svg></span><span class="k"><b>System</b><span>Android 16 · API 36</span></span></div>
+            <div class="row"><span class="sq" style="--k:var(--p-cpu)"><svg><use href="#i-chip"/></svg></span><span class="k"><b>Processor</b><span>Tensor G3 · 9 cores · 4 nm</span></span></div>
+            <div class="row"><span class="sq" style="--k:var(--p-ram)"><svg><use href="#i-ram"/></svg></span><span class="k"><b>Memory</b><span>8 GB · 2.9 GB free</span></span></div>
+            <div class="row"><span class="sq" style="--k:var(--p-sto)"><svg><use href="#i-sto"/></svg></span><span class="k"><b>Storage</b><span>128 GB · UFS · 41 GB free</span></span></div>
+            <div class="row"><span class="sq" style="--k:var(--p-bat)"><svg><use href="#i-bat"/></svg></span><span class="k"><b>Battery</b><span>4,575 mAh · Good · 212 cycles</span></span></div>
+            <div class="row"><span class="sq" style="--k:#F2C94C"><svg><use href="#i-disp"/></svg></span><span class="k"><b>Display</b><span>6.2" · 1080×2400 · 120 Hz</span></span></div>
+            <div class="row"><span class="sq" style="--k:var(--p-net)"><svg><use href="#i-net"/></svg></span><span class="k"><b>Network</b><span>Wi-Fi 6 · 5 GHz · −52 dBm</span></span></div>
+            <div class="row"><span class="sq" style="--k:#F28CC4"><svg><use href="#i-cam"/></svg></span><span class="k"><b>Cameras</b><span>2 cameras · 50 MP main</span></span></div>
+            <div class="row"><span class="sq" style="--k:#7FD3A8"><svg><use href="#i-sens"/></svg></span><span class="k"><b>Sensors</b><span>27 sensors</span></span></div>
+          </div>
+        </div>
+        <div class="nav"><span><i><svg><use href="#i-home"/></svg></i>Home</span><span class="on"><i><svg><use href="#i-dev"/></svg></i>Device</span><span><i><svg><use href="#i-test"/></svg></i>Tests</span><span><i><svg><use href="#i-mon"/></svg></i>Monitor</span></div>
+      </div></div>
+      <figcaption><b>Device info</b>15 categories with a one-line summary on each row. Search finds any spec, and the whole sheet can be shared.</figcaption>
+    </figure>
+
+    <!-- 3 CPU -->
+    <figure>
+      <div class="phone"><div class="scr">
+        <div class="sb"><span>9:41</span><span class="dots"><i></i><i></i></span></div>
+        <div class="body">
+          <div class="top"><span class="ico"><svg><use href="#i-back"/></svg></span><h4 style="flex:1">Processor</h4><span class="chip">Live</span></div>
+          <div class="c">
+            <span class="lbl" style="color:var(--p-cpu)">Google Tensor G3 · 4 nm</span>
+            <div style="display:flex;justify-content:space-between;align-items:baseline"><span class="val" style="font-size:22px">1.82<small> GHz avg</small></span><span class="sub">Load 41%</span></div>
+            <div class="cores" style="--k:var(--p-cpu)">
+              <i style="height:88%"></i><i style="height:62%"></i><i style="height:55%"></i><i style="height:70%"></i><i style="height:48%"></i><i style="height:30%;opacity:.6"></i><i style="height:26%;opacity:.6"></i><i style="height:35%;opacity:.6"></i><i style="height:22%;opacity:.6"></i>
+            </div>
+            <div class="cores lab"><span>X3</span><span>A715</span><span>A715</span><span>A715</span><span>A715</span><span>A510</span><span>A510</span><span>A510</span><span>A510</span></div>
+          </div>
+          <div class="c">
+            <span class="lbl">Frequency load · last 60 s</span>
+            <svg viewBox="0 0 100 40" preserveAspectRatio="none" style="width:100%;height:58px">
+              <path d="M0,10H100M0,20H100M0,30H100" stroke="var(--p-line)" stroke-width=".5" vector-effect="non-scaling-stroke"/>
+              <path d="M0,30 8,26 16,28 24,18 32,22 40,14 48,20 56,16 64,24 72,12 80,17 88,15 96,19 100,16 V40 H0Z" fill="var(--p-cpu)" opacity=".18"/>
+              <polyline points="0,30 8,26 16,28 24,18 32,22 40,14 48,20 56,16 64,24 72,12 80,17 88,15 96,19 100,16" fill="none" stroke="var(--p-cpu)" stroke-width="1.8" vector-effect="non-scaling-stroke"/>
+              <circle cx="100" cy="16" r="1.8" fill="var(--p-cpu)"/>
+            </svg>
+          </div>
+          <div class="c" style="padding-block:2px">
+            <div class="row"><span class="k"><b>Clusters</b></span><span class="v">1×3.0 · 4×2.45 · 4×1.7 GHz</span></div>
+            <div class="row"><span class="k"><b>Instruction set</b></span><span class="v">arm64-v8a</span></div>
+            <div class="row"><span class="k"><b>GPU</b></span><span class="v">Mali-G715 · Vulkan 1.3</span></div>
+            <div class="row"><span class="k"><b>Thermal status</b></span><span class="v" style="color:var(--p-bat)">Normal</span></div>
+          </div>
+        </div>
+      </div></div>
+      <figcaption><b>Processor detail</b>Live per-core clock speeds, grouped by cluster. Load is estimated from clock speed and labelled as an estimate.</figcaption>
+    </figure>
+
+    <!-- 4 BATTERY -->
+    <figure>
+      <div class="phone"><div class="scr">
+        <div class="sb"><span>9:41</span><span class="dots"><i></i><i></i></span></div>
+        <div class="body">
+          <div class="top"><span class="ico"><svg><use href="#i-back"/></svg></span><h4 style="flex:1">Battery</h4><span class="chip" style="color:var(--p-bat)">Charging</span></div>
+          <div class="c" style="flex-direction:row;align-items:center;gap:14px;padding:14px 12px">
+            <div class="batt"><i></i></div>
+            <div style="display:grid;gap:4px">
+              <span class="val" style="font-size:30px;font-family:var(--f-display)">78%</span>
+              <span class="val" style="font-size:12px;color:var(--p-bat)">+2,140 mA · 9.3 W</span>
+              <span class="sub">USB-PD · full in 42 min</span>
+            </div>
+          </div>
+          <div class="c">
+            <span class="lbl">Charge current · this session</span>
+            <svg viewBox="0 0 100 40" preserveAspectRatio="none" style="width:100%;height:50px">
+              <path d="M0,20H100" stroke="var(--p-line)" stroke-width=".5" vector-effect="non-scaling-stroke"/>
+              <path d="M0,34 6,10 14,8 22,9 30,8 38,10 46,12 54,13 62,15 70,17 78,18 86,20 94,21 100,21 V40H0Z" fill="var(--p-bat)" opacity=".18"/>
+              <polyline points="0,34 6,10 14,8 22,9 30,8 38,10 46,12 54,13 62,15 70,17 78,18 86,20 94,21 100,21" fill="none" stroke="var(--p-bat)" stroke-width="1.8" vector-effect="non-scaling-stroke"/>
+            </svg>
+          </div>
+          <div class="c" style="padding-block:2px">
+            <div class="row"><span class="k"><b>Health</b></span><span class="v" style="color:var(--p-bat)">Good</span></div>
+            <div class="row"><span class="k"><b>Temperature</b></span><span class="v">33.1 °C</span></div>
+            <div class="row"><span class="k"><b>Voltage</b></span><span class="v">4.21 V</span></div>
+            <div class="row"><span class="k"><b>Cycle count</b></span><span class="v">212</span></div>
+            <div class="row"><span class="k"><b>Est. capacity</b><span>Estimate, from charge counter</span></span><span class="v">4,210 mAh · 92%</span></div>
+            <div class="row"><span class="k"><b>Technology</b></span><span class="v">Li-ion</span></div>
+          </div>
+        </div>
+      </div></div>
+      <figcaption><b>Battery detail</b>Live charging speed in mA and W, time to full, cycle count (Android 14+) and estimated capacity.</figcaption>
+    </figure>
+
+    <!-- 5 TESTS -->
+    <figure>
+      <div class="phone"><div class="scr">
+        <div class="sb"><span>9:41</span><span class="dots"><i></i><i></i></span></div>
+        <div class="body">
+          <div class="top"><h4>Tests</h4><span class="ico"><svg><use href="#i-test"/></svg></span></div>
+          <div class="c" style="background:linear-gradient(140deg,#2b336f 0%,#171c31 100%);gap:8px">
+            <span class="lbl" style="color:#c6cbff">Full checkup</span>
+            <b style="font:600 14px var(--f-display)">32 tests · about 4 minutes</b>
+            <span class="sub" style="color:#c6cbff">Automatic tests run on their own. We'll ask you about the rest.</span>
+            <span class="btn">Start checkup</span>
+          </div>
+          <span class="lbl" style="padding-left:2px">Single tests</span>
+          <div class="tgrid">
+            <div class="t" style="--k:#F2C94C;--s:var(--p-bat)"><svg><use href="#i-disp"/></svg>Display</div>
+            <div class="t" style="--k:var(--p-acc);--s:var(--p-bat)"><svg><use href="#i-touch"/></svg>Touch</div>
+            <div class="t" style="--k:var(--p-net);--s:var(--p-bat)"><svg><use href="#i-spk"/></svg>Speaker</div>
+            <div class="t" style="--k:var(--p-net);--s:var(--p-therm)"><svg><use href="#i-spk"/></svg>Earpiece</div>
+            <div class="t" style="--k:var(--p-ram);--s:var(--p-bat)"><svg><use href="#i-mic"/></svg>Microphone</div>
+            <div class="t" style="--k:var(--p-cpu);--s:var(--p-bat)"><svg><use href="#i-vib"/></svg>Vibration</div>
+            <div class="t" style="--k:#F28CC4;--s:var(--p-bat)"><svg><use href="#i-cam"/></svg>Cameras</div>
+            <div class="t" style="--k:var(--p-warn)"><svg><use href="#i-flash"/></svg>Flashlight</div>
+            <div class="t" style="--k:#7FD3A8;--s:var(--p-bat)"><svg><use href="#i-sens"/></svg>Sensors</div>
+            <div class="t" style="--k:var(--p-sto)"><svg><use href="#i-btn"/></svg>Buttons</div>
+            <div class="t" style="--k:var(--p-sto);--s:var(--p-mut)"><svg><use href="#i-gps"/></svg>GPS</div>
+            <div class="t" style="--k:var(--p-acc)"><svg><use href="#i-fp"/></svg>Fingerprint</div>
+          </div>
+        </div>
+        <div class="nav"><span><i><svg><use href="#i-home"/></svg></i>Home</span><span><i><svg><use href="#i-dev"/></svg></i>Device</span><span class="on"><i><svg><use href="#i-test"/></svg></i>Tests</span><span><i><svg><use href="#i-mon"/></svg></i>Monitor</span></div>
+      </div></div>
+      <figcaption><b>Tests hub</b>One guided checkup, or any single test. The dot shows the last result: green passed, red failed, grey skipped.</figcaption>
+    </figure>
+
+    <!-- 6 REPORT -->
+    <figure>
+      <div class="phone"><div class="scr">
+        <div class="sb"><span>9:41</span><span class="dots"><i></i><i></i></span></div>
+        <div class="body">
+          <div class="top"><span class="ico"><svg><use href="#i-back"/></svg></span><h4 style="flex:1">Checkup report</h4></div>
+          <div class="c" style="flex-direction:row;align-items:center;gap:12px">
+            <div class="ring" style="--v:94;--k:var(--p-bat);width:68px"><b style="font-size:19px">94<small>OF 100</small></b></div>
+            <div style="display:grid;gap:3px"><b style="font:600 12.5px var(--f-display)">Your phone is in great shape</b><span class="sub">30 passed · 1 failed · 1 skipped</span><span class="sub">12 Oct 2026, 9:38 pm</span></div>
+          </div>
+          <div class="c" style="padding-block:2px">
+            <div class="row"><span class="st" style="--k:var(--p-therm)">✕</span><span class="k"><b>Earpiece</b><span>Very quiet. Clean the grille and test again.</span></span></div>
+            <div class="row"><span class="st" style="--k:var(--p-mut)">–</span><span class="k"><b>GPS</b><span>Skipped because Location is off</span></span></div>
+            <div class="row"><span class="st" style="--k:var(--p-bat)">✓</span><span class="k"><b>Display &amp; touch</b><span>No dead pixels · all 96 zones respond</span></span></div>
+            <div class="row"><span class="st" style="--k:var(--p-bat)">✓</span><span class="k"><b>Speaker &amp; microphone</b><span>Tone heard and recorded</span></span></div>
+            <div class="row"><span class="st" style="--k:var(--p-bat)">✓</span><span class="k"><b>Sensors</b><span>8 of 8 respond</span></span></div>
+            <div class="row"><span class="st" style="--k:var(--p-bat)">✓</span><span class="k"><b>Charging</b><span>Detected · 2,140 mA peak</span></span></div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:auto">
+            <span class="btn ghost">Save PDF</span><span class="btn">Share report</span>
+          </div>
+        </div>
+      </div></div>
+      <figcaption><b>Checkup report</b>Failures come first, each with a fix. Export it as a PDF, which helps when selling or buying a used phone.</figcaption>
+    </figure>
+
+    <!-- 7 NOTIFICATIONS + WIDGET -->
+    <figure>
+      <div class="phone"><div class="scr wall">
+        <div class="sb"><span>9:41</span><span class="dots"><i></i><i></i></span></div>
+        <div class="body" style="gap:9px">
+          <div class="qs"><i class="on">Wi-Fi</i><i>Data</i><i class="on">SystemX</i><i>Torch</i></div>
+          <div class="ntf">
+            <div class="h"><span class="dot">X</span><b>SystemX</b>· Live status</div>
+            <span class="ttl">78% · 33.1 °C · charging 9.3 W</span>
+            <span class="sub">↓ 2.4 MB/s · ↑ 180 KB/s · RAM 64%</span>
+          </div>
+          <div class="ntf">
+            <div class="h"><span class="dot" style="background:var(--p-bat)">X</span><b>SystemX</b>· Battery · now</div>
+            <span class="ttl">Charged to 80%</span>
+            <span class="sub">Unplug now to protect battery health.</span>
+          </div>
+          <div class="ntf">
+            <div class="h"><span class="dot" style="background:var(--p-warn)">X</span><b>SystemX</b>· Alerts · 2 h ago</div>
+            <span class="ttl">Phone is warm (43 °C)</span>
+            <span class="sub">Close heavy apps or remove the case for a while.</span>
+          </div>
+          <div style="margin-top:auto;display:grid;gap:6px">
+            <span class="lbl" style="color:#c6cbff;padding-left:4px">Home screen widget</span>
+            <div class="widget">
+              <div class="ring" style="--v:78;--k:var(--p-bat);width:58px;--t:7px"><b style="font-size:15px">78<small>%</small></b></div>
+              <div style="display:grid;gap:3px;font:500 10px var(--f-mono)"><span>33.1 °C</span><span style="color:var(--p-ram)">RAM 64%</span><span style="color:var(--p-sto)">41 GB free</span></div>
+            </div>
+          </div>
+        </div>
+      </div></div>
+      <figcaption><b>Live notification, alerts and widget</b>An optional live status notification, alerts you control, a Quick Settings tile and home screen widgets.</figcaption>
+    </figure>
+
+    <!-- 8 PERMISSIONS (light) -->
+    <figure>
+      <div class="phone"><div class="scr light">
+        <div class="sb"><span>9:41</span><span class="dots"><i></i><i></i></span></div>
+        <div class="body">
+          <div class="top"><span class="ico"><svg><use href="#i-back"/></svg></span><h4 style="flex:1">Privacy &amp; permissions</h4></div>
+          <div class="c" style="flex-direction:row;gap:9px;align-items:center;background:#E8EAFD;border-color:#d4d8fb">
+            <span class="sq" style="--k:var(--l-acc)"><svg><use href="#i-shield"/></svg></span>
+            <span style="font-size:10px;color:#2C37B0"><b>Your data stays on this phone.</b> No account, no ads tracking, nothing uploaded.</span>
+          </div>
+          <span class="sub" style="padding-left:2px">SystemX works without any of these. Turn on only what you need.</span>
+          <div class="c" style="padding-block:2px">
+            <div class="row"><span class="sq" style="--k:var(--l-acc)"><svg><use href="#i-bell"/></svg></span><span class="k"><b>Notifications</b><span>Live status and battery alerts</span></span><span class="toggle on"></span></div>
+            <div class="row"><span class="sq" style="--k:#0B9AAE"><svg><use href="#i-gps"/></svg></span><span class="k"><b>Location</b><span>Wi-Fi name and GPS test</span></span><span class="pill">Ask when needed</span></div>
+            <div class="row"><span class="sq" style="--k:#E8711F"><svg><use href="#i-dev"/></svg></span><span class="k"><b>Phone</b><span>SIM slots and signal details</span></span><span class="toggle"></span></div>
+            <div class="row"><span class="sq" style="--k:#C2408A"><svg><use href="#i-cam"/></svg></span><span class="k"><b>Camera</b><span>Only during the camera test</span></span><span class="pill">Ask when needed</span></div>
+            <div class="row"><span class="sq" style="--k:#8452F0"><svg><use href="#i-mic"/></svg></span><span class="k"><b>Microphone</b><span>Only during the mic test</span></span><span class="pill">Ask when needed</span></div>
+            <div class="row"><span class="sq" style="--k:#2B78E4"><svg><use href="#i-bt"/></svg></span><span class="k"><b>Nearby devices</b><span>Bluetooth test</span></span><span class="pill">Ask when needed</span></div>
+          </div>
+        </div>
+      </div></div>
+      <figcaption><b>Privacy &amp; permissions (light theme)</b>Every permission listed in one place, with its reason and current status.</figcaption>
+    </figure>
+
+  </div>
+</section>
+
+<!-- ========== IA ========== -->
+<section id="ia">
+  <span class="eyebrow">App structure</span>
+  <h2>Four tabs, with Settings in the top bar</h2>
+  <pre class="mermaid">
+flowchart LR
+  S[Splash] --> O[Onboarding<br/>3 screens, first run only] --> H
+  subgraph Tabs
+    H[Home<br/>score · live tiles · tips]
+    D[Device<br/>15 categories · search · share]
+    T[Tests<br/>checkup · single tests · history]
+    M[Monitor<br/>live charts · history · sessions]
+  end
+  H --> CPU[CPU detail] & BAT[Battery detail] & NET[Network detail]
+  D --> CAT[Category detail] --> SPEC[Share spec sheet]
+  T --> RUN[Test runner] --> REP[Report] --> PDF[PDF / share]
+  M --> CH[Charging sessions] & HIS[24 h / 7 d history]
+  H -.-> SET[Settings]
+  SET --> PERM[Privacy and permissions] & NOTI[Alerts and live status] & APP[Theme · units · language · about]
+  </pre>
+  <div class="grid2">
+    <div class="card"><h3>Shortcuts outside the app</h3><ul><li>Long-press the app icon: Run checkup, Battery, Speed test</li><li>Quick Settings tile showing battery % and temperature</li><li>Two home screen widgets, small and medium</li><li>Notification actions such as "Stop live status"</li></ul></div>
+    <div class="card"><h3>First run</h3><ul><li>3 swipeable intro screens: Know your phone, Test your hardware, Private by design</li><li>No permission prompts during onboarding</li><li>Ends on Home with a "Run your first checkup" card</li></ul></div>
+  </div>
+</section>
+
+<!-- ========== FEATURES ========== -->
+<section id="features">
+  <span class="eyebrow">Feature catalog</span>
+  <h2>Everything SystemX will do</h2>
+  <p>The stage column shows when each feature is built (see the <a href="#roadmap">roadmap</a>). "None" means no permission is needed.</p>
+
+  <h3>Device information</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>Category</th><th>What the user sees</th><th>Permission</th><th>Stage</th></tr></thead>
+    <tbody>
+      <tr><td>Device</td><td>Marketing name (e.g. "Pixel 8" rather than "shiba"), maker, model, codename, board, hardware</td><td>None</td><td><span class="tag">2</span></td></tr>
+      <tr><td>System</td><td>Android version and API level, security patch, build, kernel, bootloader, baseband, uptime, Play services version, Treble, A/B updates, SELinux, root status</td><td>None</td><td><span class="tag">2</span></td></tr>
+      <tr><td>Processor</td><td>SoC name, process node, cores and clusters, live per-core clock speeds, governor, ABIs</td><td>None</td><td><span class="tag">2</span></td></tr>
+      <tr><td>GPU</td><td>Renderer, vendor, OpenGL ES and Vulkan versions, extensions</td><td>None</td><td><span class="tag">2</span></td></tr>
+      <tr><td>Memory</td><td>Total, used and available RAM, low-memory threshold, swap (zRAM)</td><td>None</td><td><span class="tag">2</span></td></tr>
+      <tr><td>Storage</td><td>Internal total, used and free, apps vs. system, SD card and USB drives</td><td>None</td><td><span class="tag">2</span></td></tr>
+      <tr><td>Battery</td><td>Level, status, charger type, health, temperature, voltage, current (mA and W), cycle count, estimated capacity, time to full</td><td>None</td><td><span class="tag">2</span></td></tr>
+      <tr><td>Display</td><td>Resolution, density, size in inches, refresh rates, HDR, wide color, brightness, notch</td><td>None</td><td><span class="tag">2</span></td></tr>
+      <tr><td>Network</td><td>Connection type, Wi-Fi standard, band and channel, link speed, signal, IPv4/IPv6, gateway, DNS, VPN, metered, live speed</td><td>Location (Wi-Fi name only)</td><td><span class="tag">2</span></td></tr>
+      <tr><td>SIM &amp; mobile</td><td>Slots, carrier, country, eSIM, data SIM, network generation, signal in dBm, roaming, and a balance check that opens the dialer with the carrier's USSD code (GP, Robi, Banglalink, Airtel, Teletalk)</td><td>Phone (optional)</td><td><span class="tag">2</span></td></tr>
+      <tr><td>Cameras</td><td>Each camera's megapixels, sensor size, aperture, focal length, OIS, flash, max video, RAW support</td><td>None</td><td><span class="tag">2</span></td></tr>
+      <tr><td>Sensors</td><td>Full list with vendor, range, resolution and power, plus a live reading for each</td><td>None</td><td><span class="tag">2</span></td></tr>
+      <tr><td>Media</td><td>Audio and video codecs (hardware or software), Widevine DRM level, audio outputs</td><td>None</td><td><span class="tag">2</span></td></tr>
+      <tr><td>Features</td><td>Bluetooth version, NFC, 5G, UWB, IR blaster, USB host, fingerprint and face hardware</td><td>None</td><td><span class="tag">2</span></td></tr>
+      <tr><td>Security check</td><td>Screen lock set, biometrics enrolled, encryption, patch age, USB debugging on. Each item links to the right system setting.</td><td>None</td><td><span class="tag">2</span></td></tr>
+      <tr><td>Everywhere</td><td>Search across all specs, long-press to copy, share the full spec sheet as text or PDF</td><td>None</td><td><span class="tag">2</span></td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Live dashboard and monitor</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>Feature</th><th>Detail</th><th>Permission</th><th>Stage</th></tr></thead>
+    <tbody>
+      <tr><td>Health score</td><td>0–100 from battery health, temperature, free storage, memory pressure and the last checkup. Tap it to see how the score is calculated.</td><td>None</td><td><span class="tag">3</span></td></tr>
+      <tr><td>Live tiles</td><td>CPU, memory, battery, storage, network speed and thermal, updating every 1 s (adjustable). Updates pause when the app is in the background.</td><td>None</td><td><span class="tag">3</span></td></tr>
+      <tr><td>Live charts</td><td>Per-core frequency, RAM, battery current and temperature, network up/down, thermal headroom. Scrub, pause and resume.</td><td>None</td><td><span class="tag">3</span></td></tr>
+      <tr><td>History</td><td>24 h and 7 day charts for battery level, temperature and RAM, sampled efficiently in the background</td><td>None</td><td><span class="tag">5</span></td></tr>
+      <tr><td>Charging sessions</td><td>Log of each charge: start and end %, duration, average and peak current, max temperature</td><td>None</td><td><span class="tag">5</span></td></tr>
+      <tr><td>Smart tips</td><td>Real, actionable suggestions, e.g. "Storage 91% full: open storage settings" or "Patch is 4 months old: check for updates"</td><td>None</td><td><span class="tag">3</span></td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Diagnostics (32 tests)</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>Group</th><th>Tests</th><th>Permission</th><th>Stage</th></tr></thead>
+    <tbody>
+      <tr><td>Display</td><td>Dead pixels (solid colors), color banding, burn-in check, touch grid, multi-touch count, brightness range</td><td>None</td><td><span class="tag">4</span></td></tr>
+      <tr><td>Audio</td><td>Loudspeaker, earpiece, microphone record and playback, speaker-to-mic loop, headphone and USB audio detection</td><td>Microphone (during the test)</td><td><span class="tag">4</span></td></tr>
+      <tr><td>Haptics &amp; buttons</td><td>Vibration patterns, volume up and down keys</td><td>None</td><td><span class="tag">4</span></td></tr>
+      <tr><td>Cameras</td><td>Front and rear preview and capture, autofocus, flashlight</td><td>Camera (during the test)</td><td><span class="tag">4</span></td></tr>
+      <tr><td>Sensors</td><td>Accelerometer (tilt ball game), gyroscope, compass, proximity, light, barometer</td><td>None</td><td><span class="tag">4</span></td></tr>
+      <tr><td>Connectivity</td><td>Wi-Fi, Bluetooth, GPS fix with satellite count, NFC, mobile signal</td><td>Location, Nearby devices (during the test)</td><td><span class="tag">4</span></td></tr>
+      <tr><td>Biometrics</td><td>Fingerprint and face via the system prompt. The app never sees biometric data.</td><td>None</td><td><span class="tag">4</span></td></tr>
+      <tr><td>Charging &amp; storage</td><td>Charger detection and charging speed, storage read/write speed</td><td>None</td><td><span class="tag">4</span></td></tr>
+      <tr><td>Checkup &amp; report</td><td>Guided wizard, score, history of past checkups, PDF export and share</td><td>None</td><td><span class="tag">4</span></td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Tools, widgets and settings</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>Feature</th><th>Detail</th><th>Permission</th><th>Stage</th></tr></thead>
+    <tbody>
+      <tr><td>Charge alarm</td><td>Notify at a chosen level (80, 85, 90 or 100%) to protect the battery</td><td>Notifications</td><td><span class="tag">5</span></td></tr>
+      <tr><td>Widgets &amp; tile</td><td>Small (battery and temperature) and medium (dashboard) widgets, Quick Settings tile, app shortcuts</td><td>None</td><td><span class="tag">5</span></td></tr>
+      <tr><td>Internet speed test</td><td>Download, upload and ping. Needs a test server, so it waits on your decision below.</td><td>Internet</td><td><span class="tag warn">6 · decide</span></td></tr>
+      <tr><td>Wi-Fi signal meter</td><td>Live dBm with a "walk around to find the best spot" gauge</td><td>Location</td><td><span class="tag">6</span></td></tr>
+      <tr><td>Settings</td><td>Theme (system, light, dark, AMOLED black), Material You colors, units (°C/°F, GB/GiB), refresh rate, alert thresholds, English and Bangla, clear history, licenses, privacy policy, feedback</td><td>None</td><td><span class="tag">1</span> <span class="tag">6</span></td></tr>
+      <tr><td>Play extras</td><td>In-app review prompt (after a successful checkup) and in-app updates</td><td>None</td><td><span class="tag">7</span></td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- ========== NOTIFICATIONS ========== -->
+<section id="notify">
+  <span class="eyebrow">Notifications &amp; background work</span>
+  <h2>Live, useful and always under the user's control</h2>
+  <div class="grid2">
+    <div class="card"><h3>Live status (optional)</h3><ul><li>Ongoing notification with battery %, temperature, charging watts, network speed and RAM</li><li>The status bar icon can show live network speed or battery temperature as a number</li><li>Runs as a foreground service that the user turns on. It is off by default and has a Stop button.</li></ul></div>
+    <div class="card"><h3>Alerts (each can be turned off, with its own threshold)</h3><ul><li>Charge limit reached, battery low, battery hot</li><li>Charging finished, with a session summary</li><li>Storage almost full</li><li>Weekly health summary and a monthly checkup reminder</li></ul></div>
+    <div class="card"><h3>How it stays battery-friendly</h3><ul><li>Live updates run only while the app is open or live status is on</li><li>History uses WorkManager every 15 minutes, plus charger plug and unplug events</li><li>Separate notification channels, so users can mute any type in Android settings</li></ul></div>
+    <div class="card"><h3>Permission timing</h3><ul><li>The notification permission (Android 13+) is asked when the user turns on an alert or live status, never at launch</li><li>If the user denies it, the toggle explains why and links to settings</li></ul></div>
+  </div>
+</section>
+
+<!-- ========== SECURITY ========== -->
+<section id="security">
+  <span class="eyebrow">Security, privacy &amp; Play policy</span>
+  <h2>Built to pass review the first time</h2>
+  <div class="grid2">
+    <div class="card"><h3>Data &amp; privacy</h3><ul><li>No account, backend, analytics or ads SDK, so Data safety can say "No data collected or shared"</li><li>Crash and ANR reports come from Play Console's Android vitals, so no extra SDK is needed</li><li>History stays in a private app database protected by Android's sandbox and file encryption</li><li>"Clear all history" button. Uninstalling removes everything.</li></ul></div>
+    <div class="card"><h3>App hardening</h3><ul><li>R8 code shrinking and obfuscation, plus resource shrinking, in release builds</li><li>No logs in release builds</li><li>Only the launcher, widget and tile are exported. Everything else is private.</li><li>Cleartext network traffic blocked. Backup rules limited to settings.</li><li>Dependencies only from Google Maven and Maven Central, with license notices in the app</li></ul></div>
+    <div class="card"><h3>Permissions we will never request</h3><ul><li><code>READ_PHONE_NUMBERS</code>, <code>QUERY_ALL_PACKAGES</code>, background location, storage write, SMS and call log</li><li>These are restricted or sensitive on Play and none of our features need them</li></ul></div>
+    <div class="card"><h3>Play policy checklist</h3><ul><li>Target API 36, 16 KB page-size ready (no native code)</li><li>Foreground service type <code>specialUse</code> declared, with a short demo video</li><li>Store listing makes no exaggerated claims ("speeds up", "cleans")</li><li>Privacy policy URL, content rating, target audience 13+, ads declaration</li></ul></div>
+  </div>
+</section>
+
+<!-- ========== LIMITS ========== -->
+<section id="limits">
+  <span class="eyebrow">What Android doesn't allow</span>
+  <h2>Limits we design around instead of faking</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>Can't get</th><th>Since</th><th>What SystemX shows instead</th></tr></thead>
+    <tbody>
+      <tr><td>Total CPU usage %</td><td>Android 8</td><td>Per-core clock speeds, a frequency-based load estimate (labelled) and the system thermal state</td></tr>
+      <tr><td>IMEI, serial number, real MAC</td><td>Android 10</td><td>A note explaining Android hides them for privacy, plus how to see IMEI by dialing <code>*#06#</code></td></tr>
+      <tr><td>Phone number</td><td>Unreliable</td><td>Not shown</td></tr>
+      <tr><td>Battery design capacity</td><td>No public API</td><td>Capacity estimated from the charge counter and clearly labelled. Cycle count on Android 14+ where the maker exposes it.</td></tr>
+      <tr><td>CPU and GPU temperature</td><td>Varies by maker</td><td>Battery temperature (always available), thermal status and headroom, and CPU temperature when the phone exposes it</td></tr>
+      <tr><td>Wi-Fi name without Location</td><td>Android 10</td><td>Everything else about Wi-Fi, plus a "Show Wi-Fi name" button that asks for Location</td></tr>
+      <tr><td>Per-app battery and data use</td><td>Needs special Usage Access</td><td>Left out of v1. Could be an opt-in feature later.</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted">Emulators report a lot of this as missing. Every stage should be tested on a real phone, and a second brand (Samsung or Xiaomi) is ideal because makers expose different data.</p>
+</section>
+
+<!-- ========== TECH ========== -->
+<section id="tech">
+  <span class="eyebrow">Technical architecture</span>
+  <h2>One clean app module, layered</h2>
+  <pre class="mermaid">
+flowchart TB
+  subgraph UI[UI · Flutter + Material 3]
+    SCR[Screens] --> VM[Riverpod providers]
+  end
+  subgraph DATA[Data]
+    REPO[Repositories]
+    PROBES[Kotlin system probes via Pigeon<br/>CPU · Memory · Battery · Storage · Network<br/>Display · Camera · Sensors · Telephony · Thermal · Media]
+    DB[(Local database<br/>history · sessions · checkups)]
+    DS[(Settings store)]
+  end
+  subgraph BG[Background]
+    FGS[Live status service]
+    WM[WorkManager<br/>sampling · weekly summary]
+    RCV[Charger receivers]
+    GL[Glance widgets · QS tile]
+  end
+  VM --> REPO --> PROBES & DB & DS
+  FGS & WM & RCV & GL --> REPO
+  </pre>
+  <div class="tbl"><table>
+    <thead><tr><th>Area</th><th>Choice</th><th>Why</th></tr></thead>
+    <tbody>
+      <tr><td>Language &amp; UI</td><td>Flutter 3.41 (Dart), Material 3, custom painted gauges and charts</td><td>Your choice: cross-platform later, and you already know it</td></tr><tr><td>System data</td><td>Kotlin plugin layer, called from Dart through Pigeon</td><td>Flutter packages cover about 40% of the data; the rest needs Android APIs directly</td></tr>
+      <tr><td>Navigation</td><td>go_router</td><td>Deep links from notifications, widgets and shortcuts</td></tr>
+      <tr><td>State</td><td>Riverpod</td><td>Makes probes swappable with fakes in tests</td></tr>
+      <tr><td>Async</td><td>Streams from Kotlin, paused when the screen is hidden</td><td>Live data stops when the screen isn't visible</td></tr>
+      <tr><td>Charts</td><td>Custom painters (already built for the gauges and sparklines)</td><td>Full control over the look, no heavy chart dependency</td></tr>
+      <tr><td>Storage</td><td>shared_preferences now, a local SQL database for history in Stage 5</td><td>Local only. No server database is needed.</td></tr>
+      <tr><td>Background</td><td>Kotlin foreground service, WorkManager, native widgets</td><td>The Play-compliant way to run live status, sampling and widgets</td></tr>
+      <tr><td>Camera &amp; PDF</td><td>Flutter camera plugin, on-device PDF generation</td><td>Camera test and offline report export, with no extra services</td></tr>
+      <tr><td>Quality</td><td>Dart unit and widget tests, Kotlin unit tests, screenshot renders, flutter_lints</td><td>Parser tests, visual review, consistent code</td></tr>
+      <tr><td>SDK levels</td><td>minSdk 26 (Android 8.0), target and compile 36</td><td>Covers about 97% of active devices and keeps the code simpler</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- ========== ROADMAP ========== -->
+<section id="roadmap">
+  <span class="eyebrow">Roadmap</span>
+  <h2>Seven stages, each one testable on your phone</h2>
+  <p>I stop after each stage, give you an APK or a Run button in Android Studio, and list what to check. We move on once you're happy with it.</p>
+  <div class="stages">
+    <div class="stage done"><div class="n">0<small>Done</small></div><div class="bd"><h3>Plan &amp; design</h3><p class="muted">This page: code audit, features, design system, screen designs, roadmap.</p></div></div>
+    <div class="stage done"><div class="n">1<small>Done</small></div><div class="bd"><h3>New project, design system and app shell</h3><ul><li>New Flutter project <code>systemx/</code> (app id <code>com.systemx.app</code>), R8 and signing config</li><li>Theme: colors, fonts, shapes, dark, light, AMOLED and Material You</li><li>Components: gauge ring, stat tile, info row, test card, permission sheet</li><li>App icon, splash screen, 3-screen onboarding, 4-tab navigation, Settings screen</li></ul><p class="test"><b>You test:</b> install it, go through onboarding, switch themes, try the bottom tabs.</p></div></div>
+    <div class="stage"><div class="n">2<small>Info</small></div><div class="bd"><h3>All device information</h3><ul><li>All system probes, with unit tests for the file parsers</li><li>15 category screens, search, copy and share spec sheet</li><li>Device name and SoC lookup tables bundled offline</li><li>Permission sheet flow for Location and Phone</li></ul><p class="test"><b>You test:</b> compare values with your phone's Settings › About phone, deny and allow permissions.</p></div></div>
+    <div class="stage"><div class="n">3<small>Live</small></div><div class="bd"><h3>Live dashboard, detail screens and Monitor tab</h3><ul><li>Real-time data, health score, tips</li><li>CPU, battery, network and thermal detail screens with live charts</li></ul><p class="test"><b>You test:</b> plug in a charger and watch the current change, download something and watch network speed.</p></div></div>
+    <div class="stage"><div class="n">4<small>Tests</small></div><div class="bd"><h3>Diagnostics and reports</h3><ul><li>32 tests, guided checkup wizard, saved results history</li><li>PDF report export and share</li></ul><p class="test"><b>You test:</b> run a full checkup and open the PDF on a computer.</p></div></div>
+    <div class="stage"><div class="n">5<small>Background</small></div><div class="bd"><h3>Notifications, history and widgets</h3><ul><li>Live status service, alerts, charge alarm, charging sessions</li><li>Background sampling and 24 h / 7 day history, weekly summary</li><li>Glance widgets, Quick Settings tile, app shortcuts</li></ul><p class="test"><b>You test:</b> leave live status on for a day and report the battery cost. Add the widget and the tile.</p></div></div>
+    <div class="stage"><div class="n">6<small>Polish</small></div><div class="bd"><h3>Tools, Bangla, accessibility and performance</h3><ul><li>Speed test (if approved), Wi-Fi meter</li><li>Bangla translation, TalkBack labels, 200% font check, tablet and foldable layouts</li><li>Motion and haptics polish, Baseline Profile, startup under 1 s, full test pass, privacy review</li></ul><p class="test"><b>You test:</b> switch the phone to Bangla, turn on TalkBack, use the largest font size.</p></div></div>
+    <div class="stage"><div class="n">7<small>Release</small></div><div class="bd"><h3>Play Store launch</h3><ul><li>Signed release bundle (.aab), store listing text in English and Bangla</li><li>Store graphics: 512 px icon, 1024×500 feature graphic, 8 phone screenshots</li><li>Privacy policy page, answers for Data safety, content rating and the foreground service form</li><li>Closed test with 12+ testers for 14 days, then a staged rollout (20% → 100%)</li></ul><p class="test"><b>You do:</b> the Play Console steps below, which need your account.</p></div></div>
+  </div>
+</section>
+
+<!-- ========== YOU ========== -->
+<section id="you">
+  <span class="eyebrow">Your to-do</span>
+  <h2>What only you can do</h2>
+  <p>I'll write the code, texts, policy page and form answers. These steps need your hands, your accounts or your money.</p>
+  <p class="when">Before Stage 1</p>
+  <ol class="todo">
+    <li><b>Answer the decisions below</b><span>Package id is the important one. It can never change after the first upload.</span></li>
+    <li><b>Update Android Studio to the latest stable version</b><span>Help › Check for Updates. Then set Settings › Build Tools › Gradle › Gradle JDK to the bundled "jbr-21". You have Java 24 on PATH, and Gradle may refuse to build with it.</span></li>
+    <li><b>Prepare your phone</b><span>Settings › About phone › tap Build number 7 times, then turn on USB debugging (or Wireless debugging) in Developer options.</span></li>
+  </ol>
+  <p class="when">During the build</p>
+  <ol class="todo" start="4" style="counter-reset:t 3">
+    <li><b>Test each stage on your phone and tell me what's wrong</b><span>Screenshots help. A second phone from a different brand is a big plus for this kind of app.</span></li>
+  </ol>
+  <p class="when">Before release (can start now, account approval takes days)</p>
+  <ol class="todo" style="counter-reset:t 4">
+    <li><b>Create a Google Play Console developer account</b><span>$25 once, plus identity verification. New personal accounts must run a closed test with at least 12 testers for 14 days in a row before going to production.</span></li>
+    <li><b>Line up 12–15 testers</b><span>Friends or classmates with an Android phone and a Gmail address. They install from a Play link and must keep the app installed for the 14 days.</span></li>
+    <li><b>Create and back up your upload key</b><span>I'll give you the exact command. Keep the .jks file and its passwords in two safe places, never in the code folder or on GitHub.</span></li>
+    <li><b>Publish the privacy policy</b><span>I'll write it. You put it online for free with GitHub Pages; I'll guide you click by click.</span></li>
+    <li><b>Record a 30-second screen video</b><span>Showing the live status notification, for Play's foreground service declaration.</span></li>
+    <li><b>Fill in the Play Console forms with my prepared answers</b><span>Store listing, Data safety, content rating, target audience, ads, app access. Also a public contact email for the listing.</span></li>
+  </ol>
+</section>
+
+<!-- ========== DECISIONS ========== -->
+<section id="decide">
+  <span class="eyebrow">Decisions needed</span>
+  <h2>Six choices before I start Stage 1</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>Decision</th><th>Options</th><th>My recommendation</th></tr></thead>
+    <tbody>
+      <tr><td>App name</td><td>Keep "SystemX", or choose another</td><td>Keep it, listed as <b>"SystemX: Device Info &amp; Phone Test"</b>. Search the Play Store first to check for a clash.</td></tr>
+      <tr><td>Package id</td><td>e.g. <code>com.yourname.systemx</code>, <code>dev.yourname.systemx</code></td><td>Use a name or domain you own. It can never change.</td></tr>
+      <tr><td>Monetization</td><td>Free, no ads · Ads (AdMob) · Free plus a one-time "Pro" unlock</td><td><b>Free with no ads at launch.</b> Ads add data collection to the Data safety form and lower ratings. A Pro unlock (extra themes, history export, more widgets) can come later.</td></tr>
+      <tr><td>Speed test</td><td>Leave out of v1 · M-Lab (open and free, but test results including IP are published publicly) · Cloudflare speed endpoints</td><td><b>Leave it out of v1.</b> Then the app needs no internet permission at all, which is a strong privacy point. Add it in an update.</td></tr>
+      <tr><td>Languages</td><td>English only · English + Bangla</td><td><b>English + Bangla</b>, a real advantage in Bangladesh</td></tr>
+      <tr><td>Minimum Android</td><td>7.0 (API 24) · 8.0 (API 26)</td><td><b>8.0</b>. You lose very few users and the code is simpler and safer.</td></tr>
+    </tbody>
+  </table></div>
+  <div class="callout">Reply with your choices, even just "go with your recommendations, package id com.xxx.systemx", and I'll start Stage 1.</div>
+</section>
+
+</div>

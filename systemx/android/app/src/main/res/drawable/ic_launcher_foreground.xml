@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- SystemX mark: a gauge ring (270°) around an X. Content stays inside the
+     adaptive-icon safe zone (radius 33 around the 54,54 center). -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <path
+        android:pathData="M54,28 A26,26 0 1,1 54,80 A26,26 0 1,1 54,28"
+        android:strokeWidth="6"
+        android:strokeAlpha="0.22"
+        android:strokeColor="#FF8E99FF" />
+    <path
+        android:pathData="M54,28 A26,26 0 1,1 28,54"
+        android:strokeWidth="6"
+        android:strokeLineCap="round"
+        android:strokeColor="#FF8E99FF" />
+    <path
+        android:pathData="M46,46 L62,62 M62,46 L46,62"
+        android:strokeWidth="6"
+        android:strokeLineCap="round"
+        android:strokeColor="#FFECEEF8" />
+</vector>
