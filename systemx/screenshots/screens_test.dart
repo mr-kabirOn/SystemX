@@ -50,6 +50,7 @@ Future<void> _shoot(
   bool onboarded = true,
   ThemeMode theme = ThemeMode.dark,
   String? locale,
+  Size size = const Size(1080, 2400),
 }) async {
   final api = FakeDeviceApi()
     ..phoneGranted = true
@@ -76,7 +77,7 @@ Future<void> _shoot(
   await c.read(settingsProvider.notifier).setThemeMode(theme);
   if (locale != null) await c.read(settingsProvider.notifier).setLocale(locale);
 
-  tester.view.physicalSize = const Size(1080, 2400);
+  tester.view.physicalSize = size;
   tester.view.devicePixelRatio = 2.625;
   tester.view.padding = const FakeViewPadding(top: 63, bottom: 63);
 
@@ -154,6 +155,27 @@ void main() {
     await _shoot(tester, '23_wifi_meter', Routes.wifiMeter);
     await _shoot(tester, '24_home_bangla', Routes.home, locale: 'bn');
     await _shoot(tester, '25_report_light', Routes.report(0), theme: ThemeMode.light);
+    addTearDown(tester.view.reset);
+  });
+
+  // Play Store phone screenshots must be at most 2:1, so these are 1080×2160.
+  testWidgets('store screenshots', (tester) async {
+    const store = Size(1080, 2160);
+    final shots = <(String, String)>[
+      ('store/1_home', Routes.home),
+      ('store/2_device', Routes.device),
+      ('store/3_cpu', Routes.live(LiveMetric.cpu)),
+      ('store/4_battery', Routes.live(LiveMetric.battery)),
+      ('store/5_tests', Routes.tests),
+      ('store/6_report', Routes.report(0)),
+      ('store/7_monitor', Routes.monitor),
+      ('store/8_privacy', Routes.privacy),
+    ];
+    for (final (name, route) in shots) {
+      await _shoot(tester, name, route, size: store);
+    }
+    await _shoot(tester, 'store/bn_1_home', Routes.home, size: store, locale: 'bn');
+    await _shoot(tester, 'store/bn_2_device', Routes.device, size: store, locale: 'bn');
     addTearDown(tester.view.reset);
   });
 }
