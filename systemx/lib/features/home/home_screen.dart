@@ -11,6 +11,7 @@ import '../../l10n/app_localizations.dart';
 import '../../ui/sx_icons.dart';
 import '../../ui/widgets/cards.dart';
 import '../../ui/widgets/gauges.dart';
+import '../../ui/widgets/page_scaffold.dart';
 import '../device/device_data.dart';
 import '../device/spec_view.dart';
 import '../live/health.dart';
@@ -79,7 +80,8 @@ class HomeScreen extends ConsumerWidget {
       body: SafeArea(
         bottom: false,
         child: ListView(
-          padding: const EdgeInsets.fromLTRB(16, 12, 16, 28),
+          padding: EdgeInsets.fromLTRB(
+              sidePadding(context), 12, sidePadding(context), 28),
           children: [
             // Header
             Row(children: [

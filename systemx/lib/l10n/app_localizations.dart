@@ -4573,6 +4573,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Health score {score} of 100, {word}'**
   String healthScoreSpoken(int score, String word);
+
+  /// No description provided for @privacyPolicy.
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy policy'**
+  String get privacyPolicy;
+
+  /// No description provided for @sendFeedback.
+  ///
+  /// In en, this message translates to:
+  /// **'Send feedback'**
+  String get sendFeedback;
 }
 
 class _AppLocalizationsDelegate

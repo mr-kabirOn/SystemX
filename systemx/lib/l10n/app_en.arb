@@ -814,5 +814,7 @@
   "wifiMeterHint": "Walk around slowly. The ring fills as the signal gets stronger, so you can find the best spot for working or placing your router.",
   "bestHere": "Best so far",
   "healthScoreSpoken": "Health score {score} of 100, {word}",
-  "@healthScoreSpoken": {"placeholders": {"score": {"type": "int"}, "word": {"type": "String"}}}
+  "@healthScoreSpoken": {"placeholders": {"score": {"type": "int"}, "word": {"type": "String"}}},
+  "privacyPolicy": "Privacy policy",
+  "sendFeedback": "Send feedback"
 }

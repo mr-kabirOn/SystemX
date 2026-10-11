@@ -1,5 +1,14 @@
 import 'package:flutter/material.dart';
 
+/// Widest the content gets on tablets and unfolded foldables.
+const maxContentWidth = 720.0;
+
+/// Side padding that centers content no wider than [maxContentWidth].
+double sidePadding(BuildContext context, [double min = 16]) {
+  final w = MediaQuery.sizeOf(context).width;
+  return w > maxContentWidth + 2 * min ? (w - maxContentWidth) / 2 : min;
+}
+
 /// Page with a pinned title (same size as the Home header) and padded content.
 class PageScaffold extends StatelessWidget {
   const PageScaffold({
@@ -30,7 +39,8 @@ class PageScaffold extends StatelessWidget {
             actions: [...actions, const SizedBox(width: 8)],
           ),
           SliverPadding(
-            padding: const EdgeInsets.fromLTRB(16, 4, 16, 28),
+            padding: EdgeInsets.fromLTRB(
+                sidePadding(context), 4, sidePadding(context), 28),
             sliver: SliverMainAxisGroup(slivers: slivers),
           ),
         ],

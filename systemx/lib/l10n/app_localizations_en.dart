@@ -2486,4 +2486,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String healthScoreSpoken(int score, String word) {
     return 'Health score $score of 100, $word';
   }
+
+  @override
+  String get privacyPolicy => 'Privacy policy';
+
+  @override
+  String get sendFeedback => 'Send feedback';
 }

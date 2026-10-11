@@ -4,7 +4,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
+import '../../core/links.dart';
 import '../../core/router.dart';
+import '../../platform/platform.dart';
 import '../../core/settings/settings.dart';
 import '../../core/theme/sx_colors.dart';
 import '../../l10n/app_localizations.dart';
@@ -192,6 +194,18 @@ class SettingsScreen extends ConsumerWidget {
                   style: context.text.bodyMedium?.copyWith(color: sx.muted),
                 ),
               ),
+              ListTile(
+                title: Text(l.privacyPolicy),
+                trailing: const Icon(Icons.open_in_new_rounded),
+                onTap: () => ref.read(deviceApiProvider).openLink(AppLinks.privacyPolicy),
+              ),
+              if (AppLinks.feedbackEmail.isNotEmpty)
+                ListTile(
+                  title: Text(l.sendFeedback),
+                  trailing: const Icon(Icons.mail_outline_rounded),
+                  onTap: () => ref.read(deviceApiProvider).openLink(
+                      'mailto:${AppLinks.feedbackEmail}?subject=SystemX%20feedback'),
+                ),
               ListTile(
                 title: Text(l.licenses),
                 trailing: const Icon(Icons.chevron_right_rounded),

@@ -63,6 +63,16 @@ void main() {
     await _visitAll(tester, c);
   });
 
+  testWidgets('every screen works on a tablet, content centered', (tester) async {
+    final c = await pumpApp(tester);
+    tester.view.physicalSize = const Size(2560, 1600);
+    tester.view.devicePixelRatio = 2.0;
+    await tester.pumpAndSettle();
+    final card = tester.getRect(find.text('Run checkup').first);
+    expect(card.left, greaterThan(200)); // not stretched edge to edge
+    await _visitAll(tester, c);
+  });
+
   testWidgets('dashboard tiles and gauges have spoken labels', (tester) async {
     final c = await pumpApp(tester);
     for (var i = 0; i < 3; i++) {
