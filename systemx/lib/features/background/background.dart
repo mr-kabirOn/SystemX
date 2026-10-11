@@ -1,6 +1,6 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../core/log.dart';
 import '../../core/settings/settings.dart';
 import '../../platform/platform.dart';
 import '../tests/test_results.dart';
@@ -82,7 +82,7 @@ class BackgroundConfigNotifier extends AsyncNotifier<BackgroundConfig> {
     try {
       await _api.setConfig(c);
     } catch (e) {
-      debugPrint('SystemX: could not save background config: $e');
+      logDebug('could not save background config: $e');
     }
   }
 

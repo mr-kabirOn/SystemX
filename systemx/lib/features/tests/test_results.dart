@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:path_provider/path_provider.dart';
 
+import '../../core/log.dart';
 import 'test_catalog.dart';
 
 enum TestStatus { notRun, passed, failed, skipped }
@@ -175,7 +176,7 @@ class TestHistoryNotifier extends AsyncNotifier<TestHistory> {
       if (raw == null) return const TestHistory();
       return TestHistory.fromJson((jsonDecode(raw) as Map).cast<String, Object?>());
     } catch (e) {
-      debugPrint('SystemX: could not read test results: $e');
+      logDebug('could not read test results: $e');
       return const TestHistory();
     }
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../core/log.dart';
 import '../../core/theme/sx_colors.dart';
 import '../../l10n/app_localizations.dart';
 import '../../platform/platform.dart';
@@ -185,7 +186,7 @@ Future<DeviceSnapshot> loadSnapshot(DeviceInfoApi api, Set<Probe> probes) async 
     try {
       return await call();
     } catch (e) {
-      debugPrint('SystemX: ${p.name} probe failed: $e');
+      logDebug('${p.name} probe failed: $e');
       return null;
     }
   }

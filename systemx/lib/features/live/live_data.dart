@@ -4,6 +4,7 @@ import 'dart:math' as math;
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../core/log.dart';
 import '../../core/settings/settings.dart';
 import '../../platform/platform.dart';
 
@@ -174,7 +175,7 @@ class LiveMonitor extends Notifier<LiveState> {
         up: prev == null ? st.up : _push(st.up, up),
       );
     } catch (e) {
-      debugPrint('SystemX: live probe failed: $e');
+      logDebug('live probe failed: $e');
     } finally {
       _busy = false;
     }
