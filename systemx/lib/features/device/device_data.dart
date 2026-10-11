@@ -232,6 +232,13 @@ final categorySnapshotProvider = FutureProvider.autoDispose
   return loadSnapshot(ref.watch(deviceApiProvider), category.probes);
 });
 
+/// What the Home screen needs. Leaves out slow probes (codecs, cameras,
+/// sensors) so the dashboard is ready quickly at launch.
+final homeSnapshotProvider = FutureProvider.autoDispose<DeviceSnapshot>((ref) {
+  return loadSnapshot(ref.watch(deviceApiProvider),
+      const {Probe.identity, Probe.battery, Probe.storage, Probe.security});
+});
+
 /// Every probe at once, for the Device tab summaries, search and sharing.
 final fullSnapshotProvider = FutureProvider.autoDispose<DeviceSnapshot>((ref) {
   return loadSnapshot(ref.watch(deviceApiProvider), Probe.values.toSet());

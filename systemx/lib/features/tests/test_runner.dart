@@ -144,9 +144,9 @@ class ResultView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text(result.test.title(l))),
       body: SafeArea(
-        child: Padding(
+        child: FillOrScroll(
           padding: const EdgeInsets.all(24),
-          child: Column(children: [
+          children: [
             const Spacer(),
             Icon(icon, size: 88, color: color),
             const SizedBox(height: 16),
@@ -165,12 +165,13 @@ class ResultView extends StatelessWidget {
               ),
             ],
             const Spacer(),
+            const SizedBox(height: 16),
             Row(children: [
               Expanded(child: OutlinedButton(onPressed: onRetry, child: Text(l.testAgain))),
               const SizedBox(width: 12),
               Expanded(child: FilledButton(onPressed: onDone, child: Text(l.done))),
             ]),
-          ]),
+          ],
         ),
       ),
     );

@@ -14,6 +14,7 @@ class GaugeRing extends StatelessWidget {
     this.size = 92,
     this.stroke = 10,
     this.child,
+    this.semanticLabel,
   });
 
   /// 0.0 – 1.0
@@ -23,20 +24,32 @@ class GaugeRing extends StatelessWidget {
   final double stroke;
   final Widget? child;
 
+  /// Spoken instead of the ring's contents.
+  final String? semanticLabel;
+
   @override
   Widget build(BuildContext context) {
     final track = context.sx.line;
-    return TweenAnimationBuilder<double>(
+    final ring = TweenAnimationBuilder<double>(
       tween: Tween(end: value.clamp(0.0, 1.0)),
       duration: const Duration(milliseconds: 900),
       curve: Curves.easeOutCubic,
       builder: (context, v, child) => CustomPaint(
         size: Size.square(size),
         painter: _RingPainter(v, color, track, stroke),
-        child: SizedBox.square(dimension: size, child: Center(child: child)),
+        child: SizedBox.square(
+          dimension: size,
+          // Scales down with large font sizes instead of overflowing.
+          child: Padding(
+            padding: EdgeInsets.all(stroke + 4),
+            child: Center(child: FittedBox(fit: BoxFit.scaleDown, child: child)),
+          ),
+        ),
       ),
       child: child,
     );
+    if (semanticLabel == null) return ring;
+    return Semantics(label: semanticLabel, excludeSemantics: true, child: ring);
   }
 }
 

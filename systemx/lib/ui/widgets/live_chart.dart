@@ -63,8 +63,13 @@ class _LiveChartState extends State<LiveChart> {
   Widget build(BuildContext context) {
     final sx = context.sx;
     final i = _scrub;
+    final latest = [
+      for (final s in widget.series)
+        if (s.values.isNotEmpty) '${s.label ?? ''} ${widget.format(s.values.last)}'.trim(),
+    ].join(', ');
     return Semantics(
       label: widget.semanticLabel,
+      value: latest,
       child: LayoutBuilder(builder: (context, box) {
         return GestureDetector(
           onHorizontalDragStart: (d) => _scrubAt(d.localPosition.dx, box.maxWidth),

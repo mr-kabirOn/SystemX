@@ -155,9 +155,9 @@ class _CheckupScreenState extends ConsumerState<CheckupScreen> {
       _Phase.intro => Scaffold(
           appBar: AppBar(title: Text(l.checkupTitle)),
           body: SafeArea(
-            child: Padding(
+            child: FillOrScroll(
               padding: const EdgeInsets.all(24),
-              child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+              children: [
                 Text(l.checkupMeta(total, checkupMinutes), style: context.text.titleMedium),
                 const SizedBox(height: 8),
                 Text(l.checkupIntro, style: context.text.bodyLarge),
@@ -167,12 +167,13 @@ class _CheckupScreenState extends ConsumerState<CheckupScreen> {
                   child: Text(l.checkupPrep, style: context.text.bodyMedium),
                 ),
                 const Spacer(),
+                const SizedBox(height: 16),
                 FilledButton.icon(
                   onPressed: _runAutomatic,
                   icon: const Icon(Icons.play_arrow_rounded),
                   label: Text(l.startCheckup),
                 ),
-              ]),
+              ],
             ),
           ),
         ),

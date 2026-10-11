@@ -78,9 +78,10 @@ class TestsScreen extends ConsumerWidget {
           SliverToBoxAdapter(child: SectionLabel(groupTitle(l, g))),
           SliverGrid.builder(
             itemCount: HwTest.values.where((t) => t.group == g).length,
-            gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+            gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
               maxCrossAxisExtent: 130,
-              mainAxisExtent: 112,
+              // Grows with the font size so two-line labels still fit.
+              mainAxisExtent: 70 + MediaQuery.textScalerOf(context).scale(42),
               mainAxisSpacing: 10,
               crossAxisSpacing: 10,
             ),

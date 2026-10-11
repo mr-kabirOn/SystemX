@@ -323,7 +323,11 @@ class StatusChip extends StatelessWidget {
           Icon(icon, size: 13, color: c),
           const SizedBox(width: 5),
         ],
-        Text(label, style: context.text.labelSmall?.copyWith(color: c)),
+        Flexible(
+          child: Text(label,
+              overflow: TextOverflow.ellipsis,
+              style: context.text.labelSmall?.copyWith(color: c)),
+        ),
       ]),
     );
   }
@@ -334,4 +338,30 @@ void showComingSoon(BuildContext context) {
     ..hideCurrentSnackBar()
     ..showSnackBar(
         SnackBar(content: Text(AppLocalizations.of(context).comingSoon)));
+}
+
+/// A column that fills the screen but scrolls when its content doesn't fit
+/// (large font sizes, small phones). [Spacer]s work inside it.
+class FillOrScroll extends StatelessWidget {
+  const FillOrScroll({super.key, required this.children, this.padding = EdgeInsets.zero});
+
+  final List<Widget> children;
+  final EdgeInsetsGeometry padding;
+
+  @override
+  Widget build(BuildContext context) => LayoutBuilder(
+        builder: (context, box) => SingleChildScrollView(
+          padding: padding,
+          child: ConstrainedBox(
+            constraints: BoxConstraints(
+                minHeight: box.maxHeight - padding.vertical),
+            child: IntrinsicHeight(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: children,
+              ),
+            ),
+          ),
+        ),
+      );
 }

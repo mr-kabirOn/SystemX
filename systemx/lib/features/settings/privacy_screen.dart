@@ -77,16 +77,26 @@ class _PrivacyScreenState extends ConsumerState<PrivacyScreen> {
             child: Column(children: [
               for (final (i, p) in perms.indexed) ...[
                 if (i > 0) const Divider(indent: 66, endIndent: 14),
-                ListTile(
-                  leading: IconBadge(p.$1, color: p.$2, size: 36),
-                  title: Text(p.$3),
-                  subtitle: Text(p.$4),
-                  trailing: p.$5 == null
-                      ? StatusChip(l.askWhenNeeded)
-                      : _StatusChip(p.$5!),
+                // Status under the text (not trailing) so large fonts fit.
+                InkWell(
                   onTap: () => p.$5 == null
                       ? _explain(p.$1, p.$2, p.$3, p.$4)
                       : _manage(p.$5!),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+                    child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                      IconBadge(p.$1, color: p.$2, size: 36),
+                      const SizedBox(width: 16),
+                      Expanded(
+                        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                          Text(p.$3, style: context.text.titleSmall),
+                          Text(p.$4, style: context.text.bodySmall),
+                          const SizedBox(height: 6),
+                          p.$5 == null ? StatusChip(l.askWhenNeeded) : _StatusChip(p.$5!),
+                        ]),
+                      ),
+                    ]),
+                  ),
                 ),
               ],
             ]),

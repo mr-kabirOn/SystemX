@@ -4567,6 +4567,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Best so far'**
   String get bestHere;
+
+  /// No description provided for @healthScoreSpoken.
+  ///
+  /// In en, this message translates to:
+  /// **'Health score {score} of 100, {word}'**
+  String healthScoreSpoken(int score, String word);
 }
 
 class _AppLocalizationsDelegate

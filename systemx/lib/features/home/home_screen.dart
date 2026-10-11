@@ -52,7 +52,7 @@ class HomeScreen extends ConsumerWidget {
     final sx = context.sx;
     final unit = ref.watch(settingsProvider.select((s) => s.tempUnit));
     final live = ref.watch(liveProvider);
-    final snap = ref.watch(fullSnapshotProvider).value;
+    final snap = ref.watch(homeSnapshotProvider).value;
     final s = live.latest;
     final lastCheckup = ref.watch(testHistoryProvider).value?.lastCheckup;
 
@@ -109,6 +109,9 @@ class HomeScreen extends ConsumerWidget {
               onTap: score == null ? null : () => _showScore(context, score),
               child: Row(children: [
                 GaugeRing(
+                  semanticLabel: score == null
+                      ? null
+                      : l.healthScoreSpoken(score.score, scoreWord(l, score.score)),
                   value: (score?.score ?? 0) / 100,
                   color: _scoreColor(sx, score?.score),
                   size: 104,

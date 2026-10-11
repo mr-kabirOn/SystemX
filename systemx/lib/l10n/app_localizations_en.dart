@@ -2481,4 +2481,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get bestHere => 'Best so far';
+
+  @override
+  String healthScoreSpoken(int score, String word) {
+    return 'Health score $score of 100, $word';
+  }
 }
