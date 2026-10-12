@@ -93,6 +93,27 @@ ThemeData buildTheme(SxColors c, Brightness brightness) {
         );
       }),
     ),
+    // Same look as the bottom bar, for the side rail on wide screens.
+    navigationRailTheme: NavigationRailThemeData(
+      backgroundColor: c.card,
+      indicatorColor: isDark
+          ? c.network.withValues(alpha: 0.16)
+          : c.accent.withValues(alpha: 0.24),
+      selectedIconTheme: isDark
+          ? IconThemeData(
+              size: 24,
+              color: c.network,
+              shadows: [Shadow(color: c.network.withValues(alpha: 0.85), blurRadius: 16)],
+            )
+          : IconThemeData(size: 24, color: c.accent),
+      unselectedIconTheme: IconThemeData(
+        size: 24,
+        color: isDark ? c.network.withValues(alpha: 0.55) : c.muted,
+      ),
+      selectedLabelTextStyle:
+          sxStyle(SxFonts.body, 12, FontWeight.w600, color: isDark ? c.network : c.ink),
+      unselectedLabelTextStyle: sxStyle(SxFonts.body, 12, FontWeight.w600, color: c.muted),
+    ),
     filledButtonTheme: FilledButtonThemeData(
       style: FilledButton.styleFrom(
         backgroundColor: c.accent,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
@@ -41,6 +42,20 @@ class DeviceScreen extends ConsumerWidget {
     return PageScaffold(
       title: l.deviceTitle,
       actions: [
+        IconButton(
+          tooltip: l.copyAll,
+          icon: const Icon(Icons.copy_all_rounded),
+          onPressed: snap == null
+              ? null
+              : () async {
+                  await Clipboard.setData(
+                      ClipboardData(text: fullSpecSheet(builder, snap, DateTime.now())));
+                  if (!context.mounted) return;
+                  ScaffoldMessenger.of(context)
+                    ..hideCurrentSnackBar()
+                    ..showSnackBar(SnackBar(content: Text(l.copiedAll)));
+                },
+        ),
         IconButton(
           tooltip: l.shareSpecs,
           icon: const Icon(Icons.share_outlined),

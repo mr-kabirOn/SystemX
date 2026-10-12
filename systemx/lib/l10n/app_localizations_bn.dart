@@ -3106,4 +3106,10 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get upCertNone => 'None entered';
+
+  @override
+  String get copyAll => 'সব স্পেক কপি করুন';
+
+  @override
+  String get copiedAll => 'সব স্পেক কপি হয়েছে';
 }

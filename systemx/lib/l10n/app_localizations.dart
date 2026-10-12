@@ -5689,6 +5689,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'None entered'**
   String get upCertNone;
+
+  /// No description provided for @copyAll.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy all specs'**
+  String get copyAll;
+
+  /// No description provided for @copiedAll.
+  ///
+  /// In en, this message translates to:
+  /// **'All specs copied'**
+  String get copiedAll;
 }
 
 class _AppLocalizationsDelegate

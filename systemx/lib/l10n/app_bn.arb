@@ -940,5 +940,7 @@
   "upCertTitle": "Used phone report",
   "upCertNote": "Created on the phone itself by SystemX. It shows the phone's state at that moment. It can't confirm the phone isn't lost, stolen or blacklisted; check the IMEI against the box and receipt.",
   "upCertClaims": "Seller's claims",
-  "upCertNone": "None entered"
+  "upCertNone": "None entered",
+  "copyAll": "সব স্পেক কপি করুন",
+  "copiedAll": "সব স্পেক কপি হয়েছে"
 }

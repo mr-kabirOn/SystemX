@@ -3128,4 +3128,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get upCertNone => 'None entered';
+
+  @override
+  String get copyAll => 'Copy all specs';
+
+  @override
+  String get copiedAll => 'All specs copied';
 }
