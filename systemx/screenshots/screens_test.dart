@@ -34,9 +34,7 @@ Future<void> _loadFonts() async {
     await loader.load();
   }
 
-  await load('Sora', 'assets/fonts/Sora.ttf');
   await load('Inter', 'assets/fonts/Inter.ttf');
-  await load('JetBrainsMono', 'assets/fonts/JetBrainsMono.ttf');
   await load('NotoSansBengali', 'assets/fonts/NotoSansBengali.ttf');
   final phosphor = Directory('${Platform.environment['HOME']}/.pub-cache/hosted/pub.dev')
       .listSync()

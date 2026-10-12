@@ -48,7 +48,6 @@ final shareFileProvider =
 Future<Uint8List> buildReportPdf(
     Checkup c, AppLocalizations l, DeviceSnapshot? snap) async {
   final body = pw.Font.ttf(await rootBundle.load('assets/fonts/Inter.ttf'));
-  final mono = pw.Font.ttf(await rootBundle.load('assets/fonts/JetBrainsMono.ttf'));
   final theme = pw.ThemeData.withFont(base: body, bold: body);
 
   const ink = PdfColor.fromInt(0xFF141928);
@@ -93,9 +92,9 @@ Future<Uint8List> buildReportPdf(
       pw.Text(reportDate(c.at, l), style: const pw.TextStyle(fontSize: 11, color: muted)),
       pw.SizedBox(height: 18),
       pw.Row(crossAxisAlignment: pw.CrossAxisAlignment.center, children: [
-        pw.Text('${c.score}', style: pw.TextStyle(font: mono, fontSize: 44, color: ink)),
+        pw.Text('${c.score}', style: pw.TextStyle(font: body, fontSize: 44, color: ink)),
         pw.SizedBox(width: 6),
-        pw.Text('/ 100', style: pw.TextStyle(font: mono, fontSize: 14, color: muted)),
+        pw.Text('/ 100', style: pw.TextStyle(font: body, fontSize: 14, color: muted)),
         pw.SizedBox(width: 24),
         pw.Expanded(
           child: pw.Column(crossAxisAlignment: pw.CrossAxisAlignment.start, children: [

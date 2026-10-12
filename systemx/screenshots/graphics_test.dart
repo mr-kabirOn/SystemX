@@ -55,7 +55,6 @@ Future<void> _render(WidgetTester tester, Size size, String name, Widget child) 
 
 void main() {
   setUpAll(() async {
-    await _font('Sora', 'assets/fonts/Sora.ttf');
     await _font('Inter', 'assets/fonts/Inter.ttf');
   });
 
@@ -94,7 +93,7 @@ void main() {
               children: [
                 const Text('SystemX',
                     style: TextStyle(
-                        fontFamily: 'Sora',
+                        fontFamily: 'Inter',
                         fontSize: 72,
                         fontWeight: FontWeight.w700,
                         fontVariations: [FontVariation('wght', 700)],

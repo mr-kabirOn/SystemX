@@ -239,7 +239,7 @@ class InfoRow extends StatelessWidget {
                       value,
                       textAlign: TextAlign.end,
                       style: SxText.readout(13.5, color,
-                          weight: FontWeight.w500),
+                          weight: FontWeight.w500, tabular: false),
                     ),
                   ),
                   if (onTap != null)

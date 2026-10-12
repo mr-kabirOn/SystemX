@@ -38,21 +38,13 @@ flutter:
   generate: true
 
   assets:
-    - assets/fonts/OFL-Sora.txt
     - assets/fonts/OFL-Inter.txt
-    - assets/fonts/OFL-JetBrainsMono.txt
     - assets/fonts/OFL-NotoSansBengali.txt
 
   fonts:
-    - family: Sora
-      fonts:
-        - asset: assets/fonts/Sora.ttf
     - family: Inter
       fonts:
         - asset: assets/fonts/Inter.ttf
-    - family: JetBrainsMono
-      fonts:
-        - asset: assets/fonts/JetBrainsMono.ttf
     - family: NotoSansBengali
       fonts:
         - asset: assets/fonts/NotoSansBengali.ttf
