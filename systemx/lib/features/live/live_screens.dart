@@ -68,7 +68,7 @@ class LiveDetailScreen extends ConsumerWidget {
           padding: const EdgeInsets.only(right: 8),
           child: Center(
             child: StatusChip(live.paused ? l.paused : l.live,
-                color: live.paused ? sx.muted : color, icon: Icons.circle),
+                color: live.paused ? sx.muted : color),
           ),
         ),
       ],

@@ -107,7 +107,6 @@ class _CategoryScreenState extends ConsumerState<CategoryScreen> {
   Widget build(BuildContext context) {
     ref.listen(settingsProvider.select((s) => s.refreshRate), (_, _) => _start());
     final l = AppLocalizations.of(context);
-    final sx = context.sx;
     final c = widget.category;
     final snapshot = ref.watch(categorySnapshotProvider(c));
     final unit = ref.watch(settingsProvider.select((s) => s.tempUnit));
@@ -120,13 +119,6 @@ class _CategoryScreenState extends ConsumerState<CategoryScreen> {
       title: c.title(l),
       leading: const BackButton(),
       actions: [
-        if (_live)
-          Padding(
-            padding: const EdgeInsets.only(right: 4),
-            child: Center(
-              child: StatusChip(l.live, color: c.color(sx), icon: Icons.circle),
-            ),
-          ),
         IconButton(
           tooltip: l.shareSpecs,
           icon: const Icon(Icons.share_outlined),

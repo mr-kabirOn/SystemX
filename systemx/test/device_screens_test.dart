@@ -55,7 +55,7 @@ void main() {
     await tester.tap(find.text('Processor'));
     await tester.pump();
     await tester.pump(const Duration(milliseconds: 400));
-    expect(find.text('Live'), findsOneWidget);
+    expect(find.text('Live'), findsNothing);
     expect(find.text('Clusters'), findsOneWidget);
 
     final before = api.cpuCalls;
