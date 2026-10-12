@@ -2872,4 +2872,57 @@ class AppLocalizationsEn extends AppLocalizations {
   String stSeconds(int seconds) {
     return '$seconds s';
   }
+
+  @override
+  String get rrTitle => 'Refresh rate test';
+
+  @override
+  String get rrEntryBody => 'How smoothly the screen really redraws';
+
+  @override
+  String get rrIntro =>
+      'Counts how many times per second the screen redraws while the bar moves. SystemX asks for the display\'s fastest mode first.';
+
+  @override
+  String get rrStart => 'Measure';
+
+  @override
+  String get rrMeasuring => 'Measuring…';
+
+  @override
+  String get rrMeasured => 'Measured refresh rate';
+
+  @override
+  String get rrMatches => 'Matches what the display supports.';
+
+  @override
+  String rrLower(String max) {
+    return 'Lower than the $max Hz the display supports. Battery saver, adaptive refresh or the phone\'s settings may be limiting it.';
+  }
+
+  @override
+  String get rrReported => 'Highest rate the display reports';
+
+  @override
+  String get trTitle => 'Touch response test';
+
+  @override
+  String get trEntryBody => 'How often touch positions reach apps';
+
+  @override
+  String get trIntro =>
+      'Move a finger around the box below without lifting it.';
+
+  @override
+  String get trDraw => 'Draw here';
+
+  @override
+  String get trNow => 'Touch rate';
+
+  @override
+  String get trBest => 'Highest';
+
+  @override
+  String get trNote =>
+      'This is the rate apps receive touch positions. The \"touch sampling rate\" in phone adverts can be higher, as some of it is used inside Android.';
 }

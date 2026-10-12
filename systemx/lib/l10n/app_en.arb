@@ -935,5 +935,22 @@
   "stCpuPeak": "Highest processor temperature",
   "stDuration": "Duration",
   "stSeconds": "{seconds} s",
-  "@stSeconds": {"placeholders": {"seconds": {"type": "int"}}}
+  "@stSeconds": {"placeholders": {"seconds": {"type": "int"}}},
+  "rrTitle": "Refresh rate test",
+  "rrEntryBody": "How smoothly the screen really redraws",
+  "rrIntro": "Counts how many times per second the screen redraws while the bar moves. SystemX asks for the display's fastest mode first.",
+  "rrStart": "Measure",
+  "rrMeasuring": "Measuring…",
+  "rrMeasured": "Measured refresh rate",
+  "rrMatches": "Matches what the display supports.",
+  "rrLower": "Lower than the {max} Hz the display supports. Battery saver, adaptive refresh or the phone's settings may be limiting it.",
+  "@rrLower": {"placeholders": {"max": {"type": "String"}}},
+  "rrReported": "Highest rate the display reports",
+  "trTitle": "Touch response test",
+  "trEntryBody": "How often touch positions reach apps",
+  "trIntro": "Move a finger around the box below without lifting it.",
+  "trDraw": "Draw here",
+  "trNow": "Touch rate",
+  "trBest": "Highest",
+  "trNote": "This is the rate apps receive touch positions. The \"touch sampling rate\" in phone adverts can be higher, as some of it is used inside Android."
 }

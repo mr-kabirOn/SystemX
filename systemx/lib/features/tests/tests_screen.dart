@@ -86,6 +86,22 @@ class TestsScreen extends ConsumerWidget {
               subtitle: l.stEntryBody,
               onTap: () => context.push(Routes.stress),
             ),
+            const Divider(indent: 66, endIndent: 14),
+            CategoryRow(
+              icon: SxIcons.display,
+              color: sx.display,
+              title: l.rrTitle,
+              subtitle: l.rrEntryBody,
+              onTap: () => context.push(Routes.refreshRate),
+            ),
+            const Divider(indent: 66, endIndent: 14),
+            CategoryRow(
+              icon: SxIcons.touch,
+              color: sx.accent,
+              title: l.trTitle,
+              subtitle: l.trEntryBody,
+              onTap: () => context.push(Routes.touchRate),
+            ),
           ]),
         )),
         for (final g in TestGroup.values) ...[

@@ -2851,4 +2851,56 @@ class AppLocalizationsBn extends AppLocalizations {
   String stSeconds(int seconds) {
     return '$seconds সেকেন্ড';
   }
+
+  @override
+  String get rrTitle => 'রিফ্রেশ রেট টেস্ট';
+
+  @override
+  String get rrEntryBody => 'স্ক্রিন আসলে কতটা মসৃণভাবে আঁকে';
+
+  @override
+  String get rrIntro =>
+      'বারটি চলার সময় স্ক্রিন সেকেন্ডে কতবার নতুন করে আঁকে তা গোনে। SystemX আগে ডিসপ্লের সবচেয়ে দ্রুত মোড চায়।';
+
+  @override
+  String get rrStart => 'মাপুন';
+
+  @override
+  String get rrMeasuring => 'মাপা হচ্ছে…';
+
+  @override
+  String get rrMeasured => 'মাপা রিফ্রেশ রেট';
+
+  @override
+  String get rrMatches => 'ডিসপ্লে যা সাপোর্ট করে তার সাথে মিলেছে।';
+
+  @override
+  String rrLower(String max) {
+    return 'ডিসপ্লের সাপোর্ট করা $max Hz-এর চেয়ে কম। ব্যাটারি সেভার, অ্যাডাপ্টিভ রিফ্রেশ বা ফোনের সেটিংস হয়তো সীমিত করছে।';
+  }
+
+  @override
+  String get rrReported => 'ডিসপ্লের জানানো সর্বোচ্চ রেট';
+
+  @override
+  String get trTitle => 'টাচ রেসপন্স টেস্ট';
+
+  @override
+  String get trEntryBody => 'টাচের অবস্থান কত ঘন ঘন অ্যাপে পৌঁছায়';
+
+  @override
+  String get trIntro => 'আঙুল না তুলে নিচের বক্সে ঘোরান।';
+
+  @override
+  String get trDraw => 'এখানে আঁকুন';
+
+  @override
+  String get trNow => 'টাচ রেট';
+
+  @override
+  String get trBest => 'সর্বোচ্চ';
+
+  @override
+  String get trNote =>
+      'এটি অ্যাপ যে হারে টাচের অবস্থান পায় সেটা। ফোনের বিজ্ঞাপনে লেখা \"টাচ স্যাম্পলিং রেট\" বেশি হতে পারে, কারণ এর কিছু অংশ অ্যান্ড্রয়েডের ভেতরে ব্যবহৃত হয়।';
 }

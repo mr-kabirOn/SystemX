@@ -5233,6 +5233,102 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{seconds} s'**
   String stSeconds(int seconds);
+
+  /// No description provided for @rrTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Refresh rate test'**
+  String get rrTitle;
+
+  /// No description provided for @rrEntryBody.
+  ///
+  /// In en, this message translates to:
+  /// **'How smoothly the screen really redraws'**
+  String get rrEntryBody;
+
+  /// No description provided for @rrIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Counts how many times per second the screen redraws while the bar moves. SystemX asks for the display\'s fastest mode first.'**
+  String get rrIntro;
+
+  /// No description provided for @rrStart.
+  ///
+  /// In en, this message translates to:
+  /// **'Measure'**
+  String get rrStart;
+
+  /// No description provided for @rrMeasuring.
+  ///
+  /// In en, this message translates to:
+  /// **'Measuring…'**
+  String get rrMeasuring;
+
+  /// No description provided for @rrMeasured.
+  ///
+  /// In en, this message translates to:
+  /// **'Measured refresh rate'**
+  String get rrMeasured;
+
+  /// No description provided for @rrMatches.
+  ///
+  /// In en, this message translates to:
+  /// **'Matches what the display supports.'**
+  String get rrMatches;
+
+  /// No description provided for @rrLower.
+  ///
+  /// In en, this message translates to:
+  /// **'Lower than the {max} Hz the display supports. Battery saver, adaptive refresh or the phone\'s settings may be limiting it.'**
+  String rrLower(String max);
+
+  /// No description provided for @rrReported.
+  ///
+  /// In en, this message translates to:
+  /// **'Highest rate the display reports'**
+  String get rrReported;
+
+  /// No description provided for @trTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Touch response test'**
+  String get trTitle;
+
+  /// No description provided for @trEntryBody.
+  ///
+  /// In en, this message translates to:
+  /// **'How often touch positions reach apps'**
+  String get trEntryBody;
+
+  /// No description provided for @trIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Move a finger around the box below without lifting it.'**
+  String get trIntro;
+
+  /// No description provided for @trDraw.
+  ///
+  /// In en, this message translates to:
+  /// **'Draw here'**
+  String get trDraw;
+
+  /// No description provided for @trNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Touch rate'**
+  String get trNow;
+
+  /// No description provided for @trBest.
+  ///
+  /// In en, this message translates to:
+  /// **'Highest'**
+  String get trBest;
+
+  /// No description provided for @trNote.
+  ///
+  /// In en, this message translates to:
+  /// **'This is the rate apps receive touch positions. The \"touch sampling rate\" in phone adverts can be higher, as some of it is used inside Android.'**
+  String get trNote;
 }
 
 class _AppLocalizationsDelegate
