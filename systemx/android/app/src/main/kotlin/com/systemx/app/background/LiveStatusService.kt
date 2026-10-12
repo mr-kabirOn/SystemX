@@ -17,6 +17,7 @@ import android.os.Build
 import android.os.Handler
 import android.os.IBinder
 import android.os.Looper
+import android.widget.RemoteViews
 import com.systemx.app.R
 import com.systemx.app.platform.AlertRules
 import java.util.Locale
@@ -89,19 +90,44 @@ class LiveStatusService : Service() {
 
     private fun build(r: Reading, down: Double, up: Double): Notification {
         val c = ConfigStore.load(this)
-        // Every number says what it is: "Battery 63% · Health Good".
-        val title = listOfNotNull(
-            getString(R.string.live_battery, r.level),
-            healthName(r.health)?.let { getString(R.string.live_health, it) },
-        ).joinToString(" · ")
-        val battery = mutableListOf(getString(R.string.live_temp, AlertRules.temp(r.tempC, c.fahrenheit)))
+        val battery = "${r.level}%"
+        val batteryLabel = healthName(r.health)?.let { getString(R.string.live_health, it) }
+            ?: getString(R.string.n_label_battery)
+        val temp = AlertRules.temp(r.tempC, c.fahrenheit)
+        val ram = "${(r.memUsed * 100).roundToInt()}%"
+        // Charging power while plugged in, otherwise what the phone draws.
         val ma = r.currentMa
-        if (r.pluggedIn && ma != null && ma > 0) {
-            val watts = abs(ma) * r.voltageMv / 1e6
-            battery += getString(R.string.live_charging_w, String.format(Locale.ROOT, "%.1f", watts))
+        val watts = if (ma != null && ma != 0L && r.voltageMv > 0) abs(ma) * r.voltageMv / 1e6 else null
+        val power = watts?.let { String.format(Locale.ROOT, "%.1f W", it) } ?: "–"
+        val powerLabel = getString(
+            when {
+                watts == null -> R.string.n_label_power
+                r.pluggedIn && ma != null && ma > 0 -> R.string.n_label_charging
+                else -> R.string.n_label_using
+            },
+        )
+
+        val small = RemoteViews(packageName, R.layout.notif_live_small).apply {
+            setTextViewText(R.id.s_battery, battery)
+            setTextViewText(R.id.s_temp, temp)
+            setTextViewText(R.id.s_down, rate(down))
+            setTextViewText(R.id.s_ram, ram)
         }
-        val line1 = battery.joinToString(" · ")
-        val line2 = getString(R.string.live_text, rate(down), rate(up), (r.memUsed * 100).roundToInt())
+        val big = RemoteViews(packageName, R.layout.notif_live_big).apply {
+            setTextViewText(R.id.battery_value, battery)
+            setTextViewText(R.id.battery_label, batteryLabel)
+            setTextViewText(R.id.temp_value, temp)
+            setTextViewText(R.id.temp_label, getString(R.string.n_label_temp))
+            setTextViewText(R.id.power_value, power)
+            setTextViewText(R.id.power_label, powerLabel)
+            setTextViewText(R.id.down_value, rate(down))
+            setTextViewText(R.id.down_label, getString(R.string.n_label_down))
+            setTextViewText(R.id.up_value, rate(up))
+            setTextViewText(R.id.up_label, getString(R.string.n_label_up))
+            setTextViewText(R.id.ram_value, ram)
+            setTextViewText(R.id.ram_label, getString(R.string.n_label_ram))
+        }
+
         val stop = PendingIntent.getService(
             this, 1, Intent(this, LiveStatusService::class.java).setAction(ACTION_STOP),
             PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT,
@@ -109,9 +135,13 @@ class LiveStatusService : Service() {
         val (value, unit) = AlertRules.statusIconLines(c.statusIcon, r.level, r.tempC, c.fahrenheit, down)
         return Notification.Builder(this, Notifications.LIVE)
             .setSmallIcon(textIcon(value, unit))
-            .setContentTitle(title)
-            .setContentText(line1)
-            .setStyle(Notification.BigTextStyle().bigText("$line1\n$line2"))
+            // Plain text for places that don't show custom layouts (lock
+            // screen in some modes, accessibility, wearables).
+            .setContentTitle(getString(R.string.live_battery, r.level) + " · " + batteryLabel)
+            .setContentText(getString(R.string.live_temp, temp))
+            .setStyle(Notification.DecoratedCustomViewStyle())
+            .setCustomContentView(small)
+            .setCustomBigContentView(big)
             .setOngoing(true)
             .setOnlyAlertOnce(true)
             .setShowWhen(false)

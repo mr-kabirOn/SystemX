@@ -8,14 +8,20 @@
     <string name="live_battery">ব্যাটারি %1$d%%</string>
     <string name="live_health">অবস্থা %1$s</string>
     <string name="live_temp">তাপমাত্রা %1$s</string>
-    <string name="live_charging_w">চার্জ হচ্ছে %1$s W</string>
-    <string name="live_text">ডাউনলোড %1$s · আপলোড %2$s · RAM ব্যবহৃত %3$d%%</string>
     <string name="health_good">ভালো</string>
     <string name="health_overheat">অতিরিক্ত গরম</string>
     <string name="health_dead">অকেজো</string>
     <string name="health_over_voltage">অতিরিক্ত ভোল্টেজ</string>
     <string name="health_cold">অতিরিক্ত ঠান্ডা</string>
     <string name="health_failure">ত্রুটি</string>
+    <string name="n_label_battery">ব্যাটারি</string>
+    <string name="n_label_temp">তাপমাত্রা</string>
+    <string name="n_label_charging">চার্জ হচ্ছে</string>
+    <string name="n_label_using">ব্যবহার হচ্ছে</string>
+    <string name="n_label_power">পাওয়ার</string>
+    <string name="n_label_down">ডাউনলোড</string>
+    <string name="n_label_up">আপলোড</string>
+    <string name="n_label_ram">RAM ব্যবহৃত</string>
     <string name="live_stop">লাইভ স্ট্যাটাস থামান</string>
 
     <string name="n_limit_title">%1$d%% চার্জ হয়েছে</string>
