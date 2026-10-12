@@ -2297,6 +2297,7 @@ class HistorySample {
     required this.tempC,
     required this.memUsed,
     required this.charging,
+    this.screenOn,
   });
 
   /// Wall-clock time (ms since epoch).
@@ -2311,6 +2312,9 @@ class HistorySample {
 
   bool charging;
 
+  /// Whether the screen was on; null for samples from before it was recorded.
+  bool? screenOn;
+
   List<Object?> _toList() {
     return <Object?>[
       timeMs,
@@ -2318,6 +2322,7 @@ class HistorySample {
       tempC,
       memUsed,
       charging,
+      screenOn,
     ];
   }
 
@@ -2332,6 +2337,7 @@ class HistorySample {
       tempC: result[2]! as double,
       memUsed: result[3]! as double,
       charging: result[4]! as bool,
+      screenOn: result[5] as bool?,
     );
   }
 
@@ -2344,7 +2350,7 @@ class HistorySample {
     if (identical(this, other)) {
       return true;
     }
-    return _deepEquals(timeMs, other.timeMs) && _deepEquals(level, other.level) && _deepEquals(tempC, other.tempC) && _deepEquals(memUsed, other.memUsed) && _deepEquals(charging, other.charging);
+    return _deepEquals(timeMs, other.timeMs) && _deepEquals(level, other.level) && _deepEquals(tempC, other.tempC) && _deepEquals(memUsed, other.memUsed) && _deepEquals(charging, other.charging) && _deepEquals(screenOn, other.screenOn);
   }
 
   @override
@@ -2353,7 +2359,7 @@ class HistorySample {
 
   @override
   String toString() {
-    return 'HistorySample(timeMs: $timeMs, level: $level, tempC: $tempC, memUsed: $memUsed, charging: $charging)';
+    return 'HistorySample(timeMs: $timeMs, level: $level, tempC: $tempC, memUsed: $memUsed, charging: $charging, screenOn: $screenOn)';
   }
 }
 
@@ -2366,6 +2372,7 @@ class ChargeSession {
     this.peakMa,
     this.avgMa,
     required this.maxTempC,
+    this.capacityMah,
   });
 
   int startMs;
@@ -2383,6 +2390,10 @@ class ChargeSession {
 
   double maxTempC;
 
+  /// Full battery capacity measured over this charge (mAh in / % gained);
+  /// null when the charge was too short or the counter isn't usable.
+  int? capacityMah;
+
   List<Object?> _toList() {
     return <Object?>[
       startMs,
@@ -2392,6 +2403,7 @@ class ChargeSession {
       peakMa,
       avgMa,
       maxTempC,
+      capacityMah,
     ];
   }
 
@@ -2408,6 +2420,7 @@ class ChargeSession {
       peakMa: result[4] as int?,
       avgMa: result[5] as int?,
       maxTempC: result[6]! as double,
+      capacityMah: result[7] as int?,
     );
   }
 
@@ -2420,7 +2433,7 @@ class ChargeSession {
     if (identical(this, other)) {
       return true;
     }
-    return _deepEquals(startMs, other.startMs) && _deepEquals(endMs, other.endMs) && _deepEquals(startLevel, other.startLevel) && _deepEquals(endLevel, other.endLevel) && _deepEquals(peakMa, other.peakMa) && _deepEquals(avgMa, other.avgMa) && _deepEquals(maxTempC, other.maxTempC);
+    return _deepEquals(startMs, other.startMs) && _deepEquals(endMs, other.endMs) && _deepEquals(startLevel, other.startLevel) && _deepEquals(endLevel, other.endLevel) && _deepEquals(peakMa, other.peakMa) && _deepEquals(avgMa, other.avgMa) && _deepEquals(maxTempC, other.maxTempC) && _deepEquals(capacityMah, other.capacityMah);
   }
 
   @override
@@ -2429,7 +2442,7 @@ class ChargeSession {
 
   @override
   String toString() {
-    return 'ChargeSession(startMs: $startMs, endMs: $endMs, startLevel: $startLevel, endLevel: $endLevel, peakMa: $peakMa, avgMa: $avgMa, maxTempC: $maxTempC)';
+    return 'ChargeSession(startMs: $startMs, endMs: $endMs, startLevel: $startLevel, endLevel: $endLevel, peakMa: $peakMa, avgMa: $avgMa, maxTempC: $maxTempC, capacityMah: $capacityMah)';
   }
 }
 

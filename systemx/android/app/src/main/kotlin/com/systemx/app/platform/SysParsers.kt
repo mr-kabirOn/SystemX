@@ -66,8 +66,31 @@ internal object SysParsers {
         }.toLong()
     }
 
-    /** Charge counter in mAh; the API says µAh but some phones report mAh. */
-    fun chargeCounterMah(raw: Int): Long = (if (raw > 100_000) raw / 1000 else raw).toLong()
+    /**
+     * Charge counter in mAh; the API says µAh but some phones report mAh.
+     * With the battery [level], the unit is the one that gives a plausible
+     * full capacity (a 5000 mAh battery at 1% reads 50000 µAh, which the
+     * size alone would take for mAh).
+     */
+    fun chargeCounterMah(raw: Int, level: Int = -1): Long {
+        if (level in 1..100) {
+            val fullIfMah = raw.toLong() * 100 / level
+            return if (fullIfMah > 30_000) raw / 1000L else raw.toLong()
+        }
+        return (if (raw > 100_000) raw / 1000 else raw).toLong()
+    }
+
+    /**
+     * Full capacity measured over one charge: the mAh that went in divided by
+     * the percent gained. Needs at least 15% so rounding of the level
+     * doesn't dominate; null when the numbers aren't plausible.
+     */
+    fun sessionCapacityMah(startMah: Long?, endMah: Long?, startLevel: Long, endLevel: Long): Long? {
+        if (startMah == null || endMah == null || startMah <= 0 || endMah <= startMah) return null
+        val gained = endLevel - startLevel
+        if (gained < 15) return null
+        return ((endMah - startMah) * 100 / gained).takeIf { it in 500..30_000 }
+    }
 
     /** Vulkan version packed as in VK_MAKE_VERSION, or null for 0. */
     fun vulkanVersion(packed: Int): String? {

@@ -561,6 +561,7 @@ class FakeBackgroundApi extends BackgroundApi {
         tempC: 30 + (i % 10) / 2,
         memUsed: 0.55 + (i % 7) / 50,
         charging: false,
+        screenOn: i % 4 == 0,
       ),
   ];
 
@@ -573,6 +574,7 @@ class FakeBackgroundApi extends BackgroundApi {
       peakMa: 2140,
       avgMa: 1630,
       maxTempC: 36.4,
+      capacityMah: 4210,
     ),
   ];
 

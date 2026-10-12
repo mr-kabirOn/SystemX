@@ -1994,7 +1994,9 @@ data class HistorySample (
   val tempC: Double,
   /** Fraction of RAM in use, 0–1. */
   val memUsed: Double,
-  val charging: Boolean
+  val charging: Boolean,
+  /** Whether the screen was on; null for samples from before it was recorded. */
+  val screenOn: Boolean? = null
 )
  {
   companion object {
@@ -2004,7 +2006,8 @@ data class HistorySample (
       val tempC = pigeonVar_list[2] as Double
       val memUsed = pigeonVar_list[3] as Double
       val charging = pigeonVar_list[4] as Boolean
-      return HistorySample(timeMs, level, tempC, memUsed, charging)
+      val screenOn = pigeonVar_list[5] as Boolean?
+      return HistorySample(timeMs, level, tempC, memUsed, charging, screenOn)
     }
   }
   fun toList(): List<Any?> {
@@ -2014,6 +2017,7 @@ data class HistorySample (
       tempC,
       memUsed,
       charging,
+      screenOn,
     )
   }
   override fun equals(other: Any?): Boolean {
@@ -2024,7 +2028,7 @@ data class HistorySample (
       return true
     }
     val other = other as HistorySample
-    return DeviceApiPigeonUtils.deepEquals(this.timeMs, other.timeMs) && DeviceApiPigeonUtils.deepEquals(this.level, other.level) && DeviceApiPigeonUtils.deepEquals(this.tempC, other.tempC) && DeviceApiPigeonUtils.deepEquals(this.memUsed, other.memUsed) && DeviceApiPigeonUtils.deepEquals(this.charging, other.charging)
+    return DeviceApiPigeonUtils.deepEquals(this.timeMs, other.timeMs) && DeviceApiPigeonUtils.deepEquals(this.level, other.level) && DeviceApiPigeonUtils.deepEquals(this.tempC, other.tempC) && DeviceApiPigeonUtils.deepEquals(this.memUsed, other.memUsed) && DeviceApiPigeonUtils.deepEquals(this.charging, other.charging) && DeviceApiPigeonUtils.deepEquals(this.screenOn, other.screenOn)
   }
 
   override fun hashCode(): Int {
@@ -2034,10 +2038,11 @@ data class HistorySample (
     result = 31 * result + DeviceApiPigeonUtils.deepHash(this.tempC)
     result = 31 * result + DeviceApiPigeonUtils.deepHash(this.memUsed)
     result = 31 * result + DeviceApiPigeonUtils.deepHash(this.charging)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.screenOn)
     return result
   }
   override fun toString(): String {
-    return "HistorySample(timeMs=$timeMs, level=$level, tempC=$tempC, memUsed=$memUsed, charging=$charging)"
+    return "HistorySample(timeMs=$timeMs, level=$level, tempC=$tempC, memUsed=$memUsed, charging=$charging, screenOn=$screenOn)"
   }
 }
 
@@ -2050,7 +2055,12 @@ data class ChargeSession (
   val endLevel: Long,
   val peakMa: Long? = null,
   val avgMa: Long? = null,
-  val maxTempC: Double
+  val maxTempC: Double,
+  /**
+   * Full battery capacity measured over this charge (mAh in / % gained);
+   * null when the charge was too short or the counter isn't usable.
+   */
+  val capacityMah: Long? = null
 )
  {
   companion object {
@@ -2062,7 +2072,8 @@ data class ChargeSession (
       val peakMa = pigeonVar_list[4] as Long?
       val avgMa = pigeonVar_list[5] as Long?
       val maxTempC = pigeonVar_list[6] as Double
-      return ChargeSession(startMs, endMs, startLevel, endLevel, peakMa, avgMa, maxTempC)
+      val capacityMah = pigeonVar_list[7] as Long?
+      return ChargeSession(startMs, endMs, startLevel, endLevel, peakMa, avgMa, maxTempC, capacityMah)
     }
   }
   fun toList(): List<Any?> {
@@ -2074,6 +2085,7 @@ data class ChargeSession (
       peakMa,
       avgMa,
       maxTempC,
+      capacityMah,
     )
   }
   override fun equals(other: Any?): Boolean {
@@ -2084,7 +2096,7 @@ data class ChargeSession (
       return true
     }
     val other = other as ChargeSession
-    return DeviceApiPigeonUtils.deepEquals(this.startMs, other.startMs) && DeviceApiPigeonUtils.deepEquals(this.endMs, other.endMs) && DeviceApiPigeonUtils.deepEquals(this.startLevel, other.startLevel) && DeviceApiPigeonUtils.deepEquals(this.endLevel, other.endLevel) && DeviceApiPigeonUtils.deepEquals(this.peakMa, other.peakMa) && DeviceApiPigeonUtils.deepEquals(this.avgMa, other.avgMa) && DeviceApiPigeonUtils.deepEquals(this.maxTempC, other.maxTempC)
+    return DeviceApiPigeonUtils.deepEquals(this.startMs, other.startMs) && DeviceApiPigeonUtils.deepEquals(this.endMs, other.endMs) && DeviceApiPigeonUtils.deepEquals(this.startLevel, other.startLevel) && DeviceApiPigeonUtils.deepEquals(this.endLevel, other.endLevel) && DeviceApiPigeonUtils.deepEquals(this.peakMa, other.peakMa) && DeviceApiPigeonUtils.deepEquals(this.avgMa, other.avgMa) && DeviceApiPigeonUtils.deepEquals(this.maxTempC, other.maxTempC) && DeviceApiPigeonUtils.deepEquals(this.capacityMah, other.capacityMah)
   }
 
   override fun hashCode(): Int {
@@ -2096,10 +2108,11 @@ data class ChargeSession (
     result = 31 * result + DeviceApiPigeonUtils.deepHash(this.peakMa)
     result = 31 * result + DeviceApiPigeonUtils.deepHash(this.avgMa)
     result = 31 * result + DeviceApiPigeonUtils.deepHash(this.maxTempC)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.capacityMah)
     return result
   }
   override fun toString(): String {
-    return "ChargeSession(startMs=$startMs, endMs=$endMs, startLevel=$startLevel, endLevel=$endLevel, peakMa=$peakMa, avgMa=$avgMa, maxTempC=$maxTempC)"
+    return "ChargeSession(startMs=$startMs, endMs=$endMs, startLevel=$startLevel, endLevel=$endLevel, peakMa=$peakMa, avgMa=$avgMa, maxTempC=$maxTempC, capacityMah=$capacityMah)"
   }
 }
 private open class DeviceApiPigeonCodec : StandardMessageCodec() {

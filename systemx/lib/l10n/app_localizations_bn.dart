@@ -2666,4 +2666,75 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get appsEmpty => 'কোনো অ্যাপ মেলেনি';
+
+  @override
+  String get bhTitle => 'ব্যাটারি হেলথ';
+
+  @override
+  String get bhEntry => 'ব্যাটারি হেলথ';
+
+  @override
+  String get bhEntryBody => 'মাপা ক্যাপাসিটি আর ঘণ্টায় খরচ';
+
+  @override
+  String get bhCapacity => 'মাপা ক্যাপাসিটি';
+
+  @override
+  String bhOfDesign(int pct, String design) {
+    return 'মূল $design mAh-এর প্রায় $pct%';
+  }
+
+  @override
+  String get bhNoDesign => 'এই ফোন মূল ক্যাপাসিটি জানায় না';
+
+  @override
+  String bhBasedOn(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'শেষ $countটি চার্জের ভিত্তিতে',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get bhNotYet =>
+      'এখনো মাপা হয়নি। SystemX-এর ব্যাকগ্রাউন্ড ফিচার চালু রেখে অন্তত ১৫% চার্জ করুন; প্রতিটি চার্জে একটি করে মাপ যোগ হবে।';
+
+  @override
+  String get bhNoCounter =>
+      'এই ফোন ব্যাটারির চার্জ কাউন্টার জানায় না, তাই ক্যাপাসিটি মাপা যায় না।';
+
+  @override
+  String get bhTrend => 'সময়ের সাথে ক্যাপাসিটি';
+
+  @override
+  String get bhDrain => 'ঘণ্টায় খরচ (গত ৭ দিন)';
+
+  @override
+  String get bhScreenOn => 'স্ক্রিন চালু';
+
+  @override
+  String get bhStandby => 'স্ট্যান্ডবাই';
+
+  @override
+  String bhPerHour(String rate) {
+    return 'ঘণ্টায় $rate%';
+  }
+
+  @override
+  String bhHours(String hours) {
+    return '$hours ঘণ্টা মাপা হয়েছে';
+  }
+
+  @override
+  String get bhCollecting => 'তথ্য সংগ্রহ চলছে';
+
+  @override
+  String get bhDrainNote =>
+      'SystemX ব্যাকগ্রাউন্ডে রিডিং নিলে রেকর্ড হয়। লাইভ স্ট্যাটাস চালু থাকলে রিডিং ঘন ঘন হয় আর হিসাব বেশি নির্ভুল হয়।';
+
+  @override
+  String get bhHow =>
+      'ক্যাপাসিটি হলো যত চার্জ ঢুকেছে তাকে যত শতাংশ বেড়েছে তা দিয়ে ভাগ, ব্যাটারির নিজস্ব কাউন্টারে মাপা। এটি আনুমানিক: তাপ, ফাস্ট চার্জিং আর ফোনের ক্যালিব্রেশনে কয়েক শতাংশ এদিক-ওদিক হতে পারে।';
 }

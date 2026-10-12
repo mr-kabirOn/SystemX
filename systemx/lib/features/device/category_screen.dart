@@ -9,6 +9,7 @@ import '../../core/theme/sx_colors.dart';
 import '../../l10n/app_localizations.dart';
 import '../../platform/platform.dart';
 import '../../ui/widgets/cards.dart';
+import '../background/battery_health.dart';
 import '../../ui/widgets/page_scaffold.dart';
 import 'carriers.dart';
 import 'device_data.dart';
@@ -147,6 +148,7 @@ class _CategoryScreenState extends ConsumerState<CategoryScreen> {
             return [
               if (c == DeviceCategory.sim && snap.sim != null)
                 _BalanceCard(sim: snap.sim!),
+              if (c == DeviceCategory.battery) const Box(BatteryHealthTile()),
               SpecSections(sections: sections, onAction: _onAction),
             ];
           },

@@ -7,6 +7,7 @@ import android.content.IntentFilter
 import android.net.TrafficStats
 import android.os.BatteryManager
 import android.os.Environment
+import android.os.PowerManager
 import android.os.StatFs
 import com.systemx.app.platform.SysParsers
 
@@ -27,6 +28,10 @@ internal data class Reading(
     val txBytes: Long,
     /** BatteryManager.BATTERY_HEALTH_* value, -1 if unknown. */
     val health: Int = -1,
+    /** Charge left in mAh from the battery's own counter, if it has one. */
+    val chargeCounterMah: Long? = null,
+    /** Whether the screen was on when read. */
+    val screenOn: Boolean = false,
 ) {
     val pluggedIn get() = plugged != 0
     val full get() = status == BatteryManager.BATTERY_STATUS_FULL || (pluggedIn && level >= 100)
@@ -49,6 +54,19 @@ internal object Readings {
         } catch (_: Exception) {
             null
         }
+        val pct = if (level >= 0 && scale > 0) level * 100 / scale else -1
+        val counter = try {
+            bm?.getIntProperty(BatteryManager.BATTERY_PROPERTY_CHARGE_COUNTER)
+                ?.takeIf { it != Int.MIN_VALUE && it > 0 }
+                ?.let { SysParsers.chargeCounterMah(it, pct) }
+        } catch (_: Exception) {
+            null
+        }
+        val screenOn = try {
+            ctx.getSystemService(PowerManager::class.java)?.isInteractive ?: false
+        } catch (_: Exception) {
+            false
+        }
         val mi = ActivityManager.MemoryInfo()
         try {
             ctx.getSystemService(ActivityManager::class.java)?.getMemoryInfo(mi)
@@ -61,7 +79,7 @@ internal object Readings {
         }
         return Reading(
             timeMs = System.currentTimeMillis(),
-            level = if (level >= 0 && scale > 0) level * 100 / scale else -1,
+            level = pct,
             status = status,
             plugged = intent?.getIntExtra(BatteryManager.EXTRA_PLUGGED, 0) ?: 0,
             tempC = (intent?.getIntExtra(BatteryManager.EXTRA_TEMPERATURE, 0) ?: 0) / 10.0,
@@ -74,6 +92,8 @@ internal object Readings {
             rxBytes = TrafficStats.getTotalRxBytes(),
             txBytes = TrafficStats.getTotalTxBytes(),
             health = intent?.getIntExtra(BatteryManager.EXTRA_HEALTH, -1) ?: -1,
+            chargeCounterMah = counter,
+            screenOn = screenOn,
         )
     }
 }

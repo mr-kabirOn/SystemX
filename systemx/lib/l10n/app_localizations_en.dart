@@ -2683,4 +2683,77 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get appsEmpty => 'No apps match';
+
+  @override
+  String get bhTitle => 'Battery health';
+
+  @override
+  String get bhEntry => 'Battery health';
+
+  @override
+  String get bhEntryBody => 'Measured capacity and drain per hour';
+
+  @override
+  String get bhCapacity => 'Measured capacity';
+
+  @override
+  String bhOfDesign(int pct, String design) {
+    return 'About $pct% of the original $design mAh';
+  }
+
+  @override
+  String get bhNoDesign =>
+      'The original capacity isn\'t reported on this phone';
+
+  @override
+  String bhBasedOn(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Based on the last $count charges',
+      one: 'Based on 1 charge',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get bhNotYet =>
+      'Not measured yet. Charge by 15% or more while SystemX\'s background features are on; each charge adds a measurement.';
+
+  @override
+  String get bhNoCounter =>
+      'This phone doesn\'t report its battery charge counter, so capacity can\'t be measured.';
+
+  @override
+  String get bhTrend => 'Capacity over time';
+
+  @override
+  String get bhDrain => 'Drain per hour (last 7 days)';
+
+  @override
+  String get bhScreenOn => 'Screen on';
+
+  @override
+  String get bhStandby => 'Standby';
+
+  @override
+  String bhPerHour(String rate) {
+    return '$rate% per hour';
+  }
+
+  @override
+  String bhHours(String hours) {
+    return '$hours h measured';
+  }
+
+  @override
+  String get bhCollecting => 'Collecting data';
+
+  @override
+  String get bhDrainNote =>
+      'Recorded when SystemX takes a reading in the background. With Live status on, readings are frequent and the numbers are more accurate.';
+
+  @override
+  String get bhHow =>
+      'Capacity is the charge that went in divided by the percent gained, measured by the battery\'s own counter. It is an estimate: heat, fast charging and the phone\'s calibration can move it a few percent.';
 }

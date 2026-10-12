@@ -101,7 +101,9 @@ internal class HardwareProbe(private val ctx: Context) {
             present = intent?.getBooleanExtra(BatteryManager.EXTRA_PRESENT, true) ?: true,
             currentNowMa = prop(BatteryManager.BATTERY_PROPERTY_CURRENT_NOW)?.let { SysParsers.currentMa(it, charging) },
             currentAvgMa = prop(BatteryManager.BATTERY_PROPERTY_CURRENT_AVERAGE)?.let { SysParsers.currentMa(it, charging) },
-            chargeCounterMah = prop(BatteryManager.BATTERY_PROPERTY_CHARGE_COUNTER)?.let { SysParsers.chargeCounterMah(it) },
+            chargeCounterMah = prop(BatteryManager.BATTERY_PROPERTY_CHARGE_COUNTER)?.let {
+                SysParsers.chargeCounterMah(it, if (level >= 0 && scale > 0) level * 100 / scale else -1)
+            },
             chargeTimeRemainingMs = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
                 Sys.safe { bm.computeChargeTimeRemaining() }?.takeIf { it > 0 }
             } else null,

@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 
 import '../features/apps/apps_screen.dart';
 import '../features/background/alerts_screen.dart';
+import '../features/background/battery_health.dart';
 import '../features/background/history_widgets.dart';
 import '../features/device/category_screen.dart';
 import '../features/device/device_data.dart';
@@ -36,6 +37,7 @@ abstract final class Routes {
   static const policy = '/settings/policy';
   static const alerts = '/settings/alerts';
   static const sessions = '/sessions';
+  static const batteryHealth = '/battery-health';
   static const wifiMeter = '/tools/wifi';
 
   static String category(DeviceCategory c) => '$device/${c.name}';
@@ -99,6 +101,9 @@ final routerProvider = Provider<GoRouter>((ref) {
       ),
       GoRoute(path: Routes.checkup, builder: (_, _) => const CheckupScreen()),
       GoRoute(path: Routes.sessions, builder: (_, _) => const SessionsScreen()),
+      GoRoute(
+          path: Routes.batteryHealth,
+          builder: (_, _) => const BatteryHealthScreen()),
       GoRoute(path: Routes.wifiMeter, builder: (_, _) => const WifiMeterScreen()),
       GoRoute(
         path: '/test/:test',

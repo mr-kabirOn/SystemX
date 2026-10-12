@@ -4933,6 +4933,114 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No apps match'**
   String get appsEmpty;
+
+  /// No description provided for @bhTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Battery health'**
+  String get bhTitle;
+
+  /// No description provided for @bhEntry.
+  ///
+  /// In en, this message translates to:
+  /// **'Battery health'**
+  String get bhEntry;
+
+  /// No description provided for @bhEntryBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Measured capacity and drain per hour'**
+  String get bhEntryBody;
+
+  /// No description provided for @bhCapacity.
+  ///
+  /// In en, this message translates to:
+  /// **'Measured capacity'**
+  String get bhCapacity;
+
+  /// No description provided for @bhOfDesign.
+  ///
+  /// In en, this message translates to:
+  /// **'About {pct}% of the original {design} mAh'**
+  String bhOfDesign(int pct, String design);
+
+  /// No description provided for @bhNoDesign.
+  ///
+  /// In en, this message translates to:
+  /// **'The original capacity isn\'t reported on this phone'**
+  String get bhNoDesign;
+
+  /// No description provided for @bhBasedOn.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{Based on 1 charge} other{Based on the last {count} charges}}'**
+  String bhBasedOn(int count);
+
+  /// No description provided for @bhNotYet.
+  ///
+  /// In en, this message translates to:
+  /// **'Not measured yet. Charge by 15% or more while SystemX\'s background features are on; each charge adds a measurement.'**
+  String get bhNotYet;
+
+  /// No description provided for @bhNoCounter.
+  ///
+  /// In en, this message translates to:
+  /// **'This phone doesn\'t report its battery charge counter, so capacity can\'t be measured.'**
+  String get bhNoCounter;
+
+  /// No description provided for @bhTrend.
+  ///
+  /// In en, this message translates to:
+  /// **'Capacity over time'**
+  String get bhTrend;
+
+  /// No description provided for @bhDrain.
+  ///
+  /// In en, this message translates to:
+  /// **'Drain per hour (last 7 days)'**
+  String get bhDrain;
+
+  /// No description provided for @bhScreenOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Screen on'**
+  String get bhScreenOn;
+
+  /// No description provided for @bhStandby.
+  ///
+  /// In en, this message translates to:
+  /// **'Standby'**
+  String get bhStandby;
+
+  /// No description provided for @bhPerHour.
+  ///
+  /// In en, this message translates to:
+  /// **'{rate}% per hour'**
+  String bhPerHour(String rate);
+
+  /// No description provided for @bhHours.
+  ///
+  /// In en, this message translates to:
+  /// **'{hours} h measured'**
+  String bhHours(String hours);
+
+  /// No description provided for @bhCollecting.
+  ///
+  /// In en, this message translates to:
+  /// **'Collecting data'**
+  String get bhCollecting;
+
+  /// No description provided for @bhDrainNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Recorded when SystemX takes a reading in the background. With Live status on, readings are frequent and the numbers are more accurate.'**
+  String get bhDrainNote;
+
+  /// No description provided for @bhHow.
+  ///
+  /// In en, this message translates to:
+  /// **'Capacity is the charge that went in divided by the percent gained, measured by the battery\'s own counter. It is an estimate: heat, fast charging and the phone\'s calibration can move it a few percent.'**
+  String get bhHow;
 }
 
 class _AppLocalizationsDelegate

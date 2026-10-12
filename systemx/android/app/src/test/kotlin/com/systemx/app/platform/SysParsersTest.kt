@@ -167,4 +167,22 @@ class SysParsersTest {
         assertNull(SysParsers.samsungMarketName("SM-Z999X"))
         assertNull(SysParsers.samsungMarketName("Pixel 8"))
     }
+
+    @Test
+    fun chargeCounterUnitFollowsTheLevel() {
+        // 5000 mAh battery at 1% reports 50000 µAh.
+        assertEquals(50L, SysParsers.chargeCounterMah(50_000, level = 1))
+        assertEquals(3284L, SysParsers.chargeCounterMah(3_284_000, level = 72))
+        assertEquals(3284L, SysParsers.chargeCounterMah(3284, level = 72))
+    }
+
+    @Test
+    fun sessionCapacityNeedsEnoughChargeAndSaneNumbers() {
+        // 2300 mAh for 50% -> 4600 mAh.
+        assertEquals(4600L, SysParsers.sessionCapacityMah(1000, 3300, 20, 70))
+        assertNull(SysParsers.sessionCapacityMah(1000, 1400, 20, 30)) // only 10%
+        assertNull(SysParsers.sessionCapacityMah(null, 3300, 20, 70))
+        assertNull(SysParsers.sessionCapacityMah(3300, 1000, 20, 70)) // went down
+        assertNull(SysParsers.sessionCapacityMah(1000, 1100, 20, 70)) // 200 mAh: implausible
+    }
 }

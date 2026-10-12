@@ -165,6 +165,7 @@ void main() {
     await _shoot(tester, '27_device_info', Routes.category(DeviceCategory.device));
     await _shoot(
         tester, '28_device_sensors', Routes.category(DeviceCategory.sensors));
+    await _shoot(tester, '29_battery_health', Routes.batteryHealth);
     addTearDown(tester.view.reset);
   });
 

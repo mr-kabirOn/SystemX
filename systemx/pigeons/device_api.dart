@@ -701,6 +701,9 @@ class HistorySample {
   /// Fraction of RAM in use, 0–1.
   double memUsed;
   bool charging;
+
+  /// Whether the screen was on; null for samples from before it was recorded.
+  bool? screenOn;
 }
 
 class ChargeSession {
@@ -720,6 +723,10 @@ class ChargeSession {
   int? peakMa;
   int? avgMa;
   double maxTempC;
+
+  /// Full battery capacity measured over this charge (mAh in / % gained);
+  /// null when the charge was too short or the counter isn't usable.
+  int? capacityMah;
 }
 
 @HostApi()
