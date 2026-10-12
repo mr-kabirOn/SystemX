@@ -263,32 +263,38 @@ class _VibrationTestState extends ConsumerState<VibrationTest> {
   }
 }
 
-/// Passes when the volume key is pressed. The press is consumed so the
-/// volume doesn't change.
-class VolumeKeyTest extends StatefulWidget {
+/// Passes when the volume button is pressed. Presses are captured natively
+/// (Android hands volume keys to the system first) and don't change the
+/// volume while the test runs; Flutter key events are a fallback.
+class VolumeKeyTest extends ConsumerStatefulWidget {
   const VolumeKeyTest({super.key, required this.test, required this.done})
       : assert(test == HwTest.volumeUp || test == HwTest.volumeDown);
   final HwTest test;
   final TestDone done;
 
   @override
-  State<VolumeKeyTest> createState() => _VolumeKeyTestState();
+  ConsumerState<VolumeKeyTest> createState() => _VolumeKeyTestState();
 }
 
-class _VolumeKeyTestState extends State<VolumeKeyTest> {
+class _VolumeKeyTestState extends ConsumerState<VolumeKeyTest> {
   bool _finished = false;
+  StreamSubscription<String>? _sub;
 
-  LogicalKeyboardKey get _key => widget.test == HwTest.volumeUp
-      ? LogicalKeyboardKey.audioVolumeUp
-      : LogicalKeyboardKey.audioVolumeDown;
+  bool get _up => widget.test == HwTest.volumeUp;
+
+  LogicalKeyboardKey get _key =>
+      _up ? LogicalKeyboardKey.audioVolumeUp : LogicalKeyboardKey.audioVolumeDown;
+
+  void _pressed() {
+    if (_finished || !mounted) return;
+    _finished = true;
+    HapticFeedback.mediumImpact();
+    widget.done(TestStatus.passed, AppLocalizations.of(context).nButtonWorks);
+  }
 
   bool _onKey(KeyEvent e) {
     if (e.logicalKey != _key) return false;
-    if (e is KeyDownEvent && !_finished) {
-      _finished = true;
-      HapticFeedback.mediumImpact();
-      widget.done(TestStatus.passed, AppLocalizations.of(context).nButtonWorks);
-    }
+    if (e is KeyDownEvent) _pressed();
     return true;
   }
 
@@ -296,10 +302,14 @@ class _VolumeKeyTestState extends State<VolumeKeyTest> {
   void initState() {
     super.initState();
     HardwareKeyboard.instance.addHandler(_onKey);
+    _sub = ref.read(volumeKeysProvider)().listen((k) {
+      if (k == (_up ? 'up' : 'down')) _pressed();
+    }, onError: (_) {});
   }
 
   @override
   void dispose() {
+    _sub?.cancel();
     HardwareKeyboard.instance.removeHandler(_onKey);
     super.dispose();
   }

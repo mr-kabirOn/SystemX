@@ -41,3 +41,14 @@ Stream<GnssStatus> gnssStatus() =>
 /// [gnssStatus], swappable in tests.
 final gnssStatusProvider =
     Provider<Stream<GnssStatus> Function()>((ref) => gnssStatus);
+
+const _volumeChannel = EventChannel('systemx/volume_keys');
+
+/// "up" or "down" for each volume button press while listened to. The
+/// presses don't change the volume during that time.
+Stream<String> volumeKeyPresses() =>
+    _volumeChannel.receiveBroadcastStream().map((e) => e as String);
+
+/// [volumeKeyPresses], swappable in tests.
+final volumeKeysProvider =
+    Provider<Stream<String> Function()>((ref) => volumeKeyPresses);

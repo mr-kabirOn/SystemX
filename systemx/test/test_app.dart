@@ -33,6 +33,7 @@ Future<ProviderContainer> pumpApp(
   List<(Uint8List, String)>? sharedFiles,
   FakeBackgroundApi? background,
   FakePlayApi? play,
+  Stream<String> Function()? volumeKeys,
 }) async {
   SharedPreferencesAsyncPlatform.instance =
       InMemorySharedPreferencesAsync.empty();
@@ -62,6 +63,7 @@ Future<ProviderContainer> pumpApp(
       sharedFiles?.add((bytes, name));
       return true;
     }),
+    volumeKeysProvider.overrideWithValue(volumeKeys ?? () => const Stream.empty()),
     sensorReadingsProvider.overrideWithValue(
         sensorReadings ?? (_) => const Stream.empty()),
   ]);

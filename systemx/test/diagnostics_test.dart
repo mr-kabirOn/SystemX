@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 import 'dart:typed_data';
 
@@ -105,6 +106,20 @@ void main() {
     final h = await c.read(testHistoryProvider.future);
     expect(h.latest[HwTest.speaker]?.status, TestStatus.passed);
     expect(store.data, contains('speaker'));
+  });
+
+  testWidgets('volume buttons pass from the native key stream', (tester) async {
+    final keys = StreamController<String>.broadcast();
+    addTearDown(keys.close);
+    await pumpApp(tester, volumeKeys: () => keys.stream);
+    await push(tester, Routes.runTest(HwTest.volumeUp));
+    keys.add('down'); // the other button doesn't count
+    await tester.pump();
+    expect(find.text('Passed'), findsNothing);
+    keys.add('up');
+    await tester.pumpAndSettle();
+    expect(find.text('Passed'), findsOneWidget);
+    expect(find.text('Button works'), findsOneWidget);
   });
 
   testWidgets('a refused permission skips the test', (tester) async {
