@@ -25,6 +25,8 @@ internal data class Reading(
     val storageFree: Long,
     val rxBytes: Long,
     val txBytes: Long,
+    /** BatteryManager.BATTERY_HEALTH_* value, -1 if unknown. */
+    val health: Int = -1,
 ) {
     val pluggedIn get() = plugged != 0
     val full get() = status == BatteryManager.BATTERY_STATUS_FULL || (pluggedIn && level >= 100)
@@ -71,6 +73,7 @@ internal object Readings {
             storageFree = stat?.availableBytes ?: 0,
             rxBytes = TrafficStats.getTotalRxBytes(),
             txBytes = TrafficStats.getTotalTxBytes(),
+            health = intent?.getIntExtra(BatteryManager.EXTRA_HEALTH, -1) ?: -1,
         )
     }
 }

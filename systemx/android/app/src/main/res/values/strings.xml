@@ -9,8 +9,17 @@
     <string name="ch_summary">Summaries and reminders</string>
 
     <!-- Live status notification -->
-    <string name="live_charging_w">charging %1$s W</string>
-    <string name="live_text">↓ %1$s · ↑ %2$s · RAM %3$d%%</string>
+    <string name="live_battery">Battery %1$d%%</string>
+    <string name="live_health">Health %1$s</string>
+    <string name="live_temp">Temperature %1$s</string>
+    <string name="live_charging_w">Charging %1$s W</string>
+    <string name="live_text">Download %1$s · Upload %2$s · RAM used %3$d%%</string>
+    <string name="health_good">Good</string>
+    <string name="health_overheat">Overheating</string>
+    <string name="health_dead">Dead</string>
+    <string name="health_over_voltage">Over voltage</string>
+    <string name="health_cold">Too cold</string>
+    <string name="health_failure">Failure</string>
     <string name="live_stop">Stop live status</string>
 
     <!-- Alerts -->

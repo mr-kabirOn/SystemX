@@ -12,12 +12,14 @@ import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Typeface
 import android.graphics.drawable.Icon
+import android.os.BatteryManager
 import android.os.Build
 import android.os.Handler
 import android.os.IBinder
 import android.os.Looper
 import com.systemx.app.R
 import com.systemx.app.platform.AlertRules
+import java.util.Locale
 import kotlin.math.abs
 import kotlin.math.roundToInt
 
@@ -87,24 +89,29 @@ class LiveStatusService : Service() {
 
     private fun build(r: Reading, down: Double, up: Double): Notification {
         val c = ConfigStore.load(this)
-        val parts = mutableListOf("${r.level}%", AlertRules.temp(r.tempC, c.fahrenheit))
+        // Every number says what it is: "Battery 63% · Health Good".
+        val title = listOfNotNull(
+            getString(R.string.live_battery, r.level),
+            healthName(r.health)?.let { getString(R.string.live_health, it) },
+        ).joinToString(" · ")
+        val battery = mutableListOf(getString(R.string.live_temp, AlertRules.temp(r.tempC, c.fahrenheit)))
         val ma = r.currentMa
         if (r.pluggedIn && ma != null && ma > 0) {
             val watts = abs(ma) * r.voltageMv / 1e6
-            parts += getString(R.string.live_charging_w, "%.1f".format(watts))
+            battery += getString(R.string.live_charging_w, String.format(Locale.ROOT, "%.1f", watts))
         }
-        val text = getString(
-            R.string.live_text, rate(down), rate(up), (r.memUsed * 100).roundToInt(),
-        )
+        val line1 = battery.joinToString(" · ")
+        val line2 = getString(R.string.live_text, rate(down), rate(up), (r.memUsed * 100).roundToInt())
         val stop = PendingIntent.getService(
             this, 1, Intent(this, LiveStatusService::class.java).setAction(ACTION_STOP),
             PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT,
         )
-        val icon = textIcon(AlertRules.statusIconText(c.statusIcon, r.level, r.tempC, c.fahrenheit, down))
+        val (value, unit) = AlertRules.statusIconLines(c.statusIcon, r.level, r.tempC, c.fahrenheit, down)
         return Notification.Builder(this, Notifications.LIVE)
-            .setSmallIcon(icon)
-            .setContentTitle(parts.joinToString(" · "))
-            .setContentText(text)
+            .setSmallIcon(textIcon(value, unit))
+            .setContentTitle(title)
+            .setContentText(line1)
+            .setStyle(Notification.BigTextStyle().bigText("$line1\n$line2"))
             .setOngoing(true)
             .setOnlyAlertOnce(true)
             .setShowWhen(false)
@@ -114,25 +121,44 @@ class LiveStatusService : Service() {
             .build()
     }
 
+    private fun healthName(health: Int): String? = when (health) {
+        BatteryManager.BATTERY_HEALTH_GOOD -> getString(R.string.health_good)
+        BatteryManager.BATTERY_HEALTH_OVERHEAT -> getString(R.string.health_overheat)
+        BatteryManager.BATTERY_HEALTH_DEAD -> getString(R.string.health_dead)
+        BatteryManager.BATTERY_HEALTH_OVER_VOLTAGE -> getString(R.string.health_over_voltage)
+        BatteryManager.BATTERY_HEALTH_COLD -> getString(R.string.health_cold)
+        BatteryManager.BATTERY_HEALTH_UNSPECIFIED_FAILURE -> getString(R.string.health_failure)
+        else -> null
+    }
+
     private fun rate(bps: Double): String = when {
         bps < 1_000 -> "${bps.roundToInt()} B/s"
         bps < 1_000_000 -> "${(bps / 1000).roundToInt()} KB/s"
-        else -> "${"%.1f".format(bps / 1e6)} MB/s"
+        else -> "${String.format(Locale.ROOT, "%.1f", bps / 1e6)} MB/s"
     }
 
-    /** White text on transparent, as Android requires for status bar icons. */
-    private fun textIcon(text: String): Icon {
+    /**
+     * White on transparent, as Android requires for status bar icons: the
+     * value large on top and its unit smaller underneath, like the clock
+     * area's other indicators.
+     */
+    private fun textIcon(value: String, unit: String): Icon {
         val size = 96
         val bmp = Bitmap.createBitmap(size, size, Bitmap.Config.ARGB_8888)
-        val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+        val canvas = Canvas(bmp)
+        fun paint(textSize: Float, bold: Boolean) = Paint(Paint.ANTI_ALIAS_FLAG).apply {
             color = Color.WHITE
             textAlign = Paint.Align.CENTER
-            typeface = Typeface.create(Typeface.DEFAULT, Typeface.BOLD)
-            textSize = 72f
+            typeface = Typeface.create(Typeface.DEFAULT, if (bold) Typeface.BOLD else Typeface.NORMAL)
+            this.textSize = textSize
         }
-        while (paint.measureText(text) > size - 4 && paint.textSize > 24f) paint.textSize -= 4f
-        val y = size / 2f - (paint.descent() + paint.ascent()) / 2
-        Canvas(bmp).drawText(text, size / 2f, y, paint)
+        val top = paint(60f, true)
+        while (top.measureText(value) > size - 2 && top.textSize > 24f) top.textSize -= 2f
+        val bottom = paint(34f, true)
+        while (bottom.measureText(unit) > size - 2 && bottom.textSize > 16f) bottom.textSize -= 2f
+        // Value baseline in the top 60%, unit baseline near the bottom.
+        canvas.drawText(value, size / 2f, size * 0.56f, top)
+        canvas.drawText(unit, size / 2f, size * 0.94f, bottom)
         return Icon.createWithBitmap(bmp)
     }
 

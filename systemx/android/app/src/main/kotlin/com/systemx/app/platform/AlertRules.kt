@@ -1,5 +1,6 @@
 package com.systemx.app.platform
 
+import java.util.Locale
 import kotlin.math.roundToInt
 
 /** Pure decisions for alerts and the status bar text (JVM unit tested). */
@@ -25,20 +26,26 @@ internal object AlertRules {
     fun temp(c: Double, fahrenheit: Boolean): String =
         if (fahrenheit) "${"%.1f".format(toF(c))} °F" else "${"%.1f".format(c)} °C"
 
-    /** Up to four characters for the status bar icon: "2.4M", "850K". */
-    fun rateShort(bytesPerSec: Double): String = when {
-        bytesPerSec < 1_000 -> "0K"
-        bytesPerSec < 1_000_000 -> "${(bytesPerSec / 1000).roundToInt().coerceAtMost(999)}K"
-        bytesPerSec < 10_000_000 -> "${"%.1f".format(bytesPerSec / 1e6)}M"
-        else -> "${(bytesPerSec / 1e6).roundToInt().coerceAtMost(999)}M"
+    /**
+     * Network speed for the status bar icon as a number and a unit, drawn on
+     * two lines so "0" never reads as the letter O: ("850", "KB/s").
+     */
+    fun rateParts(bytesPerSec: Double): Pair<String, String> = when {
+        bytesPerSec < 1_000 -> "0" to "KB/s"
+        bytesPerSec < 999_500 -> "${(bytesPerSec / 1000).roundToInt()}" to "KB/s"
+        bytesPerSec < 9_950_000 -> String.format(Locale.ROOT, "%.1f", bytesPerSec / 1e6) to "MB/s"
+        else -> "${(bytesPerSec / 1e6).roundToInt().coerceAtMost(999)}" to "MB/s"
     }
 
-    /** Status bar icon text for [kind]: "battery_level", "battery_temp" or "net_speed". */
-    fun statusIconText(kind: String, level: Int, tempC: Double, fahrenheit: Boolean, downBps: Double): String =
+    /**
+     * Status bar icon for [kind] ("battery_level", "battery_temp" or
+     * "net_speed"): the value on top, its unit below.
+     */
+    fun statusIconLines(kind: String, level: Int, tempC: Double, fahrenheit: Boolean, downBps: Double): Pair<String, String> =
         when (kind) {
-            "battery_temp" -> "${(if (fahrenheit) toF(tempC) else tempC).roundToInt()}°"
-            "net_speed" -> rateShort(downBps)
-            else -> "$level"
+            "battery_temp" -> "${(if (fahrenheit) toF(tempC) else tempC).roundToInt()}" to (if (fahrenheit) "°F" else "°C")
+            "net_speed" -> rateParts(downBps)
+            else -> "$level" to "%"
         }
 
     /** Bytes per second between two counter readings, 0 on reset or missing data. */
