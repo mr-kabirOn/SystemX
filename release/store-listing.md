@@ -9,7 +9,7 @@ Bangla goes in a translation (Add translation › Bengali – bn-BD).
 SystemX: Device Info & Test
 
 **Short description** (80 max)
-Live phone stats, every spec, and a 32-test hardware checkup. Private by design.
+Phone specs, battery health, 32 hardware tests and a used phone check. Private.
 
 **Full description** (4000 max)
 
@@ -25,18 +25,31 @@ EVERY SPEC YOUR PHONE EXPOSES
 • 15 categories: device, Android system, processor, graphics, memory, storage, battery, display, network, SIM, cameras, sensors, media, features and a security check
 • Real marketing names (for example "Snapdragon 8 Gen 2" instead of a model code)
 • Search across every spec, long-press to copy, and share the whole spec sheet
-• Battery cycle count (Android 14+), estimated capacity, charging speed in mA and W
-• Bangladeshi carrier balance check: opens the dialer with the right code
+• Sales code and region, Android version it launched with, One UI / HyperOS version, Knox warranty status
+• Installed apps with their size and cache, one tap from each app's Clear cache page
+• Bangladeshi carrier codes for balance, internet, minutes and SMS: open the dialer with the right code
+
+BATTERY HEALTH
+• Real capacity measured on every charge with the battery's own counter, and how it changes over weeks
+• Drain per hour with the screen on and in standby
+• Charge cycles when the phone reports them, charging speed in mA and W
+
+USED PHONE CHECK
+• Buying a second-hand phone? Check it before you pay
+• Compares the model, storage, RAM and sales region with what the seller claims
+• Shows whether the software was modified (root, unlocked bootloader, Knox), the battery's condition and every failed hardware test
+• A clear verdict and a PDF report to share
 
 32 HARDWARE TESTS AND A REPORT
 • Display: dead pixels, color banding, burn-in, touch grid, multi-touch, brightness
 • Audio: loudspeaker, earpiece, microphone, speaker-to-microphone loop, headphone jack, USB audio
 • Vibration, volume buttons, cameras, flashlight, six sensors, Wi-Fi, Bluetooth, GPS, NFC, mobile signal, fingerprint, charging and storage speed
-• A guided checkup with a report you can save as PDF: handy when buying or selling a used phone
+• A guided checkup with a report you can save as PDF
+• CPU stress test (does the phone slow down when hot?), refresh rate test and touch response test, all with automatic safety limits
 
 ALERTS YOU CONTROL
 • Charge alarm at 80, 85, 90 or 100%, battery low, battery hot, charging finished, storage almost full
-• Optional live status notification with numbers in the status bar
+• Optional live status notification: battery, health, temperature, power, network speed and RAM at a glance
 • Home screen widgets, a Quick Settings tile and shortcuts
 
 HONEST AND PRIVATE
@@ -56,7 +69,7 @@ HONEST AND PRIVATE
 SystemX: ডিভাইস তথ্য ও টেস্ট
 
 **Short description**
-ফোনের লাইভ তথ্য, প্রতিটি স্পেক আর ৩২টি হার্ডওয়্যার টেস্ট। প্রাইভেসি সবার আগে।
+ফোনের স্পেক, ব্যাটারি হেলথ, ৩২টি হার্ডওয়্যার টেস্ট আর পুরোনো ফোন যাচাই।
 
 **Full description**
 
@@ -72,14 +85,27 @@ SystemX দেখায় আপনার অ্যান্ড্রয়ে�
 • ১৫টি বিভাগ: ডিভাইস, অ্যান্ড্রয়েড সিস্টেম, প্রসেসর, গ্রাফিক্স, মেমোরি, স্টোরেজ, ব্যাটারি, ডিসপ্লে, নেটওয়ার্ক, সিম, ক্যামেরা, সেন্সর, মিডিয়া, ফিচার আর নিরাপত্তা চেক
 • আসল বাজারি নাম (যেমন মডেল কোডের বদলে "Snapdragon 8 Gen 2")
 • সব স্পেকে সার্চ, লম্বা চাপে কপি, পুরো স্পেক শিট শেয়ার
-• ব্যাটারির চার্জ সাইকেল (অ্যান্ড্রয়েড ১৪+), আনুমানিক ক্ষমতা, mA ও W-তে চার্জিং স্পিড
-• বাংলাদেশি অপারেটরের ব্যালেন্স চেক: সঠিক কোডসহ ডায়ালার খোলে
+• সেলস কোড ও অঞ্চল, যে অ্যান্ড্রয়েড ভার্সনে বাজারে এসেছে, One UI / HyperOS ভার্সন, নক্স ওয়ারেন্টি
+• ইনস্টল করা অ্যাপের সাইজ ও ক্যাশ, প্রতিটি অ্যাপের ক্যাশ মোছার পেজে এক ট্যাপে
+• বাংলাদেশি অপারেটরের ব্যালেন্স, ইন্টারনেট, মিনিট ও SMS কোড: সঠিক কোডসহ ডায়ালার খোলে
+
+ব্যাটারি হেলথ
+• প্রতিটি চার্জে ব্যাটারির নিজস্ব কাউন্টারে মাপা আসল ক্যাপাসিটি, আর সপ্তাহে সপ্তাহে তার পরিবর্তন
+• স্ক্রিন চালু আর স্ট্যান্ডবাইয়ে ঘণ্টায় খরচ
+• ফোন জানালে চার্জ সাইকেল, mA ও W-তে চার্জিং স্পিড
+
+পুরোনো ফোন যাচাই
+• পুরোনো ফোন কিনছেন? টাকা দেওয়ার আগে যাচাই করুন
+• মডেল, স্টোরেজ, RAM আর বিক্রয় অঞ্চল বিক্রেতার দাবির সাথে মেলায়
+• সফটওয়্যার পরিবর্তন (রুট, আনলক বুটলোডার, নক্স), ব্যাটারির অবস্থা আর ব্যর্থ প্রতিটি হার্ডওয়্যার টেস্ট দেখায়
+• স্পষ্ট সিদ্ধান্ত আর শেয়ার করার মতো PDF রিপোর্ট
 
 ৩২টি হার্ডওয়্যার টেস্ট আর রিপোর্ট
 • ডিসপ্লে: ডেড পিক্সেল, রঙের ব্যান্ডিং, বার্ন-ইন, টাচ গ্রিড, মাল্টি-টাচ, উজ্জ্বলতা
 • অডিও: লাউডস্পিকার, ইয়ারপিস, মাইক্রোফোন, স্পিকার থেকে মাইক্রোফোন, হেডফোন জ্যাক, USB অডিও
 • ভাইব্রেশন, ভলিউম বোতাম, ক্যামেরা, ফ্ল্যাশলাইট, ছয়টি সেন্সর, Wi-Fi, ব্লুটুথ, GPS, NFC, মোবাইল সিগন্যাল, ফিঙ্গারপ্রিন্ট, চার্জিং আর স্টোরেজ স্পিড
-• গাইডেড চেকআপ আর PDF রিপোর্ট: পুরোনো ফোন কেনা-বেচার সময় কাজে লাগে
+• গাইডেড চেকআপ আর PDF রিপোর্ট
+• সিপিইউ স্ট্রেস টেস্ট (গরম হলে কি ধীর হয়?), রিফ্রেশ রেট আর টাচ রেসপন্স টেস্ট, সবগুলোতে স্বয়ংক্রিয় সুরক্ষা সীমা
 
 আপনার নিয়ন্ত্রণে অ্যালার্ট
 • ৮০, ৮৫, ৯০ বা ১০০%-এ চার্জ অ্যালার্ম, ব্যাটারি কম, ব্যাটারি গরম, চার্জ শেষ, স্টোরেজ প্রায় পূর্ণ

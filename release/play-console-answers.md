@@ -80,9 +80,31 @@ None of the restricted permissions are used (no SMS, call log, all-files
 access, QUERY_ALL_PACKAGES, background location, accessibility or
 exact alarms), so no extra declaration forms appear.
 
-## Release notes (first release)
-en-US: "First release: live stats, every spec, a 32-test checkup with PDF
-report, alerts, widgets and a Quick Settings tile. English and Bangla."
+Two things a reviewer may ask about:
+- **Usage access (PACKAGE_USAGE_STATS)**: a special access the user turns
+  on in Android Settings from the Apps screen. It is used only to read each
+  app's storage and cache size (StorageStatsManager). SystemX never reads
+  which apps are used or for how long. Off unless the user enables it.
+- **Seeing installed apps**: only apps with a launcher icon, through a
+  `<queries>` launcher intent. QUERY_ALL_PACKAGES is not requested.
 
-bn-BD: "প্রথম রিলিজ: লাইভ তথ্য, প্রতিটি স্পেক, PDF রিপোর্টসহ ৩২টি টেস্টের
-চেকআপ, অ্যালার্ট, উইজেট আর কুইক সেটিংস টাইল। ইংরেজি ও বাংলা।"
+If Play asks why the app needs Usage access, answer:
+"To show how much storage each installed app and its cache use, so users
+can find what to clear. It is optional, explained in the app before the
+user opens the system setting, and the data never leaves the device."
+
+## Note for reviewers: CPU stress test
+The CPU stress test only runs while its screen is open, at background
+thread priority, for at most 3 minutes, and stops at 45 °C battery,
+severe thermal status or low battery. It doesn't run in the background.
+
+## Release notes (first release)
+en-US: "First release: every spec, battery health measured on each charge,
+a 32-test checkup, a used phone check with PDF report, CPU stress, refresh
+rate and touch tests, alerts, widgets and a live status notification.
+English and Bangla."
+
+bn-BD: "প্রথম রিলিজ: প্রতিটি স্পেক, প্রতিটি চার্জে মাপা ব্যাটারি হেলথ,
+৩২টি টেস্টের চেকআপ, PDF রিপোর্টসহ পুরোনো ফোন যাচাই, সিপিইউ স্ট্রেস,
+রিফ্রেশ রেট ও টাচ টেস্ট, অ্যালার্ট, উইজেট আর লাইভ স্ট্যাটাস নোটিফিকেশন।
+ইংরেজি ও বাংলা।"

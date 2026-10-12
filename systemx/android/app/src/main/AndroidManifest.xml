@@ -33,6 +33,10 @@
     <!-- The camera plugin asks for storage write on Android 9 and older; the
          camera test never saves photos, so it is removed. -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" tools:node="remove" />
+    <!-- SystemX promises no internet access (privacy policy, Data safety).
+         Strip it if any library ever adds it. Debug and profile builds
+         still get it from their own manifests for hot reload. -->
+    <uses-permission android:name="android.permission.INTERNET" tools:node="remove" />
 
     <!-- None of this hardware is required to install the app. -->
     <uses-feature android:name="android.hardware.camera.any" android:required="false" tools:replace="android:required" />

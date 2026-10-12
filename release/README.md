@@ -10,7 +10,7 @@ or your money. Texts and answers to paste are in
 ```bash
 cd systemx
 flutter pub get
-flutter test                                   # 85 tests
+flutter test                                   # 114 tests
 cd android && ./gradlew :app:testDebugUnitTest && cd ..   # Kotlin tests
 flutter run                                    # on your phone, debug
 ```
@@ -50,6 +50,19 @@ flutter build apk --release --split-per-abi   # optional: APKs for testers outsi
 
 Before each upload, raise `version:` in `pubspec.yaml` (for example
 `1.0.1+2`; the number after `+` must always go up).
+
+Check the release build before uploading (PowerShell, from `systemx`):
+
+```powershell
+flutter build apk --release
+& "$env:LOCALAPPDATA\Android\Sdk\build-tools\36.0.0\aapt.exe" dump permissions build\app\outputs\flutter-apk\app-release.apk
+```
+
+The list must **not** contain `android.permission.INTERNET` (the privacy
+policy and Data safety answers depend on it). Use whichever build-tools
+version folder you have. Then install that APK on your phone
+(`flutter install --release`) and open each tab once: release builds
+shrink code, and this is where a missing keep rule would show up.
 
 ## 4. Publish the privacy policy (free, GitHub Pages)
 
@@ -132,3 +145,20 @@ black, wallpaper colors), the four tabs, language switch to Bangla.
 
 **Stage 7, Play**: in-app review and updates only work for builds installed
 from Play (the closed test track).
+
+**Stage 8, new tools**
+- Device: on a Samsung, the name reads "Galaxy …"; Sales region shows the
+  CSC; IMEI row dials *#06#; Copy (top bar) pastes the whole sheet.
+- Apps: allow Usage access; sizes and cache appear; tapping an app opens
+  its App info page.
+- Battery health: with Live status on, charge from below 50% to above 70%;
+  a measured capacity appears. After a day, both drain rates appear.
+- CPU stress test: run 1 minute; the phone gets warm, the result appears,
+  and it stops by itself when you press Home.
+- Refresh rate: matches your display setting (e.g. 120 Hz in Smooth mode).
+- Touch response: draw for a few seconds; a rate appears.
+- Used phone check: type a wrong model, see "Problems found"; create the
+  PDF and open it.
+- Live status notification: collapsed row and expanded 3 × 2 grid in both
+  light and dark mode; the status bar shows the value over its unit.
+- A tablet or an unfolded foldable shows the side rail.
