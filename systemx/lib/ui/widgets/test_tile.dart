@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../core/theme/app_theme.dart';
 import '../../core/theme/sx_colors.dart';
 import '../../features/tests/test_results.dart';
+import '../sx_icons.dart';
 import 'cards.dart';
 
 /// Grid tile for a single hardware test. The dot shows the last result.
@@ -29,11 +30,11 @@ class TestTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final sx = context.sx;
-    final dot = switch (status) {
-      TestStatus.passed => sx.good,
-      TestStatus.failed => sx.bad,
-      TestStatus.skipped => sx.muted,
-      TestStatus.notRun => null,
+    final (badge, badgeColor) = switch (status) {
+      TestStatus.passed => (SxIcons.passed, sx.good),
+      TestStatus.failed => (SxIcons.failed, sx.bad),
+      TestStatus.skipped => (SxIcons.skipped, sx.muted),
+      TestStatus.notRun => (SxIcons.notTested, sx.muted.withValues(alpha: 0.7)),
     };
     return Semantics(
       label: statusLabel == null ? label : '$label, $statusLabel',
@@ -58,16 +59,11 @@ class TestTile extends StatelessWidget {
             ),
           ],
         ),
-        if (dot != null)
-          Positioned(
-            top: -4,
-            right: 0,
-            child: Container(
-              width: 8,
-              height: 8,
-              decoration: BoxDecoration(color: dot, shape: BoxShape.circle),
-            ),
-          ),
+        Positioned(
+          top: -6,
+          right: -2,
+          child: Icon(badge, size: 18, color: badgeColor),
+        ),
       ]),
       ),
     );

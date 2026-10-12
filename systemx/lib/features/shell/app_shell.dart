@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../l10n/app_localizations.dart';
+import '../../ui/sx_icons.dart';
 
 /// Bottom navigation shell. Each tab keeps its own scroll position.
 class AppShell extends StatelessWidget {
@@ -20,23 +21,23 @@ class AppShell extends StatelessWidget {
             shell.goBranch(i, initialLocation: i == shell.currentIndex),
         destinations: [
           NavigationDestination(
-            icon: const Icon(Icons.home_outlined),
-            selectedIcon: const Icon(Icons.home_rounded),
+            icon: const Icon(SxIcons.tabHome),
+            selectedIcon: const Icon(SxIcons.tabHomeOn),
             label: l.navHome,
           ),
           NavigationDestination(
-            icon: const Icon(Icons.smartphone_outlined),
-            selectedIcon: const Icon(Icons.smartphone_rounded),
+            icon: const Icon(SxIcons.tabDevice),
+            selectedIcon: const Icon(SxIcons.tabDeviceOn),
             label: l.navDevice,
           ),
           NavigationDestination(
-            icon: const Icon(Icons.fact_check_outlined),
-            selectedIcon: const Icon(Icons.fact_check_rounded),
+            icon: const Icon(SxIcons.tabTests),
+            selectedIcon: const Icon(SxIcons.tabTestsOn),
             label: l.navTests,
           ),
           NavigationDestination(
-            icon: const Icon(Icons.insights_outlined),
-            selectedIcon: const Icon(Icons.insights_rounded),
+            icon: const Icon(SxIcons.tabMonitor),
+            selectedIcon: const Icon(SxIcons.tabMonitorOn),
             label: l.navMonitor,
           ),
         ],

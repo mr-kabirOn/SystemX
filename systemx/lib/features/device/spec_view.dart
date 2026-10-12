@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 import '../../core/theme/sx_colors.dart';
 import '../../l10n/app_localizations.dart';
 import '../../platform/platform.dart';
+import '../../ui/sx_icons.dart';
 import '../../ui/widgets/cards.dart';
 import '../../ui/widgets/page_scaffold.dart';
 import 'specs.dart';
@@ -48,9 +50,9 @@ class SpecRow extends StatelessWidget {
   Widget build(BuildContext context) {
     final sx = context.sx;
     final (color, icon) = switch (spec.tone) {
-      SpecTone.good => (sx.good, Icons.check_circle_rounded),
-      SpecTone.warn => (sx.warn, Icons.warning_rounded),
-      SpecTone.bad => (sx.bad, Icons.error_rounded),
+      SpecTone.good => (sx.good, SxIcons.passed),
+      SpecTone.warn => (sx.warn, PhosphorIconsFill.warningCircle),
+      SpecTone.bad => (sx.bad, SxIcons.failed),
       SpecTone.neutral => (spec.available ? null : sx.muted, null),
     };
     final action = spec.action;

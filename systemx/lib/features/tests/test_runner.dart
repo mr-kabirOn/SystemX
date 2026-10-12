@@ -5,6 +5,7 @@ import '../../core/permissions.dart';
 import '../../core/theme/sx_colors.dart';
 import '../../l10n/app_localizations.dart';
 import '../../platform/platform.dart';
+import '../../ui/sx_icons.dart';
 import '../../ui/widgets/cards.dart';
 import 'impl/audio_tests.dart';
 import 'impl/camera_tests.dart';
@@ -183,10 +184,10 @@ class ResultView extends StatelessWidget {
   final l = AppLocalizations.of(context);
   final sx = context.sx;
   return switch (s) {
-    TestStatus.passed => (Icons.check_circle_rounded, sx.good, l.statusPassed),
-    TestStatus.failed => (Icons.cancel_rounded, sx.bad, l.statusFailed),
-    TestStatus.skipped => (Icons.remove_circle_rounded, sx.muted, l.statusSkipped),
-    TestStatus.notRun => (Icons.circle_outlined, sx.muted, l.statusNotRun),
+    TestStatus.passed => (SxIcons.passed, sx.good, l.statusPassed),
+    TestStatus.failed => (SxIcons.failed, sx.bad, l.statusFailed),
+    TestStatus.skipped => (SxIcons.skipped, sx.muted, l.statusSkipped),
+    TestStatus.notRun => (SxIcons.notTested, sx.muted, l.statusNotRun),
   };
 }
 

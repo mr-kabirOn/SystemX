@@ -24,6 +24,7 @@ dependencies:
   pdf: ^3.12.0
   # Pinned: image 4.11 needs a newer archive than pdf 3.12 allows.
   image: 4.10.0
+  phosphor_flutter: ^2.1.0
 
 dev_dependencies:
   flutter_test:
@@ -38,7 +39,7 @@ flutter:
 
   assets:
     - assets/fonts/OFL-Sora.txt
-    - assets/fonts/OFL-Figtree.txt
+    - assets/fonts/OFL-Inter.txt
     - assets/fonts/OFL-JetBrainsMono.txt
     - assets/fonts/OFL-NotoSansBengali.txt
 
@@ -46,9 +47,9 @@ flutter:
     - family: Sora
       fonts:
         - asset: assets/fonts/Sora.ttf
-    - family: Figtree
+    - family: Inter
       fonts:
-        - asset: assets/fonts/Figtree.ttf
+        - asset: assets/fonts/Inter.ttf
     - family: JetBrainsMono
       fonts:
         - asset: assets/fonts/JetBrainsMono.ttf

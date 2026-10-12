@@ -35,9 +35,17 @@ Future<void> _loadFonts() async {
   }
 
   await load('Sora', 'assets/fonts/Sora.ttf');
-  await load('Figtree', 'assets/fonts/Figtree.ttf');
+  await load('Inter', 'assets/fonts/Inter.ttf');
   await load('JetBrainsMono', 'assets/fonts/JetBrainsMono.ttf');
   await load('NotoSansBengali', 'assets/fonts/NotoSansBengali.ttf');
+  final phosphor = Directory('${Platform.environment['HOME']}/.pub-cache/hosted/pub.dev')
+      .listSync()
+      .whereType<Directory>()
+      .lastWhere((d) => d.path.contains('phosphor_flutter-'));
+  await load('packages/phosphor_flutter/PhosphorRegular',
+      '${phosphor.path}/lib/fonts/Phosphor.ttf');
+  await load('packages/phosphor_flutter/PhosphorFill',
+      '${phosphor.path}/lib/fonts/Phosphor-Fill.ttf');
   final flutterRoot = Platform.environment['FLUTTER_ROOT']!;
   await load('MaterialIcons',
       '$flutterRoot/bin/cache/artifacts/material_fonts/MaterialIcons-Regular.otf');

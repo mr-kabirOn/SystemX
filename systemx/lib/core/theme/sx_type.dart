@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 /// Font families bundled in assets/fonts (all OFL, no network downloads).
 abstract final class SxFonts {
   static const display = 'Sora';
-  static const body = 'Figtree';
+  static const body = 'Inter';
   static const mono = 'JetBrainsMono';
 
   /// Bengali letters, which the three fonts above don't have.

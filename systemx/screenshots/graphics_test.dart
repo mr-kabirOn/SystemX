@@ -56,7 +56,7 @@ Future<void> _render(WidgetTester tester, Size size, String name, Widget child) 
 void main() {
   setUpAll(() async {
     await _font('Sora', 'assets/fonts/Sora.ttf');
-    await _font('Figtree', 'assets/fonts/Figtree.ttf');
+    await _font('Inter', 'assets/fonts/Inter.ttf');
   });
 
   testWidgets('play icon and feature graphic', (tester) async {
@@ -101,7 +101,7 @@ void main() {
                         color: _white)),
                 const SizedBox(height: 12),
                 const Text('Device info & phone test',
-                    style: TextStyle(fontFamily: 'Figtree', fontSize: 34, color: Color(0xFFC5CBF0))),
+                    style: TextStyle(fontFamily: 'Inter', fontSize: 34, color: Color(0xFFC5CBF0))),
                 const SizedBox(height: 28),
                 Wrap(spacing: 12, runSpacing: 12, children: [
                   for (final t in const ['Live stats', '32 hardware tests', 'Private by design'])
@@ -112,7 +112,7 @@ void main() {
                         borderRadius: BorderRadius.circular(99),
                       ),
                       child: Text(t,
-                          style: const TextStyle(fontFamily: 'Figtree', fontSize: 22, color: _white)),
+                          style: const TextStyle(fontFamily: 'Inter', fontSize: 22, color: _white)),
                     ),
                 ]),
               ],

@@ -47,7 +47,7 @@ final shareFileProvider =
 /// The checkup report as a PDF, made entirely on the phone.
 Future<Uint8List> buildReportPdf(
     Checkup c, AppLocalizations l, DeviceSnapshot? snap) async {
-  final body = pw.Font.ttf(await rootBundle.load('assets/fonts/Figtree.ttf'));
+  final body = pw.Font.ttf(await rootBundle.load('assets/fonts/Inter.ttf'));
   final mono = pw.Font.ttf(await rootBundle.load('assets/fonts/JetBrainsMono.ttf'));
   final theme = pw.ThemeData.withFont(base: body, bold: body);
 

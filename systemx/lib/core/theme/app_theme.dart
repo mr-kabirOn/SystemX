@@ -64,7 +64,8 @@ ThemeData buildTheme(SxColors c, Brightness brightness) {
     navigationBarTheme: NavigationBarThemeData(
       backgroundColor: c.card,
       surfaceTintColor: Colors.transparent,
-      indicatorColor: c.accent.withValues(alpha: 0.24),
+      // Dark themes: a soft neon accent on the selected tab.
+      indicatorColor: c.accent.withValues(alpha: isDark ? 0.14 : 0.24),
       height: 68,
       labelTextStyle: WidgetStateProperty.resolveWith((s) => sxStyle(
             SxFonts.body,
@@ -72,10 +73,16 @@ ThemeData buildTheme(SxColors c, Brightness brightness) {
             FontWeight.w600,
             color: s.contains(WidgetState.selected) ? c.ink : c.muted,
           )),
-      iconTheme: WidgetStateProperty.resolveWith((s) => IconThemeData(
-            size: 22,
-            color: s.contains(WidgetState.selected) ? c.accent : c.muted,
-          )),
+      iconTheme: WidgetStateProperty.resolveWith((s) {
+        final on = s.contains(WidgetState.selected);
+        return IconThemeData(
+          size: 24,
+          color: on ? c.accent : c.muted,
+          shadows: on && isDark
+              ? [Shadow(color: c.accent.withValues(alpha: 0.75), blurRadius: 14)]
+              : null,
+        );
+      }),
     ),
     filledButtonTheme: FilledButtonThemeData(
       style: FilledButton.styleFrom(

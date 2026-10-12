@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 import '../../core/permissions.dart';
 import '../../core/theme/sx_colors.dart';
@@ -60,32 +61,37 @@ enum HwTest {
   }
 
   IconData get icon => switch (this) {
-        deadPixels || colorBanding || burnIn => SxIcons.display,
-        touchGrid || multiTouch => SxIcons.touch,
+        deadPixels => PhosphorIconsFill.squaresFour,
+        colorBanding => PhosphorIconsFill.palette,
+        burnIn => PhosphorIconsFill.circleHalf,
+        touchGrid => SxIcons.touch,
+        multiTouch => PhosphorIconsFill.hand,
         brightness => SxIcons.brightness,
-        speaker || speakerMicLoop => SxIcons.speaker,
+        speaker => SxIcons.speaker,
+        speakerMicLoop => PhosphorIconsFill.waveform,
         earpiece => SxIcons.earpiece,
         microphone => SxIcons.mic,
-        headphones => Icons.headphones_rounded,
-        usbAudio => Icons.usb_rounded,
+        headphones => PhosphorIconsFill.headphones,
+        usbAudio => PhosphorIconsFill.usb,
         vibration => SxIcons.vibration,
-        volumeUp => Icons.volume_up_rounded,
-        volumeDown => Icons.volume_down_rounded,
+        volumeUp => PhosphorIconsFill.speakerSimpleHigh,
+        volumeDown => PhosphorIconsFill.speakerSimpleLow,
         rearCamera || frontCamera => SxIcons.camera,
         flashlight => SxIcons.flashlight,
-        accelerometer || gyroscope => Icons.screen_rotation_rounded,
-        compass => Icons.explore_rounded,
-        proximity => Icons.sensor_occupied_rounded,
-        light => Icons.light_mode_rounded,
-        barometer => Icons.speed_rounded,
+        accelerometer => PhosphorIconsFill.arrowsOutCardinal,
+        gyroscope => PhosphorIconsFill.arrowsClockwise,
+        compass => PhosphorIconsFill.compass,
+        proximity => PhosphorIconsFill.eye,
+        light => PhosphorIconsFill.lightbulb,
+        barometer => PhosphorIconsFill.gauge,
         wifi => SxIcons.network,
         bluetooth => SxIcons.bluetooth,
         gps => SxIcons.gps,
-        nfc => Icons.nfc_rounded,
-        mobileSignal => Icons.signal_cellular_alt_rounded,
+        nfc => PhosphorIconsFill.contactlessPayment,
+        mobileSignal => PhosphorIconsFill.cellSignalHigh,
         biometrics => SxIcons.fingerprint,
         charging => SxIcons.charging,
-        storageSpeed => SxIcons.storage,
+        storageSpeed => SxIcons.speed,
       };
 
   Color color(SxColors sx) => switch (group) {
