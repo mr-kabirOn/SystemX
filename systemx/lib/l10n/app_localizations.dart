@@ -4520,24 +4520,6 @@ abstract class AppLocalizations {
   /// **'{count} readings, taken every 15 minutes in the background'**
   String historyNote(int count);
 
-  /// No description provided for @avgCurrent.
-  ///
-  /// In en, this message translates to:
-  /// **'avg {ma} mA'**
-  String avgCurrent(int ma);
-
-  /// No description provided for @peakCurrent.
-  ///
-  /// In en, this message translates to:
-  /// **'peak {ma} mA'**
-  String peakCurrent(int ma);
-
-  /// No description provided for @maxTemp.
-  ///
-  /// In en, this message translates to:
-  /// **'max {temp}'**
-  String maxTemp(String temp);
-
   /// No description provided for @wifiMeter.
   ///
   /// In en, this message translates to:
@@ -5791,6 +5773,204 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Not confirmed'**
   String get upCertNotConfirmed;
+
+  /// No description provided for @csSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Last 30 days'**
+  String get csSummary;
+
+  /// No description provided for @csCharges.
+  ///
+  /// In en, this message translates to:
+  /// **'Charges'**
+  String get csCharges;
+
+  /// No description provided for @csAvgTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Average time'**
+  String get csAvgTime;
+
+  /// No description provided for @csAvgAdded.
+  ///
+  /// In en, this message translates to:
+  /// **'Average added'**
+  String get csAvgAdded;
+
+  /// No description provided for @csAvgSpeed.
+  ///
+  /// In en, this message translates to:
+  /// **'Average speed'**
+  String get csAvgSpeed;
+
+  /// No description provided for @csHottest.
+  ///
+  /// In en, this message translates to:
+  /// **'Hottest'**
+  String get csHottest;
+
+  /// No description provided for @csPerHour.
+  ///
+  /// In en, this message translates to:
+  /// **'{pct}%/h'**
+  String csPerHour(String pct);
+
+  /// No description provided for @csInsights.
+  ///
+  /// In en, this message translates to:
+  /// **'Charging habits'**
+  String get csInsights;
+
+  /// No description provided for @csInsightToFull.
+  ///
+  /// In en, this message translates to:
+  /// **'Most charges go to 100%'**
+  String get csInsightToFull;
+
+  /// No description provided for @csInsightToFullBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Keeping the battery at full charge speeds up wear. Stopping around 80–85% helps it last longer; the charge alarm can remind you.'**
+  String get csInsightToFullBody;
+
+  /// No description provided for @csInsightDeep.
+  ///
+  /// In en, this message translates to:
+  /// **'Often charged from below 15%'**
+  String get csInsightDeep;
+
+  /// No description provided for @csInsightDeepBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Deep discharges are harder on the battery. Plugging in earlier, around 20–30%, is gentler.'**
+  String get csInsightDeepBody;
+
+  /// No description provided for @csInsightHot.
+  ///
+  /// In en, this message translates to:
+  /// **'The battery got warm while charging'**
+  String get csInsightHot;
+
+  /// No description provided for @csInsightHotBody.
+  ///
+  /// In en, this message translates to:
+  /// **'It reached {temp}. Heat wears batteries fastest: charge without a case, out of the sun, and avoid gaming while charging.'**
+  String csInsightHotBody(String temp);
+
+  /// No description provided for @csInsightOvernight.
+  ///
+  /// In en, this message translates to:
+  /// **'Frequent overnight charging'**
+  String get csInsightOvernight;
+
+  /// No description provided for @csInsightOvernightBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Long overnight charges keep the battery full for hours. If your phone has a battery protection or adaptive charging setting, turn it on.'**
+  String get csInsightOvernightBody;
+
+  /// No description provided for @csInsightGood.
+  ///
+  /// In en, this message translates to:
+  /// **'Your charging habits look battery-friendly'**
+  String get csInsightGood;
+
+  /// No description provided for @csInsightGoodBody.
+  ///
+  /// In en, this message translates to:
+  /// **'No long full charges, deep discharges or heat in the last 30 days.'**
+  String get csInsightGoodBody;
+
+  /// No description provided for @csSetAlarm.
+  ///
+  /// In en, this message translates to:
+  /// **'Set charge alarm'**
+  String get csSetAlarm;
+
+  /// No description provided for @csChart.
+  ///
+  /// In en, this message translates to:
+  /// **'Charge added per session'**
+  String get csChart;
+
+  /// No description provided for @csChartLegend.
+  ///
+  /// In en, this message translates to:
+  /// **'Taller bars added more charge; amber bars got warm.'**
+  String get csChartLegend;
+
+  /// No description provided for @csToday.
+  ///
+  /// In en, this message translates to:
+  /// **'Today'**
+  String get csToday;
+
+  /// No description provided for @csYesterday.
+  ///
+  /// In en, this message translates to:
+  /// **'Yesterday'**
+  String get csYesterday;
+
+  /// No description provided for @csAdded.
+  ///
+  /// In en, this message translates to:
+  /// **'+{pct}%'**
+  String csAdded(int pct);
+
+  /// No description provided for @csSpeed.
+  ///
+  /// In en, this message translates to:
+  /// **'Speed'**
+  String get csSpeed;
+
+  /// No description provided for @csAvg.
+  ///
+  /// In en, this message translates to:
+  /// **'Average'**
+  String get csAvg;
+
+  /// No description provided for @csPeak.
+  ///
+  /// In en, this message translates to:
+  /// **'Peak'**
+  String get csPeak;
+
+  /// No description provided for @csMaxTemp.
+  ///
+  /// In en, this message translates to:
+  /// **'Max temp'**
+  String get csMaxTemp;
+
+  /// No description provided for @csMeasured.
+  ///
+  /// In en, this message translates to:
+  /// **'Measured capacity {mah} mAh'**
+  String csMeasured(String mah);
+
+  /// No description provided for @csNow.
+  ///
+  /// In en, this message translates to:
+  /// **'now'**
+  String get csNow;
+
+  /// No description provided for @csEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No charges recorded yet'**
+  String get csEmptyTitle;
+
+  /// No description provided for @csEmptyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Charges are recorded while SystemX\'s background features are on. Plug in your phone, and each charge will appear here with its speed and temperature.'**
+  String get csEmptyBody;
+
+  /// No description provided for @csToFull.
+  ///
+  /// In en, this message translates to:
+  /// **'Full charges'**
+  String get csToFull;
 }
 
 class _AppLocalizationsDelegate

@@ -61,8 +61,9 @@ void main() {
   testWidgets('Monitor shows history and charging sessions', (tester) async {
     await pumpApp(tester);
     await go(tester, Routes.sessions);
-    expect(find.text('23% → 100% · 1h 42m'), findsOneWidget);
-    expect(find.textContaining('peak 2140 mA'), findsOneWidget);
+    final list = find.byType(Scrollable).last;
+    await tester.scrollUntilVisible(find.text('2,140 mA'), 300, scrollable: list);
+    expect(find.text('+77%'), findsNWidgets(2)); // summary average and the session
 
     await go(tester, Routes.monitor);
     await tester.scrollUntilVisible(find.text('History'), 400,

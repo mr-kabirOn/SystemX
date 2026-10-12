@@ -2434,21 +2434,6 @@ class AppLocalizationsBn extends AppLocalizations {
   }
 
   @override
-  String avgCurrent(int ma) {
-    return 'গড় $ma mA';
-  }
-
-  @override
-  String peakCurrent(int ma) {
-    return 'সর্বোচ্চ $ma mA';
-  }
-
-  @override
-  String maxTemp(String temp) {
-    return 'সর্বোচ্চ $temp';
-  }
-
-  @override
   String get wifiMeter => 'Wi-Fi সিগন্যাল মিটার';
 
   @override
@@ -3178,4 +3163,117 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get upCertNotConfirmed => 'Not confirmed';
+
+  @override
+  String get csSummary => 'গত ৩০ দিন';
+
+  @override
+  String get csCharges => 'চার্জ';
+
+  @override
+  String get csAvgTime => 'গড় সময়';
+
+  @override
+  String get csAvgAdded => 'গড় যোগ';
+
+  @override
+  String get csAvgSpeed => 'গড় গতি';
+
+  @override
+  String get csHottest => 'সর্বোচ্চ তাপ';
+
+  @override
+  String csPerHour(String pct) {
+    return '$pct%/ঘ';
+  }
+
+  @override
+  String get csInsights => 'চার্জিং অভ্যাস';
+
+  @override
+  String get csInsightToFull => 'বেশিরভাগ চার্জ ১০০% পর্যন্ত যায়';
+
+  @override
+  String get csInsightToFullBody =>
+      'ব্যাটারি পূর্ণ চার্জে রাখলে দ্রুত ক্ষয় হয়। ৮০–৮৫%-এ থামালে বেশিদিন টেকে; চার্জ অ্যালার্ম মনে করিয়ে দিতে পারে।';
+
+  @override
+  String get csInsightDeep => 'প্রায়ই ১৫%-এর নিচ থেকে চার্জ';
+
+  @override
+  String get csInsightDeepBody =>
+      'একদম খালি হওয়া ব্যাটারির জন্য ক্ষতিকর। ২০–৩০%-এর দিকে চার্জে দিলে ভালো।';
+
+  @override
+  String get csInsightHot => 'চার্জের সময় ব্যাটারি গরম হয়েছিল';
+
+  @override
+  String csInsightHotBody(String temp) {
+    return 'তাপমাত্রা $temp পর্যন্ত উঠেছিল। তাপে ব্যাটারি সবচেয়ে দ্রুত ক্ষয় হয়: কভার ছাড়া, রোদের বাইরে চার্জ দিন, আর চার্জের সময় গেম এড়িয়ে চলুন।';
+  }
+
+  @override
+  String get csInsightOvernight => 'প্রায়ই সারারাত চার্জ';
+
+  @override
+  String get csInsightOvernightBody =>
+      'সারারাত চার্জে ব্যাটারি ঘণ্টার পর ঘণ্টা পূর্ণ থাকে। ফোনে ব্যাটারি সুরক্ষা বা অ্যাডাপ্টিভ চার্জিং সেটিং থাকলে চালু করুন।';
+
+  @override
+  String get csInsightGood => 'আপনার চার্জিং অভ্যাস ব্যাটারির জন্য ভালো';
+
+  @override
+  String get csInsightGoodBody =>
+      'গত ৩০ দিনে লম্বা পূর্ণ চার্জ, গভীর ডিসচার্জ বা অতিরিক্ত তাপ নেই।';
+
+  @override
+  String get csSetAlarm => 'চার্জ অ্যালার্ম সেট করুন';
+
+  @override
+  String get csChart => 'প্রতি চার্জে যোগ হওয়া চার্জ';
+
+  @override
+  String get csChartLegend =>
+      'উঁচু বারে বেশি চার্জ যোগ হয়েছে; হলুদ বারে গরম হয়েছিল।';
+
+  @override
+  String get csToday => 'আজ';
+
+  @override
+  String get csYesterday => 'গতকাল';
+
+  @override
+  String csAdded(int pct) {
+    return '+$pct%';
+  }
+
+  @override
+  String get csSpeed => 'গতি';
+
+  @override
+  String get csAvg => 'গড়';
+
+  @override
+  String get csPeak => 'সর্বোচ্চ';
+
+  @override
+  String get csMaxTemp => 'সর্বোচ্চ তাপ';
+
+  @override
+  String csMeasured(String mah) {
+    return 'মাপা ক্যাপাসিটি $mah mAh';
+  }
+
+  @override
+  String get csNow => 'এখন';
+
+  @override
+  String get csEmptyTitle => 'এখনো কোনো চার্জ রেকর্ড হয়নি';
+
+  @override
+  String get csEmptyBody =>
+      'SystemX-এর ব্যাকগ্রাউন্ড ফিচার চালু থাকলে চার্জ রেকর্ড হয়। ফোন চার্জে দিন, প্রতিটি চার্জ তার গতি আর তাপমাত্রাসহ এখানে দেখা যাবে।';
+
+  @override
+  String get csToFull => 'পূর্ণ চার্জ';
 }

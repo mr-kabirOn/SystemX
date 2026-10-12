@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:intl/intl.dart';
 
 import '../../core/format.dart';
 import '../../core/router.dart';
@@ -12,7 +11,6 @@ import '../../platform/platform.dart';
 import '../../ui/sx_icons.dart';
 import '../../ui/widgets/cards.dart';
 import '../../ui/widgets/live_chart.dart';
-import '../../ui/widgets/page_scaffold.dart';
 import 'background.dart';
 
 /// 24 h / 7 day history charts for the Monitor tab.
@@ -91,70 +89,6 @@ class SessionsTile extends StatelessWidget {
         trailing: const Icon(Icons.chevron_right_rounded),
         onTap: () => context.push(Routes.sessions),
       ),
-    );
-  }
-}
-
-class SessionsScreen extends ConsumerWidget {
-  const SessionsScreen({super.key});
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final l = AppLocalizations.of(context);
-    final sx = context.sx;
-    final unit = ref.watch(settingsProvider.select((s) => s.tempUnit));
-    final sessions = ref.watch(sessionsProvider);
-    final time = DateFormat.jm(l.localeName);
-
-    return PageScaffold(
-      title: l.chargingSessions,
-      leading: const BackButton(),
-      slivers: [
-        ...sessions.when(
-          loading: () => [const SliverToBoxAdapter(child: Center(child: CircularProgressIndicator()))],
-          error: (_, _) => [Box(Text(l.historyEmpty))],
-          data: (list) => list.isEmpty
-              ? [Box(Text(l.sessionsEmpty, style: context.text.bodyMedium?.copyWith(color: sx.muted)))]
-              : [
-                  SliverList.separated(
-                    itemCount: list.length,
-                    separatorBuilder: (_, _) => const SizedBox(height: 10),
-                    itemBuilder: (context, i) {
-                      final s = list[i];
-                      final start = DateTime.fromMillisecondsSinceEpoch(s.startMs);
-                      final end = s.endMs == null ? null : DateTime.fromMillisecondsSinceEpoch(s.endMs!);
-                      final dur = (end ?? DateTime.now()).difference(start);
-                      return SxCard(
-                        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                          Row(children: [
-                            Expanded(
-                              child: Text(
-                                '${formatDate(start, l.localeName)} · ${time.format(start)}',
-                                style: context.text.titleSmall,
-                              ),
-                            ),
-                            if (end == null)
-                              StatusChip(l.batCharging, color: sx.battery, icon: Icons.bolt_rounded),
-                          ]),
-                          const SizedBox(height: 6),
-                          Text('${s.startLevel}% → ${s.endLevel}% · ${formatDuration(dur)}',
-                              style: context.text.bodyLarge),
-                          const SizedBox(height: 4),
-                          Text(
-                            [
-                              if (s.avgMa != null) l.avgCurrent(s.avgMa!),
-                              if (s.peakMa != null) l.peakCurrent(s.peakMa!),
-                              l.maxTemp(formatTemp(s.maxTempC, unit)),
-                            ].join(' · '),
-                            style: context.text.bodySmall,
-                          ),
-                        ]),
-                      );
-                    },
-                  ),
-                ],
-        ),
-      ],
     );
   }
 }

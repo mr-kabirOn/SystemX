@@ -2450,21 +2450,6 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String avgCurrent(int ma) {
-    return 'avg $ma mA';
-  }
-
-  @override
-  String peakCurrent(int ma) {
-    return 'peak $ma mA';
-  }
-
-  @override
-  String maxTemp(String temp) {
-    return 'max $temp';
-  }
-
-  @override
   String get wifiMeter => 'Wi-Fi signal meter';
 
   @override
@@ -3202,4 +3187,117 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get upCertNotConfirmed => 'Not confirmed';
+
+  @override
+  String get csSummary => 'Last 30 days';
+
+  @override
+  String get csCharges => 'Charges';
+
+  @override
+  String get csAvgTime => 'Average time';
+
+  @override
+  String get csAvgAdded => 'Average added';
+
+  @override
+  String get csAvgSpeed => 'Average speed';
+
+  @override
+  String get csHottest => 'Hottest';
+
+  @override
+  String csPerHour(String pct) {
+    return '$pct%/h';
+  }
+
+  @override
+  String get csInsights => 'Charging habits';
+
+  @override
+  String get csInsightToFull => 'Most charges go to 100%';
+
+  @override
+  String get csInsightToFullBody =>
+      'Keeping the battery at full charge speeds up wear. Stopping around 80–85% helps it last longer; the charge alarm can remind you.';
+
+  @override
+  String get csInsightDeep => 'Often charged from below 15%';
+
+  @override
+  String get csInsightDeepBody =>
+      'Deep discharges are harder on the battery. Plugging in earlier, around 20–30%, is gentler.';
+
+  @override
+  String get csInsightHot => 'The battery got warm while charging';
+
+  @override
+  String csInsightHotBody(String temp) {
+    return 'It reached $temp. Heat wears batteries fastest: charge without a case, out of the sun, and avoid gaming while charging.';
+  }
+
+  @override
+  String get csInsightOvernight => 'Frequent overnight charging';
+
+  @override
+  String get csInsightOvernightBody =>
+      'Long overnight charges keep the battery full for hours. If your phone has a battery protection or adaptive charging setting, turn it on.';
+
+  @override
+  String get csInsightGood => 'Your charging habits look battery-friendly';
+
+  @override
+  String get csInsightGoodBody =>
+      'No long full charges, deep discharges or heat in the last 30 days.';
+
+  @override
+  String get csSetAlarm => 'Set charge alarm';
+
+  @override
+  String get csChart => 'Charge added per session';
+
+  @override
+  String get csChartLegend =>
+      'Taller bars added more charge; amber bars got warm.';
+
+  @override
+  String get csToday => 'Today';
+
+  @override
+  String get csYesterday => 'Yesterday';
+
+  @override
+  String csAdded(int pct) {
+    return '+$pct%';
+  }
+
+  @override
+  String get csSpeed => 'Speed';
+
+  @override
+  String get csAvg => 'Average';
+
+  @override
+  String get csPeak => 'Peak';
+
+  @override
+  String get csMaxTemp => 'Max temp';
+
+  @override
+  String csMeasured(String mah) {
+    return 'Measured capacity $mah mAh';
+  }
+
+  @override
+  String get csNow => 'now';
+
+  @override
+  String get csEmptyTitle => 'No charges recorded yet';
+
+  @override
+  String get csEmptyBody =>
+      'Charges are recorded while SystemX\'s background features are on. Plug in your phone, and each charge will appear here with its speed and temperature.';
+
+  @override
+  String get csToFull => 'Full charges';
 }

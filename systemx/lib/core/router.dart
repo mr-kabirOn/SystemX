@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import '../features/apps/apps_screen.dart';
 import '../features/background/alerts_screen.dart';
 import '../features/background/battery_health.dart';
-import '../features/background/history_widgets.dart';
+import '../features/background/charging_sessions.dart';
 import '../features/device/category_screen.dart';
 import '../features/device/device_data.dart';
 import '../features/device/device_screen.dart';
