@@ -31,6 +31,12 @@ class ShowSensor extends SpecAction {
   final SensorInfo sensor;
 }
 
+/// Opens the dialer with a code filled in, e.g. *#06# for the IMEI.
+class Dial extends SpecAction {
+  const Dial(this.code);
+  final String code;
+}
+
 @immutable
 class Spec {
   const Spec(

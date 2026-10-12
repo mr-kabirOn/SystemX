@@ -163,6 +163,10 @@ void main() {
     await _shoot(tester, '23_wifi_meter', Routes.wifiMeter);
     await _shoot(tester, '24_home_bangla', Routes.home, locale: 'bn');
     await _shoot(tester, '25_report_light', Routes.report(0), theme: ThemeMode.light);
+    await _shoot(tester, '26_apps', Routes.apps);
+    await _shoot(tester, '27_device_info', Routes.category(DeviceCategory.device));
+    await _shoot(
+        tester, '28_device_sensors', Routes.category(DeviceCategory.sensors));
     addTearDown(tester.view.reset);
   });
 

@@ -139,4 +139,22 @@ class SysParsersTest {
         assertNull(SysParsers.thermalC(-40_000))
         assertNull(SysParsers.thermalC(255_000))
     }
+
+    @Test
+    fun oneUiVersionReadsSamsungsNumber() {
+        assertEquals("8.0", SysParsers.oneUiVersion("80000"))
+        assertEquals("6.1", SysParsers.oneUiVersion("60100"))
+        assertEquals("5.1.1", SysParsers.oneUiVersion("50101"))
+        assertNull(SysParsers.oneUiVersion(null))
+        assertNull(SysParsers.oneUiVersion("abc"))
+        assertNull(SysParsers.oneUiVersion("8"))
+    }
+
+    @Test
+    fun cycleCountTreatsZeroAsUnknown() {
+        assertNull(SysParsers.cycleCount(0))
+        assertNull(SysParsers.cycleCount(-1))
+        assertNull(SysParsers.cycleCount(null))
+        assertEquals(312L, SysParsers.cycleCount(312))
+    }
 }

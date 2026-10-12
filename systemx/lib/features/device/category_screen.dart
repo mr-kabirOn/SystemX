@@ -82,6 +82,8 @@ class _CategoryScreenState extends ConsumerState<CategoryScreen> {
         await _askPermission(kind);
       case ShowSensor(:final sensor):
         await showSensorSheet(context, sensor);
+      case Dial(:final code):
+        await ref.read(deviceApiProvider).dial(code);
     }
   }
 

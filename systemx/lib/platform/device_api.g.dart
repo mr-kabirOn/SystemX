@@ -108,6 +108,17 @@ class DeviceIdentity {
     required this.board,
     required this.hardware,
     required this.isTablet,
+    this.deviceName,
+    this.androidId,
+    this.salesCode,
+    this.salesCountryIso,
+    this.salesCountry,
+    this.salesRegion,
+    this.productLocale,
+    this.firstApiLevel,
+    this.hardwareRevision,
+    this.oemSkin,
+    this.warrantyVoid,
   });
 
   String manufacturer;
@@ -128,6 +139,38 @@ class DeviceIdentity {
 
   bool isTablet;
 
+  /// The name set in Settings (About phone).
+  String? deviceName;
+
+  /// Settings.Secure.ANDROID_ID; unique per app signing key on Android 8+.
+  String? androidId;
+
+  /// Carrier or regional build code, e.g. Samsung's CSC ("KOO", "BKD").
+  String? salesCode;
+
+  /// ISO 3166 code of the country the build was made for, e.g. "KR".
+  String? salesCountryIso;
+
+  /// [salesCountryIso] as a country name in the phone's language.
+  String? salesCountry;
+
+  /// The maker's region name for the build, e.g. "KOREA", "GLOBAL".
+  String? salesRegion;
+
+  /// Default locale of the build, e.g. "ko-KR".
+  String? productLocale;
+
+  /// API level the phone launched with.
+  int? firstApiLevel;
+
+  String? hardwareRevision;
+
+  /// The maker's Android skin and version, e.g. "One UI 8.0".
+  String? oemSkin;
+
+  /// Samsung Knox warranty bit: false while intact.
+  bool? warrantyVoid;
+
   List<Object?> _toList() {
     return <Object?>[
       manufacturer,
@@ -139,6 +182,17 @@ class DeviceIdentity {
       board,
       hardware,
       isTablet,
+      deviceName,
+      androidId,
+      salesCode,
+      salesCountryIso,
+      salesCountry,
+      salesRegion,
+      productLocale,
+      firstApiLevel,
+      hardwareRevision,
+      oemSkin,
+      warrantyVoid,
     ];
   }
 
@@ -157,6 +211,17 @@ class DeviceIdentity {
       board: result[6]! as String,
       hardware: result[7]! as String,
       isTablet: result[8]! as bool,
+      deviceName: result[9] as String?,
+      androidId: result[10] as String?,
+      salesCode: result[11] as String?,
+      salesCountryIso: result[12] as String?,
+      salesCountry: result[13] as String?,
+      salesRegion: result[14] as String?,
+      productLocale: result[15] as String?,
+      firstApiLevel: result[16] as int?,
+      hardwareRevision: result[17] as String?,
+      oemSkin: result[18] as String?,
+      warrantyVoid: result[19] as bool?,
     );
   }
 
@@ -169,7 +234,7 @@ class DeviceIdentity {
     if (identical(this, other)) {
       return true;
     }
-    return _deepEquals(manufacturer, other.manufacturer) && _deepEquals(brand, other.brand) && _deepEquals(model, other.model) && _deepEquals(marketName, other.marketName) && _deepEquals(codename, other.codename) && _deepEquals(product, other.product) && _deepEquals(board, other.board) && _deepEquals(hardware, other.hardware) && _deepEquals(isTablet, other.isTablet);
+    return _deepEquals(manufacturer, other.manufacturer) && _deepEquals(brand, other.brand) && _deepEquals(model, other.model) && _deepEquals(marketName, other.marketName) && _deepEquals(codename, other.codename) && _deepEquals(product, other.product) && _deepEquals(board, other.board) && _deepEquals(hardware, other.hardware) && _deepEquals(isTablet, other.isTablet) && _deepEquals(deviceName, other.deviceName) && _deepEquals(androidId, other.androidId) && _deepEquals(salesCode, other.salesCode) && _deepEquals(salesCountryIso, other.salesCountryIso) && _deepEquals(salesCountry, other.salesCountry) && _deepEquals(salesRegion, other.salesRegion) && _deepEquals(productLocale, other.productLocale) && _deepEquals(firstApiLevel, other.firstApiLevel) && _deepEquals(hardwareRevision, other.hardwareRevision) && _deepEquals(oemSkin, other.oemSkin) && _deepEquals(warrantyVoid, other.warrantyVoid);
   }
 
   @override
@@ -178,7 +243,7 @@ class DeviceIdentity {
 
   @override
   String toString() {
-    return 'DeviceIdentity(manufacturer: $manufacturer, brand: $brand, model: $model, marketName: $marketName, codename: $codename, product: $product, board: $board, hardware: $hardware, isTablet: $isTablet)';
+    return 'DeviceIdentity(manufacturer: $manufacturer, brand: $brand, model: $model, marketName: $marketName, codename: $codename, product: $product, board: $board, hardware: $hardware, isTablet: $isTablet, deviceName: $deviceName, androidId: $androidId, salesCode: $salesCode, salesCountryIso: $salesCountryIso, salesCountry: $salesCountry, salesRegion: $salesRegion, productLocale: $productLocale, firstApiLevel: $firstApiLevel, hardwareRevision: $hardwareRevision, oemSkin: $oemSkin, warrantyVoid: $warrantyVoid)';
   }
 }
 
@@ -799,6 +864,8 @@ class BatteryInfo {
     this.chargeTimeRemainingMs,
     this.cycleCount,
     this.designCapacityMah,
+    this.trackedCycles,
+    this.trackedSinceMs,
   });
 
   int level;
@@ -833,6 +900,12 @@ class BatteryInfo {
 
   double? designCapacityMah;
 
+  /// Full charge cycles SystemX worked out from the charging sessions it
+  /// recorded since [trackedSinceMs]. Used when [cycleCount] is unknown.
+  double? trackedCycles;
+
+  int? trackedSinceMs;
+
   List<Object?> _toList() {
     return <Object?>[
       level,
@@ -849,6 +922,8 @@ class BatteryInfo {
       chargeTimeRemainingMs,
       cycleCount,
       designCapacityMah,
+      trackedCycles,
+      trackedSinceMs,
     ];
   }
 
@@ -872,6 +947,8 @@ class BatteryInfo {
       chargeTimeRemainingMs: result[11] as int?,
       cycleCount: result[12] as int?,
       designCapacityMah: result[13] as double?,
+      trackedCycles: result[14] as double?,
+      trackedSinceMs: result[15] as int?,
     );
   }
 
@@ -884,7 +961,7 @@ class BatteryInfo {
     if (identical(this, other)) {
       return true;
     }
-    return _deepEquals(level, other.level) && _deepEquals(status, other.status) && _deepEquals(plugged, other.plugged) && _deepEquals(health, other.health) && _deepEquals(tempC, other.tempC) && _deepEquals(voltageMv, other.voltageMv) && _deepEquals(technology, other.technology) && _deepEquals(present, other.present) && _deepEquals(currentNowMa, other.currentNowMa) && _deepEquals(currentAvgMa, other.currentAvgMa) && _deepEquals(chargeCounterMah, other.chargeCounterMah) && _deepEquals(chargeTimeRemainingMs, other.chargeTimeRemainingMs) && _deepEquals(cycleCount, other.cycleCount) && _deepEquals(designCapacityMah, other.designCapacityMah);
+    return _deepEquals(level, other.level) && _deepEquals(status, other.status) && _deepEquals(plugged, other.plugged) && _deepEquals(health, other.health) && _deepEquals(tempC, other.tempC) && _deepEquals(voltageMv, other.voltageMv) && _deepEquals(technology, other.technology) && _deepEquals(present, other.present) && _deepEquals(currentNowMa, other.currentNowMa) && _deepEquals(currentAvgMa, other.currentAvgMa) && _deepEquals(chargeCounterMah, other.chargeCounterMah) && _deepEquals(chargeTimeRemainingMs, other.chargeTimeRemainingMs) && _deepEquals(cycleCount, other.cycleCount) && _deepEquals(designCapacityMah, other.designCapacityMah) && _deepEquals(trackedCycles, other.trackedCycles) && _deepEquals(trackedSinceMs, other.trackedSinceMs);
   }
 
   @override
@@ -893,7 +970,7 @@ class BatteryInfo {
 
   @override
   String toString() {
-    return 'BatteryInfo(level: $level, status: $status, plugged: $plugged, health: $health, tempC: $tempC, voltageMv: $voltageMv, technology: $technology, present: $present, currentNowMa: $currentNowMa, currentAvgMa: $currentAvgMa, chargeCounterMah: $chargeCounterMah, chargeTimeRemainingMs: $chargeTimeRemainingMs, cycleCount: $cycleCount, designCapacityMah: $designCapacityMah)';
+    return 'BatteryInfo(level: $level, status: $status, plugged: $plugged, health: $health, tempC: $tempC, voltageMv: $voltageMv, technology: $technology, present: $present, currentNowMa: $currentNowMa, currentAvgMa: $currentAvgMa, chargeCounterMah: $chargeCounterMah, chargeTimeRemainingMs: $chargeTimeRemainingMs, cycleCount: $cycleCount, designCapacityMah: $designCapacityMah, trackedCycles: $trackedCycles, trackedSinceMs: $trackedSinceMs)';
   }
 }
 
@@ -1554,6 +1631,98 @@ class SensorInfo {
   @override
   String toString() {
     return 'SensorInfo(type: $type, typeName: $typeName, name: $name, vendor: $vendor, power: $power, maxRange: $maxRange, resolution: $resolution, minDelayUs: $minDelayUs, wakeUp: $wakeUp, version: $version)';
+  }
+}
+
+class AppEntry {
+  AppEntry({
+    required this.packageName,
+    required this.label,
+    this.versionName,
+    required this.system,
+    required this.installedMs,
+    required this.updatedMs,
+    this.icon,
+    this.appBytes,
+    this.dataBytes,
+    this.cacheBytes,
+  });
+
+  String packageName;
+
+  String label;
+
+  String? versionName;
+
+  bool system;
+
+  int installedMs;
+
+  int updatedMs;
+
+  /// PNG, 96 px.
+  Uint8List? icon;
+
+  /// Sizes need Usage access; null without it.
+  int? appBytes;
+
+  int? dataBytes;
+
+  int? cacheBytes;
+
+  List<Object?> _toList() {
+    return <Object?>[
+      packageName,
+      label,
+      versionName,
+      system,
+      installedMs,
+      updatedMs,
+      icon,
+      appBytes,
+      dataBytes,
+      cacheBytes,
+    ];
+  }
+
+  Object encode() {
+    return _toList();  }
+
+  static AppEntry decode(Object result) {
+    result as List<Object?>;
+    return AppEntry(
+      packageName: result[0]! as String,
+      label: result[1]! as String,
+      versionName: result[2] as String?,
+      system: result[3]! as bool,
+      installedMs: result[4]! as int,
+      updatedMs: result[5]! as int,
+      icon: result[6] as Uint8List?,
+      appBytes: result[7] as int?,
+      dataBytes: result[8] as int?,
+      cacheBytes: result[9] as int?,
+    );
+  }
+
+  @override
+  // ignore: avoid_equals_and_hash_code_on_mutable_classes
+  bool operator ==(Object other) {
+    if (other is! AppEntry || other.runtimeType != runtimeType) {
+      return false;
+    }
+    if (identical(this, other)) {
+      return true;
+    }
+    return _deepEquals(packageName, other.packageName) && _deepEquals(label, other.label) && _deepEquals(versionName, other.versionName) && _deepEquals(system, other.system) && _deepEquals(installedMs, other.installedMs) && _deepEquals(updatedMs, other.updatedMs) && _deepEquals(icon, other.icon) && _deepEquals(appBytes, other.appBytes) && _deepEquals(dataBytes, other.dataBytes) && _deepEquals(cacheBytes, other.cacheBytes);
+  }
+
+  @override
+  // ignore: avoid_equals_and_hash_code_on_mutable_classes
+  int get hashCode => _deepHash(<Object?>[runtimeType, ..._toList()]);
+
+  @override
+  String toString() {
+    return 'AppEntry(packageName: $packageName, label: $label, versionName: $versionName, system: $system, installedMs: $installedMs, updatedMs: $updatedMs, icon: $icon, appBytes: $appBytes, dataBytes: $dataBytes, cacheBytes: $cacheBytes)';
   }
 }
 
@@ -2317,29 +2486,32 @@ class _PigeonCodec extends StandardMessageCodec {
     }    else if (value is SensorInfo) {
       buffer.putUint8(143);
       writeValue(buffer, value.encode());
-    }    else if (value is CodecInfo) {
+    }    else if (value is AppEntry) {
       buffer.putUint8(144);
       writeValue(buffer, value.encode());
-    }    else if (value is MediaInfo) {
+    }    else if (value is CodecInfo) {
       buffer.putUint8(145);
       writeValue(buffer, value.encode());
-    }    else if (value is FeaturesInfo) {
+    }    else if (value is MediaInfo) {
       buffer.putUint8(146);
       writeValue(buffer, value.encode());
-    }    else if (value is SecurityInfo) {
+    }    else if (value is FeaturesInfo) {
       buffer.putUint8(147);
       writeValue(buffer, value.encode());
-    }    else if (value is LiveStats) {
+    }    else if (value is SecurityInfo) {
       buffer.putUint8(148);
       writeValue(buffer, value.encode());
-    }    else if (value is BackgroundConfig) {
+    }    else if (value is LiveStats) {
       buffer.putUint8(149);
       writeValue(buffer, value.encode());
-    }    else if (value is HistorySample) {
+    }    else if (value is BackgroundConfig) {
       buffer.putUint8(150);
       writeValue(buffer, value.encode());
-    }    else if (value is ChargeSession) {
+    }    else if (value is HistorySample) {
       buffer.putUint8(151);
+      writeValue(buffer, value.encode());
+    }    else if (value is ChargeSession) {
+      buffer.putUint8(152);
       writeValue(buffer, value.encode());
     } else {
       super.writeValue(buffer, value);
@@ -2380,20 +2552,22 @@ class _PigeonCodec extends StandardMessageCodec {
       case 143:
         return SensorInfo.decode(readValue(buffer)!);
       case 144:
-        return CodecInfo.decode(readValue(buffer)!);
+        return AppEntry.decode(readValue(buffer)!);
       case 145:
-        return MediaInfo.decode(readValue(buffer)!);
+        return CodecInfo.decode(readValue(buffer)!);
       case 146:
-        return FeaturesInfo.decode(readValue(buffer)!);
+        return MediaInfo.decode(readValue(buffer)!);
       case 147:
-        return SecurityInfo.decode(readValue(buffer)!);
+        return FeaturesInfo.decode(readValue(buffer)!);
       case 148:
-        return LiveStats.decode(readValue(buffer)!);
+        return SecurityInfo.decode(readValue(buffer)!);
       case 149:
-        return BackgroundConfig.decode(readValue(buffer)!);
+        return LiveStats.decode(readValue(buffer)!);
       case 150:
-        return HistorySample.decode(readValue(buffer)!);
+        return BackgroundConfig.decode(readValue(buffer)!);
       case 151:
+        return HistorySample.decode(readValue(buffer)!);
+      case 152:
         return ChargeSession.decode(readValue(buffer)!);
       default:
         return super.readValueOfType(type, buffer);
@@ -2776,6 +2950,65 @@ class DeviceInfoApi {
     )
     ;
     return pigeonVar_replyValue! as bool;
+  }
+
+  /// Apps that show in the launcher (no QUERY_ALL_PACKAGES needed).
+  Future<List<AppEntry>> apps() async {
+    final pigeonVar_channelName = 'dev.flutter.pigeon.systemx.DeviceInfoApi.apps$pigeonVar_messageChannelSuffix';
+    final pigeonVar_channel = BasicMessageChannel<Object?>(
+      pigeonVar_channelName,
+      pigeonChannelCodec,
+      binaryMessenger: pigeonVar_binaryMessenger,
+    );
+    final Future<Object?> pigeonVar_sendFuture = pigeonVar_channel.send(null);
+    final pigeonVar_replyList = await pigeonVar_sendFuture as List<Object?>?;
+
+    final Object? pigeonVar_replyValue = _extractReplyValueOrThrow(
+        pigeonVar_replyList,
+        pigeonVar_channelName,
+        isNullValid: false,
+    )
+    ;
+    return (pigeonVar_replyValue! as List<Object?>).cast<AppEntry>();
+  }
+
+  /// Whether the user allowed Usage access, which app sizes need.
+  Future<bool> usageAccessGranted() async {
+    final pigeonVar_channelName = 'dev.flutter.pigeon.systemx.DeviceInfoApi.usageAccessGranted$pigeonVar_messageChannelSuffix';
+    final pigeonVar_channel = BasicMessageChannel<Object?>(
+      pigeonVar_channelName,
+      pigeonChannelCodec,
+      binaryMessenger: pigeonVar_binaryMessenger,
+    );
+    final Future<Object?> pigeonVar_sendFuture = pigeonVar_channel.send(null);
+    final pigeonVar_replyList = await pigeonVar_sendFuture as List<Object?>?;
+
+    final Object? pigeonVar_replyValue = _extractReplyValueOrThrow(
+        pigeonVar_replyList,
+        pigeonVar_channelName,
+        isNullValid: false,
+    )
+    ;
+    return pigeonVar_replyValue! as bool;
+  }
+
+  /// Opens Android's App info page, where Clear cache lives.
+  Future<void> openAppDetails(String packageName) async {
+    final pigeonVar_channelName = 'dev.flutter.pigeon.systemx.DeviceInfoApi.openAppDetails$pigeonVar_messageChannelSuffix';
+    final pigeonVar_channel = BasicMessageChannel<Object?>(
+      pigeonVar_channelName,
+      pigeonChannelCodec,
+      binaryMessenger: pigeonVar_binaryMessenger,
+    );
+    final Future<Object?> pigeonVar_sendFuture = pigeonVar_channel.send(<Object?>[packageName]);
+    final pigeonVar_replyList = await pigeonVar_sendFuture as List<Object?>?;
+
+    _extractReplyValueOrThrow(
+        pigeonVar_replyList,
+        pigeonVar_channelName,
+        isNullValid: true,
+    )
+    ;
   }
 }
 

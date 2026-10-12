@@ -778,8 +778,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get specCycleCount => 'Charge cycles';
 
   @override
-  String get cycleHint =>
-      'Reported on Android 14 and later, when the maker exposes it';
+  String get cycleHint => 'Reported by the battery';
 
   @override
   String get specChargeCounter => 'Charge left';
@@ -1416,7 +1415,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sensorWakeUp => 'Wake-up sensor';
 
   @override
-  String get sensorWakeUpHint => 'Can wake the phone from sleep to report';
+  String get sensorWakeUpHint =>
+      'Can wake the phone from sleep to deliver a reading';
 
   @override
   String get sensorVersion => 'Driver version';
@@ -2516,4 +2516,171 @@ class AppLocalizationsEn extends AppLocalizations {
   String codeButton(String label, String code) {
     return '$label · $code';
   }
+
+  @override
+  String get specDeviceName => 'Device name';
+
+  @override
+  String get specOemSkin => 'Manufacturer UI';
+
+  @override
+  String get specLaunchedWith => 'Launched with';
+
+  @override
+  String get specHwRevision => 'Hardware revision';
+
+  @override
+  String get secSales => 'Sales region';
+
+  @override
+  String get specSalesCode => 'Sales code';
+
+  @override
+  String get salesCodeHint => 'The regional build code (CSC on Samsung phones)';
+
+  @override
+  String get specSalesCountry => 'Sales country';
+
+  @override
+  String get specSalesRegion => 'Region';
+
+  @override
+  String get specProductLocale => 'Default language';
+
+  @override
+  String get secIdentifiers => 'Identifiers';
+
+  @override
+  String get specAndroidId => 'Android ID';
+
+  @override
+  String get androidIdHint =>
+      'Unique to this phone and app. Changes after a factory reset.';
+
+  @override
+  String get specImei => 'IMEI and serial number';
+
+  @override
+  String get imeiHint =>
+      'Android 10 and later shows these only to the phone\'s own apps. Tap to dial *#06#.';
+
+  @override
+  String get specWarranty => 'Knox warranty';
+
+  @override
+  String get warrantyIntact => 'Intact (0x0)';
+
+  @override
+  String get warrantyVoid => 'Void (0x1)';
+
+  @override
+  String get warrantyHint =>
+      'Set permanently if unofficial software was ever installed';
+
+  @override
+  String get specCycleCountTracked => 'Charge cycles (estimated)';
+
+  @override
+  String cycleTrackedHint(String date) {
+    return 'Counted by SystemX from charging since $date. This phone doesn\'t report the battery\'s own count.';
+  }
+
+  @override
+  String get specSensorTotal => 'Total sensors';
+
+  @override
+  String get specSensorKinds => 'Sensor types';
+
+  @override
+  String get specSensorWakeUp => 'Wake-up sensors';
+
+  @override
+  String get specSensorVendor => 'Manufacturer-specific';
+
+  @override
+  String get sensorGroupMotion => 'Motion';
+
+  @override
+  String get sensorGroupPosition => 'Position';
+
+  @override
+  String get sensorGroupEnvironment => 'Environment';
+
+  @override
+  String get sensorGroupHealth => 'Health';
+
+  @override
+  String get sensorGroupOther => 'Other';
+
+  @override
+  String get appsTitle => 'Apps';
+
+  @override
+  String get appsEntry => 'Installed apps';
+
+  @override
+  String get appsEntryBody => 'Size and cache of each app';
+
+  @override
+  String appsCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count apps',
+      one: '1 app',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get appsTotalSize => 'Total size';
+
+  @override
+  String get appsCacheTotal => 'Cache';
+
+  @override
+  String get appsUsageTitle => 'See app sizes';
+
+  @override
+  String get appsUsageBody =>
+      'Allow Usage access so SystemX can read how much storage each app and its cache use. Nothing leaves your phone.';
+
+  @override
+  String get appsUsageButton => 'Allow usage access';
+
+  @override
+  String get appsCacheTitle => 'Clearing cache';
+
+  @override
+  String get appsCacheBody =>
+      'Android doesn\'t let one app clear other apps\' cache. Tap an app, then Storage, then Clear cache. Your phone\'s storage manager can also free space in one place.';
+
+  @override
+  String get appsFreeUp => 'Free up space';
+
+  @override
+  String get appsSortSize => 'Size';
+
+  @override
+  String get appsSortCache => 'Cache';
+
+  @override
+  String get appsSortName => 'Name';
+
+  @override
+  String get appsSortRecent => 'Updated';
+
+  @override
+  String get appsShowSystem => 'System apps';
+
+  @override
+  String appsSizeLine(String size, String cache) {
+    return '$size · cache $cache';
+  }
+
+  @override
+  String get appsSearch => 'Search apps';
+
+  @override
+  String get appsEmpty => 'No apps match';
 }

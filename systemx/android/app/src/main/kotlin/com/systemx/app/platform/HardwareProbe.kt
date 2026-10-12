@@ -14,6 +14,7 @@ import android.os.storage.StorageManager
 import android.provider.Settings
 import android.util.DisplayMetrics
 import android.view.Display
+import com.systemx.app.background.HistoryDb
 import java.io.File
 
 /** Memory, storage, battery and display. */
@@ -86,6 +87,9 @@ internal class HardwareProbe(private val ctx: Context) {
         fun prop(id: Int): Int? = Sys.safe { bm.getIntProperty(id) }
             ?.takeIf { it != Int.MIN_VALUE && it != 0 }
 
+        val cycles = cycleCount(intent)
+        val tracked = if (cycles == null) Sys.safe { HistoryDb.get(ctx).chargeAdded() } else null
+
         return BatteryInfo(
             level = (if (level >= 0 && scale > 0) level * 100 / scale else -1).toLong(),
             status = status.toLong(),
@@ -101,11 +105,23 @@ internal class HardwareProbe(private val ctx: Context) {
             chargeTimeRemainingMs = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
                 Sys.safe { bm.computeChargeTimeRemaining() }?.takeIf { it > 0 }
             } else null,
-            cycleCount = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
-                intent?.getIntExtra(BatteryManager.EXTRA_CYCLE_COUNT, -1)?.takeIf { it >= 0 }?.toLong()
-            } else null,
+            cycleCount = cycles,
             designCapacityMah = designCapacity(),
+            trackedCycles = tracked?.let { it.first / 100.0 },
+            trackedSinceMs = tracked?.second,
         )
+    }
+
+    /**
+     * Some makers fill EXTRA_CYCLE_COUNT with 0 instead of the real count, so
+     * 0 counts as unknown and the kernel's own counter is tried next.
+     */
+    private fun cycleCount(intent: Intent?): Long? {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+            SysParsers.cycleCount(intent?.getIntExtra(BatteryManager.EXTRA_CYCLE_COUNT, -1)?.toLong())
+                ?.let { return it }
+        }
+        return SysParsers.cycleCount(Sys.readLong("/sys/class/power_supply/battery/cycle_count"))
     }
 
     /** No public API exists; PowerProfile is read by reflection and may be missing. */

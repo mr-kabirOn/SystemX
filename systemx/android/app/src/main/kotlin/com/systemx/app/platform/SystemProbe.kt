@@ -25,6 +25,13 @@ internal class SystemProbe(private val ctx: Context) {
             "ro.vendor.product.display",
         ) ?: samsungName() ?: Build.MODEL
 
+        val countryIso = Sys.firstProp(
+            "ro.csc.countryiso_code",
+            "ro.miui.region",
+            "persist.sys.oplus.region",
+            "ro.product.country.region",
+        )?.uppercase(Locale.ROOT)?.takeIf { it.length == 2 && it.all(Char::isLetter) }
+
         return DeviceIdentity(
             manufacturer = Build.MANUFACTURER.replaceFirstChar { it.titlecase(Locale.ROOT) },
             brand = Build.BRAND.replaceFirstChar { it.titlecase(Locale.ROOT) },
@@ -35,7 +42,42 @@ internal class SystemProbe(private val ctx: Context) {
             board = Build.BOARD,
             hardware = Build.HARDWARE,
             isTablet = ctx.resources.configuration.smallestScreenWidthDp >= 600,
+            deviceName = Sys.safe { Settings.Global.getString(ctx.contentResolver, Settings.Global.DEVICE_NAME) }
+                ?.ifBlank { null },
+            androidId = Sys.safe { Settings.Secure.getString(ctx.contentResolver, Settings.Secure.ANDROID_ID) }
+                ?.ifBlank { null },
+            salesCode = Sys.firstProp("ro.csc.sales_code", "persist.omc.sales_code", "ro.boot.sales_code", "ro.carrier")
+                ?.takeUnless { it.equals("unknown", ignoreCase = true) },
+            salesCountryIso = countryIso,
+            salesCountry = countryIso?.let { Sys.safe { Locale.Builder().setRegion(it).build().displayCountry } }
+                ?.ifBlank { null },
+            salesRegion = Sys.firstProp("ro.csc.country_code", "ro.boot.hwc", "ro.boot.hwcountry")
+                ?.takeUnless { it.equals("unknown", ignoreCase = true) },
+            productLocale = Sys.prop("ro.product.locale"),
+            firstApiLevel = Sys.firstProp("ro.product.first_api_level", "ro.board.first_api_level")
+                ?.toLongOrNull()?.takeIf { it > 0 },
+            hardwareRevision = Sys.firstProp("ro.revision", "ro.boot.revision", "ro.boot.hw_rev", "ro.boot.hardware.revision"),
+            oemSkin = oemSkin(),
+            warrantyVoid = Sys.prop("ro.boot.warranty_bit")?.let { if (it == "0") false else if (it == "1") true else null },
         )
+    }
+
+    /** The maker's Android skin, read from the property each one sets. */
+    private fun oemSkin(): String? {
+        SysParsers.oneUiVersion(Sys.prop("ro.build.version.oneui"))?.let { return "One UI $it" }
+        Sys.prop("ro.mi.os.version.name")?.let { return "HyperOS " + it.removePrefix("OS") }
+        Sys.prop("ro.miui.ui.version.name")?.let { return "MIUI " + it.removePrefix("V") }
+        Sys.prop("ro.build.version.oplusrom")?.let { v ->
+            val name = when (Build.BRAND.lowercase(Locale.ROOT)) {
+                "oneplus" -> "OxygenOS"
+                "realme" -> "realme UI"
+                else -> "ColorOS"
+            }
+            return "$name " + v.removePrefix("V")
+        }
+        Sys.prop("ro.vivo.os.build.display.id")?.let { return it }
+        Sys.prop("ro.build.version.emui")?.let { return it.replace("EmotionUI_", "EMUI ") }
+        return null
     }
 
     /** Samsung keeps the marketing name ("Galaxy A54 5G") as the default device name. */

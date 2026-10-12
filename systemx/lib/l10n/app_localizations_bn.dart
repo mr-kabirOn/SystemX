@@ -779,8 +779,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get specCycleCount => 'চার্জ সাইকেল';
 
   @override
-  String get cycleHint =>
-      'অ্যান্ড্রয়েড ১৪ ও পরের ভার্সনে, নির্মাতা জানালে দেখা যায়';
+  String get cycleHint => 'ব্যাটারি নিজে জানিয়েছে';
 
   @override
   String get specChargeCounter => 'বাকি চার্জ';
@@ -1408,7 +1407,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get sensorWakeUp => 'ওয়েক-আপ সেন্সর';
 
   @override
-  String get sensorWakeUpHint => 'জানাতে ফোনকে ঘুম থেকে জাগাতে পারে';
+  String get sensorWakeUpHint => 'রিডিং দিতে ফোনকে ঘুম থেকে জাগাতে পারে';
 
   @override
   String get sensorVersion => 'ড্রাইভার ভার্সন';
@@ -2501,4 +2500,170 @@ class AppLocalizationsBn extends AppLocalizations {
   String codeButton(String label, String code) {
     return '$label · $code';
   }
+
+  @override
+  String get specDeviceName => 'ডিভাইসের নাম';
+
+  @override
+  String get specOemSkin => 'নির্মাতার ইন্টারফেস';
+
+  @override
+  String get specLaunchedWith => 'যে ভার্সনে বাজারে এসেছে';
+
+  @override
+  String get specHwRevision => 'হার্ডওয়্যার রিভিশন';
+
+  @override
+  String get secSales => 'বিক্রয় অঞ্চল';
+
+  @override
+  String get specSalesCode => 'সেলস কোড';
+
+  @override
+  String get salesCodeHint => 'অঞ্চলভিত্তিক বিল্ড কোড (স্যামসাং ফোনে CSC)';
+
+  @override
+  String get specSalesCountry => 'বিক্রয়ের দেশ';
+
+  @override
+  String get specSalesRegion => 'অঞ্চল';
+
+  @override
+  String get specProductLocale => 'ডিফল্ট ভাষা';
+
+  @override
+  String get secIdentifiers => 'শনাক্তকারী';
+
+  @override
+  String get specAndroidId => 'অ্যান্ড্রয়েড আইডি';
+
+  @override
+  String get androidIdHint =>
+      'এই ফোন ও অ্যাপের জন্য অনন্য। ফ্যাক্টরি রিসেটের পর বদলে যায়।';
+
+  @override
+  String get specImei => 'IMEI ও সিরিয়াল নম্বর';
+
+  @override
+  String get imeiHint =>
+      'অ্যান্ড্রয়েড ১০ থেকে এগুলো শুধু ফোনের নিজস্ব অ্যাপ দেখতে পারে। *#06# ডায়াল করতে ট্যাপ করুন।';
+
+  @override
+  String get specWarranty => 'নক্স ওয়ারেন্টি';
+
+  @override
+  String get warrantyIntact => 'অক্ষত (0x0)';
+
+  @override
+  String get warrantyVoid => 'বাতিল (0x1)';
+
+  @override
+  String get warrantyHint =>
+      'কখনো অনানুষ্ঠানিক সফটওয়্যার ইনস্টল করা হলে স্থায়ীভাবে সেট হয়';
+
+  @override
+  String get specCycleCountTracked => 'চার্জ সাইকেল (আনুমানিক)';
+
+  @override
+  String cycleTrackedHint(String date) {
+    return '$date থেকে চার্জিং দেখে SystemX গুনেছে। এই ফোন ব্যাটারির নিজস্ব হিসাব জানায় না।';
+  }
+
+  @override
+  String get specSensorTotal => 'মোট সেন্সর';
+
+  @override
+  String get specSensorKinds => 'সেন্সরের ধরন';
+
+  @override
+  String get specSensorWakeUp => 'ওয়েক-আপ সেন্সর';
+
+  @override
+  String get specSensorVendor => 'নির্মাতার নিজস্ব';
+
+  @override
+  String get sensorGroupMotion => 'গতি';
+
+  @override
+  String get sensorGroupPosition => 'অবস্থান';
+
+  @override
+  String get sensorGroupEnvironment => 'পরিবেশ';
+
+  @override
+  String get sensorGroupHealth => 'স্বাস্থ্য';
+
+  @override
+  String get sensorGroupOther => 'অন্যান্য';
+
+  @override
+  String get appsTitle => 'অ্যাপ';
+
+  @override
+  String get appsEntry => 'ইনস্টল করা অ্যাপ';
+
+  @override
+  String get appsEntryBody => 'প্রতিটি অ্যাপের সাইজ ও ক্যাশ';
+
+  @override
+  String appsCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$countটি অ্যাপ',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get appsTotalSize => 'মোট সাইজ';
+
+  @override
+  String get appsCacheTotal => 'ক্যাশ';
+
+  @override
+  String get appsUsageTitle => 'অ্যাপের সাইজ দেখুন';
+
+  @override
+  String get appsUsageBody =>
+      'ইউসেজ অ্যাক্সেস চালু করলে SystemX প্রতিটি অ্যাপ ও তার ক্যাশ কতটা জায়গা নিচ্ছে তা পড়তে পারে। কোনো তথ্য ফোনের বাইরে যায় না।';
+
+  @override
+  String get appsUsageButton => 'ইউসেজ অ্যাক্সেস দিন';
+
+  @override
+  String get appsCacheTitle => 'ক্যাশ পরিষ্কার';
+
+  @override
+  String get appsCacheBody =>
+      'অ্যান্ড্রয়েড একটি অ্যাপকে অন্য অ্যাপের ক্যাশ মুছতে দেয় না। একটি অ্যাপে ট্যাপ করুন, তারপর স্টোরেজ, তারপর ক্যাশ মুছুন। ফোনের স্টোরেজ ম্যানেজার থেকেও এক জায়গায় জায়গা খালি করা যায়।';
+
+  @override
+  String get appsFreeUp => 'জায়গা খালি করুন';
+
+  @override
+  String get appsSortSize => 'সাইজ';
+
+  @override
+  String get appsSortCache => 'ক্যাশ';
+
+  @override
+  String get appsSortName => 'নাম';
+
+  @override
+  String get appsSortRecent => 'আপডেট';
+
+  @override
+  String get appsShowSystem => 'সিস্টেম অ্যাপ';
+
+  @override
+  String appsSizeLine(String size, String cache) {
+    return '$size · ক্যাশ $cache';
+  }
+
+  @override
+  String get appsSearch => 'অ্যাপ খুঁজুন';
+
+  @override
+  String get appsEmpty => 'কোনো অ্যাপ মেলেনি';
 }

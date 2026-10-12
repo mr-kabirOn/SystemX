@@ -1,6 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../features/apps/apps_screen.dart';
 import '../features/background/alerts_screen.dart';
 import '../features/background/history_widgets.dart';
 import '../features/device/category_screen.dart';
@@ -26,6 +27,7 @@ abstract final class Routes {
   static const home = '/home';
   static const device = '/device';
   static const search = '/device/search';
+  static const apps = '/device/apps';
   static const tests = '/tests';
   static const monitor = '/monitor';
   static const settings = '/settings';
@@ -68,6 +70,7 @@ final routerProvider = Provider<GoRouter>((ref) {
                   path: 'search',
                   builder: (_, _) => const SearchScreen(),
                 ),
+                GoRoute(path: 'apps', builder: (_, _) => const AppsScreen()),
                 GoRoute(
                   path: ':category',
                   redirect: (_, state) =>

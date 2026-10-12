@@ -29,6 +29,37 @@ class DeviceIdentity {
   String board;
   String hardware;
   bool isTablet;
+
+  /// The name set in Settings (About phone).
+  String? deviceName;
+
+  /// Settings.Secure.ANDROID_ID; unique per app signing key on Android 8+.
+  String? androidId;
+
+  /// Carrier or regional build code, e.g. Samsung's CSC ("KOO", "BKD").
+  String? salesCode;
+
+  /// ISO 3166 code of the country the build was made for, e.g. "KR".
+  String? salesCountryIso;
+
+  /// [salesCountryIso] as a country name in the phone's language.
+  String? salesCountry;
+
+  /// The maker's region name for the build, e.g. "KOREA", "GLOBAL".
+  String? salesRegion;
+
+  /// Default locale of the build, e.g. "ko-KR".
+  String? productLocale;
+
+  /// API level the phone launched with.
+  int? firstApiLevel;
+  String? hardwareRevision;
+
+  /// The maker's Android skin and version, e.g. "One UI 8.0".
+  String? oemSkin;
+
+  /// Samsung Knox warranty bit: false while intact.
+  bool? warrantyVoid;
 }
 
 class SystemInfo {
@@ -190,6 +221,11 @@ class BatteryInfo {
   int? chargeTimeRemainingMs;
   int? cycleCount;
   double? designCapacityMah;
+
+  /// Full charge cycles SystemX worked out from the charging sessions it
+  /// recorded since [trackedSinceMs]. Used when [cycleCount] is unknown.
+  double? trackedCycles;
+  int? trackedSinceMs;
 }
 
 class DisplayInfo {
@@ -361,6 +397,30 @@ class SensorInfo {
   int version;
 }
 
+class AppEntry {
+  AppEntry({
+    required this.packageName,
+    required this.label,
+    required this.system,
+    required this.installedMs,
+    required this.updatedMs,
+  });
+  String packageName;
+  String label;
+  String? versionName;
+  bool system;
+  int installedMs;
+  int updatedMs;
+
+  /// PNG, 96 px.
+  Uint8List? icon;
+
+  /// Sizes need Usage access; null without it.
+  int? appBytes;
+  int? dataBytes;
+  int? cacheBytes;
+}
+
 class CodecInfo {
   CodecInfo({required this.name, required this.encoder, required this.types});
   String name;
@@ -515,6 +575,16 @@ abstract class DeviceInfoApi {
 
   /// Opens a web page or mail link in another app. False if none can.
   bool openLink(String url);
+
+  /// Apps that show in the launcher (no QUERY_ALL_PACKAGES needed).
+  @TaskQueue(type: TaskQueueType.serialBackgroundThread)
+  List<AppEntry> apps();
+
+  /// Whether the user allowed Usage access, which app sizes need.
+  bool usageAccessGranted();
+
+  /// Opens Android's App info page, where Clear cache lives.
+  void openAppDetails(String packageName);
 }
 
 /// Runtime permissions, asked from the current activity.

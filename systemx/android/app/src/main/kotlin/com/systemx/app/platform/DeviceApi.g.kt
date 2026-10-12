@@ -202,7 +202,28 @@ data class DeviceIdentity (
   val product: String,
   val board: String,
   val hardware: String,
-  val isTablet: Boolean
+  val isTablet: Boolean,
+  /** The name set in Settings (About phone). */
+  val deviceName: String? = null,
+  /** Settings.Secure.ANDROID_ID; unique per app signing key on Android 8+. */
+  val androidId: String? = null,
+  /** Carrier or regional build code, e.g. Samsung's CSC ("KOO", "BKD"). */
+  val salesCode: String? = null,
+  /** ISO 3166 code of the country the build was made for, e.g. "KR". */
+  val salesCountryIso: String? = null,
+  /** [salesCountryIso] as a country name in the phone's language. */
+  val salesCountry: String? = null,
+  /** The maker's region name for the build, e.g. "KOREA", "GLOBAL". */
+  val salesRegion: String? = null,
+  /** Default locale of the build, e.g. "ko-KR". */
+  val productLocale: String? = null,
+  /** API level the phone launched with. */
+  val firstApiLevel: Long? = null,
+  val hardwareRevision: String? = null,
+  /** The maker's Android skin and version, e.g. "One UI 8.0". */
+  val oemSkin: String? = null,
+  /** Samsung Knox warranty bit: false while intact. */
+  val warrantyVoid: Boolean? = null
 )
  {
   companion object {
@@ -216,7 +237,18 @@ data class DeviceIdentity (
       val board = pigeonVar_list[6] as String
       val hardware = pigeonVar_list[7] as String
       val isTablet = pigeonVar_list[8] as Boolean
-      return DeviceIdentity(manufacturer, brand, model, marketName, codename, product, board, hardware, isTablet)
+      val deviceName = pigeonVar_list[9] as String?
+      val androidId = pigeonVar_list[10] as String?
+      val salesCode = pigeonVar_list[11] as String?
+      val salesCountryIso = pigeonVar_list[12] as String?
+      val salesCountry = pigeonVar_list[13] as String?
+      val salesRegion = pigeonVar_list[14] as String?
+      val productLocale = pigeonVar_list[15] as String?
+      val firstApiLevel = pigeonVar_list[16] as Long?
+      val hardwareRevision = pigeonVar_list[17] as String?
+      val oemSkin = pigeonVar_list[18] as String?
+      val warrantyVoid = pigeonVar_list[19] as Boolean?
+      return DeviceIdentity(manufacturer, brand, model, marketName, codename, product, board, hardware, isTablet, deviceName, androidId, salesCode, salesCountryIso, salesCountry, salesRegion, productLocale, firstApiLevel, hardwareRevision, oemSkin, warrantyVoid)
     }
   }
   fun toList(): List<Any?> {
@@ -230,6 +262,17 @@ data class DeviceIdentity (
       board,
       hardware,
       isTablet,
+      deviceName,
+      androidId,
+      salesCode,
+      salesCountryIso,
+      salesCountry,
+      salesRegion,
+      productLocale,
+      firstApiLevel,
+      hardwareRevision,
+      oemSkin,
+      warrantyVoid,
     )
   }
   override fun equals(other: Any?): Boolean {
@@ -240,7 +283,7 @@ data class DeviceIdentity (
       return true
     }
     val other = other as DeviceIdentity
-    return DeviceApiPigeonUtils.deepEquals(this.manufacturer, other.manufacturer) && DeviceApiPigeonUtils.deepEquals(this.brand, other.brand) && DeviceApiPigeonUtils.deepEquals(this.model, other.model) && DeviceApiPigeonUtils.deepEquals(this.marketName, other.marketName) && DeviceApiPigeonUtils.deepEquals(this.codename, other.codename) && DeviceApiPigeonUtils.deepEquals(this.product, other.product) && DeviceApiPigeonUtils.deepEquals(this.board, other.board) && DeviceApiPigeonUtils.deepEquals(this.hardware, other.hardware) && DeviceApiPigeonUtils.deepEquals(this.isTablet, other.isTablet)
+    return DeviceApiPigeonUtils.deepEquals(this.manufacturer, other.manufacturer) && DeviceApiPigeonUtils.deepEquals(this.brand, other.brand) && DeviceApiPigeonUtils.deepEquals(this.model, other.model) && DeviceApiPigeonUtils.deepEquals(this.marketName, other.marketName) && DeviceApiPigeonUtils.deepEquals(this.codename, other.codename) && DeviceApiPigeonUtils.deepEquals(this.product, other.product) && DeviceApiPigeonUtils.deepEquals(this.board, other.board) && DeviceApiPigeonUtils.deepEquals(this.hardware, other.hardware) && DeviceApiPigeonUtils.deepEquals(this.isTablet, other.isTablet) && DeviceApiPigeonUtils.deepEquals(this.deviceName, other.deviceName) && DeviceApiPigeonUtils.deepEquals(this.androidId, other.androidId) && DeviceApiPigeonUtils.deepEquals(this.salesCode, other.salesCode) && DeviceApiPigeonUtils.deepEquals(this.salesCountryIso, other.salesCountryIso) && DeviceApiPigeonUtils.deepEquals(this.salesCountry, other.salesCountry) && DeviceApiPigeonUtils.deepEquals(this.salesRegion, other.salesRegion) && DeviceApiPigeonUtils.deepEquals(this.productLocale, other.productLocale) && DeviceApiPigeonUtils.deepEquals(this.firstApiLevel, other.firstApiLevel) && DeviceApiPigeonUtils.deepEquals(this.hardwareRevision, other.hardwareRevision) && DeviceApiPigeonUtils.deepEquals(this.oemSkin, other.oemSkin) && DeviceApiPigeonUtils.deepEquals(this.warrantyVoid, other.warrantyVoid)
   }
 
   override fun hashCode(): Int {
@@ -254,10 +297,21 @@ data class DeviceIdentity (
     result = 31 * result + DeviceApiPigeonUtils.deepHash(this.board)
     result = 31 * result + DeviceApiPigeonUtils.deepHash(this.hardware)
     result = 31 * result + DeviceApiPigeonUtils.deepHash(this.isTablet)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.deviceName)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.androidId)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.salesCode)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.salesCountryIso)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.salesCountry)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.salesRegion)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.productLocale)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.firstApiLevel)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.hardwareRevision)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.oemSkin)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.warrantyVoid)
     return result
   }
   override fun toString(): String {
-    return "DeviceIdentity(manufacturer=$manufacturer, brand=$brand, model=$model, marketName=$marketName, codename=$codename, product=$product, board=$board, hardware=$hardware, isTablet=$isTablet)"
+    return "DeviceIdentity(manufacturer=$manufacturer, brand=$brand, model=$model, marketName=$marketName, codename=$codename, product=$product, board=$board, hardware=$hardware, isTablet=$isTablet, deviceName=$deviceName, androidId=$androidId, salesCode=$salesCode, salesCountryIso=$salesCountryIso, salesCountry=$salesCountry, salesRegion=$salesRegion, productLocale=$productLocale, firstApiLevel=$firstApiLevel, hardwareRevision=$hardwareRevision, oemSkin=$oemSkin, warrantyVoid=$warrantyVoid)"
   }
 }
 
@@ -768,7 +822,13 @@ data class BatteryInfo (
   val chargeCounterMah: Long? = null,
   val chargeTimeRemainingMs: Long? = null,
   val cycleCount: Long? = null,
-  val designCapacityMah: Double? = null
+  val designCapacityMah: Double? = null,
+  /**
+   * Full charge cycles SystemX worked out from the charging sessions it
+   * recorded since [trackedSinceMs]. Used when [cycleCount] is unknown.
+   */
+  val trackedCycles: Double? = null,
+  val trackedSinceMs: Long? = null
 )
  {
   companion object {
@@ -787,7 +847,9 @@ data class BatteryInfo (
       val chargeTimeRemainingMs = pigeonVar_list[11] as Long?
       val cycleCount = pigeonVar_list[12] as Long?
       val designCapacityMah = pigeonVar_list[13] as Double?
-      return BatteryInfo(level, status, plugged, health, tempC, voltageMv, technology, present, currentNowMa, currentAvgMa, chargeCounterMah, chargeTimeRemainingMs, cycleCount, designCapacityMah)
+      val trackedCycles = pigeonVar_list[14] as Double?
+      val trackedSinceMs = pigeonVar_list[15] as Long?
+      return BatteryInfo(level, status, plugged, health, tempC, voltageMv, technology, present, currentNowMa, currentAvgMa, chargeCounterMah, chargeTimeRemainingMs, cycleCount, designCapacityMah, trackedCycles, trackedSinceMs)
     }
   }
   fun toList(): List<Any?> {
@@ -806,6 +868,8 @@ data class BatteryInfo (
       chargeTimeRemainingMs,
       cycleCount,
       designCapacityMah,
+      trackedCycles,
+      trackedSinceMs,
     )
   }
   override fun equals(other: Any?): Boolean {
@@ -816,7 +880,7 @@ data class BatteryInfo (
       return true
     }
     val other = other as BatteryInfo
-    return DeviceApiPigeonUtils.deepEquals(this.level, other.level) && DeviceApiPigeonUtils.deepEquals(this.status, other.status) && DeviceApiPigeonUtils.deepEquals(this.plugged, other.plugged) && DeviceApiPigeonUtils.deepEquals(this.health, other.health) && DeviceApiPigeonUtils.deepEquals(this.tempC, other.tempC) && DeviceApiPigeonUtils.deepEquals(this.voltageMv, other.voltageMv) && DeviceApiPigeonUtils.deepEquals(this.technology, other.technology) && DeviceApiPigeonUtils.deepEquals(this.present, other.present) && DeviceApiPigeonUtils.deepEquals(this.currentNowMa, other.currentNowMa) && DeviceApiPigeonUtils.deepEquals(this.currentAvgMa, other.currentAvgMa) && DeviceApiPigeonUtils.deepEquals(this.chargeCounterMah, other.chargeCounterMah) && DeviceApiPigeonUtils.deepEquals(this.chargeTimeRemainingMs, other.chargeTimeRemainingMs) && DeviceApiPigeonUtils.deepEquals(this.cycleCount, other.cycleCount) && DeviceApiPigeonUtils.deepEquals(this.designCapacityMah, other.designCapacityMah)
+    return DeviceApiPigeonUtils.deepEquals(this.level, other.level) && DeviceApiPigeonUtils.deepEquals(this.status, other.status) && DeviceApiPigeonUtils.deepEquals(this.plugged, other.plugged) && DeviceApiPigeonUtils.deepEquals(this.health, other.health) && DeviceApiPigeonUtils.deepEquals(this.tempC, other.tempC) && DeviceApiPigeonUtils.deepEquals(this.voltageMv, other.voltageMv) && DeviceApiPigeonUtils.deepEquals(this.technology, other.technology) && DeviceApiPigeonUtils.deepEquals(this.present, other.present) && DeviceApiPigeonUtils.deepEquals(this.currentNowMa, other.currentNowMa) && DeviceApiPigeonUtils.deepEquals(this.currentAvgMa, other.currentAvgMa) && DeviceApiPigeonUtils.deepEquals(this.chargeCounterMah, other.chargeCounterMah) && DeviceApiPigeonUtils.deepEquals(this.chargeTimeRemainingMs, other.chargeTimeRemainingMs) && DeviceApiPigeonUtils.deepEquals(this.cycleCount, other.cycleCount) && DeviceApiPigeonUtils.deepEquals(this.designCapacityMah, other.designCapacityMah) && DeviceApiPigeonUtils.deepEquals(this.trackedCycles, other.trackedCycles) && DeviceApiPigeonUtils.deepEquals(this.trackedSinceMs, other.trackedSinceMs)
   }
 
   override fun hashCode(): Int {
@@ -835,10 +899,12 @@ data class BatteryInfo (
     result = 31 * result + DeviceApiPigeonUtils.deepHash(this.chargeTimeRemainingMs)
     result = 31 * result + DeviceApiPigeonUtils.deepHash(this.cycleCount)
     result = 31 * result + DeviceApiPigeonUtils.deepHash(this.designCapacityMah)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.trackedCycles)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.trackedSinceMs)
     return result
   }
   override fun toString(): String {
-    return "BatteryInfo(level=$level, status=$status, plugged=$plugged, health=$health, tempC=$tempC, voltageMv=$voltageMv, technology=$technology, present=$present, currentNowMa=$currentNowMa, currentAvgMa=$currentAvgMa, chargeCounterMah=$chargeCounterMah, chargeTimeRemainingMs=$chargeTimeRemainingMs, cycleCount=$cycleCount, designCapacityMah=$designCapacityMah)"
+    return "BatteryInfo(level=$level, status=$status, plugged=$plugged, health=$health, tempC=$tempC, voltageMv=$voltageMv, technology=$technology, present=$present, currentNowMa=$currentNowMa, currentAvgMa=$currentAvgMa, chargeCounterMah=$chargeCounterMah, chargeTimeRemainingMs=$chargeTimeRemainingMs, cycleCount=$cycleCount, designCapacityMah=$designCapacityMah, trackedCycles=$trackedCycles, trackedSinceMs=$trackedSinceMs)"
   }
 }
 
@@ -1374,6 +1440,81 @@ data class SensorInfo (
   }
   override fun toString(): String {
     return "SensorInfo(type=$type, typeName=$typeName, name=$name, vendor=$vendor, power=$power, maxRange=$maxRange, resolution=$resolution, minDelayUs=$minDelayUs, wakeUp=$wakeUp, version=$version)"
+  }
+}
+
+/** Generated class from Pigeon that represents data sent in messages. */
+data class AppEntry (
+  val packageName: String,
+  val label: String,
+  val versionName: String? = null,
+  val system: Boolean,
+  val installedMs: Long,
+  val updatedMs: Long,
+  /** PNG, 96 px. */
+  val icon: ByteArray? = null,
+  /** Sizes need Usage access; null without it. */
+  val appBytes: Long? = null,
+  val dataBytes: Long? = null,
+  val cacheBytes: Long? = null
+)
+ {
+  companion object {
+    fun fromList(pigeonVar_list: List<Any?>): AppEntry {
+      val packageName = pigeonVar_list[0] as String
+      val label = pigeonVar_list[1] as String
+      val versionName = pigeonVar_list[2] as String?
+      val system = pigeonVar_list[3] as Boolean
+      val installedMs = pigeonVar_list[4] as Long
+      val updatedMs = pigeonVar_list[5] as Long
+      val icon = pigeonVar_list[6] as ByteArray?
+      val appBytes = pigeonVar_list[7] as Long?
+      val dataBytes = pigeonVar_list[8] as Long?
+      val cacheBytes = pigeonVar_list[9] as Long?
+      return AppEntry(packageName, label, versionName, system, installedMs, updatedMs, icon, appBytes, dataBytes, cacheBytes)
+    }
+  }
+  fun toList(): List<Any?> {
+    return listOf(
+      packageName,
+      label,
+      versionName,
+      system,
+      installedMs,
+      updatedMs,
+      icon,
+      appBytes,
+      dataBytes,
+      cacheBytes,
+    )
+  }
+  override fun equals(other: Any?): Boolean {
+    if (other == null || other.javaClass != javaClass) {
+      return false
+    }
+    if (this === other) {
+      return true
+    }
+    val other = other as AppEntry
+    return DeviceApiPigeonUtils.deepEquals(this.packageName, other.packageName) && DeviceApiPigeonUtils.deepEquals(this.label, other.label) && DeviceApiPigeonUtils.deepEquals(this.versionName, other.versionName) && DeviceApiPigeonUtils.deepEquals(this.system, other.system) && DeviceApiPigeonUtils.deepEquals(this.installedMs, other.installedMs) && DeviceApiPigeonUtils.deepEquals(this.updatedMs, other.updatedMs) && DeviceApiPigeonUtils.deepEquals(this.icon, other.icon) && DeviceApiPigeonUtils.deepEquals(this.appBytes, other.appBytes) && DeviceApiPigeonUtils.deepEquals(this.dataBytes, other.dataBytes) && DeviceApiPigeonUtils.deepEquals(this.cacheBytes, other.cacheBytes)
+  }
+
+  override fun hashCode(): Int {
+    var result = javaClass.hashCode()
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.packageName)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.label)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.versionName)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.system)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.installedMs)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.updatedMs)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.icon)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.appBytes)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.dataBytes)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.cacheBytes)
+    return result
+  }
+  override fun toString(): String {
+    return "AppEntry(packageName=$packageName, label=$label, versionName=$versionName, system=$system, installedMs=$installedMs, updatedMs=$updatedMs, icon=${icon?.contentToString()}, appBytes=$appBytes, dataBytes=$dataBytes, cacheBytes=$cacheBytes)"
   }
 }
 
@@ -2041,40 +2182,45 @@ private open class DeviceApiPigeonCodec : StandardMessageCodec() {
       }
       144.toByte() -> {
         return (readValue(buffer) as? List<Any?>)?.let {
-          CodecInfo.fromList(it)
+          AppEntry.fromList(it)
         }
       }
       145.toByte() -> {
         return (readValue(buffer) as? List<Any?>)?.let {
-          MediaInfo.fromList(it)
+          CodecInfo.fromList(it)
         }
       }
       146.toByte() -> {
         return (readValue(buffer) as? List<Any?>)?.let {
-          FeaturesInfo.fromList(it)
+          MediaInfo.fromList(it)
         }
       }
       147.toByte() -> {
         return (readValue(buffer) as? List<Any?>)?.let {
-          SecurityInfo.fromList(it)
+          FeaturesInfo.fromList(it)
         }
       }
       148.toByte() -> {
         return (readValue(buffer) as? List<Any?>)?.let {
-          LiveStats.fromList(it)
+          SecurityInfo.fromList(it)
         }
       }
       149.toByte() -> {
         return (readValue(buffer) as? List<Any?>)?.let {
-          BackgroundConfig.fromList(it)
+          LiveStats.fromList(it)
         }
       }
       150.toByte() -> {
         return (readValue(buffer) as? List<Any?>)?.let {
-          HistorySample.fromList(it)
+          BackgroundConfig.fromList(it)
         }
       }
       151.toByte() -> {
+        return (readValue(buffer) as? List<Any?>)?.let {
+          HistorySample.fromList(it)
+        }
+      }
+      152.toByte() -> {
         return (readValue(buffer) as? List<Any?>)?.let {
           ChargeSession.fromList(it)
         }
@@ -2144,36 +2290,40 @@ private open class DeviceApiPigeonCodec : StandardMessageCodec() {
         stream.write(143)
         writeValue(stream, value.toList())
       }
-      is CodecInfo -> {
+      is AppEntry -> {
         stream.write(144)
         writeValue(stream, value.toList())
       }
-      is MediaInfo -> {
+      is CodecInfo -> {
         stream.write(145)
         writeValue(stream, value.toList())
       }
-      is FeaturesInfo -> {
+      is MediaInfo -> {
         stream.write(146)
         writeValue(stream, value.toList())
       }
-      is SecurityInfo -> {
+      is FeaturesInfo -> {
         stream.write(147)
         writeValue(stream, value.toList())
       }
-      is LiveStats -> {
+      is SecurityInfo -> {
         stream.write(148)
         writeValue(stream, value.toList())
       }
-      is BackgroundConfig -> {
+      is LiveStats -> {
         stream.write(149)
         writeValue(stream, value.toList())
       }
-      is HistorySample -> {
+      is BackgroundConfig -> {
         stream.write(150)
         writeValue(stream, value.toList())
       }
-      is ChargeSession -> {
+      is HistorySample -> {
         stream.write(151)
+        writeValue(stream, value.toList())
+      }
+      is ChargeSession -> {
+        stream.write(152)
         writeValue(stream, value.toList())
       }
       else -> super.writeValue(stream, value)
@@ -2209,6 +2359,12 @@ interface DeviceInfoApi {
   fun dial(code: String)
   /** Opens a web page or mail link in another app. False if none can. */
   fun openLink(url: String): Boolean
+  /** Apps that show in the launcher (no QUERY_ALL_PACKAGES needed). */
+  fun apps(): List<AppEntry>
+  /** Whether the user allowed Usage access, which app sizes need. */
+  fun usageAccessGranted(): Boolean
+  /** Opens Android's App info page, where Clear cache lives. */
+  fun openAppDetails(packageName: String)
 
   companion object {
     /** The codec used by DeviceInfoApi. */
@@ -2503,6 +2659,54 @@ interface DeviceInfoApi {
             val urlArg = args[0] as String
             val wrapped: List<Any?> = try {
               listOf(api.openLink(urlArg))
+            } catch (exception: Throwable) {
+              DeviceApiPigeonUtils.wrapError(exception)
+            }
+            reply.reply(wrapped)
+          }
+        } else {
+          channel.setMessageHandler(null)
+        }
+      }
+      run {
+        val channel = BasicMessageChannel<Any?>(binaryMessenger, "dev.flutter.pigeon.systemx.DeviceInfoApi.apps$separatedMessageChannelSuffix", codec, taskQueue)
+        if (api != null) {
+          channel.setMessageHandler { _, reply ->
+            val wrapped: List<Any?> = try {
+              listOf(api.apps())
+            } catch (exception: Throwable) {
+              DeviceApiPigeonUtils.wrapError(exception)
+            }
+            reply.reply(wrapped)
+          }
+        } else {
+          channel.setMessageHandler(null)
+        }
+      }
+      run {
+        val channel = BasicMessageChannel<Any?>(binaryMessenger, "dev.flutter.pigeon.systemx.DeviceInfoApi.usageAccessGranted$separatedMessageChannelSuffix", codec)
+        if (api != null) {
+          channel.setMessageHandler { _, reply ->
+            val wrapped: List<Any?> = try {
+              listOf(api.usageAccessGranted())
+            } catch (exception: Throwable) {
+              DeviceApiPigeonUtils.wrapError(exception)
+            }
+            reply.reply(wrapped)
+          }
+        } else {
+          channel.setMessageHandler(null)
+        }
+      }
+      run {
+        val channel = BasicMessageChannel<Any?>(binaryMessenger, "dev.flutter.pigeon.systemx.DeviceInfoApi.openAppDetails$separatedMessageChannelSuffix", codec)
+        if (api != null) {
+          channel.setMessageHandler { message, reply ->
+            val args = message as List<Any?>
+            val packageNameArg = args[0] as String
+            val wrapped: List<Any?> = try {
+              api.openAppDetails(packageNameArg)
+              listOf(null)
             } catch (exception: Throwable) {
               DeviceApiPigeonUtils.wrapError(exception)
             }

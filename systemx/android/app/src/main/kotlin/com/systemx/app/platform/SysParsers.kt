@@ -96,6 +96,17 @@ internal object SysParsers {
         return c.takeIf { it > 0 && it < 150 }
     }
 
+    /** Samsung's ro.build.version.oneui ("80000", "60100") as "8.0", "6.1". */
+    fun oneUiVersion(raw: String?): String? {
+        val n = raw?.trim()?.toIntOrNull()?.takeIf { it >= 10000 } ?: return null
+        val minor = n % 10000 / 100
+        val patch = n % 100
+        return if (patch > 0) "${n / 10000}.$minor.$patch" else "${n / 10000}.$minor"
+    }
+
+    /** A battery cycle count from sysfs or the battery intent; 0 or less means unknown. */
+    fun cycleCount(raw: Long?): Long? = raw?.takeIf { it in 1..20_000 }
+
     private val ARM_PARTS = mapOf(
         0xd03 to "Cortex-A53", 0xd04 to "Cortex-A35", 0xd05 to "Cortex-A55", 0xd07 to "Cortex-A57",
         0xd08 to "Cortex-A72", 0xd09 to "Cortex-A73", 0xd0a to "Cortex-A75", 0xd0b to "Cortex-A76",

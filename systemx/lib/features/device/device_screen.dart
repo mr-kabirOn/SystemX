@@ -103,6 +103,18 @@ class DeviceScreen extends ConsumerWidget {
               ],
             ]),
           ),
+        ),
+        Box(
+          SxCard(
+            padding: const EdgeInsets.symmetric(vertical: 6),
+            child: CategoryRow(
+              icon: SxIcons.apps,
+              color: sx.storage,
+              title: l.appsEntry,
+              subtitle: l.appsEntryBody,
+              onTap: () => context.push(Routes.apps),
+            ),
+          ),
           bottom: 0,
         ),
       ],

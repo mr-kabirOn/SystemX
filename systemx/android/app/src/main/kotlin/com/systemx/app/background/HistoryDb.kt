@@ -122,6 +122,13 @@ internal class HistoryDb private constructor(ctx: Context) :
             }
         }
 
+    /** Percentage points charged across the recorded sessions, and when the first began. */
+    @Synchronized
+    fun chargeAdded(): Pair<Long, Long>? =
+        readableDatabase.rawQuery("SELECT SUM(MAX(end_level - start_level, 0)), MIN(start) FROM sessions", null).use { c ->
+            if (c.moveToFirst() && !c.isNull(0) && !c.isNull(1)) c.getLong(0) to c.getLong(1) else null
+        }
+
     @Synchronized
     fun pruneSessions() {
         writableDatabase.execSQL("DELETE FROM sessions WHERE id NOT IN (SELECT id FROM sessions ORDER BY start DESC LIMIT 100)")

@@ -20,6 +20,7 @@ class DeviceInfoHost(context: Context) : DeviceInfoApi {
     private val network = NetworkProbe(ctx)
     private val peripherals = PeripheralProbe(ctx)
     private val liveProbe = LiveProbe(ctx)
+    private val appsProbe = AppsProbe(ctx)
 
     override fun identity() = system.identity()
     override fun system() = system.system()
@@ -37,6 +38,18 @@ class DeviceInfoHost(context: Context) : DeviceInfoApi {
     override fun features() = peripherals.features()
     override fun security() = system.security()
     override fun live() = liveProbe.live()
+    override fun apps() = appsProbe.apps()
+    override fun usageAccessGranted() = appsProbe.usageAccessGranted()
+
+    override fun openAppDetails(packageName: String) {
+        val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
+            .setData(Uri.fromParts("package", packageName, null))
+            .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        try {
+            ctx.startActivity(intent)
+        } catch (_: ActivityNotFoundException) {
+        }
+    }
 
     override fun openSettings(action: String): Boolean {
         val intent = when (action) {

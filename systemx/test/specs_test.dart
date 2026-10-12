@@ -138,13 +138,80 @@ void main() {
         present: true,
       );
       final s = DeviceSnapshot(battery: b);
-      final cycles = find(DeviceCategory.battery, 'Charge cycles', s);
-      expect(cycles.value, 'Not available on this device');
-      expect(cycles.available, isFalse);
+      // No count and nothing tracked yet: no row rather than a fake 0.
+      final labels = builder()
+          .build(DeviceCategory.battery, s)
+          .expand((x) => x.specs)
+          .map((x) => x.label);
+      expect(labels.where((x) => x.startsWith('Charge cycles')), isEmpty);
       expect(
         find(DeviceCategory.battery, 'Power source', s).value,
         'On battery',
       );
+    });
+
+    test('cycles fall back to the count SystemX tracked', () {
+      final b = BatteryInfo(
+        level: 50,
+        status: 3,
+        plugged: 0,
+        health: 2,
+        tempC: 30,
+        voltageMv: 3900,
+        present: true,
+        trackedCycles: 2.35,
+        trackedSinceMs: DateTime(2026, 10, 1).millisecondsSinceEpoch,
+      );
+      final row = find(DeviceCategory.battery, 'Charge cycles (estimated)',
+          DeviceSnapshot(battery: b));
+      expect(row.value, '2.4');
+      expect(row.hint, contains('Oct 1, 2026'));
+      expect(find(DeviceCategory.battery, 'Charge cycles').value, '212');
+    });
+
+    test('device sheet shows region and identifiers', () {
+      expect(
+        find(DeviceCategory.device, 'Sales country').value,
+        'United States (US)',
+      );
+      expect(find(DeviceCategory.device, 'Launched with').value,
+          'Android 14');
+      expect(find(DeviceCategory.device, 'Android ID').value,
+          'a3f1c29e7b6d4e08');
+      final imei = find(DeviceCategory.device, 'IMEI and serial number');
+      expect((imei.action! as Dial).code, '*#06#');
+      final samsung = DeviceSnapshot(
+        identity: DeviceIdentity(
+          manufacturer: 'Samsung',
+          brand: 'Samsung',
+          model: 'SM-S928N',
+          marketName: 'Galaxy S24 Ultra',
+          codename: 'e3q',
+          product: 'e3qksx',
+          board: 'pineapple',
+          hardware: 'qcom',
+          isTablet: false,
+          salesCode: 'KOO',
+          salesRegion: 'KOREA',
+          oemSkin: 'One UI 8.0',
+          warrantyVoid: false,
+        ),
+      );
+      expect(find(DeviceCategory.device, 'Sales code', samsung).value, 'KOO');
+      expect(find(DeviceCategory.device, 'Region', samsung).value, 'Korea');
+      expect(find(DeviceCategory.device, 'Manufacturer UI', samsung).value,
+          'One UI 8.0');
+      expect(find(DeviceCategory.device, 'Knox warranty', samsung).tone,
+          SpecTone.good);
+    });
+
+    test('sensors show totals and Android\'s groups', () {
+      expect(find(DeviceCategory.sensors, 'Total sensors').value, '2');
+      expect(sensorGroup(1), SensorGroup.motion);
+      expect(sensorGroup(8), SensorGroup.position);
+      expect(sensorGroup(6), SensorGroup.environment);
+      expect(sensorGroup(21), SensorGroup.health);
+      expect(sensorGroup(65538), SensorGroup.other);
     });
 
     test('Wi-Fi name links to the Location permission when hidden', () {

@@ -29,6 +29,13 @@ class FakeDeviceApi extends DeviceInfoApi {
         board: 'shiba',
         hardware: 'shiba',
         isTablet: false,
+        deviceName: 'Pixel 8',
+        androidId: 'a3f1c29e7b6d4e08',
+        salesCountryIso: 'US',
+        salesCountry: 'United States',
+        productLocale: 'en-US',
+        firstApiLevel: 34,
+        hardwareRevision: 'MP1.0',
       ));
 
   @override
@@ -403,6 +410,53 @@ class FakeDeviceApi extends DeviceInfoApi {
     opened.add(url);
     return true;
   }
+
+  bool usageGranted = false;
+  final openedApps = <String>[];
+
+  @override
+  Future<List<AppEntry>> apps() async => [
+        AppEntry(
+          packageName: 'com.android.chrome',
+          label: 'Chrome',
+          versionName: '141.0',
+          system: true,
+          installedMs: 0,
+          updatedMs: 3,
+          appBytes: usageGranted ? 300000000 : null,
+          dataBytes: usageGranted ? 200000000 : null,
+          cacheBytes: usageGranted ? 450000000 : null,
+        ),
+        AppEntry(
+          packageName: 'com.whatsapp',
+          label: 'WhatsApp',
+          versionName: '2.26.1',
+          system: false,
+          installedMs: 0,
+          updatedMs: 2,
+          appBytes: usageGranted ? 150000000 : null,
+          dataBytes: usageGranted ? 2100000000 : null,
+          cacheBytes: usageGranted ? 90000000 : null,
+        ),
+        AppEntry(
+          packageName: 'com.spotify.music',
+          label: 'Spotify',
+          versionName: '9.0',
+          system: false,
+          installedMs: 0,
+          updatedMs: 1,
+          appBytes: usageGranted ? 120000000 : null,
+          dataBytes: usageGranted ? 80000000 : null,
+          cacheBytes: usageGranted ? 610000000 : null,
+        ),
+      ];
+
+  @override
+  Future<bool> usageAccessGranted() async => usageGranted;
+
+  @override
+  Future<void> openAppDetails(String packageName) async =>
+      openedApps.add(packageName);
 }
 
 /// Grants or denies permissions without a phone, and updates [api] so the

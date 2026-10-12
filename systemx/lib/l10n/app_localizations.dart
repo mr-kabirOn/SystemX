@@ -1601,7 +1601,7 @@ abstract class AppLocalizations {
   /// No description provided for @cycleHint.
   ///
   /// In en, this message translates to:
-  /// **'Reported on Android 14 and later, when the maker exposes it'**
+  /// **'Reported by the battery'**
   String get cycleHint;
 
   /// No description provided for @specChargeCounter.
@@ -2693,7 +2693,7 @@ abstract class AppLocalizations {
   /// No description provided for @sensorWakeUpHint.
   ///
   /// In en, this message translates to:
-  /// **'Can wake the phone from sleep to report'**
+  /// **'Can wake the phone from sleep to deliver a reading'**
   String get sensorWakeUpHint;
 
   /// No description provided for @sensorVersion.
@@ -4633,6 +4633,306 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{label} · {code}'**
   String codeButton(String label, String code);
+
+  /// No description provided for @specDeviceName.
+  ///
+  /// In en, this message translates to:
+  /// **'Device name'**
+  String get specDeviceName;
+
+  /// No description provided for @specOemSkin.
+  ///
+  /// In en, this message translates to:
+  /// **'Manufacturer UI'**
+  String get specOemSkin;
+
+  /// No description provided for @specLaunchedWith.
+  ///
+  /// In en, this message translates to:
+  /// **'Launched with'**
+  String get specLaunchedWith;
+
+  /// No description provided for @specHwRevision.
+  ///
+  /// In en, this message translates to:
+  /// **'Hardware revision'**
+  String get specHwRevision;
+
+  /// No description provided for @secSales.
+  ///
+  /// In en, this message translates to:
+  /// **'Sales region'**
+  String get secSales;
+
+  /// No description provided for @specSalesCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Sales code'**
+  String get specSalesCode;
+
+  /// No description provided for @salesCodeHint.
+  ///
+  /// In en, this message translates to:
+  /// **'The regional build code (CSC on Samsung phones)'**
+  String get salesCodeHint;
+
+  /// No description provided for @specSalesCountry.
+  ///
+  /// In en, this message translates to:
+  /// **'Sales country'**
+  String get specSalesCountry;
+
+  /// No description provided for @specSalesRegion.
+  ///
+  /// In en, this message translates to:
+  /// **'Region'**
+  String get specSalesRegion;
+
+  /// No description provided for @specProductLocale.
+  ///
+  /// In en, this message translates to:
+  /// **'Default language'**
+  String get specProductLocale;
+
+  /// No description provided for @secIdentifiers.
+  ///
+  /// In en, this message translates to:
+  /// **'Identifiers'**
+  String get secIdentifiers;
+
+  /// No description provided for @specAndroidId.
+  ///
+  /// In en, this message translates to:
+  /// **'Android ID'**
+  String get specAndroidId;
+
+  /// No description provided for @androidIdHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Unique to this phone and app. Changes after a factory reset.'**
+  String get androidIdHint;
+
+  /// No description provided for @specImei.
+  ///
+  /// In en, this message translates to:
+  /// **'IMEI and serial number'**
+  String get specImei;
+
+  /// No description provided for @imeiHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Android 10 and later shows these only to the phone\'s own apps. Tap to dial *#06#.'**
+  String get imeiHint;
+
+  /// No description provided for @specWarranty.
+  ///
+  /// In en, this message translates to:
+  /// **'Knox warranty'**
+  String get specWarranty;
+
+  /// No description provided for @warrantyIntact.
+  ///
+  /// In en, this message translates to:
+  /// **'Intact (0x0)'**
+  String get warrantyIntact;
+
+  /// No description provided for @warrantyVoid.
+  ///
+  /// In en, this message translates to:
+  /// **'Void (0x1)'**
+  String get warrantyVoid;
+
+  /// No description provided for @warrantyHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Set permanently if unofficial software was ever installed'**
+  String get warrantyHint;
+
+  /// No description provided for @specCycleCountTracked.
+  ///
+  /// In en, this message translates to:
+  /// **'Charge cycles (estimated)'**
+  String get specCycleCountTracked;
+
+  /// No description provided for @cycleTrackedHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Counted by SystemX from charging since {date}. This phone doesn\'t report the battery\'s own count.'**
+  String cycleTrackedHint(String date);
+
+  /// No description provided for @specSensorTotal.
+  ///
+  /// In en, this message translates to:
+  /// **'Total sensors'**
+  String get specSensorTotal;
+
+  /// No description provided for @specSensorKinds.
+  ///
+  /// In en, this message translates to:
+  /// **'Sensor types'**
+  String get specSensorKinds;
+
+  /// No description provided for @specSensorWakeUp.
+  ///
+  /// In en, this message translates to:
+  /// **'Wake-up sensors'**
+  String get specSensorWakeUp;
+
+  /// No description provided for @specSensorVendor.
+  ///
+  /// In en, this message translates to:
+  /// **'Manufacturer-specific'**
+  String get specSensorVendor;
+
+  /// No description provided for @sensorGroupMotion.
+  ///
+  /// In en, this message translates to:
+  /// **'Motion'**
+  String get sensorGroupMotion;
+
+  /// No description provided for @sensorGroupPosition.
+  ///
+  /// In en, this message translates to:
+  /// **'Position'**
+  String get sensorGroupPosition;
+
+  /// No description provided for @sensorGroupEnvironment.
+  ///
+  /// In en, this message translates to:
+  /// **'Environment'**
+  String get sensorGroupEnvironment;
+
+  /// No description provided for @sensorGroupHealth.
+  ///
+  /// In en, this message translates to:
+  /// **'Health'**
+  String get sensorGroupHealth;
+
+  /// No description provided for @sensorGroupOther.
+  ///
+  /// In en, this message translates to:
+  /// **'Other'**
+  String get sensorGroupOther;
+
+  /// No description provided for @appsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Apps'**
+  String get appsTitle;
+
+  /// No description provided for @appsEntry.
+  ///
+  /// In en, this message translates to:
+  /// **'Installed apps'**
+  String get appsEntry;
+
+  /// No description provided for @appsEntryBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Size and cache of each app'**
+  String get appsEntryBody;
+
+  /// No description provided for @appsCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 app} other{{count} apps}}'**
+  String appsCount(int count);
+
+  /// No description provided for @appsTotalSize.
+  ///
+  /// In en, this message translates to:
+  /// **'Total size'**
+  String get appsTotalSize;
+
+  /// No description provided for @appsCacheTotal.
+  ///
+  /// In en, this message translates to:
+  /// **'Cache'**
+  String get appsCacheTotal;
+
+  /// No description provided for @appsUsageTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'See app sizes'**
+  String get appsUsageTitle;
+
+  /// No description provided for @appsUsageBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Allow Usage access so SystemX can read how much storage each app and its cache use. Nothing leaves your phone.'**
+  String get appsUsageBody;
+
+  /// No description provided for @appsUsageButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Allow usage access'**
+  String get appsUsageButton;
+
+  /// No description provided for @appsCacheTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Clearing cache'**
+  String get appsCacheTitle;
+
+  /// No description provided for @appsCacheBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Android doesn\'t let one app clear other apps\' cache. Tap an app, then Storage, then Clear cache. Your phone\'s storage manager can also free space in one place.'**
+  String get appsCacheBody;
+
+  /// No description provided for @appsFreeUp.
+  ///
+  /// In en, this message translates to:
+  /// **'Free up space'**
+  String get appsFreeUp;
+
+  /// No description provided for @appsSortSize.
+  ///
+  /// In en, this message translates to:
+  /// **'Size'**
+  String get appsSortSize;
+
+  /// No description provided for @appsSortCache.
+  ///
+  /// In en, this message translates to:
+  /// **'Cache'**
+  String get appsSortCache;
+
+  /// No description provided for @appsSortName.
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get appsSortName;
+
+  /// No description provided for @appsSortRecent.
+  ///
+  /// In en, this message translates to:
+  /// **'Updated'**
+  String get appsSortRecent;
+
+  /// No description provided for @appsShowSystem.
+  ///
+  /// In en, this message translates to:
+  /// **'System apps'**
+  String get appsShowSystem;
+
+  /// No description provided for @appsSizeLine.
+  ///
+  /// In en, this message translates to:
+  /// **'{size} · cache {cache}'**
+  String appsSizeLine(String size, String cache);
+
+  /// No description provided for @appsSearch.
+  ///
+  /// In en, this message translates to:
+  /// **'Search apps'**
+  String get appsSearch;
+
+  /// No description provided for @appsEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No apps match'**
+  String get appsEmpty;
 }
 
 class _AppLocalizationsDelegate

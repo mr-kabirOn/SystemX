@@ -126,7 +126,50 @@ class SpecBuilder {
     _add(l.specBoard, d.board);
     _add(l.specHardware, d.hardware);
     _add(l.specDeviceType, d.isTablet ? l.deviceTablet : l.devicePhone);
+    _opt(l.specDeviceName, d.deviceName);
+    _opt(l.specOemSkin, d.oemSkin);
+    final first = d.firstApiLevel;
+    _opt(l.specLaunchedWith, first == null ? null : androidName(first));
+    _opt(l.specHwRevision, d.hardwareRevision);
+
+    _section(l.secSales);
+    _opt(l.specSalesCode, d.salesCode, hint: l.salesCodeHint);
+    final iso = d.salesCountryIso;
+    _opt(
+      l.specSalesCountry,
+      iso == null ? null : (d.salesCountry == null ? iso : '${d.salesCountry} ($iso)'),
+    );
+    _opt(l.specSalesRegion, _titleCase(d.salesRegion));
+    _opt(l.specProductLocale, d.productLocale);
+
+    _section(l.secIdentifiers);
+    _opt(l.specAndroidId, d.androidId, hint: l.androidIdHint);
+    _specs.add(Spec(
+      l.specImei,
+      l.wifiNameHidden,
+      hint: l.imeiHint,
+      available: false,
+      action: const Dial('*#06#'),
+    ));
+    final warranty = d.warrantyVoid;
+    if (warranty != null) {
+      _add(
+        l.specWarranty,
+        warranty ? l.warrantyVoid : l.warrantyIntact,
+        hint: l.warrantyHint,
+        tone: warranty ? SpecTone.warn : SpecTone.good,
+      );
+    }
   }
+
+  static String? _titleCase(String? s) => s == null || s.isEmpty
+      ? s
+      : s
+          .toLowerCase()
+          .split(RegExp(r'[\s_]+'))
+          .where((w) => w.isNotEmpty)
+          .map((w) => w[0].toUpperCase() + w.substring(1))
+          .join(' ');
 
   void _system(SystemInfo s) {
     _section(null);
@@ -425,7 +468,21 @@ class SpecBuilder {
     }
 
     _section(l.secCapacity);
-    _add(l.specCycleCount, b.cycleCount?.toString(), hint: l.cycleHint);
+    final tracked = b.trackedCycles;
+    final since = b.trackedSinceMs;
+    if (b.cycleCount != null) {
+      _add(l.specCycleCount, '${b.cycleCount}', hint: l.cycleHint);
+    } else if (tracked != null && since != null) {
+      // Android doesn't report the count here; SystemX's own tally instead.
+      _add(
+        l.specCycleCountTracked,
+        tracked.toStringAsFixed(1),
+        hint: l.cycleTrackedHint(formatDate(
+          DateTime.fromMillisecondsSinceEpoch(since),
+          l.localeName,
+        )),
+      );
+    }
     _add(
       l.specChargeCounter,
       b.chargeCounterMah == null ? null : '${b.chargeCounterMah} mAh',
@@ -711,17 +768,39 @@ class SpecBuilder {
   void _sensors(List<SensorInfo> sensors) {
     final sorted = [...sensors]..sort((a, b) => a.type.compareTo(b.type));
     _section(l.sensorCount(sensors.length));
-    for (final s in sorted) {
-      _specs.add(
-        Spec(
-          s.name,
-          prettyIdentifier(s.typeName),
-          hint: s.vendor,
-          action: ShowSensor(s),
-        ),
-      );
+    _add(l.specSensorTotal, '${sensors.length}');
+    _add(l.specSensorKinds, '${sensors.map((s) => s.type).toSet().length}');
+    _add(l.specSensorWakeUp, '${sensors.where((s) => s.wakeUp).length}',
+        hint: l.sensorWakeUpHint);
+    final vendor = sensors.where((s) => s.type >= _vendorSensorType).length;
+    if (vendor > 0) _add(l.specSensorVendor, '$vendor');
+
+    for (final group in SensorGroup.values) {
+      final members = sorted.where((s) => sensorGroup(s.type) == group).toList();
+      if (members.isEmpty) continue;
+      _section('${_groupName(group)} · ${members.length}');
+      for (final s in members) {
+        _specs.add(
+          Spec(
+            s.name,
+            prettyIdentifier(s.typeName),
+            hint: s.vendor,
+            action: ShowSensor(s),
+          ),
+        );
+      }
     }
   }
+
+  static const _vendorSensorType = 65536;
+
+  String _groupName(SensorGroup g) => switch (g) {
+        SensorGroup.motion => l.sensorGroupMotion,
+        SensorGroup.position => l.sensorGroupPosition,
+        SensorGroup.environment => l.sensorGroupEnvironment,
+        SensorGroup.health => l.sensorGroupHealth,
+        SensorGroup.other => l.sensorGroupOther,
+      };
 
   // ---- Media ----
 
@@ -1077,3 +1156,18 @@ class SpecBuilder {
     }
   }
 }
+
+enum SensorGroup { motion, position, environment, health, other }
+
+/// Android's own grouping of sensor types (motion, position, environment),
+/// plus health sensors. Vendor types (65536 and up) count as other.
+SensorGroup sensorGroup(int type) => switch (type) {
+      1 || 4 || 9 || 10 || 11 || 15 || 16 || 17 || 18 || 19 || 29 || 30 ||
+      35 || 38 || 39 || 40 || 41 || 42 =>
+        SensorGroup.motion,
+      2 || 3 || 8 || 14 || 20 || 27 || 28 || 32 || 36 || 37 =>
+        SensorGroup.position,
+      5 || 6 || 7 || 12 || 13 => SensorGroup.environment,
+      21 || 31 || 34 => SensorGroup.health,
+      _ => SensorGroup.other,
+    };
