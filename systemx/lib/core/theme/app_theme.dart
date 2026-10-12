@@ -10,6 +10,10 @@ abstract final class SxRadius {
   static const control = 14.0;
 }
 
+/// Navigation highlight in dark themes: a bright blue that sits between the
+/// accent's indigo and the storage blue, readable on the dark cards.
+const navBlue = Color(0xFF5C8DFF);
+
 ThemeData buildTheme(SxColors c, Brightness brightness) {
   final scheme = ColorScheme(
     brightness: brightness,
@@ -64,10 +68,10 @@ ThemeData buildTheme(SxColors c, Brightness brightness) {
     navigationBarTheme: NavigationBarThemeData(
       backgroundColor: c.card,
       surfaceTintColor: Colors.transparent,
-      // Dark themes: the neon cyan of the network graph, with a glow on
+      // Dark themes: a bright blue from the accent family, with a glow on
       // the selected tab.
       indicatorColor: isDark
-          ? c.network.withValues(alpha: 0.16)
+          ? navBlue.withValues(alpha: 0.18)
           : c.accent.withValues(alpha: 0.24),
       height: 68,
       labelTextStyle: WidgetStateProperty.resolveWith((s) {
@@ -76,7 +80,7 @@ ThemeData buildTheme(SxColors c, Brightness brightness) {
           SxFonts.body,
           12,
           FontWeight.w600,
-          color: on ? (isDark ? c.network : c.ink) : c.muted,
+          color: on ? (isDark ? navBlue : c.ink) : c.muted,
         );
       }),
       iconTheme: WidgetStateProperty.resolveWith((s) {
@@ -86,9 +90,9 @@ ThemeData buildTheme(SxColors c, Brightness brightness) {
         }
         return IconThemeData(
           size: 24,
-          color: on ? c.network : c.network.withValues(alpha: 0.55),
+          color: on ? navBlue : navBlue.withValues(alpha: 0.55),
           shadows: on
-              ? [Shadow(color: c.network.withValues(alpha: 0.85), blurRadius: 16)]
+              ? [Shadow(color: navBlue.withValues(alpha: 0.85), blurRadius: 16)]
               : null,
         );
       }),
@@ -97,21 +101,21 @@ ThemeData buildTheme(SxColors c, Brightness brightness) {
     navigationRailTheme: NavigationRailThemeData(
       backgroundColor: c.card,
       indicatorColor: isDark
-          ? c.network.withValues(alpha: 0.16)
+          ? navBlue.withValues(alpha: 0.18)
           : c.accent.withValues(alpha: 0.24),
       selectedIconTheme: isDark
           ? IconThemeData(
               size: 24,
-              color: c.network,
-              shadows: [Shadow(color: c.network.withValues(alpha: 0.85), blurRadius: 16)],
+              color: navBlue,
+              shadows: [Shadow(color: navBlue.withValues(alpha: 0.85), blurRadius: 16)],
             )
           : IconThemeData(size: 24, color: c.accent),
       unselectedIconTheme: IconThemeData(
         size: 24,
-        color: isDark ? c.network.withValues(alpha: 0.55) : c.muted,
+        color: isDark ? navBlue.withValues(alpha: 0.55) : c.muted,
       ),
       selectedLabelTextStyle:
-          sxStyle(SxFonts.body, 12, FontWeight.w600, color: isDark ? c.network : c.ink),
+          sxStyle(SxFonts.body, 12, FontWeight.w600, color: isDark ? navBlue : c.ink),
       unselectedLabelTextStyle: sxStyle(SxFonts.body, 12, FontWeight.w600, color: c.muted),
     ),
     filledButtonTheme: FilledButtonThemeData(

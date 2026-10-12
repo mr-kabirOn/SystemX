@@ -64,13 +64,12 @@ class LiveDetailScreen extends ConsumerWidget {
           onPressed: () =>
               ref.read(liveProvider.notifier).setPaused(!live.paused),
         ),
-        Padding(
-          padding: const EdgeInsets.only(right: 8),
-          child: Center(
-            child: StatusChip(live.paused ? l.paused : l.live,
-                color: live.paused ? sx.muted : color),
+        // Only a paused state is labelled; updating is the normal case.
+        if (live.paused)
+          Padding(
+            padding: const EdgeInsets.only(right: 8),
+            child: Center(child: StatusChip(l.paused, color: sx.muted)),
           ),
-        ),
       ],
       slivers: [
         if (live.latest == null)

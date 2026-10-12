@@ -62,7 +62,7 @@ void main() {
     for (final m in LiveMetric.values) {
       await go(tester, Routes.live(m));
       expect(tester.takeException(), isNull, reason: m.name);
-      expect(find.text('Live'), findsOneWidget, reason: m.name);
+      expect(find.text('Live'), findsNothing, reason: m.name);
     }
 
     await go(tester, Routes.live(LiveMetric.battery));

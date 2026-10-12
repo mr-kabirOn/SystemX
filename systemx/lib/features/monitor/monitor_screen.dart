@@ -76,8 +76,7 @@ class MonitorScreen extends ConsumerWidget {
                 children: [
                   Row(children: [
                     Expanded(child: Eyebrow(c.title, color: c.series.first.color)),
-                    StatusChip(live.paused ? l.paused : l.live,
-                        color: live.paused ? sx.muted : c.series.first.color),
+                    if (live.paused) StatusChip(l.paused, color: sx.muted),
                   ]),
                   const SizedBox(height: 8),
                   Text.rich(TextSpan(children: [
