@@ -2764,7 +2764,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get stTitle => 'CPU stress test';
 
   @override
-  String get stEntryBody => 'Does the phone slow down when it gets hot?';
+  String get stEntryBody => 'Does it slow down when hot?';
 
   @override
   String get stIntro =>
@@ -2925,4 +2925,207 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get trNote =>
       'This is the rate apps receive touch positions. The \"touch sampling rate\" in phone adverts can be higher, as some of it is used inside Android.';
+
+  @override
+  String get upTitle => 'Used phone check';
+
+  @override
+  String get upEntryBody => 'Check a phone before you buy it';
+
+  @override
+  String get upIntro =>
+      'Buying a second-hand phone? Run this on the phone you\'re buying, before you pay. It checks the hardware, the battery, whether the software was modified, and whether the phone is what the seller says.';
+
+  @override
+  String get upClaimsTitle => 'What the seller says (optional)';
+
+  @override
+  String get upClaimsBody =>
+      'Fill in what the advert or seller claims, and SystemX checks it against the phone itself.';
+
+  @override
+  String get upModelHint => 'Model, e.g. Galaxy S24 Ultra';
+
+  @override
+  String get upStorageHint => 'Storage';
+
+  @override
+  String get upRamHint => 'RAM';
+
+  @override
+  String get upCountryHint => 'Sold in (country), e.g. Korea';
+
+  @override
+  String get upNotSure => 'Not sure';
+
+  @override
+  String get upHardwareTitle => 'Hardware checkup';
+
+  @override
+  String get upHardwareNone =>
+      'Run the 32-test checkup on this phone. It takes about 6 minutes; SystemX walks you through each test.';
+
+  @override
+  String upHardwareDone(String when, int passed, int total) {
+    return 'Checkup done $when: $passed of $total passed.';
+  }
+
+  @override
+  String get upRunCheckup => 'Run hardware checkup';
+
+  @override
+  String get upRunAgain => 'Run again';
+
+  @override
+  String get upResults => 'Results';
+
+  @override
+  String get upGroupClaims => 'Seller\'s claims';
+
+  @override
+  String get upGroupSoftware => 'Software';
+
+  @override
+  String get upGroupBattery => 'Battery';
+
+  @override
+  String get upGroupHardware => 'Hardware';
+
+  @override
+  String get upClean => 'No problems found';
+
+  @override
+  String get upCleanBody => 'Everything SystemX can check looks right.';
+
+  @override
+  String get upCheckFirst => 'Check these before buying';
+
+  @override
+  String get upCheckFirstBody =>
+      'Nothing is broken, but some things are worth asking the seller about.';
+
+  @override
+  String get upProblems => 'Problems found';
+
+  @override
+  String get upProblemsBody =>
+      'Something doesn\'t match or doesn\'t work. Ask the seller about each point below.';
+
+  @override
+  String get upIncomplete => 'Run the hardware checkup to finish';
+
+  @override
+  String get upIncompleteBody =>
+      'The software and battery checks are done. The hardware checkup tests the screen, speakers, cameras and more.';
+
+  @override
+  String get upModel => 'Model';
+
+  @override
+  String get upStorage => 'Storage';
+
+  @override
+  String get upRam => 'RAM';
+
+  @override
+  String get upRegion => 'Sales region';
+
+  @override
+  String upMatches(String value) {
+    return 'Matches: $value';
+  }
+
+  @override
+  String upDiffers(String claim, String actual) {
+    return 'Seller says $claim, phone is $actual';
+  }
+
+  @override
+  String get upRegionUnknown => 'This phone doesn\'t report where it was sold';
+
+  @override
+  String get upRoot => 'Root access';
+
+  @override
+  String get upRootOk => 'Not detected';
+
+  @override
+  String get upRootBad =>
+      'Detected: the system has been modified. Banking apps may refuse to work and updates may fail.';
+
+  @override
+  String get upBootloader => 'Bootloader';
+
+  @override
+  String get upBootloaderOk => 'Locked (as shipped)';
+
+  @override
+  String get upBootloaderBad =>
+      'Unlocked: unofficial software can be installed. Ask why.';
+
+  @override
+  String get upVerifiedBoot => 'Verified boot';
+
+  @override
+  String get upVerifiedBootOk => 'Green: the software is the maker\'s own';
+
+  @override
+  String upVerifiedBootBad(String state) {
+    return '$state: the software isn\'t fully the maker\'s own';
+  }
+
+  @override
+  String get upKnoxOk => 'Intact (0x0)';
+
+  @override
+  String get upKnoxBad =>
+      'Tripped (0x1): unofficial software was installed at some point. Samsung Pay and Secure Folder won\'t work.';
+
+  @override
+  String get upHealthOk => 'Good';
+
+  @override
+  String get upHealthBad => 'Android reports a battery fault';
+
+  @override
+  String upCapacity(int pct) {
+    return 'About $pct% of the original capacity';
+  }
+
+  @override
+  String get upTests => 'Hardware tests';
+
+  @override
+  String get upTipsTitle => 'Before you pay';
+
+  @override
+  String get upTipImei =>
+      'Dial *#06# and check the IMEI matches the box and receipt.';
+
+  @override
+  String get upTipAccount =>
+      'Ask the seller to sign out of their Google (and Samsung) account and turn off Find My Device. Otherwise the phone can lock after a reset.';
+
+  @override
+  String get upTipBox =>
+      'Ask for the original box and receipt. SystemX can\'t tell whether a phone was reported lost or stolen.';
+
+  @override
+  String get upDialImei => 'Show IMEI';
+
+  @override
+  String get upCertificate => 'Create report (PDF)';
+
+  @override
+  String get upCertTitle => 'Used phone report';
+
+  @override
+  String get upCertNote =>
+      'Created on the phone itself by SystemX. It shows the phone\'s state at that moment. It can\'t confirm the phone isn\'t lost, stolen or blacklisted; check the IMEI against the box and receipt.';
+
+  @override
+  String get upCertClaims => 'Seller\'s claims';
+
+  @override
+  String get upCertNone => 'None entered';
 }

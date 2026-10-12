@@ -24,6 +24,7 @@ import '../features/tests/test_catalog.dart';
 import '../features/tests/tests_screen.dart';
 import '../features/tools/display_tools.dart';
 import '../features/tools/stress_test.dart';
+import '../features/tools/used_phone_screen.dart';
 import 'settings/settings.dart';
 
 abstract final class Routes {
@@ -42,6 +43,7 @@ abstract final class Routes {
   static const batteryHealth = '/battery-health';
   static const wifiMeter = '/tools/wifi';
   static const stress = '/tools/stress';
+  static const usedPhone = '/tools/used-phone';
   static const refreshRate = '/tools/refresh';
   static const touchRate = '/tools/touch';
 
@@ -111,6 +113,7 @@ final routerProvider = Provider<GoRouter>((ref) {
           builder: (_, _) => const BatteryHealthScreen()),
       GoRoute(path: Routes.wifiMeter, builder: (_, _) => const WifiMeterScreen()),
       GoRoute(path: Routes.stress, builder: (_, _) => const StressTestScreen()),
+      GoRoute(path: Routes.usedPhone, builder: (_, _) => const UsedPhoneScreen()),
       GoRoute(path: Routes.refreshRate, builder: (_, _) => const RefreshRateScreen()),
       GoRoute(path: Routes.touchRate, builder: (_, _) => const TouchRateScreen()),
       GoRoute(

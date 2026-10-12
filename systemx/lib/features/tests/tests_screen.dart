@@ -80,6 +80,14 @@ class TestsScreen extends ConsumerWidget {
           padding: const EdgeInsets.symmetric(vertical: 6),
           child: Column(children: [
             CategoryRow(
+              icon: SxIcons.security,
+              color: sx.good,
+              title: l.upTitle,
+              subtitle: l.upEntryBody,
+              onTap: () => context.push(Routes.usedPhone),
+            ),
+            const Divider(indent: 66, endIndent: 14),
+            CategoryRow(
               icon: SxIcons.speed,
               color: sx.cpu,
               title: l.stTitle,
