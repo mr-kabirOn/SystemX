@@ -3,21 +3,9 @@ import '../../platform/platform.dart';
 import '../device/device_data.dart';
 import '../tests/test_results.dart';
 
-/// What the seller says about the phone. Every field is optional.
-class SellerClaims {
-  const SellerClaims({this.model = '', this.storageGb, this.ramGb, this.country = ''});
-
-  final String model;
-  final int? storageGb;
-  final int? ramGb;
-  final String country;
-
-  bool get isEmpty => model.trim().isEmpty && storageGb == null && ramGb == null && country.trim().isEmpty;
-}
-
 enum CheckLevel { ok, warn, bad, info }
 
-enum CheckGroup { claims, software, battery, hardware }
+enum CheckGroup { software, battery, hardware }
 
 class UsedCheck {
   const UsedCheck(this.group, this.title, this.detail, this.level);
@@ -41,7 +29,26 @@ class UsedPhoneReport {
 
   Iterable<UsedCheck> get problems => checks.where((c) => c.level == CheckLevel.bad);
   Iterable<UsedCheck> get warnings => checks.where((c) => c.level == CheckLevel.warn);
+
+  /// Checks with a pass/fail outcome (notes don't count).
+  Iterable<UsedCheck> get rated => checks.where((c) => c.level != CheckLevel.info);
+  int get passed => rated.where((c) => c.level == CheckLevel.ok).length;
+
+  Iterable<UsedCheck> inGroup(CheckGroup g) => checks.where((c) => c.group == g);
+
+  /// Worst level in a group; null when the group has no checks yet.
+  CheckLevel? worst(CheckGroup g) {
+    final levels = inGroup(g).map((c) => c.level).toSet();
+    if (levels.isEmpty) return null;
+    for (final l in [CheckLevel.bad, CheckLevel.warn, CheckLevel.ok]) {
+      if (levels.contains(l)) return l;
+    }
+    return CheckLevel.info;
+  }
 }
+
+/// Points the buyer confirms in person; the app can't check these itself.
+enum BuyerCheck { imei, accounts, body, sim, charger, paperwork, reset }
 
 /// Storage sizes phones are sold with, in GB.
 const storageSizes = [16, 32, 64, 128, 256, 512, 1024, 2048];
@@ -63,23 +70,11 @@ int boxRamGb(MemoryStats m) {
   return ramSizes.firstWhere((x) => x >= gb * 0.98, orElse: () => gb.ceil());
 }
 
-String _norm(String s) => s.toLowerCase().replaceAll(RegExp(r'[^a-z0-9]'), '');
-
-/// True when what the seller typed names this phone: "S24 Ultra" matches
-/// "Galaxy S24 Ultra"; "SM-S928B" matches the model number.
-bool modelMatches(String claim, DeviceIdentity id) {
-  final c = _norm(claim);
-  if (c.isEmpty) return true;
-  final names = [id.marketName, id.model, '${id.brand} ${id.marketName}', id.codename].map(_norm);
-  return names.any((n) => n.isNotEmpty && (n.contains(c) || c.contains(n)));
-}
-
 /// Checks done on the phone, with a verdict. A recent checkup (within a
 /// day) is needed for the hardware part.
 UsedPhoneReport evaluateUsedPhone({
   required AppLocalizations l,
   required DeviceSnapshot snap,
-  required SellerClaims claims,
   required TestHistory history,
   int? capacityPercent,
   required DateTime now,
@@ -87,37 +82,7 @@ UsedPhoneReport evaluateUsedPhone({
   final checks = <UsedCheck>[];
   void add(CheckGroup g, String t, String d, CheckLevel lv) => checks.add(UsedCheck(g, t, d, lv));
 
-  // ---- What the seller said ----
   final id = snap.identity;
-  if (id != null && claims.model.trim().isNotEmpty) {
-    final ok = modelMatches(claims.model, id);
-    add(CheckGroup.claims, l.upModel, ok ? l.upMatches(id.marketName) : l.upDiffers(claims.model.trim(), id.marketName),
-        ok ? CheckLevel.ok : CheckLevel.bad);
-  }
-  if (snap.storage case final s? when claims.storageGb != null) {
-    final box = boxStorageGb(s);
-    final ok = box == claims.storageGb;
-    add(CheckGroup.claims, l.upStorage, ok ? l.upMatches('$box GB') : l.upDiffers('${claims.storageGb} GB', '$box GB'),
-        ok ? CheckLevel.ok : CheckLevel.bad);
-  }
-  if (snap.memory case final m? when claims.ramGb != null) {
-    final box = boxRamGb(m);
-    final ok = box == claims.ramGb;
-    add(CheckGroup.claims, l.upRam, ok ? l.upMatches('$box GB') : l.upDiffers('${claims.ramGb} GB', '$box GB'),
-        ok ? CheckLevel.ok : CheckLevel.bad);
-  }
-  final country = claims.country.trim();
-  if (id != null && country.isNotEmpty) {
-    final known = [id.salesCountry, id.salesCountryIso, id.salesRegion].whereType<String>().toList();
-    if (known.isEmpty) {
-      add(CheckGroup.claims, l.upRegion, l.upRegionUnknown, CheckLevel.info);
-    } else {
-      final ok = known.any((k) => _norm(k).contains(_norm(country)) || _norm(country).contains(_norm(k)));
-      final shown = id.salesCountry ?? id.salesRegion ?? id.salesCountryIso!;
-      add(CheckGroup.claims, l.upRegion, ok ? l.upMatches(shown) : l.upDiffers(country, shown),
-          ok ? CheckLevel.ok : CheckLevel.warn);
-    }
-  }
 
   // ---- Software: has it been modified? ----
   final sec = snap.security;

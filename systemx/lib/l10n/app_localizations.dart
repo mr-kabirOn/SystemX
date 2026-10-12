@@ -5345,50 +5345,8 @@ abstract class AppLocalizations {
   /// No description provided for @upIntro.
   ///
   /// In en, this message translates to:
-  /// **'Buying a second-hand phone? Run this on the phone you\'re buying, before you pay. It checks the hardware, the battery, whether the software was modified, and whether the phone is what the seller says.'**
+  /// **'This assessment helps you evaluate a pre-owned phone before purchase. It reviews software integrity and battery condition, guides you through a hardware checkup, and lists the points to confirm with the seller.'**
   String get upIntro;
-
-  /// No description provided for @upClaimsTitle.
-  ///
-  /// In en, this message translates to:
-  /// **'What the seller says (optional)'**
-  String get upClaimsTitle;
-
-  /// No description provided for @upClaimsBody.
-  ///
-  /// In en, this message translates to:
-  /// **'Fill in what the advert or seller claims, and SystemX checks it against the phone itself.'**
-  String get upClaimsBody;
-
-  /// No description provided for @upModelHint.
-  ///
-  /// In en, this message translates to:
-  /// **'Model, e.g. Galaxy S24 Ultra'**
-  String get upModelHint;
-
-  /// No description provided for @upStorageHint.
-  ///
-  /// In en, this message translates to:
-  /// **'Storage'**
-  String get upStorageHint;
-
-  /// No description provided for @upRamHint.
-  ///
-  /// In en, this message translates to:
-  /// **'RAM'**
-  String get upRamHint;
-
-  /// No description provided for @upCountryHint.
-  ///
-  /// In en, this message translates to:
-  /// **'Sold in (country), e.g. Korea'**
-  String get upCountryHint;
-
-  /// No description provided for @upNotSure.
-  ///
-  /// In en, this message translates to:
-  /// **'Not sure'**
-  String get upNotSure;
 
   /// No description provided for @upHardwareTitle.
   ///
@@ -5399,14 +5357,8 @@ abstract class AppLocalizations {
   /// No description provided for @upHardwareNone.
   ///
   /// In en, this message translates to:
-  /// **'Run the 32-test checkup on this phone. It takes about 6 minutes; SystemX walks you through each test.'**
+  /// **'Tests the screen, touch, speakers, microphone, cameras, sensors, connectivity and charging. Takes about 6 minutes; each step is explained.'**
   String get upHardwareNone;
-
-  /// No description provided for @upHardwareDone.
-  ///
-  /// In en, this message translates to:
-  /// **'Checkup done {when}: {passed} of {total} passed.'**
-  String upHardwareDone(String when, int passed, int total);
 
   /// No description provided for @upRunCheckup.
   ///
@@ -5425,12 +5377,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Results'**
   String get upResults;
-
-  /// No description provided for @upGroupClaims.
-  ///
-  /// In en, this message translates to:
-  /// **'Seller\'s claims'**
-  String get upGroupClaims;
 
   /// No description provided for @upGroupSoftware.
   ///
@@ -5459,7 +5405,7 @@ abstract class AppLocalizations {
   /// No description provided for @upCleanBody.
   ///
   /// In en, this message translates to:
-  /// **'Everything SystemX can check looks right.'**
+  /// **'All checks passed. Complete the buyer\'s checklist before you pay.'**
   String get upCleanBody;
 
   /// No description provided for @upCheckFirst.
@@ -5471,7 +5417,7 @@ abstract class AppLocalizations {
   /// No description provided for @upCheckFirstBody.
   ///
   /// In en, this message translates to:
-  /// **'Nothing is broken, but some things are worth asking the seller about.'**
+  /// **'No faults were found, but some items deserve a closer look before you buy.'**
   String get upCheckFirstBody;
 
   /// No description provided for @upProblems.
@@ -5483,7 +5429,7 @@ abstract class AppLocalizations {
   /// No description provided for @upProblemsBody.
   ///
   /// In en, this message translates to:
-  /// **'Something doesn\'t match or doesn\'t work. Ask the seller about each point below.'**
+  /// **'One or more checks found a fault. Review each item below and discuss it with the seller.'**
   String get upProblemsBody;
 
   /// No description provided for @upIncomplete.
@@ -5495,14 +5441,8 @@ abstract class AppLocalizations {
   /// No description provided for @upIncompleteBody.
   ///
   /// In en, this message translates to:
-  /// **'The software and battery checks are done. The hardware checkup tests the screen, speakers, cameras and more.'**
+  /// **'Software and battery checks are complete. Run the hardware checkup to test the screen, speakers, cameras, sensors and more.'**
   String get upIncompleteBody;
-
-  /// No description provided for @upModel.
-  ///
-  /// In en, this message translates to:
-  /// **'Model'**
-  String get upModel;
 
   /// No description provided for @upStorage.
   ///
@@ -5521,24 +5461,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Sales region'**
   String get upRegion;
-
-  /// No description provided for @upMatches.
-  ///
-  /// In en, this message translates to:
-  /// **'Matches: {value}'**
-  String upMatches(String value);
-
-  /// No description provided for @upDiffers.
-  ///
-  /// In en, this message translates to:
-  /// **'Seller says {claim}, phone is {actual}'**
-  String upDiffers(String claim, String actual);
-
-  /// No description provided for @upRegionUnknown.
-  ///
-  /// In en, this message translates to:
-  /// **'This phone doesn\'t report where it was sold'**
-  String get upRegionUnknown;
 
   /// No description provided for @upRoot.
   ///
@@ -5630,36 +5552,6 @@ abstract class AppLocalizations {
   /// **'Hardware tests'**
   String get upTests;
 
-  /// No description provided for @upTipsTitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Before you pay'**
-  String get upTipsTitle;
-
-  /// No description provided for @upTipImei.
-  ///
-  /// In en, this message translates to:
-  /// **'Dial *#06# and check the IMEI matches the box and receipt.'**
-  String get upTipImei;
-
-  /// No description provided for @upTipAccount.
-  ///
-  /// In en, this message translates to:
-  /// **'Ask the seller to sign out of their Google (and Samsung) account and turn off Find My Device. Otherwise the phone can lock after a reset.'**
-  String get upTipAccount;
-
-  /// No description provided for @upTipBox.
-  ///
-  /// In en, this message translates to:
-  /// **'Ask for the original box and receipt. SystemX can\'t tell whether a phone was reported lost or stolen.'**
-  String get upTipBox;
-
-  /// No description provided for @upDialImei.
-  ///
-  /// In en, this message translates to:
-  /// **'Show IMEI'**
-  String get upDialImei;
-
   /// No description provided for @upCertificate.
   ///
   /// In en, this message translates to:
@@ -5675,20 +5567,8 @@ abstract class AppLocalizations {
   /// No description provided for @upCertNote.
   ///
   /// In en, this message translates to:
-  /// **'Created on the phone itself by SystemX. It shows the phone\'s state at that moment. It can\'t confirm the phone isn\'t lost, stolen or blacklisted; check the IMEI against the box and receipt.'**
+  /// **'This report was generated on the device by SystemX and reflects its condition at the time shown. Results are based on information reported by the phone\'s software and on tests performed by the user. SystemX cannot detect every fault or verify ownership, network lock, IMEI blacklist status, water damage, internal repairs or replaced parts, and accepts no responsibility for purchase decisions.'**
   String get upCertNote;
-
-  /// No description provided for @upCertClaims.
-  ///
-  /// In en, this message translates to:
-  /// **'Seller\'s claims'**
-  String get upCertClaims;
-
-  /// No description provided for @upCertNone.
-  ///
-  /// In en, this message translates to:
-  /// **'None entered'**
-  String get upCertNone;
 
   /// No description provided for @copyAll.
   ///
@@ -5701,6 +5581,216 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'All specs copied'**
   String get copiedAll;
+
+  /// No description provided for @upDisclaimerTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'About this assessment'**
+  String get upDisclaimerTitle;
+
+  /// No description provided for @upDisclaimer.
+  ///
+  /// In en, this message translates to:
+  /// **'Results are based on information reported by the phone\'s software and on the tests you perform. SystemX cannot detect every fault or verify ownership, network lock, IMEI blacklist status, water damage, internal repairs or replaced parts. Use it together with a physical inspection. SystemX is not responsible for purchase decisions.'**
+  String get upDisclaimer;
+
+  /// No description provided for @upStepDevice.
+  ///
+  /// In en, this message translates to:
+  /// **'Device checks'**
+  String get upStepDevice;
+
+  /// No description provided for @upStepHardware.
+  ///
+  /// In en, this message translates to:
+  /// **'Hardware checkup'**
+  String get upStepHardware;
+
+  /// No description provided for @upStepChecklist.
+  ///
+  /// In en, this message translates to:
+  /// **'Buyer\'s checklist'**
+  String get upStepChecklist;
+
+  /// No description provided for @upChecksPassed.
+  ///
+  /// In en, this message translates to:
+  /// **'{passed} of {total} checks passed'**
+  String upChecksPassed(int passed, int total);
+
+  /// No description provided for @upAllClear.
+  ///
+  /// In en, this message translates to:
+  /// **'All clear'**
+  String get upAllClear;
+
+  /// No description provided for @upIssues.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 issue} other{{count} issues}}'**
+  String upIssues(int count);
+
+  /// No description provided for @upToReview.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 to review} other{{count} to review}}'**
+  String upToReview(int count);
+
+  /// No description provided for @upNotRun.
+  ///
+  /// In en, this message translates to:
+  /// **'Not run yet'**
+  String get upNotRun;
+
+  /// No description provided for @upHardwareDoneAt.
+  ///
+  /// In en, this message translates to:
+  /// **'Completed at {time} · {passed} of {total} passed'**
+  String upHardwareDoneAt(String time, int passed, int total);
+
+  /// No description provided for @upIdentityTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Device identity'**
+  String get upIdentityTitle;
+
+  /// No description provided for @upIdentityBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Compare these details with the listing and the box. They are read from the phone itself.'**
+  String get upIdentityBody;
+
+  /// No description provided for @upChecklistTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Buyer\'s checklist'**
+  String get upChecklistTitle;
+
+  /// No description provided for @upChecklistBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm these points in person before you pay. Ticked items are included in the report.'**
+  String get upChecklistBody;
+
+  /// No description provided for @upChecklistProgress.
+  ///
+  /// In en, this message translates to:
+  /// **'{done} of {total} confirmed'**
+  String upChecklistProgress(int done, int total);
+
+  /// No description provided for @bcImei.
+  ///
+  /// In en, this message translates to:
+  /// **'IMEI matches the box'**
+  String get bcImei;
+
+  /// No description provided for @bcImeiBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Dial *#06# and compare the number with the box and the receipt.'**
+  String get bcImeiBody;
+
+  /// No description provided for @bcAccounts.
+  ///
+  /// In en, this message translates to:
+  /// **'Seller\'s accounts removed'**
+  String get bcAccounts;
+
+  /// No description provided for @bcAccountsBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Google and Samsung accounts are signed out and Find My Device is turned off; otherwise the phone may lock after a reset.'**
+  String get bcAccountsBody;
+
+  /// No description provided for @bcBody.
+  ///
+  /// In en, this message translates to:
+  /// **'No physical damage'**
+  String get bcBody;
+
+  /// No description provided for @bcBodyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Inspect the frame, screen, back glass, camera lenses, buttons, ports and SIM tray for cracks, dents or signs of opening.'**
+  String get bcBodyBody;
+
+  /// No description provided for @bcSim.
+  ///
+  /// In en, this message translates to:
+  /// **'Works with your SIM'**
+  String get bcSim;
+
+  /// No description provided for @bcSimBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Insert your SIM card, make a short call and check that mobile data connects.'**
+  String get bcSimBody;
+
+  /// No description provided for @bcCharger.
+  ///
+  /// In en, this message translates to:
+  /// **'Charges with your charger'**
+  String get bcCharger;
+
+  /// No description provided for @bcChargerBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Connect your own charger and cable; the phone should show it is charging within a few seconds.'**
+  String get bcChargerBody;
+
+  /// No description provided for @bcPaperwork.
+  ///
+  /// In en, this message translates to:
+  /// **'Box and receipt provided'**
+  String get bcPaperwork;
+
+  /// No description provided for @bcPaperworkBody.
+  ///
+  /// In en, this message translates to:
+  /// **'The original box and receipt help show the phone is legitimately owned and may be needed for warranty repairs.'**
+  String get bcPaperworkBody;
+
+  /// No description provided for @bcReset.
+  ///
+  /// In en, this message translates to:
+  /// **'Factory reset after purchase'**
+  String get bcReset;
+
+  /// No description provided for @bcResetBody.
+  ///
+  /// In en, this message translates to:
+  /// **'After paying, reset the phone yourself so that no previous data or accounts remain.'**
+  String get bcResetBody;
+
+  /// No description provided for @bcActionImei.
+  ///
+  /// In en, this message translates to:
+  /// **'Show IMEI'**
+  String get bcActionImei;
+
+  /// No description provided for @bcActionAccounts.
+  ///
+  /// In en, this message translates to:
+  /// **'Open accounts'**
+  String get bcActionAccounts;
+
+  /// No description provided for @upCertChecklist.
+  ///
+  /// In en, this message translates to:
+  /// **'Buyer\'s checklist'**
+  String get upCertChecklist;
+
+  /// No description provided for @upCertConfirmed.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirmed by buyer'**
+  String get upCertConfirmed;
+
+  /// No description provided for @upCertNotConfirmed.
+  ///
+  /// In en, this message translates to:
+  /// **'Not confirmed'**
+  String get upCertNotConfirmed;
 }
 
 class _AppLocalizationsDelegate

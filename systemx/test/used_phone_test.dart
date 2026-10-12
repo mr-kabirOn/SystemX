@@ -33,11 +33,10 @@ void main() {
     return TestHistory(checkups: [c]);
   }
 
-  UsedPhoneReport eval({SellerClaims claims = const SellerClaims(), TestHistory? h, int? cap}) =>
+  UsedPhoneReport eval({TestHistory? h, int? cap}) =>
       evaluateUsedPhone(
         l: l,
         snap: snap,
-        claims: claims,
         history: h ?? history(),
         capacityPercent: cap,
         now: now,
@@ -48,24 +47,20 @@ void main() {
     expect(boxRamGb(snap.memory!), 8);
   });
 
-  test('model claims match names, numbers and partial names', () {
-    final id = snap.identity!;
-    expect(modelMatches('pixel 8', id), isTrue);
-    expect(modelMatches('Pixel-8', id), isTrue);
-    expect(modelMatches('Galaxy S24', id), isFalse);
-  });
-
   test('a clean phone with a recent checkup passes', () {
-    final r = eval(claims: const SellerClaims(model: 'Pixel 8', storageGb: 128, ramGb: 8), cap: 92);
+    final r = eval(cap: 92);
     expect(r.verdict, UsedVerdict.clean);
     expect(r.problems, isEmpty);
+    expect(r.passed, r.rated.length);
+    expect(r.worst(CheckGroup.software), CheckLevel.ok);
   });
 
-  test('wrong storage or a failed test is a problem', () {
-    expect(eval(claims: const SellerClaims(storageGb: 256)).verdict, UsedVerdict.problems);
+  test('a failed hardware test is a problem in its group', () {
     final failed = eval(h: history(failed: true));
     expect(failed.verdict, UsedVerdict.problems);
     expect(failed.problems.map((c) => c.title), contains(HwTest.speaker.title(l)));
+    expect(failed.worst(CheckGroup.hardware), CheckLevel.bad);
+    expect(failed.worst(CheckGroup.battery), CheckLevel.ok);
   });
 
   test('worn battery asks for a closer look; no recent checkup is incomplete', () {
@@ -76,19 +71,29 @@ void main() {
     expect(old.checkup, isNull);
   });
 
-  testWidgets('screen flags a claim mismatch and shares a PDF', (tester) async {
+  testWidgets('screen: disclaimer, checklist ticks and a PDF', (tester) async {
     final shared = <(Uint8List, String)>[];
     final results = MemoryResultsStore()
       ..data = jsonEncode(history(at: DateTime.now().subtract(const Duration(hours: 1))).toJson());
-    await pumpApp(tester, results: results, sharedFiles: shared);
+    final api = FakeDeviceApi();
+    await pumpApp(tester, api: api, results: results, sharedFiles: shared);
     await go(tester, Routes.usedPhone);
 
-    await tester.enterText(find.byType(TextField).first, 'Galaxy S24 Ultra');
+    expect(find.text('About this assessment'), findsOneWidget);
+    expect(find.textContaining('not responsible for purchase decisions'), findsOneWidget);
+    expect(find.text('No problems found'), findsOneWidget);
+
+    final list = find
+        .descendant(of: find.byType(UsedPhoneScreen), matching: find.byType(Scrollable))
+        .first;
+    await tester.scrollUntilVisible(find.text('IMEI matches the box'), 300, scrollable: list);
+    await tester.ensureVisible(find.text('IMEI matches the box'));
     await tester.pumpAndSettle();
-    final list = find.byType(Scrollable).last;
-    await tester.scrollUntilVisible(find.text('Problems found'), 300, scrollable: list);
-    await tester.scrollUntilVisible(
-        find.text('Seller says Galaxy S24 Ultra, phone is Pixel 8'), 300, scrollable: list);
+    await tester.tap(find.text('IMEI matches the box'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Show IMEI'));
+    await tester.scrollUntilVisible(find.text('1 of 7 confirmed'), -200, scrollable: list);
+    expect(api.dialed, ['*#06#']);
 
     await tester.scrollUntilVisible(find.text('Create report (PDF)'), 300, scrollable: list);
     await tester.runAsync(() async {
@@ -103,7 +108,7 @@ void main() {
 
   test('PDF builds offline from the report', () async {
     final r = eval(cap: 90);
-    final bytes = await buildUsedPhonePdf(l, snap, const SellerClaims(), r, now);
+    final bytes = await buildUsedPhonePdf(l, snap, r, {BuyerCheck.imei}, now);
     expect(bytes.length, greaterThan(1000));
   });
 }

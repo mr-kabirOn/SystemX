@@ -2912,41 +2912,14 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get upIntro =>
-      'পুরোনো ফোন কিনছেন? টাকা দেওয়ার আগে যে ফোনটি কিনছেন তাতেই এটি চালান। হার্ডওয়্যার, ব্যাটারি, সফটওয়্যার পরিবর্তন করা হয়েছে কিনা, আর বিক্রেতা যা বলছেন ফোন তা-ই কিনা যাচাই করে।';
-
-  @override
-  String get upClaimsTitle => 'বিক্রেতা যা বলছেন (ঐচ্ছিক)';
-
-  @override
-  String get upClaimsBody =>
-      'বিজ্ঞাপন বা বিক্রেতার দাবি লিখুন, SystemX ফোনের সাথে মিলিয়ে দেখবে।';
-
-  @override
-  String get upModelHint => 'মডেল, যেমন Galaxy S24 Ultra';
-
-  @override
-  String get upStorageHint => 'স্টোরেজ';
-
-  @override
-  String get upRamHint => 'RAM';
-
-  @override
-  String get upCountryHint => 'কোন দেশে বিক্রি, যেমন Korea';
-
-  @override
-  String get upNotSure => 'জানি না';
+      'কেনার আগে পুরোনো ফোন যাচাই করতে এই মূল্যায়ন সাহায্য করে। এটি সফটওয়্যারের অখণ্ডতা ও ব্যাটারির অবস্থা পর্যালোচনা করে, হার্ডওয়্যার চেকআপে পথ দেখায়, আর বিক্রেতার সাথে যে বিষয়গুলো নিশ্চিত করতে হবে তার তালিকা দেয়।';
 
   @override
   String get upHardwareTitle => 'হার্ডওয়্যার চেকআপ';
 
   @override
   String get upHardwareNone =>
-      'এই ফোনে ৩২টি টেস্টের চেকআপ চালান। প্রায় ৬ মিনিট লাগে; SystemX প্রতিটি টেস্টে সাহায্য করবে।';
-
-  @override
-  String upHardwareDone(String when, int passed, int total) {
-    return 'চেকআপ হয়েছে $when: $totalটির মধ্যে $passedটি পাস।';
-  }
+      'স্ক্রিন, টাচ, স্পিকার, মাইক্রোফোন, ক্যামেরা, সেন্সর, কানেক্টিভিটি ও চার্জিং পরীক্ষা করে। প্রায় ৬ মিনিট লাগে; প্রতিটি ধাপ বুঝিয়ে বলা হয়।';
 
   @override
   String get upRunCheckup => 'হার্ডওয়্যার চেকআপ চালান';
@@ -2956,9 +2929,6 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get upResults => 'ফলাফল';
-
-  @override
-  String get upGroupClaims => 'বিক্রেতার দাবি';
 
   @override
   String get upGroupSoftware => 'সফটওয়্যার';
@@ -2973,31 +2943,29 @@ class AppLocalizationsBn extends AppLocalizations {
   String get upClean => 'কোনো সমস্যা পাওয়া যায়নি';
 
   @override
-  String get upCleanBody => 'SystemX যা যাচাই করতে পারে সবকিছু ঠিক আছে।';
+  String get upCleanBody =>
+      'সব যাচাই পাস করেছে। টাকা দেওয়ার আগে ক্রেতার চেকলিস্ট সম্পূর্ণ করুন।';
 
   @override
   String get upCheckFirst => 'কেনার আগে এগুলো দেখে নিন';
 
   @override
   String get upCheckFirstBody =>
-      'কিছু নষ্ট নয়, তবে কয়েকটি বিষয় বিক্রেতাকে জিজ্ঞেস করা উচিত।';
+      'কোনো ত্রুটি পাওয়া যায়নি, তবে কেনার আগে কয়েকটি বিষয় ভালোভাবে দেখে নেওয়া উচিত।';
 
   @override
   String get upProblems => 'সমস্যা পাওয়া গেছে';
 
   @override
   String get upProblemsBody =>
-      'কিছু মিলছে না বা কাজ করছে না। নিচের প্রতিটি বিষয় বিক্রেতাকে জিজ্ঞেস করুন।';
+      'এক বা একাধিক যাচাইয়ে ত্রুটি পাওয়া গেছে। নিচের প্রতিটি বিষয় দেখুন এবং বিক্রেতার সাথে আলোচনা করুন।';
 
   @override
   String get upIncomplete => 'শেষ করতে হার্ডওয়্যার চেকআপ চালান';
 
   @override
   String get upIncompleteBody =>
-      'সফটওয়্যার আর ব্যাটারি যাচাই হয়েছে। হার্ডওয়্যার চেকআপ স্ক্রিন, স্পিকার, ক্যামেরা আর আরও অনেক কিছু পরীক্ষা করে।';
-
-  @override
-  String get upModel => 'মডেল';
+      'সফটওয়্যার ও ব্যাটারি যাচাই সম্পূর্ণ। স্ক্রিন, স্পিকার, ক্যামেরা, সেন্সর ও আরও অনেক কিছু পরীক্ষা করতে হার্ডওয়্যার চেকআপ চালান।';
 
   @override
   String get upStorage => 'স্টোরেজ';
@@ -3007,19 +2975,6 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get upRegion => 'বিক্রয় অঞ্চল';
-
-  @override
-  String upMatches(String value) {
-    return 'মিলেছে: $value';
-  }
-
-  @override
-  String upDiffers(String claim, String actual) {
-    return 'বিক্রেতা বলছেন $claim, ফোনে $actual';
-  }
-
-  @override
-  String get upRegionUnknown => 'এই ফোন কোথায় বিক্রি হয়েছে তা জানায় না';
 
   @override
   String get upRoot => 'রুট অ্যাক্সেস';
@@ -3074,24 +3029,6 @@ class AppLocalizationsBn extends AppLocalizations {
   String get upTests => 'হার্ডওয়্যার টেস্ট';
 
   @override
-  String get upTipsTitle => 'টাকা দেওয়ার আগে';
-
-  @override
-  String get upTipImei =>
-      '*#06# ডায়াল করে দেখুন IMEI বক্স আর রসিদের সাথে মেলে কিনা।';
-
-  @override
-  String get upTipAccount =>
-      'বিক্রেতাকে তাঁর Google (আর Samsung) অ্যাকাউন্ট থেকে সাইন আউট করতে ও Find My Device বন্ধ করতে বলুন। না হলে রিসেটের পর ফোন লক হয়ে যেতে পারে।';
-
-  @override
-  String get upTipBox =>
-      'আসল বক্স আর রসিদ চান। ফোনটি হারানো বা চুরি হিসেবে রিপোর্ট করা কিনা SystemX বলতে পারে না।';
-
-  @override
-  String get upDialImei => 'IMEI দেখুন';
-
-  @override
   String get upCertificate => 'রিপোর্ট তৈরি করুন (PDF)';
 
   @override
@@ -3099,17 +3036,146 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get upCertNote =>
-      'Created on the phone itself by SystemX. It shows the phone\'s state at that moment. It can\'t confirm the phone isn\'t lost, stolen or blacklisted; check the IMEI against the box and receipt.';
-
-  @override
-  String get upCertClaims => 'Seller\'s claims';
-
-  @override
-  String get upCertNone => 'None entered';
+      'This report was generated on the device by SystemX and reflects its condition at the time shown. Results are based on information reported by the phone\'s software and on tests performed by the user. SystemX cannot detect every fault or verify ownership, network lock, IMEI blacklist status, water damage, internal repairs or replaced parts, and accepts no responsibility for purchase decisions.';
 
   @override
   String get copyAll => 'সব স্পেক কপি করুন';
 
   @override
   String get copiedAll => 'সব স্পেক কপি হয়েছে';
+
+  @override
+  String get upDisclaimerTitle => 'এই মূল্যায়ন সম্পর্কে';
+
+  @override
+  String get upDisclaimer =>
+      'ফলাফল ফোনের সফটওয়্যারের জানানো তথ্য এবং আপনার করা টেস্টের ওপর ভিত্তি করে। SystemX সব ত্রুটি শনাক্ত করতে পারে না, এবং মালিকানা, নেটওয়ার্ক লক, IMEI ব্ল্যাকলিস্ট, পানিতে ক্ষতি, ভেতরের মেরামত বা বদলানো যন্ত্রাংশ যাচাই করতে পারে না। সরাসরি পরিদর্শনের সাথে এটি ব্যবহার করুন। কেনার সিদ্ধান্তের জন্য SystemX দায়ী নয়।';
+
+  @override
+  String get upStepDevice => 'ডিভাইস যাচাই';
+
+  @override
+  String get upStepHardware => 'হার্ডওয়্যার চেকআপ';
+
+  @override
+  String get upStepChecklist => 'ক্রেতার চেকলিস্ট';
+
+  @override
+  String upChecksPassed(int passed, int total) {
+    return '$totalটির মধ্যে $passedটি যাচাই পাস';
+  }
+
+  @override
+  String get upAllClear => 'সব ঠিক আছে';
+
+  @override
+  String upIssues(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$countটি সমস্যা',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String upToReview(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$countটি দেখার মতো',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get upNotRun => 'এখনো চালানো হয়নি';
+
+  @override
+  String upHardwareDoneAt(String time, int passed, int total) {
+    return '$time-এ সম্পন্ন · $totalটির মধ্যে $passedটি পাস';
+  }
+
+  @override
+  String get upIdentityTitle => 'ডিভাইসের পরিচয়';
+
+  @override
+  String get upIdentityBody =>
+      'এই তথ্যগুলো বিজ্ঞাপন ও বক্সের সাথে মিলিয়ে নিন। এগুলো সরাসরি ফোন থেকে পড়া।';
+
+  @override
+  String get upChecklistTitle => 'ক্রেতার চেকলিস্ট';
+
+  @override
+  String get upChecklistBody =>
+      'টাকা দেওয়ার আগে এই বিষয়গুলো সরাসরি নিশ্চিত করুন। টিক দেওয়া বিষয়গুলো রিপোর্টে যুক্ত হবে।';
+
+  @override
+  String upChecklistProgress(int done, int total) {
+    return '$totalটির মধ্যে $doneটি নিশ্চিত';
+  }
+
+  @override
+  String get bcImei => 'IMEI বক্সের সাথে মেলে';
+
+  @override
+  String get bcImeiBody =>
+      '*#06# ডায়াল করে নম্বরটি বক্স ও রসিদের সাথে মিলিয়ে দেখুন।';
+
+  @override
+  String get bcAccounts => 'বিক্রেতার অ্যাকাউন্ট সরানো হয়েছে';
+
+  @override
+  String get bcAccountsBody =>
+      'Google ও Samsung অ্যাকাউন্ট সাইন আউট এবং Find My Device বন্ধ; না হলে রিসেটের পর ফোন লক হয়ে যেতে পারে।';
+
+  @override
+  String get bcBody => 'শারীরিক কোনো ক্ষতি নেই';
+
+  @override
+  String get bcBodyBody =>
+      'ফ্রেম, স্ক্রিন, পেছনের গ্লাস, ক্যামেরা লেন্স, বোতাম, পোর্ট ও সিম ট্রেতে ফাটল, টোল বা খোলার চিহ্ন আছে কিনা দেখুন।';
+
+  @override
+  String get bcSim => 'আপনার সিমে কাজ করে';
+
+  @override
+  String get bcSimBody =>
+      'আপনার সিম ঢুকিয়ে ছোট একটি কল করুন এবং মোবাইল ডেটা সংযোগ হয় কিনা দেখুন।';
+
+  @override
+  String get bcCharger => 'আপনার চার্জারে চার্জ হয়';
+
+  @override
+  String get bcChargerBody =>
+      'নিজের চার্জার ও কেবল লাগান; কয়েক সেকেন্ডের মধ্যে চার্জ হচ্ছে দেখানো উচিত।';
+
+  @override
+  String get bcPaperwork => 'বক্স ও রসিদ দেওয়া হয়েছে';
+
+  @override
+  String get bcPaperworkBody =>
+      'আসল বক্স ও রসিদ ফোনটি বৈধভাবে কেনা তা দেখাতে সাহায্য করে এবং ওয়ারেন্টি মেরামতে লাগতে পারে।';
+
+  @override
+  String get bcReset => 'কেনার পর ফ্যাক্টরি রিসেট';
+
+  @override
+  String get bcResetBody =>
+      'টাকা দেওয়ার পর নিজে ফোনটি রিসেট করুন, যাতে আগের কোনো তথ্য বা অ্যাকাউন্ট না থাকে।';
+
+  @override
+  String get bcActionImei => 'IMEI দেখুন';
+
+  @override
+  String get bcActionAccounts => 'অ্যাকাউন্ট খুলুন';
+
+  @override
+  String get upCertChecklist => 'Buyer\'s checklist';
+
+  @override
+  String get upCertConfirmed => 'Confirmed by buyer';
+
+  @override
+  String get upCertNotConfirmed => 'Not confirmed';
 }

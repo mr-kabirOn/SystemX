@@ -2934,41 +2934,14 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get upIntro =>
-      'Buying a second-hand phone? Run this on the phone you\'re buying, before you pay. It checks the hardware, the battery, whether the software was modified, and whether the phone is what the seller says.';
-
-  @override
-  String get upClaimsTitle => 'What the seller says (optional)';
-
-  @override
-  String get upClaimsBody =>
-      'Fill in what the advert or seller claims, and SystemX checks it against the phone itself.';
-
-  @override
-  String get upModelHint => 'Model, e.g. Galaxy S24 Ultra';
-
-  @override
-  String get upStorageHint => 'Storage';
-
-  @override
-  String get upRamHint => 'RAM';
-
-  @override
-  String get upCountryHint => 'Sold in (country), e.g. Korea';
-
-  @override
-  String get upNotSure => 'Not sure';
+      'This assessment helps you evaluate a pre-owned phone before purchase. It reviews software integrity and battery condition, guides you through a hardware checkup, and lists the points to confirm with the seller.';
 
   @override
   String get upHardwareTitle => 'Hardware checkup';
 
   @override
   String get upHardwareNone =>
-      'Run the 32-test checkup on this phone. It takes about 6 minutes; SystemX walks you through each test.';
-
-  @override
-  String upHardwareDone(String when, int passed, int total) {
-    return 'Checkup done $when: $passed of $total passed.';
-  }
+      'Tests the screen, touch, speakers, microphone, cameras, sensors, connectivity and charging. Takes about 6 minutes; each step is explained.';
 
   @override
   String get upRunCheckup => 'Run hardware checkup';
@@ -2978,9 +2951,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get upResults => 'Results';
-
-  @override
-  String get upGroupClaims => 'Seller\'s claims';
 
   @override
   String get upGroupSoftware => 'Software';
@@ -2995,31 +2965,29 @@ class AppLocalizationsEn extends AppLocalizations {
   String get upClean => 'No problems found';
 
   @override
-  String get upCleanBody => 'Everything SystemX can check looks right.';
+  String get upCleanBody =>
+      'All checks passed. Complete the buyer\'s checklist before you pay.';
 
   @override
   String get upCheckFirst => 'Check these before buying';
 
   @override
   String get upCheckFirstBody =>
-      'Nothing is broken, but some things are worth asking the seller about.';
+      'No faults were found, but some items deserve a closer look before you buy.';
 
   @override
   String get upProblems => 'Problems found';
 
   @override
   String get upProblemsBody =>
-      'Something doesn\'t match or doesn\'t work. Ask the seller about each point below.';
+      'One or more checks found a fault. Review each item below and discuss it with the seller.';
 
   @override
   String get upIncomplete => 'Run the hardware checkup to finish';
 
   @override
   String get upIncompleteBody =>
-      'The software and battery checks are done. The hardware checkup tests the screen, speakers, cameras and more.';
-
-  @override
-  String get upModel => 'Model';
+      'Software and battery checks are complete. Run the hardware checkup to test the screen, speakers, cameras, sensors and more.';
 
   @override
   String get upStorage => 'Storage';
@@ -3029,19 +2997,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get upRegion => 'Sales region';
-
-  @override
-  String upMatches(String value) {
-    return 'Matches: $value';
-  }
-
-  @override
-  String upDiffers(String claim, String actual) {
-    return 'Seller says $claim, phone is $actual';
-  }
-
-  @override
-  String get upRegionUnknown => 'This phone doesn\'t report where it was sold';
 
   @override
   String get upRoot => 'Root access';
@@ -3096,24 +3051,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get upTests => 'Hardware tests';
 
   @override
-  String get upTipsTitle => 'Before you pay';
-
-  @override
-  String get upTipImei =>
-      'Dial *#06# and check the IMEI matches the box and receipt.';
-
-  @override
-  String get upTipAccount =>
-      'Ask the seller to sign out of their Google (and Samsung) account and turn off Find My Device. Otherwise the phone can lock after a reset.';
-
-  @override
-  String get upTipBox =>
-      'Ask for the original box and receipt. SystemX can\'t tell whether a phone was reported lost or stolen.';
-
-  @override
-  String get upDialImei => 'Show IMEI';
-
-  @override
   String get upCertificate => 'Create report (PDF)';
 
   @override
@@ -3121,17 +3058,148 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get upCertNote =>
-      'Created on the phone itself by SystemX. It shows the phone\'s state at that moment. It can\'t confirm the phone isn\'t lost, stolen or blacklisted; check the IMEI against the box and receipt.';
-
-  @override
-  String get upCertClaims => 'Seller\'s claims';
-
-  @override
-  String get upCertNone => 'None entered';
+      'This report was generated on the device by SystemX and reflects its condition at the time shown. Results are based on information reported by the phone\'s software and on tests performed by the user. SystemX cannot detect every fault or verify ownership, network lock, IMEI blacklist status, water damage, internal repairs or replaced parts, and accepts no responsibility for purchase decisions.';
 
   @override
   String get copyAll => 'Copy all specs';
 
   @override
   String get copiedAll => 'All specs copied';
+
+  @override
+  String get upDisclaimerTitle => 'About this assessment';
+
+  @override
+  String get upDisclaimer =>
+      'Results are based on information reported by the phone\'s software and on the tests you perform. SystemX cannot detect every fault or verify ownership, network lock, IMEI blacklist status, water damage, internal repairs or replaced parts. Use it together with a physical inspection. SystemX is not responsible for purchase decisions.';
+
+  @override
+  String get upStepDevice => 'Device checks';
+
+  @override
+  String get upStepHardware => 'Hardware checkup';
+
+  @override
+  String get upStepChecklist => 'Buyer\'s checklist';
+
+  @override
+  String upChecksPassed(int passed, int total) {
+    return '$passed of $total checks passed';
+  }
+
+  @override
+  String get upAllClear => 'All clear';
+
+  @override
+  String upIssues(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count issues',
+      one: '1 issue',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String upToReview(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count to review',
+      one: '1 to review',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get upNotRun => 'Not run yet';
+
+  @override
+  String upHardwareDoneAt(String time, int passed, int total) {
+    return 'Completed at $time · $passed of $total passed';
+  }
+
+  @override
+  String get upIdentityTitle => 'Device identity';
+
+  @override
+  String get upIdentityBody =>
+      'Compare these details with the listing and the box. They are read from the phone itself.';
+
+  @override
+  String get upChecklistTitle => 'Buyer\'s checklist';
+
+  @override
+  String get upChecklistBody =>
+      'Confirm these points in person before you pay. Ticked items are included in the report.';
+
+  @override
+  String upChecklistProgress(int done, int total) {
+    return '$done of $total confirmed';
+  }
+
+  @override
+  String get bcImei => 'IMEI matches the box';
+
+  @override
+  String get bcImeiBody =>
+      'Dial *#06# and compare the number with the box and the receipt.';
+
+  @override
+  String get bcAccounts => 'Seller\'s accounts removed';
+
+  @override
+  String get bcAccountsBody =>
+      'Google and Samsung accounts are signed out and Find My Device is turned off; otherwise the phone may lock after a reset.';
+
+  @override
+  String get bcBody => 'No physical damage';
+
+  @override
+  String get bcBodyBody =>
+      'Inspect the frame, screen, back glass, camera lenses, buttons, ports and SIM tray for cracks, dents or signs of opening.';
+
+  @override
+  String get bcSim => 'Works with your SIM';
+
+  @override
+  String get bcSimBody =>
+      'Insert your SIM card, make a short call and check that mobile data connects.';
+
+  @override
+  String get bcCharger => 'Charges with your charger';
+
+  @override
+  String get bcChargerBody =>
+      'Connect your own charger and cable; the phone should show it is charging within a few seconds.';
+
+  @override
+  String get bcPaperwork => 'Box and receipt provided';
+
+  @override
+  String get bcPaperworkBody =>
+      'The original box and receipt help show the phone is legitimately owned and may be needed for warranty repairs.';
+
+  @override
+  String get bcReset => 'Factory reset after purchase';
+
+  @override
+  String get bcResetBody =>
+      'After paying, reset the phone yourself so that no previous data or accounts remain.';
+
+  @override
+  String get bcActionImei => 'Show IMEI';
+
+  @override
+  String get bcActionAccounts => 'Open accounts';
+
+  @override
+  String get upCertChecklist => 'Buyer\'s checklist';
+
+  @override
+  String get upCertConfirmed => 'Confirmed by buyer';
+
+  @override
+  String get upCertNotConfirmed => 'Not confirmed';
 }
