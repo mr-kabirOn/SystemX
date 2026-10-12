@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="sx_ink">#FF0B0E17</color>
+    <color name="sx_paper">#FFF5F6FB</color>
     <color name="ic_launcher_background">#FF0B0E17</color>
 </resources>

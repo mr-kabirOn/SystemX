@@ -18,7 +18,7 @@ enum RefreshRate {
 class AppSettings {
   const AppSettings({
     this.onboardingDone = false,
-    this.themeMode = ThemeMode.dark,
+    this.themeMode = ThemeMode.light,
     this.pureBlack = false,
     this.dynamicColor = false,
     this.tempUnit = TempUnit.celsius,
@@ -102,7 +102,7 @@ class SettingsNotifier extends Notifier<AppSettings> {
 
     return AppSettings(
       onboardingDone: p.getBool(_kOnboarding) ?? false,
-      themeMode: pick(ThemeMode.values, _kTheme, ThemeMode.dark),
+      themeMode: pick(ThemeMode.values, _kTheme, ThemeMode.light),
       pureBlack: p.getBool(_kPureBlack) ?? false,
       dynamicColor: p.getBool(_kDynamic) ?? false,
       tempUnit: pick(TempUnit.values, _kTemp, TempUnit.celsius),

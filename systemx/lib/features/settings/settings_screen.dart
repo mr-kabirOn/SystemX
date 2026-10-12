@@ -196,8 +196,8 @@ class SettingsScreen extends ConsumerWidget {
               ),
               ListTile(
                 title: Text(l.privacyPolicy),
-                trailing: const Icon(Icons.open_in_new_rounded),
-                onTap: () => ref.read(deviceApiProvider).openLink(AppLinks.privacyPolicy),
+                trailing: const Icon(Icons.chevron_right_rounded),
+                onTap: () => context.push(Routes.policy),
               ),
               if (AppLinks.feedbackEmail.isNotEmpty)
                 ListTile(

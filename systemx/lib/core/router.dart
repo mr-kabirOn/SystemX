@@ -13,6 +13,7 @@ import '../features/live/live_screens.dart';
 import '../features/live/wifi_meter.dart';
 import '../features/monitor/monitor_screen.dart';
 import '../features/onboarding/onboarding_screen.dart';
+import '../features/settings/policy_screen.dart';
 import '../features/settings/privacy_screen.dart';
 import '../features/settings/settings_screen.dart';
 import '../features/shell/app_shell.dart';
@@ -32,6 +33,7 @@ abstract final class Routes {
   static const monitor = '/monitor';
   static const settings = '/settings';
   static const privacy = '/settings/privacy';
+  static const policy = '/settings/policy';
   static const alerts = '/settings/alerts';
   static const sessions = '/sessions';
   static const wifiMeter = '/tools/wifi';
@@ -126,6 +128,7 @@ final routerProvider = Provider<GoRouter>((ref) {
         builder: (_, _) => const SettingsScreen(),
         routes: [
           GoRoute(path: 'privacy', builder: (_, _) => const PrivacyScreen()),
+          GoRoute(path: 'policy', builder: (_, _) => const PolicyScreen()),
           GoRoute(path: 'alerts', builder: (_, _) => const AlertsScreen()),
         ],
       ),

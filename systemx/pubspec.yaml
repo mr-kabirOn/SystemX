@@ -40,6 +40,7 @@ flutter:
   assets:
     - assets/fonts/OFL-Inter.txt
     - assets/fonts/OFL-NotoSansBengali.txt
+    - assets/privacy/
 
   fonts:
     - family: Inter

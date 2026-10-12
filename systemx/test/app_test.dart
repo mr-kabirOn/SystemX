@@ -36,23 +36,23 @@ void main() {
   });
 
   group('settings', () {
-    test('defaults to dark theme and Celsius', () async {
+    test('defaults to light theme and Celsius', () async {
       final c = await _container();
       final s = c.read(settingsProvider);
-      expect(s.themeMode, ThemeMode.dark);
+      expect(s.themeMode, ThemeMode.light);
       expect(s.tempUnit, TempUnit.celsius);
       expect(s.onboardingDone, isFalse);
     });
 
     test('changes persist across a restart', () async {
       final c1 = await _container();
-      await c1.read(settingsProvider.notifier).setThemeMode(ThemeMode.light);
+      await c1.read(settingsProvider.notifier).setThemeMode(ThemeMode.dark);
       await c1.read(settingsProvider.notifier).setLocale('bn');
       await c1.read(settingsProvider.notifier).completeOnboarding();
 
       final c2 = await _container();
       final s = c2.read(settingsProvider);
-      expect(s.themeMode, ThemeMode.light);
+      expect(s.themeMode, ThemeMode.dark);
       expect(s.localeCode, 'bn');
       expect(s.onboardingDone, isTrue);
 

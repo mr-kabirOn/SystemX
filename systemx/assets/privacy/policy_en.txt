@@ -1,0 +1,34 @@
+# SystemX privacy policy
+Effective 12 October 2026
+SystemX shows information about your Android phone and tests its hardware. It is built so that your data stays on your phone.
+## The short version
+- SystemX has no account, no ads, no analytics and no tracking.
+- SystemX does not have internet access. It cannot send anything anywhere.
+- Everything it reads or records stays on your phone, unless you choose to share a spec sheet or a report yourself.
+## What SystemX reads
+To show device information and live readings, SystemX reads what Android makes available to apps: model and system version, processor, memory, storage, battery, display, network status, SIM and mobile network details, cameras, sensors, media capabilities and security settings. It does not read your contacts, messages, call logs, photos, files, phone number, IMEI or location history.
+The Apps screen lists the apps that appear on your home screen, with their names, versions and icons, so you can open each one's settings.
+## Permissions, and when they are used
+SystemX works without any of these. Each one is asked for only when you open the feature that needs it, after an explanation, and you can say no.
+- Location: Android only shows the Wi-Fi network name to apps with this permission; also used during the GPS test. SystemX never records or stores your location.
+- Phone: to show SIM slots, carrier names and the mobile network type. It is not used to make calls or read your phone number.
+- Camera: only during the camera test. The photo is shown on screen and deleted when the test ends.
+- Microphone: only during the microphone tests. A few seconds are recorded, played back once and discarded.
+- Notifications: only for the alerts and live status you turn on.
+- Usage access: only to show how much storage each app and its cache use on the Apps screen. SystemX does not read which apps you use or for how long.
+Fingerprint and face checks use Android's own prompt. SystemX only learns whether it matched; it never receives biometric data.
+## What SystemX stores on your phone
+- Your settings.
+- Battery, temperature and memory history for the last 8 days, and a log of recent charging sessions, if the app has run in the background.
+- Your hardware test results and checkup reports.
+This data is kept in the app's private storage, protected by Android. You can delete it any time in Settings, Clear all history, and uninstalling the app removes everything. Android's own backup may include your SystemX settings in your Google account backup, as it does for other apps; history and test results are excluded.
+## Sharing
+SystemX shares nothing on its own. If you tap Share on a spec sheet or a report, Android's share menu opens and you choose where it goes. What happens next is up to the app you pick.
+## Google Play
+If you installed SystemX from Google Play, the Play Store app may show a rating request or offer an update. These are handled entirely by Google Play under Google's privacy policy. Crash and performance statistics Google collects for all apps (Android vitals) follow your device settings.
+## Children
+SystemX is not directed at children under 13 and collects no personal information from anyone.
+## Changes
+If this policy changes, the new version will be shown here with a new date.
+## Contact
+Questions about this policy can be sent to the developer email shown on the SystemX page in Google Play.
