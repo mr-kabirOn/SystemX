@@ -1,42 +1,15 @@
 // Renders the Play Store icon (512×512) and feature graphic (1024×500).
 // Run:  flutter test screenshots --update-goldens
 import 'dart:io';
-import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:systemx/ui/widgets/logo_mark.dart';
 
 const _ink = Color(0xFF0B0E17);
-const _signal = Color(0xFF8E99FF);
 const _signalDeep = Color(0xFF4553E0);
 const _white = Color(0xFFECEEF8);
-
-/// The SystemX mark: a 270° gauge ring around an X (same as the launcher
-/// icon vector, drawn at any size).
-class MarkPainter extends CustomPainter {
-  @override
-  void paint(Canvas canvas, Size size) {
-    final s = size.shortestSide / 52; // mark spans 52 units in the vector
-    final c = size.center(Offset.zero);
-    final stroke = Paint()
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = 6 * s
-      ..strokeCap = StrokeCap.round;
-    final rect = Rect.fromCircle(center: c, radius: 23 * s);
-    canvas.drawCircle(c, 23 * s, stroke..color = _signal.withValues(alpha: 0.22));
-    canvas.drawArc(rect, -math.pi / 2, math.pi * 1.5, false, stroke..color = _signal);
-    final x = Paint()
-      ..strokeWidth = 6 * s
-      ..strokeCap = StrokeCap.round
-      ..color = _white;
-    canvas.drawLine(c + Offset(-8 * s, -8 * s), c + Offset(8 * s, 8 * s), x);
-    canvas.drawLine(c + Offset(8 * s, -8 * s), c + Offset(-8 * s, 8 * s), x);
-  }
-
-  @override
-  bool shouldRepaint(MarkPainter old) => false;
-}
 
 Future<void> _font(String family, String path) async {
   final bytes = File(path).readAsBytesSync();
@@ -65,8 +38,8 @@ void main() {
       'icon_512',
       Container(
         color: _ink,
-        padding: const EdgeInsets.all(96),
-        child: CustomPaint(painter: MarkPainter()),
+        padding: const EdgeInsets.all(72),
+        child: const LogoMark(size: 368),
       ),
     );
 
@@ -75,16 +48,10 @@ void main() {
       const Size(1024, 500),
       'feature_1024x500',
       Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [Color(0xFF1B2150), _ink],
-          ),
-        ),
+        color: _ink,
         padding: const EdgeInsets.symmetric(horizontal: 72),
         child: Row(children: [
-          SizedBox(width: 220, height: 220, child: CustomPaint(painter: MarkPainter())),
+          const LogoMark(size: 240),
           const SizedBox(width: 56),
           Expanded(
             child: Column(

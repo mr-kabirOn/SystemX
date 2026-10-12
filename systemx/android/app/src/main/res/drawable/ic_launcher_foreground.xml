@@ -1,24 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- SystemX mark: a gauge ring (270°) around an X. Content stays inside the
-     adaptive-icon safe zone (radius 33 around the 54,54 center). -->
+<!-- SystemX mark: a phone with a live pulse running through it, for device
+     health and monitoring. The flat line cuts a gap in the outline where
+     it crosses. Content stays inside the adaptive-icon safe zone (radius 33
+     around the 54,54 center). Keep in sync with lib/ui/widgets/logo_mark.dart. -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="108dp"
     android:height="108dp"
     android:viewportWidth="108"
     android:viewportHeight="108">
     <path
-        android:pathData="M54,28 A26,26 0 1,1 54,80 A26,26 0 1,1 54,28"
-        android:strokeWidth="6"
-        android:strokeAlpha="0.22"
-        android:strokeColor="#FF8E99FF" />
+        android:pathData="M47,27 H61 A8,8 0 0,1 69,35 V73 A8,8 0 0,1 61,81 H47 A8,8 0 0,1 39,73 V35 A8,8 0 0,1 47,27 Z"
+        android:strokeWidth="5"
+        android:strokeColor="#FFECEEF8" />
     <path
-        android:pathData="M54,28 A26,26 0 1,1 28,54"
-        android:strokeWidth="6"
-        android:strokeLineCap="round"
-        android:strokeColor="#FF8E99FF" />
-    <path
-        android:pathData="M46,46 L62,62 M62,46 L46,62"
-        android:strokeWidth="6"
+        android:pathData="M51,33.5 H57"
+        android:strokeWidth="3"
         android:strokeLineCap="round"
         android:strokeColor="#FFECEEF8" />
+    <path
+        android:pathData="M25,58 H44 M63.5,58 H83"
+        android:strokeWidth="12"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:strokeColor="#FF0B0E17" />
+    <path
+        android:pathData="M25,58 H44 L48,51 L52.5,66 L56.5,41 L60.5,62 L63.5,58 H83"
+        android:strokeWidth="5"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:strokeColor="#FF33D1E5" />
 </vector>

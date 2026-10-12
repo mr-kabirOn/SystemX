@@ -7,6 +7,7 @@ import '../../core/settings/settings.dart';
 import '../../core/theme/sx_colors.dart';
 import '../../l10n/app_localizations.dart';
 import '../../ui/sx_icons.dart';
+import '../../ui/widgets/logo_mark.dart';
 import '../../ui/widgets/cards.dart';
 import '../../ui/widgets/gauges.dart';
 
@@ -141,7 +142,7 @@ class _RingsArt extends StatelessWidget {
       GaugeRing(value: 0.64, color: sx.ram, size: 196, stroke: 14),
       GaugeRing(value: 0.48, color: sx.cpu, size: 152, stroke: 14),
       GaugeRing(value: 0.7, color: sx.network, size: 108, stroke: 14),
-      Icon(SxIcons.device, size: 38, color: sx.ink),
+      LogoMark(size: 50, background: sx.bg, ink: sx.ink),
     ]);
   }
 }
