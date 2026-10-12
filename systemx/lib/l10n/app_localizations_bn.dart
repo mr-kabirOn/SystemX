@@ -2737,4 +2737,118 @@ class AppLocalizationsBn extends AppLocalizations {
   @override
   String get bhHow =>
       'ক্যাপাসিটি হলো যত চার্জ ঢুকেছে তাকে যত শতাংশ বেড়েছে তা দিয়ে ভাগ, ব্যাটারির নিজস্ব কাউন্টারে মাপা। এটি আনুমানিক: তাপ, ফাস্ট চার্জিং আর ফোনের ক্যালিব্রেশনে কয়েক শতাংশ এদিক-ওদিক হতে পারে।';
+
+  @override
+  String get toolsTitle => 'টুলস';
+
+  @override
+  String get stTitle => 'সিপিইউ স্ট্রেস টেস্ট';
+
+  @override
+  String get stEntryBody => 'গরম হলে ফোন কি ধীর হয়ে যায়?';
+
+  @override
+  String get stIntro =>
+      'প্রসেসরের সব কোর পূর্ণ গতিতে চালায় আর দেখে ফোন গরম হওয়ার সাথে পারফরম্যান্স ঠিক থাকে কিনা।';
+
+  @override
+  String get stSafety =>
+      'ফোন গরম হবে। ব্যাটারি ৪৫ °C-এ পৌঁছালে, অ্যান্ড্রয়েড অতিরিক্ত গরম জানালে, ব্যাটারি ১৫%-এর নিচে নামলে বা এই স্ক্রিন ছেড়ে গেলে টেস্ট নিজে থেকেই থামবে। যেকোনো সময় থামাতে পারেন।';
+
+  @override
+  String stMinutes(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count মিনিট',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get stStart => 'টেস্ট শুরু করুন';
+
+  @override
+  String get stAgain => 'আবার চালান';
+
+  @override
+  String get stStop => 'থামান';
+
+  @override
+  String get stRefusedHot =>
+      'ফোন এখনই গরম। কয়েক মিনিট ঠান্ডা হতে দিন, তারপর আবার চেষ্টা করুন।';
+
+  @override
+  String get stRefusedBattery =>
+      'ব্যাটারি ২০%-এর নিচে। চার্জার লাগান বা আগে চার্জ দিন।';
+
+  @override
+  String stRunning(int seconds) {
+    return 'চলছে · আর $seconds সেকেন্ড';
+  }
+
+  @override
+  String get stPerformance => 'পারফরম্যান্স';
+
+  @override
+  String get stPerfAxis => 'পারফরম্যান্স (শুরু = ১০০%)';
+
+  @override
+  String get stTempAxis => 'ব্যাটারির তাপমাত্রা';
+
+  @override
+  String get stSteady => 'লোডেও দ্রুত থাকে';
+
+  @override
+  String get stSteadyBody => 'ফোন গরম হওয়ার সময়ও পারফরম্যান্স স্থির ছিল।';
+
+  @override
+  String get stSlight => 'গরম হলে একটু ধীর হয়';
+
+  @override
+  String get stSlightBody =>
+      'ঠান্ডা থাকতে ফোন গতি সামান্য কমিয়েছে। বেশিরভাগ ফোনে এটা স্বাভাবিক।';
+
+  @override
+  String get stThrottles => 'গরম হলে অনেক ধীর হয়';
+
+  @override
+  String get stThrottlesBody =>
+      'গরম হওয়ার সাথে পারফরম্যান্স বেশ কমে গেছে। লম্বা গেম বা ভিডিও কলে আটকাতে পারে, বিশেষ করে কভার লাগানো থাকলে বা চার্জের সময়।';
+
+  @override
+  String get stTooShort => 'যথেষ্ট তথ্য নেই';
+
+  @override
+  String get stTooShortBody => 'ফলাফল দিতে টেস্টের অন্তত ৩০ সেকেন্ড লাগে।';
+
+  @override
+  String get stStoppedHot =>
+      'ফোন রক্ষায় আগেই থামানো হয়েছে: বেশি গরম হয়ে গিয়েছিল।';
+
+  @override
+  String get stStoppedBattery => 'আগেই থামানো হয়েছে: ব্যাটারি কম।';
+
+  @override
+  String get stStoppedLeft => 'অ্যাপ ব্যাকগ্রাউন্ডে যাওয়ায় থেমেছে।';
+
+  @override
+  String get stStoppedError => 'থেমেছে: রিডিং পাওয়া যায়নি।';
+
+  @override
+  String get stRetained => 'শেষে পারফরম্যান্স';
+
+  @override
+  String get stBatteryTemp => 'ব্যাটারির তাপমাত্রা';
+
+  @override
+  String get stCpuPeak => 'প্রসেসরের সর্বোচ্চ তাপমাত্রা';
+
+  @override
+  String get stDuration => 'সময়';
+
+  @override
+  String stSeconds(int seconds) {
+    return '$seconds সেকেন্ড';
+  }
 }

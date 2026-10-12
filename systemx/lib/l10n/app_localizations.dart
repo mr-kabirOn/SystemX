@@ -5041,6 +5041,198 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Capacity is the charge that went in divided by the percent gained, measured by the battery\'s own counter. It is an estimate: heat, fast charging and the phone\'s calibration can move it a few percent.'**
   String get bhHow;
+
+  /// No description provided for @toolsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Tools'**
+  String get toolsTitle;
+
+  /// No description provided for @stTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'CPU stress test'**
+  String get stTitle;
+
+  /// No description provided for @stEntryBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Does the phone slow down when it gets hot?'**
+  String get stEntryBody;
+
+  /// No description provided for @stIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Runs every processor core at full speed and watches whether performance holds as the phone warms up.'**
+  String get stIntro;
+
+  /// No description provided for @stSafety.
+  ///
+  /// In en, this message translates to:
+  /// **'The phone will get warm. The test stops on its own if the battery reaches 45 °C, Android reports severe heat, the battery drops below 15%, or you leave this screen. Stop it any time.'**
+  String get stSafety;
+
+  /// No description provided for @stMinutes.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 minute} other{{count} minutes}}'**
+  String stMinutes(int count);
+
+  /// No description provided for @stStart.
+  ///
+  /// In en, this message translates to:
+  /// **'Start test'**
+  String get stStart;
+
+  /// No description provided for @stAgain.
+  ///
+  /// In en, this message translates to:
+  /// **'Run again'**
+  String get stAgain;
+
+  /// No description provided for @stStop.
+  ///
+  /// In en, this message translates to:
+  /// **'Stop'**
+  String get stStop;
+
+  /// No description provided for @stRefusedHot.
+  ///
+  /// In en, this message translates to:
+  /// **'The phone is already warm. Let it cool down for a few minutes, then try again.'**
+  String get stRefusedHot;
+
+  /// No description provided for @stRefusedBattery.
+  ///
+  /// In en, this message translates to:
+  /// **'Battery is below 20%. Plug in the charger or charge first.'**
+  String get stRefusedBattery;
+
+  /// No description provided for @stRunning.
+  ///
+  /// In en, this message translates to:
+  /// **'Running · {seconds} s left'**
+  String stRunning(int seconds);
+
+  /// No description provided for @stPerformance.
+  ///
+  /// In en, this message translates to:
+  /// **'Performance'**
+  String get stPerformance;
+
+  /// No description provided for @stPerfAxis.
+  ///
+  /// In en, this message translates to:
+  /// **'Performance (start = 100%)'**
+  String get stPerfAxis;
+
+  /// No description provided for @stTempAxis.
+  ///
+  /// In en, this message translates to:
+  /// **'Battery temperature'**
+  String get stTempAxis;
+
+  /// No description provided for @stSteady.
+  ///
+  /// In en, this message translates to:
+  /// **'Stays fast under load'**
+  String get stSteady;
+
+  /// No description provided for @stSteadyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Performance held steady as the phone warmed up.'**
+  String get stSteadyBody;
+
+  /// No description provided for @stSlight.
+  ///
+  /// In en, this message translates to:
+  /// **'Slows down a little when hot'**
+  String get stSlight;
+
+  /// No description provided for @stSlightBody.
+  ///
+  /// In en, this message translates to:
+  /// **'The phone eased off to stay cool. This is normal for most phones.'**
+  String get stSlightBody;
+
+  /// No description provided for @stThrottles.
+  ///
+  /// In en, this message translates to:
+  /// **'Slows down a lot when hot'**
+  String get stThrottles;
+
+  /// No description provided for @stThrottlesBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Performance dropped noticeably as it warmed up. Long games or video calls may stutter, especially in a case or while charging.'**
+  String get stThrottlesBody;
+
+  /// No description provided for @stTooShort.
+  ///
+  /// In en, this message translates to:
+  /// **'Not enough data'**
+  String get stTooShort;
+
+  /// No description provided for @stTooShortBody.
+  ///
+  /// In en, this message translates to:
+  /// **'The test needs at least 30 seconds to give a result.'**
+  String get stTooShortBody;
+
+  /// No description provided for @stStoppedHot.
+  ///
+  /// In en, this message translates to:
+  /// **'Stopped early to protect the phone: it got too warm.'**
+  String get stStoppedHot;
+
+  /// No description provided for @stStoppedBattery.
+  ///
+  /// In en, this message translates to:
+  /// **'Stopped early: the battery is low.'**
+  String get stStoppedBattery;
+
+  /// No description provided for @stStoppedLeft.
+  ///
+  /// In en, this message translates to:
+  /// **'Stopped because the app went to the background.'**
+  String get stStoppedLeft;
+
+  /// No description provided for @stStoppedError.
+  ///
+  /// In en, this message translates to:
+  /// **'Stopped: readings weren\'t available.'**
+  String get stStoppedError;
+
+  /// No description provided for @stRetained.
+  ///
+  /// In en, this message translates to:
+  /// **'Performance at the end'**
+  String get stRetained;
+
+  /// No description provided for @stBatteryTemp.
+  ///
+  /// In en, this message translates to:
+  /// **'Battery temperature'**
+  String get stBatteryTemp;
+
+  /// No description provided for @stCpuPeak.
+  ///
+  /// In en, this message translates to:
+  /// **'Highest processor temperature'**
+  String get stCpuPeak;
+
+  /// No description provided for @stDuration.
+  ///
+  /// In en, this message translates to:
+  /// **'Duration'**
+  String get stDuration;
+
+  /// No description provided for @stSeconds.
+  ///
+  /// In en, this message translates to:
+  /// **'{seconds} s'**
+  String stSeconds(int seconds);
 }
 
 class _AppLocalizationsDelegate

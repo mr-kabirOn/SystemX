@@ -2170,6 +2170,85 @@ class LiveStats {
   }
 }
 
+/// Hardware actions for the diagnostics.
+/// One reading from the CPU stress test.
+class StressSample {
+  StressSample({
+    required this.elapsedMs,
+    required this.workPerSec,
+    required this.batteryTempC,
+    this.cpuTempC,
+    required this.thermalStatus,
+    required this.running,
+    this.stopReason,
+  });
+
+  int elapsedMs;
+
+  /// Work units finished per second across all cores since the last sample.
+  double workPerSec;
+
+  double batteryTempC;
+
+  double? cpuTempC;
+
+  int thermalStatus;
+
+  bool running;
+
+  /// Why it stopped: "done", "user", "hot", "battery", "left" or "error".
+  String? stopReason;
+
+  List<Object?> _toList() {
+    return <Object?>[
+      elapsedMs,
+      workPerSec,
+      batteryTempC,
+      cpuTempC,
+      thermalStatus,
+      running,
+      stopReason,
+    ];
+  }
+
+  Object encode() {
+    return _toList();  }
+
+  static StressSample decode(Object result) {
+    result as List<Object?>;
+    return StressSample(
+      elapsedMs: result[0]! as int,
+      workPerSec: result[1]! as double,
+      batteryTempC: result[2]! as double,
+      cpuTempC: result[3] as double?,
+      thermalStatus: result[4]! as int,
+      running: result[5]! as bool,
+      stopReason: result[6] as String?,
+    );
+  }
+
+  @override
+  // ignore: avoid_equals_and_hash_code_on_mutable_classes
+  bool operator ==(Object other) {
+    if (other is! StressSample || other.runtimeType != runtimeType) {
+      return false;
+    }
+    if (identical(this, other)) {
+      return true;
+    }
+    return _deepEquals(elapsedMs, other.elapsedMs) && _deepEquals(workPerSec, other.workPerSec) && _deepEquals(batteryTempC, other.batteryTempC) && _deepEquals(cpuTempC, other.cpuTempC) && _deepEquals(thermalStatus, other.thermalStatus) && _deepEquals(running, other.running) && _deepEquals(stopReason, other.stopReason);
+  }
+
+  @override
+  // ignore: avoid_equals_and_hash_code_on_mutable_classes
+  int get hashCode => _deepHash(<Object?>[runtimeType, ..._toList()]);
+
+  @override
+  String toString() {
+    return 'StressSample(elapsedMs: $elapsedMs, workPerSec: $workPerSec, batteryTempC: $batteryTempC, cpuTempC: $cpuTempC, thermalStatus: $thermalStatus, running: $running, stopReason: $stopReason)';
+  }
+}
+
 /// Alerts, live status and values the background code needs from the app.
 /// Stored natively so workers and receivers can read it without Flutter.
 class BackgroundConfig {
@@ -2517,14 +2596,17 @@ class _PigeonCodec extends StandardMessageCodec {
     }    else if (value is LiveStats) {
       buffer.putUint8(149);
       writeValue(buffer, value.encode());
-    }    else if (value is BackgroundConfig) {
+    }    else if (value is StressSample) {
       buffer.putUint8(150);
       writeValue(buffer, value.encode());
-    }    else if (value is HistorySample) {
+    }    else if (value is BackgroundConfig) {
       buffer.putUint8(151);
       writeValue(buffer, value.encode());
-    }    else if (value is ChargeSession) {
+    }    else if (value is HistorySample) {
       buffer.putUint8(152);
+      writeValue(buffer, value.encode());
+    }    else if (value is ChargeSession) {
+      buffer.putUint8(153);
       writeValue(buffer, value.encode());
     } else {
       super.writeValue(buffer, value);
@@ -2577,10 +2659,12 @@ class _PigeonCodec extends StandardMessageCodec {
       case 149:
         return LiveStats.decode(readValue(buffer)!);
       case 150:
-        return BackgroundConfig.decode(readValue(buffer)!);
+        return StressSample.decode(readValue(buffer)!);
       case 151:
-        return HistorySample.decode(readValue(buffer)!);
+        return BackgroundConfig.decode(readValue(buffer)!);
       case 152:
+        return HistorySample.decode(readValue(buffer)!);
+      case 153:
         return ChargeSession.decode(readValue(buffer)!);
       default:
         return super.readValueOfType(type, buffer);
@@ -3081,7 +3165,6 @@ class PermissionApi {
   }
 }
 
-/// Hardware actions for the diagnostics.
 class HardwareTestApi {
   /// Constructor for [HardwareTestApi]. The [binaryMessenger] named argument is
   /// available for dependency injection. If it is left null, the default
@@ -3328,6 +3411,103 @@ class HardwareTestApi {
     )
     ;
     return pigeonVar_replyValue! as bool;
+  }
+
+  /// Starts the CPU stress test. Returns null when started, or why it
+  /// won't start: "hot" (already warm) or "battery" (too low).
+  Future<String?> startStress(int durationMs) async {
+    final pigeonVar_channelName = 'dev.flutter.pigeon.systemx.HardwareTestApi.startStress$pigeonVar_messageChannelSuffix';
+    final pigeonVar_channel = BasicMessageChannel<Object?>(
+      pigeonVar_channelName,
+      pigeonChannelCodec,
+      binaryMessenger: pigeonVar_binaryMessenger,
+    );
+    final Future<Object?> pigeonVar_sendFuture = pigeonVar_channel.send(<Object?>[durationMs]);
+    final pigeonVar_replyList = await pigeonVar_sendFuture as List<Object?>?;
+
+    final Object? pigeonVar_replyValue = _extractReplyValueOrThrow(
+        pigeonVar_replyList,
+        pigeonVar_channelName,
+        isNullValid: true,
+    )
+    ;
+    return pigeonVar_replyValue as String?;
+  }
+
+  /// The latest reading; also tells the runner the screen is still open.
+  Future<StressSample> stressSample() async {
+    final pigeonVar_channelName = 'dev.flutter.pigeon.systemx.HardwareTestApi.stressSample$pigeonVar_messageChannelSuffix';
+    final pigeonVar_channel = BasicMessageChannel<Object?>(
+      pigeonVar_channelName,
+      pigeonChannelCodec,
+      binaryMessenger: pigeonVar_binaryMessenger,
+    );
+    final Future<Object?> pigeonVar_sendFuture = pigeonVar_channel.send(null);
+    final pigeonVar_replyList = await pigeonVar_sendFuture as List<Object?>?;
+
+    final Object? pigeonVar_replyValue = _extractReplyValueOrThrow(
+        pigeonVar_replyList,
+        pigeonVar_channelName,
+        isNullValid: false,
+    )
+    ;
+    return pigeonVar_replyValue! as StressSample;
+  }
+
+  Future<void> stopStress() async {
+    final pigeonVar_channelName = 'dev.flutter.pigeon.systemx.HardwareTestApi.stopStress$pigeonVar_messageChannelSuffix';
+    final pigeonVar_channel = BasicMessageChannel<Object?>(
+      pigeonVar_channelName,
+      pigeonChannelCodec,
+      binaryMessenger: pigeonVar_binaryMessenger,
+    );
+    final Future<Object?> pigeonVar_sendFuture = pigeonVar_channel.send(null);
+    final pigeonVar_replyList = await pigeonVar_sendFuture as List<Object?>?;
+
+    _extractReplyValueOrThrow(
+        pigeonVar_replyList,
+        pigeonVar_channelName,
+        isNullValid: true,
+    )
+    ;
+  }
+
+  /// Keeps the screen on while a test runs.
+  Future<void> keepScreenOn(bool on) async {
+    final pigeonVar_channelName = 'dev.flutter.pigeon.systemx.HardwareTestApi.keepScreenOn$pigeonVar_messageChannelSuffix';
+    final pigeonVar_channel = BasicMessageChannel<Object?>(
+      pigeonVar_channelName,
+      pigeonChannelCodec,
+      binaryMessenger: pigeonVar_binaryMessenger,
+    );
+    final Future<Object?> pigeonVar_sendFuture = pigeonVar_channel.send(<Object?>[on]);
+    final pigeonVar_replyList = await pigeonVar_sendFuture as List<Object?>?;
+
+    _extractReplyValueOrThrow(
+        pigeonVar_replyList,
+        pigeonVar_channelName,
+        isNullValid: true,
+    )
+    ;
+  }
+
+  /// Asks for the display's highest refresh rate (true) or the default.
+  Future<void> preferHighRefresh(bool high) async {
+    final pigeonVar_channelName = 'dev.flutter.pigeon.systemx.HardwareTestApi.preferHighRefresh$pigeonVar_messageChannelSuffix';
+    final pigeonVar_channel = BasicMessageChannel<Object?>(
+      pigeonVar_channelName,
+      pigeonChannelCodec,
+      binaryMessenger: pigeonVar_binaryMessenger,
+    );
+    final Future<Object?> pigeonVar_sendFuture = pigeonVar_channel.send(<Object?>[high]);
+    final pigeonVar_replyList = await pigeonVar_sendFuture as List<Object?>?;
+
+    _extractReplyValueOrThrow(
+        pigeonVar_replyList,
+        pigeonVar_channelName,
+        isNullValid: true,
+    )
+    ;
   }
 }
 

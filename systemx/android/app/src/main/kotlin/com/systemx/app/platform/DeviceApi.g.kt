@@ -1884,6 +1884,74 @@ data class LiveStats (
 }
 
 /**
+ * Hardware actions for the diagnostics.
+ * One reading from the CPU stress test.
+ *
+ * Generated class from Pigeon that represents data sent in messages.
+ */
+data class StressSample (
+  val elapsedMs: Long,
+  /** Work units finished per second across all cores since the last sample. */
+  val workPerSec: Double,
+  val batteryTempC: Double,
+  val cpuTempC: Double? = null,
+  val thermalStatus: Long,
+  val running: Boolean,
+  /** Why it stopped: "done", "user", "hot", "battery", "left" or "error". */
+  val stopReason: String? = null
+)
+ {
+  companion object {
+    fun fromList(pigeonVar_list: List<Any?>): StressSample {
+      val elapsedMs = pigeonVar_list[0] as Long
+      val workPerSec = pigeonVar_list[1] as Double
+      val batteryTempC = pigeonVar_list[2] as Double
+      val cpuTempC = pigeonVar_list[3] as Double?
+      val thermalStatus = pigeonVar_list[4] as Long
+      val running = pigeonVar_list[5] as Boolean
+      val stopReason = pigeonVar_list[6] as String?
+      return StressSample(elapsedMs, workPerSec, batteryTempC, cpuTempC, thermalStatus, running, stopReason)
+    }
+  }
+  fun toList(): List<Any?> {
+    return listOf(
+      elapsedMs,
+      workPerSec,
+      batteryTempC,
+      cpuTempC,
+      thermalStatus,
+      running,
+      stopReason,
+    )
+  }
+  override fun equals(other: Any?): Boolean {
+    if (other == null || other.javaClass != javaClass) {
+      return false
+    }
+    if (this === other) {
+      return true
+    }
+    val other = other as StressSample
+    return DeviceApiPigeonUtils.deepEquals(this.elapsedMs, other.elapsedMs) && DeviceApiPigeonUtils.deepEquals(this.workPerSec, other.workPerSec) && DeviceApiPigeonUtils.deepEquals(this.batteryTempC, other.batteryTempC) && DeviceApiPigeonUtils.deepEquals(this.cpuTempC, other.cpuTempC) && DeviceApiPigeonUtils.deepEquals(this.thermalStatus, other.thermalStatus) && DeviceApiPigeonUtils.deepEquals(this.running, other.running) && DeviceApiPigeonUtils.deepEquals(this.stopReason, other.stopReason)
+  }
+
+  override fun hashCode(): Int {
+    var result = javaClass.hashCode()
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.elapsedMs)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.workPerSec)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.batteryTempC)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.cpuTempC)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.thermalStatus)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.running)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.stopReason)
+    return result
+  }
+  override fun toString(): String {
+    return "StressSample(elapsedMs=$elapsedMs, workPerSec=$workPerSec, batteryTempC=$batteryTempC, cpuTempC=$cpuTempC, thermalStatus=$thermalStatus, running=$running, stopReason=$stopReason)"
+  }
+}
+
+/**
  * Alerts, live status and values the background code needs from the app.
  * Stored natively so workers and receivers can read it without Flutter.
  *
@@ -2225,15 +2293,20 @@ private open class DeviceApiPigeonCodec : StandardMessageCodec() {
       }
       150.toByte() -> {
         return (readValue(buffer) as? List<Any?>)?.let {
-          BackgroundConfig.fromList(it)
+          StressSample.fromList(it)
         }
       }
       151.toByte() -> {
         return (readValue(buffer) as? List<Any?>)?.let {
-          HistorySample.fromList(it)
+          BackgroundConfig.fromList(it)
         }
       }
       152.toByte() -> {
+        return (readValue(buffer) as? List<Any?>)?.let {
+          HistorySample.fromList(it)
+        }
+      }
+      153.toByte() -> {
         return (readValue(buffer) as? List<Any?>)?.let {
           ChargeSession.fromList(it)
         }
@@ -2327,16 +2400,20 @@ private open class DeviceApiPigeonCodec : StandardMessageCodec() {
         stream.write(149)
         writeValue(stream, value.toList())
       }
-      is BackgroundConfig -> {
+      is StressSample -> {
         stream.write(150)
         writeValue(stream, value.toList())
       }
-      is HistorySample -> {
+      is BackgroundConfig -> {
         stream.write(151)
         writeValue(stream, value.toList())
       }
-      is ChargeSession -> {
+      is HistorySample -> {
         stream.write(152)
+        writeValue(stream, value.toList())
+      }
+      is ChargeSession -> {
+        stream.write(153)
         writeValue(stream, value.toList())
       }
       else -> super.writeValue(stream, value)
@@ -2793,11 +2870,7 @@ interface PermissionApi {
     }
   }
 }
-/**
- * Hardware actions for the diagnostics.
- *
- * Generated interface from Pigeon that represents a handler of messages from Flutter.
- */
+/** Generated interface from Pigeon that represents a handler of messages from Flutter. */
 interface HardwareTestApi {
   /** Vibrates with alternating on/off durations in milliseconds. */
   fun vibrate(pattern: List<Long>)
@@ -2826,6 +2899,18 @@ interface HardwareTestApi {
   fun authenticate(title: String, subtitle: String, cancel: String, callback: (Result<String>) -> Unit)
   /** Asks where to save a file (system file picker); false if cancelled. */
   fun saveDocument(fileName: String, mimeType: String, bytes: ByteArray, callback: (Result<Boolean>) -> Unit)
+  /**
+   * Starts the CPU stress test. Returns null when started, or why it
+   * won't start: "hot" (already warm) or "battery" (too low).
+   */
+  fun startStress(durationMs: Long): String?
+  /** The latest reading; also tells the runner the screen is still open. */
+  fun stressSample(): StressSample
+  fun stopStress()
+  /** Keeps the screen on while a test runs. */
+  fun keepScreenOn(on: Boolean)
+  /** Asks for the display's highest refresh rate (true) or the default. */
+  fun preferHighRefresh(high: Boolean)
 
   companion object {
     /** The codec used by HardwareTestApi. */
@@ -3051,6 +3136,90 @@ interface HardwareTestApi {
                 reply.reply(DeviceApiPigeonUtils.wrapResult(data))
               }
             }
+          }
+        } else {
+          channel.setMessageHandler(null)
+        }
+      }
+      run {
+        val channel = BasicMessageChannel<Any?>(binaryMessenger, "dev.flutter.pigeon.systemx.HardwareTestApi.startStress$separatedMessageChannelSuffix", codec)
+        if (api != null) {
+          channel.setMessageHandler { message, reply ->
+            val args = message as List<Any?>
+            val durationMsArg = args[0] as Long
+            val wrapped: List<Any?> = try {
+              listOf(api.startStress(durationMsArg))
+            } catch (exception: Throwable) {
+              DeviceApiPigeonUtils.wrapError(exception)
+            }
+            reply.reply(wrapped)
+          }
+        } else {
+          channel.setMessageHandler(null)
+        }
+      }
+      run {
+        val channel = BasicMessageChannel<Any?>(binaryMessenger, "dev.flutter.pigeon.systemx.HardwareTestApi.stressSample$separatedMessageChannelSuffix", codec)
+        if (api != null) {
+          channel.setMessageHandler { _, reply ->
+            val wrapped: List<Any?> = try {
+              listOf(api.stressSample())
+            } catch (exception: Throwable) {
+              DeviceApiPigeonUtils.wrapError(exception)
+            }
+            reply.reply(wrapped)
+          }
+        } else {
+          channel.setMessageHandler(null)
+        }
+      }
+      run {
+        val channel = BasicMessageChannel<Any?>(binaryMessenger, "dev.flutter.pigeon.systemx.HardwareTestApi.stopStress$separatedMessageChannelSuffix", codec)
+        if (api != null) {
+          channel.setMessageHandler { _, reply ->
+            val wrapped: List<Any?> = try {
+              api.stopStress()
+              listOf(null)
+            } catch (exception: Throwable) {
+              DeviceApiPigeonUtils.wrapError(exception)
+            }
+            reply.reply(wrapped)
+          }
+        } else {
+          channel.setMessageHandler(null)
+        }
+      }
+      run {
+        val channel = BasicMessageChannel<Any?>(binaryMessenger, "dev.flutter.pigeon.systemx.HardwareTestApi.keepScreenOn$separatedMessageChannelSuffix", codec)
+        if (api != null) {
+          channel.setMessageHandler { message, reply ->
+            val args = message as List<Any?>
+            val onArg = args[0] as Boolean
+            val wrapped: List<Any?> = try {
+              api.keepScreenOn(onArg)
+              listOf(null)
+            } catch (exception: Throwable) {
+              DeviceApiPigeonUtils.wrapError(exception)
+            }
+            reply.reply(wrapped)
+          }
+        } else {
+          channel.setMessageHandler(null)
+        }
+      }
+      run {
+        val channel = BasicMessageChannel<Any?>(binaryMessenger, "dev.flutter.pigeon.systemx.HardwareTestApi.preferHighRefresh$separatedMessageChannelSuffix", codec)
+        if (api != null) {
+          channel.setMessageHandler { message, reply ->
+            val args = message as List<Any?>
+            val highArg = args[0] as Boolean
+            val wrapped: List<Any?> = try {
+              api.preferHighRefresh(highArg)
+              listOf(null)
+            } catch (exception: Throwable) {
+              DeviceApiPigeonUtils.wrapError(exception)
+            }
+            reply.reply(wrapped)
           }
         } else {
           channel.setMessageHandler(null)

@@ -256,6 +256,41 @@ class HardwareTestHost(private val activity: Activity) : HardwareTestApi {
         }
     }
 
+    // ---- Stress test and display ----
+
+    private val stress = StressRunner(ctx)
+
+    override fun startStress(durationMs: Long): String? = stress.start(durationMs)
+
+    override fun stressSample(): StressSample = stress.sample()
+
+    override fun stopStress() = stress.stop()
+
+    override fun keepScreenOn(on: Boolean) {
+        if (on) {
+            activity.window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+        } else {
+            activity.window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+        }
+    }
+
+    /** Picks the fastest mode at the current resolution; 0 hands the choice back to the system. */
+    override fun preferHighRefresh(high: Boolean) {
+        val window = activity.window
+        val attrs = window.attributes
+        attrs.preferredDisplayModeId = if (high) {
+            Sys.safe {
+                @Suppress("DEPRECATION")
+                val display = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) activity.display else activity.windowManager.defaultDisplay
+                val cur = display?.mode
+                display?.supportedModes
+                    ?.filter { cur == null || (it.physicalWidth == cur.physicalWidth && it.physicalHeight == cur.physicalHeight) }
+                    ?.maxByOrNull { it.refreshRate }?.modeId
+            } ?: 0
+        } else 0
+        window.attributes = attrs
+    }
+
     // ---- Saving the report ----
 
     override fun saveDocument(fileName: String, mimeType: String, bytes: ByteArray, callback: (Result<Boolean>) -> Unit) {

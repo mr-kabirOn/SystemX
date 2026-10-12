@@ -2756,4 +2756,120 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get bhHow =>
       'Capacity is the charge that went in divided by the percent gained, measured by the battery\'s own counter. It is an estimate: heat, fast charging and the phone\'s calibration can move it a few percent.';
+
+  @override
+  String get toolsTitle => 'Tools';
+
+  @override
+  String get stTitle => 'CPU stress test';
+
+  @override
+  String get stEntryBody => 'Does the phone slow down when it gets hot?';
+
+  @override
+  String get stIntro =>
+      'Runs every processor core at full speed and watches whether performance holds as the phone warms up.';
+
+  @override
+  String get stSafety =>
+      'The phone will get warm. The test stops on its own if the battery reaches 45 °C, Android reports severe heat, the battery drops below 15%, or you leave this screen. Stop it any time.';
+
+  @override
+  String stMinutes(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count minutes',
+      one: '1 minute',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get stStart => 'Start test';
+
+  @override
+  String get stAgain => 'Run again';
+
+  @override
+  String get stStop => 'Stop';
+
+  @override
+  String get stRefusedHot =>
+      'The phone is already warm. Let it cool down for a few minutes, then try again.';
+
+  @override
+  String get stRefusedBattery =>
+      'Battery is below 20%. Plug in the charger or charge first.';
+
+  @override
+  String stRunning(int seconds) {
+    return 'Running · $seconds s left';
+  }
+
+  @override
+  String get stPerformance => 'Performance';
+
+  @override
+  String get stPerfAxis => 'Performance (start = 100%)';
+
+  @override
+  String get stTempAxis => 'Battery temperature';
+
+  @override
+  String get stSteady => 'Stays fast under load';
+
+  @override
+  String get stSteadyBody => 'Performance held steady as the phone warmed up.';
+
+  @override
+  String get stSlight => 'Slows down a little when hot';
+
+  @override
+  String get stSlightBody =>
+      'The phone eased off to stay cool. This is normal for most phones.';
+
+  @override
+  String get stThrottles => 'Slows down a lot when hot';
+
+  @override
+  String get stThrottlesBody =>
+      'Performance dropped noticeably as it warmed up. Long games or video calls may stutter, especially in a case or while charging.';
+
+  @override
+  String get stTooShort => 'Not enough data';
+
+  @override
+  String get stTooShortBody =>
+      'The test needs at least 30 seconds to give a result.';
+
+  @override
+  String get stStoppedHot =>
+      'Stopped early to protect the phone: it got too warm.';
+
+  @override
+  String get stStoppedBattery => 'Stopped early: the battery is low.';
+
+  @override
+  String get stStoppedLeft => 'Stopped because the app went to the background.';
+
+  @override
+  String get stStoppedError => 'Stopped: readings weren\'t available.';
+
+  @override
+  String get stRetained => 'Performance at the end';
+
+  @override
+  String get stBatteryTemp => 'Battery temperature';
+
+  @override
+  String get stCpuPeak => 'Highest processor temperature';
+
+  @override
+  String get stDuration => 'Duration';
+
+  @override
+  String stSeconds(int seconds) {
+    return '$seconds s';
+  }
 }

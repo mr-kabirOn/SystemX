@@ -599,6 +599,28 @@ abstract class PermissionApi {
 }
 
 /// Hardware actions for the diagnostics.
+/// One reading from the CPU stress test.
+class StressSample {
+  StressSample({
+    required this.elapsedMs,
+    required this.workPerSec,
+    required this.batteryTempC,
+    required this.thermalStatus,
+    required this.running,
+  });
+  int elapsedMs;
+
+  /// Work units finished per second across all cores since the last sample.
+  double workPerSec;
+  double batteryTempC;
+  double? cpuTempC;
+  int thermalStatus;
+  bool running;
+
+  /// Why it stopped: "done", "user", "hot", "battery", "left" or "error".
+  String? stopReason;
+}
+
 @HostApi()
 abstract class HardwareTestApi {
   /// Vibrates with alternating on/off durations in milliseconds.
@@ -639,6 +661,20 @@ abstract class HardwareTestApi {
   /// Asks where to save a file (system file picker); false if cancelled.
   @async
   bool saveDocument(String fileName, String mimeType, Uint8List bytes);
+
+  /// Starts the CPU stress test. Returns null when started, or why it
+  /// won't start: "hot" (already warm) or "battery" (too low).
+  String? startStress(int durationMs);
+
+  /// The latest reading; also tells the runner the screen is still open.
+  StressSample stressSample();
+  void stopStress();
+
+  /// Keeps the screen on while a test runs.
+  void keepScreenOn(bool on);
+
+  /// Asks for the display's highest refresh rate (true) or the default.
+  void preferHighRefresh(bool high);
 }
 
 /// Alerts, live status and values the background code needs from the app.

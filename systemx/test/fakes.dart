@@ -528,6 +528,56 @@ class FakeHardwareTestApi extends HardwareTestApi {
     saved = bytes;
     return saveResult;
   }
+
+  /// Stress test: work per second falls from 1000 to 800 over the run.
+  String? stressRefusal;
+  int stressDurationMs = 0;
+  int _stressPolls = 0;
+  bool stressRunning = false;
+  String? stressStop;
+
+  @override
+  Future<String?> startStress(int durationMs) async {
+    calls.add('startStress');
+    if (stressRefusal != null) return stressRefusal;
+    stressDurationMs = durationMs;
+    stressRunning = true;
+    _stressPolls = 0;
+    return null;
+  }
+
+  @override
+  Future<StressSample> stressSample() async {
+    _stressPolls++;
+    final elapsed = _stressPolls * 1000;
+    if (stressRunning && elapsed >= stressDurationMs) {
+      stressRunning = false;
+      stressStop = 'done';
+    }
+    final progress = (elapsed / stressDurationMs).clamp(0.0, 1.0);
+    return StressSample(
+      elapsedMs: elapsed,
+      workPerSec: 1000 - 200 * progress,
+      batteryTempC: 32 + 6 * progress,
+      cpuTempC: 45 + 20 * progress,
+      thermalStatus: 0,
+      running: stressRunning,
+      stopReason: stressStop,
+    );
+  }
+
+  @override
+  Future<void> stopStress() async {
+    calls.add('stopStress');
+    if (stressRunning) stressStop = 'user';
+    stressRunning = false;
+  }
+
+  @override
+  Future<void> keepScreenOn(bool on) async => calls.add('keepScreenOn:$on');
+
+  @override
+  Future<void> preferHighRefresh(bool high) async => calls.add('highRefresh:$high');
 }
 
 /// Background config, history and sessions in memory.

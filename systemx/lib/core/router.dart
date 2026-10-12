@@ -22,6 +22,7 @@ import '../features/tests/checkup_screen.dart';
 import '../features/tests/report_screen.dart';
 import '../features/tests/test_catalog.dart';
 import '../features/tests/tests_screen.dart';
+import '../features/tools/stress_test.dart';
 import 'settings/settings.dart';
 
 abstract final class Routes {
@@ -39,6 +40,7 @@ abstract final class Routes {
   static const sessions = '/sessions';
   static const batteryHealth = '/battery-health';
   static const wifiMeter = '/tools/wifi';
+  static const stress = '/tools/stress';
 
   static String category(DeviceCategory c) => '$device/${c.name}';
   static String live(LiveMetric m) => '/live/${m.name}';
@@ -105,6 +107,7 @@ final routerProvider = Provider<GoRouter>((ref) {
           path: Routes.batteryHealth,
           builder: (_, _) => const BatteryHealthScreen()),
       GoRoute(path: Routes.wifiMeter, builder: (_, _) => const WifiMeterScreen()),
+      GoRoute(path: Routes.stress, builder: (_, _) => const StressTestScreen()),
       GoRoute(
         path: '/test/:test',
         redirect: (_, state) =>

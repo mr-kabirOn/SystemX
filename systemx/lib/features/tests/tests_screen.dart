@@ -6,6 +6,7 @@ import '../../core/format.dart';
 import '../../core/router.dart';
 import '../../core/theme/sx_colors.dart';
 import '../../l10n/app_localizations.dart';
+import '../../ui/sx_icons.dart';
 import '../../ui/widgets/cards.dart';
 import '../../ui/widgets/page_scaffold.dart';
 import '../../ui/widgets/test_tile.dart';
@@ -74,6 +75,19 @@ class TestsScreen extends ConsumerWidget {
               Icon(Icons.chevron_right_rounded, color: sx.muted),
             ]),
           )),
+        SliverToBoxAdapter(child: SectionLabel(l.toolsTitle)),
+        Box(SxCard(
+          padding: const EdgeInsets.symmetric(vertical: 6),
+          child: Column(children: [
+            CategoryRow(
+              icon: SxIcons.speed,
+              color: sx.cpu,
+              title: l.stTitle,
+              subtitle: l.stEntryBody,
+              onTap: () => context.push(Routes.stress),
+            ),
+          ]),
+        )),
         for (final g in TestGroup.values) ...[
           SliverToBoxAdapter(child: SectionLabel(groupTitle(l, g))),
           SliverGrid.builder(
