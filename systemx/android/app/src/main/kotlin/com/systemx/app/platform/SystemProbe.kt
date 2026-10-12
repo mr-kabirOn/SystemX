@@ -17,13 +17,14 @@ import java.util.TimeZone
 internal class SystemProbe(private val ctx: Context) {
 
     fun identity(): DeviceIdentity {
-        val market = Sys.firstProp(
+        // Samsung first: some of its builds fill these properties with codes.
+        val market = samsungName() ?: Sys.firstProp(
             "ro.product.marketname",
             "ro.product.vendor.marketname",
             "ro.product.odm.marketname",
             "ro.config.marketing_name",
             "ro.vendor.product.display",
-        ) ?: samsungName() ?: Build.MODEL
+        ) ?: Build.MODEL
 
         val countryIso = Sys.firstProp(
             "ro.csc.countryiso_code",
@@ -80,9 +81,14 @@ internal class SystemProbe(private val ctx: Context) {
         return null
     }
 
-    /** Samsung keeps the marketing name ("Galaxy A54 5G") as the default device name. */
+    /**
+     * Samsung has no marketing-name property: look the model number up, then
+     * fall back to the device name, which is the retail name ("Galaxy A54
+     * 5G") unless the user renamed the phone.
+     */
     private fun samsungName(): String? {
         if (!Build.MANUFACTURER.equals("samsung", ignoreCase = true)) return null
+        SysParsers.samsungMarketName(Build.MODEL)?.let { return it }
         return Sys.safe { Settings.Global.getString(ctx.contentResolver, Settings.Global.DEVICE_NAME) }
             ?.takeIf { it.startsWith("Galaxy", ignoreCase = true) }
     }

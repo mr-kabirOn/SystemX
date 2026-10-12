@@ -96,6 +96,49 @@ internal object SysParsers {
         return c.takeIf { it > 0 && it < 150 }
     }
 
+    /**
+     * Retail name for a Samsung model number ("SM-S928N" -> "Galaxy S24
+     * Ultra"). Samsung doesn't put the marketing name in a system property,
+     * so it is looked up by the model's base code; null when not listed.
+     */
+    fun samsungMarketName(model: String): String? {
+        val m = Regex("""^SM-([A-Z])(\d{3})""").find(model.uppercase()) ?: return null
+        return SAMSUNG_MODELS[m.groupValues[1] + m.groupValues[2]]?.let { "Galaxy $it" }
+    }
+
+    private val SAMSUNG_MODELS = mapOf(
+        // S series
+        "S938" to "S25 Ultra", "S936" to "S25+", "S931" to "S25", "S937" to "S25 Edge", "S731" to "S25 FE",
+        "S928" to "S24 Ultra", "S926" to "S24+", "S921" to "S24", "S721" to "S24 FE",
+        "S918" to "S23 Ultra", "S916" to "S23+", "S911" to "S23", "S711" to "S23 FE",
+        "S908" to "S22 Ultra", "S906" to "S22+", "S901" to "S22",
+        "G998" to "S21 Ultra", "G996" to "S21+", "G991" to "S21", "G990" to "S21 FE",
+        "G988" to "S20 Ultra", "G986" to "S20+", "G981" to "S20", "G780" to "S20 FE", "G781" to "S20 FE",
+        "G975" to "S10+", "G973" to "S10", "G970" to "S10e", "G977" to "S10 5G",
+        "G965" to "S9+", "G960" to "S9",
+        // Note
+        "N986" to "Note20 Ultra", "N985" to "Note20 Ultra", "N981" to "Note20", "N980" to "Note20",
+        "N976" to "Note10+ 5G", "N975" to "Note10+", "N970" to "Note10", "N960" to "Note9",
+        // Z series
+        "F966" to "Z Fold7", "F956" to "Z Fold6", "F946" to "Z Fold5", "F936" to "Z Fold4", "F926" to "Z Fold3",
+        "F916" to "Z Fold2", "F761" to "Z Flip7", "F741" to "Z Flip6", "F731" to "Z Flip5", "F721" to "Z Flip4",
+        "F711" to "Z Flip3",
+        // A series
+        "A566" to "A56 5G", "A556" to "A55 5G", "A546" to "A54 5G", "A536" to "A53 5G", "A528" to "A52s 5G",
+        "A526" to "A52 5G", "A525" to "A52", "A515" to "A51", "A366" to "A36 5G", "A356" to "A35 5G",
+        "A346" to "A34 5G", "A336" to "A33 5G", "A325" to "A32", "A266" to "A26 5G", "A256" to "A25 5G",
+        "A245" to "A24", "A235" to "A23", "A225" to "A22", "A166" to "A16 5G", "A165" to "A16",
+        "A156" to "A15 5G", "A155" to "A15", "A146" to "A14 5G", "A145" to "A14", "A135" to "A13",
+        "A125" to "A12", "A736" to "A73 5G", "A725" to "A72", "A715" to "A71", "A057" to "A05s",
+        "A055" to "A05", "A047" to "A04s", "A045" to "A04", "A037" to "A03s", "A035" to "A03",
+        // M series
+        "M556" to "M55 5G", "M546" to "M54 5G", "M536" to "M53 5G", "M356" to "M35 5G", "M346" to "M34 5G",
+        "M336" to "M33 5G", "M156" to "M15 5G", "M146" to "M14 5G",
+        // Tablets
+        "X920" to "Tab S10 Ultra", "X820" to "Tab S10+", "X910" to "Tab S9 Ultra", "X810" to "Tab S9+",
+        "X710" to "Tab S9",
+    )
+
     /** Samsung's ro.build.version.oneui ("80000", "60100") as "8.0", "6.1". */
     fun oneUiVersion(raw: String?): String? {
         val n = raw?.trim()?.toIntOrNull()?.takeIf { it >= 10000 } ?: return null

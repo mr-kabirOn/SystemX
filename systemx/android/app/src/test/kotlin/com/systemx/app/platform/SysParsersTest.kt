@@ -157,4 +157,14 @@ class SysParsersTest {
         assertNull(SysParsers.cycleCount(null))
         assertEquals(312L, SysParsers.cycleCount(312))
     }
+
+    @Test
+    fun samsungModelNumbersBecomeRetailNames() {
+        assertEquals("Galaxy S24 Ultra", SysParsers.samsungMarketName("SM-S928N"))
+        assertEquals("Galaxy S24 Ultra", SysParsers.samsungMarketName("SM-S928B"))
+        assertEquals("Galaxy A54 5G", SysParsers.samsungMarketName("SM-A546E"))
+        assertEquals("Galaxy Z Fold6", SysParsers.samsungMarketName("SM-F956U1"))
+        assertNull(SysParsers.samsungMarketName("SM-Z999X"))
+        assertNull(SysParsers.samsungMarketName("Pixel 8"))
+    }
 }
