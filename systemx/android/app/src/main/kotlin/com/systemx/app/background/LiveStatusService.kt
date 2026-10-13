@@ -168,27 +168,33 @@ class LiveStatusService : Service() {
     }
 
     /**
-     * White on transparent, as Android requires for status bar icons: the
-     * value large on top and its unit smaller underneath, like the clock
-     * area's other indicators.
+     * White on transparent, as Android requires for status bar icons. One
+     * line for battery values; for network speed the number sits on top and
+     * its unit underneath, so "0" never reads as the letter O.
      */
     private fun textIcon(value: String, unit: String): Icon {
         val size = 96
         val bmp = Bitmap.createBitmap(size, size, Bitmap.Config.ARGB_8888)
         val canvas = Canvas(bmp)
-        fun paint(textSize: Float, bold: Boolean) = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+        fun paint(textSize: Float) = Paint(Paint.ANTI_ALIAS_FLAG).apply {
             color = Color.WHITE
             textAlign = Paint.Align.CENTER
-            typeface = Typeface.create(Typeface.DEFAULT, if (bold) Typeface.BOLD else Typeface.NORMAL)
+            typeface = Typeface.create(Typeface.DEFAULT, Typeface.BOLD)
             this.textSize = textSize
         }
-        val top = paint(60f, true)
-        while (top.measureText(value) > size - 2 && top.textSize > 24f) top.textSize -= 2f
-        val bottom = paint(34f, true)
-        while (bottom.measureText(unit) > size - 2 && bottom.textSize > 16f) bottom.textSize -= 2f
-        // Value baseline in the top 60%, unit baseline near the bottom.
-        canvas.drawText(value, size / 2f, size * 0.56f, top)
-        canvas.drawText(unit, size / 2f, size * 0.94f, bottom)
+        if (unit.isEmpty()) {
+            val p = paint(64f)
+            while (p.measureText(value) > size - 2 && p.textSize > 20f) p.textSize -= 2f
+            val y = size / 2f - (p.descent() + p.ascent()) / 2
+            canvas.drawText(value, size / 2f, y, p)
+        } else {
+            val top = paint(60f)
+            while (top.measureText(value) > size - 2 && top.textSize > 24f) top.textSize -= 2f
+            val bottom = paint(34f)
+            while (bottom.measureText(unit) > size - 2 && bottom.textSize > 16f) bottom.textSize -= 2f
+            canvas.drawText(value, size / 2f, size * 0.56f, top)
+            canvas.drawText(unit, size / 2f, size * 0.94f, bottom)
+        }
         return Icon.createWithBitmap(bmp)
     }
 

@@ -528,7 +528,7 @@
   "tMultiTouch": "Multi-touch",
   "tBrightness": "Brightness range",
   "tSpeakerMic": "Speaker to microphone",
-  "tHeadphones": "Headphone jack",
+  "tHeadphones": "Wired headphones",
   "tUsbAudio": "USB audio",
   "tVolumeUp": "Volume up button",
   "tVolumeDown": "Volume down button",
@@ -581,7 +581,7 @@
   "iFrontCamera": "Point the front camera at your face, tap to focus, then take a photo.",
   "iGps": "Stand near a window or go outside. Finding satellites can take a minute.",
   "iGyroscope": "Rotate the phone in any direction, like turning a steering wheel.",
-  "iHeadphones": "Plug wired headphones into the headphone jack.",
+  "iHeadphones": "Connect wired headphones: through the 3.5 mm jack, as USB-C headphones, or with a USB-C adapter.",
   "iLight": "Cover the top of the screen with your hand, then uncover it or hold it under a light.",
   "iMicrophone": "Tap Record and say a few words. SystemX plays it back right away.",
   "iMultiTouch": "Put as many fingers on the screen as you can.",
@@ -1067,5 +1067,10 @@
   "csNow": "now",
   "csEmptyTitle": "No charges recorded yet",
   "csEmptyBody": "Charges are recorded while SystemX's background features are on. Plug in your phone, and each charge will appear here with its speed and temperature.",
-  "csToFull": "Full charges"
+  "csToFull": "Full charges",
+  "gpsPermissionTitle": "Location permission needed",
+  "gpsNeedsPermission": "The GPS test needs precise location to listen to satellites. SystemX doesn't record or store your location.",
+  "gpsLocationOffTitle": "Location is turned off",
+  "gpsNeedsLocation": "Turn on Location, then come back. The test starts again on its own.",
+  "gpsTurnOn": "Turn on Location"
 }

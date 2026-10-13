@@ -11,6 +11,7 @@ import 'package:systemx/features/device/device_data.dart';
 import 'package:systemx/features/tests/impl/sensor_tests.dart';
 import 'package:systemx/features/tests/impl/system_tests.dart';
 import 'package:systemx/features/tests/report_pdf.dart';
+import 'package:systemx/features/device/spec_sheets.dart';
 import 'package:systemx/features/tests/test_catalog.dart';
 import 'package:systemx/features/tests/test_results.dart';
 import 'package:systemx/l10n/app_localizations.dart';
@@ -120,6 +121,27 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.text('Passed'), findsOneWidget);
     expect(find.text('Button works'), findsOneWidget);
+  });
+
+  testWidgets('USB-C headphones pass the headphone test', (tester) async {
+    final api = FakeDeviceApi()..audioOutputs = ['Speaker', 'USB audio'];
+    await pumpApp(tester, api: api);
+    await push(tester, Routes.runTest(HwTest.headphones));
+    await tester.pump(const Duration(seconds: 2));
+    await tester.pumpAndSettle();
+    expect(find.text('Passed'), findsOneWidget);
+  });
+
+  testWidgets('GPS with Location off offers to turn it on', (tester) async {
+    final api = FakeDeviceApi();
+    final perms = FakePermissionApi(api)..statuses['location'] = 'granted';
+    await pumpApp(tester, api: api, permissions: perms);
+    await push(tester, Routes.runTest(HwTest.gps));
+    await tester.pumpAndSettle();
+    expect(find.text('Location is turned off'), findsOneWidget);
+    await tester.tap(find.text('Turn on Location'));
+    await tester.pump();
+    expect(api.opened, [SettingsActions.location]);
   });
 
   testWidgets('a refused permission skips the test', (tester) async {

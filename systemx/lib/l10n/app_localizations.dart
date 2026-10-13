@@ -3047,7 +3047,7 @@ abstract class AppLocalizations {
   /// No description provided for @tHeadphones.
   ///
   /// In en, this message translates to:
-  /// **'Headphone jack'**
+  /// **'Wired headphones'**
   String get tHeadphones;
 
   /// No description provided for @tUsbAudio.
@@ -3365,7 +3365,7 @@ abstract class AppLocalizations {
   /// No description provided for @iHeadphones.
   ///
   /// In en, this message translates to:
-  /// **'Plug wired headphones into the headphone jack.'**
+  /// **'Connect wired headphones: through the 3.5 mm jack, as USB-C headphones, or with a USB-C adapter.'**
   String get iHeadphones;
 
   /// No description provided for @iLight.
@@ -5971,6 +5971,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Full charges'**
   String get csToFull;
+
+  /// No description provided for @gpsPermissionTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Location permission needed'**
+  String get gpsPermissionTitle;
+
+  /// No description provided for @gpsNeedsPermission.
+  ///
+  /// In en, this message translates to:
+  /// **'The GPS test needs precise location to listen to satellites. SystemX doesn\'t record or store your location.'**
+  String get gpsNeedsPermission;
+
+  /// No description provided for @gpsLocationOffTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Location is turned off'**
+  String get gpsLocationOffTitle;
+
+  /// No description provided for @gpsNeedsLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'Turn on Location, then come back. The test starts again on its own.'**
+  String get gpsNeedsLocation;
+
+  /// No description provided for @gpsTurnOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Turn on Location'**
+  String get gpsTurnOn;
 }
 
 class _AppLocalizationsDelegate

@@ -1603,7 +1603,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get tSpeakerMic => 'স্পিকার থেকে মাইক্রোফোন';
 
   @override
-  String get tHeadphones => 'হেডফোন জ্যাক';
+  String get tHeadphones => 'তারের হেডফোন';
 
   @override
   String get tUsbAudio => 'USB অডিও';
@@ -1778,7 +1778,8 @@ class AppLocalizationsBn extends AppLocalizations {
   String get iGyroscope => 'স্টিয়ারিং ঘোরানোর মতো ফোনটি যেকোনো দিকে ঘোরান।';
 
   @override
-  String get iHeadphones => 'হেডফোন জ্যাকে তারের হেডফোন লাগান।';
+  String get iHeadphones =>
+      'তারের হেডফোন লাগান: ৩.৫ মিমি জ্যাকে, USB-C হেডফোন হিসেবে, বা USB-C অ্যাডাপ্টার দিয়ে।';
 
   @override
   String get iLight =>
@@ -3276,4 +3277,21 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get csToFull => 'পূর্ণ চার্জ';
+
+  @override
+  String get gpsPermissionTitle => 'লোকেশন অনুমতি দরকার';
+
+  @override
+  String get gpsNeedsPermission =>
+      'স্যাটেলাইট খুঁজতে GPS টেস্টের সঠিক লোকেশন দরকার। SystemX আপনার লোকেশন রেকর্ড বা সংরক্ষণ করে না।';
+
+  @override
+  String get gpsLocationOffTitle => 'লোকেশন বন্ধ আছে';
+
+  @override
+  String get gpsNeedsLocation =>
+      'লোকেশন চালু করে ফিরে আসুন। টেস্ট নিজে থেকেই আবার শুরু হবে।';
+
+  @override
+  String get gpsTurnOn => 'লোকেশন চালু করুন';
 }

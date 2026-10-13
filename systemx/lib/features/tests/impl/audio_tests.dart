@@ -171,7 +171,11 @@ class _AudioOutputTestState extends ConsumerState<AudioOutputTest> {
   Timer? _timer;
   bool _finished = false;
 
-  String get _wanted => widget.test == HwTest.headphones ? 'Wired headphones' : 'USB audio';
+  /// Outputs that pass. Headphones count through the 3.5 mm jack or USB-C
+  /// (USB-C headphones and USB-C to 3.5 mm adapters report as USB audio).
+  Set<String> get _wanted => widget.test == HwTest.headphones
+      ? const {'Wired headphones', 'USB audio'}
+      : const {'USB audio'};
 
   @override
   void initState() {
@@ -184,7 +188,7 @@ class _AudioOutputTestState extends ConsumerState<AudioOutputTest> {
     try {
       final media = await ref.read(deviceApiProvider).media();
       if (!mounted || _finished) return;
-      if (media.audioOutputs.contains(_wanted)) {
+      if (media.audioOutputs.any(_wanted.contains)) {
         _finished = true;
         _timer?.cancel();
         widget.done(TestStatus.passed, AppLocalizations.of(context).nDetected);

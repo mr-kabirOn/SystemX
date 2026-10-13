@@ -39,13 +39,15 @@ internal object AlertRules {
 
     /**
      * Status bar icon for [kind] ("battery_level", "battery_temp" or
-     * "net_speed"): the value on top, its unit below.
+     * "net_speed"). Battery values fit on one line ("63%", "33°C"); network
+     * speed puts its unit on a second line, with an empty second part
+     * meaning a single line.
      */
     fun statusIconLines(kind: String, level: Int, tempC: Double, fahrenheit: Boolean, downBps: Double): Pair<String, String> =
         when (kind) {
-            "battery_temp" -> "${(if (fahrenheit) toF(tempC) else tempC).roundToInt()}" to (if (fahrenheit) "°F" else "°C")
+            "battery_temp" -> "${(if (fahrenheit) toF(tempC) else tempC).roundToInt()}°${if (fahrenheit) "F" else "C"}" to ""
             "net_speed" -> rateParts(downBps)
-            else -> "$level" to "%"
+            else -> "$level%" to ""
         }
 
     /** Bytes per second between two counter readings, 0 on reset or missing data. */

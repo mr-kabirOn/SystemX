@@ -1614,7 +1614,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get tSpeakerMic => 'Speaker to microphone';
 
   @override
-  String get tHeadphones => 'Headphone jack';
+  String get tHeadphones => 'Wired headphones';
 
   @override
   String get tUsbAudio => 'USB audio';
@@ -1792,7 +1792,8 @@ class AppLocalizationsEn extends AppLocalizations {
       'Rotate the phone in any direction, like turning a steering wheel.';
 
   @override
-  String get iHeadphones => 'Plug wired headphones into the headphone jack.';
+  String get iHeadphones =>
+      'Connect wired headphones: through the 3.5 mm jack, as USB-C headphones, or with a USB-C adapter.';
 
   @override
   String get iLight =>
@@ -3300,4 +3301,21 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get csToFull => 'Full charges';
+
+  @override
+  String get gpsPermissionTitle => 'Location permission needed';
+
+  @override
+  String get gpsNeedsPermission =>
+      'The GPS test needs precise location to listen to satellites. SystemX doesn\'t record or store your location.';
+
+  @override
+  String get gpsLocationOffTitle => 'Location is turned off';
+
+  @override
+  String get gpsNeedsLocation =>
+      'Turn on Location, then come back. The test starts again on its own.';
+
+  @override
+  String get gpsTurnOn => 'Turn on Location';
 }

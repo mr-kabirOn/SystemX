@@ -290,6 +290,8 @@ class FakeDeviceApi extends DeviceInfoApi {
             version: 1),
       ]);
 
+  List<String> audioOutputs = ['Speaker', 'Earpiece'];
+
   @override
   Future<MediaInfo> media() => _r('media', () => MediaInfo(
         codecs: [
@@ -317,7 +319,7 @@ class FakeDeviceApi extends DeviceInfoApi {
         widevineLevel: 'L1',
         widevineVersion: '18.0.0',
         hdcp: 'HDCP-2.3',
-        audioOutputs: ['Speaker', 'Earpiece'],
+        audioOutputs: audioOutputs,
         lowLatency: true,
         proAudio: true,
         spatial: true,

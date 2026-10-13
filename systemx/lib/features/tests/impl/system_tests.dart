@@ -7,6 +7,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:path_provider/path_provider.dart';
 
 import '../../../core/format.dart';
+import '../../../core/permissions.dart';
 import '../../../core/theme/sx_colors.dart';
 import '../../../l10n/app_localizations.dart';
 import '../../../platform/platform.dart';
@@ -133,17 +134,40 @@ class GpsTest extends ConsumerStatefulWidget {
   ConsumerState<GpsTest> createState() => _GpsTestState();
 }
 
+enum _GpsBlock { none, permission, locationOff }
+
 class _GpsTestState extends ConsumerState<GpsTest> {
   StreamSubscription<GnssStatus>? _sub;
   GnssStatus? _status;
   Timer? _timeout;
   bool _finished = false;
-  final _clock = Stopwatch()..start();
+  final _clock = Stopwatch();
   Timer? _tick;
+  _GpsBlock _block = _GpsBlock.none;
+  int _restarts = 0;
+  late final AppLifecycleListener _lifecycle;
 
   @override
   void initState() {
     super.initState();
+    // Back from Location settings: try again.
+    _lifecycle = AppLifecycleListener(onResume: () {
+      if (_block != _GpsBlock.none && !_finished) _start();
+    });
+    _start();
+  }
+
+  /// Listens for satellites. The stream closes straight away when the
+  /// permission is missing or Location is off; then the user is asked to
+  /// fix that instead of the test being skipped.
+  void _start() {
+    _stopListening();
+    _block = _GpsBlock.none;
+    _status = null;
+    if (_restarts++ > 0) setState(() {});
+    _clock
+      ..reset()
+      ..start();
     var gotAny = false;
     _sub = ref.read(gnssStatusProvider)().listen(
       (s) {
@@ -151,14 +175,15 @@ class _GpsTestState extends ConsumerState<GpsTest> {
         if (!mounted) return;
         setState(() => _status = s);
         if (s.accuracy != null && s.used >= 3) {
-          _finish(TestStatus.passed,
-              AppLocalizations.of(context).nGpsFix(s.used, s.accuracy!.round()));
+          _finish(TestStatus.passed, AppLocalizations.of(context).nGpsFix(s.used, s.accuracy!.round()));
         }
       },
-      onDone: () {
-        if (!gotAny && mounted) {
-          _finish(TestStatus.skipped, AppLocalizations.of(context).nLocationOff);
-        }
+      onDone: () async {
+        if (gotAny || !mounted || _finished) return;
+        _stopListening();
+        final status = await ref.read(permissionApiProvider).status('location');
+        if (!mounted) return;
+        setState(() => _block = status == 'granted' ? _GpsBlock.locationOff : _GpsBlock.permission);
       },
       onError: (_) {},
     );
@@ -166,29 +191,39 @@ class _GpsTestState extends ConsumerState<GpsTest> {
       if (mounted) setState(() {});
     });
     _timeout = Timer(const Duration(seconds: 90), () {
-      if (!mounted) return;
+      if (!mounted || _block != _GpsBlock.none) return;
       final l = AppLocalizations.of(context);
       final seen = _status?.seen ?? 0;
-      seen > 0
-          ? _finish(TestStatus.passed, l.nGpsNoFix(seen))
-          : _finish(TestStatus.failed, l.nGpsNone);
+      seen > 0 ? _finish(TestStatus.passed, l.nGpsNoFix(seen)) : _finish(TestStatus.failed, l.nGpsNone);
     });
+  }
+
+  void _stopListening() {
+    _sub?.cancel();
+    _sub = null;
+    _timeout?.cancel();
+    _tick?.cancel();
+  }
+
+  Future<void> _fix() async {
+    if (_block == _GpsBlock.permission) {
+      if (await requestPermission(context, ref, AppPermission.location) && mounted) _start();
+    } else {
+      await ref.read(deviceApiProvider).openSettings(SettingsActions.location);
+    }
   }
 
   void _finish(TestStatus s, [String? note]) {
     if (_finished) return;
     _finished = true;
-    _sub?.cancel();
-    _timeout?.cancel();
-    _tick?.cancel();
+    _stopListening();
     widget.done(s, note);
   }
 
   @override
   void dispose() {
-    _sub?.cancel();
-    _timeout?.cancel();
-    _tick?.cancel();
+    _stopListening();
+    _lifecycle.dispose();
     super.dispose();
   }
 
@@ -196,6 +231,33 @@ class _GpsTestState extends ConsumerState<GpsTest> {
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context);
     final s = _status;
+    if (_block != _GpsBlock.none) {
+      final perm = _block == _GpsBlock.permission;
+      return TestFrame(
+        test: HwTest.gps,
+        done: _finish,
+        instructions: perm ? l.gpsNeedsPermission : l.gpsNeedsLocation,
+        bottom: Row(children: [
+          Expanded(
+            child: OutlinedButton(
+              onPressed: () => _finish(TestStatus.skipped, perm ? l.nPermissionDenied : l.nLocationOff),
+              child: Text(l.skip),
+            ),
+          ),
+          const SizedBox(width: 12),
+          Expanded(
+            child: FilledButton(
+              onPressed: _fix,
+              child: Text(perm ? l.permAllow : l.gpsTurnOn),
+            ),
+          ),
+        ]),
+        child: WaitingFor(
+          icon: SxIcons.gps,
+          text: perm ? l.gpsPermissionTitle : l.gpsLocationOffTitle,
+        ),
+      );
+    }
     return TestFrame(
       test: HwTest.gps,
       done: _finish,
