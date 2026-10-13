@@ -12,6 +12,7 @@ import 'package:systemx/features/tests/impl/sensor_tests.dart';
 import 'package:systemx/features/tests/impl/system_tests.dart';
 import 'package:systemx/features/tests/report_pdf.dart';
 import 'package:systemx/features/device/spec_sheets.dart';
+import 'package:systemx/features/tests/impl/display_tests.dart';
 import 'package:systemx/features/tests/test_catalog.dart';
 import 'package:systemx/features/tests/test_results.dart';
 import 'package:systemx/l10n/app_localizations.dart';
@@ -121,6 +122,26 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.text('Passed'), findsOneWidget);
     expect(find.text('Button works'), findsOneWidget);
+  });
+
+  testWidgets('touch grid: every square reachable, including under the card',
+      (tester) async {
+    await pumpApp(tester);
+    await push(tester, Routes.runTest(HwTest.touchGrid));
+    final area = tester.getRect(find.byType(Listener).first);
+    final w = area.width / touchCols, h = area.height / touchRows;
+    // One swipe per row, starting off the card so the controls fade away.
+    for (var r = 0; r < touchRows; r++) {
+      final y = area.top + (r + 0.5) * h;
+      final g = await tester.startGesture(Offset(area.left + 1, y));
+      for (var c = 0; c < touchCols; c++) {
+        await g.moveTo(Offset(area.left + (c + 0.5) * w, y));
+      }
+      await g.up();
+      await tester.pump();
+    }
+    await tester.pumpAndSettle();
+    expect(find.text('Passed'), findsOneWidget);
   });
 
   testWidgets('USB-C headphones pass the headphone test', (tester) async {

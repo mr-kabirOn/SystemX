@@ -44,21 +44,29 @@ class _SlidesTestState extends State<_SlidesTest> {
         child: GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () => setState(() => _i++),
-          child: Stack(fit: StackFit.expand, children: [
-            widget.slides[_i],
-            if (_i == 0)
-              Center(
-                child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-                  decoration: BoxDecoration(
-                    color: Colors.black.withValues(alpha: 0.6),
-                    borderRadius: BorderRadius.circular(99),
+          child: Stack(
+            fit: StackFit.expand,
+            children: [
+              widget.slides[_i],
+              if (_i == 0)
+                Center(
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 10,
+                    ),
+                    decoration: BoxDecoration(
+                      color: Colors.black.withValues(alpha: 0.6),
+                      borderRadius: BorderRadius.circular(99),
+                    ),
+                    child: Text(
+                      l.tapToContinue,
+                      style: const TextStyle(color: Colors.white, fontSize: 15),
+                    ),
                   ),
-                  child: Text(l.tapToContinue,
-                      style: const TextStyle(color: Colors.white, fontSize: 15)),
                 ),
-              ),
-          ]),
+            ],
+          ),
         ),
       );
     }
@@ -66,26 +74,33 @@ class _SlidesTestState extends State<_SlidesTest> {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(24),
-          child: Column(mainAxisAlignment: MainAxisAlignment.end, children: [
-            Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-              TextButton(
-                onPressed: () => setState(() => _i = 0),
-                child: Text(l.showAgain),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  TextButton(
+                    onPressed: () => setState(() => _i = 0),
+                    child: Text(l.showAgain),
+                  ),
+                  TextButton(
+                    onPressed: () =>
+                        widget.done(TestStatus.skipped, l.skippedByYou),
+                    child: Text(l.skip),
+                  ),
+                ],
               ),
-              TextButton(
-                onPressed: () => widget.done(TestStatus.skipped, l.skippedByYou),
-                child: Text(l.skip),
+              const SizedBox(height: 12),
+              AskResult(
+                question: widget.question,
+                done: widget.done,
+                yesPasses: widget.yesPasses,
+                passNote: widget.passNote,
+                failNote: widget.failNote,
               ),
-            ]),
-            const SizedBox(height: 12),
-            AskResult(
-              question: widget.question,
-              done: widget.done,
-              yesPasses: widget.yesPasses,
-              passNote: widget.passNote,
-              failNote: widget.failNote,
-            ),
-          ]),
+            ],
+          ),
         ),
       ),
     );
@@ -128,16 +143,23 @@ class ColorBandingTest extends StatelessWidget {
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context);
     Widget ramp(Color c) => DecoratedBox(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(colors: [Colors.black, c]),
-          ),
-        );
+      decoration: BoxDecoration(
+        gradient: LinearGradient(colors: [Colors.black, c]),
+      ),
+    );
     return _SlidesTest(
       slides: [
-        Column(children: [
-          for (final c in const [Colors.white, Color(0xFFFF0000), Color(0xFF00FF00), Color(0xFF0000FF)])
-            Expanded(child: ramp(c)),
-        ]),
+        Column(
+          children: [
+            for (final c in const [
+              Colors.white,
+              Color(0xFFFF0000),
+              Color(0xFF00FF00),
+              Color(0xFF0000FF),
+            ])
+              Expanded(child: ramp(c)),
+          ],
+        ),
       ],
       question: l.qBanding,
       yesPasses: true,
@@ -184,6 +206,12 @@ class _TouchGridTestState extends State<TouchGridTest> {
   final _hit = <int>{};
   bool _finished = false;
 
+  /// True while a finger is swiping; the controls fade out and stop taking
+  /// touches so the squares under them can be reached. A plain tap on a
+  /// button doesn't move, so the buttons still work.
+  bool _swiping = false;
+  Offset? _downAt;
+
   void _mark(Offset p, Size size) {
     final c = (p.dx / size.width * touchCols).floor();
     final r = (p.dy / size.height * touchRows).floor();
@@ -213,45 +241,81 @@ class _TouchGridTestState extends State<TouchGridTest> {
     return Immersive(
       child: Scaffold(
         backgroundColor: Colors.black,
-        body: LayoutBuilder(builder: (context, box) {
-          final size = box.biggest;
-          return Listener(
-            behavior: HitTestBehavior.opaque,
-            onPointerDown: (e) => _mark(e.localPosition, size),
-            onPointerMove: (e) => _mark(e.localPosition, size),
-            child: Stack(children: [
-              GridView.count(
-                physics: const NeverScrollableScrollPhysics(),
-                crossAxisCount: touchCols,
-                childAspectRatio:
-                    (size.width / touchCols) / (size.height / touchRows),
+        body: LayoutBuilder(
+          builder: (context, box) {
+            final size = box.biggest;
+            return Listener(
+              behavior: HitTestBehavior.opaque,
+              onPointerDown: (e) {
+                _downAt = e.localPosition;
+                _mark(e.localPosition, size);
+              },
+              onPointerMove: (e) {
+                if (!_swiping &&
+                    _downAt != null &&
+                    (e.localPosition - _downAt!).distance > 12) {
+                  setState(() => _swiping = true);
+                }
+                _mark(e.localPosition, size);
+              },
+              onPointerUp: (_) => setState(() => _swiping = false),
+              onPointerCancel: (_) => setState(() => _swiping = false),
+              child: Stack(
                 children: [
-                  for (var i = 0; i < touchCols * touchRows; i++)
-                    Container(
-                      decoration: BoxDecoration(
-                        color: _hit.contains(i) ? sx.good : Colors.black,
-                        border: Border.all(color: Colors.white24, width: 0.5),
+                  // Equal cells that fill exactly the measured area, so what is
+                  // drawn matches what [_mark] counts.
+                  Column(
+                    children: [
+                      for (var r = 0; r < touchRows; r++)
+                        Expanded(
+                          child: Row(
+                            children: [
+                              for (var c = 0; c < touchCols; c++)
+                                Expanded(
+                                  child: DecoratedBox(
+                                    decoration: BoxDecoration(
+                                      color: _hit.contains(r * touchCols + c)
+                                          ? sx.good
+                                          : Colors.black,
+                                      border: Border.all(
+                                        color: Colors.white24,
+                                        width: 0.5,
+                                      ),
+                                    ),
+                                    child: const SizedBox.expand(),
+                                  ),
+                                ),
+                            ],
+                          ),
+                        ),
+                    ],
+                  ),
+                  Center(
+                    child: IgnorePointer(
+                      ignoring: _swiping,
+                      child: AnimatedOpacity(
+                        opacity: _swiping ? 0 : 1,
+                        duration: const Duration(milliseconds: 150),
+                        child: _TouchControls(
+                          title: l.touchEveryZone,
+                          done: _hit.length,
+                          total: touchCols * touchRows,
+                          doneLabel: l.done,
+                          skipLabel: l.skip,
+                          onDone: _finish,
+                          onSkip: () {
+                            _finished = true;
+                            widget.done(TestStatus.skipped, l.skippedByYou);
+                          },
+                        ),
                       ),
                     ),
+                  ),
                 ],
               ),
-              Center(
-                child: _TouchControls(
-                  title: l.touchEveryZone,
-                  done: _hit.length,
-                  total: touchCols * touchRows,
-                  doneLabel: l.done,
-                  skipLabel: l.skip,
-                  onDone: _finish,
-                  onSkip: () {
-                    _finished = true;
-                    widget.done(TestStatus.skipped, l.skippedByYou);
-                  },
-                ),
-              ),
-            ]),
-          );
-        }),
+            );
+          },
+        ),
       ),
     );
   }
@@ -290,39 +354,56 @@ class _TouchControls extends StatelessWidget {
         border: Border.all(color: Colors.white12),
         boxShadow: const [BoxShadow(color: Colors.black54, blurRadius: 24)],
       ),
-      child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Row(children: [
-          Expanded(
-            child: Text(title, style: context.text.titleSmall?.copyWith(color: Colors.white)),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Expanded(
+                child: Text(
+                  title,
+                  style: context.text.titleSmall?.copyWith(color: Colors.white),
+                ),
+              ),
+              Text(
+                '$done / $total',
+                style: SxText.readout(
+                  13,
+                  Colors.white70,
+                  weight: FontWeight.w500,
+                ),
+              ),
+            ],
           ),
-          Text('$done / $total',
-              style: SxText.readout(13, Colors.white70, weight: FontWeight.w500)),
-        ]),
-        const SizedBox(height: 10),
-        ClipRRect(
-          borderRadius: BorderRadius.circular(99),
-          child: LinearProgressIndicator(
-            value: total == 0 ? 0 : done / total,
-            minHeight: 6,
-            color: sx.good,
-            backgroundColor: Colors.white12,
-          ),
-        ),
-        const SizedBox(height: 12),
-        Row(children: [
-          Expanded(
-            child: TextButton(
-              style: TextButton.styleFrom(foregroundColor: Colors.white70),
-              onPressed: onSkip,
-              child: Text(skipLabel),
+          const SizedBox(height: 10),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(99),
+            child: LinearProgressIndicator(
+              value: total == 0 ? 0 : done / total,
+              minHeight: 6,
+              color: sx.good,
+              backgroundColor: Colors.white12,
             ),
           ),
-          const SizedBox(width: 8),
-          Expanded(
-            child: FilledButton(onPressed: onDone, child: Text(doneLabel)),
+          const SizedBox(height: 12),
+          Row(
+            children: [
+              Expanded(
+                child: TextButton(
+                  style: TextButton.styleFrom(foregroundColor: Colors.white70),
+                  onPressed: onSkip,
+                  child: Text(skipLabel),
+                ),
+              ),
+              const SizedBox(width: 8),
+              Expanded(
+                child: FilledButton(onPressed: onDone, child: Text(doneLabel)),
+              ),
+            ],
           ),
-        ]),
-      ]),
+        ],
+      ),
     );
   }
 }
@@ -359,7 +440,8 @@ class _MultiTouchTestState extends State<MultiTouchTest> {
           _points[e.pointer] = e.localPosition;
           if (_points.length > _max) _max = _points.length;
         }),
-        onPointerMove: (e) => setState(() => _points[e.pointer] = e.localPosition),
+        onPointerMove: (e) =>
+            setState(() => _points[e.pointer] = e.localPosition),
         onPointerUp: (e) => setState(() => _points.remove(e.pointer)),
         onPointerCancel: (e) => setState(() => _points.remove(e.pointer)),
         child: Container(
@@ -367,26 +449,30 @@ class _MultiTouchTestState extends State<MultiTouchTest> {
             color: sx.card,
             borderRadius: BorderRadius.circular(20),
           ),
-          child: Stack(children: [
-            Center(
-              child: Text(l.maxTouches(_max),
-                  style: context.text.headlineSmall?.copyWith(color: sx.muted)),
-            ),
-            for (final p in _points.values)
-              Positioned(
-                left: p.dx - 36,
-                top: p.dy - 36,
-                child: Container(
-                  width: 72,
-                  height: 72,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: sx.accent.withValues(alpha: 0.35),
-                    border: Border.all(color: sx.accent, width: 2),
-                  ),
+          child: Stack(
+            children: [
+              Center(
+                child: Text(
+                  l.maxTouches(_max),
+                  style: context.text.headlineSmall?.copyWith(color: sx.muted),
                 ),
               ),
-          ]),
+              for (final p in _points.values)
+                Positioned(
+                  left: p.dx - 36,
+                  top: p.dy - 36,
+                  child: Container(
+                    width: 72,
+                    height: 72,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: sx.accent.withValues(alpha: 0.35),
+                      border: Border.all(color: sx.accent, width: 2),
+                    ),
+                  ),
+                ),
+            ],
+          ),
         ),
       ),
     );
@@ -461,8 +547,10 @@ class _BrightnessTestState extends ConsumerState<BrightnessTest> {
         ),
       ),
       child: Center(
-        child: Text('${(_level * 100).round()}%',
-            style: context.text.displayMedium),
+        child: Text(
+          '${(_level * 100).round()}%',
+          style: context.text.displayMedium,
+        ),
       ),
     );
   }
