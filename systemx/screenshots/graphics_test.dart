@@ -8,7 +8,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:systemx/ui/widgets/logo_mark.dart';
 
 const _ink = Color(0xFF0B0E17);
-const _signalDeep = Color(0xFF4553E0);
+const _signalDeep = Color(0xFF2563EB);
 const _white = Color(0xFFECEEF8);
 
 Future<void> _font(String family, String path) async {

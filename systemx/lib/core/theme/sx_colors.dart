@@ -68,8 +68,8 @@ class SxColors extends ThemeExtension<SxColors> {
     ink: Color(0xFFECEEF8),
     muted: Color(0xFF8C93AE),
     line: Color(0xFF252B3E),
-    accent: Color(0xFF8E99FF),
-    onAccent: Color(0xFF0B0E17),
+    accent: Color(0xFF5C8DFF),
+    onAccent: Color(0xFF0B1020),
     cpu: Color(0xFFFF9447),
     ram: Color(0xFFA98BFF),
     battery: Color(0xFF3DD68C),
@@ -82,9 +82,9 @@ class SxColors extends ThemeExtension<SxColors> {
     good: Color(0xFF3DD68C),
     warn: Color(0xFFFFB547),
     bad: Color(0xFFFF6B6F),
-    heroStart: Color(0xFF2B336F),
-    heroEnd: Color(0xFF171C31),
-    onHero: Color(0xFFC6CBFF),
+    heroStart: Color(0xFF1E3A7B),
+    heroEnd: Color(0xFF141A2E),
+    onHero: Color(0xFFCFDDFF),
   );
 
   static final amoled = dark.copyWith(
@@ -102,7 +102,7 @@ class SxColors extends ThemeExtension<SxColors> {
     ink: Color(0xFF161A2C),
     muted: Color(0xFF5E6584),
     line: Color(0xFFE3E5F0),
-    accent: Color(0xFF4553E0),
+    accent: Color(0xFF2563EB),
     onAccent: Color(0xFFFFFFFF),
     cpu: Color(0xFFE8711F),
     ram: Color(0xFF8452F0),
@@ -116,9 +116,9 @@ class SxColors extends ThemeExtension<SxColors> {
     good: Color(0xFF14965A),
     warn: Color(0xFFC27406),
     bad: Color(0xFFD23A41),
-    heroStart: Color(0xFF4553E0),
-    heroEnd: Color(0xFF2C37B0),
-    onHero: Color(0xFFE3E6FF),
+    heroStart: Color(0xFF2563EB),
+    heroEnd: Color(0xFF1D4ED8),
+    onHero: Color(0xFFDCE7FF),
   );
 
   @override
