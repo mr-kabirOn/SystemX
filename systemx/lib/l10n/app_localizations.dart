@@ -5977,6 +5977,78 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Turn on Location'**
   String get gpsTurnOn;
+
+  /// No description provided for @onbWelcomeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome to SystemX'**
+  String get onbWelcomeTitle;
+
+  /// No description provided for @onbWelcomeBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose your language and appearance. You can change both any time in Settings.'**
+  String get onbWelcomeBody;
+
+  /// No description provided for @onbLanguage.
+  ///
+  /// In en, this message translates to:
+  /// **'Language'**
+  String get onbLanguage;
+
+  /// No description provided for @onbAppearance.
+  ///
+  /// In en, this message translates to:
+  /// **'Appearance'**
+  String get onbAppearance;
+
+  /// No description provided for @onbUsedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Buy a used phone with confidence'**
+  String get onbUsedTitle;
+
+  /// No description provided for @onbUsedBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Check any second-hand phone before you pay: hardware, battery health and signs of modification, with a report you can share. Know exactly what you\'re buying.'**
+  String get onbUsedBody;
+
+  /// No description provided for @onbAlertsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Stay ahead of your battery'**
+  String get onbAlertsTitle;
+
+  /// No description provided for @onbAlertsBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Get alerts for charge limits, heat and low battery, and keep live stats in your notification bar. Both are optional.'**
+  String get onbAlertsBody;
+
+  /// No description provided for @onbChargeAlarm.
+  ///
+  /// In en, this message translates to:
+  /// **'Charge alarm at 80%'**
+  String get onbChargeAlarm;
+
+  /// No description provided for @onbLiveStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'Live status in the notification bar'**
+  String get onbLiveStatus;
+
+  /// No description provided for @onbArtCharged.
+  ///
+  /// In en, this message translates to:
+  /// **'Charged to 80%. Unplug to protect your battery.'**
+  String get onbArtCharged;
+
+  /// No description provided for @onbArtWarm.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone is warm (42 °C). Close heavy apps for a while.'**
+  String get onbArtWarm;
 }
 
 class _AppLocalizationsDelegate

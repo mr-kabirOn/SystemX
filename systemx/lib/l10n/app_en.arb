@@ -1068,5 +1068,17 @@
   "gpsNeedsPermission": "The GPS test needs precise location to listen to satellites. SystemX doesn't record or store your location.",
   "gpsLocationOffTitle": "Location is turned off",
   "gpsNeedsLocation": "Turn on Location, then come back. The test starts again on its own.",
-  "gpsTurnOn": "Turn on Location"
+  "gpsTurnOn": "Turn on Location",
+  "onbWelcomeTitle": "Welcome to SystemX",
+  "onbWelcomeBody": "Choose your language and appearance. You can change both any time in Settings.",
+  "onbLanguage": "Language",
+  "onbAppearance": "Appearance",
+  "onbUsedTitle": "Buy a used phone with confidence",
+  "onbUsedBody": "Check any second-hand phone before you pay: hardware, battery health and signs of modification, with a report you can share. Know exactly what you're buying.",
+  "onbAlertsTitle": "Stay ahead of your battery",
+  "onbAlertsBody": "Get alerts for charge limits, heat and low battery, and keep live stats in your notification bar. Both are optional.",
+  "onbChargeAlarm": "Charge alarm at 80%",
+  "onbLiveStatus": "Live status in the notification bar",
+  "onbArtCharged": "Charged to 80%. Unplug to protect your battery.",
+  "onbArtWarm": "Phone is warm (42 °C). Close heavy apps for a while."
 }

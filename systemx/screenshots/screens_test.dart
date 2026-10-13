@@ -57,6 +57,7 @@ Future<void> _shoot(
   ThemeMode theme = ThemeMode.dark,
   String? locale,
   Size size = const Size(1080, 2400),
+  int onboardingPage = 0,
 }) async {
   final api = FakeDeviceApi()
     ..phoneGranted = true
@@ -92,6 +93,10 @@ Future<void> _shoot(
     child: const SystemXApp(),
   ));
   await tester.pumpAndSettle();
+  for (var i = 0; i < onboardingPage; i++) {
+    await tester.tap(find.byType(FilledButton).last);
+    await tester.pumpAndSettle();
+  }
   if (route != Routes.home && route != Routes.welcome) {
     c.read(routerProvider).go(route);
     await tester.pumpAndSettle();
@@ -133,6 +138,12 @@ void main() {
 
   testWidgets('screens', (tester) async {
     await _shoot(tester, '1_onboarding', Routes.welcome, onboarded: false);
+    await _shoot(tester, '1b_onboarding_light', Routes.welcome,
+        onboarded: false, theme: ThemeMode.light);
+    for (final (i, n) in ['overview', 'used_phone', 'tests', 'alerts', 'privacy'].indexed) {
+      await _shoot(tester, '1${String.fromCharCode(99 + i)}_onboarding_$n', Routes.welcome,
+          onboarded: false, onboardingPage: i + 1);
+    }
     await _shoot(tester, '2_home', Routes.home);
     await _shoot(tester, '3_device', Routes.device);
     await _shoot(tester, '4_tests', Routes.tests);

@@ -63,8 +63,27 @@ void main() {
 
   testWidgets('first launch shows onboarding, then the dashboard',
       (tester) async {
-    await pumpApp(tester, onboarded: false);
+    final c = await pumpApp(tester, onboarded: false);
+    expect(find.text('Welcome to SystemX'), findsOneWidget);
+
+    // Preferences apply straight away.
+    await tester.tap(find.text('Dark'));
+    await tester.pumpAndSettle();
+    expect(c.read(settingsProvider).themeMode, ThemeMode.dark);
+
+    // Pages in order: overview, used phone, tests, alerts, privacy.
+    await tester.tap(find.text('Next'));
+    await tester.pumpAndSettle();
     expect(find.text('Know your phone, inside out'), findsOneWidget);
+    await tester.tap(find.text('Next'));
+    await tester.pumpAndSettle();
+    expect(find.text('Buy a used phone with confidence'), findsOneWidget);
+    await tester.tap(find.text('Next'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Next'));
+    await tester.pumpAndSettle();
+    expect(find.text('Stay ahead of your battery'), findsOneWidget);
+    expect(find.text('Charge alarm at 80%'), findsOneWidget);
 
     await tester.tap(find.text('Skip'));
     await tester.pumpAndSettle();

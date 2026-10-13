@@ -3306,4 +3306,44 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get gpsTurnOn => 'Turn on Location';
+
+  @override
+  String get onbWelcomeTitle => 'Welcome to SystemX';
+
+  @override
+  String get onbWelcomeBody =>
+      'Choose your language and appearance. You can change both any time in Settings.';
+
+  @override
+  String get onbLanguage => 'Language';
+
+  @override
+  String get onbAppearance => 'Appearance';
+
+  @override
+  String get onbUsedTitle => 'Buy a used phone with confidence';
+
+  @override
+  String get onbUsedBody =>
+      'Check any second-hand phone before you pay: hardware, battery health and signs of modification, with a report you can share. Know exactly what you\'re buying.';
+
+  @override
+  String get onbAlertsTitle => 'Stay ahead of your battery';
+
+  @override
+  String get onbAlertsBody =>
+      'Get alerts for charge limits, heat and low battery, and keep live stats in your notification bar. Both are optional.';
+
+  @override
+  String get onbChargeAlarm => 'Charge alarm at 80%';
+
+  @override
+  String get onbLiveStatus => 'Live status in the notification bar';
+
+  @override
+  String get onbArtCharged => 'Charged to 80%. Unplug to protect your battery.';
+
+  @override
+  String get onbArtWarm =>
+      'Phone is warm (42 °C). Close heavy apps for a while.';
 }

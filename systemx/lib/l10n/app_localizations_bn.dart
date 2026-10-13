@@ -3282,4 +3282,44 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get gpsTurnOn => 'লোকেশন চালু করুন';
+
+  @override
+  String get onbWelcomeTitle => 'SystemX-এ স্বাগতম';
+
+  @override
+  String get onbWelcomeBody =>
+      'ভাষা আর চেহারা বেছে নিন। দুটোই যেকোনো সময় সেটিংসে বদলাতে পারবেন।';
+
+  @override
+  String get onbLanguage => 'ভাষা';
+
+  @override
+  String get onbAppearance => 'চেহারা';
+
+  @override
+  String get onbUsedTitle => 'নিশ্চিন্তে পুরোনো ফোন কিনুন';
+
+  @override
+  String get onbUsedBody =>
+      'টাকা দেওয়ার আগে যেকোনো পুরোনো ফোন যাচাই করুন: হার্ডওয়্যার, ব্যাটারি হেলথ আর পরিবর্তনের চিহ্ন, শেয়ার করার মতো রিপোর্টসহ। ঠিক কী কিনছেন তা জানুন।';
+
+  @override
+  String get onbAlertsTitle => 'ব্যাটারির খেয়াল রাখুন';
+
+  @override
+  String get onbAlertsBody =>
+      'চার্জ সীমা, অতিরিক্ত তাপ আর কম ব্যাটারির অ্যালার্ট পান, আর নোটিফিকেশন বারে লাইভ তথ্য রাখুন। দুটোই ঐচ্ছিক।';
+
+  @override
+  String get onbChargeAlarm => '৮০%-এ চার্জ অ্যালার্ম';
+
+  @override
+  String get onbLiveStatus => 'নোটিফিকেশন বারে লাইভ স্ট্যাটাস';
+
+  @override
+  String get onbArtCharged =>
+      '৮০% চার্জ হয়েছে। ব্যাটারি রক্ষায় চার্জার খুলে দিন।';
+
+  @override
+  String get onbArtWarm => 'ফোন গরম (৪২ °C)। কিছুক্ষণ ভারী অ্যাপ বন্ধ রাখুন।';
 }
