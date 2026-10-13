@@ -169,6 +169,7 @@ void main() {
     await _shoot(tester, '30_used_phone', Routes.usedPhone);
     await _shoot(tester, '31_stress', Routes.stress);
     await _shoot(tester, '32_tests_light', Routes.tests, theme: ThemeMode.light);
+    await _shoot(tester, '33_touch_grid', Routes.runTest(HwTest.touchGrid));
     addTearDown(tester.view.reset);
   });
 

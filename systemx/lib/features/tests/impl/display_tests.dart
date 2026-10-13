@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/theme/sx_colors.dart';
+import '../../../core/theme/sx_type.dart';
 import '../../../l10n/app_localizations.dart';
 import '../../../platform/platform.dart';
 import '../test_catalog.dart';
@@ -235,36 +236,93 @@ class _TouchGridTestState extends State<TouchGridTest> {
                 ],
               ),
               Center(
-                child: Column(mainAxisSize: MainAxisSize.min, children: [
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
-                    decoration: BoxDecoration(
-                      color: Colors.black.withValues(alpha: 0.7),
-                      borderRadius: BorderRadius.circular(99),
-                    ),
-                    child: Text(
-                      '${l.touchEveryZone} · ${_hit.length}/${touchCols * touchRows}',
-                      style: const TextStyle(color: Colors.white),
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-                  Row(mainAxisSize: MainAxisSize.min, children: [
-                    FilledButton.tonal(onPressed: _finish, child: Text(l.done)),
-                    const SizedBox(width: 8),
-                    FilledButton.tonal(
-                      onPressed: () {
-                        _finished = true;
-                        widget.done(TestStatus.skipped, l.skippedByYou);
-                      },
-                      child: Text(l.skip),
-                    ),
-                  ]),
-                ]),
+                child: _TouchControls(
+                  title: l.touchEveryZone,
+                  done: _hit.length,
+                  total: touchCols * touchRows,
+                  doneLabel: l.done,
+                  skipLabel: l.skip,
+                  onDone: _finish,
+                  onSkip: () {
+                    _finished = true;
+                    widget.done(TestStatus.skipped, l.skippedByYou);
+                  },
+                ),
               ),
             ]),
           );
         }),
       ),
+    );
+  }
+}
+
+/// Progress and buttons for the touch grid, in one compact dark card so
+/// they read clearly over both lit and unlit squares.
+class _TouchControls extends StatelessWidget {
+  const _TouchControls({
+    required this.title,
+    required this.done,
+    required this.total,
+    required this.doneLabel,
+    required this.skipLabel,
+    required this.onDone,
+    required this.onSkip,
+  });
+
+  final String title;
+  final int done;
+  final int total;
+  final String doneLabel;
+  final String skipLabel;
+  final VoidCallback onDone;
+  final VoidCallback onSkip;
+
+  @override
+  Widget build(BuildContext context) {
+    final sx = context.sx;
+    return Container(
+      width: 272,
+      padding: const EdgeInsets.fromLTRB(18, 16, 18, 12),
+      decoration: BoxDecoration(
+        color: const Color(0xF0101420),
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(color: Colors.white12),
+        boxShadow: const [BoxShadow(color: Colors.black54, blurRadius: 24)],
+      ),
+      child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
+        Row(children: [
+          Expanded(
+            child: Text(title, style: context.text.titleSmall?.copyWith(color: Colors.white)),
+          ),
+          Text('$done / $total',
+              style: SxText.readout(13, Colors.white70, weight: FontWeight.w500)),
+        ]),
+        const SizedBox(height: 10),
+        ClipRRect(
+          borderRadius: BorderRadius.circular(99),
+          child: LinearProgressIndicator(
+            value: total == 0 ? 0 : done / total,
+            minHeight: 6,
+            color: sx.good,
+            backgroundColor: Colors.white12,
+          ),
+        ),
+        const SizedBox(height: 12),
+        Row(children: [
+          Expanded(
+            child: TextButton(
+              style: TextButton.styleFrom(foregroundColor: Colors.white70),
+              onPressed: onSkip,
+              child: Text(skipLabel),
+            ),
+          ),
+          const SizedBox(width: 8),
+          Expanded(
+            child: FilledButton(onPressed: onDone, child: Text(doneLabel)),
+          ),
+        ]),
+      ]),
     );
   }
 }

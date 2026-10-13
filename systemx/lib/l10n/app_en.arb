@@ -36,7 +36,6 @@
   "@headroom": {"placeholders": {"percent": {"type": "int"}}},
   "tipChargeLimit": "Unplug at 80% to slow battery wear.",
   "tipSetAlarm": "Set alarm",
-  "comingSoon": "Coming in the next update",
   "sample": "Sample",
 
   "deviceTitle": "Device",
@@ -144,9 +143,6 @@
   "permCameraSub": "Only during the camera test",
   "permMicrophone": "Microphone",
   "permMicrophoneSub": "Only during the microphone test",
-  "permNearby": "Nearby devices",
-  "permNearbySub": "Bluetooth test",
-  "askWhenNeeded": "Ask when needed",
   "permAllow": "Allow",
   "permNotNow": "Not now",
   "copied": "Copied {label}",

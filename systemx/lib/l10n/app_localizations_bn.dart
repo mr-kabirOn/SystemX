@@ -113,9 +113,6 @@ class AppLocalizationsBn extends AppLocalizations {
   String get tipSetAlarm => 'অ্যালার্ম সেট করুন';
 
   @override
-  String get comingSoon => 'পরবর্তী আপডেটে আসছে';
-
-  @override
   String get sample => 'নমুনা';
 
   @override
@@ -423,15 +420,6 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get permMicrophoneSub => 'শুধু মাইক্রোফোন টেস্টের সময়';
-
-  @override
-  String get permNearby => 'কাছের ডিভাইস';
-
-  @override
-  String get permNearbySub => 'ব্লুটুথ টেস্ট';
-
-  @override
-  String get askWhenNeeded => 'দরকার হলে জিজ্ঞেস করবে';
 
   @override
   String get permAllow => 'অনুমতি দিন';

@@ -37,7 +37,6 @@ abstract final class SxIcons {
   static const IconData charging = PhosphorIconsFill.lightning;
   static const IconData speed = PhosphorIconsFill.speedometer;
   static const IconData notifications = PhosphorIconsFill.bell;
-  static const IconData nearby = PhosphorIconsFill.broadcast;
 
   // Test status: never color alone, each has its own shape.
   static const IconData passed = PhosphorIconsFill.sealCheck;

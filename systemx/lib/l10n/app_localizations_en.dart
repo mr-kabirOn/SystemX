@@ -112,9 +112,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get tipSetAlarm => 'Set alarm';
 
   @override
-  String get comingSoon => 'Coming in the next update';
-
-  @override
   String get sample => 'Sample';
 
   @override
@@ -422,15 +419,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get permMicrophoneSub => 'Only during the microphone test';
-
-  @override
-  String get permNearby => 'Nearby devices';
-
-  @override
-  String get permNearbySub => 'Bluetooth test';
-
-  @override
-  String get askWhenNeeded => 'Ask when needed';
 
   @override
   String get permAllow => 'Allow';

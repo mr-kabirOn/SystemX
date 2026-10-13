@@ -333,13 +333,6 @@ class StatusChip extends StatelessWidget {
   }
 }
 
-void showComingSoon(BuildContext context) {
-  ScaffoldMessenger.of(context)
-    ..hideCurrentSnackBar()
-    ..showSnackBar(
-        SnackBar(content: Text(AppLocalizations.of(context).comingSoon)));
-}
-
 /// A column that fills the screen but scrolls when its content doesn't fit
 /// (large font sizes, small phones). [Spacer]s work inside it.
 class FillOrScroll extends StatelessWidget {

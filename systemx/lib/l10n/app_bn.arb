@@ -34,7 +34,6 @@
   "headroom": "হেডরুম {percent}%",
   "tipChargeLimit": "৮০% হলে চার্জার খুলে দিন, ব্যাটারি দীর্ঘদিন ভালো থাকবে।",
   "tipSetAlarm": "অ্যালার্ম সেট করুন",
-  "comingSoon": "পরবর্তী আপডেটে আসছে",
   "sample": "নমুনা",
 
   "deviceTitle": "ডিভাইস",
@@ -139,9 +138,6 @@
   "permCameraSub": "শুধু ক্যামেরা টেস্টের সময়",
   "permMicrophone": "মাইক্রোফোন",
   "permMicrophoneSub": "শুধু মাইক্রোফোন টেস্টের সময়",
-  "permNearby": "কাছের ডিভাইস",
-  "permNearbySub": "ব্লুটুথ টেস্ট",
-  "askWhenNeeded": "দরকার হলে জিজ্ঞেস করবে",
   "permAllow": "অনুমতি দিন",
   "permNotNow": "এখন না",
   "copied": "{label} কপি হয়েছে",

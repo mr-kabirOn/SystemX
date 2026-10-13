@@ -8,7 +8,6 @@ import '../../platform/platform.dart';
 import '../../ui/sx_icons.dart';
 import '../../ui/widgets/cards.dart';
 import '../../ui/widgets/page_scaffold.dart';
-import '../../ui/widgets/permission_sheet.dart';
 
 class PrivacyScreen extends ConsumerStatefulWidget {
   const PrivacyScreen({super.key});
@@ -43,15 +42,13 @@ class _PrivacyScreenState extends ConsumerState<PrivacyScreen> {
     final l = AppLocalizations.of(context);
     final sx = context.sx;
 
-    // Permissions with a feature behind them today; the rest arrive with
-    // later stages and only explain themselves for now.
-    final perms = <(IconData, Color, String, String, AppPermission?)>[
+    // Every permission SystemX can ask for, with its real status.
+    final perms = <(IconData, Color, String, String, AppPermission)>[
       (SxIcons.notifications, sx.accent, l.permNotifications, l.permNotificationsSub, AppPermission.notifications),
       (SxIcons.gps, sx.network, l.permLocation, l.permLocationSub, AppPermission.location),
       (SxIcons.device, sx.cpu, l.permPhone, l.permPhoneSub, AppPermission.phone),
       (SxIcons.camera, sx.camera, l.permCamera, l.permCameraSub, AppPermission.camera),
       (SxIcons.mic, sx.ram, l.permMicrophone, l.permMicrophoneSub, AppPermission.microphone),
-      (SxIcons.nearby, sx.storage, l.permNearby, l.permNearbySub, null),
     ];
 
     return PageScaffold(
@@ -79,9 +76,7 @@ class _PrivacyScreenState extends ConsumerState<PrivacyScreen> {
                 if (i > 0) const Divider(indent: 66, endIndent: 14),
                 // Status under the text (not trailing) so large fonts fit.
                 InkWell(
-                  onTap: () => p.$5 == null
-                      ? _explain(p.$1, p.$2, p.$3, p.$4)
-                      : _manage(p.$5!),
+                  onTap: () => _manage(p.$5),
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
                     child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -92,7 +87,7 @@ class _PrivacyScreenState extends ConsumerState<PrivacyScreen> {
                           Text(p.$3, style: context.text.titleSmall),
                           Text(p.$4, style: context.text.bodySmall),
                           const SizedBox(height: 6),
-                          p.$5 == null ? StatusChip(l.askWhenNeeded) : _StatusChip(p.$5!),
+                          _StatusChip(p.$5),
                         ]),
                       ),
                     ]),
@@ -105,13 +100,6 @@ class _PrivacyScreenState extends ConsumerState<PrivacyScreen> {
         ),
       ],
     );
-  }
-
-  Future<void> _explain(
-      IconData icon, Color color, String title, String reason) async {
-    final allowed = await showPermissionSheet(context,
-        icon: icon, color: color, title: title, reason: reason);
-    if (allowed && mounted) showComingSoon(context);
   }
 
   /// Asks for the permission, or opens the app's settings page once it is

@@ -290,12 +290,6 @@ abstract class AppLocalizations {
   /// **'Set alarm'**
   String get tipSetAlarm;
 
-  /// No description provided for @comingSoon.
-  ///
-  /// In en, this message translates to:
-  /// **'Coming in the next update'**
-  String get comingSoon;
-
   /// No description provided for @sample.
   ///
   /// In en, this message translates to:
@@ -895,24 +889,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Only during the microphone test'**
   String get permMicrophoneSub;
-
-  /// No description provided for @permNearby.
-  ///
-  /// In en, this message translates to:
-  /// **'Nearby devices'**
-  String get permNearby;
-
-  /// No description provided for @permNearbySub.
-  ///
-  /// In en, this message translates to:
-  /// **'Bluetooth test'**
-  String get permNearbySub;
-
-  /// No description provided for @askWhenNeeded.
-  ///
-  /// In en, this message translates to:
-  /// **'Ask when needed'**
-  String get askWhenNeeded;
 
   /// No description provided for @permAllow.
   ///
