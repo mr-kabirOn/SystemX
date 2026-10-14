@@ -2318,10 +2318,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get liveStatusSub =>
-      'Battery, temperature, charging power, network speed and RAM, with a Stop button. Uses a little battery.';
+      'An ongoing notification with live battery, temperature, power, network and RAM.';
 
   @override
-  String get statusBarShows => 'Status bar shows';
+  String get statusBarShows => 'Status bar icon';
 
   @override
   String get chargeAlarm => 'Charge alarm';
@@ -2713,7 +2713,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get bhDrainNote =>
-      'Recorded when SystemX takes a reading in the background. With Live status on, readings are frequent and the numbers are more accurate.';
+      'Estimates from SystemX\'s background readings, not a prediction of remaining battery life. They become more reliable after 3+ hours of each; with Live status on, readings are more frequent.';
 
   @override
   String get bhHow =>
@@ -3466,4 +3466,11 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get csAvgCurrent => 'Average current';
+
+  @override
+  String get statusBarShowsNote =>
+      'The value next to the clock. The notification always shows all values.';
+
+  @override
+  String get bhLowConfidence => 'low confidence';
 }

@@ -758,8 +758,8 @@
   "secSummaries": "Summaries and reminders",
   "secAlerts": "Alerts",
   "liveStatus": "Live status notification",
-  "liveStatusSub": "Battery, temperature, charging power, network speed and RAM, with a Stop button. Uses a little battery.",
-  "statusBarShows": "Status bar shows",
+  "liveStatusSub": "An ongoing notification with live battery, temperature, power, network and RAM.",
+  "statusBarShows": "Status bar icon",
   "chargeAlarm": "Charge alarm",
   "notifyAt": "Notify at",
   "chargingDone": "Charging finished",
@@ -885,7 +885,7 @@
   "bhHours": "{hours} h measured",
   "@bhHours": {"placeholders": {"hours": {"type": "String"}}},
   "bhCollecting": "Collecting data",
-  "bhDrainNote": "Recorded when SystemX takes a reading in the background. With Live status on, readings are frequent and the numbers are more accurate.",
+  "bhDrainNote": "Estimates from SystemX's background readings, not a prediction of remaining battery life. They become more reliable after 3+ hours of each; with Live status on, readings are more frequent.",
   "bhHow": "How this works: each charge of 15% or more is measured with the battery's own charge counter (charge that went in ÷ percent gained). The estimate is the middle value of the last 5 measurements. It is an estimate, not a hardware test: heat, fast charging and the phone's calibration can move it a few percent either way.",
   "toolsTitle": "Tools",
   "stTitle": "CPU stress test",
@@ -1115,5 +1115,7 @@
   "csShort": "Short connection ({from}% → {to}%), too short to measure. Not counted in the summary.",
   "@csShort": {"placeholders": {"from": {"type": "int"}, "to": {"type": "int"}}},
   "csAddedLabel": "Added",
-  "csAvgCurrent": "Average current"
+  "csAvgCurrent": "Average current",
+  "statusBarShowsNote": "The value next to the clock. The notification always shows all values.",
+  "bhLowConfidence": "low confidence"
 }

@@ -422,7 +422,13 @@ class _Rate extends StatelessWidget {
           style: rate == null ? context.text.bodyMedium : context.text.titleMedium,
         ),
         const SizedBox(height: 2),
-        Text(l.bhHours(formatDouble(hours)), style: context.text.bodySmall),
+        Text(
+          [
+            l.bhHours(formatDouble(hours)),
+            if (rate != null && hours < 3) l.bhLowConfidence,
+          ].join(' · '),
+          style: context.text.bodySmall,
+        ),
       ]),
     );
   }

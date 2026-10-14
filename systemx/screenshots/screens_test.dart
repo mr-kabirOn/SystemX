@@ -196,7 +196,9 @@ void main() {
     await _shoot(tester, '18_report', Routes.report(0));
     await _shoot(tester, '19_test_multitouch', Routes.runTest(HwTest.multiTouch));
     await _shoot(tester, '20_checkup_intro', Routes.checkup);
-    await _shoot(tester, '21_alerts', Routes.alerts);
+    final live = FakeBackgroundApi();
+    live.config = copyConfig(live.config, liveStatus: true);
+    await _shoot(tester, '21_alerts', Routes.alerts, background: live);
     await _shoot(tester, '22_sessions', Routes.sessions);
     await _shoot(tester, '23_wifi_meter', Routes.wifiMeter);
     await _shoot(tester, '24_home_bangla', Routes.home, locale: 'bn');

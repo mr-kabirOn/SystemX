@@ -134,7 +134,7 @@ class LiveStatusService : Service() {
         )
         val (value, unit) = AlertRules.statusIconLines(c.statusIcon, r.level, r.tempC, c.fahrenheit, down)
         return Notification.Builder(this, Notifications.LIVE)
-            .setSmallIcon(textIcon(value, unit))
+            .setSmallIcon(textIcon(value, unit, AlertRules.unitBelow(c.statusIcon)))
             // Plain text for places that don't show custom layouts (lock
             // screen in some modes, accessibility, wearables).
             .setContentTitle(getString(R.string.live_battery, r.level) + " · " + batteryLabel)
@@ -168,32 +168,41 @@ class LiveStatusService : Service() {
     }
 
     /**
-     * White on transparent, as Android requires for status bar icons. One
-     * line for battery values; for network speed the number sits on top and
-     * its unit underneath, so "0" never reads as the letter O.
+     * White on transparent, as Android requires for status bar icons. The
+     * number is drawn at the same size for every option; battery values
+     * put the unit small beside it ("63%"), network speed underneath it
+     * ("0" over "KB/s") so the number never reads as a letter.
      */
-    private fun textIcon(value: String, unit: String): Icon {
+    private fun textIcon(value: String, unit: String, unitBelow: Boolean): Icon {
         val size = 96
         val bmp = Bitmap.createBitmap(size, size, Bitmap.Config.ARGB_8888)
         val canvas = Canvas(bmp)
-        fun paint(textSize: Float) = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+        fun paint(textSize: Float, align: Paint.Align) = Paint(Paint.ANTI_ALIAS_FLAG).apply {
             color = Color.WHITE
-            textAlign = Paint.Align.CENTER
+            textAlign = align
             typeface = Typeface.create(Typeface.DEFAULT, Typeface.BOLD)
             this.textSize = textSize
         }
-        if (unit.isEmpty()) {
-            val p = paint(64f)
-            while (p.measureText(value) > size - 2 && p.textSize > 20f) p.textSize -= 2f
-            val y = size / 2f - (p.descent() + p.ascent()) / 2
-            canvas.drawText(value, size / 2f, y, p)
-        } else {
-            val top = paint(60f)
+        if (unitBelow) {
+            val top = paint(60f, Paint.Align.CENTER)
             while (top.measureText(value) > size - 2 && top.textSize > 24f) top.textSize -= 2f
-            val bottom = paint(34f)
+            val bottom = paint(34f, Paint.Align.CENTER)
             while (bottom.measureText(unit) > size - 2 && bottom.textSize > 16f) bottom.textSize -= 2f
             canvas.drawText(value, size / 2f, size * 0.56f, top)
             canvas.drawText(unit, size / 2f, size * 0.94f, bottom)
+        } else {
+            val num = paint(60f, Paint.Align.LEFT)
+            val small = paint(34f, Paint.Align.LEFT)
+            // Shrink both together until number and unit fit side by side.
+            while (num.measureText(value) + small.measureText(unit) > size - 2 && num.textSize > 24f) {
+                num.textSize -= 2f
+                small.textSize = num.textSize * 0.57f
+            }
+            val total = num.measureText(value) + small.measureText(unit)
+            val x = (size - total) / 2f
+            val baseline = size / 2f - (num.descent() + num.ascent()) / 2
+            canvas.drawText(value, x, baseline, num)
+            canvas.drawText(unit, x + num.measureText(value), baseline, small)
         }
         return Icon.createWithBitmap(bmp)
     }

@@ -4295,13 +4295,13 @@ abstract class AppLocalizations {
   /// No description provided for @liveStatusSub.
   ///
   /// In en, this message translates to:
-  /// **'Battery, temperature, charging power, network speed and RAM, with a Stop button. Uses a little battery.'**
+  /// **'An ongoing notification with live battery, temperature, power, network and RAM.'**
   String get liveStatusSub;
 
   /// No description provided for @statusBarShows.
   ///
   /// In en, this message translates to:
-  /// **'Status bar shows'**
+  /// **'Status bar icon'**
   String get statusBarShows;
 
   /// No description provided for @chargeAlarm.
@@ -4973,7 +4973,7 @@ abstract class AppLocalizations {
   /// No description provided for @bhDrainNote.
   ///
   /// In en, this message translates to:
-  /// **'Recorded when SystemX takes a reading in the background. With Live status on, readings are frequent and the numbers are more accurate.'**
+  /// **'Estimates from SystemX\'s background readings, not a prediction of remaining battery life. They become more reliable after 3+ hours of each; with Live status on, readings are more frequent.'**
   String get bhDrainNote;
 
   /// No description provided for @bhHow.
@@ -6217,6 +6217,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Average current'**
   String get csAvgCurrent;
+
+  /// No description provided for @statusBarShowsNote.
+  ///
+  /// In en, this message translates to:
+  /// **'The value next to the clock. The notification always shows all values.'**
+  String get statusBarShowsNote;
+
+  /// No description provided for @bhLowConfidence.
+  ///
+  /// In en, this message translates to:
+  /// **'low confidence'**
+  String get bhLowConfidence;
 }
 
 class _AppLocalizationsDelegate

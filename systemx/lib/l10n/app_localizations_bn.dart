@@ -2303,10 +2303,10 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get liveStatusSub =>
-      'ব্যাটারি, তাপমাত্রা, চার্জিং পাওয়ার, নেটওয়ার্ক স্পিড আর RAM, সাথে থামানোর বোতাম। সামান্য ব্যাটারি খরচ হয়।';
+      'লাইভ ব্যাটারি, তাপমাত্রা, পাওয়ার, নেটওয়ার্ক আর RAM সহ একটি চলমান নোটিফিকেশন।';
 
   @override
-  String get statusBarShows => 'স্ট্যাটাস বারে দেখাবে';
+  String get statusBarShows => 'স্ট্যাটাস বারের আইকন';
 
   @override
   String get chargeAlarm => 'চার্জ অ্যালার্ম';
@@ -2695,7 +2695,7 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get bhDrainNote =>
-      'SystemX ব্যাকগ্রাউন্ডে রিডিং নিলে রেকর্ড হয়। লাইভ স্ট্যাটাস চালু থাকলে রিডিং ঘন ঘন হয় আর হিসাব বেশি নির্ভুল হয়।';
+      'SystemX-এর ব্যাকগ্রাউন্ড রিডিং থেকে অনুমান, বাকি ব্যাটারি কতক্ষণ চলবে তার পূর্বাভাস নয়। প্রতিটিতে ৩+ ঘণ্টার তথ্য হলে বেশি নির্ভরযোগ্য হয়; লাইভ স্ট্যাটাস চালু থাকলে রিডিং ঘন ঘন হয়।';
 
   @override
   String get bhHow =>
@@ -3440,4 +3440,11 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get csAvgCurrent => 'গড় কারেন্ট';
+
+  @override
+  String get statusBarShowsNote =>
+      'ঘড়ির পাশের মান। নোটিফিকেশনে সবসময় সব মান দেখা যায়।';
+
+  @override
+  String get bhLowConfidence => 'নির্ভরযোগ্যতা কম';
 }

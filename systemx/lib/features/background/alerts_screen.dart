@@ -72,6 +72,7 @@ class AlertsScreen extends ConsumerWidget {
                   if (c.liveStatus)
                     _Chips<String>(
                       title: l.statusBarShows,
+                      note: l.statusBarShowsNote,
                       value: c.statusIcon,
                       options: {
                         'battery_level': l.metricBattery,
@@ -192,34 +193,47 @@ class AlertsScreen extends ConsumerWidget {
   }
 }
 
+/// A labelled single choice. Segments share the width equally and never
+/// re-wrap when the selection changes, so the card stays steady.
 class _Chips<T> extends StatelessWidget {
   const _Chips({
     required this.title,
     required this.value,
     required this.options,
     required this.onChanged,
+    this.note,
   });
 
   final String title;
   final T value;
   final Map<T, String> options;
   final ValueChanged<T> onChanged;
+  final String? note;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
-      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Text(title, style: context.text.bodySmall),
-        const SizedBox(height: 6),
-        Wrap(spacing: 8, runSpacing: 8, children: [
-          for (final MapEntry(:key, value: label) in options.entries)
-            ChoiceChip(
-              label: Text(label),
-              selected: key == value,
-              onSelected: (_) => onChanged(key),
-            ),
-        ]),
+      padding: const EdgeInsets.fromLTRB(16, 4, 16, 14),
+      child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+        Text(title, style: context.text.labelLarge),
+        if (note != null) ...[
+          const SizedBox(height: 2),
+          Text(note!, style: context.text.bodySmall),
+        ],
+        const SizedBox(height: 8),
+        SegmentedButton<T>(
+          showSelectedIcon: false,
+          style: const ButtonStyle(visualDensity: VisualDensity.compact),
+          segments: [
+            for (final MapEntry(:key, value: label) in options.entries)
+              ButtonSegment(
+                value: key,
+                label: FittedBox(fit: BoxFit.scaleDown, child: Text(label, maxLines: 1)),
+              ),
+          ],
+          selected: {value},
+          onSelectionChanged: (v) => onChanged(v.first),
+        ),
       ]),
     );
   }

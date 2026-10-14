@@ -37,9 +37,11 @@ class AlertRulesTest {
 
     @Test
     fun statusIconShowsValueAndUnit() {
-        assertEquals("78%" to "", AlertRules.statusIconLines("battery_level", 78, 33.4, false, 0.0))
-        assertEquals("33°C" to "", AlertRules.statusIconLines("battery_temp", 78, 33.4, false, 0.0))
-        assertEquals("92°F" to "", AlertRules.statusIconLines("battery_temp", 78, 33.4, true, 0.0))
+        assertEquals("78" to "%", AlertRules.statusIconLines("battery_level", 78, 33.4, false, 0.0))
+        assertEquals("33" to "°C", AlertRules.statusIconLines("battery_temp", 78, 33.4, false, 0.0))
+        assertEquals("92" to "°F", AlertRules.statusIconLines("battery_temp", 78, 33.4, true, 0.0))
+        assertFalse(AlertRules.unitBelow("battery_level"))
+        assertTrue(AlertRules.unitBelow("net_speed"))
         assertEquals("2.4" to "MB/s", AlertRules.statusIconLines("net_speed", 78, 33.4, false, 2_400_000.0))
         assertEquals("850" to "KB/s", AlertRules.rateParts(850_000.0))
         assertEquals("0" to "KB/s", AlertRules.rateParts(10.0))
