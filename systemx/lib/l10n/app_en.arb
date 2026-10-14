@@ -1083,8 +1083,8 @@
   "bhCollectingCharges": "Collecting: {count} of {needed} charges",
   "@bhCollectingCharges": {"placeholders": {"count": {"type": "int"}, "needed": {"type": "int"}}},
   "bhDesignCapacity": "Original (design) capacity",
-  "bhOfOriginal": "Compared with original",
-  "bhOver100": "A little above 100% is normal measurement variation. It means the battery is close to new, not bigger than designed.",
+  "bhOfOriginal": "Capacity vs original",
+  "bhOver100": "Health is shown as 100% at most. The measured capacity can read slightly above the original rating because of normal measurement variation; it means the battery is close to new.",
   "bhConfidence": "Confidence",
   "bhTrendSub": "Each dot is one measured charge. The dashed line is the original capacity.",
   "bhDesignLine": "Original",
@@ -1118,5 +1118,7 @@
   "csAvgCurrent": "Average current",
   "statusBarShowsNote": "The value next to the clock. The notification always shows all values.",
   "bhLowConfidence": "low confidence",
-  "nBluetoothOn": "Bluetooth is on and responding"
+  "nBluetoothOn": "Bluetooth is on and responding",
+  "bhEstimatedPct": "{pct}% (estimated)",
+  "@bhEstimatedPct": {"placeholders": {"pct": {"type": "int"}}}
 }

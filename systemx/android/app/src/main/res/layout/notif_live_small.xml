@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Collapsed live status: battery, temperature, download and RAM in one row. -->
+<!-- Collapsed live status: battery and temperature large, then download and
+     RAM. Fits Android's 48dp collapsed height. -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -14,8 +15,8 @@
         android:gravity="center_vertical"
         android:orientation="horizontal">
         <ImageView
-            android:layout_width="16dp"
-            android:layout_height="16dp"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
             android:importantForAccessibility="no"
             android:src="@drawable/ic_n_battery" />
         <TextView
@@ -24,9 +25,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:ellipsize="end"
+            android:fontFamily="sans-serif-medium"
             android:singleLine="true"
             android:textAppearance="@android:style/TextAppearance.Material.Notification.Title"
-            android:textSize="13sp" />
+            android:textSize="20sp" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="0dp"
@@ -35,8 +37,8 @@
         android:gravity="center_vertical"
         android:orientation="horizontal">
         <ImageView
-            android:layout_width="16dp"
-            android:layout_height="16dp"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
             android:importantForAccessibility="no"
             android:src="@drawable/ic_n_temp" />
         <TextView
@@ -45,9 +47,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:ellipsize="end"
+            android:fontFamily="sans-serif-medium"
             android:singleLine="true"
             android:textAppearance="@android:style/TextAppearance.Material.Notification.Title"
-            android:textSize="13sp" />
+            android:textSize="20sp" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="0dp"
@@ -56,8 +59,8 @@
         android:gravity="center_vertical"
         android:orientation="horizontal">
         <ImageView
-            android:layout_width="16dp"
-            android:layout_height="16dp"
+            android:layout_width="14dp"
+            android:layout_height="14dp"
             android:importantForAccessibility="no"
             android:src="@drawable/ic_n_down" />
         <TextView
@@ -66,9 +69,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:ellipsize="end"
+            android:fontFamily="sans-serif-medium"
             android:singleLine="true"
             android:textAppearance="@android:style/TextAppearance.Material.Notification.Title"
-            android:textSize="13sp" />
+            android:textSize="14sp" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="0dp"
@@ -77,8 +81,8 @@
         android:gravity="center_vertical"
         android:orientation="horizontal">
         <ImageView
-            android:layout_width="16dp"
-            android:layout_height="16dp"
+            android:layout_width="14dp"
+            android:layout_height="14dp"
             android:importantForAccessibility="no"
             android:src="@drawable/ic_n_ram" />
         <TextView
@@ -87,8 +91,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:ellipsize="end"
+            android:fontFamily="sans-serif-medium"
             android:singleLine="true"
             android:textAppearance="@android:style/TextAppearance.Material.Notification.Title"
-            android:textSize="13sp" />
+            android:textSize="14sp" />
     </LinearLayout>
 </LinearLayout>

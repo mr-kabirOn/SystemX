@@ -6077,13 +6077,13 @@ abstract class AppLocalizations {
   /// No description provided for @bhOfOriginal.
   ///
   /// In en, this message translates to:
-  /// **'Compared with original'**
+  /// **'Capacity vs original'**
   String get bhOfOriginal;
 
   /// No description provided for @bhOver100.
   ///
   /// In en, this message translates to:
-  /// **'A little above 100% is normal measurement variation. It means the battery is close to new, not bigger than designed.'**
+  /// **'Health is shown as 100% at most. The measured capacity can read slightly above the original rating because of normal measurement variation; it means the battery is close to new.'**
   String get bhOver100;
 
   /// No description provided for @bhConfidence.
@@ -6235,6 +6235,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Bluetooth is on and responding'**
   String get nBluetoothOn;
+
+  /// No description provided for @bhEstimatedPct.
+  ///
+  /// In en, this message translates to:
+  /// **'{pct}% (estimated)'**
+  String bhEstimatedPct(int pct);
 }
 
 class _AppLocalizationsDelegate

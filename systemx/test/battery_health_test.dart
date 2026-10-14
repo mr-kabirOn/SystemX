@@ -43,7 +43,7 @@ void main() {
     final five = estimateCapacity([for (final c in [4890, 4850, 4900, 4870, 4880]) _s(c)], 4855);
     expect(five.confidence, Confidence.high);
     expect(five.band, HealthBand.good);
-    expect(five.percentOfDesign, 101); // raw, not capped; shown as 100%+
+    expect(five.percentOfDesign, 101); // raw, not capped; ring shows 100%, row "101% (estimated)"
 
     final worn = estimateCapacity([_s(3000), _s(3100), _s(3050)], 4855);
     expect(worn.band, HealthBand.poor);

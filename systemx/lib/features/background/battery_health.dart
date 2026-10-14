@@ -46,6 +46,11 @@ class CapacityEstimate {
   /// [mah] against the design capacity, raw (can exceed 100).
   final int? percentOfDesign;
 
+  /// The user-facing health percentage: [percentOfDesign] capped at 100,
+  /// since a battery can't hold more than it was designed for and readings
+  /// above that are measurement variation. The raw ratio stays available.
+  int? get healthPercent => percentOfDesign == null ? null : (percentOfDesign! > 100 ? 100 : percentOfDesign);
+
   /// Measurements behind [mah].
   final int count;
   final Confidence confidence;
@@ -172,13 +177,10 @@ class BatteryHealthScreen extends ConsumerWidget {
       HealthBand.poor => sx.bad,
       HealthBand.insufficient => sx.muted,
     };
-    // Shown percentage: readings a little over the rating are measurement
-    // variation, so they read "100%+" with an explanation; the raw mAh stays.
-    final ringText = band == HealthBand.insufficient || pct == null
-        ? '–'
-        : pct > 100
-            ? '100%+'
-            : '$pct%';
+    // One display rule: the ring shows health (ratio capped at 100%); the
+    // raw ratio appears once, labelled as estimated.
+    final health = est.healthPercent;
+    final ringText = band == HealthBand.insufficient || health == null ? '–' : '$health%';
     final bandText = switch (band) {
       HealthBand.good => l.bhGood,
       HealthBand.fair => l.bhFair,
@@ -200,7 +202,7 @@ class BatteryHealthScreen extends ConsumerWidget {
           child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             Row(children: [
               GaugeRing(
-                value: band == HealthBand.insufficient ? 0 : ((pct ?? 0) / 100).clamp(0, 1).toDouble(),
+                value: band == HealthBand.insufficient ? 0 : (health ?? 0) / 100,
                 color: color,
                 size: 104,
                 stroke: 11,
@@ -232,7 +234,7 @@ class BatteryHealthScreen extends ConsumerWidget {
                 value: design == null ? l.notAvailable : '${nf.format(design.round())} mAh',
               ),
               if (pct != null && design != null)
-                InfoRow(label: l.bhOfOriginal, value: '$pct%'),
+                InfoRow(label: l.bhOfOriginal, value: l.bhEstimatedPct(pct)),
               InfoRow(label: l.bhConfidence, value: confidenceText, hint: l.bhBasedOn(est.count)),
               if (pct != null && pct > 100) ...[
                 const SizedBox(height: 4),

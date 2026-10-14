@@ -3355,11 +3355,11 @@ class AppLocalizationsEn extends AppLocalizations {
   String get bhDesignCapacity => 'Original (design) capacity';
 
   @override
-  String get bhOfOriginal => 'Compared with original';
+  String get bhOfOriginal => 'Capacity vs original';
 
   @override
   String get bhOver100 =>
-      'A little above 100% is normal measurement variation. It means the battery is close to new, not bigger than designed.';
+      'Health is shown as 100% at most. The measured capacity can read slightly above the original rating because of normal measurement variation; it means the battery is close to new.';
 
   @override
   String get bhConfidence => 'Confidence';
@@ -3476,4 +3476,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get nBluetoothOn => 'Bluetooth is on and responding';
+
+  @override
+  String bhEstimatedPct(int pct) {
+    return '$pct% (estimated)';
+  }
 }

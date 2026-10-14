@@ -3332,11 +3332,11 @@ class AppLocalizationsBn extends AppLocalizations {
   String get bhDesignCapacity => 'মূল (ডিজাইন) ক্যাপাসিটি';
 
   @override
-  String get bhOfOriginal => 'মূলের তুলনায়';
+  String get bhOfOriginal => 'মূলের তুলনায় ক্যাপাসিটি';
 
   @override
   String get bhOver100 =>
-      '১০০%-এর একটু বেশি হওয়া স্বাভাবিক মাপের পার্থক্য। এর মানে ব্যাটারি প্রায় নতুনের মতো, ডিজাইনের চেয়ে বড় নয়।';
+      'হেলথ সর্বোচ্চ ১০০% দেখানো হয়। স্বাভাবিক মাপের পার্থক্যের কারণে মাপা ক্যাপাসিটি মূল মানের একটু বেশি দেখাতে পারে; এর মানে ব্যাটারি প্রায় নতুনের মতো।';
 
   @override
   String get bhConfidence => 'নির্ভরযোগ্যতা';
@@ -3450,4 +3450,9 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get nBluetoothOn => 'ব্লুটুথ চালু আছে এবং সাড়া দিচ্ছে';
+
+  @override
+  String bhEstimatedPct(int pct) {
+    return '$pct% (আনুমানিক)';
+  }
 }
