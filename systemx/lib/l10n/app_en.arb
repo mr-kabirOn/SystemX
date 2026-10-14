@@ -1119,6 +1119,7 @@
   "statusBarShowsNote": "The value next to the clock. The notification always shows all values.",
   "bhLowConfidence": "low confidence",
   "nBluetoothOn": "Bluetooth is on and responding",
+  "bhAtOriginal": "At or above original",
   "bhEstimatedPct": "{pct}% (estimated)",
   "@bhEstimatedPct": {"placeholders": {"pct": {"type": "int"}}}
 }

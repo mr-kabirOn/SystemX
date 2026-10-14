@@ -3478,6 +3478,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get nBluetoothOn => 'Bluetooth is on and responding';
 
   @override
+  String get bhAtOriginal => 'At or above original';
+
+  @override
   String bhEstimatedPct(int pct) {
     return '$pct% (estimated)';
   }

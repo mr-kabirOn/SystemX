@@ -3452,6 +3452,9 @@ class AppLocalizationsBn extends AppLocalizations {
   String get nBluetoothOn => 'ব্লুটুথ চালু আছে এবং সাড়া দিচ্ছে';
 
   @override
+  String get bhAtOriginal => 'মূলের সমান বা বেশি';
+
+  @override
   String bhEstimatedPct(int pct) {
     return '$pct% (আনুমানিক)';
   }

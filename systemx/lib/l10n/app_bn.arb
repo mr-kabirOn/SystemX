@@ -1032,5 +1032,6 @@
   "statusBarShowsNote": "ঘড়ির পাশের মান। নোটিফিকেশনে সবসময় সব মান দেখা যায়।",
   "bhLowConfidence": "নির্ভরযোগ্যতা কম",
   "nBluetoothOn": "ব্লুটুথ চালু আছে এবং সাড়া দিচ্ছে",
+  "bhAtOriginal": "মূলের সমান বা বেশি",
   "bhEstimatedPct": "{pct}% (আনুমানিক)"
 }

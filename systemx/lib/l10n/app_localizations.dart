@@ -6236,6 +6236,12 @@ abstract class AppLocalizations {
   /// **'Bluetooth is on and responding'**
   String get nBluetoothOn;
 
+  /// No description provided for @bhAtOriginal.
+  ///
+  /// In en, this message translates to:
+  /// **'At or above original'**
+  String get bhAtOriginal;
+
   /// No description provided for @bhEstimatedPct.
   ///
   /// In en, this message translates to:

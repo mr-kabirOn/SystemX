@@ -234,7 +234,7 @@ class BatteryHealthScreen extends ConsumerWidget {
                 value: design == null ? l.notAvailable : '${nf.format(design.round())} mAh',
               ),
               if (pct != null && design != null)
-                InfoRow(label: l.bhOfOriginal, value: l.bhEstimatedPct(pct)),
+                InfoRow(label: l.bhOfOriginal, value: pct > 100 ? l.bhAtOriginal : l.bhEstimatedPct(pct)),
               InfoRow(label: l.bhConfidence, value: confidenceText, hint: l.bhBasedOn(est.count)),
               if (pct != null && pct > 100) ...[
                 const SizedBox(height: 4),
