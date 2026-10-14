@@ -3473,4 +3473,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get bhLowConfidence => 'low confidence';
+
+  @override
+  String get nBluetoothOn => 'Bluetooth is on and responding';
 }

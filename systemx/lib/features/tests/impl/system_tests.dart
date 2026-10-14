@@ -37,7 +37,7 @@ Future<AutoResult> runWifi(DeviceInfoApi api, AppLocalizations l) async {
 Future<AutoResult> runBluetooth(HardwareTestApi hw, AppLocalizations l) async {
   try {
     return switch (await hw.bluetoothState()) {
-      'on' => (TestStatus.passed, l.on),
+      'on' => (TestStatus.passed, l.nBluetoothOn),
       'off' => (TestStatus.skipped, l.nBluetoothOff),
       _ => (TestStatus.skipped, l.nNoBluetooth),
     };

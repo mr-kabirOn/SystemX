@@ -6,7 +6,7 @@
     <string name="ch_summary">সারাংশ ও রিমাইন্ডার</string>
 
     <string name="live_battery">ব্যাটারি %1$d%%</string>
-    <string name="live_health">অবস্থা %1$s</string>
+    <string name="live_health">হেলথ %1$s</string>
     <string name="live_temp">তাপমাত্রা %1$s</string>
     <string name="health_good">ভালো</string>
     <string name="health_overheat">অতিরিক্ত গরম</string>

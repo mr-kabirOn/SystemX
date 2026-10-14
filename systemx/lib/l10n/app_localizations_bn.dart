@@ -45,7 +45,7 @@ class AppLocalizationsBn extends AppLocalizations {
       'কোনো অ্যাকাউন্ট নেই, কোনো ট্র্যাকিং নেই। আপনার তথ্য এই ফোনের বাইরে যায় না।';
 
   @override
-  String get onbSkip => 'বাদ দিন';
+  String get onbSkip => 'এড়িয়ে যান';
 
   @override
   String get onbNext => 'পরবর্তী';
@@ -57,7 +57,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get greetingMorning => 'শুভ সকাল';
 
   @override
-  String get greetingAfternoon => 'শুভ অপরাহ্ন';
+  String get greetingAfternoon => 'শুভ বিকাল';
 
   @override
   String get greetingEvening => 'শুভ সন্ধ্যা';
@@ -306,7 +306,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get settingsTitle => 'সেটিংস';
 
   @override
-  String get secAppearance => 'দেখতে কেমন';
+  String get secAppearance => 'থিম ও রং';
 
   @override
   String get theme => 'থিম';
@@ -493,7 +493,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get secCharging => 'চার্জিং';
 
   @override
-  String get secCapacity => 'ক্ষমতা';
+  String get secCapacity => 'ক্যাপাসিটি';
 
   @override
   String get secSettings => 'সেটিংস';
@@ -743,7 +743,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get specPowerSource => 'পাওয়ারের উৎস';
 
   @override
-  String get specHealth => 'স্বাস্থ্য';
+  String get specHealth => 'হেলথ';
 
   @override
   String get specTemperature => 'তাপমাত্রা';
@@ -773,13 +773,13 @@ class AppLocalizationsBn extends AppLocalizations {
   String get specChargeCounter => 'বাকি চার্জ';
 
   @override
-  String get specEstCapacity => 'আনুমানিক পূর্ণ ক্ষমতা';
+  String get specEstCapacity => 'আনুমানিক পূর্ণ ক্যাপাসিটি';
 
   @override
   String get estCapacityHint => 'আনুমানিক, চার্জ কাউন্টার থেকে হিসাব করা';
 
   @override
-  String get specDesignCapacity => 'ডিজাইন ক্ষমতা';
+  String get specDesignCapacity => 'ডিজাইন ক্যাপাসিটি';
 
   @override
   String get designCapacityHint =>
@@ -1505,7 +1505,7 @@ class AppLocalizationsBn extends AppLocalizations {
       'এই মুহূর্তে আপনার ফোন যা জানায় তা মিলিয়ে স্কোর হয়। অ্যান্ড্রয়েড যা দেয় না তা অনুমান না করে বাদ রাখা হয়।';
 
   @override
-  String get factorBattery => 'ব্যাটারির স্বাস্থ্য';
+  String get factorBattery => 'ব্যাটারি হেলথ';
 
   @override
   String get factorTemperature => 'তাপমাত্রা';
@@ -2076,7 +2076,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get showAgain => 'আবার দেখান';
 
   @override
-  String get skip => 'বাদ দিন';
+  String get skip => 'এড়িয়ে যান';
 
   @override
   String get skippedByYou => 'বাদ দেওয়া হয়েছে';
@@ -3265,7 +3265,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get onbLanguage => 'ভাষা';
 
   @override
-  String get onbAppearance => 'চেহারা';
+  String get onbAppearance => 'থিম';
 
   @override
   String get onbUsedTitle => 'নিশ্চিন্তে পুরোনো ফোন কিনুন';
@@ -3447,4 +3447,7 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get bhLowConfidence => 'নির্ভরযোগ্যতা কম';
+
+  @override
+  String get nBluetoothOn => 'ব্লুটুথ চালু আছে এবং সাড়া দিচ্ছে';
 }

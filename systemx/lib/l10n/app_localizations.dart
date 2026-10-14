@@ -6229,6 +6229,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'low confidence'**
   String get bhLowConfidence;
+
+  /// No description provided for @nBluetoothOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Bluetooth is on and responding'**
+  String get nBluetoothOn;
 }
 
 class _AppLocalizationsDelegate

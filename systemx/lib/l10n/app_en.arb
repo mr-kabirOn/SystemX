@@ -1117,5 +1117,6 @@
   "csAddedLabel": "Added",
   "csAvgCurrent": "Average current",
   "statusBarShowsNote": "The value next to the clock. The notification always shows all values.",
-  "bhLowConfidence": "low confidence"
+  "bhLowConfidence": "low confidence",
+  "nBluetoothOn": "Bluetooth is on and responding"
 }
