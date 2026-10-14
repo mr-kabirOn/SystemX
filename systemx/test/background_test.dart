@@ -63,7 +63,7 @@ void main() {
     await go(tester, Routes.sessions);
     final list = find.byType(Scrollable).last;
     await tester.scrollUntilVisible(find.text('2,140 mA'), 300, scrollable: list);
-    expect(find.text('+77%'), findsNWidgets(2)); // summary average and the session
+    expect(find.text('+77%'), findsOneWidget); // the session; the summary shows 77%
 
     await go(tester, Routes.monitor);
     await tester.scrollUntilVisible(find.text('History'), 400,

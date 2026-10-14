@@ -5747,32 +5747,26 @@ abstract class AppLocalizations {
   /// No description provided for @csAvgTime.
   ///
   /// In en, this message translates to:
-  /// **'Average time'**
+  /// **'Average duration'**
   String get csAvgTime;
 
   /// No description provided for @csAvgAdded.
   ///
   /// In en, this message translates to:
-  /// **'Average added'**
+  /// **'Average charge added'**
   String get csAvgAdded;
 
   /// No description provided for @csAvgSpeed.
   ///
   /// In en, this message translates to:
-  /// **'Average speed'**
+  /// **'Average charging speed'**
   String get csAvgSpeed;
 
   /// No description provided for @csHottest.
   ///
   /// In en, this message translates to:
-  /// **'Hottest'**
+  /// **'Highest temperature'**
   String get csHottest;
-
-  /// No description provided for @csPerHour.
-  ///
-  /// In en, this message translates to:
-  /// **'{pct}%/h'**
-  String csPerHour(String pct);
 
   /// No description provided for @csInsights.
   ///
@@ -5807,14 +5801,8 @@ abstract class AppLocalizations {
   /// No description provided for @csInsightHot.
   ///
   /// In en, this message translates to:
-  /// **'The battery got warm while charging'**
+  /// **'The battery got hot while charging'**
   String get csInsightHot;
-
-  /// No description provided for @csInsightHotBody.
-  ///
-  /// In en, this message translates to:
-  /// **'It reached {temp}. Heat wears batteries fastest: charge without a case, out of the sun, and avoid gaming while charging.'**
-  String csInsightHotBody(String temp);
 
   /// No description provided for @csInsightOvernight.
   ///
@@ -5849,13 +5837,13 @@ abstract class AppLocalizations {
   /// No description provided for @csChart.
   ///
   /// In en, this message translates to:
-  /// **'Charge added per session'**
+  /// **'Charge added per charge'**
   String get csChart;
 
   /// No description provided for @csChartLegend.
   ///
   /// In en, this message translates to:
-  /// **'Taller bars added more charge; amber bars got warm.'**
+  /// **'Tap a bar to see that charge. Amber: battery reached 42 °C; red: 45 °C or more.'**
   String get csChartLegend;
 
   /// No description provided for @csToday.
@@ -5870,23 +5858,11 @@ abstract class AppLocalizations {
   /// **'Yesterday'**
   String get csYesterday;
 
-  /// No description provided for @csAdded.
-  ///
-  /// In en, this message translates to:
-  /// **'+{pct}%'**
-  String csAdded(int pct);
-
   /// No description provided for @csSpeed.
   ///
   /// In en, this message translates to:
   /// **'Speed'**
   String get csSpeed;
-
-  /// No description provided for @csAvg.
-  ///
-  /// In en, this message translates to:
-  /// **'Average'**
-  String get csAvg;
 
   /// No description provided for @csPeak.
   ///
@@ -6151,6 +6127,96 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Full charges added up since {date}. This is not the battery\'s lifetime count, which this phone doesn\'t report.'**
   String bhCyclesCountedHint(String date);
+
+  /// No description provided for @csHourShort.
+  ///
+  /// In en, this message translates to:
+  /// **'h'**
+  String get csHourShort;
+
+  /// No description provided for @csMinShort.
+  ///
+  /// In en, this message translates to:
+  /// **'min'**
+  String get csMinShort;
+
+  /// No description provided for @csPerHourLong.
+  ///
+  /// In en, this message translates to:
+  /// **'{pct}% per hour'**
+  String csPerHourLong(int pct);
+
+  /// No description provided for @csOfCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} of {total}'**
+  String csOfCount(int count, int total);
+
+  /// No description provided for @csBasedOnValid.
+  ///
+  /// In en, this message translates to:
+  /// **'Based on {count, plural, =1{1 charge} other{{count} charges}} of {minutes} minutes or longer.'**
+  String csBasedOnValid(int count, int minutes);
+
+  /// No description provided for @csExcluded.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 shorter connection isn\'t counted.} other{{count} shorter connections aren\'t counted.}}'**
+  String csExcluded(int count);
+
+  /// No description provided for @csSpeedDefinition.
+  ///
+  /// In en, this message translates to:
+  /// **'Charging speed is the total charge added divided by the total charging time.'**
+  String get csSpeedDefinition;
+
+  /// No description provided for @csInsightHotBody.
+  ///
+  /// In en, this message translates to:
+  /// **'It reached {temp} during {count, plural, =1{1 charge} other{{count} charges}}. Stop heavy use while charging, remove the case, and keep the phone out of the sun. If it keeps happening, try another charger.'**
+  String csInsightHotBody(String temp, int count);
+
+  /// No description provided for @csInsightWarm.
+  ///
+  /// In en, this message translates to:
+  /// **'Some charges ran warm'**
+  String get csInsightWarm;
+
+  /// No description provided for @csInsightWarmBody.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} charges reached 42 °C or more (highest {temp}). A brief warm peak is normal with fast charging; charging without a case helps.'**
+  String csInsightWarmBody(int count, String temp);
+
+  /// No description provided for @csTempSource.
+  ///
+  /// In en, this message translates to:
+  /// **'Temperatures are the battery sensor\'s highest reading during each charge.'**
+  String get csTempSource;
+
+  /// No description provided for @csChartSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Last {count} charges · percent of battery gained'**
+  String csChartSub(int count);
+
+  /// No description provided for @csShort.
+  ///
+  /// In en, this message translates to:
+  /// **'Short connection ({from}% → {to}%), too short to measure. Not counted in the summary.'**
+  String csShort(int from, int to);
+
+  /// No description provided for @csAddedLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Added'**
+  String get csAddedLabel;
+
+  /// No description provided for @csAvgCurrent.
+  ///
+  /// In en, this message translates to:
+  /// **'Average current'**
+  String get csAvgCurrent;
 }
 
 class _AppLocalizationsDelegate

@@ -3152,18 +3152,13 @@ class AppLocalizationsBn extends AppLocalizations {
   String get csAvgTime => 'গড় সময়';
 
   @override
-  String get csAvgAdded => 'গড় যোগ';
+  String get csAvgAdded => 'গড় যোগ হওয়া চার্জ';
 
   @override
-  String get csAvgSpeed => 'গড় গতি';
+  String get csAvgSpeed => 'গড় চার্জিং গতি';
 
   @override
-  String get csHottest => 'সর্বোচ্চ তাপ';
-
-  @override
-  String csPerHour(String pct) {
-    return '$pct%/ঘ';
-  }
+  String get csHottest => 'সর্বোচ্চ তাপমাত্রা';
 
   @override
   String get csInsights => 'চার্জিং অভ্যাস';
@@ -3183,12 +3178,7 @@ class AppLocalizationsBn extends AppLocalizations {
       'একদম খালি হওয়া ব্যাটারির জন্য ক্ষতিকর। ২০–৩০%-এর দিকে চার্জে দিলে ভালো।';
 
   @override
-  String get csInsightHot => 'চার্জের সময় ব্যাটারি গরম হয়েছিল';
-
-  @override
-  String csInsightHotBody(String temp) {
-    return 'তাপমাত্রা $temp পর্যন্ত উঠেছিল। তাপে ব্যাটারি সবচেয়ে দ্রুত ক্ষয় হয়: কভার ছাড়া, রোদের বাইরে চার্জ দিন, আর চার্জের সময় গেম এড়িয়ে চলুন।';
-  }
+  String get csInsightHot => 'চার্জের সময় ব্যাটারি বেশি গরম হয়েছিল';
 
   @override
   String get csInsightOvernight => 'প্রায়ই সারারাত চার্জ';
@@ -3212,7 +3202,7 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get csChartLegend =>
-      'উঁচু বারে বেশি চার্জ যোগ হয়েছে; হলুদ বারে গরম হয়েছিল।';
+      'কোনো বারে ট্যাপ করে সেই চার্জ দেখুন। হলুদ: ব্যাটারি ৪২ °C ছুঁয়েছিল; লাল: ৪৫ °C বা বেশি।';
 
   @override
   String get csToday => 'আজ';
@@ -3221,15 +3211,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get csYesterday => 'গতকাল';
 
   @override
-  String csAdded(int pct) {
-    return '+$pct%';
-  }
-
-  @override
   String get csSpeed => 'গতি';
-
-  @override
-  String get csAvg => 'গড়';
 
   @override
   String get csPeak => 'সর্বোচ্চ';
@@ -3380,4 +3362,82 @@ class AppLocalizationsBn extends AppLocalizations {
   String bhCyclesCountedHint(String date) {
     return '$date থেকে পূর্ণ চার্জের যোগফল। এটি ব্যাটারির আজীবন হিসাব নয়, যা এই ফোন জানায় না।';
   }
+
+  @override
+  String get csHourShort => 'ঘ';
+
+  @override
+  String get csMinShort => 'মি';
+
+  @override
+  String csPerHourLong(int pct) {
+    return 'ঘণ্টায় $pct%';
+  }
+
+  @override
+  String csOfCount(int count, int total) {
+    return '$totalটির মধ্যে $countটি';
+  }
+
+  @override
+  String csBasedOnValid(int count, int minutes) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$countটি চার্জের',
+    );
+    return '$minutes মিনিট বা তার বেশি সময়ের $_temp0 ভিত্তিতে।';
+  }
+
+  @override
+  String csExcluded(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$countটি ছোট সংযোগ গোনা হয়নি।',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get csSpeedDefinition =>
+      'চার্জিং গতি = মোট যোগ হওয়া চার্জ ÷ মোট চার্জিং সময়।';
+
+  @override
+  String csInsightHotBody(String temp, int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$countটি চার্জে',
+    );
+    return '$_temp0 তাপমাত্রা $temp পর্যন্ত উঠেছিল। চার্জের সময় ভারী ব্যবহার বন্ধ রাখুন, কভার খুলে দিন, রোদ থেকে দূরে রাখুন। বারবার হলে অন্য চার্জার চেষ্টা করুন।';
+  }
+
+  @override
+  String get csInsightWarm => 'কিছু চার্জে ব্যাটারি গরম হয়েছিল';
+
+  @override
+  String csInsightWarmBody(int count, String temp) {
+    return '$countটি চার্জে ৪২ °C বা বেশি হয়েছিল (সর্বোচ্চ $temp)। ফাস্ট চার্জিংয়ে অল্প সময়ের জন্য গরম হওয়া স্বাভাবিক; কভার ছাড়া চার্জ দিলে ভালো।';
+  }
+
+  @override
+  String get csTempSource =>
+      'তাপমাত্রা হলো প্রতিটি চার্জের সময় ব্যাটারি সেন্সরের সর্বোচ্চ রিডিং।';
+
+  @override
+  String csChartSub(int count) {
+    return 'শেষ $countটি চার্জ · ব্যাটারির যত শতাংশ যোগ হয়েছে';
+  }
+
+  @override
+  String csShort(int from, int to) {
+    return 'ছোট সংযোগ ($from% → $to%), মাপার জন্য খুব ছোট। সারাংশে গোনা হয়নি।';
+  }
+
+  @override
+  String get csAddedLabel => 'যোগ হয়েছে';
+
+  @override
+  String get csAvgCurrent => 'গড় কারেন্ট';
 }

@@ -3172,21 +3172,16 @@ class AppLocalizationsEn extends AppLocalizations {
   String get csCharges => 'Charges';
 
   @override
-  String get csAvgTime => 'Average time';
+  String get csAvgTime => 'Average duration';
 
   @override
-  String get csAvgAdded => 'Average added';
+  String get csAvgAdded => 'Average charge added';
 
   @override
-  String get csAvgSpeed => 'Average speed';
+  String get csAvgSpeed => 'Average charging speed';
 
   @override
-  String get csHottest => 'Hottest';
-
-  @override
-  String csPerHour(String pct) {
-    return '$pct%/h';
-  }
+  String get csHottest => 'Highest temperature';
 
   @override
   String get csInsights => 'Charging habits';
@@ -3206,12 +3201,7 @@ class AppLocalizationsEn extends AppLocalizations {
       'Deep discharges are harder on the battery. Plugging in earlier, around 20–30%, is gentler.';
 
   @override
-  String get csInsightHot => 'The battery got warm while charging';
-
-  @override
-  String csInsightHotBody(String temp) {
-    return 'It reached $temp. Heat wears batteries fastest: charge without a case, out of the sun, and avoid gaming while charging.';
-  }
+  String get csInsightHot => 'The battery got hot while charging';
 
   @override
   String get csInsightOvernight => 'Frequent overnight charging';
@@ -3231,11 +3221,11 @@ class AppLocalizationsEn extends AppLocalizations {
   String get csSetAlarm => 'Set charge alarm';
 
   @override
-  String get csChart => 'Charge added per session';
+  String get csChart => 'Charge added per charge';
 
   @override
   String get csChartLegend =>
-      'Taller bars added more charge; amber bars got warm.';
+      'Tap a bar to see that charge. Amber: battery reached 42 °C; red: 45 °C or more.';
 
   @override
   String get csToday => 'Today';
@@ -3244,15 +3234,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get csYesterday => 'Yesterday';
 
   @override
-  String csAdded(int pct) {
-    return '+$pct%';
-  }
-
-  @override
   String get csSpeed => 'Speed';
-
-  @override
-  String get csAvg => 'Average';
 
   @override
   String get csPeak => 'Peak';
@@ -3403,4 +3385,85 @@ class AppLocalizationsEn extends AppLocalizations {
   String bhCyclesCountedHint(String date) {
     return 'Full charges added up since $date. This is not the battery\'s lifetime count, which this phone doesn\'t report.';
   }
+
+  @override
+  String get csHourShort => 'h';
+
+  @override
+  String get csMinShort => 'min';
+
+  @override
+  String csPerHourLong(int pct) {
+    return '$pct% per hour';
+  }
+
+  @override
+  String csOfCount(int count, int total) {
+    return '$count of $total';
+  }
+
+  @override
+  String csBasedOnValid(int count, int minutes) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count charges',
+      one: '1 charge',
+    );
+    return 'Based on $_temp0 of $minutes minutes or longer.';
+  }
+
+  @override
+  String csExcluded(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count shorter connections aren\'t counted.',
+      one: '1 shorter connection isn\'t counted.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get csSpeedDefinition =>
+      'Charging speed is the total charge added divided by the total charging time.';
+
+  @override
+  String csInsightHotBody(String temp, int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count charges',
+      one: '1 charge',
+    );
+    return 'It reached $temp during $_temp0. Stop heavy use while charging, remove the case, and keep the phone out of the sun. If it keeps happening, try another charger.';
+  }
+
+  @override
+  String get csInsightWarm => 'Some charges ran warm';
+
+  @override
+  String csInsightWarmBody(int count, String temp) {
+    return '$count charges reached 42 °C or more (highest $temp). A brief warm peak is normal with fast charging; charging without a case helps.';
+  }
+
+  @override
+  String get csTempSource =>
+      'Temperatures are the battery sensor\'s highest reading during each charge.';
+
+  @override
+  String csChartSub(int count) {
+    return 'Last $count charges · percent of battery gained';
+  }
+
+  @override
+  String csShort(int from, int to) {
+    return 'Short connection ($from% → $to%), too short to measure. Not counted in the summary.';
+  }
+
+  @override
+  String get csAddedLabel => 'Added';
+
+  @override
+  String get csAvgCurrent => 'Average current';
 }
