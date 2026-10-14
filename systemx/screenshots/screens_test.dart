@@ -58,6 +58,7 @@ Future<void> _shoot(
   String? locale,
   Size size = const Size(1080, 2400),
   int onboardingPage = 0,
+  FakeBackgroundApi? background,
 }) async {
   final api = FakeDeviceApi()
     ..phoneGranted = true
@@ -75,7 +76,7 @@ Future<void> _shoot(
     permissionApiProvider.overrideWithValue(FakePermissionApi(api)),
     livePollingProvider.overrideWithValue(false),
     playApiProvider.overrideWithValue(FakePlayApi()),
-    backgroundApiProvider.overrideWithValue(FakeBackgroundApi()),
+    backgroundApiProvider.overrideWithValue(background ?? FakeBackgroundApi()),
     hardwareTestApiProvider.overrideWithValue(FakeHardwareTestApi()),
     resultsStoreProvider.overrideWithValue(_sampleResults()),
     tempDirProvider.overrideWithValue(() async => Directory.systemTemp),
@@ -110,6 +111,34 @@ Future<void> _shoot(
   await expectLater(
       find.byType(MaterialApp), matchesGoldenFile('out/$name.png'));
   c.dispose();
+}
+
+/// Two weeks of varied charges, for the battery health and sessions shots.
+FakeBackgroundApi _manyCharges() {
+  final now = DateTime(2026, 10, 14, 15);
+  ChargeSession s(int daysAgo, int hour, int minutes, int from, int to, double temp, int? cap) {
+    final start = DateTime(now.year, now.month, now.day - daysAgo, hour);
+    return ChargeSession(
+      startMs: start.millisecondsSinceEpoch,
+      endMs: start.add(Duration(minutes: minutes)).millisecondsSinceEpoch,
+      startLevel: from,
+      endLevel: to,
+      maxTempC: temp,
+      avgMa: 2400,
+      peakMa: 3900,
+      capacityMah: cap,
+    );
+  }
+  return FakeBackgroundApi()
+    ..chargeSessions = [
+      s(0, 13, 51, 36, 90, 38.2, 4890),
+      s(1, 21, 2, 59, 58, 33.0, null),
+      s(1, 8, 38, 62, 83, 36.4, 4850),
+      s(3, 23, 95, 18, 100, 40.5, 4905),
+      s(5, 19, 30, 45, 64, 35.1, null),
+      s(8, 7, 70, 22, 95, 37.0, 4870),
+      s(11, 22, 80, 30, 100, 39.0, 4880),
+    ];
 }
 
 /// A checkup like the design mockup: 30 passed, earpiece failed, GPS skipped.
@@ -176,7 +205,8 @@ void main() {
     await _shoot(tester, '27_device_info', Routes.category(DeviceCategory.device));
     await _shoot(
         tester, '28_device_sensors', Routes.category(DeviceCategory.sensors));
-    await _shoot(tester, '29_battery_health', Routes.batteryHealth);
+    await _shoot(tester, '29_battery_health', Routes.batteryHealth, background: _manyCharges());
+    await _shoot(tester, '22b_sessions_many', Routes.sessions, background: _manyCharges());
     await _shoot(tester, '30_used_phone', Routes.usedPhone);
     await _shoot(tester, '31_stress', Routes.stress);
     await _shoot(tester, '32_tests_light', Routes.tests, theme: ThemeMode.light);

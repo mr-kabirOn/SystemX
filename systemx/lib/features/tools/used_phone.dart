@@ -117,8 +117,8 @@ UsedPhoneReport evaluateUsedPhone({
     if (capacityPercent != null) {
       add(
         CheckGroup.battery,
-        l.bhCapacity,
-        l.upCapacity(capacityPercent),
+        l.bhEstimatedCapacity,
+        l.upCapacity(capacityPercent > 100 ? 100 : capacityPercent),
         capacityPercent >= 80
             ? CheckLevel.ok
             : capacityPercent >= 65

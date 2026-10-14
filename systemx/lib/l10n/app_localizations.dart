@@ -4910,34 +4910,16 @@ abstract class AppLocalizations {
   /// **'Measured capacity and drain per hour'**
   String get bhEntryBody;
 
-  /// No description provided for @bhCapacity.
-  ///
-  /// In en, this message translates to:
-  /// **'Measured capacity'**
-  String get bhCapacity;
-
-  /// No description provided for @bhOfDesign.
-  ///
-  /// In en, this message translates to:
-  /// **'About {pct}% of the original {design} mAh'**
-  String bhOfDesign(int pct, String design);
-
-  /// No description provided for @bhNoDesign.
-  ///
-  /// In en, this message translates to:
-  /// **'The original capacity isn\'t reported on this phone'**
-  String get bhNoDesign;
-
   /// No description provided for @bhBasedOn.
   ///
   /// In en, this message translates to:
-  /// **'{count, plural, =1{Based on 1 charge} other{Based on the last {count} charges}}'**
+  /// **'{count, plural, =1{Based on 1 measured charge} other{Based on {count} measured charges}}'**
   String bhBasedOn(int count);
 
   /// No description provided for @bhNotYet.
   ///
   /// In en, this message translates to:
-  /// **'Not measured yet. Charge by 15% or more while SystemX\'s background features are on; each charge adds a measurement.'**
+  /// **'Not measured yet. A measurement is taken each time you charge by 15% or more while SystemX\'s background features are on.'**
   String get bhNotYet;
 
   /// No description provided for @bhNoCounter.
@@ -4949,7 +4931,7 @@ abstract class AppLocalizations {
   /// No description provided for @bhTrend.
   ///
   /// In en, this message translates to:
-  /// **'Capacity over time'**
+  /// **'Measured capacity by charge'**
   String get bhTrend;
 
   /// No description provided for @bhDrain.
@@ -4997,7 +4979,7 @@ abstract class AppLocalizations {
   /// No description provided for @bhHow.
   ///
   /// In en, this message translates to:
-  /// **'Capacity is the charge that went in divided by the percent gained, measured by the battery\'s own counter. It is an estimate: heat, fast charging and the phone\'s calibration can move it a few percent.'**
+  /// **'How this works: each charge of 15% or more is measured with the battery\'s own charge counter (charge that went in ÷ percent gained). The estimate is the middle value of the last 5 measurements. It is an estimate, not a hardware test: heat, fast charging and the phone\'s calibration can move it a few percent either way.'**
   String get bhHow;
 
   /// No description provided for @toolsTitle.
@@ -6049,6 +6031,126 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Phone is warm (42 °C). Close heavy apps for a while.'**
   String get onbArtWarm;
+
+  /// No description provided for @bhEstimatedCapacity.
+  ///
+  /// In en, this message translates to:
+  /// **'Estimated capacity'**
+  String get bhEstimatedCapacity;
+
+  /// No description provided for @bhRange.
+  ///
+  /// In en, this message translates to:
+  /// **'Measured between {min} and {max} mAh'**
+  String bhRange(String min, String max);
+
+  /// No description provided for @bhGood.
+  ///
+  /// In en, this message translates to:
+  /// **'Good'**
+  String get bhGood;
+
+  /// No description provided for @bhFair.
+  ///
+  /// In en, this message translates to:
+  /// **'Fair'**
+  String get bhFair;
+
+  /// No description provided for @bhPoor.
+  ///
+  /// In en, this message translates to:
+  /// **'Worn'**
+  String get bhPoor;
+
+  /// No description provided for @bhInsufficient.
+  ///
+  /// In en, this message translates to:
+  /// **'Not enough data yet'**
+  String get bhInsufficient;
+
+  /// No description provided for @bhConfHigh.
+  ///
+  /// In en, this message translates to:
+  /// **'High'**
+  String get bhConfHigh;
+
+  /// No description provided for @bhConfMedium.
+  ///
+  /// In en, this message translates to:
+  /// **'Medium'**
+  String get bhConfMedium;
+
+  /// No description provided for @bhConfLow.
+  ///
+  /// In en, this message translates to:
+  /// **'Low (measurements vary)'**
+  String get bhConfLow;
+
+  /// No description provided for @bhCollectingCharges.
+  ///
+  /// In en, this message translates to:
+  /// **'Collecting: {count} of {needed} charges'**
+  String bhCollectingCharges(int count, int needed);
+
+  /// No description provided for @bhDesignCapacity.
+  ///
+  /// In en, this message translates to:
+  /// **'Original (design) capacity'**
+  String get bhDesignCapacity;
+
+  /// No description provided for @bhOfOriginal.
+  ///
+  /// In en, this message translates to:
+  /// **'Compared with original'**
+  String get bhOfOriginal;
+
+  /// No description provided for @bhOver100.
+  ///
+  /// In en, this message translates to:
+  /// **'A little above 100% is normal measurement variation. It means the battery is close to new, not bigger than designed.'**
+  String get bhOver100;
+
+  /// No description provided for @bhConfidence.
+  ///
+  /// In en, this message translates to:
+  /// **'Confidence'**
+  String get bhConfidence;
+
+  /// No description provided for @bhTrendSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Each dot is one measured charge. The dashed line is the original capacity.'**
+  String get bhTrendSub;
+
+  /// No description provided for @bhDesignLine.
+  ///
+  /// In en, this message translates to:
+  /// **'Original'**
+  String get bhDesignLine;
+
+  /// No description provided for @bhAndroidHealth.
+  ///
+  /// In en, this message translates to:
+  /// **'Health reported by Android'**
+  String get bhAndroidHealth;
+
+  /// No description provided for @bhAndroidHealthHint.
+  ///
+  /// In en, this message translates to:
+  /// **'A basic status from the battery (Good, Overheat, Dead…), not a percentage'**
+  String get bhAndroidHealthHint;
+
+  /// No description provided for @bhCyclesCounted.
+  ///
+  /// In en, this message translates to:
+  /// **'Cycles counted by SystemX'**
+  String get bhCyclesCounted;
+
+  /// No description provided for @bhCyclesCountedHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Full charges added up since {date}. This is not the battery\'s lifetime count, which this phone doesn\'t report.'**
+  String bhCyclesCountedHint(String date);
 }
 
 class _AppLocalizationsDelegate

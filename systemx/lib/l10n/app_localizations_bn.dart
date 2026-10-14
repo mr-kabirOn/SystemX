@@ -2651,36 +2651,25 @@ class AppLocalizationsBn extends AppLocalizations {
   String get bhEntryBody => 'মাপা ক্যাপাসিটি আর ঘণ্টায় খরচ';
 
   @override
-  String get bhCapacity => 'মাপা ক্যাপাসিটি';
-
-  @override
-  String bhOfDesign(int pct, String design) {
-    return 'মূল $design mAh-এর প্রায় $pct%';
-  }
-
-  @override
-  String get bhNoDesign => 'এই ফোন মূল ক্যাপাসিটি জানায় না';
-
-  @override
   String bhBasedOn(int count) {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: 'শেষ $countটি চার্জের ভিত্তিতে',
+      other: '$countটি মাপা চার্জের ভিত্তিতে',
     );
     return '$_temp0';
   }
 
   @override
   String get bhNotYet =>
-      'এখনো মাপা হয়নি। SystemX-এর ব্যাকগ্রাউন্ড ফিচার চালু রেখে অন্তত ১৫% চার্জ করুন; প্রতিটি চার্জে একটি করে মাপ যোগ হবে।';
+      'এখনো মাপা হয়নি। SystemX-এর ব্যাকগ্রাউন্ড ফিচার চালু থাকা অবস্থায় প্রতিবার ১৫% বা তার বেশি চার্জ দিলে একটি মাপ নেওয়া হয়।';
 
   @override
   String get bhNoCounter =>
       'এই ফোন ব্যাটারির চার্জ কাউন্টার জানায় না, তাই ক্যাপাসিটি মাপা যায় না।';
 
   @override
-  String get bhTrend => 'সময়ের সাথে ক্যাপাসিটি';
+  String get bhTrend => 'প্রতি চার্জে মাপা ক্যাপাসিটি';
 
   @override
   String get bhDrain => 'ঘণ্টায় খরচ (গত ৭ দিন)';
@@ -2710,7 +2699,7 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get bhHow =>
-      'ক্যাপাসিটি হলো যত চার্জ ঢুকেছে তাকে যত শতাংশ বেড়েছে তা দিয়ে ভাগ, ব্যাটারির নিজস্ব কাউন্টারে মাপা। এটি আনুমানিক: তাপ, ফাস্ট চার্জিং আর ফোনের ক্যালিব্রেশনে কয়েক শতাংশ এদিক-ওদিক হতে পারে।';
+      'যেভাবে কাজ করে: ১৫% বা তার বেশি প্রতিটি চার্জ ব্যাটারির নিজস্ব চার্জ কাউন্টারে মাপা হয় (যত চার্জ ঢুকেছে ÷ যত শতাংশ বেড়েছে)। শেষ ৫টি মাপের মাঝের মানটিই অনুমান। এটি অনুমান, হার্ডওয়্যার টেস্ট নয়: তাপ, ফাস্ট চার্জিং আর ফোনের ক্যালিব্রেশনে কয়েক শতাংশ এদিক-ওদিক হতে পারে।';
 
   @override
   String get toolsTitle => 'টুলস';
@@ -3322,4 +3311,73 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get onbArtWarm => 'ফোন গরম (৪২ °C)। কিছুক্ষণ ভারী অ্যাপ বন্ধ রাখুন।';
+
+  @override
+  String get bhEstimatedCapacity => 'আনুমানিক ক্যাপাসিটি';
+
+  @override
+  String bhRange(String min, String max) {
+    return '$min থেকে $max mAh-এর মধ্যে মাপা';
+  }
+
+  @override
+  String get bhGood => 'ভালো';
+
+  @override
+  String get bhFair => 'মোটামুটি';
+
+  @override
+  String get bhPoor => 'ক্ষয়প্রাপ্ত';
+
+  @override
+  String get bhInsufficient => 'এখনো যথেষ্ট তথ্য নেই';
+
+  @override
+  String get bhConfHigh => 'উচ্চ';
+
+  @override
+  String get bhConfMedium => 'মাঝারি';
+
+  @override
+  String get bhConfLow => 'কম (মাপে পার্থক্য আছে)';
+
+  @override
+  String bhCollectingCharges(int count, int needed) {
+    return 'সংগ্রহ চলছে: $neededটির মধ্যে $countটি চার্জ';
+  }
+
+  @override
+  String get bhDesignCapacity => 'মূল (ডিজাইন) ক্যাপাসিটি';
+
+  @override
+  String get bhOfOriginal => 'মূলের তুলনায়';
+
+  @override
+  String get bhOver100 =>
+      '১০০%-এর একটু বেশি হওয়া স্বাভাবিক মাপের পার্থক্য। এর মানে ব্যাটারি প্রায় নতুনের মতো, ডিজাইনের চেয়ে বড় নয়।';
+
+  @override
+  String get bhConfidence => 'নির্ভরযোগ্যতা';
+
+  @override
+  String get bhTrendSub =>
+      'প্রতিটি বিন্দু একটি মাপা চার্জ। ড্যাশ দেওয়া লাইনটি মূল ক্যাপাসিটি।';
+
+  @override
+  String get bhDesignLine => 'মূল';
+
+  @override
+  String get bhAndroidHealth => 'অ্যান্ড্রয়েডের জানানো অবস্থা';
+
+  @override
+  String get bhAndroidHealthHint =>
+      'ব্যাটারির একটি সাধারণ অবস্থা (ভালো, অতিরিক্ত গরম, অকেজো…), শতাংশ নয়';
+
+  @override
+  String get bhCyclesCounted => 'SystemX-এর গোনা সাইকেল';
+
+  @override
+  String bhCyclesCountedHint(String date) {
+    return '$date থেকে পূর্ণ চার্জের যোগফল। এটি ব্যাটারির আজীবন হিসাব নয়, যা এই ফোন জানায় না।';
+  }
 }

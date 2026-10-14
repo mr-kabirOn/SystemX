@@ -29,8 +29,24 @@ void main() {
     expect(est.mah, 4550);
     expect(est.percentOfDesign, 91);
     expect(est.count, 5);
-    expect(est.trend.first, 9999); // oldest first for the chart
+    expect(est.points.first.$2, 9999); // oldest first for the chart
+    expect(est.minMah, 3000);
+    expect(est.confidence, Confidence.low); // 3000 vs 4600 disagree
     expect(estimateCapacity([_s(null)], 5000).mah, isNull);
+  });
+
+  test('confidence and health band need enough agreeing charges', () {
+    final two = estimateCapacity([_s(4800), _s(4850)], 4855);
+    expect(two.confidence, Confidence.insufficient);
+    expect(two.band, HealthBand.insufficient);
+
+    final five = estimateCapacity([for (final c in [4890, 4850, 4900, 4870, 4880]) _s(c)], 4855);
+    expect(five.confidence, Confidence.high);
+    expect(five.band, HealthBand.good);
+    expect(five.percentOfDesign, 101); // raw, not capped; shown as 100%+
+
+    final worn = estimateCapacity([_s(3000), _s(3100), _s(3050)], 4855);
+    expect(worn.band, HealthBand.poor);
   });
 
   test('drain splits screen on and standby, skipping gaps and charging', () {
@@ -63,6 +79,8 @@ void main() {
     await pumpApp(tester);
     await go(tester, Routes.batteryHealth);
     expect(find.text('4,210 mAh'), findsOneWidget);
-    expect(find.text('Based on 1 charge'), findsOneWidget);
+    // One charge: shown, but no health verdict yet.
+    expect(find.text('Not enough data yet'), findsOneWidget);
+    expect(find.text('Collecting: 1 of 3 charges'), findsOneWidget);
   });
 }

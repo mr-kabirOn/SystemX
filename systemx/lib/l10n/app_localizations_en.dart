@@ -2668,38 +2668,26 @@ class AppLocalizationsEn extends AppLocalizations {
   String get bhEntryBody => 'Measured capacity and drain per hour';
 
   @override
-  String get bhCapacity => 'Measured capacity';
-
-  @override
-  String bhOfDesign(int pct, String design) {
-    return 'About $pct% of the original $design mAh';
-  }
-
-  @override
-  String get bhNoDesign =>
-      'The original capacity isn\'t reported on this phone';
-
-  @override
   String bhBasedOn(int count) {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: 'Based on the last $count charges',
-      one: 'Based on 1 charge',
+      other: 'Based on $count measured charges',
+      one: 'Based on 1 measured charge',
     );
     return '$_temp0';
   }
 
   @override
   String get bhNotYet =>
-      'Not measured yet. Charge by 15% or more while SystemX\'s background features are on; each charge adds a measurement.';
+      'Not measured yet. A measurement is taken each time you charge by 15% or more while SystemX\'s background features are on.';
 
   @override
   String get bhNoCounter =>
       'This phone doesn\'t report its battery charge counter, so capacity can\'t be measured.';
 
   @override
-  String get bhTrend => 'Capacity over time';
+  String get bhTrend => 'Measured capacity by charge';
 
   @override
   String get bhDrain => 'Drain per hour (last 7 days)';
@@ -2729,7 +2717,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get bhHow =>
-      'Capacity is the charge that went in divided by the percent gained, measured by the battery\'s own counter. It is an estimate: heat, fast charging and the phone\'s calibration can move it a few percent.';
+      'How this works: each charge of 15% or more is measured with the battery\'s own charge counter (charge that went in ÷ percent gained). The estimate is the middle value of the last 5 measurements. It is an estimate, not a hardware test: heat, fast charging and the phone\'s calibration can move it a few percent either way.';
 
   @override
   String get toolsTitle => 'Tools';
@@ -3346,4 +3334,73 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get onbArtWarm =>
       'Phone is warm (42 °C). Close heavy apps for a while.';
+
+  @override
+  String get bhEstimatedCapacity => 'Estimated capacity';
+
+  @override
+  String bhRange(String min, String max) {
+    return 'Measured between $min and $max mAh';
+  }
+
+  @override
+  String get bhGood => 'Good';
+
+  @override
+  String get bhFair => 'Fair';
+
+  @override
+  String get bhPoor => 'Worn';
+
+  @override
+  String get bhInsufficient => 'Not enough data yet';
+
+  @override
+  String get bhConfHigh => 'High';
+
+  @override
+  String get bhConfMedium => 'Medium';
+
+  @override
+  String get bhConfLow => 'Low (measurements vary)';
+
+  @override
+  String bhCollectingCharges(int count, int needed) {
+    return 'Collecting: $count of $needed charges';
+  }
+
+  @override
+  String get bhDesignCapacity => 'Original (design) capacity';
+
+  @override
+  String get bhOfOriginal => 'Compared with original';
+
+  @override
+  String get bhOver100 =>
+      'A little above 100% is normal measurement variation. It means the battery is close to new, not bigger than designed.';
+
+  @override
+  String get bhConfidence => 'Confidence';
+
+  @override
+  String get bhTrendSub =>
+      'Each dot is one measured charge. The dashed line is the original capacity.';
+
+  @override
+  String get bhDesignLine => 'Original';
+
+  @override
+  String get bhAndroidHealth => 'Health reported by Android';
+
+  @override
+  String get bhAndroidHealthHint =>
+      'A basic status from the battery (Good, Overheat, Dead…), not a percentage';
+
+  @override
+  String get bhCyclesCounted => 'Cycles counted by SystemX';
+
+  @override
+  String bhCyclesCountedHint(String date) {
+    return 'Full charges added up since $date. This is not the battery\'s lifetime count, which this phone doesn\'t report.';
+  }
 }

@@ -35,6 +35,13 @@ class BuyerChecklist extends Notifier<Set<BuyerCheck>> {
 final buyerChecklistProvider =
     NotifierProvider<BuyerChecklist, Set<BuyerCheck>>(BuyerChecklist.new);
 
+/// Measured capacity for the verdict, only once there are enough charges
+/// to give a health band; a single charge is too little to judge a battery.
+int? usableCapacityPercent(List<ChargeSession> sessions, DeviceSnapshot snap) {
+  final est = estimateCapacity(sessions, snap.battery?.designCapacityMah);
+  return est.band == HealthBand.insufficient ? null : est.percentOfDesign;
+}
+
 /// Android's accounts screen, where the seller signs out.
 const accountsSettings = 'android.settings.SYNC_SETTINGS';
 
@@ -79,10 +86,7 @@ class _UsedPhoneScreenState extends ConsumerState<UsedPhoneScreen> {
       l: l,
       snap: snap,
       history: history,
-      capacityPercent: estimateCapacity(
-        sessions,
-        snap.battery?.designCapacityMah,
-      ).percentOfDesign,
+      capacityPercent: usableCapacityPercent(sessions, snap),
       now: DateTime.now(),
     );
   }
@@ -102,10 +106,7 @@ class _UsedPhoneScreenState extends ConsumerState<UsedPhoneScreen> {
         l: en,
         snap: snap,
         history: history,
-        capacityPercent: estimateCapacity(
-          sessions,
-          snap.battery?.designCapacityMah,
-        ).percentOfDesign,
+        capacityPercent: usableCapacityPercent(sessions, snap),
         now: now,
       );
       final bytes = await buildUsedPhonePdf(
