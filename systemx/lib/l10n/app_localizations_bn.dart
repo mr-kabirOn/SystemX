@@ -18,31 +18,31 @@ class AppLocalizationsBn extends AppLocalizations {
   String get navDevice => 'ডিভাইস';
 
   @override
-  String get navTests => 'টেস্ট';
+  String get navTests => 'পরীক্ষা';
 
   @override
-  String get navMonitor => 'মনিটর';
+  String get navMonitor => 'পর্যবেক্ষণ';
 
   @override
   String get onb1Title => 'আপনার ফোনকে ভেতর থেকে জানুন';
 
   @override
   String get onb1Body =>
-      'লাইভ তথ্য আর ফোনের প্রতিটি স্পেসিফিকেশন, এক জায়গায় পরিষ্কারভাবে।';
+      'তাৎক্ষণিক তথ্য এবং ফোনের প্রতিটি স্পেসিফিকেশন, এক জায়গায় সুস্পষ্টভাবে।';
 
   @override
   String get onb2Title => 'প্রতিটি অংশ পরীক্ষা করুন';
 
   @override
   String get onb2Body =>
-      'গাইডেড চেকআপ স্ক্রিন, স্পিকার, ক্যামেরা, সেন্সরসহ আরও অনেক কিছু পরীক্ষা করে, তারপর একটি রিপোর্ট দেয়।';
+      'নির্দেশিত পরীক্ষায় স্ক্রিন, স্পিকার, ক্যামেরা, সেন্সরসহ আরও অনেক কিছু যাচাই করা হয়, শেষে একটি প্রতিবেদন দেওয়া হয়।';
 
   @override
-  String get onb3Title => 'প্রাইভেসি সবার আগে';
+  String get onb3Title => 'গোপনীয়তা সুরক্ষিত';
 
   @override
   String get onb3Body =>
-      'কোনো অ্যাকাউন্ট নেই, কোনো ট্র্যাকিং নেই। আপনার তথ্য এই ফোনের বাইরে যায় না।';
+      'কোনো অ্যাকাউন্টের প্রয়োজন নেই, কোনো নজরদারি নেই। আপনার তথ্য এই ফোনের বাইরে যায় না।';
 
   @override
   String get onbSkip => 'এড়িয়ে যান';
@@ -57,7 +57,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get greetingMorning => 'শুভ সকাল';
 
   @override
-  String get greetingAfternoon => 'শুভ বিকাল';
+  String get greetingAfternoon => 'শুভ অপরাহ্ন';
 
   @override
   String get greetingEvening => 'শুভ সন্ধ্যা';
@@ -72,7 +72,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get healthScoreLabel => 'স্কোর';
 
   @override
-  String get runCheckup => 'চেকআপ চালান';
+  String get runCheckup => 'পরীক্ষা শুরু করুন';
 
   @override
   String get metricCpu => 'সিপিইউ';
@@ -102,12 +102,12 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String headroom(int percent) {
-    return 'হেডরুম $percent%';
+    return 'অবশিষ্ট সীমা $percent%';
   }
 
   @override
   String get tipChargeLimit =>
-      '৮০% হলে চার্জার খুলে দিন, ব্যাটারি দীর্ঘদিন ভালো থাকবে।';
+      'ব্যাটারির আয়ু বাড়াতে ৮০% চার্জ হলে চার্জার খুলে ফেলুন।';
 
   @override
   String get tipSetAlarm => 'অ্যালার্ম সেট করুন';
@@ -128,19 +128,19 @@ class AppLocalizationsBn extends AppLocalizations {
   String get catDevice => 'ডিভাইস';
 
   @override
-  String get catDeviceSub => 'মডেল, নির্মাতা, কোডনেম';
+  String get catDeviceSub => 'মডেল, নির্মাতা, কোডনাম';
 
   @override
   String get catSystem => 'সিস্টেম';
 
   @override
-  String get catSystemSub => 'অ্যান্ড্রয়েড ভার্সন, সিকিউরিটি প্যাচ, কার্নেল';
+  String get catSystemSub => 'অ্যান্ড্রয়েড সংস্করণ, নিরাপত্তা প্যাচ, কার্নেল';
 
   @override
   String get catProcessor => 'প্রসেসর';
 
   @override
-  String get catProcessorSub => 'চিপ, কোর, লাইভ ক্লক স্পিড';
+  String get catProcessorSub => 'চিপ, কোর, তাৎক্ষণিক ক্লক স্পিড';
 
   @override
   String get catGpu => 'গ্রাফিক্স';
@@ -152,37 +152,37 @@ class AppLocalizationsBn extends AppLocalizations {
   String get catMemory => 'মেমরি';
 
   @override
-  String get catMemorySub => 'ব্যবহৃত ও খালি র‍্যাম';
+  String get catMemorySub => 'ব্যবহৃত ও অবশিষ্ট র‍্যাম';
 
   @override
   String get catStorage => 'স্টোরেজ';
 
   @override
-  String get catStorageSub => 'ইন্টারনাল স্পেস, এসডি কার্ড, ইউএসবি';
+  String get catStorageSub => 'অভ্যন্তরীণ স্টোরেজ, এসডি কার্ড, ইউএসবি';
 
   @override
   String get catBattery => 'ব্যাটারি';
 
   @override
-  String get catBatterySub => 'হেলথ, তাপমাত্রা, চার্জিং স্পিড';
+  String get catBatterySub => 'স্বাস্থ্য, তাপমাত্রা, চার্জিংয়ের গতি';
 
   @override
   String get catDisplay => 'ডিসপ্লে';
 
   @override
-  String get catDisplaySub => 'রেজোলিউশন, রিফ্রেশ রেট, HDR';
+  String get catDisplaySub => 'রেজোলিউশন, রিফ্রেশ রেট, এইচডিআর';
 
   @override
   String get catNetwork => 'নেটওয়ার্ক';
 
   @override
-  String get catNetworkSub => 'ওয়াই-ফাই, মোবাইল ডেটা, আইপি অ্যাড্রেস';
+  String get catNetworkSub => 'ওয়াই-ফাই, মোবাইল ডেটা, আইপি ঠিকানা';
 
   @override
   String get catSim => 'সিম ও মোবাইল';
 
   @override
-  String get catSimSub => 'অপারেটর, সিগন্যাল, ব্যালেন্স চেক';
+  String get catSimSub => 'অপারেটর, সিগন্যাল, ব্যালেন্স যাচাই';
 
   @override
   String get catCameras => 'ক্যামেরা';
@@ -194,7 +194,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get catSensors => 'সেন্সর';
 
   @override
-  String get catSensorsSub => 'প্রতিটি সেন্সর ও লাইভ রিডিং';
+  String get catSensorsSub => 'প্রতিটি সেন্সর ও তার তাৎক্ষণিক মান';
 
   @override
   String get catMedia => 'মিডিয়া';
@@ -203,43 +203,43 @@ class AppLocalizationsBn extends AppLocalizations {
   String get catMediaSub => 'কোডেক, DRM, অডিও আউটপুট';
 
   @override
-  String get catFeatures => 'ফিচার';
+  String get catFeatures => 'বৈশিষ্ট্য';
 
   @override
   String get catFeaturesSub => 'ব্লুটুথ, NFC, 5G, ফিঙ্গারপ্রিন্ট';
 
   @override
-  String get catSecurity => 'সিকিউরিটি চেক';
+  String get catSecurity => 'নিরাপত্তা যাচাই';
 
   @override
   String get catSecuritySub => 'স্ক্রিন লক, এনক্রিপশন, আপডেট';
 
   @override
-  String get testsTitle => 'টেস্ট';
+  String get testsTitle => 'পরীক্ষা';
 
   @override
-  String get checkupTitle => 'ফুল চেকআপ';
+  String get checkupTitle => 'পূর্ণাঙ্গ পরীক্ষা';
 
   @override
   String checkupMeta(int count, int minutes) {
-    return '$countটি টেস্ট · প্রায় $minutes মিনিট';
+    return '$countটি পরীক্ষা · প্রায় $minutes মিনিট';
   }
 
   @override
   String get checkupBody =>
-      'স্বয়ংক্রিয় টেস্টগুলো নিজে থেকেই চলবে। বাকিগুলোর জন্য আমরা আপনাকে জিজ্ঞেস করব।';
+      'স্বয়ংক্রিয় পরীক্ষাগুলো নিজে থেকেই চলবে। বাকিগুলোর ফলাফল আপনাকে জানাতে বলা হবে।';
 
   @override
-  String get startCheckup => 'চেকআপ শুরু করুন';
+  String get startCheckup => 'পরীক্ষা শুরু করুন';
 
   @override
-  String get singleTests => 'আলাদা টেস্ট';
+  String get singleTests => 'আলাদা পরীক্ষা';
 
   @override
   String get testDisplay => 'ডিসপ্লে';
 
   @override
-  String get testTouch => 'টাচ';
+  String get testTouch => 'স্পর্শ';
 
   @override
   String get testSpeaker => 'স্পিকার';
@@ -251,7 +251,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get testMicrophone => 'মাইক্রোফোন';
 
   @override
-  String get testVibration => 'ভাইব্রেশন';
+  String get testVibration => 'কম্পন';
 
   @override
   String get testCameras => 'ক্যামেরা';
@@ -263,7 +263,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get testSensors => 'সেন্সর';
 
   @override
-  String get testButtons => 'বাটন';
+  String get testButtons => 'বোতাম';
 
   @override
   String get testWifi => 'ওয়াই-ফাই';
@@ -281,26 +281,26 @@ class AppLocalizationsBn extends AppLocalizations {
   String get testCharging => 'চার্জিং';
 
   @override
-  String get testStorage => 'স্টোরেজ স্পিড';
+  String get testStorage => 'স্টোরেজের গতি';
 
   @override
-  String get monitorTitle => 'মনিটর';
+  String get monitorTitle => 'পর্যবেক্ষণ';
 
   @override
   String get monitorBody =>
-      'ফোনের প্রতিটি অংশের লাইভ চার্ট। আগের মান দেখতে চার্টের ওপর আঙুল টানুন।';
+      'ফোনের প্রতিটি অংশের তাৎক্ষণিক চার্ট। আগের মান দেখতে চার্টের ওপর আঙুল টেনে নিন।';
 
   @override
   String get monitorCpu => 'প্রসেসর ক্লক';
 
   @override
-  String get monitorRam => 'মেমরি ব্যবহার';
+  String get monitorRam => 'মেমরির ব্যবহার';
 
   @override
-  String get monitorBattery => 'ব্যাটারি কারেন্ট';
+  String get monitorBattery => 'ব্যাটারির বিদ্যুৎপ্রবাহ';
 
   @override
-  String get monitorNet => 'নেটওয়ার্ক স্পিড';
+  String get monitorNet => 'নেটওয়ার্কের গতি';
 
   @override
   String get settingsTitle => 'সেটিংস';
@@ -312,26 +312,26 @@ class AppLocalizationsBn extends AppLocalizations {
   String get theme => 'থিম';
 
   @override
-  String get themeSystem => 'সিস্টেম';
+  String get themeSystem => 'সিস্টেম অনুযায়ী';
 
   @override
-  String get themeLight => 'লাইট';
+  String get themeLight => 'হালকা';
 
   @override
-  String get themeDark => 'ডার্ক';
+  String get themeDark => 'গাঢ়';
 
   @override
-  String get pureBlack => 'পিওর ব্ল্যাক';
+  String get pureBlack => 'সম্পূর্ণ কালো';
 
   @override
-  String get pureBlackSub => 'AMOLED স্ক্রিনে ব্যাটারি বাঁচায়';
+  String get pureBlackSub => 'AMOLED স্ক্রিনে বিদ্যুৎ সাশ্রয় করে';
 
   @override
   String get wallpaperColors => 'ওয়ালপেপারের রং';
 
   @override
   String get wallpaperColorsSub =>
-      'অ্যাকসেন্ট রং ওয়ালপেপারের সাথে মিলিয়ে নিন (অ্যান্ড্রয়েড ১২+)';
+      'ওয়ালপেপারের সাথে মিল রেখে প্রধান রং নির্ধারণ করুন (অ্যান্ড্রয়েড ১২+)';
 
   @override
   String get secUnits => 'একক';
@@ -352,10 +352,10 @@ class AppLocalizationsBn extends AppLocalizations {
   String get langBangla => 'বাংলা';
 
   @override
-  String get secLive => 'লাইভ ডেটা';
+  String get secLive => 'তাৎক্ষণিক তথ্য';
 
   @override
-  String get refreshRate => 'রিফ্রেশ রেট';
+  String get refreshRate => 'হালনাগাদের ব্যবধান';
 
   @override
   String seconds(String value) {
@@ -363,19 +363,20 @@ class AppLocalizationsBn extends AppLocalizations {
   }
 
   @override
-  String get secPrivacy => 'প্রাইভেসি';
+  String get secPrivacy => 'গোপনীয়তা';
 
   @override
-  String get privacyPermissions => 'প্রাইভেসি ও পারমিশন';
+  String get privacyPermissions => 'গোপনীয়তা ও অনুমতি';
 
   @override
-  String get privacyPermissionsSub => 'SystemX কী অ্যাক্সেস করতে পারে এবং কেন';
+  String get privacyPermissionsSub =>
+      'SystemX কোন তথ্যে প্রবেশ করতে পারে এবং কেন';
 
   @override
   String get secAbout => 'সম্পর্কে';
 
   @override
-  String get version => 'ভার্সন';
+  String get version => 'সংস্করণ';
 
   @override
   String get licenses => 'ওপেন-সোর্স লাইসেন্স';
@@ -385,23 +386,23 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get privacyBanner =>
-      'আপনার তথ্য এই ফোনেই থাকে। কোনো অ্যাকাউন্ট নেই, বিজ্ঞাপন ট্র্যাকিং নেই, কিছুই আপলোড হয় না।';
+      'আপনার তথ্য এই ফোনেই থাকে। কোনো অ্যাকাউন্ট নেই, বিজ্ঞাপনী নজরদারি নেই, কিছুই আপলোড হয় না।';
 
   @override
   String get privacyIntro =>
-      'এগুলোর কোনোটি ছাড়াই SystemX চলে। শুধু যেটা দরকার সেটাই চালু করুন।';
+      'এগুলোর কোনোটি ছাড়াই SystemX চলে। শুধু প্রয়োজনীয়গুলো চালু করুন।';
 
   @override
-  String get permNotifications => 'নোটিফিকেশন';
+  String get permNotifications => 'বিজ্ঞপ্তি';
 
   @override
-  String get permNotificationsSub => 'লাইভ স্ট্যাটাস ও ব্যাটারি অ্যালার্ট';
+  String get permNotificationsSub => 'তাৎক্ষণিক অবস্থা ও ব্যাটারির সতর্কবার্তা';
 
   @override
   String get permLocation => 'লোকেশন';
 
   @override
-  String get permLocationSub => 'ওয়াই-ফাই নাম ও জিপিএস টেস্ট';
+  String get permLocationSub => 'ওয়াই-ফাইয়ের নাম ও জিপিএস পরীক্ষা';
 
   @override
   String get permPhone => 'ফোন';
@@ -413,23 +414,23 @@ class AppLocalizationsBn extends AppLocalizations {
   String get permCamera => 'ক্যামেরা';
 
   @override
-  String get permCameraSub => 'শুধু ক্যামেরা টেস্টের সময়';
+  String get permCameraSub => 'শুধু ক্যামেরা পরীক্ষার সময়';
 
   @override
   String get permMicrophone => 'মাইক্রোফোন';
 
   @override
-  String get permMicrophoneSub => 'শুধু মাইক্রোফোন টেস্টের সময়';
+  String get permMicrophoneSub => 'শুধু মাইক্রোফোন পরীক্ষার সময়';
 
   @override
   String get permAllow => 'অনুমতি দিন';
 
   @override
-  String get permNotNow => 'এখন না';
+  String get permNotNow => 'এখন নয়';
 
   @override
   String copied(String label) {
-    return '$label কপি হয়েছে';
+    return '$label কপি করা হয়েছে';
   }
 
   @override
@@ -493,7 +494,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get secCharging => 'চার্জিং';
 
   @override
-  String get secCapacity => 'ক্যাপাসিটি';
+  String get secCapacity => 'ধারণক্ষমতা';
 
   @override
   String get secSettings => 'সেটিংস';
@@ -532,10 +533,10 @@ class AppLocalizationsBn extends AppLocalizations {
   String get specModel => 'মডেল নম্বর';
 
   @override
-  String get specCodename => 'কোডনেম';
+  String get specCodename => 'কোডনাম';
 
   @override
-  String get specProduct => 'প্রোডাক্ট';
+  String get specProduct => 'পণ্য';
 
   @override
   String get specBoard => 'বোর্ড';
@@ -553,13 +554,13 @@ class AppLocalizationsBn extends AppLocalizations {
   String get deviceTablet => 'ট্যাবলেট';
 
   @override
-  String get specAndroidVersion => 'অ্যান্ড্রয়েড ভার্সন';
+  String get specAndroidVersion => 'অ্যান্ড্রয়েড সংস্করণ';
 
   @override
   String get specApiLevel => 'API লেভেল';
 
   @override
-  String get specSecurityPatch => 'সিকিউরিটি প্যাচ';
+  String get specSecurityPatch => 'নিরাপত্তা প্যাচ';
 
   @override
   String get specBuildNumber => 'বিল্ড নম্বর';
@@ -571,13 +572,13 @@ class AppLocalizationsBn extends AppLocalizations {
   String get specBuildType => 'বিল্ডের ধরন';
 
   @override
-  String get specIncremental => 'ইনক্রিমেন্টাল ভার্সন';
+  String get specIncremental => 'ইনক্রিমেন্টাল সংস্করণ';
 
   @override
   String get specFingerprint => 'বিল্ড ফিঙ্গারপ্রিন্ট';
 
   @override
-  String get specPlayServices => 'Google Play সার্ভিস';
+  String get specPlayServices => 'Google Play পরিষেবা';
 
   @override
   String get specPlayStore => 'Play Store';
@@ -601,7 +602,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get specTreble => 'Project Treble';
 
   @override
-  String get specSeamlessUpdates => 'সিমলেস (A/B) আপডেট';
+  String get specSeamlessUpdates => 'নিরবচ্ছিন্ন (A/B) আপডেট';
 
   @override
   String get specDynamicPartitions => 'ডায়নামিক পার্টিশন';
@@ -652,22 +653,22 @@ class AppLocalizationsBn extends AppLocalizations {
   String get specAbis => 'সমর্থিত ABI';
 
   @override
-  String get specInstructions => 'ইনস্ট্রাকশন ফিচার';
+  String get specInstructions => 'ইনস্ট্রাকশন সেট';
 
   @override
-  String get coreOffline => 'অফলাইন (ঘুমন্ত)';
+  String get coreOffline => 'অফলাইন (নিষ্ক্রিয়)';
 
   @override
   String get specRenderer => 'GPU';
 
   @override
-  String get specVendor => 'ভেন্ডর';
+  String get specVendor => 'নির্মাতা';
 
   @override
   String get specOpenGlEs => 'OpenGL ES';
 
   @override
-  String get specGlDriver => 'ড্রাইভার ভার্সন';
+  String get specGlDriver => 'ড্রাইভার সংস্করণ';
 
   @override
   String get specVulkan => 'Vulkan';
@@ -676,29 +677,30 @@ class AppLocalizationsBn extends AppLocalizations {
   String get specGlExtensions => 'OpenGL এক্সটেনশন';
 
   @override
-  String get specInstalled => 'ইনস্টল করা RAM';
+  String get specInstalled => 'ইনস্টল করা র‍্যাম';
 
   @override
   String get specUsable => 'অ্যান্ড্রয়েডের ব্যবহারযোগ্য';
 
   @override
-  String get usableHint => 'RAM-এর কিছু অংশ মডেম আর GPU-র জন্য রাখা থাকে';
+  String get usableHint =>
+      'র‍্যামের একটি অংশ মডেম ও জিপিইউর জন্য সংরক্ষিত থাকে';
 
   @override
-  String get specInUse => 'ব্যবহৃত হচ্ছে';
+  String get specInUse => 'ব্যবহৃত';
 
   @override
-  String get specAvailable => 'খালি আছে';
+  String get specAvailable => 'অবশিষ্ট';
 
   @override
-  String get specLowMemoryAt => 'কম মেমোরির সীমা';
+  String get specLowMemoryAt => 'স্বল্প মেমরির সীমা';
 
   @override
   String get lowMemoryHint =>
-      'এর নিচে নামলে অ্যান্ড্রয়েড ব্যাকগ্রাউন্ড অ্যাপ বন্ধ করতে শুরু করে';
+      'এর নিচে নামলে অ্যান্ড্রয়েড ব্যাকগ্রাউন্ডের অ্যাপ বন্ধ করতে শুরু করে';
 
   @override
-  String get specLowMemoryNow => 'এখন মেমোরি কম';
+  String get specLowMemoryNow => 'এখন মেমরি স্বল্প';
 
   @override
   String get specSwap => 'সোয়াপ (zRAM)';
@@ -725,25 +727,25 @@ class AppLocalizationsBn extends AppLocalizations {
   String get specState => 'অবস্থা';
 
   @override
-  String get volumeInternal => 'ইন্টারনাল';
+  String get volumeInternal => 'অভ্যন্তরীণ';
 
   @override
-  String get volumeRemovable => 'খুলে ফেলা যায় (SD কার্ড বা USB)';
+  String get volumeRemovable => 'অপসারণযোগ্য (এসডি কার্ড বা ইউএসবি)';
 
   @override
   String get volumeOther => 'অন্যান্য';
 
   @override
-  String get specLevel => 'লেভেল';
+  String get specLevel => 'চার্জের মাত্রা';
 
   @override
   String get specStatus => 'অবস্থা';
 
   @override
-  String get specPowerSource => 'পাওয়ারের উৎস';
+  String get specPowerSource => 'বিদ্যুতের উৎস';
 
   @override
-  String get specHealth => 'হেলথ';
+  String get specHealth => 'স্বাস্থ্য';
 
   @override
   String get specTemperature => 'তাপমাত্রা';
@@ -755,35 +757,35 @@ class AppLocalizationsBn extends AppLocalizations {
   String get specTechnology => 'প্রযুক্তি';
 
   @override
-  String get specCurrentNow => 'এখনকার কারেন্ট';
+  String get specCurrentNow => 'বর্তমান বিদ্যুৎপ্রবাহ';
 
   @override
-  String get specCurrentAvg => 'গড় কারেন্ট';
+  String get specCurrentAvg => 'গড় বিদ্যুৎপ্রবাহ';
 
   @override
   String get specTimeToFull => 'পূর্ণ হতে বাকি';
 
   @override
-  String get specCycleCount => 'চার্জ সাইকেল';
+  String get specCycleCount => 'চার্জ চক্র';
 
   @override
-  String get cycleHint => 'ব্যাটারি নিজে জানিয়েছে';
+  String get cycleHint => 'ব্যাটারি থেকে প্রাপ্ত তথ্য';
 
   @override
-  String get specChargeCounter => 'বাকি চার্জ';
+  String get specChargeCounter => 'অবশিষ্ট চার্জ';
 
   @override
-  String get specEstCapacity => 'আনুমানিক পূর্ণ ক্যাপাসিটি';
+  String get specEstCapacity => 'আনুমানিক পূর্ণ ধারণক্ষমতা';
 
   @override
-  String get estCapacityHint => 'আনুমানিক, চার্জ কাউন্টার থেকে হিসাব করা';
+  String get estCapacityHint => 'চার্জ কাউন্টার থেকে আনুমানিক হিসাব';
 
   @override
-  String get specDesignCapacity => 'ডিজাইন ক্যাপাসিটি';
+  String get specDesignCapacity => 'মূল (ডিজাইন) ধারণক্ষমতা';
 
   @override
   String get designCapacityHint =>
-      'সিস্টেম পাওয়ার প্রোফাইল থেকে; কিছু নির্মাতা ভুল মান রেখে দেয়';
+      'সিস্টেমের পাওয়ার প্রোফাইল থেকে নেওয়া; কিছু নির্মাতার ক্ষেত্রে মানটি সঠিক নাও হতে পারে';
 
   @override
   String get batCharging => 'চার্জ হচ্ছে';
@@ -792,7 +794,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get batDischarging => 'চার্জ কমছে';
 
   @override
-  String get batNotCharging => 'প্লাগ লাগানো, চার্জ হচ্ছে না';
+  String get batNotCharging => 'চার্জার সংযুক্ত, চার্জ হচ্ছে না';
 
   @override
   String get batFull => 'পূর্ণ';
@@ -804,7 +806,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get healthOverheat => 'অতিরিক্ত গরম';
 
   @override
-  String get healthDead => 'নষ্ট';
+  String get healthDead => 'অকেজো';
 
   @override
   String get healthOverVoltage => 'অতিরিক্ত ভোল্টেজ';
@@ -825,7 +827,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get plugUsb => 'USB';
 
   @override
-  String get plugWireless => 'ওয়্যারলেস';
+  String get plugWireless => 'তারবিহীন';
 
   @override
   String get plugDock => 'ডক';
@@ -837,16 +839,16 @@ class AppLocalizationsBn extends AppLocalizations {
   String get specSize => 'স্ক্রিনের আকার';
 
   @override
-  String get sizeHint => 'স্ক্রিনের জানানো পিক্সেল ঘনত্ব থেকে হিসাব করা';
+  String get sizeHint => 'স্ক্রিনের পিক্সেল ঘনত্ব থেকে হিসাব করা';
 
   @override
-  String get specAspect => 'অনুপাত';
+  String get specAspect => 'দৈর্ঘ্য-প্রস্থ অনুপাত';
 
   @override
   String get specDensity => 'পিক্সেল ঘনত্ব';
 
   @override
-  String get specRefreshRate => 'এখনকার রিফ্রেশ রেট';
+  String get specRefreshRate => 'বর্তমান রিফ্রেশ রেট';
 
   @override
   String get specRefreshRates => 'সমর্থিত রিফ্রেশ রেট';
@@ -855,7 +857,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get specHdr => 'HDR';
 
   @override
-  String get specWideColor => 'ওয়াইড কালার';
+  String get specWideColor => 'প্রশস্ত রঙের পরিসর';
 
   @override
   String get specCutout => 'ক্যামেরা কাটআউট';
@@ -864,7 +866,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get specBrightness => 'উজ্জ্বলতার মান';
 
   @override
-  String get brightnessHint => 'কাঁচা মান; পরিসর নির্মাতার ওপর নির্ভর করে';
+  String get brightnessHint => 'মূল মান; পরিসর নির্মাতাভেদে ভিন্ন';
 
   @override
   String get specTimeout => 'স্ক্রিন বন্ধ হওয়ার সময়';
@@ -879,7 +881,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get specInternet => 'ইন্টারনেট';
 
   @override
-  String get netWorking => 'চলছে';
+  String get netWorking => 'সক্রিয়';
 
   @override
   String get netNoInternet => 'সংযুক্ত, ইন্টারনেট নেই';
@@ -894,7 +896,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get netOther => 'অন্যান্য';
 
   @override
-  String get specMetered => 'মিটারড';
+  String get specMetered => 'সীমিত ডেটা (মিটারড)';
 
   @override
   String get specVpn => 'VPN';
@@ -918,11 +920,11 @@ class AppLocalizationsBn extends AppLocalizations {
   String get specPrivateDns => 'প্রাইভেট DNS';
 
   @override
-  String get specBandwidth => 'সংযোগের ক্ষমতা';
+  String get specBandwidth => 'সংযোগের সক্ষমতা';
 
   @override
   String get bandwidthHint =>
-      'সংযোগের সর্বোচ্চ গতির ব্যাপারে অ্যান্ড্রয়েডের অনুমান, স্পিড টেস্ট নয়';
+      'সংযোগের সর্বোচ্চ গতি সম্পর্কে অ্যান্ড্রয়েডের অনুমান; এটি গতি পরীক্ষা নয়';
 
   @override
   String get specWifi => 'Wi-Fi';
@@ -931,7 +933,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get specWifiName => 'নেটওয়ার্কের নাম';
 
   @override
-  String get wifiNameHidden => 'অ্যান্ড্রয়েড লুকিয়ে রেখেছে';
+  String get wifiNameHidden => 'অ্যান্ড্রয়েড গোপন রেখেছে';
 
   @override
   String get wifiNameHint => 'দেখতে ট্যাপ করে লোকেশনের অনুমতি দিন';
@@ -952,13 +954,13 @@ class AppLocalizationsBn extends AppLocalizations {
   String get signalWeak => 'দুর্বল';
 
   @override
-  String get specWifiStandard => 'Wi-Fi স্ট্যান্ডার্ড';
+  String get specWifiStandard => 'Wi-Fi মান';
 
   @override
   String get specFrequency => 'ফ্রিকোয়েন্সি';
 
   @override
-  String get specLinkSpeed => 'লিংক স্পিড';
+  String get specLinkSpeed => 'সংযোগের গতি';
 
   @override
   String get specTxRx => 'পাঠানো / গ্রহণ';
@@ -976,7 +978,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get specNetworkType => 'নেটওয়ার্কের ধরন';
 
   @override
-  String get needsPhone => 'ফোনের অনুমতি দরকার';
+  String get needsPhone => 'ফোনের অনুমতি প্রয়োজন';
 
   @override
   String get needsPhoneHint => 'সিমের তথ্য দেখতে ট্যাপ করে অনুমতি দিন';
@@ -1003,7 +1005,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get specSimType => 'ধরন';
 
   @override
-  String get simPhysical => 'ফিজিক্যাল সিম';
+  String get simPhysical => 'প্রথাগত সিম';
 
   @override
   String get specDataSim => 'মোবাইল ডেটার জন্য ব্যবহৃত';
@@ -1012,10 +1014,10 @@ class AppLocalizationsBn extends AppLocalizations {
   String get simAbsent => 'সিম নেই';
 
   @override
-  String get simPin => 'PIN দরকার';
+  String get simPin => 'PIN প্রয়োজন';
 
   @override
-  String get simPuk => 'PUK দরকার';
+  String get simPuk => 'PUK প্রয়োজন';
 
   @override
   String get simLocked => 'নেটওয়ার্ক লক করা';
@@ -1027,10 +1029,10 @@ class AppLocalizationsBn extends AppLocalizations {
   String get simNotReady => 'প্রস্তুত নয়';
 
   @override
-  String get simDisabled => 'বন্ধ করা';
+  String get simDisabled => 'নিষ্ক্রিয়';
 
   @override
-  String get simError => 'কার্ডে সমস্যা';
+  String get simError => 'কার্ডে ত্রুটি';
 
   @override
   String get cameraRear => 'পেছনের ক্যামেরা';
@@ -1039,7 +1041,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get cameraFront => 'সামনের ক্যামেরা';
 
   @override
-  String get cameraExternal => 'এক্সটার্নাল ক্যামেরা';
+  String get cameraExternal => 'বাহ্যিক ক্যামেরা';
 
   @override
   String get specSensorSize => 'সেন্সরের আকার';
@@ -1048,16 +1050,16 @@ class AppLocalizationsBn extends AppLocalizations {
   String get specAperture => 'অ্যাপারচার';
 
   @override
-  String get specFocalLength => 'ফোকাল লেংথ';
+  String get specFocalLength => 'ফোকাল দৈর্ঘ্য';
 
   @override
-  String get specOis => 'অপটিক্যাল স্টেবিলাইজেশন (OIS)';
+  String get specOis => 'অপটিক্যাল স্থিতিশীলতা (OIS)';
 
   @override
   String get specFlash => 'ফ্ল্যাশ';
 
   @override
-  String get specMaxVideo => 'সেরা ভিডিও';
+  String get specMaxVideo => 'সর্বোচ্চ ভিডিও মান';
 
   @override
   String get specRaw => 'RAW ছবি';
@@ -1075,10 +1077,10 @@ class AppLocalizationsBn extends AppLocalizations {
   String get specWidevine => 'Widevine লেভেল';
 
   @override
-  String get widevineL1Hint => 'L1 থাকলে HD আর 4K স্ট্রিমিং চলে';
+  String get widevineL1Hint => 'L1 থাকলে HD ও 4K স্ট্রিমিং করা যায়';
 
   @override
-  String get specWidevineVersion => 'Widevine ভার্সন';
+  String get specWidevineVersion => 'Widevine সংস্করণ';
 
   @override
   String get specHdcp => 'সর্বোচ্চ HDCP';
@@ -1087,13 +1089,13 @@ class AppLocalizationsBn extends AppLocalizations {
   String get specAudioOutputs => 'অডিও আউটপুট';
 
   @override
-  String get specLowLatency => 'লো-ল্যাটেন্সি অডিও';
+  String get specLowLatency => 'স্বল্প বিলম্বের অডিও';
 
   @override
-  String get specProAudio => 'প্রো অডিও';
+  String get specProAudio => 'পেশাদার অডিও';
 
   @override
-  String get specSpatial => 'স্প্যাশিয়াল অডিও';
+  String get specSpatial => 'স্থানিক অডিও (স্প্যাশিয়াল)';
 
   @override
   String get codecDecode => 'ডিকোড';
@@ -1126,43 +1128,43 @@ class AppLocalizationsBn extends AppLocalizations {
   String get featFingerprint => 'ফিঙ্গারপ্রিন্ট';
 
   @override
-  String get featFace => 'ফেস আনলক হার্ডওয়্যার';
+  String get featFace => 'মুখমণ্ডল শনাক্তকরণ হার্ডওয়্যার';
 
   @override
   String get featTelephony => 'মোবাইল নেটওয়ার্ক';
 
   @override
-  String get featWifiRtt => 'Wi-Fi RTT (ঘরের ভেতরে লোকেশন)';
+  String get featWifiRtt => 'Wi-Fi RTT (ভবনের ভেতরে অবস্থান নির্ণয়)';
 
   @override
   String get featLe2m => 'LE 2M PHY (দ্রুততর)';
 
   @override
-  String get featLeCoded => 'LE Coded PHY (দূরপাল্লা)';
+  String get featLeCoded => 'LE Coded PHY (দীর্ঘ পরিসর)';
 
   @override
-  String get featLeExtAdv => 'LE এক্সটেন্ডেড অ্যাডভার্টাইজিং';
+  String get featLeExtAdv => 'LE বর্ধিত অ্যাডভার্টাইজিং';
 
   @override
   String get specScreenLock => 'স্ক্রিন লক';
 
   @override
-  String get lockSet => 'সেট করা';
+  String get lockSet => 'নির্ধারিত';
 
   @override
-  String get lockNotSet => 'সেট করা নেই';
+  String get lockNotSet => 'নির্ধারিত নয়';
 
   @override
-  String get lockHint => 'যে কেউ ফোন হাতে নিলেই খুলতে পারবে';
+  String get lockHint => 'যে কেউ ফোনটি হাতে নিয়ে খুলতে পারবে';
 
   @override
   String get specBiometrics => 'বায়োমেট্রিক্স';
 
   @override
-  String get bioEnrolled => 'যুক্ত করা আছে';
+  String get bioEnrolled => 'নিবন্ধিত';
 
   @override
-  String get bioNone => 'সেট করা নেই';
+  String get bioNone => 'নির্ধারিত নয়';
 
   @override
   String get bioNoHardware => 'হার্ডওয়্যার নেই';
@@ -1174,10 +1176,10 @@ class AppLocalizationsBn extends AppLocalizations {
   String get specUsbDebugging => 'USB ডিবাগিং';
 
   @override
-  String get adbHint => 'ডেভেলপমেন্ট না করলে বন্ধ রাখুন';
+  String get adbHint => 'প্রয়োজন না হলে বন্ধ রাখুন';
 
   @override
-  String get specVerifiedBoot => 'ভেরিফায়েড বুট';
+  String get specVerifiedBoot => 'যাচাইকৃত বুট (Verified boot)';
 
   @override
   String monthsOld(int months) {
@@ -1185,7 +1187,7 @@ class AppLocalizationsBn extends AppLocalizations {
       months,
       locale: localeName,
       other: '$months মাস পুরোনো',
-      zero: 'এই মাসের',
+      zero: 'চলতি মাসের',
     );
     return '$_temp0';
   }
@@ -1207,7 +1209,7 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String signalBars(int level) {
-    return '৪টির মধ্যে $levelটি দাগ';
+    return '৪টির মধ্যে $levelটি বার';
   }
 
   @override
@@ -1240,7 +1242,7 @@ class AppLocalizationsBn extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$count সাইকেল',
+      other: '$countটি চক্র',
     );
     return '$_temp0';
   }
@@ -1282,51 +1284,52 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String checksPassed(int passed, int total) {
-    return '$totalটির মধ্যে $passedটি চেক পাস';
+    return '$totalটির মধ্যে $passedটি যাচাইয়ে উত্তীর্ণ';
   }
 
   @override
   String secAllFeatures(int count) {
-    return 'সব সিস্টেম ফিচার ($count)';
+    return 'সকল সিস্টেম বৈশিষ্ট্য ($count)';
   }
 
   @override
-  String get live => 'লাইভ';
+  String get live => 'তাৎক্ষণিক';
 
   @override
   String securityPatchOn(String date) {
-    return 'সিকিউরিটি প্যাচ $date';
+    return 'নিরাপত্তা প্যাচ $date';
   }
 
   @override
-  String get specsUnavailable => 'আপনার ফোনে অ্যান্ড্রয়েড এই তথ্য দেয়নি।';
+  String get specsUnavailable =>
+      'আপনার ফোনে অ্যান্ড্রয়েড এই তথ্য প্রকাশ করেনি।';
 
   @override
   String get settingsUnavailable => 'আপনার ফোনে এই সেটিংস স্ক্রিন নেই।';
 
   @override
-  String get shareSpecs => 'স্পেক শিট শেয়ার করুন';
+  String get shareSpecs => 'স্পেসিফিকেশন শেয়ার করুন';
 
   @override
   String get clearSearch => 'মুছুন';
 
   @override
   String get searchHint =>
-      'এই ফোনের যেকোনো স্পেক খুঁজুন, যেমন \"Vulkan\", \"5 GHz\" বা \"patch\"।';
+      'এই ফোনের যেকোনো স্পেসিফিকেশন খুঁজুন, যেমন \"Vulkan\", \"5 GHz\" বা \"patch\"।';
 
   @override
   String searchNoResults(String query) {
-    return '\"$query\"-এর সাথে কিছু মেলেনি।';
+    return '\"$query\"-এর সাথে মিলে এমন কিছু পাওয়া যায়নি।';
   }
 
   @override
   String specSheetHeader(String device, String date) {
-    return '$device স্পেক শিট · $date';
+    return '$device স্পেসিফিকেশন · $date';
   }
 
   @override
   String specSheetSubject(String device) {
-    return '$device-এর স্পেক';
+    return '$device-এর স্পেসিফিকেশন';
   }
 
   @override
@@ -1337,18 +1340,18 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get permLocationReason =>
-      'অ্যান্ড্রয়েড শুধু লোকেশনের অনুমতি থাকা অ্যাপকে Wi-Fi নেটওয়ার্কের নাম জানায়। SystemX এটা শুধু এই তথ্য আর GPS টেস্টের জন্য ব্যবহার করে, আপনি কোথায় আছেন তা কখনো ট্র্যাক করে না।';
+      'লোকেশনের অনুমতি থাকা অ্যাপকেই শুধু অ্যান্ড্রয়েড Wi-Fi নেটওয়ার্কের নাম জানায়। SystemX এটি কেবল এই তথ্য ও জিপিএস পরীক্ষার জন্য ব্যবহার করে; আপনার অবস্থান কখনো অনুসরণ করে না।';
 
   @override
   String get permPhoneTitle => 'সিমের তথ্য দেখান';
 
   @override
   String get permPhoneReason =>
-      'ফোনের অনুমতি দিলে SystemX আপনার সিম স্লট, ক্যারিয়ারের নাম আর মোবাইল নেটওয়ার্কের ধরন পড়তে পারে। এটা দিয়ে কল করা বা আপনার ফোন নম্বর পড়া যায় না।';
+      'ফোনের অনুমতি দিলে SystemX আপনার সিম স্লট, অপারেটরের নাম ও মোবাইল নেটওয়ার্কের ধরন জানতে পারে। এটি দিয়ে কল করা বা আপনার ফোন নম্বর জানা সম্ভব নয়।';
 
   @override
   String get permBlocked =>
-      'আপনি আগে এটা বন্ধ করেছেন, তাই অ্যান্ড্রয়েড আর জিজ্ঞেস করবে না। অনুমতি দিতে সেটিংস › অনুমতি খুলুন।';
+      'আপনি আগে এটি বন্ধ করেছেন, তাই অ্যান্ড্রয়েড আর জানতে চাইবে না। অনুমতি দিতে সেটিংস › অনুমতি খুলুন।';
 
   @override
   String get permOpenSettings => 'সেটিংস খুলুন';
@@ -1363,18 +1366,18 @@ class AppLocalizationsBn extends AppLocalizations {
   String get statusBlocked => 'সেটিংসে বন্ধ';
 
   @override
-  String get balanceTitle => 'ব্যালেন্স ও দরকারি কোড';
+  String get balanceTitle => 'ব্যালেন্স ও প্রয়োজনীয় কোড';
 
   @override
   String get balanceBody =>
-      'কোড ট্যাপ করলে সেটি বসানো অবস্থায় ডায়ালার খুলবে। আপনি কল চাপার আগে কিছুই ডায়াল হয় না।';
+      'কোডে ট্যাপ করলে তা বসানো অবস্থায় ডায়ালার খুলবে। আপনি কল বোতাম না চাপা পর্যন্ত কিছুই ডায়াল হবে না।';
 
   @override
-  String get liveReading => 'লাইভ রিডিং';
+  String get liveReading => 'তাৎক্ষণিক মান';
 
   @override
   String get sensorWaiting =>
-      'রিডিংয়ের অপেক্ষা। কিছু সেন্সর শুধু কোনো পরিবর্তন হলে জানায়, যেমন প্রক্সিমিটি সেন্সর ঢাকলে।';
+      'মানের জন্য অপেক্ষা করা হচ্ছে। কিছু সেন্সর শুধু পরিবর্তন হলে মান জানায়, যেমন প্রক্সিমিটি সেন্সর ঢেকে দিলে।';
 
   @override
   String get sensorOnChange => 'মান বদলালে';
@@ -1383,7 +1386,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get sensorRange => 'সর্বোচ্চ পরিসর';
 
   @override
-  String get sensorResolution => 'রেজোলিউশন';
+  String get sensorResolution => 'সূক্ষ্মতা';
 
   @override
   String get sensorPower => 'বিদ্যুৎ খরচ';
@@ -1392,13 +1395,14 @@ class AppLocalizationsBn extends AppLocalizations {
   String get sensorRate => 'সর্বোচ্চ হার';
 
   @override
-  String get sensorWakeUp => 'ওয়েক-আপ সেন্সর';
+  String get sensorWakeUp => 'জাগ্রতকারী সেন্সর';
 
   @override
-  String get sensorWakeUpHint => 'রিডিং দিতে ফোনকে ঘুম থেকে জাগাতে পারে';
+  String get sensorWakeUpHint =>
+      'মান জানাতে ফোনকে নিষ্ক্রিয় অবস্থা থেকে সক্রিয় করতে পারে';
 
   @override
-  String get sensorVersion => 'ড্রাইভার ভার্সন';
+  String get sensorVersion => 'ড্রাইভার সংস্করণ';
 
   @override
   String get thermalLight => 'হালকা';
@@ -1419,13 +1423,13 @@ class AppLocalizationsBn extends AppLocalizations {
   String get thermalShutdown => 'বন্ধ হয়ে যাচ্ছে';
 
   @override
-  String get pause => 'থামান';
+  String get pause => 'বিরতি';
 
   @override
-  String get resume => 'আবার চালান';
+  String get resume => 'পুনরায় চালু';
 
   @override
-  String get paused => 'থামানো';
+  String get paused => 'বিরতিতে';
 
   @override
   String get avgClock => 'গড় ক্লক';
@@ -1434,17 +1438,18 @@ class AppLocalizationsBn extends AppLocalizations {
   String get loadEstimate => 'লোড (আনুমানিক)';
 
   @override
-  String get chartClockLast60 => 'গড় ক্লক · শেষ ৬০টি রিডিং';
+  String get chartClockLast60 => 'গড় ক্লক · সর্বশেষ ৬০টি মান';
 
   @override
   String get loadEstimateHint =>
-      'অ্যান্ড্রয়েড ৮ ও পরের ভার্সন অ্যাপকে আসল CPU ব্যবহার দেখায় না, তাই লোড ক্লক স্পিড থেকে অনুমান করা।';
+      'অ্যান্ড্রয়েড ৮ ও পরবর্তী সংস্করণে অ্যাপ প্রকৃত CPU ব্যবহার দেখতে পারে না, তাই ক্লক স্পিড থেকে লোড অনুমান করা হয়।';
 
   @override
-  String get chartCurrent => 'চার্জিং কারেন্ট';
+  String get chartCurrent => 'চার্জিং বিদ্যুৎপ্রবাহ';
 
   @override
-  String get currentUnavailable => 'আপনার ফোন চার্জিং কারেন্ট জানায় না।';
+  String get currentUnavailable =>
+      'আপনার ফোন চার্জিং বিদ্যুৎপ্রবাহের তথ্য দেয় না।';
 
   @override
   String get chartTemperature => 'ব্যাটারির তাপমাত্রা';
@@ -1456,17 +1461,17 @@ class AppLocalizationsBn extends AppLocalizations {
   String get upload => 'আপলোড';
 
   @override
-  String get chartNetwork => 'নেটওয়ার্ক স্পিড';
+  String get chartNetwork => 'নেটওয়ার্কের গতি';
 
   @override
   String get networkSpeedHint =>
-      'এই ফোনের সব অ্যাপের মোট ট্রাফিক। এটা স্পিড টেস্ট নয়।';
+      'এই ফোনের সকল অ্যাপের মোট ডেটা আদান-প্রদান। এটি গতি পরীক্ষা নয়।';
 
   @override
   String get thermalStatus => 'তাপের অবস্থা';
 
   @override
-  String get thermalHeadroom => 'ধীর হওয়ার আগে বাকি';
+  String get thermalHeadroom => 'গতি কমার আগে অবশিষ্ট সীমা';
 
   @override
   String get chartBatteryTemp => 'ব্যাটারির তাপমাত্রা';
@@ -1476,11 +1481,11 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get cpuTempUnavailable =>
-      'আপনার ফোন অ্যাপকে CPU-র তাপমাত্রা পড়তে দেয় না। এর বদলে ব্যাটারির তাপমাত্রা আর তাপের অবস্থা দেখানো হচ্ছে।';
+      'আপনার ফোন অ্যাপকে CPU-র তাপমাত্রা জানতে দেয় না। এর পরিবর্তে ব্যাটারির তাপমাত্রা ও তাপের অবস্থা দেখানো হচ্ছে।';
 
   @override
   String get thermalHint =>
-      'ফোন গরম হলে ঠান্ডা করতে অ্যান্ড্রয়েড প্রসেসরকে ধীর করে দেয়। হেডরুম দেখায় সেই সীমা থেকে কত দূরে আছে।';
+      'ফোন গরম হলে অ্যান্ড্রয়েড প্রসেসরের গতি কমিয়ে তাপ নিয়ন্ত্রণ করে। অবশিষ্ট সীমা দেখায় ফোনটি সেই অবস্থা থেকে কত দূরে।';
 
   @override
   String get details => 'বিস্তারিত';
@@ -1495,17 +1500,18 @@ class AppLocalizationsBn extends AppLocalizations {
   String get scorePoor => 'মনোযোগ দরকার';
 
   @override
-  String get noCheckupYet => 'এখনো চেকআপ হয়নি। স্কোরে যোগ করতে একটি চালান।';
+  String get noCheckupYet =>
+      'এখনো কোনো পরীক্ষা করা হয়নি। স্কোরে অন্তর্ভুক্ত করতে একটি পরীক্ষা চালান।';
 
   @override
-  String get scoreHow => 'স্কোর যেভাবে হিসাব হয়';
+  String get scoreHow => 'স্কোর যেভাবে নির্ধারিত হয়';
 
   @override
   String get scoreExplain =>
-      'এই মুহূর্তে আপনার ফোন যা জানায় তা মিলিয়ে স্কোর হয়। অ্যান্ড্রয়েড যা দেয় না তা অনুমান না করে বাদ রাখা হয়।';
+      'এই মুহূর্তে আপনার ফোন যে তথ্য দেয়, তার ভিত্তিতে স্কোর নির্ধারিত হয়। অ্যান্ড্রয়েড যা প্রকাশ করে না, তা অনুমান না করে বাদ দেওয়া হয়।';
 
   @override
-  String get factorBattery => 'ব্যাটারি হেলথ';
+  String get factorBattery => 'ব্যাটারির স্বাস্থ্য';
 
   @override
   String get factorTemperature => 'তাপমাত্রা';
@@ -1514,18 +1520,18 @@ class AppLocalizationsBn extends AppLocalizations {
   String get factorStorage => 'খালি স্টোরেজ';
 
   @override
-  String get factorMemory => 'খালি মেমোরি';
+  String get factorMemory => 'খালি মেমরি';
 
   @override
-  String get factorCheckup => 'শেষ চেকআপ';
+  String get factorCheckup => 'সর্বশেষ পরীক্ষা';
 
   @override
   String get tipNoScreenLock =>
-      'কোনো স্ক্রিন লক সেট নেই। যে কেউ ফোন হাতে নিলেই খুলতে পারবে।';
+      'কোনো স্ক্রিন লক নির্ধারণ করা নেই। যে কেউ আপনার ফোন খুলতে পারবে।';
 
   @override
   String get tipMemoryLow =>
-      'মেমোরি প্রায় পূর্ণ, তাই অ্যান্ড্রয়েড ব্যাকগ্রাউন্ড অ্যাপ বন্ধ করছে।';
+      'মেমরি প্রায় পূর্ণ, তাই অ্যান্ড্রয়েড ব্যাকগ্রাউন্ডের অ্যাপ বন্ধ করছে।';
 
   @override
   String get tipOpen => 'খুলুন';
@@ -1540,7 +1546,7 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String tipBatteryHot(String temp) {
-    return 'ফোন গরম ($temp)। ভারী অ্যাপ বন্ধ করুন বা কিছুক্ষণ কভার খুলে রাখুন।';
+    return 'ফোন গরম ($temp)। ভারী অ্যাপ বন্ধ করুন অথবা কিছুক্ষণ কভার খুলে রাখুন।';
   }
 
   @override
@@ -1550,12 +1556,12 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String tipPatchOld(int months) {
-    return 'সিকিউরিটি প্যাচ $months মাস পুরোনো। সিস্টেম আপডেট আছে কিনা দেখুন।';
+    return 'নিরাপত্তা প্যাচ $months মাস পুরোনো। সিস্টেম আপডেট আছে কি না দেখুন।';
   }
 
   @override
   String tipUnplug(int level) {
-    return '$level% চার্জ হয়েছে। ৮০%-এর কাছাকাছি খুলে ফেললে ব্যাটারি কম ক্ষয় হয়।';
+    return '$level% চার্জ হয়েছে। ৮০%-এর কাছাকাছি চার্জার খুলে ফেললে ব্যাটারির ক্ষয় কমে।';
   }
 
   @override
@@ -1563,26 +1569,26 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get permCameraReason =>
-      'SystemX শুধু ক্যামেরা টেস্টের সময় ক্যামেরা খোলে। ছবি স্ক্রিনেই থাকে, কখনো সেভ বা আপলোড হয় না।';
+      'SystemX শুধু ক্যামেরা পরীক্ষার সময় ক্যামেরা চালু করে। ছবি কেবল স্ক্রিনে দেখানো হয়; কখনো সংরক্ষণ বা আপলোড করা হয় না।';
 
   @override
   String get permMicTitle => 'মাইক্রোফোন পরীক্ষা করুন';
 
   @override
   String get permMicReason =>
-      'SystemX শুধু মাইক্রোফোন টেস্টের সময় কয়েক সেকেন্ড রেকর্ড করে, একবার শুনিয়ে মুছে ফেলে। কিছুই সেভ বা আপলোড হয় না।';
+      'SystemX শুধু মাইক্রোফোন পরীক্ষার সময় কয়েক সেকেন্ড রেকর্ড করে, একবার শুনিয়ে মুছে ফেলে। কিছুই সংরক্ষণ বা আপলোড করা হয় না।';
 
   @override
-  String get tDeadPixels => 'ডেড পিক্সেল';
+  String get tDeadPixels => 'অকেজো পিক্সেল';
 
   @override
-  String get tColorBanding => 'রঙের ব্যান্ডিং';
+  String get tColorBanding => 'রঙের স্তরভেদ (ব্যান্ডিং)';
 
   @override
-  String get tBurnIn => 'বার্ন-ইন';
+  String get tBurnIn => 'স্ক্রিনে স্থায়ী ছাপ (বার্ন-ইন)';
 
   @override
-  String get tMultiTouch => 'মাল্টি-টাচ';
+  String get tMultiTouch => 'একাধিক স্পর্শ';
 
   @override
   String get tBrightness => 'উজ্জ্বলতার পরিসর';
@@ -1591,7 +1597,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get tSpeakerMic => 'স্পিকার থেকে মাইক্রোফোন';
 
   @override
-  String get tHeadphones => 'তারের হেডফোন';
+  String get tHeadphones => 'তারযুক্ত হেডফোন';
 
   @override
   String get tUsbAudio => 'USB অডিও';
@@ -1633,7 +1639,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get gAudio => 'অডিও';
 
   @override
-  String get gHaptics => 'ভাইব্রেশন ও বোতাম';
+  String get gHaptics => 'কম্পন ও বোতাম';
 
   @override
   String get gConnectivity => 'সংযোগ';
@@ -1645,58 +1651,59 @@ class AppLocalizationsBn extends AppLocalizations {
   String get gPower => 'চার্জিং ও স্টোরেজ';
 
   @override
-  String get automaticTests => 'স্বয়ংক্রিয় টেস্ট';
+  String get automaticTests => 'স্বয়ংক্রিয় পরীক্ষা';
 
   @override
   String get automaticTestsBody =>
-      'এগুলো নিজে নিজেই চলে। স্পিকার টেস্টের জন্য ফোন স্থির আর ঘর চুপচাপ রাখুন।';
+      'এগুলো নিজে থেকেই চলে। স্পিকার পরীক্ষার সময় ফোন স্থির ও পরিবেশ নীরব রাখুন।';
 
   @override
   String get bioNoDataNote =>
-      'অ্যান্ড্রয়েড আপনার ফিঙ্গারপ্রিন্ট বা মুখ যাচাই করে। SystemX শুধু জানে মিলেছে কিনা।';
+      'অ্যান্ড্রয়েড আপনার ফিঙ্গারপ্রিন্ট বা মুখ যাচাই করে। SystemX শুধু জানতে পারে মিলেছে কি না।';
 
   @override
-  String get bioPromptTitle => 'বায়োমেট্রিক্স টেস্ট';
+  String get bioPromptTitle => 'বায়োমেট্রিক্স পরীক্ষা';
 
   @override
-  String get bioPromptSubtitle => 'সেন্সর ছুঁয়ে দিন বা স্ক্রিনের দিকে তাকান';
+  String get bioPromptSubtitle =>
+      'সেন্সর স্পর্শ করুন অথবা স্ক্রিনের দিকে তাকান';
 
   @override
-  String get buttonDoesNothing => 'বোতামে কিছুই হয় না';
+  String get buttonDoesNothing => 'বোতাম চাপলে কোনো সাড়া নেই';
 
   @override
   String get cancel => 'বাতিল';
 
   @override
   String get checkupIntro =>
-      'প্রথমে স্বয়ংক্রিয় টেস্টগুলো চলে। তারপর প্রতিটি টেস্ট আপনাকে কী করতে হবে বলে দেবে, আর যেকোনোটি বাদ দিতে পারবেন।';
+      'প্রথমে স্বয়ংক্রিয় পরীক্ষাগুলো চলবে। এরপর প্রতিটি পরীক্ষায় করণীয় জানিয়ে দেওয়া হবে; যেকোনো পরীক্ষা বাদ দিতে পারবেন।';
 
   @override
   String get checkupPrep =>
-      'সম্ভব হলে তারের হেডফোন, একটি USB অডিও ডিভাইস আর চার্জার কাছে রাখুন। লোকেশন চালু থাকলে GPS টেস্টে সুবিধা হয়।';
+      'সম্ভব হলে তারযুক্ত হেডফোন, একটি ইউএসবি অডিও ডিভাইস ও চার্জার কাছে রাখুন। লোকেশন চালু থাকলে জিপিএস পরীক্ষা সহজ হয়।';
 
   @override
-  String get done => 'হয়ে গেছে';
+  String get done => 'সম্পন্ন';
 
   @override
   String get fixAudio =>
-      'নরম শুকনো ব্রাশ দিয়ে গ্রিল পরিষ্কার করুন, ঢেকে রাখা কভার বা স্ক্রিন প্রটেক্টর সরান, তারপর আবার পরীক্ষা করুন।';
+      'নরম ও শুকনো ব্রাশ দিয়ে গ্রিল পরিষ্কার করুন, একে ঢেকে রাখা কভার বা স্ক্রিন প্রটেক্টর সরিয়ে আবার পরীক্ষা করুন।';
 
   @override
   String get fixBiometrics =>
-      'সেন্সর আর আঙুল পরিষ্কার করুন, সেটিংস › নিরাপত্তায় আবার যুক্ত করুন, তারপর আবার পরীক্ষা করুন।';
+      'সেন্সর ও আঙুল পরিষ্কার করুন, সেটিংস › নিরাপত্তা থেকে পুনরায় নিবন্ধন করে আবার পরীক্ষা করুন।';
 
   @override
   String get fixCamera =>
-      'লেন্স পরিষ্কার করুন আর কিছু ঢেকে আছে কিনা দেখুন। ছবি ঝাপসাই থাকলে ক্যামেরা সার্ভিসিং লাগতে পারে।';
+      'লেন্স পরিষ্কার করুন এবং কিছু ঢেকে রেখেছে কি না দেখুন। এরপরও ছবি ঝাপসা থাকলে ক্যামেরা মেরামতের প্রয়োজন হতে পারে।';
 
   @override
   String get fixCharging =>
-      'অন্য কেবল আর চার্জার দিয়ে চেষ্টা করুন, আর কাঠের খিলাল দিয়ে আলতো করে পোর্ট পরিষ্কার করুন।';
+      'অন্য কেবল ও চার্জার দিয়ে চেষ্টা করুন এবং কাঠের খিলাল দিয়ে আলতোভাবে পোর্ট পরিষ্কার করুন।';
 
   @override
   String get fixConnectivity =>
-      'কুইক সেটিংসে বন্ধ করে আবার চালু করুন, ফোন রিস্টার্ট করুন, তারপর আবার পরীক্ষা করুন।';
+      'কুইক সেটিংস থেকে বন্ধ করে আবার চালু করুন, ফোন রিস্টার্ট করে আবার পরীক্ষা করুন।';
 
   @override
   String get fixConnector =>
@@ -1704,14 +1711,15 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get fixDisplay =>
-      'ফোন রিস্টার্ট করে আবার পরীক্ষা করুন। দাগ থেকে গেলে সাধারণত স্ক্রিন সার্ভিসিং লাগে।';
+      'ফোন রিস্টার্ট করে আবার পরীক্ষা করুন। দাগ থেকে গেলে সাধারণত স্ক্রিন মেরামতের প্রয়োজন হয়।';
 
   @override
   String get fixHaptics =>
-      'ফোন রিস্টার্ট করে আবার পরীক্ষা করুন। তবুও ব্যর্থ হলে যন্ত্রাংশটি সার্ভিসিং লাগতে পারে।';
+      'ফোন রিস্টার্ট করে আবার পরীক্ষা করুন। তবুও ব্যর্থ হলে যন্ত্রাংশটি মেরামতের প্রয়োজন হতে পারে।';
 
   @override
-  String get fixSensor => 'কভার খুলে, ফোন রিস্টার্ট করে আবার পরীক্ষা করুন।';
+  String get fixSensor =>
+      'কভার খুলে ফোন রিস্টার্ট করুন, তারপর আবার পরীক্ষা করুন।';
 
   @override
   String get fixStorage => 'কিছু জায়গা খালি করে আবার পরীক্ষা করুন।';
@@ -1729,27 +1737,27 @@ class AppLocalizationsBn extends AppLocalizations {
   String get holdPhone => 'ফোনটি হাতে ধরে রাখুন';
 
   @override
-  String get holdToEar => 'ফোন কানে ধরুন, তারপর চালান চাপুন';
+  String get holdToEar => 'ফোন কানে ধরুন, তারপর বাজান চাপুন';
 
   @override
-  String get iAccelerometer => 'বলটিকে চার কোণে গড়িয়ে নিতে ফোন কাত করুন।';
+  String get iAccelerometer => 'ফোন কাত করে বলটিকে চারটি কোণে নিয়ে যান।';
 
   @override
   String get iBiometrics =>
-      'শুরু চাপুন আর আনলক করার মতো ফিঙ্গারপ্রিন্ট বা মুখ ব্যবহার করুন।';
+      'শুরু চাপুন এবং আনলক করার মতো করে ফিঙ্গারপ্রিন্ট বা মুখ ব্যবহার করুন।';
 
   @override
-  String get iBrightness => 'স্ক্রিন কম-বেশি উজ্জ্বল হওয়া লক্ষ্য করুন।';
+  String get iBrightness => 'স্ক্রিনের উজ্জ্বলতা কমা ও বাড়া লক্ষ করুন।';
 
   @override
   String get iCharging =>
-      'চার্জার লাগান। SystemX কয়েক সেকেন্ড চার্জিং কারেন্ট মাপবে।';
+      'চার্জার সংযুক্ত করুন। SystemX কয়েক সেকেন্ড চার্জিং বিদ্যুৎপ্রবাহ পরিমাপ করবে।';
 
   @override
-  String get iCompass => 'ফোন সমান করে ধরে ধীরে ধীরে পুরো এক চক্কর ঘুরুন।';
+  String get iCompass => 'ফোন সমতলভাবে ধরে ধীরে ধীরে সম্পূর্ণ এক পাক ঘুরুন।';
 
   @override
-  String get iEarpiece => 'এই শব্দটা বাজবে কলের সময় কানে ধরা ছোট স্পিকারে।';
+  String get iEarpiece => 'কলের সময় কানে ধরা ছোট স্পিকারে এই শব্দটি বাজবে।';
 
   @override
   String get iFlashlight => 'ফোনের পেছনে তাকান।';
@@ -1760,25 +1768,26 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get iGps =>
-      'জানালার কাছে দাঁড়ান বা বাইরে যান। স্যাটেলাইট খুঁজতে এক মিনিট লাগতে পারে।';
+      'জানালার কাছে দাঁড়ান অথবা বাইরে যান। স্যাটেলাইট খুঁজে পেতে এক মিনিট পর্যন্ত লাগতে পারে।';
 
   @override
-  String get iGyroscope => 'স্টিয়ারিং ঘোরানোর মতো ফোনটি যেকোনো দিকে ঘোরান।';
+  String get iGyroscope =>
+      'স্টিয়ারিং ঘোরানোর মতো করে ফোনটি যেকোনো দিকে ঘোরান।';
 
   @override
   String get iHeadphones =>
-      'তারের হেডফোন লাগান: ৩.৫ মিমি জ্যাকে, USB-C হেডফোন হিসেবে, বা USB-C অ্যাডাপ্টার দিয়ে।';
+      'তারযুক্ত হেডফোন সংযুক্ত করুন: ৩.৫ মিমি জ্যাকে, USB-C হেডফোন হিসেবে, অথবা USB-C অ্যাডাপ্টারের মাধ্যমে।';
 
   @override
   String get iLight =>
-      'হাত দিয়ে স্ক্রিনের ওপরের অংশ ঢাকুন, তারপর সরিয়ে নিন বা আলোর নিচে ধরুন।';
+      'হাত দিয়ে স্ক্রিনের ওপরের অংশ ঢেকে দিন, তারপর হাত সরিয়ে নিন অথবা আলোর নিচে ধরুন।';
 
   @override
   String get iMicrophone =>
-      'রেকর্ড চেপে কয়েকটি কথা বলুন। SystemX সাথে সাথে শুনিয়ে দেবে।';
+      'রেকর্ড চেপে কয়েকটি কথা বলুন। SystemX সঙ্গে সঙ্গে তা শুনিয়ে দেবে।';
 
   @override
-  String get iMultiTouch => 'যত বেশি পারেন আঙুল স্ক্রিনে রাখুন।';
+  String get iMultiTouch => 'যত বেশি সম্ভব আঙুল স্ক্রিনে রাখুন।';
 
   @override
   String get iProximity =>
@@ -1786,16 +1795,17 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get iRearCamera =>
-      'পেছনের ক্যামেরা খুঁটিনাটি আছে এমন কিছুর দিকে ধরুন, ফোকাস করতে ট্যাপ করুন, তারপর ছবি তুলুন।';
+      'পেছনের ক্যামেরা সূক্ষ্ম বিবরণযুক্ত কোনো বস্তুর দিকে ধরুন, ফোকাস করতে ট্যাপ করুন, তারপর ছবি তুলুন।';
 
   @override
   String get iSpeaker => 'লাউডস্পিকারে একটি শব্দ বাজবে।';
 
   @override
-  String get iUsbAudio => 'USB-C হেডফোন বা USB অডিও অ্যাডাপ্টার লাগান।';
+  String get iUsbAudio =>
+      'USB-C হেডফোন অথবা USB অডিও অ্যাডাপ্টার সংযুক্ত করুন।';
 
   @override
-  String get iVibration => 'ফোন অল্প সময়ের জন্য একটি ছন্দে ভাইব্রেট করবে।';
+  String get iVibration => 'ফোনটি একটি নির্দিষ্ট ছন্দে অল্প সময় কাঁপবে।';
 
   @override
   String get iVolumeDown => 'ভলিউম কমানোর বোতাম চাপুন।';
@@ -1804,22 +1814,22 @@ class AppLocalizationsBn extends AppLocalizations {
   String get iVolumeUp => 'ভলিউম বাড়ানোর বোতাম চাপুন।';
 
   @override
-  String get itDoesntWork => 'আমাকে চিনতে পারছে না';
+  String get itDoesntWork => 'শনাক্ত করতে পারছে না';
 
   @override
   String get keepGoing => 'চালিয়ে যান';
 
   @override
-  String get lastCheckup => 'শেষ চেকআপ';
+  String get lastCheckup => 'সর্বশেষ পরীক্ষা';
 
   @override
   String get listen => 'শুনুন';
 
   @override
-  String get measuring => 'মাপা হচ্ছে…';
+  String get measuring => 'পরিমাপ করা হচ্ছে…';
 
   @override
-  String get nBanding => 'রঙের দাগ দেখা যায়';
+  String get nBanding => 'রঙের স্তর বা ডোরা দেখা যায়';
 
   @override
   String get nBluetoothOff => 'ব্লুটুথ বন্ধ';
@@ -1831,7 +1841,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get nBrightnessOk => 'পুরো পরিসর কাজ করে';
 
   @override
-  String get nBurnIn => 'ছায়ার মতো দাগ দেখা যায়';
+  String get nBurnIn => 'ছায়ার মতো ছাপ দেখা যায়';
 
   @override
   String get nButtonNoResponse => 'সাড়া নেই';
@@ -1867,19 +1877,20 @@ class AppLocalizationsBn extends AppLocalizations {
   String get nNfcOff => 'NFC বন্ধ';
 
   @override
-  String get nNoBiometrics => 'ফিঙ্গারপ্রিন্ট বা ফেস হার্ডওয়্যার নেই';
+  String get nNoBiometrics =>
+      'ফিঙ্গারপ্রিন্ট বা মুখমণ্ডল শনাক্তকরণের হার্ডওয়্যার নেই';
 
   @override
   String get nNoBluetooth => 'এই ফোনে ব্লুটুথ নেই';
 
   @override
-  String get nNoBurnIn => 'ছায়ার মতো দাগ নেই';
+  String get nNoBurnIn => 'ছায়ার মতো কোনো ছাপ নেই';
 
   @override
   String get nNoCharger => 'হাতের কাছে চার্জার নেই';
 
   @override
-  String get nNoDeadPixels => 'ডেড পিক্সেল নেই';
+  String get nNoDeadPixels => 'কোনো অকেজো পিক্সেল নেই';
 
   @override
   String get nNoFrontCamera => 'সামনের ক্যামেরা নেই';
@@ -1900,7 +1911,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get nNoSignal => 'মোবাইল সিগন্যাল নেই';
 
   @override
-  String get nNoSignalInfo => 'ফোন সিগন্যালের শক্তি জানায় না';
+  String get nNoSignalInfo => 'ফোনটি সিগন্যালের শক্তি জানায় না';
 
   @override
   String get nNoSim => 'সিম কার্ড নেই';
@@ -1909,10 +1920,10 @@ class AppLocalizationsBn extends AppLocalizations {
   String get nNoUsbAudio => 'হাতের কাছে USB অডিও ডিভাইস নেই';
 
   @override
-  String get nNoneEnrolled => 'কোনো ফিঙ্গারপ্রিন্ট বা মুখ সেট করা নেই';
+  String get nNoneEnrolled => 'কোনো ফিঙ্গারপ্রিন্ট বা মুখ নিবন্ধিত নেই';
 
   @override
-  String get nNotRecognised => 'চিনতে পারেনি';
+  String get nNotRecognised => 'শনাক্ত হয়নি';
 
   @override
   String get nOnNotConnected => 'চালু, সংযুক্ত নয়';
@@ -1921,13 +1932,13 @@ class AppLocalizationsBn extends AppLocalizations {
   String get nPermissionDenied => 'অনুমতি দেওয়া হয়নি';
 
   @override
-  String get nPhotoBad => 'ঝাপসা বা ভাঙা ছবি';
+  String get nPhotoBad => 'ঝাপসা বা ত্রুটিপূর্ণ ছবি';
 
   @override
-  String get nPhotoOk => 'প্রিভিউ আর ছবি কাজ করে';
+  String get nPhotoOk => 'প্রিভিউ ও ছবি সঠিকভাবে কাজ করে';
 
   @override
-  String get nRecognised => 'চিনতে পেরেছে';
+  String get nRecognised => 'শনাক্ত হয়েছে';
 
   @override
   String get nSensorNoResponse => 'সেন্সর সাড়া দেয়নি';
@@ -1936,13 +1947,13 @@ class AppLocalizationsBn extends AppLocalizations {
   String get nSensorResponds => 'নড়াচড়ায় সাড়া দেয়';
 
   @override
-  String get nSmooth => 'মসৃণ গ্রেডিয়েন্ট';
+  String get nSmooth => 'রঙের পরিবর্তন মসৃণ';
 
   @override
-  String get nStorageError => 'টেস্ট ফাইল লেখা যায়নি';
+  String get nStorageError => 'পরীক্ষামূলক ফাইল লেখা যায়নি';
 
   @override
-  String get nStorageMismatch => 'পড়া ডেটা মেলেনি';
+  String get nStorageMismatch => 'পড়া ডেটা লেখা ডেটার সাথে মেলেনি';
 
   @override
   String get nToneHeard => 'শব্দ শোনা গেছে';
@@ -1951,13 +1962,13 @@ class AppLocalizationsBn extends AppLocalizations {
   String get nToneNotHeard => 'শব্দ শোনা যায়নি';
 
   @override
-  String get nVeryQuiet => 'খুব আস্তে';
+  String get nVeryQuiet => 'শব্দ খুবই ক্ষীণ';
 
   @override
-  String get nVibrationBad => 'ভাইব্রেশন টের পাওয়া যায়নি';
+  String get nVibrationBad => 'কোনো কম্পন অনুভূত হয়নি';
 
   @override
-  String get nVibrationOk => 'ভাইব্রেশন টের পাওয়া গেছে';
+  String get nVibrationOk => 'কম্পন অনুভূত হয়েছে';
 
   @override
   String get nWifiOff => 'Wi-Fi বন্ধ';
@@ -1975,7 +1986,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get ofHundred => '১০০-এর মধ্যে';
 
   @override
-  String get pastCheckups => 'আগের চেকআপ';
+  String get pastCheckups => 'আগের পরীক্ষাসমূহ';
 
   @override
   String get playAgain => 'আবার বাজান';
@@ -1993,20 +2004,20 @@ class AppLocalizationsBn extends AppLocalizations {
   String get pressTheButton => 'বোতামটি চাপুন';
 
   @override
-  String get qBanding => 'রংগুলো কি দাগ ছাড়া মসৃণভাবে মিলিয়ে যাচ্ছে?';
+  String get qBanding => 'রংগুলো কি ডোরা ছাড়াই মসৃণভাবে পরিবর্তিত হচ্ছে?';
 
   @override
-  String get qBrightness => 'স্ক্রিন কি কম আর বেশি উজ্জ্বল হয়েছে?';
+  String get qBrightness => 'স্ক্রিনের উজ্জ্বলতা কি কমেছে ও বেড়েছে?';
 
   @override
   String get qBurnIn =>
-      'স্ট্যাটাস বার বা কিবোর্ডের মতো হালকা কোনো আকার কি থেকে যাচ্ছে?';
+      'স্ট্যাটাস বার বা কিবোর্ডের মতো কোনো হালকা আকৃতি কি স্থায়ীভাবে দেখা যাচ্ছে?';
 
   @override
-  String get qDeadPixels => 'কোনো বিন্দু কি কালো, সাদা বা অন্য রঙে আটকে ছিল?';
+  String get qDeadPixels => 'কোনো বিন্দু কি কালো, সাদা বা ভিন্ন রঙে স্থির ছিল?';
 
   @override
-  String get qFeltVibration => 'ভাইব্রেশন কি টের পেয়েছেন?';
+  String get qFeltVibration => 'কম্পন কি অনুভব করেছেন?';
 
   @override
   String get qFlashOn => 'ফ্ল্যাশলাইট কি জ্বলছে?';
@@ -2018,7 +2029,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get qHeardVoice => 'নিজের কণ্ঠ কি পরিষ্কার শুনেছেন?';
 
   @override
-  String get qPhotoClear => 'ছবিটি কি পরিষ্কার আর ফোকাসে আছে?';
+  String get qPhotoClear => 'ছবিটি কি স্পষ্ট ও সঠিকভাবে ফোকাস করা?';
 
   @override
   String get record3s => '৩ সেকেন্ড রেকর্ড করুন';
@@ -2027,23 +2038,23 @@ class AppLocalizationsBn extends AppLocalizations {
   String get recordAgain => 'আবার রেকর্ড করুন';
 
   @override
-  String get recording => 'রেকর্ড হচ্ছে… এখন বলুন';
+  String get recording => 'রেকর্ড হচ্ছে… এখন কথা বলুন';
 
   @override
   String get reportDisclaimer =>
-      'এই ফোনে SystemX দিয়ে তৈরি। ইন্টারেক্টিভ ফলাফলগুলো চেকআপের সময় দেওয়া উত্তরের ওপর নির্ভর করে।';
+      'এই ফোনে SystemX দ্বারা প্রস্তুত। ইন্টারেক্টিভ পরীক্ষার ফলাফল পরীক্ষার সময় দেওয়া উত্তরের ওপর ভিত্তি করে।';
 
   @override
-  String get reportGreat => 'আপনার ফোন দারুণ অবস্থায় আছে';
+  String get reportGreat => 'আপনার ফোন চমৎকার অবস্থায় আছে';
 
   @override
-  String get reportNeedsWork => 'কিছু অংশে মনোযোগ দরকার';
+  String get reportNeedsWork => 'কিছু অংশে মনোযোগ প্রয়োজন';
 
   @override
-  String get reportNotSaved => 'সেভ হয়নি';
+  String get reportNotSaved => 'সংরক্ষিত হয়নি';
 
   @override
-  String get reportOk => 'মোটামুটি ভালো, কয়েকটি সমস্যা আছে';
+  String get reportOk => 'সামগ্রিকভাবে ভালো, তবে কিছু সমস্যা আছে';
 
   @override
   String get reportPhone => 'ফোন';
@@ -2052,25 +2063,25 @@ class AppLocalizationsBn extends AppLocalizations {
   String get reportResults => 'ফলাফল';
 
   @override
-  String get reportSaved => 'রিপোর্ট সেভ হয়েছে';
+  String get reportSaved => 'প্রতিবেদন সংরক্ষিত হয়েছে';
 
   @override
-  String get reportShareSubject => 'SystemX চেকআপ রিপোর্ট';
+  String get reportShareSubject => 'SystemX পরীক্ষার প্রতিবেদন';
 
   @override
-  String get reportTitle => 'চেকআপ রিপোর্ট';
+  String get reportTitle => 'পরীক্ষার প্রতিবেদন';
 
   @override
   String get retake => 'আবার তুলুন';
 
   @override
-  String get savePdf => 'PDF সেভ করুন';
+  String get savePdf => 'PDF সংরক্ষণ করুন';
 
   @override
   String get sensorNotResponding => 'সেন্সর সাড়া দিচ্ছে না';
 
   @override
-  String get shareReport => 'রিপোর্ট শেয়ার করুন';
+  String get shareReport => 'প্রতিবেদন শেয়ার করুন';
 
   @override
   String get showAgain => 'আবার দেখান';
@@ -2094,19 +2105,20 @@ class AppLocalizationsBn extends AppLocalizations {
   String get statusNotRun => 'চালানো হয়নি';
 
   @override
-  String get statusPassed => 'পাস';
+  String get statusPassed => 'উত্তীর্ণ';
 
   @override
-  String get statusSkipped => 'বাদ দেওয়া';
+  String get statusSkipped => 'বাদ দেওয়া হয়েছে';
 
   @override
   String get stop => 'থামান';
 
   @override
-  String get stopCheckupBody => 'এ পর্যন্ত ফলাফল একটি রিপোর্টে সেভ থাকবে।';
+  String get stopCheckupBody =>
+      'এ পর্যন্ত পাওয়া ফলাফল একটি প্রতিবেদনে সংরক্ষিত থাকবে।';
 
   @override
-  String get stopCheckupTitle => 'চেকআপ থামাবেন?';
+  String get stopCheckupTitle => 'পরীক্ষা বন্ধ করবেন?';
 
   @override
   String get takePhoto => 'ছবি তুলুন';
@@ -2121,23 +2133,23 @@ class AppLocalizationsBn extends AppLocalizations {
   String get testingAutomatically => 'পরীক্ষা চলছে…';
 
   @override
-  String get touchEveryZone => 'প্রতিটি ঘর ছুঁয়ে দিন';
+  String get touchEveryZone => 'প্রতিটি ঘর স্পর্শ করুন';
 
   @override
   String get tryAgain => 'আবার চেষ্টা করুন';
 
   @override
-  String get vibrateAgain => 'আবার ভাইব্রেট করুন';
+  String get vibrateAgain => 'আবার কম্পন দিন';
 
   @override
-  String get waitingForCharger => 'চার্জারের অপেক্ষা';
+  String get waitingForCharger => 'চার্জারের জন্য অপেক্ষা করা হচ্ছে';
 
   @override
-  String get waitingToConnect => 'সংযুক্ত হওয়ার অপেক্ষা';
+  String get waitingToConnect => 'সংযোগের জন্য অপেক্ষা করা হচ্ছে';
 
   @override
   String gpsSatellites(int seen, int used) {
-    return '$seenটি স্যাটেলাইট দেখা গেছে · $usedটি ব্যবহৃত';
+    return '$seenটি স্যাটেলাইট শনাক্ত · $usedটি ব্যবহৃত';
   }
 
   @override
@@ -2167,17 +2179,17 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String nGpsFix(int used, int accuracy) {
-    return 'অবস্থান পাওয়া গেছে · $usedটি স্যাটেলাইট · ±$accuracy m';
+    return 'অবস্থান নির্ণীত · $usedটি স্যাটেলাইট · ±$accuracy মি';
   }
 
   @override
   String nGpsNoFix(int seen) {
-    return '$seenটি স্যাটেলাইট দেখা গেছে, এখনো অবস্থান পাওয়া যায়নি। বাইরে গিয়ে চেষ্টা করুন।';
+    return '$seenটি স্যাটেলাইট শনাক্ত হয়েছে, তবে এখনো অবস্থান নির্ণয় হয়নি। খোলা জায়গায় চেষ্টা করুন।';
   }
 
   @override
   String nImplausible(String value) {
-    return 'অস্বাভাবিক রিডিং: $value';
+    return 'অস্বাভাবিক মান: $value';
   }
 
   @override
@@ -2197,7 +2209,7 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String nStorageSpeed(int write, int read) {
-    return 'লেখা $write MB/s · পড়া $read MB/s';
+    return 'লেখার গতি $write MB/s · পড়ার গতি $read MB/s';
   }
 
   @override
@@ -2207,7 +2219,7 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String passedOf(int passed, int total) {
-    return '$totalটির মধ্যে $passedটি পাস';
+    return '$totalটির মধ্যে $passedটি উত্তীর্ণ';
   }
 
   @override
@@ -2217,7 +2229,7 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String reportCounts(int passed, int failed, int skipped) {
-    return '$passedটি পাস · $failedটি ব্যর্থ · $skippedটি বাদ';
+    return '$passedটি উত্তীর্ণ · $failedটি ব্যর্থ · $skippedটি বাদ';
   }
 
   @override
@@ -2229,7 +2241,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get nDetected => 'পাওয়া গেছে';
 
   @override
-  String get nNoVibrator => 'ভাইব্রেশন মোটর নেই';
+  String get nNoVibrator => 'কম্পন মোটর নেই';
 
   @override
   String get nButtonWorks => 'বোতাম কাজ করে';
@@ -2266,25 +2278,25 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String lastCheckupLine(String ago, int passed, int total) {
-    return 'শেষ চেকআপ $ago · $totalটির মধ্যে $passedটি পাস';
+    return 'সর্বশেষ পরীক্ষা $ago · $totalটির মধ্যে $passedটি উত্তীর্ণ';
   }
 
   @override
-  String get alertsTitle => 'অ্যালার্ট ও লাইভ স্ট্যাটাস';
+  String get alertsTitle => 'সতর্কবার্তা ও তাৎক্ষণিক অবস্থা';
 
   @override
   String get alertsRowSub =>
-      'চার্জ অ্যালার্ম, ব্যাটারি ও স্টোরেজ অ্যালার্ট, লাইভ নোটিফিকেশন';
+      'চার্জ অ্যালার্ম, ব্যাটারি ও স্টোরেজের সতর্কবার্তা, তাৎক্ষণিক বিজ্ঞপ্তি';
 
   @override
-  String get alertsUnavailable => 'এই ফোনে অ্যালার্ট পাওয়া যায় না।';
+  String get alertsUnavailable => 'এই ফোনে সতর্কবার্তা সুবিধা উপলব্ধ নয়।';
 
   @override
   String get alertsIntro =>
-      'আপনি চালু না করা পর্যন্ত এখানের সবকিছু বন্ধ থাকে। প্রতিটি ধরনের আলাদা নোটিফিকেশন চ্যানেল আছে, তাই অ্যান্ড্রয়েড সেটিংস থেকেও চুপ করাতে পারবেন।';
+      'আপনি চালু না করা পর্যন্ত এখানকার সবকিছু বন্ধ থাকবে। প্রতিটি ধরনের জন্য আলাদা বিজ্ঞপ্তি চ্যানেল রয়েছে, তাই অ্যান্ড্রয়েড সেটিংস থেকেও এগুলো নীরব করতে পারবেন।';
 
   @override
-  String get secLiveStatus => 'লাইভ স্ট্যাটাস';
+  String get secLiveStatus => 'তাৎক্ষণিক অবস্থা';
 
   @override
   String get secBatteryAlerts => 'ব্যাটারি';
@@ -2293,17 +2305,17 @@ class AppLocalizationsBn extends AppLocalizations {
   String get secStorageAlerts => 'স্টোরেজ';
 
   @override
-  String get secSummaries => 'সারাংশ ও রিমাইন্ডার';
+  String get secSummaries => 'সারাংশ ও অনুস্মারক';
 
   @override
-  String get secAlerts => 'অ্যালার্ট';
+  String get secAlerts => 'সতর্কবার্তা';
 
   @override
-  String get liveStatus => 'লাইভ স্ট্যাটাস নোটিফিকেশন';
+  String get liveStatus => 'তাৎক্ষণিক অবস্থার বিজ্ঞপ্তি';
 
   @override
   String get liveStatusSub =>
-      'লাইভ ব্যাটারি, তাপমাত্রা, পাওয়ার, নেটওয়ার্ক আর RAM সহ একটি চলমান নোটিফিকেশন।';
+      'ব্যাটারি, তাপমাত্রা, বিদ্যুৎ, নেটওয়ার্ক ও র‍্যামের তাৎক্ষণিক তথ্যসহ একটি স্থায়ী বিজ্ঞপ্তি।';
 
   @override
   String get statusBarShows => 'স্ট্যাটাস বারের আইকন';
@@ -2312,10 +2324,10 @@ class AppLocalizationsBn extends AppLocalizations {
   String get chargeAlarm => 'চার্জ অ্যালার্ম';
 
   @override
-  String get notifyAt => 'কখন জানাবে';
+  String get notifyAt => 'কখন জানানো হবে';
 
   @override
-  String get chargingDone => 'চার্জ শেষ';
+  String get chargingDone => 'চার্জ সম্পন্ন';
 
   @override
   String get chargingDoneSub => 'চার্জের সারাংশসহ';
@@ -2334,28 +2346,28 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get weeklySummarySub =>
-      'প্রতি সপ্তাহে চার্জের সংখ্যা, সর্বোচ্চ তাপমাত্রা আর সর্বনিম্ন লেভেল';
+      'প্রতি সপ্তাহে চার্জের সংখ্যা, সর্বোচ্চ তাপমাত্রা ও সর্বনিম্ন চার্জের মাত্রা';
 
   @override
-  String get checkupReminder => 'মাসিক চেকআপ রিমাইন্ডার';
+  String get checkupReminder => 'মাসিক পরীক্ষার অনুস্মারক';
 
   @override
-  String get checkupReminderSub => 'শেষ চেকআপের এক মাস পর';
+  String get checkupReminderSub => 'সর্বশেষ পরীক্ষার এক মাস পূর্ণ হলে';
 
   @override
   String get alertsFootnote =>
-      'লাইভ স্ট্যাটাস ছাড়া SystemX প্রতি ১৫ মিনিটে, আর চার্জের সময় প্রতি ২ মিনিটে দেখে। ইতিহাস এই ফোনে ৮ দিন রাখা হয়।';
+      'তাৎক্ষণিক অবস্থা বন্ধ থাকলে SystemX প্রতি ১৫ মিনিটে এবং চার্জের সময় প্রতি ২ মিনিটে তথ্য যাচাই করে। ইতিহাস এই ফোনে ৮ দিন সংরক্ষিত থাকে।';
 
   @override
   String get notificationsNeeded =>
-      'SystemX-এর নোটিফিকেশন বন্ধ, তাই এটা চালু করা যাচ্ছে না।';
+      'SystemX-এর বিজ্ঞপ্তি বন্ধ রয়েছে, তাই এটি চালু করা যাচ্ছে না।';
 
   @override
-  String get permNotifTitle => 'নোটিফিকেশনের অনুমতি দিন';
+  String get permNotifTitle => 'বিজ্ঞপ্তির অনুমতি দিন';
 
   @override
   String get permNotifReason =>
-      'এখানে আপনি যে অ্যালার্ট চালু করবেন শুধু সেগুলোই SystemX জানাবে, আর আপনি চালু করলে লাইভ স্ট্যাটাস দেখাবে।';
+      'এখানে আপনি যে সতর্কবার্তাগুলো চালু করবেন, SystemX শুধু সেগুলোই জানাবে এবং আপনি চালু করলে তাৎক্ষণিক অবস্থা দেখাবে।';
 
   @override
   String get history => 'ইতিহাস';
@@ -2368,28 +2380,28 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get historyEmpty =>
-      'ইতিহাস ব্যাকগ্রাউন্ডে তৈরি হয়। এক ঘণ্টা পর আবার দেখুন।';
+      'ইতিহাস ব্যাকগ্রাউন্ডে সংগৃহীত হয়। এক ঘণ্টা পর আবার দেখুন।';
 
   @override
-  String get chargingSessions => 'চার্জিং সেশন';
+  String get chargingSessions => 'চার্জিংয়ের বিবরণ';
 
   @override
-  String get chargingSessionsSub => 'প্রতিটি চার্জের গতি আর তাপমাত্রা';
+  String get chargingSessionsSub => 'প্রতিটি চার্জের গতি ও তাপমাত্রা';
 
   @override
   String get sessionsEmpty =>
-      'এখনো কোনো চার্জ রেকর্ড হয়নি। শুরু করতে ফোন চার্জে লাগান।';
+      'এখনো কোনো চার্জ রেকর্ড করা হয়নি। শুরু করতে ফোন চার্জে দিন।';
 
   @override
   String get clearHistory => 'সব ইতিহাস মুছুন';
 
   @override
   String get clearHistorySub =>
-      'ব্যাটারির ইতিহাস, চার্জিং সেশন আর টেস্টের ফলাফল';
+      'ব্যাটারির ইতিহাস, চার্জিংয়ের বিবরণ ও পরীক্ষার ফলাফল';
 
   @override
   String get clearHistoryConfirm =>
-      'এতে এই ফোন থেকে ব্যাটারির ইতিহাস, চার্জিং সেশন আর সব টেস্টের ফলাফল মুছে যাবে। সেটিংস থেকে যাবে।';
+      'এতে এই ফোন থেকে ব্যাটারির ইতিহাস, চার্জিংয়ের বিবরণ ও সকল পরীক্ষার ফলাফল মুছে যাবে। সেটিংস অপরিবর্তিত থাকবে।';
 
   @override
   String get clear => 'মুছুন';
@@ -2399,38 +2411,38 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String chargeAlarmSub(int level) {
-    return 'ব্যাটারি $level% হলে জানাবে';
+    return 'ব্যাটারি $level% হলে জানানো হবে';
   }
 
   @override
   String batteryLowSub(int level) {
-    return 'চার্জে না থাকলে $level%-এ জানাবে';
+    return 'চার্জে না থাকলে $level%-এ জানানো হবে';
   }
 
   @override
   String batteryHotSub(String temp) {
-    return '$temp-এ জানাবে';
+    return '$temp-এ জানানো হবে';
   }
 
   @override
   String storageAlertSub(int percent) {
-    return 'স্টোরেজ $percent% পূর্ণ হলে জানাবে';
+    return 'স্টোরেজ $percent% পূর্ণ হলে জানানো হবে';
   }
 
   @override
   String historyNote(int count) {
-    return '$countটি রিডিং, ব্যাকগ্রাউন্ডে প্রতি ১৫ মিনিটে নেওয়া';
+    return '$countটি মান, ব্যাকগ্রাউন্ডে প্রতি ১৫ মিনিটে সংগৃহীত';
   }
 
   @override
   String get wifiMeter => 'Wi-Fi সিগন্যাল মিটার';
 
   @override
-  String get wifiMeterOff => 'সিগন্যাল মাপতে Wi-Fi-তে সংযুক্ত হন।';
+  String get wifiMeterOff => 'সিগন্যাল পরিমাপ করতে Wi-Fi-তে সংযুক্ত হন।';
 
   @override
   String get wifiMeterHint =>
-      'ধীরে ধীরে হাঁটুন। সিগন্যাল যত শক্তিশালী হবে রিং তত ভরবে, তাই কাজ করা বা রাউটার রাখার সেরা জায়গা খুঁজে পাবেন।';
+      'ধীরে ধীরে হাঁটুন। সিগন্যাল যত শক্তিশালী হবে, বৃত্তটি তত পূর্ণ হবে; এভাবে কাজের বা রাউটার রাখার সবচেয়ে উপযুক্ত জায়গা খুঁজে পাবেন।';
 
   @override
   String get bestHere => 'এখন পর্যন্ত সেরা';
@@ -2441,7 +2453,7 @@ class AppLocalizationsBn extends AppLocalizations {
   }
 
   @override
-  String get privacyPolicy => 'প্রাইভেসি পলিসি';
+  String get privacyPolicy => 'গোপনীয়তা নীতি';
 
   @override
   String get sendFeedback => 'মতামত পাঠান';
@@ -2465,10 +2477,10 @@ class AppLocalizationsBn extends AppLocalizations {
   String get codeMenu => 'মেনু ও অফার';
 
   @override
-  String get codeEmergency => 'ইমার্জেন্সি ব্যালেন্স';
+  String get codeEmergency => 'জরুরি ব্যালেন্স';
 
   @override
-  String get codeCare => 'কাস্টমার কেয়ার';
+  String get codeCare => 'গ্রাহকসেবা';
 
   @override
   String codeButton(String label, String code) {
@@ -2482,19 +2494,19 @@ class AppLocalizationsBn extends AppLocalizations {
   String get specOemSkin => 'নির্মাতার ইন্টারফেস';
 
   @override
-  String get specLaunchedWith => 'যে ভার্সনে বাজারে এসেছে';
+  String get specLaunchedWith => 'বাজারে আসার সময়ের সংস্করণ';
 
   @override
-  String get specHwRevision => 'হার্ডওয়্যার রিভিশন';
+  String get specHwRevision => 'হার্ডওয়্যার সংস্করণ';
 
   @override
   String get secSales => 'বিক্রয় অঞ্চল';
 
   @override
-  String get specSalesCode => 'সেলস কোড';
+  String get specSalesCode => 'বিক্রয় কোড';
 
   @override
-  String get salesCodeHint => 'অঞ্চলভিত্তিক বিল্ড কোড (স্যামসাং ফোনে CSC)';
+  String get salesCodeHint => 'অঞ্চলভিত্তিক বিল্ড কোড (Samsung ফোনে CSC)';
 
   @override
   String get specSalesCountry => 'বিক্রয়ের দেশ';
@@ -2503,7 +2515,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get specSalesRegion => 'অঞ্চল';
 
   @override
-  String get specProductLocale => 'ডিফল্ট ভাষা';
+  String get specProductLocale => 'পূর্বনির্ধারিত ভাষা';
 
   @override
   String get secIdentifiers => 'শনাক্তকারী';
@@ -2513,17 +2525,17 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get androidIdHint =>
-      'এই ফোন ও অ্যাপের জন্য অনন্য। ফ্যাক্টরি রিসেটের পর বদলে যায়।';
+      'এই ফোন ও অ্যাপের জন্য স্বতন্ত্র। ফ্যাক্টরি রিসেটের পর পরিবর্তিত হয়।';
 
   @override
   String get specImei => 'IMEI ও সিরিয়াল নম্বর';
 
   @override
   String get imeiHint =>
-      'অ্যান্ড্রয়েড ১০ থেকে এগুলো শুধু ফোনের নিজস্ব অ্যাপ দেখতে পারে। *#06# ডায়াল করতে ট্যাপ করুন।';
+      'অ্যান্ড্রয়েড ১০ ও পরবর্তী সংস্করণে এগুলো শুধু ফোনের নিজস্ব অ্যাপ দেখতে পারে। *#06# ডায়াল করতে ট্যাপ করুন।';
 
   @override
-  String get specWarranty => 'নক্স ওয়ারেন্টি';
+  String get specWarranty => 'Knox ওয়ারেন্টি';
 
   @override
   String get warrantyIntact => 'অক্ষত (0x0)';
@@ -2533,14 +2545,14 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get warrantyHint =>
-      'কখনো অনানুষ্ঠানিক সফটওয়্যার ইনস্টল করা হলে স্থায়ীভাবে সেট হয়';
+      'কখনো অনানুষ্ঠানিক সফটওয়্যার ইনস্টল করা হলে এটি স্থায়ীভাবে চিহ্নিত হয়ে যায়';
 
   @override
-  String get specCycleCountTracked => 'চার্জ সাইকেল (আনুমানিক)';
+  String get specCycleCountTracked => 'চার্জ চক্র (আনুমানিক)';
 
   @override
   String cycleTrackedHint(String date) {
-    return '$date থেকে চার্জিং দেখে SystemX গুনেছে। এই ফোন ব্যাটারির নিজস্ব হিসাব জানায় না।';
+    return '$date থেকে চার্জিং পর্যবেক্ষণ করে SystemX গণনা করেছে। এই ফোন ব্যাটারির নিজস্ব হিসাব জানায় না।';
   }
 
   @override
@@ -2550,7 +2562,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get specSensorKinds => 'সেন্সরের ধরন';
 
   @override
-  String get specSensorWakeUp => 'ওয়েক-আপ সেন্সর';
+  String get specSensorWakeUp => 'জাগ্রতকারী সেন্সর';
 
   @override
   String get specSensorVendor => 'নির্মাতার নিজস্ব';
@@ -2577,7 +2589,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get appsEntry => 'ইনস্টল করা অ্যাপ';
 
   @override
-  String get appsEntryBody => 'প্রতিটি অ্যাপের সাইজ ও ক্যাশ';
+  String get appsEntryBody => 'প্রতিটি অ্যাপের আকার ও ক্যাশ';
 
   @override
   String appsCount(int count) {
@@ -2590,33 +2602,33 @@ class AppLocalizationsBn extends AppLocalizations {
   }
 
   @override
-  String get appsTotalSize => 'মোট সাইজ';
+  String get appsTotalSize => 'মোট আকার';
 
   @override
   String get appsCacheTotal => 'ক্যাশ';
 
   @override
-  String get appsUsageTitle => 'অ্যাপের সাইজ দেখুন';
+  String get appsUsageTitle => 'অ্যাপের আকার দেখুন';
 
   @override
   String get appsUsageBody =>
-      'ইউসেজ অ্যাক্সেস চালু করলে SystemX প্রতিটি অ্যাপ ও তার ক্যাশ কতটা জায়গা নিচ্ছে তা পড়তে পারে। কোনো তথ্য ফোনের বাইরে যায় না।';
+      'ব্যবহারের তথ্যে প্রবেশাধিকার (Usage access) দিলে SystemX জানতে পারবে প্রতিটি অ্যাপ ও তার ক্যাশ কতটুকু জায়গা ব্যবহার করছে। কোনো তথ্য ফোনের বাইরে যায় না।';
 
   @override
-  String get appsUsageButton => 'ইউসেজ অ্যাক্সেস দিন';
+  String get appsUsageButton => 'ব্যবহারের তথ্যে প্রবেশাধিকার দিন';
 
   @override
-  String get appsCacheTitle => 'ক্যাশ পরিষ্কার';
+  String get appsCacheTitle => 'ক্যাশ পরিষ্কার করা';
 
   @override
   String get appsCacheBody =>
-      'অ্যান্ড্রয়েড একটি অ্যাপকে অন্য অ্যাপের ক্যাশ মুছতে দেয় না। একটি অ্যাপে ট্যাপ করুন, তারপর স্টোরেজ, তারপর ক্যাশ মুছুন। ফোনের স্টোরেজ ম্যানেজার থেকেও এক জায়গায় জায়গা খালি করা যায়।';
+      'অ্যান্ড্রয়েড কোনো অ্যাপকে অন্য অ্যাপের ক্যাশ মুছতে দেয় না। একটি অ্যাপে ট্যাপ করুন, এরপর স্টোরেজ, তারপর ক্যাশ মুছুন। ফোনের স্টোরেজ ম্যানেজার থেকেও এক জায়গায় জায়গা খালি করা যায়।';
 
   @override
   String get appsFreeUp => 'জায়গা খালি করুন';
 
   @override
-  String get appsSortSize => 'সাইজ';
+  String get appsSortSize => 'আকার';
 
   @override
   String get appsSortCache => 'ক্যাশ';
@@ -2625,7 +2637,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get appsSortName => 'নাম';
 
   @override
-  String get appsSortRecent => 'আপডেট';
+  String get appsSortRecent => 'হালনাগাদ';
 
   @override
   String get appsShowSystem => 'সিস্টেম অ্যাপ';
@@ -2639,40 +2651,40 @@ class AppLocalizationsBn extends AppLocalizations {
   String get appsSearch => 'অ্যাপ খুঁজুন';
 
   @override
-  String get appsEmpty => 'কোনো অ্যাপ মেলেনি';
+  String get appsEmpty => 'কোনো অ্যাপ পাওয়া যায়নি';
 
   @override
-  String get bhTitle => 'ব্যাটারি হেলথ';
+  String get bhTitle => 'ব্যাটারির স্বাস্থ্য';
 
   @override
-  String get bhEntry => 'ব্যাটারি হেলথ';
+  String get bhEntry => 'ব্যাটারির স্বাস্থ্য';
 
   @override
-  String get bhEntryBody => 'মাপা ক্যাপাসিটি আর ঘণ্টায় খরচ';
+  String get bhEntryBody => 'পরিমাপকৃত ধারণক্ষমতা ও ঘণ্টাপ্রতি খরচ';
 
   @override
   String bhBasedOn(int count) {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$countটি মাপা চার্জের ভিত্তিতে',
+      other: '$countটি পরিমাপকৃত চার্জের ভিত্তিতে',
     );
     return '$_temp0';
   }
 
   @override
   String get bhNotYet =>
-      'এখনো মাপা হয়নি। SystemX-এর ব্যাকগ্রাউন্ড ফিচার চালু থাকা অবস্থায় প্রতিবার ১৫% বা তার বেশি চার্জ দিলে একটি মাপ নেওয়া হয়।';
+      'এখনো পরিমাপ করা হয়নি। SystemX-এর ব্যাকগ্রাউন্ড সুবিধা চালু থাকা অবস্থায় প্রতিবার ১৫% বা তার বেশি চার্জ দিলে একটি পরিমাপ নেওয়া হয়।';
 
   @override
   String get bhNoCounter =>
-      'এই ফোন ব্যাটারির চার্জ কাউন্টার জানায় না, তাই ক্যাপাসিটি মাপা যায় না।';
+      'এই ফোন ব্যাটারির চার্জ কাউন্টারের তথ্য দেয় না, তাই ধারণক্ষমতা পরিমাপ করা সম্ভব নয়।';
 
   @override
-  String get bhTrend => 'প্রতি চার্জে মাপা ক্যাপাসিটি';
+  String get bhTrend => 'প্রতি চার্জে পরিমাপকৃত ধারণক্ষমতা';
 
   @override
-  String get bhDrain => 'ঘণ্টায় খরচ (গত ৭ দিন)';
+  String get bhDrain => 'ঘণ্টাপ্রতি খরচ (গত ৭ দিন)';
 
   @override
   String get bhScreenOn => 'স্ক্রিন চালু';
@@ -2687,36 +2699,36 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String bhHours(String hours) {
-    return '$hours ঘণ্টা মাপা হয়েছে';
+    return '$hours ঘণ্টা পরিমাপ করা হয়েছে';
   }
 
   @override
-  String get bhCollecting => 'তথ্য সংগ্রহ চলছে';
+  String get bhCollecting => 'তথ্য সংগ্রহ করা হচ্ছে';
 
   @override
   String get bhDrainNote =>
-      'SystemX-এর ব্যাকগ্রাউন্ড রিডিং থেকে অনুমান, বাকি ব্যাটারি কতক্ষণ চলবে তার পূর্বাভাস নয়। প্রতিটিতে ৩+ ঘণ্টার তথ্য হলে বেশি নির্ভরযোগ্য হয়; লাইভ স্ট্যাটাস চালু থাকলে রিডিং ঘন ঘন হয়।';
+      'SystemX-এর ব্যাকগ্রাউন্ড পরিমাপ থেকে প্রাপ্ত অনুমান; অবশিষ্ট ব্যাটারি কতক্ষণ চলবে তার পূর্বাভাস নয়। প্রতিটির ক্ষেত্রে ৩ ঘণ্টার বেশি তথ্য থাকলে অধিক নির্ভরযোগ্য হয়; তাৎক্ষণিক অবস্থা চালু থাকলে পরিমাপ আরও ঘন ঘন নেওয়া হয়।';
 
   @override
   String get bhHow =>
-      'যেভাবে কাজ করে: ১৫% বা তার বেশি প্রতিটি চার্জ ব্যাটারির নিজস্ব চার্জ কাউন্টারে মাপা হয় (যত চার্জ ঢুকেছে ÷ যত শতাংশ বেড়েছে)। শেষ ৫টি মাপের মাঝের মানটিই অনুমান। এটি অনুমান, হার্ডওয়্যার টেস্ট নয়: তাপ, ফাস্ট চার্জিং আর ফোনের ক্যালিব্রেশনে কয়েক শতাংশ এদিক-ওদিক হতে পারে।';
+      'যেভাবে কাজ করে: ১৫% বা তার বেশি প্রতিটি চার্জ ব্যাটারির নিজস্ব চার্জ কাউন্টার দিয়ে পরিমাপ করা হয় (প্রবেশ করা চার্জ ÷ বৃদ্ধি পাওয়া শতাংশ)। সর্বশেষ ৫টি পরিমাপের মধ্যমানই হলো অনুমিত মান। এটি একটি অনুমান, হার্ডওয়্যার পরীক্ষা নয়: তাপ, দ্রুত চার্জিং ও ফোনের ক্যালিব্রেশনের কারণে কয়েক শতাংশ কমবেশি হতে পারে।';
 
   @override
-  String get toolsTitle => 'টুলস';
+  String get toolsTitle => 'সরঞ্জাম';
 
   @override
-  String get stTitle => 'সিপিইউ স্ট্রেস টেস্ট';
+  String get stTitle => 'সিপিইউ চাপ পরীক্ষা';
 
   @override
-  String get stEntryBody => 'গরম হলে কি ধীর হয়?';
+  String get stEntryBody => 'গরম হলে কি গতি কমে যায়?';
 
   @override
   String get stIntro =>
-      'প্রসেসরের সব কোর পূর্ণ গতিতে চালায় আর দেখে ফোন গরম হওয়ার সাথে পারফরম্যান্স ঠিক থাকে কিনা।';
+      'প্রসেসরের সব কোর পূর্ণ গতিতে চালিয়ে দেখা হয়, ফোন গরম হওয়ার সাথে সাথে কার্যক্ষমতা বজায় থাকে কি না।';
 
   @override
   String get stSafety =>
-      'ফোন গরম হবে। ব্যাটারি ৪৫ °C-এ পৌঁছালে, অ্যান্ড্রয়েড অতিরিক্ত গরম জানালে, ব্যাটারি ১৫%-এর নিচে নামলে বা এই স্ক্রিন ছেড়ে গেলে টেস্ট নিজে থেকেই থামবে। যেকোনো সময় থামাতে পারেন।';
+      'ফোনটি গরম হবে। ব্যাটারি ৪৫ °C-এ পৌঁছালে, অ্যান্ড্রয়েড তীব্র তাপ শনাক্ত করলে, ব্যাটারি ১৫%-এর নিচে নামলে অথবা আপনি এই স্ক্রিন ছেড়ে গেলে পরীক্ষাটি স্বয়ংক্রিয়ভাবে বন্ধ হবে। যেকোনো সময় আপনি নিজেও বন্ধ করতে পারবেন।';
 
   @override
   String stMinutes(int count) {
@@ -2729,7 +2741,7 @@ class AppLocalizationsBn extends AppLocalizations {
   }
 
   @override
-  String get stStart => 'টেস্ট শুরু করুন';
+  String get stStart => 'পরীক্ষা শুরু করুন';
 
   @override
   String get stAgain => 'আবার চালান';
@@ -2739,67 +2751,68 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get stRefusedHot =>
-      'ফোন এখনই গরম। কয়েক মিনিট ঠান্ডা হতে দিন, তারপর আবার চেষ্টা করুন।';
+      'ফোনটি ইতোমধ্যে গরম। কয়েক মিনিট ঠান্ডা হতে দিন, তারপর আবার চেষ্টা করুন।';
 
   @override
   String get stRefusedBattery =>
-      'ব্যাটারি ২০%-এর নিচে। চার্জার লাগান বা আগে চার্জ দিন।';
+      'ব্যাটারি ২০%-এর নিচে। চার্জার সংযুক্ত করুন অথবা আগে চার্জ দিন।';
 
   @override
   String stRunning(int seconds) {
-    return 'চলছে · আর $seconds সেকেন্ড';
+    return 'চলছে · আর $seconds সেকেন্ড বাকি';
   }
 
   @override
-  String get stPerformance => 'পারফরম্যান্স';
+  String get stPerformance => 'কার্যক্ষমতা';
 
   @override
-  String get stPerfAxis => 'পারফরম্যান্স (শুরু = ১০০%)';
+  String get stPerfAxis => 'কার্যক্ষমতা (শুরু = ১০০%)';
 
   @override
   String get stTempAxis => 'ব্যাটারির তাপমাত্রা';
 
   @override
-  String get stSteady => 'লোডেও দ্রুত থাকে';
+  String get stSteady => 'চাপের মধ্যেও গতি বজায় থাকে';
 
   @override
-  String get stSteadyBody => 'ফোন গরম হওয়ার সময়ও পারফরম্যান্স স্থির ছিল।';
+  String get stSteadyBody => 'ফোন গরম হওয়ার সময়ও কার্যক্ষমতা স্থির ছিল।';
 
   @override
-  String get stSlight => 'গরম হলে একটু ধীর হয়';
+  String get stSlight => 'গরম হলে গতি সামান্য কমে';
 
   @override
   String get stSlightBody =>
-      'ঠান্ডা থাকতে ফোন গতি সামান্য কমিয়েছে। বেশিরভাগ ফোনে এটা স্বাভাবিক।';
+      'তাপ নিয়ন্ত্রণে রাখতে ফোনটি গতি কিছুটা কমিয়েছে। অধিকাংশ ফোনে এটি স্বাভাবিক।';
 
   @override
-  String get stThrottles => 'গরম হলে অনেক ধীর হয়';
+  String get stThrottles => 'গরম হলে গতি অনেক কমে যায়';
 
   @override
   String get stThrottlesBody =>
-      'গরম হওয়ার সাথে পারফরম্যান্স বেশ কমে গেছে। লম্বা গেম বা ভিডিও কলে আটকাতে পারে, বিশেষ করে কভার লাগানো থাকলে বা চার্জের সময়।';
+      'গরম হওয়ার সাথে সাথে কার্যক্ষমতা উল্লেখযোগ্যভাবে কমে গেছে। দীর্ঘ সময় গেম খেলা বা ভিডিও কলে ধীরগতি দেখা দিতে পারে, বিশেষত কভার লাগানো থাকলে বা চার্জের সময়।';
 
   @override
   String get stTooShort => 'যথেষ্ট তথ্য নেই';
 
   @override
-  String get stTooShortBody => 'ফলাফল দিতে টেস্টের অন্তত ৩০ সেকেন্ড লাগে।';
+  String get stTooShortBody =>
+      'ফলাফল দিতে পরীক্ষাটি অন্তত ৩০ সেকেন্ড চলা প্রয়োজন।';
 
   @override
   String get stStoppedHot =>
-      'ফোন রক্ষায় আগেই থামানো হয়েছে: বেশি গরম হয়ে গিয়েছিল।';
+      'ফোনের সুরক্ষায় আগেই বন্ধ করা হয়েছে: অতিরিক্ত গরম হয়ে গিয়েছিল।';
 
   @override
-  String get stStoppedBattery => 'আগেই থামানো হয়েছে: ব্যাটারি কম।';
+  String get stStoppedBattery => 'আগেই বন্ধ করা হয়েছে: ব্যাটারি কম।';
 
   @override
-  String get stStoppedLeft => 'অ্যাপ ব্যাকগ্রাউন্ডে যাওয়ায় থেমেছে।';
+  String get stStoppedLeft => 'অ্যাপটি ব্যাকগ্রাউন্ডে যাওয়ায় বন্ধ হয়েছে।';
 
   @override
-  String get stStoppedError => 'থেমেছে: রিডিং পাওয়া যায়নি।';
+  String get stStoppedError => 'বন্ধ হয়েছে: পরিমাপ পাওয়া যায়নি।';
 
   @override
-  String get stRetained => 'শেষে পারফরম্যান্স';
+  String get stRetained => 'শেষে কার্যক্ষমতা';
 
   @override
   String get stBatteryTemp => 'ব্যাটারির তাপমাত্রা';
@@ -2808,7 +2821,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get stCpuPeak => 'প্রসেসরের সর্বোচ্চ তাপমাত্রা';
 
   @override
-  String get stDuration => 'সময়';
+  String get stDuration => 'সময়কাল';
 
   @override
   String stSeconds(int seconds) {
@@ -2816,76 +2829,76 @@ class AppLocalizationsBn extends AppLocalizations {
   }
 
   @override
-  String get rrTitle => 'রিফ্রেশ রেট টেস্ট';
+  String get rrTitle => 'রিফ্রেশ রেট পরীক্ষা';
 
   @override
-  String get rrEntryBody => 'স্ক্রিন আসলে কতটা মসৃণভাবে আঁকে';
+  String get rrEntryBody => 'স্ক্রিন প্রকৃতপক্ষে কতটা মসৃণভাবে হালনাগাদ হয়';
 
   @override
   String get rrIntro =>
-      'বারটি চলার সময় স্ক্রিন সেকেন্ডে কতবার নতুন করে আঁকে তা গোনে। SystemX আগে ডিসপ্লের সবচেয়ে দ্রুত মোড চায়।';
+      'বারটি চলার সময় স্ক্রিন প্রতি সেকেন্ডে কতবার হালনাগাদ হয় তা গণনা করে। SystemX প্রথমে ডিসপ্লের সর্বোচ্চ গতির মোড চালু করার অনুরোধ করে।';
 
   @override
-  String get rrStart => 'মাপুন';
+  String get rrStart => 'পরিমাপ করুন';
 
   @override
-  String get rrMeasuring => 'মাপা হচ্ছে…';
+  String get rrMeasuring => 'পরিমাপ করা হচ্ছে…';
 
   @override
-  String get rrMeasured => 'মাপা রিফ্রেশ রেট';
+  String get rrMeasured => 'পরিমাপকৃত রিফ্রেশ রেট';
 
   @override
-  String get rrMatches => 'ডিসপ্লে যা সাপোর্ট করে তার সাথে মিলেছে।';
+  String get rrMatches => 'ডিসপ্লের সমর্থিত মানের সাথে মিলেছে।';
 
   @override
   String rrLower(String max) {
-    return 'ডিসপ্লের সাপোর্ট করা $max Hz-এর চেয়ে কম। ব্যাটারি সেভার, অ্যাডাপ্টিভ রিফ্রেশ বা ফোনের সেটিংস হয়তো সীমিত করছে।';
+    return 'ডিসপ্লের সমর্থিত $max Hz-এর চেয়ে কম। ব্যাটারি সেভার, অ্যাডাপ্টিভ রিফ্রেশ বা ফোনের সেটিংস এটি সীমিত করে থাকতে পারে।';
   }
 
   @override
   String get rrReported => 'ডিসপ্লের জানানো সর্বোচ্চ রেট';
 
   @override
-  String get trTitle => 'টাচ রেসপন্স টেস্ট';
+  String get trTitle => 'স্পর্শ সাড়ার পরীক্ষা';
 
   @override
-  String get trEntryBody => 'টাচের অবস্থান কত ঘন ঘন অ্যাপে পৌঁছায়';
+  String get trEntryBody => 'স্পর্শের অবস্থান কত ঘন ঘন অ্যাপে পৌঁছায়';
 
   @override
-  String get trIntro => 'আঙুল না তুলে নিচের বক্সে ঘোরান।';
+  String get trIntro => 'আঙুল না তুলে নিচের ঘরের মধ্যে আঙুল ঘোরান।';
 
   @override
   String get trDraw => 'এখানে আঁকুন';
 
   @override
-  String get trNow => 'টাচ রেট';
+  String get trNow => 'স্পর্শের হার';
 
   @override
   String get trBest => 'সর্বোচ্চ';
 
   @override
   String get trNote =>
-      'এটি অ্যাপ যে হারে টাচের অবস্থান পায় সেটা। ফোনের বিজ্ঞাপনে লেখা \"টাচ স্যাম্পলিং রেট\" বেশি হতে পারে, কারণ এর কিছু অংশ অ্যান্ড্রয়েডের ভেতরে ব্যবহৃত হয়।';
+      'এটি সেই হার, যে হারে অ্যাপ স্পর্শের অবস্থান পায়। ফোনের বিজ্ঞাপনে উল্লিখিত \"টাচ স্যাম্পলিং রেট\" এর চেয়ে বেশি হতে পারে, কারণ এর একটি অংশ অ্যান্ড্রয়েডের ভেতরেই ব্যবহৃত হয়।';
 
   @override
-  String get upTitle => 'পুরোনো ফোন যাচাই';
+  String get upTitle => 'ব্যবহৃত ফোন যাচাই';
 
   @override
   String get upEntryBody => 'কেনার আগে ফোন যাচাই করুন';
 
   @override
   String get upIntro =>
-      'কেনার আগে পুরোনো ফোন যাচাই করতে এই মূল্যায়ন সাহায্য করে। এটি সফটওয়্যারের অখণ্ডতা ও ব্যাটারির অবস্থা পর্যালোচনা করে, হার্ডওয়্যার চেকআপে পথ দেখায়, আর বিক্রেতার সাথে যে বিষয়গুলো নিশ্চিত করতে হবে তার তালিকা দেয়।';
+      'কেনার আগে ব্যবহৃত ফোন মূল্যায়নে এই যাচাই সহায়তা করে। এটি সফটওয়্যারের অখণ্ডতা ও ব্যাটারির অবস্থা পর্যালোচনা করে, হার্ডওয়্যার পরীক্ষায় ধাপে ধাপে নির্দেশনা দেয় এবং বিক্রেতার সাথে যে বিষয়গুলো নিশ্চিত করা প্রয়োজন তার তালিকা দেয়।';
 
   @override
-  String get upHardwareTitle => 'হার্ডওয়্যার চেকআপ';
+  String get upHardwareTitle => 'হার্ডওয়্যার পরীক্ষা';
 
   @override
   String get upHardwareNone =>
-      'স্ক্রিন, টাচ, স্পিকার, মাইক্রোফোন, ক্যামেরা, সেন্সর, কানেক্টিভিটি ও চার্জিং পরীক্ষা করে। প্রায় ৬ মিনিট লাগে; প্রতিটি ধাপ বুঝিয়ে বলা হয়।';
+      'স্ক্রিন, স্পর্শ, স্পিকার, মাইক্রোফোন, ক্যামেরা, সেন্সর, সংযোগ ও চার্জিং পরীক্ষা করে। প্রায় ৬ মিনিট সময় লাগে; প্রতিটি ধাপ ব্যাখ্যা করা হয়।';
 
   @override
-  String get upRunCheckup => 'হার্ডওয়্যার চেকআপ চালান';
+  String get upRunCheckup => 'হার্ডওয়্যার পরীক্ষা শুরু করুন';
 
   @override
   String get upRunAgain => 'আবার চালান';
@@ -2907,34 +2920,34 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get upCleanBody =>
-      'সব যাচাই পাস করেছে। টাকা দেওয়ার আগে ক্রেতার চেকলিস্ট সম্পূর্ণ করুন।';
+      'সকল যাচাইয়ে উত্তীর্ণ। মূল্য পরিশোধের আগে ক্রেতার যাচাই-তালিকা সম্পূর্ণ করুন।';
 
   @override
-  String get upCheckFirst => 'কেনার আগে এগুলো দেখে নিন';
+  String get upCheckFirst => 'কেনার আগে এগুলো যাচাই করুন';
 
   @override
   String get upCheckFirstBody =>
-      'কোনো ত্রুটি পাওয়া যায়নি, তবে কেনার আগে কয়েকটি বিষয় ভালোভাবে দেখে নেওয়া উচিত।';
+      'কোনো ত্রুটি পাওয়া যায়নি, তবে কেনার আগে কয়েকটি বিষয় আরও ভালোভাবে দেখে নেওয়া উচিত।';
 
   @override
   String get upProblems => 'সমস্যা পাওয়া গেছে';
 
   @override
   String get upProblemsBody =>
-      'এক বা একাধিক যাচাইয়ে ত্রুটি পাওয়া গেছে। নিচের প্রতিটি বিষয় দেখুন এবং বিক্রেতার সাথে আলোচনা করুন।';
+      'এক বা একাধিক যাচাইয়ে ত্রুটি পাওয়া গেছে। নিচের প্রতিটি বিষয় পর্যালোচনা করুন এবং বিক্রেতার সাথে আলোচনা করুন।';
 
   @override
-  String get upIncomplete => 'শেষ করতে হার্ডওয়্যার চেকআপ চালান';
+  String get upIncomplete => 'সম্পূর্ণ করতে হার্ডওয়্যার পরীক্ষা চালান';
 
   @override
   String get upIncompleteBody =>
-      'সফটওয়্যার ও ব্যাটারি যাচাই সম্পূর্ণ। স্ক্রিন, স্পিকার, ক্যামেরা, সেন্সর ও আরও অনেক কিছু পরীক্ষা করতে হার্ডওয়্যার চেকআপ চালান।';
+      'সফটওয়্যার ও ব্যাটারি যাচাই সম্পন্ন হয়েছে। স্ক্রিন, স্পিকার, ক্যামেরা, সেন্সরসহ অন্যান্য অংশ পরীক্ষা করতে হার্ডওয়্যার পরীক্ষা চালান।';
 
   @override
   String get upStorage => 'স্টোরেজ';
 
   @override
-  String get upRam => 'RAM';
+  String get upRam => 'র‍্যাম';
 
   @override
   String get upRegion => 'বিক্রয় অঞ্চল';
@@ -2943,27 +2956,27 @@ class AppLocalizationsBn extends AppLocalizations {
   String get upRoot => 'রুট অ্যাক্সেস';
 
   @override
-  String get upRootOk => 'পাওয়া যায়নি';
+  String get upRootOk => 'শনাক্ত হয়নি';
 
   @override
   String get upRootBad =>
-      'পাওয়া গেছে: সিস্টেম পরিবর্তন করা হয়েছে। ব্যাংকিং অ্যাপ কাজ নাও করতে পারে, আপডেট ব্যর্থ হতে পারে।';
+      'শনাক্ত হয়েছে: সিস্টেম পরিবর্তন করা হয়েছে। ব্যাংকিং অ্যাপ কাজ না-ও করতে পারে এবং আপডেট ব্যর্থ হতে পারে।';
 
   @override
   String get upBootloader => 'বুটলোডার';
 
   @override
-  String get upBootloaderOk => 'লক করা (যেমন এসেছিল)';
+  String get upBootloaderOk => 'লক করা (কারখানা থেকে যেমন এসেছে)';
 
   @override
   String get upBootloaderBad =>
-      'আনলক করা: অনানুষ্ঠানিক সফটওয়্যার ইনস্টল করা যায়। কারণ জিজ্ঞেস করুন।';
+      'আনলক করা: অনানুষ্ঠানিক সফটওয়্যার ইনস্টল করা সম্ভব। কারণ জানতে চান।';
 
   @override
-  String get upVerifiedBoot => 'ভেরিফাইড বুট';
+  String get upVerifiedBoot => 'যাচাইকৃত বুট (Verified boot)';
 
   @override
-  String get upVerifiedBootOk => 'সবুজ: সফটওয়্যার নির্মাতার নিজস্ব';
+  String get upVerifiedBootOk => 'সবুজ: সফটওয়্যারটি নির্মাতার নিজস্ব';
 
   @override
   String upVerifiedBootBad(String state) {
@@ -2975,7 +2988,7 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get upKnoxBad =>
-      'ট্রিপড (0x1): কোনো এক সময় অনানুষ্ঠানিক সফটওয়্যার ইনস্টল হয়েছিল। Samsung Pay আর Secure Folder কাজ করবে না।';
+      'চিহ্নিত (0x1): কোনো এক সময় অনানুষ্ঠানিক সফটওয়্যার ইনস্টল করা হয়েছিল। Samsung Pay ও Secure Folder কাজ করবে না।';
 
   @override
   String get upHealthOk => 'ভালো';
@@ -2985,14 +2998,14 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String upCapacity(int pct) {
-    return 'মূল ক্যাপাসিটির প্রায় $pct%';
+    return 'মূল ধারণক্ষমতার প্রায় $pct%';
   }
 
   @override
-  String get upTests => 'হার্ডওয়্যার টেস্ট';
+  String get upTests => 'হার্ডওয়্যার পরীক্ষা';
 
   @override
-  String get upCertificate => 'রিপোর্ট তৈরি করুন (PDF)';
+  String get upCertificate => 'প্রতিবেদন তৈরি করুন (PDF)';
 
   @override
   String get upCertTitle => 'Used phone report';
@@ -3002,30 +3015,30 @@ class AppLocalizationsBn extends AppLocalizations {
       'This report was generated on the device by SystemX and reflects its condition at the time shown. Results are based on information reported by the phone\'s software and on tests performed by the user. SystemX cannot detect every fault or verify ownership, network lock, IMEI blacklist status, water damage, internal repairs or replaced parts, and accepts no responsibility for purchase decisions.';
 
   @override
-  String get copyAll => 'সব স্পেক কপি করুন';
+  String get copyAll => 'সকল স্পেসিফিকেশন কপি করুন';
 
   @override
-  String get copiedAll => 'সব স্পেক কপি হয়েছে';
+  String get copiedAll => 'সকল স্পেসিফিকেশন কপি করা হয়েছে';
 
   @override
   String get upDisclaimerTitle => 'এই মূল্যায়ন সম্পর্কে';
 
   @override
   String get upDisclaimer =>
-      'ফলাফল ফোনের সফটওয়্যারের জানানো তথ্য এবং আপনার করা টেস্টের ওপর ভিত্তি করে। SystemX সব ত্রুটি শনাক্ত করতে পারে না, এবং মালিকানা, নেটওয়ার্ক লক, IMEI ব্ল্যাকলিস্ট, পানিতে ক্ষতি, ভেতরের মেরামত বা বদলানো যন্ত্রাংশ যাচাই করতে পারে না। সরাসরি পরিদর্শনের সাথে এটি ব্যবহার করুন। কেনার সিদ্ধান্তের জন্য SystemX দায়ী নয়।';
+      'ফলাফল ফোনের সফটওয়্যার থেকে প্রাপ্ত তথ্য এবং আপনার সম্পন্ন করা পরীক্ষার ওপর ভিত্তি করে তৈরি। SystemX সকল ত্রুটি শনাক্ত করতে পারে না এবং মালিকানা, নেটওয়ার্ক লক, IMEI কালো তালিকাভুক্তি, পানিতে ক্ষতি, অভ্যন্তরীণ মেরামত বা পরিবর্তিত যন্ত্রাংশ যাচাই করতে পারে না। সরাসরি পরিদর্শনের পাশাপাশি এটি ব্যবহার করুন। ক্রয়ের সিদ্ধান্তের জন্য SystemX দায়ী নয়।';
 
   @override
   String get upStepDevice => 'ডিভাইস যাচাই';
 
   @override
-  String get upStepHardware => 'হার্ডওয়্যার চেকআপ';
+  String get upStepHardware => 'হার্ডওয়্যার পরীক্ষা';
 
   @override
-  String get upStepChecklist => 'ক্রেতার চেকলিস্ট';
+  String get upStepChecklist => 'ক্রেতার যাচাই-তালিকা';
 
   @override
   String upChecksPassed(int passed, int total) {
-    return '$totalটির মধ্যে $passedটি যাচাই পাস';
+    return '$totalটির মধ্যে $passedটি যাচাইয়ে উত্তীর্ণ';
   }
 
   @override
@@ -3046,7 +3059,7 @@ class AppLocalizationsBn extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$countটি দেখার মতো',
+      other: '$countটি পর্যালোচনা প্রয়োজন',
     );
     return '$_temp0';
   }
@@ -3056,7 +3069,7 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String upHardwareDoneAt(String time, int passed, int total) {
-    return '$time-এ সম্পন্ন · $totalটির মধ্যে $passedটি পাস';
+    return '$time-এ সম্পন্ন · $totalটির মধ্যে $passedটি উত্তীর্ণ';
   }
 
   @override
@@ -3064,14 +3077,14 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get upIdentityBody =>
-      'এই তথ্যগুলো বিজ্ঞাপন ও বক্সের সাথে মিলিয়ে নিন। এগুলো সরাসরি ফোন থেকে পড়া।';
+      'এই তথ্যগুলো বিজ্ঞাপন ও বাক্সের তথ্যের সাথে মিলিয়ে নিন। এগুলো সরাসরি ফোন থেকে নেওয়া।';
 
   @override
-  String get upChecklistTitle => 'ক্রেতার চেকলিস্ট';
+  String get upChecklistTitle => 'ক্রেতার যাচাই-তালিকা';
 
   @override
   String get upChecklistBody =>
-      'টাকা দেওয়ার আগে এই বিষয়গুলো সরাসরি নিশ্চিত করুন। টিক দেওয়া বিষয়গুলো রিপোর্টে যুক্ত হবে।';
+      'মূল্য পরিশোধের আগে এই বিষয়গুলো সরাসরি নিশ্চিত করুন। টিক দেওয়া বিষয়গুলো প্রতিবেদনে অন্তর্ভুক্ত হবে।';
 
   @override
   String upChecklistProgress(int done, int total) {
@@ -3079,53 +3092,53 @@ class AppLocalizationsBn extends AppLocalizations {
   }
 
   @override
-  String get bcImei => 'IMEI বক্সের সাথে মেলে';
+  String get bcImei => 'IMEI বাক্সের সাথে মেলে';
 
   @override
   String get bcImeiBody =>
-      '*#06# ডায়াল করে নম্বরটি বক্স ও রসিদের সাথে মিলিয়ে দেখুন।';
+      '*#06# ডায়াল করে নম্বরটি বাক্স ও রসিদের সাথে মিলিয়ে দেখুন।';
 
   @override
   String get bcAccounts => 'বিক্রেতার অ্যাকাউন্ট সরানো হয়েছে';
 
   @override
   String get bcAccountsBody =>
-      'Google ও Samsung অ্যাকাউন্ট সাইন আউট এবং Find My Device বন্ধ; না হলে রিসেটের পর ফোন লক হয়ে যেতে পারে।';
+      'Google ও Samsung অ্যাকাউন্ট থেকে সাইন আউট করা হয়েছে এবং Find My Device বন্ধ আছে; অন্যথায় রিসেটের পর ফোনটি লক হয়ে যেতে পারে।';
 
   @override
-  String get bcBody => 'শারীরিক কোনো ক্ষতি নেই';
+  String get bcBody => 'কোনো বাহ্যিক ক্ষতি নেই';
 
   @override
   String get bcBodyBody =>
-      'ফ্রেম, স্ক্রিন, পেছনের গ্লাস, ক্যামেরা লেন্স, বোতাম, পোর্ট ও সিম ট্রেতে ফাটল, টোল বা খোলার চিহ্ন আছে কিনা দেখুন।';
+      'ফ্রেম, স্ক্রিন, পেছনের কাচ, ক্যামেরার লেন্স, বোতাম, পোর্ট ও সিম ট্রেতে ফাটল, টোল বা খোলার চিহ্ন আছে কি না দেখুন।';
 
   @override
   String get bcSim => 'আপনার সিমে কাজ করে';
 
   @override
   String get bcSimBody =>
-      'আপনার সিম ঢুকিয়ে ছোট একটি কল করুন এবং মোবাইল ডেটা সংযোগ হয় কিনা দেখুন।';
+      'আপনার সিম কার্ড প্রবেশ করিয়ে একটি সংক্ষিপ্ত কল করুন এবং মোবাইল ডেটা সংযুক্ত হয় কি না দেখুন।';
 
   @override
   String get bcCharger => 'আপনার চার্জারে চার্জ হয়';
 
   @override
   String get bcChargerBody =>
-      'নিজের চার্জার ও কেবল লাগান; কয়েক সেকেন্ডের মধ্যে চার্জ হচ্ছে দেখানো উচিত।';
+      'নিজের চার্জার ও কেবল সংযুক্ত করুন; কয়েক সেকেন্ডের মধ্যে ফোনে চার্জ হচ্ছে দেখানোর কথা।';
 
   @override
-  String get bcPaperwork => 'বক্স ও রসিদ দেওয়া হয়েছে';
+  String get bcPaperwork => 'বাক্স ও রসিদ প্রদান করা হয়েছে';
 
   @override
   String get bcPaperworkBody =>
-      'আসল বক্স ও রসিদ ফোনটি বৈধভাবে কেনা তা দেখাতে সাহায্য করে এবং ওয়ারেন্টি মেরামতে লাগতে পারে।';
+      'আসল বাক্স ও রসিদ ফোনটির বৈধ মালিকানা প্রমাণে সহায়তা করে এবং ওয়ারেন্টির আওতায় মেরামতের জন্য প্রয়োজন হতে পারে।';
 
   @override
   String get bcReset => 'কেনার পর ফ্যাক্টরি রিসেট';
 
   @override
   String get bcResetBody =>
-      'টাকা দেওয়ার পর নিজে ফোনটি রিসেট করুন, যাতে আগের কোনো তথ্য বা অ্যাকাউন্ট না থাকে।';
+      'মূল্য পরিশোধের পর নিজে ফোনটি রিসেট করুন, যাতে আগের কোনো তথ্য বা অ্যাকাউন্ট না থাকে।';
 
   @override
   String get bcActionImei => 'IMEI দেখুন';
@@ -3149,10 +3162,10 @@ class AppLocalizationsBn extends AppLocalizations {
   String get csCharges => 'চার্জ';
 
   @override
-  String get csAvgTime => 'গড় সময়';
+  String get csAvgTime => 'গড় সময়কাল';
 
   @override
-  String get csAvgAdded => 'গড় যোগ হওয়া চার্জ';
+  String get csAvgAdded => 'গড়ে যুক্ত চার্জ';
 
   @override
   String get csAvgSpeed => 'গড় চার্জিং গতি';
@@ -3161,48 +3174,48 @@ class AppLocalizationsBn extends AppLocalizations {
   String get csHottest => 'সর্বোচ্চ তাপমাত্রা';
 
   @override
-  String get csInsights => 'চার্জিং অভ্যাস';
+  String get csInsights => 'চার্জিংয়ের অভ্যাস';
 
   @override
-  String get csInsightToFull => 'বেশিরভাগ চার্জ ১০০% পর্যন্ত যায়';
+  String get csInsightToFull => 'অধিকাংশ চার্জ ১০০% পর্যন্ত দেওয়া হয়';
 
   @override
   String get csInsightToFullBody =>
-      'ব্যাটারি পূর্ণ চার্জে রাখলে দ্রুত ক্ষয় হয়। ৮০–৮৫%-এ থামালে বেশিদিন টেকে; চার্জ অ্যালার্ম মনে করিয়ে দিতে পারে।';
+      'ব্যাটারি পূর্ণ চার্জ অবস্থায় রাখলে দ্রুত ক্ষয় হয়। ৮০–৮৫%-এ চার্জ বন্ধ করলে ব্যাটারি দীর্ঘস্থায়ী হয়; চার্জ অ্যালার্ম আপনাকে মনে করিয়ে দিতে পারে।';
 
   @override
-  String get csInsightDeep => 'প্রায়ই ১৫%-এর নিচ থেকে চার্জ';
+  String get csInsightDeep => 'প্রায়ই ১৫%-এর নিচ থেকে চার্জ দেওয়া হয়';
 
   @override
   String get csInsightDeepBody =>
-      'একদম খালি হওয়া ব্যাটারির জন্য ক্ষতিকর। ২০–৩০%-এর দিকে চার্জে দিলে ভালো।';
+      'ব্যাটারি প্রায় শূন্যে নামানো ব্যাটারির জন্য ক্ষতিকর। ২০–৩০%-এর মধ্যে চার্জে দেওয়া অধিক উপযোগী।';
 
   @override
-  String get csInsightHot => 'চার্জের সময় ব্যাটারি বেশি গরম হয়েছিল';
+  String get csInsightHot => 'চার্জের সময় ব্যাটারি অতিরিক্ত গরম হয়েছিল';
 
   @override
-  String get csInsightOvernight => 'প্রায়ই সারারাত চার্জ';
+  String get csInsightOvernight => 'প্রায়ই সারারাত চার্জ দেওয়া হয়';
 
   @override
   String get csInsightOvernightBody =>
-      'সারারাত চার্জে ব্যাটারি ঘণ্টার পর ঘণ্টা পূর্ণ থাকে। ফোনে ব্যাটারি সুরক্ষা বা অ্যাডাপ্টিভ চার্জিং সেটিং থাকলে চালু করুন।';
+      'সারারাত চার্জে রাখলে ব্যাটারি দীর্ঘ সময় পূর্ণ অবস্থায় থাকে। ফোনে ব্যাটারি সুরক্ষা বা অ্যাডাপ্টিভ চার্জিং সুবিধা থাকলে তা চালু করুন।';
 
   @override
-  String get csInsightGood => 'আপনার চার্জিং অভ্যাস ব্যাটারির জন্য ভালো';
+  String get csInsightGood => 'আপনার চার্জিংয়ের অভ্যাস ব্যাটারির জন্য উপযোগী';
 
   @override
   String get csInsightGoodBody =>
-      'গত ৩০ দিনে লম্বা পূর্ণ চার্জ, গভীর ডিসচার্জ বা অতিরিক্ত তাপ নেই।';
+      'গত ৩০ দিনে দীর্ঘ সময় পূর্ণ চার্জ, ব্যাটারি প্রায় শূন্যে নামা বা অতিরিক্ত তাপের ঘটনা নেই।';
 
   @override
   String get csSetAlarm => 'চার্জ অ্যালার্ম সেট করুন';
 
   @override
-  String get csChart => 'প্রতি চার্জে যোগ হওয়া চার্জ';
+  String get csChart => 'প্রতি চার্জে যুক্ত চার্জ';
 
   @override
   String get csChartLegend =>
-      'কোনো বারে ট্যাপ করে সেই চার্জ দেখুন। হলুদ: ব্যাটারি ৪২ °C ছুঁয়েছিল; লাল: ৪৫ °C বা বেশি।';
+      'কোনো বারে ট্যাপ করে সেই চার্জের বিবরণ দেখুন। হলুদ: ব্যাটারি ৪২ °C ছুঁয়েছিল; লাল: ৪৫ °C বা তার বেশি।';
 
   @override
   String get csToday => 'আজ';
@@ -3217,39 +3230,39 @@ class AppLocalizationsBn extends AppLocalizations {
   String get csPeak => 'সর্বোচ্চ';
 
   @override
-  String get csMaxTemp => 'সর্বোচ্চ তাপ';
+  String get csMaxTemp => 'সর্বোচ্চ তাপমাত্রা';
 
   @override
   String csMeasured(String mah) {
-    return 'মাপা ক্যাপাসিটি $mah mAh';
+    return 'পরিমাপকৃত ধারণক্ষমতা $mah mAh';
   }
 
   @override
   String get csNow => 'এখন';
 
   @override
-  String get csEmptyTitle => 'এখনো কোনো চার্জ রেকর্ড হয়নি';
+  String get csEmptyTitle => 'এখনো কোনো চার্জ রেকর্ড করা হয়নি';
 
   @override
   String get csEmptyBody =>
-      'SystemX-এর ব্যাকগ্রাউন্ড ফিচার চালু থাকলে চার্জ রেকর্ড হয়। ফোন চার্জে দিন, প্রতিটি চার্জ তার গতি আর তাপমাত্রাসহ এখানে দেখা যাবে।';
+      'SystemX-এর ব্যাকগ্রাউন্ড সুবিধা চালু থাকলে চার্জ রেকর্ড করা হয়। ফোন চার্জে দিলে প্রতিটি চার্জ তার গতি ও তাপমাত্রাসহ এখানে দেখা যাবে।';
 
   @override
   String get csToFull => 'পূর্ণ চার্জ';
 
   @override
-  String get gpsPermissionTitle => 'লোকেশন অনুমতি দরকার';
+  String get gpsPermissionTitle => 'লোকেশনের অনুমতি প্রয়োজন';
 
   @override
   String get gpsNeedsPermission =>
-      'স্যাটেলাইট খুঁজতে GPS টেস্টের সঠিক লোকেশন দরকার। SystemX আপনার লোকেশন রেকর্ড বা সংরক্ষণ করে না।';
+      'স্যাটেলাইটের সংকেত গ্রহণ করতে জিপিএস পরীক্ষার জন্য সুনির্দিষ্ট লোকেশনের অনুমতি প্রয়োজন। SystemX আপনার অবস্থান রেকর্ড বা সংরক্ষণ করে না।';
 
   @override
   String get gpsLocationOffTitle => 'লোকেশন বন্ধ আছে';
 
   @override
   String get gpsNeedsLocation =>
-      'লোকেশন চালু করে ফিরে আসুন। টেস্ট নিজে থেকেই আবার শুরু হবে।';
+      'লোকেশন চালু করে ফিরে আসুন। পরীক্ষাটি স্বয়ংক্রিয়ভাবে আবার শুরু হবে।';
 
   @override
   String get gpsTurnOn => 'লোকেশন চালু করুন';
@@ -3259,7 +3272,7 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get onbWelcomeBody =>
-      'ভাষা আর চেহারা বেছে নিন। দুটোই যেকোনো সময় সেটিংসে বদলাতে পারবেন।';
+      'আপনার পছন্দের ভাষা ও থিম নির্বাচন করুন। দুটোই পরে যেকোনো সময় সেটিংস থেকে পরিবর্তন করতে পারবেন।';
 
   @override
   String get onbLanguage => 'ভাষা';
@@ -3268,38 +3281,38 @@ class AppLocalizationsBn extends AppLocalizations {
   String get onbAppearance => 'থিম';
 
   @override
-  String get onbUsedTitle => 'নিশ্চিন্তে পুরোনো ফোন কিনুন';
+  String get onbUsedTitle => 'আত্মবিশ্বাসের সাথে ব্যবহৃত ফোন কিনুন';
 
   @override
   String get onbUsedBody =>
-      'টাকা দেওয়ার আগে যেকোনো পুরোনো ফোন যাচাই করুন: হার্ডওয়্যার, ব্যাটারি হেলথ আর পরিবর্তনের চিহ্ন, শেয়ার করার মতো রিপোর্টসহ। ঠিক কী কিনছেন তা জানুন।';
+      'মূল্য পরিশোধের আগে যেকোনো ব্যবহৃত ফোন যাচাই করুন: হার্ডওয়্যার, ব্যাটারির স্বাস্থ্য ও সফটওয়্যার পরিবর্তনের চিহ্ন, সঙ্গে শেয়ারযোগ্য প্রতিবেদন। আপনি ঠিক কী কিনছেন, তা নিশ্চিতভাবে জানুন।';
 
   @override
-  String get onbAlertsTitle => 'ব্যাটারির খেয়াল রাখুন';
+  String get onbAlertsTitle => 'ব্যাটারির প্রতি সজাগ থাকুন';
 
   @override
   String get onbAlertsBody =>
-      'চার্জ সীমা, অতিরিক্ত তাপ আর কম ব্যাটারির অ্যালার্ট পান, আর নোটিফিকেশন বারে লাইভ তথ্য রাখুন। দুটোই ঐচ্ছিক।';
+      'চার্জের সীমা, অতিরিক্ত তাপ ও স্বল্প ব্যাটারির সতর্কবার্তা পান এবং বিজ্ঞপ্তি প্যানেলে তাৎক্ষণিক তথ্য দেখুন। দুটোই ঐচ্ছিক।';
 
   @override
   String get onbChargeAlarm => '৮০%-এ চার্জ অ্যালার্ম';
 
   @override
-  String get onbLiveStatus => 'নোটিফিকেশন বারে লাইভ স্ট্যাটাস';
+  String get onbLiveStatus => 'বিজ্ঞপ্তি প্যানেলে তাৎক্ষণিক অবস্থা';
 
   @override
   String get onbArtCharged =>
-      '৮০% চার্জ হয়েছে। ব্যাটারি রক্ষায় চার্জার খুলে দিন।';
+      '৮০% চার্জ হয়েছে। ব্যাটারির সুরক্ষায় চার্জার খুলে ফেলুন।';
 
   @override
   String get onbArtWarm => 'ফোন গরম (৪২ °C)। কিছুক্ষণ ভারী অ্যাপ বন্ধ রাখুন।';
 
   @override
-  String get bhEstimatedCapacity => 'আনুমানিক ক্যাপাসিটি';
+  String get bhEstimatedCapacity => 'আনুমানিক ধারণক্ষমতা';
 
   @override
   String bhRange(String min, String max) {
-    return '$min থেকে $max mAh-এর মধ্যে মাপা';
+    return 'পরিমাপকৃত পরিসর $min থেকে $max mAh';
   }
 
   @override
@@ -3321,29 +3334,29 @@ class AppLocalizationsBn extends AppLocalizations {
   String get bhConfMedium => 'মাঝারি';
 
   @override
-  String get bhConfLow => 'কম (মাপে পার্থক্য আছে)';
+  String get bhConfLow => 'কম (পরিমাপে তারতম্য আছে)';
 
   @override
   String bhCollectingCharges(int count, int needed) {
-    return 'সংগ্রহ চলছে: $neededটির মধ্যে $countটি চার্জ';
+    return 'তথ্য সংগ্রহ: $neededটির মধ্যে $countটি চার্জ';
   }
 
   @override
-  String get bhDesignCapacity => 'মূল (ডিজাইন) ক্যাপাসিটি';
+  String get bhDesignCapacity => 'মূল (ডিজাইন) ধারণক্ষমতা';
 
   @override
-  String get bhOfOriginal => 'মূলের তুলনায় ক্যাপাসিটি';
+  String get bhOfOriginal => 'মূল ধারণক্ষমতার তুলনায়';
 
   @override
   String get bhOver100 =>
-      'হেলথ সর্বোচ্চ ১০০% দেখানো হয়। স্বাভাবিক মাপের পার্থক্যের কারণে মাপা ক্যাপাসিটি মূল মানের একটু বেশি দেখাতে পারে; এর মানে ব্যাটারি প্রায় নতুনের মতো।';
+      'স্বাস্থ্য সর্বোচ্চ ১০০% দেখানো হয়। স্বাভাবিক পরিমাপগত তারতম্যের কারণে পরিমাপকৃত ধারণক্ষমতা মূল মানের চেয়ে সামান্য বেশি দেখাতে পারে; এর অর্থ ব্যাটারিটি প্রায় নতুনের মতো।';
 
   @override
   String get bhConfidence => 'নির্ভরযোগ্যতা';
 
   @override
   String get bhTrendSub =>
-      'প্রতিটি বিন্দু একটি মাপা চার্জ। ড্যাশ দেওয়া লাইনটি মূল ক্যাপাসিটি।';
+      'প্রতিটি বিন্দু একটি পরিমাপকৃত চার্জ নির্দেশ করে। ড্যাশযুক্ত রেখাটি মূল ধারণক্ষমতা।';
 
   @override
   String get bhDesignLine => 'মূল';
@@ -3356,11 +3369,11 @@ class AppLocalizationsBn extends AppLocalizations {
       'ব্যাটারির একটি সাধারণ অবস্থা (ভালো, অতিরিক্ত গরম, অকেজো…), শতাংশ নয়';
 
   @override
-  String get bhCyclesCounted => 'SystemX-এর গোনা সাইকেল';
+  String get bhCyclesCounted => 'SystemX-এর গণনাকৃত চক্র';
 
   @override
   String bhCyclesCountedHint(String date) {
-    return '$date থেকে পূর্ণ চার্জের যোগফল। এটি ব্যাটারির আজীবন হিসাব নয়, যা এই ফোন জানায় না।';
+    return '$date থেকে পূর্ণ চার্জের সমষ্টি। এটি ব্যাটারির আজীবন হিসাব নয়; এই ফোন সেই তথ্য দেয় না।';
   }
 
   @override
@@ -3394,56 +3407,56 @@ class AppLocalizationsBn extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$countটি ছোট সংযোগ গোনা হয়নি।',
+      other: '$countটি স্বল্পস্থায়ী সংযোগ গণনায় নেওয়া হয়নি।',
     );
     return '$_temp0';
   }
 
   @override
   String get csSpeedDefinition =>
-      'চার্জিং গতি = মোট যোগ হওয়া চার্জ ÷ মোট চার্জিং সময়।';
+      'চার্জিংয়ের গতি = মোট যুক্ত চার্জ ÷ মোট চার্জিং সময়।';
 
   @override
   String csInsightHotBody(String temp, int count) {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$countটি চার্জে',
+      other: '$countটি চার্জের সময়',
     );
-    return '$_temp0 তাপমাত্রা $temp পর্যন্ত উঠেছিল। চার্জের সময় ভারী ব্যবহার বন্ধ রাখুন, কভার খুলে দিন, রোদ থেকে দূরে রাখুন। বারবার হলে অন্য চার্জার চেষ্টা করুন।';
+    return '$_temp0 তাপমাত্রা $temp পর্যন্ত উঠেছিল। চার্জের সময় ভারী ব্যবহার এড়িয়ে চলুন, কভার খুলে রাখুন এবং ফোন রোদ থেকে দূরে রাখুন। বারবার এমন হলে অন্য চার্জার ব্যবহার করে দেখুন।';
   }
 
   @override
-  String get csInsightWarm => 'কিছু চার্জে ব্যাটারি গরম হয়েছিল';
+  String get csInsightWarm => 'কিছু চার্জের সময় ব্যাটারি গরম হয়েছিল';
 
   @override
   String csInsightWarmBody(int count, String temp) {
-    return '$countটি চার্জে ৪২ °C বা বেশি হয়েছিল (সর্বোচ্চ $temp)। ফাস্ট চার্জিংয়ে অল্প সময়ের জন্য গরম হওয়া স্বাভাবিক; কভার ছাড়া চার্জ দিলে ভালো।';
+    return '$countটি চার্জে তাপমাত্রা ৪২ °C বা তার বেশি হয়েছিল (সর্বোচ্চ $temp)। দ্রুত চার্জিংয়ে অল্প সময়ের জন্য গরম হওয়া স্বাভাবিক; কভার ছাড়া চার্জ দেওয়া উপকারী।';
   }
 
   @override
   String get csTempSource =>
-      'তাপমাত্রা হলো প্রতিটি চার্জের সময় ব্যাটারি সেন্সরের সর্বোচ্চ রিডিং।';
+      'তাপমাত্রা হলো প্রতিটি চার্জের সময় ব্যাটারি সেন্সরের সর্বোচ্চ মান।';
 
   @override
   String csChartSub(int count) {
-    return 'শেষ $countটি চার্জ · ব্যাটারির যত শতাংশ যোগ হয়েছে';
+    return 'সর্বশেষ $countটি চার্জ · ব্যাটারিতে যুক্ত শতাংশ';
   }
 
   @override
   String csShort(int from, int to) {
-    return 'ছোট সংযোগ ($from% → $to%), মাপার জন্য খুব ছোট। সারাংশে গোনা হয়নি।';
+    return 'স্বল্পস্থায়ী সংযোগ ($from% → $to%), পরিমাপের জন্য যথেষ্ট নয়। সারাংশে গণনা করা হয়নি।';
   }
 
   @override
-  String get csAddedLabel => 'যোগ হয়েছে';
+  String get csAddedLabel => 'যুক্ত হয়েছে';
 
   @override
-  String get csAvgCurrent => 'গড় কারেন্ট';
+  String get csAvgCurrent => 'গড় বিদ্যুৎপ্রবাহ';
 
   @override
   String get statusBarShowsNote =>
-      'ঘড়ির পাশের মান। নোটিফিকেশনে সবসময় সব মান দেখা যায়।';
+      'ঘড়ির পাশে প্রদর্শিত মান। বিজ্ঞপ্তিতে সবসময় সব মান দেখা যায়।';
 
   @override
   String get bhLowConfidence => 'নির্ভরযোগ্যতা কম';

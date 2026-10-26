@@ -173,6 +173,12 @@ void main() {
       await _shoot(tester, '1${String.fromCharCode(99 + i)}_onboarding_$n', Routes.welcome,
           onboarded: false, onboardingPage: i + 1);
     }
+    for (final (i, n) in ['welcome', 'overview', 'used_phone', 'tests', 'alerts', 'privacy'].indexed) {
+      await _shoot(tester, 'bn/onboarding_${i}_$n', Routes.welcome,
+          onboarded: false, onboardingPage: i, locale: 'bn');
+    }
+    await _shoot(tester, 'bn/settings', Routes.settings, locale: 'bn');
+    await _shoot(tester, 'bn/battery_health', Routes.batteryHealth, locale: 'bn', background: _manyCharges());
     await _shoot(tester, '2_home', Routes.home);
     await _shoot(tester, '3_device', Routes.device);
     await _shoot(tester, '4_tests', Routes.tests);
