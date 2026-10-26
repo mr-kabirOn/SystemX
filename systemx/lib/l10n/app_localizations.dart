@@ -6247,6 +6247,132 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{pct}% (estimated)'**
   String bhEstimatedPct(int pct);
+
+  /// No description provided for @stmTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Screen time'**
+  String get stmTitle;
+
+  /// No description provided for @stmEntryBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Daily screen time, and time and battery by app'**
+  String get stmEntryBody;
+
+  /// No description provided for @stmHm.
+  ///
+  /// In en, this message translates to:
+  /// **'{h} h {m} min'**
+  String stmHm(int h, int m);
+
+  /// No description provided for @stmH.
+  ///
+  /// In en, this message translates to:
+  /// **'{h} h'**
+  String stmH(int h);
+
+  /// No description provided for @stmM.
+  ///
+  /// In en, this message translates to:
+  /// **'{m} min'**
+  String stmM(int m);
+
+  /// No description provided for @stmUnderMin.
+  ///
+  /// In en, this message translates to:
+  /// **'< 1 min'**
+  String get stmUnderMin;
+
+  /// No description provided for @stmScreenBattery.
+  ///
+  /// In en, this message translates to:
+  /// **'Battery used with screen on'**
+  String get stmScreenBattery;
+
+  /// No description provided for @stmWeek.
+  ///
+  /// In en, this message translates to:
+  /// **'Last 7 days'**
+  String get stmWeek;
+
+  /// No description provided for @stmAverage.
+  ///
+  /// In en, this message translates to:
+  /// **'Daily average {time}'**
+  String stmAverage(String time);
+
+  /// No description provided for @stmApps.
+  ///
+  /// In en, this message translates to:
+  /// **'Apps used'**
+  String get stmApps;
+
+  /// No description provided for @stmOpens.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =0{Not opened} =1{Opened once} other{Opened {count} times}}'**
+  String stmOpens(int count);
+
+  /// No description provided for @stmAppBattery.
+  ///
+  /// In en, this message translates to:
+  /// **'≈{pct}% battery'**
+  String stmAppBattery(String pct);
+
+  /// No description provided for @stmShowAll.
+  ///
+  /// In en, this message translates to:
+  /// **'Show all ({count})'**
+  String stmShowAll(int count);
+
+  /// No description provided for @stmShowLess.
+  ///
+  /// In en, this message translates to:
+  /// **'Show less'**
+  String get stmShowLess;
+
+  /// No description provided for @stmNoUse.
+  ///
+  /// In en, this message translates to:
+  /// **'No screen time recorded for this day.'**
+  String get stmNoUse;
+
+  /// No description provided for @stmAccessTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Allow usage access'**
+  String get stmAccessTitle;
+
+  /// No description provided for @stmAccessBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Screen time is read from Android\'s usage records, which need Usage access. The data stays on this phone.'**
+  String get stmAccessBody;
+
+  /// No description provided for @stmBatteryNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Battery per app is an estimate. SystemX splits each battery drop it measures between the apps on screen at the time; background use isn\'t included. Android doesn\'t share exact per-app battery figures with apps.'**
+  String get stmBatteryNote;
+
+  /// No description provided for @stmNoBattery.
+  ///
+  /// In en, this message translates to:
+  /// **'Battery estimates need SystemX\'s battery history. Turn on Live status or any battery alert to start recording it.'**
+  String get stmNoBattery;
+
+  /// No description provided for @stmTimeNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Times come from Android\'s usage records. The home screen and lock screen count toward screen time but aren\'t listed as apps.'**
+  String get stmTimeNote;
+
+  /// No description provided for @stmUnlocksLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Unlocks'**
+  String get stmUnlocksLabel;
 }
 
 class _AppLocalizationsDelegate

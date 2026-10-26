@@ -82,16 +82,20 @@ exact alarms), so no extra declaration forms appear.
 
 Two things a reviewer may ask about:
 - **Usage access (PACKAGE_USAGE_STATS)**: a special access the user turns
-  on in Android Settings from the Apps screen. It is used only to read each
-  app's storage and cache size (StorageStatsManager). SystemX never reads
-  which apps are used or for how long. Off unless the user enables it.
+  on in Android Settings from the Apps or Screen time screen. It is used to
+  read each app's storage and cache size (StorageStatsManager) and, for
+  Screen time, usage events (UsageStatsManager): time on screen per app,
+  opens, unlocks and daily screen-on time. Nothing is stored or sent; the
+  app has no internet permission. Off unless the user enables it.
 - **Seeing installed apps**: only apps with a launcher icon, through a
   `<queries>` launcher intent. QUERY_ALL_PACKAGES is not requested.
 
 If Play asks why the app needs Usage access, answer:
-"To show how much storage each installed app and its cache use, so users
-can find what to clear. It is optional, explained in the app before the
-user opens the system setting, and the data never leaves the device."
+"Screen time is a core feature: it shows the user's daily screen-on time and
+how long each app was used, with an on-device battery estimate per app. The
+same access shows each app's storage and cache size. It is optional,
+explained in the app before the user opens the system setting, and the data
+never leaves the device (the app has no internet permission)."
 
 ## Note for reviewers: CPU stress test
 The CPU stress test only runs while its screen is open, at background

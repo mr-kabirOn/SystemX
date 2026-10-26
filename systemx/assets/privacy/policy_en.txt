@@ -1,5 +1,5 @@
 # SystemX privacy policy
-Effective 12 October 2026
+Effective 26 October 2026
 SystemX shows information about your Android phone and tests its hardware. It is built so that your data stays on your phone.
 ## The short version
 - SystemX has no account, no ads, no analytics and no tracking.
@@ -15,7 +15,7 @@ SystemX works without any of these. Each one is asked for only when you open the
 - Camera: only during the camera test. The photo is shown on screen and deleted when the test ends.
 - Microphone: only during the microphone tests. A few seconds are recorded, played back once and discarded.
 - Notifications: only for the alerts and live status you turn on.
-- Usage access: only to show how much storage each app and its cache use on the Apps screen. SystemX does not read which apps you use or for how long.
+- Usage access: to show how much storage each app and its cache use on the Apps screen, and for Screen time: how long each app was on screen, how often it was opened, unlocks and daily screen-on time. SystemX reads this on the phone only, never stores a copy and never sends it anywhere.
 Fingerprint and face checks use Android's own prompt. SystemX only learns whether it matched; it never receives biometric data.
 ## What SystemX stores on your phone
 - Your settings.

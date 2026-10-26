@@ -2,6 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../features/apps/apps_screen.dart';
+import '../features/apps/screen_time.dart';
 import '../features/background/alerts_screen.dart';
 import '../features/background/battery_health.dart';
 import '../features/background/charging_sessions.dart';
@@ -41,6 +42,7 @@ abstract final class Routes {
   static const alerts = '/settings/alerts';
   static const sessions = '/sessions';
   static const batteryHealth = '/battery-health';
+  static const screenTime = '/screen-time';
   static const wifiMeter = '/tools/wifi';
   static const stress = '/tools/stress';
   static const usedPhone = '/tools/used-phone';
@@ -111,6 +113,7 @@ final routerProvider = Provider<GoRouter>((ref) {
       GoRoute(
           path: Routes.batteryHealth,
           builder: (_, _) => const BatteryHealthScreen()),
+      GoRoute(path: Routes.screenTime, builder: (_, _) => const ScreenTimeScreen()),
       GoRoute(path: Routes.wifiMeter, builder: (_, _) => const WifiMeterScreen()),
       GoRoute(path: Routes.stress, builder: (_, _) => const StressTestScreen()),
       GoRoute(path: Routes.usedPhone, builder: (_, _) => const UsedPhoneScreen()),

@@ -459,6 +459,56 @@ class FakeDeviceApi extends DeviceInfoApi {
   @override
   Future<void> openAppDetails(String packageName) async =>
       openedApps.add(packageName);
+
+  /// Screen time per requested day: [screenTimeMinutes] cycles over the days
+  /// (oldest first); apps share 80% of each day, the rest is the home screen.
+  List<int> screenTimeMinutes = [195, 240, 160, 280, 210, 300, 252];
+
+  @override
+  Future<ScreenTimeReport> screenTime(List<int> dayStartsMs) async {
+    const min = 60000;
+    const apps = [
+      ('com.facebook.katana', 'Facebook', 0.34, 21, 0.30),
+      ('com.google.android.youtube', 'YouTube', 0.26, 9, 0.29),
+      ('com.whatsapp', 'WhatsApp', 0.18, 38, 0.12),
+      ('com.android.chrome', 'Chrome', 0.12, 14, 0.09),
+      ('com.spotify.music', 'Spotify', 0.06, 4, 0.03),
+      ('com.android.settings', 'Settings', 0.04, 3, 0.02),
+    ];
+    if (!usageGranted) {
+      return ScreenTimeReport(
+        days: [for (final d in dayStartsMs) UsageDay(dayStartMs: d, screenOnMs: 0, apps: [])],
+        icons: {},
+      );
+    }
+    return ScreenTimeReport(
+      days: [
+        for (final (i, d) in dayStartsMs.indexed)
+          () {
+            final total = screenTimeMinutes[i % screenTimeMinutes.length] * min;
+            final drain = (total / min / 6).round(); // about 10% per hour on screen
+            return UsageDay(
+              dayStartMs: d,
+              screenOnMs: total,
+              unlocks: 40 + i * 3,
+              drainPct: drain + 8,
+              screenDrainPct: drain.toDouble(),
+              apps: [
+                for (final a in apps)
+                  AppUsage(
+                    packageName: a.$1,
+                    label: a.$2,
+                    foregroundMs: (total * 0.8 * a.$3).round(),
+                    opens: a.$4,
+                    batteryPct: drain * a.$5,
+                  ),
+              ],
+            );
+          }(),
+      ],
+      icons: {},
+    );
+  }
 }
 
 /// Grants or denies permissions without a phone, and updates [api] so the

@@ -421,6 +421,56 @@ class AppEntry {
   int? cacheBytes;
 }
 
+/// Foreground use of one app during one day.
+class AppUsage {
+  AppUsage({
+    required this.packageName,
+    required this.label,
+    required this.foregroundMs,
+    required this.opens,
+  });
+  String packageName;
+  String label;
+  int foregroundMs;
+
+  /// Times the app came to the foreground from another app or the lock screen.
+  int opens;
+
+  /// Estimated battery used while the app was on screen, in percentage
+  /// points; null when SystemX has no battery history for that time.
+  double? batteryPct;
+}
+
+/// Screen time for one local day, from Android's usage records.
+class UsageDay {
+  UsageDay({required this.dayStartMs, required this.screenOnMs, required this.apps});
+  int dayStartMs;
+  int screenOnMs;
+
+  /// Unlocks (Android 9+); null on older versions.
+  int? unlocks;
+
+  /// Battery used while unplugged, in percentage points, from SystemX's
+  /// history; null without history for that day.
+  int? drainPct;
+
+  /// The part of [drainPct] used with the screen on.
+  double? screenDrainPct;
+
+  /// Most used first.
+  List<AppUsage> apps;
+}
+
+class ScreenTimeReport {
+  ScreenTimeReport({required this.days, required this.icons});
+
+  /// Same order as the requested day starts.
+  List<UsageDay> days;
+
+  /// PNG, 96 px, by package name.
+  Map<String, Uint8List> icons;
+}
+
 class CodecInfo {
   CodecInfo({required this.name, required this.encoder, required this.types});
   String name;
@@ -585,6 +635,11 @@ abstract class DeviceInfoApi {
 
   /// Opens Android's App info page, where Clear cache lives.
   void openAppDetails(String packageName);
+
+  /// Screen time for the days starting at [dayStartsMs] (local midnights,
+  /// oldest first). Needs Usage access; days are empty without it.
+  @TaskQueue(type: TaskQueueType.serialBackgroundThread)
+  ScreenTimeReport screenTime(List<int> dayStartsMs);
 }
 
 /// Runtime permissions, asked from the current activity.

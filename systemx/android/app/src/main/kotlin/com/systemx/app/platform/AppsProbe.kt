@@ -63,7 +63,7 @@ internal class AppsProbe(private val ctx: Context) {
         return mode == AppOpsManager.MODE_ALLOWED
     }
 
-    private fun png(d: Drawable): ByteArray {
+    internal fun png(d: Drawable): ByteArray {
         val bmp = Bitmap.createBitmap(ICON_PX, ICON_PX, Bitmap.Config.ARGB_8888)
         d.setBounds(0, 0, ICON_PX, ICON_PX)
         d.draw(Canvas(bmp))

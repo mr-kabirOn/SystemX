@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../apps/screen_time.dart';
 import '../../core/format.dart';
 import '../../core/router.dart';
 import '../../core/settings/settings.dart';
@@ -103,6 +104,7 @@ class MonitorScreen extends ConsumerWidget {
         const SliverToBoxAdapter(child: SizedBox(height: 12)),
         const Box(HistoryCard()),
         const Box(BatteryHealthTile()),
+        const Box(ScreenTimeTile()),
         const Box(SessionsTile(), bottom: 0),
       ],
     );

@@ -98,6 +98,11 @@ Open all 15 categories and compare with ground truth:
 - Installed apps: count looks right; allow Usage access; sizes and cache
   appear; sort chips; System apps filter; search; tapping an app opens its
   App info page; "Free up space" opens the storage manager.
+- Screen time (Device tab and Monitor tab): without Usage access it explains
+  and opens the setting; with it, today's total roughly matches Android's
+  Digital Wellbeing (home screen excluded from the app list), the 7-day bars
+  select a day, apps show time, opens and ≈battery (needs background history),
+  and tapping an app opens App info.
 
 ### 3. Home and Monitor (live data)
 - Home cards update every few seconds; values match ground truth.

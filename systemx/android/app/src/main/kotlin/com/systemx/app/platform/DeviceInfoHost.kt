@@ -21,6 +21,7 @@ class DeviceInfoHost(context: Context) : DeviceInfoApi {
     private val peripherals = PeripheralProbe(ctx)
     private val liveProbe = LiveProbe(ctx)
     private val appsProbe = AppsProbe(ctx)
+    private val screenTimeProbe = ScreenTimeProbe(ctx, appsProbe)
 
     override fun identity() = system.identity()
     override fun system() = system.system()
@@ -40,6 +41,7 @@ class DeviceInfoHost(context: Context) : DeviceInfoApi {
     override fun live() = liveProbe.live()
     override fun apps() = appsProbe.apps()
     override fun usageAccessGranted() = appsProbe.usageAccessGranted()
+    override fun screenTime(dayStartsMs: List<Long>) = screenTimeProbe.report(dayStartsMs)
 
     override fun openAppDetails(packageName: String) {
         val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)

@@ -3484,4 +3484,92 @@ class AppLocalizationsEn extends AppLocalizations {
   String bhEstimatedPct(int pct) {
     return '$pct% (estimated)';
   }
+
+  @override
+  String get stmTitle => 'Screen time';
+
+  @override
+  String get stmEntryBody => 'Daily screen time, and time and battery by app';
+
+  @override
+  String stmHm(int h, int m) {
+    return '$h h $m min';
+  }
+
+  @override
+  String stmH(int h) {
+    return '$h h';
+  }
+
+  @override
+  String stmM(int m) {
+    return '$m min';
+  }
+
+  @override
+  String get stmUnderMin => '< 1 min';
+
+  @override
+  String get stmScreenBattery => 'Battery used with screen on';
+
+  @override
+  String get stmWeek => 'Last 7 days';
+
+  @override
+  String stmAverage(String time) {
+    return 'Daily average $time';
+  }
+
+  @override
+  String get stmApps => 'Apps used';
+
+  @override
+  String stmOpens(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Opened $count times',
+      one: 'Opened once',
+      zero: 'Not opened',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String stmAppBattery(String pct) {
+    return '≈$pct% battery';
+  }
+
+  @override
+  String stmShowAll(int count) {
+    return 'Show all ($count)';
+  }
+
+  @override
+  String get stmShowLess => 'Show less';
+
+  @override
+  String get stmNoUse => 'No screen time recorded for this day.';
+
+  @override
+  String get stmAccessTitle => 'Allow usage access';
+
+  @override
+  String get stmAccessBody =>
+      'Screen time is read from Android\'s usage records, which need Usage access. The data stays on this phone.';
+
+  @override
+  String get stmBatteryNote =>
+      'Battery per app is an estimate. SystemX splits each battery drop it measures between the apps on screen at the time; background use isn\'t included. Android doesn\'t share exact per-app battery figures with apps.';
+
+  @override
+  String get stmNoBattery =>
+      'Battery estimates need SystemX\'s battery history. Turn on Live status or any battery alert to start recording it.';
+
+  @override
+  String get stmTimeNote =>
+      'Times come from Android\'s usage records. The home screen and lock screen count toward screen time but aren\'t listed as apps.';
+
+  @override
+  String get stmUnlocksLabel => 'Unlocks';
 }

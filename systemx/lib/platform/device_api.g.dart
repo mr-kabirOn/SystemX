@@ -1726,6 +1726,203 @@ class AppEntry {
   }
 }
 
+/// Foreground use of one app during one day.
+class AppUsage {
+  AppUsage({
+    required this.packageName,
+    required this.label,
+    required this.foregroundMs,
+    required this.opens,
+    this.batteryPct,
+  });
+
+  String packageName;
+
+  String label;
+
+  int foregroundMs;
+
+  /// Times the app came to the foreground from another app or the lock screen.
+  int opens;
+
+  /// Estimated battery used while the app was on screen, in percentage
+  /// points; null when SystemX has no battery history for that time.
+  double? batteryPct;
+
+  List<Object?> _toList() {
+    return <Object?>[
+      packageName,
+      label,
+      foregroundMs,
+      opens,
+      batteryPct,
+    ];
+  }
+
+  Object encode() {
+    return _toList();  }
+
+  static AppUsage decode(Object result) {
+    result as List<Object?>;
+    return AppUsage(
+      packageName: result[0]! as String,
+      label: result[1]! as String,
+      foregroundMs: result[2]! as int,
+      opens: result[3]! as int,
+      batteryPct: result[4] as double?,
+    );
+  }
+
+  @override
+  // ignore: avoid_equals_and_hash_code_on_mutable_classes
+  bool operator ==(Object other) {
+    if (other is! AppUsage || other.runtimeType != runtimeType) {
+      return false;
+    }
+    if (identical(this, other)) {
+      return true;
+    }
+    return _deepEquals(packageName, other.packageName) && _deepEquals(label, other.label) && _deepEquals(foregroundMs, other.foregroundMs) && _deepEquals(opens, other.opens) && _deepEquals(batteryPct, other.batteryPct);
+  }
+
+  @override
+  // ignore: avoid_equals_and_hash_code_on_mutable_classes
+  int get hashCode => _deepHash(<Object?>[runtimeType, ..._toList()]);
+
+  @override
+  String toString() {
+    return 'AppUsage(packageName: $packageName, label: $label, foregroundMs: $foregroundMs, opens: $opens, batteryPct: $batteryPct)';
+  }
+}
+
+/// Screen time for one local day, from Android's usage records.
+class UsageDay {
+  UsageDay({
+    required this.dayStartMs,
+    required this.screenOnMs,
+    this.unlocks,
+    this.drainPct,
+    this.screenDrainPct,
+    required this.apps,
+  });
+
+  int dayStartMs;
+
+  int screenOnMs;
+
+  /// Unlocks (Android 9+); null on older versions.
+  int? unlocks;
+
+  /// Battery used while unplugged, in percentage points, from SystemX's
+  /// history; null without history for that day.
+  int? drainPct;
+
+  /// The part of [drainPct] used with the screen on.
+  double? screenDrainPct;
+
+  /// Most used first.
+  List<AppUsage> apps;
+
+  List<Object?> _toList() {
+    return <Object?>[
+      dayStartMs,
+      screenOnMs,
+      unlocks,
+      drainPct,
+      screenDrainPct,
+      apps,
+    ];
+  }
+
+  Object encode() {
+    return _toList();  }
+
+  static UsageDay decode(Object result) {
+    result as List<Object?>;
+    return UsageDay(
+      dayStartMs: result[0]! as int,
+      screenOnMs: result[1]! as int,
+      unlocks: result[2] as int?,
+      drainPct: result[3] as int?,
+      screenDrainPct: result[4] as double?,
+      apps: (result[5]! as List<Object?>).cast<AppUsage>(),
+    );
+  }
+
+  @override
+  // ignore: avoid_equals_and_hash_code_on_mutable_classes
+  bool operator ==(Object other) {
+    if (other is! UsageDay || other.runtimeType != runtimeType) {
+      return false;
+    }
+    if (identical(this, other)) {
+      return true;
+    }
+    return _deepEquals(dayStartMs, other.dayStartMs) && _deepEquals(screenOnMs, other.screenOnMs) && _deepEquals(unlocks, other.unlocks) && _deepEquals(drainPct, other.drainPct) && _deepEquals(screenDrainPct, other.screenDrainPct) && _deepEquals(apps, other.apps);
+  }
+
+  @override
+  // ignore: avoid_equals_and_hash_code_on_mutable_classes
+  int get hashCode => _deepHash(<Object?>[runtimeType, ..._toList()]);
+
+  @override
+  String toString() {
+    return 'UsageDay(dayStartMs: $dayStartMs, screenOnMs: $screenOnMs, unlocks: $unlocks, drainPct: $drainPct, screenDrainPct: $screenDrainPct, apps: $apps)';
+  }
+}
+
+class ScreenTimeReport {
+  ScreenTimeReport({
+    required this.days,
+    required this.icons,
+  });
+
+  /// Same order as the requested day starts.
+  List<UsageDay> days;
+
+  /// PNG, 96 px, by package name.
+  Map<String, Uint8List> icons;
+
+  List<Object?> _toList() {
+    return <Object?>[
+      days,
+      icons,
+    ];
+  }
+
+  Object encode() {
+    return _toList();  }
+
+  static ScreenTimeReport decode(Object result) {
+    result as List<Object?>;
+    return ScreenTimeReport(
+      days: (result[0]! as List<Object?>).cast<UsageDay>(),
+      icons: (result[1]! as Map<Object?, Object?>).cast<String, Uint8List>(),
+    );
+  }
+
+  @override
+  // ignore: avoid_equals_and_hash_code_on_mutable_classes
+  bool operator ==(Object other) {
+    if (other is! ScreenTimeReport || other.runtimeType != runtimeType) {
+      return false;
+    }
+    if (identical(this, other)) {
+      return true;
+    }
+    return _deepEquals(days, other.days) && _deepEquals(icons, other.icons);
+  }
+
+  @override
+  // ignore: avoid_equals_and_hash_code_on_mutable_classes
+  int get hashCode => _deepHash(<Object?>[runtimeType, ..._toList()]);
+
+  @override
+  String toString() {
+    return 'ScreenTimeReport(days: $days, icons: $icons)';
+  }
+}
+
 class CodecInfo {
   CodecInfo({
     required this.name,
@@ -2581,32 +2778,41 @@ class _PigeonCodec extends StandardMessageCodec {
     }    else if (value is AppEntry) {
       buffer.putUint8(144);
       writeValue(buffer, value.encode());
-    }    else if (value is CodecInfo) {
+    }    else if (value is AppUsage) {
       buffer.putUint8(145);
       writeValue(buffer, value.encode());
-    }    else if (value is MediaInfo) {
+    }    else if (value is UsageDay) {
       buffer.putUint8(146);
       writeValue(buffer, value.encode());
-    }    else if (value is FeaturesInfo) {
+    }    else if (value is ScreenTimeReport) {
       buffer.putUint8(147);
       writeValue(buffer, value.encode());
-    }    else if (value is SecurityInfo) {
+    }    else if (value is CodecInfo) {
       buffer.putUint8(148);
       writeValue(buffer, value.encode());
-    }    else if (value is LiveStats) {
+    }    else if (value is MediaInfo) {
       buffer.putUint8(149);
       writeValue(buffer, value.encode());
-    }    else if (value is StressSample) {
+    }    else if (value is FeaturesInfo) {
       buffer.putUint8(150);
       writeValue(buffer, value.encode());
-    }    else if (value is BackgroundConfig) {
+    }    else if (value is SecurityInfo) {
       buffer.putUint8(151);
       writeValue(buffer, value.encode());
-    }    else if (value is HistorySample) {
+    }    else if (value is LiveStats) {
       buffer.putUint8(152);
       writeValue(buffer, value.encode());
-    }    else if (value is ChargeSession) {
+    }    else if (value is StressSample) {
       buffer.putUint8(153);
+      writeValue(buffer, value.encode());
+    }    else if (value is BackgroundConfig) {
+      buffer.putUint8(154);
+      writeValue(buffer, value.encode());
+    }    else if (value is HistorySample) {
+      buffer.putUint8(155);
+      writeValue(buffer, value.encode());
+    }    else if (value is ChargeSession) {
+      buffer.putUint8(156);
       writeValue(buffer, value.encode());
     } else {
       super.writeValue(buffer, value);
@@ -2649,22 +2855,28 @@ class _PigeonCodec extends StandardMessageCodec {
       case 144:
         return AppEntry.decode(readValue(buffer)!);
       case 145:
-        return CodecInfo.decode(readValue(buffer)!);
+        return AppUsage.decode(readValue(buffer)!);
       case 146:
-        return MediaInfo.decode(readValue(buffer)!);
+        return UsageDay.decode(readValue(buffer)!);
       case 147:
-        return FeaturesInfo.decode(readValue(buffer)!);
+        return ScreenTimeReport.decode(readValue(buffer)!);
       case 148:
-        return SecurityInfo.decode(readValue(buffer)!);
+        return CodecInfo.decode(readValue(buffer)!);
       case 149:
-        return LiveStats.decode(readValue(buffer)!);
+        return MediaInfo.decode(readValue(buffer)!);
       case 150:
-        return StressSample.decode(readValue(buffer)!);
+        return FeaturesInfo.decode(readValue(buffer)!);
       case 151:
-        return BackgroundConfig.decode(readValue(buffer)!);
+        return SecurityInfo.decode(readValue(buffer)!);
       case 152:
-        return HistorySample.decode(readValue(buffer)!);
+        return LiveStats.decode(readValue(buffer)!);
       case 153:
+        return StressSample.decode(readValue(buffer)!);
+      case 154:
+        return BackgroundConfig.decode(readValue(buffer)!);
+      case 155:
+        return HistorySample.decode(readValue(buffer)!);
+      case 156:
         return ChargeSession.decode(readValue(buffer)!);
       default:
         return super.readValueOfType(type, buffer);
@@ -3106,6 +3318,27 @@ class DeviceInfoApi {
         isNullValid: true,
     )
     ;
+  }
+
+  /// Screen time for the days starting at [dayStartsMs] (local midnights,
+  /// oldest first). Needs Usage access; days are empty without it.
+  Future<ScreenTimeReport> screenTime(List<int> dayStartsMs) async {
+    final pigeonVar_channelName = 'dev.flutter.pigeon.systemx.DeviceInfoApi.screenTime$pigeonVar_messageChannelSuffix';
+    final pigeonVar_channel = BasicMessageChannel<Object?>(
+      pigeonVar_channelName,
+      pigeonChannelCodec,
+      binaryMessenger: pigeonVar_binaryMessenger,
+    );
+    final Future<Object?> pigeonVar_sendFuture = pigeonVar_channel.send(<Object?>[dayStartsMs]);
+    final pigeonVar_replyList = await pigeonVar_sendFuture as List<Object?>?;
+
+    final Object? pigeonVar_replyValue = _extractReplyValueOrThrow(
+        pigeonVar_replyList,
+        pigeonVar_channelName,
+        isNullValid: false,
+    )
+    ;
+    return pigeonVar_replyValue! as ScreenTimeReport;
   }
 }
 

@@ -59,9 +59,11 @@ Future<void> _shoot(
   Size size = const Size(1080, 2400),
   int onboardingPage = 0,
   FakeBackgroundApi? background,
+  bool usage = false,
 }) async {
   final api = FakeDeviceApi()
     ..phoneGranted = true
+    ..usageGranted = usage
     ..vary = true;
   SharedPreferencesAsyncPlatform.instance =
       InMemorySharedPreferencesAsync.empty();
@@ -214,6 +216,10 @@ void main() {
     await _shoot(
         tester, '28_device_sensors', Routes.category(DeviceCategory.sensors));
     await _shoot(tester, '29_battery_health', Routes.batteryHealth, background: _manyCharges());
+    await _shoot(tester, '30_screen_time', Routes.screenTime, usage: true);
+    await _shoot(tester, '30b_screen_time_light', Routes.screenTime, usage: true, theme: ThemeMode.light);
+    await _shoot(tester, '30c_screen_time_no_access', Routes.screenTime);
+    await _shoot(tester, 'bn/screen_time', Routes.screenTime, usage: true, locale: 'bn');
     await _shoot(tester, '22b_sessions_many', Routes.sessions, background: _manyCharges());
     await _shoot(tester, '30_used_phone', Routes.usedPhone);
     await _shoot(tester, '31_stress', Routes.stress);

@@ -3471,4 +3471,92 @@ class AppLocalizationsBn extends AppLocalizations {
   String bhEstimatedPct(int pct) {
     return '$pct% (আনুমানিক)';
   }
+
+  @override
+  String get stmTitle => 'স্ক্রিন টাইম';
+
+  @override
+  String get stmEntryBody =>
+      'দৈনিক স্ক্রিন টাইম এবং অ্যাপভিত্তিক সময় ও ব্যাটারি খরচ';
+
+  @override
+  String stmHm(int h, int m) {
+    return '$h ঘণ্টা $m মিনিট';
+  }
+
+  @override
+  String stmH(int h) {
+    return '$h ঘণ্টা';
+  }
+
+  @override
+  String stmM(int m) {
+    return '$m মিনিট';
+  }
+
+  @override
+  String get stmUnderMin => '১ মিনিটের কম';
+
+  @override
+  String get stmScreenBattery => 'স্ক্রিন চালু অবস্থায় ব্যাটারি খরচ';
+
+  @override
+  String get stmWeek => 'গত ৭ দিন';
+
+  @override
+  String stmAverage(String time) {
+    return 'দৈনিক গড় $time';
+  }
+
+  @override
+  String get stmApps => 'ব্যবহৃত অ্যাপ';
+
+  @override
+  String stmOpens(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count বার খোলা হয়েছে',
+      zero: 'খোলা হয়নি',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String stmAppBattery(String pct) {
+    return '≈$pct% ব্যাটারি';
+  }
+
+  @override
+  String stmShowAll(int count) {
+    return 'সব দেখুন ($count)';
+  }
+
+  @override
+  String get stmShowLess => 'কম দেখুন';
+
+  @override
+  String get stmNoUse => 'এই দিনের কোনো স্ক্রিন টাইম রেকর্ড করা হয়নি।';
+
+  @override
+  String get stmAccessTitle => 'ব্যবহারের তথ্যে প্রবেশাধিকার দিন';
+
+  @override
+  String get stmAccessBody =>
+      'স্ক্রিন টাইম অ্যান্ড্রয়েডের ব্যবহারের রেকর্ড থেকে নেওয়া হয়, যার জন্য ব্যবহারের তথ্যে প্রবেশাধিকার (Usage access) প্রয়োজন। তথ্য এই ফোনেই থাকে।';
+
+  @override
+  String get stmBatteryNote =>
+      'অ্যাপভিত্তিক ব্যাটারি খরচ একটি অনুমান। SystemX প্রতিবার পরিমাপকৃত ব্যাটারি হ্রাস সেই সময়ে স্ক্রিনে থাকা অ্যাপগুলোর মধ্যে ভাগ করে; ব্যাকগ্রাউন্ডের ব্যবহার এতে অন্তর্ভুক্ত নয়। অ্যান্ড্রয়েড অ্যাপভিত্তিক সুনির্দিষ্ট ব্যাটারি তথ্য অন্য অ্যাপকে দেয় না।';
+
+  @override
+  String get stmNoBattery =>
+      'ব্যাটারি খরচের অনুমানের জন্য SystemX-এর ব্যাটারি ইতিহাস প্রয়োজন। রেকর্ড শুরু করতে তাৎক্ষণিক অবস্থা অথবা যেকোনো ব্যাটারি সতর্কবার্তা চালু করুন।';
+
+  @override
+  String get stmTimeNote =>
+      'সময়ের হিসাব অ্যান্ড্রয়েডের ব্যবহারের রেকর্ড থেকে নেওয়া। হোম স্ক্রিন ও লক স্ক্রিনের সময় স্ক্রিন টাইমে গণনা হয়, তবে অ্যাপ হিসেবে দেখানো হয় না।';
+
+  @override
+  String get stmUnlocksLabel => 'আনলকের সংখ্যা';
 }
