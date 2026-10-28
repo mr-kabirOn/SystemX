@@ -61,7 +61,7 @@ class TestsScreen extends ConsumerWidget {
           Box(SxCard(
             onTap: () => context.push(Routes.report(0)),
             child: Row(children: [
-              Text('${last.score}', style: context.text.displaySmall),
+              Text(last.scoreText, style: context.text.displaySmall),
               const SizedBox(width: 16),
               Expanded(
                 child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -147,7 +147,7 @@ class TestsScreen extends ConsumerWidget {
                   ListTile(
                     title: Text(formatDate(c.at, l.localeName)),
                     subtitle: Text(l.passedOf(c.count(TestStatus.passed), c.results.length)),
-                    trailing: Text('${c.score}', style: context.text.titleLarge),
+                    trailing: Text(c.scoreText, style: context.text.titleLarge),
                     onTap: () => context.push(Routes.report(i)),
                   ),
               ]),

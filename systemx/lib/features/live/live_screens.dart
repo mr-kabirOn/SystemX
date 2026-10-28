@@ -46,7 +46,7 @@ class LiveDetailScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final l = AppLocalizations.of(context);
     final sx = context.sx;
-    final live = ref.watch(liveProvider);
+    final live = ref.watch(liveProvider).view;
     final (title, color) = switch (metric) {
       LiveMetric.cpu => (l.catProcessor, sx.cpu),
       LiveMetric.battery => (l.catBattery, sx.battery),
@@ -237,7 +237,9 @@ class LiveDetailScreen extends ConsumerWidget {
           ]),
           if (headroom != null) ...[
             const SizedBox(height: 12),
-            MeterBar(value: headroom.clamp(0.0, 1.0), color: sx.thermal),
+            // Android's headroom grows toward 1 as throttling nears; the bar
+            // shows what is left, matching the percentage above.
+            MeterBar(value: (1 - headroom).clamp(0.0, 1.0), color: sx.thermal),
           ],
           const SizedBox(height: 18),
           Eyebrow(l.chartBatteryTemp),

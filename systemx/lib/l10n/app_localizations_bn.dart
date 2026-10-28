@@ -3574,4 +3574,12 @@ class AppLocalizationsBn extends AppLocalizations {
   String builtOn(String date) {
     return 'তৈরির তারিখ $date';
   }
+
+  @override
+  String get reportNoScore => 'কোনো পরীক্ষা সম্পন্ন হয়নি';
+
+  @override
+  String durDhm(int d, int h, int m) {
+    return '$d দিন $h ঘণ্টা $m মিনিট';
+  }
 }

@@ -41,7 +41,8 @@ void main() {
     expect(c.score, 67);
     expect(c.ordered.map((x) => x.test),
         [HwTest.earpiece, HwTest.gps, HwTest.deadPixels, HwTest.speaker]);
-    expect(Checkup(at, const []).score, 0);
+    expect(Checkup(at, const []).hasScore, isFalse);
+    expect(Checkup(at, const []).scoreText, '–');
   });
 
   test('history survives a restart and keeps the latest of each test',

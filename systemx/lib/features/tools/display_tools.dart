@@ -62,8 +62,11 @@ class _RefreshRateScreenState extends ConsumerState<RefreshRateScreen>
   }
 
   Future<void> _start() async {
+    if (_running || _ticker.isActive) return;
+    _running = true; // before the awaits, so a double tap starts one run
     await _api.preferHighRefresh(true);
     await _api.keepScreenOn(true);
+    if (!mounted) return;
     _frames.clear();
     setState(() {
       _hz = null;

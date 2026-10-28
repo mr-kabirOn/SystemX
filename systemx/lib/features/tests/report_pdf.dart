@@ -92,13 +92,13 @@ Future<Uint8List> buildReportPdf(
       pw.Text(reportDate(c.at, l), style: const pw.TextStyle(fontSize: 11, color: muted)),
       pw.SizedBox(height: 18),
       pw.Row(crossAxisAlignment: pw.CrossAxisAlignment.center, children: [
-        pw.Text('${c.score}', style: pw.TextStyle(font: body, fontSize: 44, color: ink)),
+        pw.Text(c.scoreText, style: pw.TextStyle(font: body, fontSize: 44, color: ink)),
         pw.SizedBox(width: 6),
         pw.Text('/ 100', style: pw.TextStyle(font: body, fontSize: 14, color: muted)),
         pw.SizedBox(width: 24),
         pw.Expanded(
           child: pw.Column(crossAxisAlignment: pw.CrossAxisAlignment.start, children: [
-            pw.Text(reportHeadline(l, c.score), style: const pw.TextStyle(fontSize: 15, color: ink)),
+            pw.Text(c.hasScore ? reportHeadline(l, c.score) : l.reportNoScore, style: const pw.TextStyle(fontSize: 15, color: ink)),
             pw.Text(l.reportCounts(c.count(TestStatus.passed), c.count(TestStatus.failed), c.count(TestStatus.skipped)),
                 style: const pw.TextStyle(fontSize: 11, color: muted)),
           ]),

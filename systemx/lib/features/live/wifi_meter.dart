@@ -40,6 +40,8 @@ class _WifiMeterScreenState extends ConsumerState<WifiMeterScreen> {
     _timer = Timer.periodic(const Duration(seconds: 1), (_) => _poll());
   }
 
+  bool _failed = false;
+
   Future<void> _poll() async {
     if (_busy) return;
     _busy = true;
@@ -56,6 +58,8 @@ class _WifiMeterScreenState extends ConsumerState<WifiMeterScreen> {
         }
       });
     } catch (_) {
+      // Keep the last reading; with none yet, say so instead of spinning.
+      if (mounted && _net == null && !_failed) setState(() => _failed = true);
     } finally {
       _busy = false;
     }
@@ -79,7 +83,9 @@ class _WifiMeterScreenState extends ConsumerState<WifiMeterScreen> {
       title: l.wifiMeter,
       leading: const BackButton(),
       slivers: [
-        if (n == null)
+        if (n == null && _failed)
+          Box(SxCard(child: Text(l.specsUnavailable, style: context.text.bodyLarge)))
+        else if (n == null)
           const SliverToBoxAdapter(child: Center(child: CircularProgressIndicator()))
         else if (!onWifi)
           Box(SxCard(child: Text(l.wifiMeterOff, style: context.text.bodyLarge)))

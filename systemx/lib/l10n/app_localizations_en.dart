@@ -3588,4 +3588,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String builtOn(String date) {
     return 'Built $date';
   }
+
+  @override
+  String get reportNoScore => 'No test was completed';
+
+  @override
+  String durDhm(int d, int h, int m) {
+    return '$d d $h h $m min';
+  }
 }

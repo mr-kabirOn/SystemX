@@ -124,7 +124,7 @@ class _CheckupScreenState extends ConsumerState<CheckupScreen> {
     }
     await ref
         .read(testHistoryProvider.notifier)
-        .saveCheckup(Checkup(DateTime.now(), results));
+        .saveCheckup(Checkup(DateTime.now(), results, complete: results.length == _order.length));
     if (mounted) context.pushReplacement(Routes.report(0));
   }
 

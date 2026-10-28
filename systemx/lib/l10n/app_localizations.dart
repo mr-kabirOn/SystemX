@@ -6385,6 +6385,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Built {date}'**
   String builtOn(String date);
+
+  /// No description provided for @reportNoScore.
+  ///
+  /// In en, this message translates to:
+  /// **'No test was completed'**
+  String get reportNoScore;
+
+  /// No description provided for @durDhm.
+  ///
+  /// In en, this message translates to:
+  /// **'{d} d {h} h {m} min'**
+  String durDhm(int d, int h, int m);
 }
 
 class _AppLocalizationsDelegate

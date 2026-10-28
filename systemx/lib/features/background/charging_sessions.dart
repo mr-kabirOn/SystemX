@@ -82,7 +82,8 @@ class SessionsScreen extends ConsumerWidget {
   static String _dayLabel(AppLocalizations l, DateTime day, DateTime now) {
     final today = DateTime(now.year, now.month, now.day);
     if (day == today) return l.csToday;
-    if (day == today.subtract(const Duration(days: 1))) return l.csYesterday;
+    // Calendar arithmetic, not 24 h: the day after a DST change is 23 or 25 h.
+    if (day == DateTime(now.year, now.month, now.day - 1)) return l.csYesterday;
     return DateFormat.MMMEd(l.localeName).format(day);
   }
 }

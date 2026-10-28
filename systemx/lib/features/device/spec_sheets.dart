@@ -238,7 +238,7 @@ class SpecBuilder {
     );
 
     _section(l.secSession);
-    _add(l.specUptime, formatDuration(Duration(milliseconds: s.uptimeMs)));
+    _add(l.specUptime, formatDuration(Duration(milliseconds: s.uptimeMs), l));
     _add(l.specLanguage, s.locale);
     _add(l.specTimezone, s.timezone);
   }
@@ -484,7 +484,7 @@ class SpecBuilder {
     if (b.status == 2) {
       _add(
         l.specTimeToFull,
-        ttf == null ? null : formatDuration(Duration(milliseconds: ttf)),
+        ttf == null ? null : formatDuration(Duration(milliseconds: ttf), l),
       );
     }
 
@@ -561,7 +561,7 @@ class SpecBuilder {
         l.specTimeout,
         ms < 60000
             ? l.seconds('${ms ~/ 1000}')
-            : formatDuration(Duration(milliseconds: ms)),
+            : formatDuration(Duration(milliseconds: ms), l),
       );
     }
     _add(l.specFontScale, '${(d.fontScale * 100).round()}%');

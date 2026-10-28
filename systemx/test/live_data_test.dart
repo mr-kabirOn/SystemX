@@ -55,9 +55,15 @@ void main() {
     expect(s.memUsed.last, closeTo(0.62, 0.01));
     expect(s.headroom, 0.36);
 
+    // Pausing holds the charts still, but readings continue underneath so
+    // Home and the charging test stay live.
     monitor.setPaused(true);
     final frozen = c.read(liveProvider).cpuGhz.length;
     await monitor.tick();
-    expect(c.read(liveProvider).cpuGhz.length, frozen);
+    expect(c.read(liveProvider).view.cpuGhz.length, frozen);
+    expect(c.read(liveProvider).view.paused, isTrue);
+    expect(c.read(liveProvider).cpuGhz.length, frozen + 1);
+    monitor.setPaused(false);
+    expect(c.read(liveProvider).view.cpuGhz.length, frozen + 1);
   });
 }

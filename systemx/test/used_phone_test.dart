@@ -42,6 +42,18 @@ void main() {
         now: now,
       );
 
+  test('a stopped checkup does not count as the hardware check', () {
+    final stopped = Checkup(now.subtract(const Duration(hours: 1)), [
+      TestResult(HwTest.speaker, TestStatus.passed, at: now),
+    ], complete: false);
+    final r = eval(h: TestHistory(checkups: [stopped]));
+    expect(r.verdict, UsedVerdict.incomplete);
+    expect(r.checkup, isNull);
+    // The flag survives saving and loading; old saves count as complete.
+    expect(Checkup.fromJson(stopped.toJson())!.complete, isFalse);
+    expect(Checkup.fromJson({'at': now.toIso8601String(), 'results': []})!.complete, isTrue);
+  });
+
   test('box sizes round up from what Android reports', () {
     expect(boxStorageGb(snap.storage!), 128);
     expect(boxRamGb(snap.memory!), 8);

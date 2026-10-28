@@ -133,7 +133,10 @@ UsedPhoneReport evaluateUsedPhone({
 
   // ---- Hardware tests from a recent checkup ----
   final last = history.lastCheckup;
-  final recent = last != null && now.difference(last.at) < const Duration(hours: 24) ? last : null;
+  // Only a finished checkup counts: a stopped one may have skipped the screen,
+  // camera and audio tests entirely.
+  final recent =
+      last != null && last.complete && now.difference(last.at) < const Duration(hours: 24) ? last : null;
   if (recent != null) {
     for (final r in recent.ordered) {
       if (r.status == TestStatus.failed) {

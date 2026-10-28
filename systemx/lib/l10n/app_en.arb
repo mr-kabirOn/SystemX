@@ -1152,5 +1152,8 @@
   "featureCount": "{count, plural, =1{1 feature} other{{count} features}}",
   "@featureCount": {"placeholders": {"count": {"type": "int"}}},
   "builtOn": "Built {date}",
-  "@builtOn": {"placeholders": {"date": {"type": "String"}}}
+  "@builtOn": {"placeholders": {"date": {"type": "String"}}},
+  "reportNoScore": "No test was completed",
+  "durDhm": "{d} d {h} h {m} min",
+  "@durDhm": {"placeholders": {"d": {"type": "int"}, "h": {"type": "int"}, "m": {"type": "int"}}}
 }

@@ -338,4 +338,13 @@ void main() {
     expect(clusterItems([1800000, 3187000, 2419000, 2419000]),
         ['1 × 3.19 GHz', '2 × 2.42 GHz', '1 × 1.80 GHz']);
   });
+
+  test('durations use the app language', () {
+    final en = lookupAppLocalizations(const Locale('en'));
+    final bn = lookupAppLocalizations(const Locale('bn'));
+    const d = Duration(days: 2, hours: 2, minutes: 3);
+    expect(formatDuration(d, en), '2 d 2 h 3 min');
+    expect(formatDuration(d, bn), contains('দিন'));
+    expect(formatDuration(const Duration(minutes: 7), en), '7 min');
+  });
 }

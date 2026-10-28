@@ -29,6 +29,7 @@ class _CameraTestState extends State<CameraTest> {
   XFile? _photo;
   String? _error;
   bool _busy = false;
+  AppLifecycleListener? _lifecycle;
 
   bool get _rear => widget.test == HwTest.rearCamera;
 
@@ -36,6 +37,22 @@ class _CameraTestState extends State<CameraTest> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) => _open());
+    // Android takes the camera away while the app is in the background; the
+    // plugin doesn't reopen it, so release it on leaving and reopen on return.
+    _lifecycle = AppLifecycleListener(
+      onInactive: _release,
+      onResume: () {
+        if (_controller == null && _photo == null && _error == null) _open();
+      },
+    );
+  }
+
+  void _release() {
+    final c = _controller;
+    if (c == null || _photo != null) return;
+    _controller = null;
+    if (mounted) setState(() {});
+    c.dispose();
   }
 
   Future<void> _open() async {
@@ -86,6 +103,7 @@ class _CameraTestState extends State<CameraTest> {
 
   @override
   void dispose() {
+    _lifecycle?.dispose();
     _controller?.dispose();
     _deletePhoto();
     super.dispose();

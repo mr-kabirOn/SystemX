@@ -2,6 +2,7 @@ import 'dart:math' as math;
 
 import 'package:intl/intl.dart';
 
+import '../l10n/app_localizations.dart';
 import 'settings/settings.dart';
 
 /// Formats a Celsius reading in the user's chosen unit.
@@ -51,13 +52,14 @@ String formatFreqKhz(int khz) {
   return '${(khz / 1000).round()} MHz';
 }
 
-String formatDuration(Duration d) {
+/// "2 d 3 h 5 min" in English, "২ দিন ৩ ঘণ্টা ৫ মিনিট" in Bangla.
+String formatDuration(Duration d, AppLocalizations l) {
   final days = d.inDays;
   final hours = d.inHours % 24;
   final minutes = d.inMinutes % 60;
-  if (days > 0) return '${days}d ${hours}h ${minutes}m';
-  if (hours > 0) return '${hours}h ${minutes}m';
-  return '${minutes}m';
+  if (days > 0) return l.durDhm(days, hours, minutes);
+  if (hours > 0) return l.stmHm(hours, minutes);
+  return l.stmM(minutes);
 }
 
 String formatDate(DateTime date, String locale) =>

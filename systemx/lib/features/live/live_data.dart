@@ -54,10 +54,18 @@ class LiveState {
     this.down = const [],
     this.up = const [],
     this.headroom,
+    this.frozen,
   });
 
   final LiveStats? latest;
   final bool paused;
+
+  /// What the charts showed when paused. Readings keep coming in underneath,
+  /// so Home and the tests stay live while a chart is held still.
+  final LiveState? frozen;
+
+  /// The state charts should draw: frozen while paused, live otherwise.
+  LiveState get view => frozen ?? this;
   final double downBps;
   final double upBps;
 
@@ -126,10 +134,11 @@ class LiveMonitor extends Notifier<LiveState> {
     _timer = Timer.periodic(Duration(milliseconds: rate.millis), (_) => tick());
   }
 
-  /// Freezes the charts (readings keep their last values) or resumes them.
+  /// Holds the charts still, or resumes them. Readings continue either way.
   void setPaused(bool paused) => state = LiveState(
         latest: state.latest,
         paused: paused,
+        frozen: paused ? _copy(state, paused: true) : null,
         downBps: state.downBps,
         upBps: state.upBps,
         headroom: state.headroom,
@@ -143,9 +152,25 @@ class LiveMonitor extends Notifier<LiveState> {
         up: state.up,
       );
 
+  static LiveState _copy(LiveState s, {required bool paused}) => LiveState(
+        latest: s.latest,
+        paused: paused,
+        downBps: s.downBps,
+        upBps: s.upBps,
+        headroom: s.headroom,
+        cpuGhz: s.cpuGhz,
+        cpuLoad: s.cpuLoad,
+        memUsed: s.memUsed,
+        batteryMa: s.batteryMa,
+        batteryTemp: s.batteryTemp,
+        cpuTemp: s.cpuTemp,
+        down: s.down,
+        up: s.up,
+      );
+
   /// Takes one reading. Called by the timer; tests call it directly.
   Future<void> tick() async {
-    if (_busy || state.paused) return;
+    if (_busy) return;
     _busy = true;
     try {
       final s = await ref.read(deviceApiProvider).live();
@@ -161,6 +186,7 @@ class LiveMonitor extends Notifier<LiveState> {
       state = LiveState(
         latest: s,
         paused: st.paused,
+        frozen: st.frozen,
         downBps: down,
         upBps: up,
         headroom: s.thermalHeadroom ?? st.headroom,

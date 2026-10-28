@@ -112,7 +112,20 @@ class _StressTestScreenState extends ConsumerState<StressTestScreen> {
     super.dispose();
   }
 
+  /// Set while a start is in flight, so a double tap starts only one run.
+  bool _starting = false;
+
   Future<void> _start() async {
+    if (_starting || _running) return;
+    _starting = true;
+    try {
+      await _startRun();
+    } finally {
+      _starting = false;
+    }
+  }
+
+  Future<void> _startRun() async {
     final refused = await _api.startStress(_seconds * 1000);
     if (!mounted) return;
     if (refused != null) {
@@ -120,12 +133,14 @@ class _StressTestScreenState extends ConsumerState<StressTestScreen> {
       return;
     }
     await _api.keepScreenOn(true);
+    if (!mounted) return;
     setState(() {
       _refused = null;
       _stopReason = null;
       _samples.clear();
       _running = true;
     });
+    _poll?.cancel();
     _poll = Timer.periodic(const Duration(seconds: 1), (_) => _tick());
   }
 

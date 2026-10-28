@@ -36,7 +36,13 @@ class ReportScreen extends ConsumerWidget {
     }
 
     final score = c.score;
-    final color = score >= 90 ? sx.good : score >= 70 ? sx.warn : sx.bad;
+    final color = !c.hasScore
+        ? sx.muted
+        : score >= 90
+            ? sx.good
+            : score >= 70
+                ? sx.warn
+                : sx.bad;
     final passed = c.count(TestStatus.passed);
     final failed = c.count(TestStatus.failed);
     final skipped = c.count(TestStatus.skipped);
@@ -70,14 +76,14 @@ class ReportScreen extends ConsumerWidget {
               size: 104,
               stroke: 11,
               child: Column(mainAxisSize: MainAxisSize.min, children: [
-                Text('$score', style: context.text.displaySmall),
+                Text(c.scoreText, style: context.text.displaySmall),
                 Eyebrow(l.ofHundred),
               ]),
             ),
             const SizedBox(width: 18),
             Expanded(
               child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                Text(reportHeadline(l, score), style: context.text.titleLarge),
+                Text(c.hasScore ? reportHeadline(l, score) : l.reportNoScore, style: context.text.titleLarge),
                 const SizedBox(height: 4),
                 Text(l.reportCounts(passed, failed, skipped), style: context.text.bodySmall),
                 Text(reportDate(c.at, l), style: context.text.bodySmall),

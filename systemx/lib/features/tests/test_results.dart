@@ -41,10 +41,14 @@ class TestResult {
 /// One guided checkup.
 @immutable
 class Checkup {
-  const Checkup(this.at, this.results);
+  const Checkup(this.at, this.results, {this.complete = true});
 
   final DateTime at;
   final List<TestResult> results;
+
+  /// False when the user stopped before every test had a result; such a
+  /// checkup is kept in history but doesn't count as a hardware check.
+  final bool complete;
 
   int count(TestStatus s) => results.where((r) => r.status == s).length;
 
@@ -55,6 +59,13 @@ class Checkup {
     final ran = count(TestStatus.passed) + count(TestStatus.failed);
     return ran == 0 ? 0 : (count(TestStatus.passed) * 100 / ran).round();
   }
+
+  /// Whether any test passed or failed; without that there is no score
+  /// (show "–", and leave it out of the health score).
+  bool get hasScore => count(TestStatus.passed) + count(TestStatus.failed) > 0;
+
+  /// The score text: "–" when nothing ran.
+  String get scoreText => hasScore ? '$score' : '–';
 
   /// Failures first, then skipped, then passed, each in catalog order.
   List<TestResult> get ordered {
@@ -73,6 +84,7 @@ class Checkup {
 
   Map<String, Object?> toJson() => {
         'at': at.toIso8601String(),
+        'complete': complete,
         'results': [for (final r in results) r.toJson()],
       };
 
@@ -83,7 +95,8 @@ class Checkup {
       for (final r in (j['results'] as List? ?? const []))
         ?TestResult.fromJson((r as Map).cast<String, Object?>()),
     ];
-    return Checkup(at, results);
+    // Checkups saved before this flag existed were all treated as complete.
+    return Checkup(at, results, complete: j['complete'] as bool? ?? true);
   }
 }
 

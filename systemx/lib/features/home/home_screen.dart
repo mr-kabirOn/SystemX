@@ -61,7 +61,7 @@ class HomeScreen extends ConsumerWidget {
       battery: snap?.battery,
       storage: snap?.storage,
       live: s,
-      checkupScore: lastCheckup?.score,
+      checkupScore: lastCheckup != null && lastCheckup.hasScore ? lastCheckup.score : null,
     );
     final tip = pickTips(
       live: s,
@@ -227,7 +227,7 @@ class HomeScreen extends ConsumerWidget {
                 sub: headroom == null
                     ? (s == null ? null : formatTemp(s.batteryTempC, unit))
                     : l.headroom(headroomPercent(headroom)),
-                visual: MeterBar(value: headroom?.clamp(0.0, 1.0) ?? 0, color: sx.thermal),
+                visual: MeterBar(value: headroom == null ? 0 : (1 - headroom).clamp(0.0, 1.0), color: sx.thermal),
                 onTap: () => context.push(Routes.live(LiveMetric.thermal)),
               ),
             ),

@@ -25,7 +25,7 @@ class MonitorScreen extends ConsumerWidget {
     final l = AppLocalizations.of(context);
     final sx = context.sx;
     final unit = ref.watch(settingsProvider.select((s) => s.tempUnit));
-    final live = ref.watch(liveProvider);
+    final live = ref.watch(liveProvider).view;
     final s = live.latest;
 
     String last(List<double> v, String Function(double) f) =>
