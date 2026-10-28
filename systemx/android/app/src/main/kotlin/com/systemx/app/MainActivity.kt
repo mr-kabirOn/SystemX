@@ -22,6 +22,7 @@ import io.flutter.plugin.common.EventChannel
 class MainActivity : FlutterActivity() {
     private lateinit var permissions: PermissionHost
     private lateinit var hardware: HardwareTestHost
+    private var play: PlayHost? = null
 
     /** Set while the volume button tests listen; presses go to Flutter, not the volume. */
     private var volumeSink: EventChannel.EventSink? = null
@@ -43,11 +44,21 @@ class MainActivity : FlutterActivity() {
             }
         })
         BackgroundApi.setUp(messenger, BackgroundHost(this))
-        PlayApi.setUp(messenger, PlayHost(this))
+        play = PlayHost(this).also { PlayApi.setUp(messenger, it) }
         BackgroundBridge.onAppStart(this)
         DeviceInfoApi.setUp(messenger, DeviceInfoHost(this))
         PermissionApi.setUp(messenger, permissions)
         EventChannel(messenger, "systemx/sensor").setStreamHandler(SensorStreamHandler(this))
+    }
+
+    override fun onStop() {
+        super.onStop()
+        play?.onAppBackground()
+    }
+
+    override fun onDestroy() {
+        play?.dispose()
+        super.onDestroy()
     }
 
     // Volume keys are handled by the system before Flutter sees them, so the

@@ -99,4 +99,29 @@ class ScreenTimeCalcTest {
         assertEquals(0, d.drain)
         assertEquals(0.0, d.apps.single().battery!!, 1e-9)
     }
+
+    @Test
+    fun aLateStopOfThePreviousScreenDoesNotEndTheApp() {
+        // Inside one app: A paused, B resumed, then A stopped (Android's order).
+        val events = listOf(
+            on(0),
+            Ev(0, ScreenTimeCalc.RESUMED, "a", "A"),
+            Ev(10 * min, ScreenTimeCalc.PAUSED, "a", "A"),
+            Ev(10 * min, ScreenTimeCalc.RESUMED, "a", "B"),
+            Ev(10 * min + 500, ScreenTimeCalc.STOPPED, "a", "A"),
+            off(30 * min),
+        )
+        val d = ScreenTimeCalc.days(listOf(day0), hour, events, emptyList(), emptySet()).single()
+        assertEquals(30 * min, d.apps.single().ms)
+        assertEquals(1, d.apps.single().opens)
+    }
+
+    @Test
+    fun newChargeWhenLevelFellAcrossAGapOrChargerChanged() {
+        assertEquals(true, SessionRules.isNewCharge(80, 70, 0, 1, null))
+        assertEquals(true, SessionRules.isNewCharge(80, 70, 1, 1, 10 * min))
+        assertEquals(false, SessionRules.isNewCharge(80, 70, 1, 1, 2_000)) // weak charger, continuous readings
+        assertEquals(true, SessionRules.isNewCharge(80, 81, 1, 4, 2_000)) // USB to wireless
+        assertEquals(false, SessionRules.isNewCharge(80, 79, 1, 1, null)) // 1 point is noise
+    }
 }

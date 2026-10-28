@@ -134,13 +134,15 @@ class HardwareTestHost(private val activity: Activity) : HardwareTestApi {
                 am.isSpeakerphoneOn = false
             }
         }
-        val t = track(samples, earpiece)
+        var t: AudioTrack? = null
         try {
+            // Built inside the try so a failure still restores the audio mode.
+            t = track(samples, earpiece)
             t.play()
             Thread.sleep(samples.size * 1000L / RATE + 150)
             t.stop()
         } finally {
-            t.release()
+            t?.release()
             if (earpiece) {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) am.clearCommunicationDevice()
                 am.mode = oldMode

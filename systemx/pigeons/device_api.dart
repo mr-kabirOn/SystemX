@@ -850,7 +850,7 @@ abstract class PlayApi {
   /// Shows Play's rating card if Play decides to (it limits how often).
   void requestReview();
 
-  /// Offers a flexible update when Play has a newer version; installs it
-  /// once downloaded.
+  /// Offers a flexible update when Play has a newer version. A downloaded
+  /// update installs when the app goes to the background or next launches.
   void checkForUpdate();
 }

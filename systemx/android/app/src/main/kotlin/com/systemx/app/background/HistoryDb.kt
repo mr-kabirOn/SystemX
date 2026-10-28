@@ -80,9 +80,21 @@ internal class HistoryDb private constructor(ctx: Context) :
 
     /** Id and start time of the session still open, if any. */
     @Synchronized
-    fun openSession(): Pair<Long, Long>? =
-        readableDatabase.rawQuery("SELECT id, start FROM sessions WHERE end IS NULL ORDER BY id DESC LIMIT 1", null)
-            .use { c -> if (c.moveToFirst()) c.getLong(0) to c.getLong(1) else null }
+    fun openSession(): Pair<Long, Long>? = openSessionInfo()?.let { it.id to it.start }
+
+    data class OpenSession(val id: Long, val start: Long, val lastLevel: Int)
+
+    @Synchronized
+    fun openSessionInfo(): OpenSession? =
+        readableDatabase.rawQuery(
+            "SELECT id, start, end_level FROM sessions WHERE end IS NULL ORDER BY id DESC LIMIT 1", null,
+        ).use { c -> if (c.moveToFirst()) OpenSession(c.getLong(0), c.getLong(1), c.getInt(2)) else null }
+
+    /** Ends a session at [endMs] without touching its readings. */
+    @Synchronized
+    fun closeSession(id: Long, endMs: Long) {
+        writableDatabase.execSQL("UPDATE sessions SET end = ? WHERE id = ?", arrayOf<Any>(endMs, id))
+    }
 
     @Synchronized
     fun startSession(r: Reading): Long = writableDatabase.insert(

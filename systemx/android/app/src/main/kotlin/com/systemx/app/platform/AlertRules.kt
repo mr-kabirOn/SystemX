@@ -56,3 +56,20 @@ internal object AlertRules {
     fun byteRate(prev: Long, now: Long, prevMs: Long, nowMs: Long): Double =
         if (prev < 0 || now < prev || nowMs <= prevMs) 0.0 else (now - prev) * 1000.0 / (nowMs - prevMs)
 }
+
+/** Charging session rules. Pure, so they are unit tested. */
+internal object SessionRules {
+    /**
+     * Whether a reading taken while plugged in belongs to a new charge rather
+     * than the open session: the charger type changed (e.g. USB to
+     * wireless), or the level fell across a gap in readings (the phone ran on
+     * battery in between). A fall seen in continuous readings is just heavy
+     * use on a weak charger. [lastPlugged] is 0 and [gapMs] null when unknown.
+     */
+    fun isNewCharge(lastLevel: Int, level: Int, lastPlugged: Int, plugged: Int, gapMs: Long?): Boolean =
+        (lastPlugged != 0 && plugged != 0 && plugged != lastPlugged) ||
+            (level < lastLevel - 1 && (gapMs == null || gapMs > CONTINUOUS_MS))
+
+    /** Readings closer than this are treated as continuous. */
+    const val CONTINUOUS_MS = 3 * 60_000L
+}

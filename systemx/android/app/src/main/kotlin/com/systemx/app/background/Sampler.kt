@@ -3,6 +3,7 @@ package com.systemx.app.background
 import android.content.Context
 import com.systemx.app.R
 import com.systemx.app.platform.AlertRules
+import com.systemx.app.platform.SessionRules
 import kotlin.math.roundToInt
 
 /**
@@ -13,24 +14,50 @@ import kotlin.math.roundToInt
 internal object Sampler {
     private const val SAMPLE_EVERY = 5 * 60_000L
 
+    /** An open session is written at most this often, unless its level changes. */
+    private const val SESSION_WRITE_EVERY = 60_000L
+
+    // Kept in memory between readings in one process; a new process falls
+    // back to what the database holds.
+    private var lastWriteMs = 0L
+    private var lastPlugged = 0
+    private var lastPluggedMs = 0L
+
     @Synchronized
     fun onReading(ctx: Context, r: Reading) {
         val db = HistoryDb.get(ctx)
         if (r.timeMs - db.lastSampleTime() >= SAMPLE_EVERY) db.addSample(r)
 
-        val open = db.openSession()
-        var sessionStart = open?.second ?: 0L
+        var open = db.openSessionInfo()
+        if (open != null && r.pluggedIn && SessionRules.isNewCharge(
+                open.lastLevel, r.level, lastPlugged, r.plugged,
+                if (lastPluggedMs > 0) r.timeMs - lastPluggedMs else null,
+            )) {
+            // Unplugged and plugged in again between two readings: end the
+            // first charge where it was last seen and start a new one.
+            db.closeSession(open.id, if (lastPluggedMs > open.start) lastPluggedMs else r.timeMs)
+            db.pruneSessions()
+            open = null
+        }
+        var sessionStart = open?.start ?: 0L
         if (r.pluggedIn) {
             if (open == null) {
                 db.startSession(r)
                 sessionStart = r.timeMs
+                lastWriteMs = r.timeMs
                 ConfigStore.setMark(ctx, "low", 0) // low battery may alert again after this charge
-            } else {
-                db.updateSession(open.first, r, close = false)
+            } else if (r.level != open.lastLevel || r.timeMs - lastWriteMs >= SESSION_WRITE_EVERY) {
+                db.updateSession(open.id, r, close = false)
+                lastWriteMs = r.timeMs
             }
-        } else if (open != null) {
-            db.updateSession(open.first, r, close = true)
-            db.pruneSessions()
+            lastPlugged = r.plugged
+            lastPluggedMs = r.timeMs
+        } else {
+            if (open != null) {
+                db.updateSession(open.id, r, close = true)
+                db.pruneSessions()
+            }
+            lastPlugged = 0
         }
         alerts(ctx, r, sessionStart)
     }

@@ -3,8 +3,10 @@ package com.systemx.app.background
 import android.app.Notification
 import android.app.PendingIntent
 import android.app.Service
+import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import android.content.pm.ServiceInfo
 import android.graphics.Bitmap
 import android.graphics.Canvas
@@ -17,6 +19,7 @@ import android.os.Build
 import android.os.Handler
 import android.os.IBinder
 import android.os.Looper
+import android.os.PowerManager
 import android.widget.RemoteViews
 import com.systemx.app.R
 import com.systemx.app.platform.AlertRules
@@ -33,11 +36,28 @@ class LiveStatusService : Service() {
     private val handler = Handler(Looper.getMainLooper())
     private var prev: Reading? = null
     private var ticks = 0
+    private var screenOn = true
+    private var lastShown: String? = null
+    private var receiverRegistered = false
 
     private val tick = object : Runnable {
         override fun run() {
             update()
-            handler.postDelayed(this, INTERVAL)
+            // Nobody sees the notification with the screen off: read rarely,
+            // just enough to keep history and alerts going.
+            handler.postDelayed(this, if (screenOn) INTERVAL else SCREEN_OFF_INTERVAL)
+        }
+    }
+
+    private val screenReceiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context, intent: Intent) {
+            screenOn = intent.action != Intent.ACTION_SCREEN_OFF
+            if (screenOn) {
+                // Speeds are measured across the gap; start fresh.
+                prev = null
+                handler.removeCallbacks(tick)
+                handler.post(tick)
+            }
         }
     }
 
@@ -52,12 +72,30 @@ class LiveStatusService : Service() {
         }
         Notifications.ensureChannels(this)
         val r = Readings.read(this)
-        val n = build(r, 0.0, 0.0)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
-            startForeground(Notifications.ID_LIVE, n, ServiceInfo.FOREGROUND_SERVICE_TYPE_SPECIAL_USE)
-        } else {
-            startForeground(Notifications.ID_LIVE, n)
+        val n = build(r, 0.0, 0.0)!!
+        try {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+                startForeground(Notifications.ID_LIVE, n, ServiceInfo.FOREGROUND_SERVICE_TYPE_SPECIAL_USE)
+            } else {
+                startForeground(Notifications.ID_LIVE, n)
+            }
+        } catch (_: Exception) {
+            // Android may refuse, e.g. when it restarts the service from the
+            // background on 12+. Stop quietly; the user can start it again.
+            stopSelf()
+            return START_NOT_STICKY
         }
+        if (!receiverRegistered) {
+            registerReceiver(
+                screenReceiver,
+                IntentFilter().apply {
+                    addAction(Intent.ACTION_SCREEN_ON)
+                    addAction(Intent.ACTION_SCREEN_OFF)
+                },
+            )
+            receiverRegistered = true
+        }
+        screenOn = getSystemService(PowerManager::class.java)?.isInteractive ?: true
         prev = r
         handler.removeCallbacks(tick)
         handler.postDelayed(tick, INTERVAL)
@@ -66,6 +104,13 @@ class LiveStatusService : Service() {
 
     override fun onDestroy() {
         handler.removeCallbacks(tick)
+        if (receiverRegistered) {
+            try {
+                unregisterReceiver(screenReceiver)
+            } catch (_: IllegalArgumentException) {
+            }
+            receiverRegistered = false
+        }
         super.onDestroy()
     }
 
@@ -80,15 +125,18 @@ class LiveStatusService : Service() {
         val up = if (p == null) 0.0 else AlertRules.byteRate(p.txBytes, r.txBytes, p.timeMs, r.timeMs)
         prev = r
         Sampler.onReading(this, r)
-        try {
-            getSystemService(android.app.NotificationManager::class.java)
-                ?.notify(Notifications.ID_LIVE, build(r, down, up))
-        } catch (_: SecurityException) {
+        val n = build(r, down, up, skipIfUnchanged = true)
+        if (n != null) {
+            try {
+                getSystemService(android.app.NotificationManager::class.java)?.notify(Notifications.ID_LIVE, n)
+            } catch (_: SecurityException) {
+            }
         }
         if (++ticks % 15 == 0) WidgetUpdater.update(this, r) // every 30 s
     }
 
-    private fun build(r: Reading, down: Double, up: Double): Notification {
+    /** Null when [skipIfUnchanged] and every shown value is the same as last time. */
+    private fun build(r: Reading, down: Double, up: Double, skipIfUnchanged: Boolean = false): Notification? {
         val c = ConfigStore.load(this)
         val battery = "${r.level}%"
         val batteryLabel = healthName(r.health)?.let { getString(R.string.live_health, it) }
@@ -106,6 +154,12 @@ class LiveStatusService : Service() {
                 else -> R.string.n_label_using
             },
         )
+
+        val (value, unit) = AlertRules.statusIconLines(c.statusIcon, r.level, r.tempC, c.fahrenheit, down)
+        val shown = listOf(battery, batteryLabel, temp, power, powerLabel, rate(down), rate(up), ram, value, unit, c.statusIcon)
+            .joinToString("|")
+        if (skipIfUnchanged && shown == lastShown) return null
+        lastShown = shown
 
         val small = RemoteViews(packageName, R.layout.notif_live_small).apply {
             setTextViewText(R.id.s_battery, battery)
@@ -132,7 +186,6 @@ class LiveStatusService : Service() {
             this, 1, Intent(this, LiveStatusService::class.java).setAction(ACTION_STOP),
             PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT,
         )
-        val (value, unit) = AlertRules.statusIconLines(c.statusIcon, r.level, r.tempC, c.fahrenheit, down)
         return Notification.Builder(this, Notifications.LIVE)
             .setSmallIcon(textIcon(value, unit, AlertRules.unitBelow(c.statusIcon)))
             // Plain text for places that don't show custom layouts (lock
@@ -209,6 +262,7 @@ class LiveStatusService : Service() {
 
     companion object {
         private const val INTERVAL = 2_000L
+        private const val SCREEN_OFF_INTERVAL = 60_000L
         private const val ACTION_STOP = "com.systemx.app.STOP_LIVE_STATUS"
 
         fun start(ctx: Context) {

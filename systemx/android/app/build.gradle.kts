@@ -83,3 +83,13 @@ dependencies {
     // Plain JVM tests for the system file parsers: ./gradlew :app:testDebugUnitTest
     testImplementation("junit:junit:4.13.2")
 }
+
+// An app bundle is what goes to Play, and Play rejects debug-signed uploads:
+// fail early instead of quietly signing with the debug key. APKs for local
+// testing may still use the debug key.
+gradle.taskGraph.whenReady {
+    val bundlingRelease = allTasks.any { it.name.startsWith("bundle") && it.name.endsWith("Release") }
+    if (bundlingRelease && !hasReleaseKey) {
+        throw GradleException("Release bundles need android/key.properties with the upload key (see release/README.md).")
+    }
+}

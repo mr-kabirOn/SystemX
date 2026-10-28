@@ -71,7 +71,7 @@ internal class ScreenTimeProbe(private val ctx: Context, private val apps: AppsP
         val e = UsageEvents.Event()
         while (q.hasNextEvent()) {
             q.getNextEvent(e)
-            if (e.eventType in wanted) out += ScreenTimeCalc.Ev(e.timeStamp, e.eventType, e.packageName)
+            if (e.eventType in wanted) out += ScreenTimeCalc.Ev(e.timeStamp, e.eventType, e.packageName, e.className)
         }
         return out
     }

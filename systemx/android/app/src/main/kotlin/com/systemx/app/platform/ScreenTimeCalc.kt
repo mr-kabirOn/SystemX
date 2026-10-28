@@ -24,7 +24,8 @@ internal object ScreenTimeCalc {
     /** Readings further apart than this are too coarse to split. */
     const val MAX_GAP_MS = 2 * 3_600_000L
 
-    data class Ev(val t: Long, val type: Int, val pkg: String?)
+    /** [cls] is the activity class; null when unknown. */
+    data class Ev(val t: Long, val type: Int, val pkg: String?, val cls: String? = null)
     data class Span(val pkg: String, val start: Long, val end: Long)
     data class Level(val t: Long, val level: Int, val charging: Boolean)
 
@@ -40,12 +41,18 @@ internal object ScreenTimeCalc {
 
     /**
      * Foreground spans and app opens. A span ends when another app comes up,
-     * the app pauses, or the screen turns off; spans still open end at [to].
+     * the activity on screen pauses or stops, or the screen turns off; spans
+     * still open end at [to].
+     *
+     * Android logs A paused, B resumed, then A stopped. When A and B are
+     * screens of the same app, A's late "stopped" must not end B's time, so
+     * pause/stop only count for the activity that is on screen.
      */
     fun foreground(events: List<Ev>, to: Long): Pair<List<Span>, List<Ev>> {
         val spans = mutableListOf<Span>()
         val opens = mutableListOf<Ev>()
         var cur: String? = null
+        var curCls: String? = null
         var since = 0L
         var last: String? = null // last app on screen, kept across pauses
         fun close(t: Long) {
@@ -61,10 +68,11 @@ internal object ScreenTimeCalc {
                     cur = p
                     since = e.t
                 }
+                curCls = e.cls
                 if (last != p) opens += e
                 last = p
             }
-            PAUSED, STOPPED -> if (e.pkg == cur) close(e.t)
+            PAUSED, STOPPED -> if (e.pkg == cur && (e.cls == null || curCls == null || e.cls == curCls)) close(e.t)
             SCREEN_OFF, SHUTDOWN -> {
                 close(e.t)
                 last = null

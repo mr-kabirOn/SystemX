@@ -3925,8 +3925,8 @@ class PlayApi {
     ;
   }
 
-  /// Offers a flexible update when Play has a newer version; installs it
-  /// once downloaded.
+  /// Offers a flexible update when Play has a newer version. A downloaded
+  /// update installs when the app goes to the background or next launches.
   Future<void> checkForUpdate() async {
     final pigeonVar_channelName = 'dev.flutter.pigeon.systemx.PlayApi.checkForUpdate$pigeonVar_messageChannelSuffix';
     final pigeonVar_channel = BasicMessageChannel<Object?>(

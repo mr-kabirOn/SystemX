@@ -104,8 +104,13 @@ internal class NetworkProbe(private val ctx: Context) {
             networkCountry = tm.networkCountryIso?.uppercase()?.ifBlank { null },
             roaming = Sys.safe { tm.isNetworkRoaming },
             signalLevel = signal?.level?.toLong(),
-            signalDbm = signal?.cellSignalStrengths?.firstOrNull()?.dbm
-                ?.takeIf { it != Int.MAX_VALUE && it < 0 }?.toLong(),
+            // getCellSignalStrengths() is Android 10+.
+            signalDbm = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                Sys.safe { signal?.cellSignalStrengths?.firstOrNull()?.dbm }
+                    ?.takeIf { it != Int.MAX_VALUE && it < 0 }?.toLong()
+            } else {
+                null
+            },
             dataNetworkType = if (phonePermission) Sys.safe { networkTypeName(tm.dataNetworkType) } else null,
             phonePermission = phonePermission,
         )

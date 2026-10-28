@@ -21,6 +21,9 @@ internal class StressRunner(context: Context) {
     private val work = AtomicLong()
 
     @Volatile private var running = false
+
+    /** Bumped on every start, so threads from an earlier run always exit. */
+    @Volatile private var generation = 0
     @Volatile private var stopReason: String? = null
     @Volatile private var lastPoll = 0L
     private var startedAt = 0L
@@ -38,6 +41,7 @@ internal class StressRunner(context: Context) {
 
         work.set(0)
         stopReason = null
+        val gen = ++generation
         running = true
         this.durationMs = minOf(durationMs, StressRules.MAX_MS)
         startedAt = SystemClock.elapsedRealtime()
@@ -51,19 +55,19 @@ internal class StressRunner(context: Context) {
                 // Normal background priority: the UI and the system stay responsive.
                 Process.setThreadPriority(Process.THREAD_PRIORITY_BACKGROUND)
                 var x = 1.000001 + i
-                while (running) {
+                while (running && generation == gen) {
                     for (k in 0 until 20_000) x = sqrt(x * 1.0000001 + k)
                     work.incrementAndGet()
                 }
                 if (x == 0.0) work.incrementAndGet() // keeps the loop from being optimised away
             }, "sx-stress-$i").apply { isDaemon = true; start() }
         }
-        Thread({ watchdog() }, "sx-stress-watchdog").apply { isDaemon = true; start() }
+        Thread({ watchdog(gen) }, "sx-stress-watchdog").apply { isDaemon = true; start() }
         return null
     }
 
-    private fun watchdog() {
-        while (running) {
+    private fun watchdog(gen: Int) {
+        while (running && generation == gen) {
             try {
                 Thread.sleep(1_000)
             } catch (_: InterruptedException) {
