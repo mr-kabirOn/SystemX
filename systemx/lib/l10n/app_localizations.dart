@@ -767,7 +767,7 @@ abstract class AppLocalizations {
   /// No description provided for @refreshRate.
   ///
   /// In en, this message translates to:
-  /// **'Refresh rate'**
+  /// **'Update interval'**
   String get refreshRate;
 
   /// No description provided for @seconds.
@@ -1583,7 +1583,7 @@ abstract class AppLocalizations {
   /// No description provided for @specChargeCounter.
   ///
   /// In en, this message translates to:
-  /// **'Charge left'**
+  /// **'Charge counter'**
   String get specChargeCounter;
 
   /// No description provided for @specEstCapacity.
@@ -2153,7 +2153,7 @@ abstract class AppLocalizations {
   /// No description provided for @specMaxVideo.
   ///
   /// In en, this message translates to:
-  /// **'Best video'**
+  /// **'Maximum video resolution'**
   String get specMaxVideo;
 
   /// No description provided for @specRaw.
@@ -2387,7 +2387,7 @@ abstract class AppLocalizations {
   /// No description provided for @adbHint.
   ///
   /// In en, this message translates to:
-  /// **'Turn off when you are not developing'**
+  /// **'Turn off when you are not developing apps'**
   String get adbHint;
 
   /// No description provided for @specVerifiedBoot.
@@ -2981,7 +2981,7 @@ abstract class AppLocalizations {
   /// No description provided for @permMicReason.
   ///
   /// In en, this message translates to:
-  /// **'SystemX records a few seconds only during the microphone tests, plays it back once, then discards it. Nothing is saved or uploaded.'**
+  /// **'SystemX records a few seconds only during the microphone test, plays it back once, then discards it. Nothing is saved or uploaded.'**
   String get permMicReason;
 
   /// No description provided for @tDeadPixels.
@@ -3275,7 +3275,7 @@ abstract class AppLocalizations {
   /// No description provided for @holdToEar.
   ///
   /// In en, this message translates to:
-  /// **'Hold the phone to your ear, then tap Play'**
+  /// **'Hold the phone to your ear, then tap Play tone'**
   String get holdToEar;
 
   /// No description provided for @iAccelerometer.
@@ -3407,7 +3407,7 @@ abstract class AppLocalizations {
   /// No description provided for @itDoesntWork.
   ///
   /// In en, this message translates to:
-  /// **'It doesn\'t recognise me'**
+  /// **'It doesn\'t recognize me'**
   String get itDoesntWork;
 
   /// No description provided for @keepGoing.
@@ -3623,7 +3623,7 @@ abstract class AppLocalizations {
   /// No description provided for @nNotRecognised.
   ///
   /// In en, this message translates to:
-  /// **'Not recognised'**
+  /// **'Not recognized'**
   String get nNotRecognised;
 
   /// No description provided for @nOnNotConnected.
@@ -3653,7 +3653,7 @@ abstract class AppLocalizations {
   /// No description provided for @nRecognised.
   ///
   /// In en, this message translates to:
-  /// **'Recognised'**
+  /// **'Recognized'**
   String get nRecognised;
 
   /// No description provided for @nSensorNoResponse.
@@ -3959,7 +3959,7 @@ abstract class AppLocalizations {
   /// No description provided for @speakAfterTap.
   ///
   /// In en, this message translates to:
-  /// **'Tap Record, then speak'**
+  /// **'Tap Record 3 seconds, then speak'**
   String get speakAfterTap;
 
   /// No description provided for @start.
@@ -4103,7 +4103,7 @@ abstract class AppLocalizations {
   /// No description provided for @nGpsFix.
   ///
   /// In en, this message translates to:
-  /// **'Fix · {used} satellites · ±{accuracy} m'**
+  /// **'Location found · {used} satellites · ±{accuracy} m'**
   String nGpsFix(int used, int accuracy);
 
   /// No description provided for @nGpsNoFix.
@@ -4973,7 +4973,7 @@ abstract class AppLocalizations {
   /// No description provided for @bhDrainNote.
   ///
   /// In en, this message translates to:
-  /// **'Estimates from SystemX\'s background readings, not a prediction of remaining battery life. They become more reliable after 3+ hours of each; with Live status on, readings are more frequent.'**
+  /// **'Estimates from SystemX\'s background readings, not a prediction of remaining battery life. They become more reliable after 3+ hours of each; with live status on, readings are more frequent.'**
   String get bhDrainNote;
 
   /// No description provided for @bhHow.
@@ -5045,7 +5045,7 @@ abstract class AppLocalizations {
   /// No description provided for @stRefusedBattery.
   ///
   /// In en, this message translates to:
-  /// **'Battery is below 20%. Plug in the charger or charge first.'**
+  /// **'Battery is below 20%. Charge it first, or plug in the charger.'**
   String get stRefusedBattery;
 
   /// No description provided for @stRunning.
@@ -5267,7 +5267,7 @@ abstract class AppLocalizations {
   /// No description provided for @trNote.
   ///
   /// In en, this message translates to:
-  /// **'This is the rate apps receive touch positions. The \"touch sampling rate\" in phone adverts can be higher, as some of it is used inside Android.'**
+  /// **'This is the rate apps receive touch positions. The \"touch sampling rate\" in phone ads can be higher, as some of it is used inside Android.'**
   String get trNote;
 
   /// No description provided for @upTitle.
@@ -5465,7 +5465,7 @@ abstract class AppLocalizations {
   /// No description provided for @upKnoxBad.
   ///
   /// In en, this message translates to:
-  /// **'Tripped (0x1): unofficial software was installed at some point. Samsung Pay and Secure Folder won\'t work.'**
+  /// **'Void (0x1): unofficial software was installed at some point. Samsung Pay and Secure Folder won\'t work.'**
   String get upKnoxBad;
 
   /// No description provided for @upHealthOk.
@@ -6185,7 +6185,7 @@ abstract class AppLocalizations {
   /// No description provided for @csInsightWarmBody.
   ///
   /// In en, this message translates to:
-  /// **'{count} charges reached 42 °C or more (highest {temp}). A brief warm peak is normal with fast charging; charging without a case helps.'**
+  /// **'{count, plural, =1{1 charge reached 42 °C or more (highest {temp}).} other{{count} charges reached 42 °C or more (highest {temp}).}} A brief warm peak is normal with fast charging; charging without a case helps.'**
   String csInsightWarmBody(int count, String temp);
 
   /// No description provided for @csTempSource.
@@ -6359,7 +6359,7 @@ abstract class AppLocalizations {
   /// No description provided for @stmNoBattery.
   ///
   /// In en, this message translates to:
-  /// **'Battery estimates need SystemX\'s battery history. Turn on Live status or any battery alert to start recording it.'**
+  /// **'Battery estimates need SystemX\'s battery history. Turn on live status or any battery alert to start recording it.'**
   String get stmNoBattery;
 
   /// No description provided for @stmTimeNote.

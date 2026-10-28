@@ -66,8 +66,13 @@ Play Console › App content › Foreground service permissions.
   level, temperature, charging power, network speed and memory use, with a
   number in the status bar. It is off by default. The user turns it on in
   Settings › Alerts and live status, and can stop it from the notification
-  or in Settings. None of the other foreground service types fit: this is
-  not media, location, data sync, health or a connected device."
+  or in Settings. While it runs, the same process records the battery
+  history and sends the battery alerts the user turned on; charging power
+  and network speed are rates measured between readings a few seconds
+  apart, which a periodic job can't provide. With the screen off it reads
+  only once a minute. It restarts after a reboot only if the user left it
+  on. None of the other foreground service types fit: this is not media,
+  location, data sync, health or a connected device."
 - User impact if deferred: "The live readings in the notification would
   stop updating, which is the feature the user asked for."
 - Video: record 30 s on your phone: open Settings › Alerts and live status,
@@ -87,8 +92,11 @@ Two things a reviewer may ask about:
   Screen time, usage events (UsageStatsManager): time on screen per app,
   opens, unlocks and daily screen-on time. Nothing is stored or sent; the
   app has no internet permission. Off unless the user enables it.
-- **Seeing installed apps**: only apps with a launcher icon, through a
-  `<queries>` launcher intent. QUERY_ALL_PACKAGES is not requested.
+- **Seeing installed apps**: the Apps screen lists apps with a launcher
+  icon, through a `<queries>` launcher intent; a home-screen `<queries>`
+  entry lets Screen time leave launchers out of its list. Screen time
+  names the apps that appear in Android's usage records. QUERY_ALL_PACKAGES
+  is not requested.
 
 If Play asks why the app needs Usage access, answer:
 "Screen time is a core feature: it shows the user's daily screen-on time and
@@ -104,11 +112,12 @@ severe thermal status or low battery. It doesn't run in the background.
 
 ## Release notes (first release)
 en-US: "First release: every spec, battery health measured on each charge,
-a 32-test checkup, a used phone check with PDF report, CPU stress, refresh
-rate and touch tests, alerts, widgets and a live status notification.
-English and Bangla."
+screen time with time and estimated battery per app, a 32-test checkup, a
+used phone check with PDF report, CPU stress, refresh rate and touch tests,
+alerts, widgets and a live status notification. English and Bangla."
 
-bn-BD: "প্রথম রিলিজ: প্রতিটি স্পেক, প্রতিটি চার্জে মাপা ব্যাটারি হেলথ,
-৩২টি টেস্টের চেকআপ, PDF রিপোর্টসহ পুরোনো ফোন যাচাই, সিপিইউ স্ট্রেস,
-রিফ্রেশ রেট ও টাচ টেস্ট, অ্যালার্ট, উইজেট আর লাইভ স্ট্যাটাস নোটিফিকেশন।
-ইংরেজি ও বাংলা।"
+bn-BD: "প্রথম সংস্করণ: প্রতিটি স্পেসিফিকেশন, প্রতিটি চার্জে পরিমাপকৃত
+ব্যাটারির স্বাস্থ্য, অ্যাপভিত্তিক সময় ও আনুমানিক ব্যাটারি খরচসহ স্ক্রিন টাইম,
+৩২টি পরীক্ষার পূর্ণাঙ্গ চেকআপ, PDF প্রতিবেদনসহ ব্যবহৃত ফোন যাচাই, সিপিইউ
+চাপ পরীক্ষা, রিফ্রেশ রেট ও স্পর্শ পরীক্ষা, সতর্কবার্তা, উইজেট এবং তাৎক্ষণিক
+অবস্থার বিজ্ঞপ্তি। ইংরেজি ও বাংলা।"

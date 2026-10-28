@@ -90,7 +90,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get metricNetwork => 'নেটওয়ার্ক';
 
   @override
-  String get metricThermal => 'তাপমাত্রা';
+  String get metricThermal => 'তাপীয় অবস্থা';
 
   @override
   String freeAmount(String amount) {
@@ -102,7 +102,11 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String headroom(int percent) {
-    return 'অবশিষ্ট সীমা $percent%';
+    final intl.NumberFormat percentNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String percentString = percentNumberFormat.format(percent);
+
+    return 'তাপসীমা পর্যন্ত বাকি $percentString%';
   }
 
   @override
@@ -158,7 +162,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get catStorage => 'স্টোরেজ';
 
   @override
-  String get catStorageSub => 'অভ্যন্তরীণ স্টোরেজ, এসডি কার্ড, ইউএসবি';
+  String get catStorageSub => 'অভ্যন্তরীণ স্টোরেজ, এসডি কার্ড, USB';
 
   @override
   String get catBattery => 'ব্যাটারি';
@@ -170,7 +174,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get catDisplay => 'ডিসপ্লে';
 
   @override
-  String get catDisplaySub => 'রেজোলিউশন, রিফ্রেশ রেট, এইচডিআর';
+  String get catDisplaySub => 'রেজোলিউশন, রিফ্রেশ রেট, HDR';
 
   @override
   String get catNetwork => 'নেটওয়ার্ক';
@@ -222,7 +226,14 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String checkupMeta(int count, int minutes) {
-    return '$countটি পরীক্ষা · প্রায় $minutes মিনিট';
+    final intl.NumberFormat countNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String countString = countNumberFormat.format(count);
+    final intl.NumberFormat minutesNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String minutesString = minutesNumberFormat.format(minutes);
+
+    return '$countStringটি পরীক্ষা · প্রায় $minutesString মিনিট';
   }
 
   @override
@@ -659,7 +670,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get coreOffline => 'অফলাইন (নিষ্ক্রিয়)';
 
   @override
-  String get specRenderer => 'GPU';
+  String get specRenderer => 'জিপিইউ';
 
   @override
   String get specVendor => 'নির্মাতা';
@@ -684,7 +695,7 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get usableHint =>
-      'র‍্যামের একটি অংশ মডেম ও জিপিইউর জন্য সংরক্ষিত থাকে';
+      'র‍্যামের একটি অংশ মডেম ও জিপিইউ-এর জন্য সংরক্ষিত থাকে';
 
   @override
   String get specInUse => 'ব্যবহৃত';
@@ -700,7 +711,7 @@ class AppLocalizationsBn extends AppLocalizations {
       'এর নিচে নামলে অ্যান্ড্রয়েড ব্যাকগ্রাউন্ডের অ্যাপ বন্ধ করতে শুরু করে';
 
   @override
-  String get specLowMemoryNow => 'এখন মেমরি স্বল্প';
+  String get specLowMemoryNow => 'বর্তমানে মেমরি কম';
 
   @override
   String get specSwap => 'সোয়াপ (zRAM)';
@@ -730,7 +741,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get volumeInternal => 'অভ্যন্তরীণ';
 
   @override
-  String get volumeRemovable => 'অপসারণযোগ্য (এসডি কার্ড বা ইউএসবি)';
+  String get volumeRemovable => 'অপসারণযোগ্য (এসডি কার্ড বা USB)';
 
   @override
   String get volumeOther => 'অন্যান্য';
@@ -772,7 +783,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get cycleHint => 'ব্যাটারি থেকে প্রাপ্ত তথ্য';
 
   @override
-  String get specChargeCounter => 'অবশিষ্ট চার্জ';
+  String get specChargeCounter => 'চার্জ কাউন্টার';
 
   @override
   String get specEstCapacity => 'আনুমানিক পূর্ণ ধারণক্ষমতা';
@@ -927,7 +938,7 @@ class AppLocalizationsBn extends AppLocalizations {
       'সংযোগের সর্বোচ্চ গতি সম্পর্কে অ্যান্ড্রয়েডের অনুমান; এটি গতি পরীক্ষা নয়';
 
   @override
-  String get specWifi => 'Wi-Fi';
+  String get specWifi => 'ওয়াই-ফাই';
 
   @override
   String get specWifiName => 'নেটওয়ার্কের নাম';
@@ -954,7 +965,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get signalWeak => 'দুর্বল';
 
   @override
-  String get specWifiStandard => 'Wi-Fi মান';
+  String get specWifiStandard => 'ওয়াই-ফাই মান';
 
   @override
   String get specFrequency => 'ফ্রিকোয়েন্সি';
@@ -966,7 +977,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get specTxRx => 'পাঠানো / গ্রহণ';
 
   @override
-  String get specOperator => 'অপারেটর';
+  String get specOperator => 'নেটওয়ার্ক অপারেটর';
 
   @override
   String get specCountry => 'দেশ';
@@ -996,7 +1007,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get specSimDetails => 'সিমের তথ্য';
 
   @override
-  String get specCarrier => 'ক্যারিয়ার';
+  String get specCarrier => 'সিম অপারেটর';
 
   @override
   String get specSimName => 'নাম';
@@ -1005,7 +1016,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get specSimType => 'ধরন';
 
   @override
-  String get simPhysical => 'প্রথাগত সিম';
+  String get simPhysical => 'ফিজিক্যাল সিম';
 
   @override
   String get specDataSim => 'মোবাইল ডেটার জন্য ব্যবহৃত';
@@ -1059,7 +1070,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get specFlash => 'ফ্ল্যাশ';
 
   @override
-  String get specMaxVideo => 'সর্বোচ্চ ভিডিও মান';
+  String get specMaxVideo => 'সর্বোচ্চ ভিডিও রেজোলিউশন';
 
   @override
   String get specRaw => 'RAW ছবি';
@@ -1128,13 +1139,13 @@ class AppLocalizationsBn extends AppLocalizations {
   String get featFingerprint => 'ফিঙ্গারপ্রিন্ট';
 
   @override
-  String get featFace => 'মুখমণ্ডল শনাক্তকরণ হার্ডওয়্যার';
+  String get featFace => 'ফেস আনলক হার্ডওয়্যার';
 
   @override
   String get featTelephony => 'মোবাইল নেটওয়ার্ক';
 
   @override
-  String get featWifiRtt => 'Wi-Fi RTT (ভবনের ভেতরে অবস্থান নির্ণয়)';
+  String get featWifiRtt => 'ওয়াই-ফাই RTT (ভবনের ভেতরে অবস্থান নির্ণয়)';
 
   @override
   String get featLe2m => 'LE 2M PHY (দ্রুততর)';
@@ -1164,29 +1175,33 @@ class AppLocalizationsBn extends AppLocalizations {
   String get bioEnrolled => 'নিবন্ধিত';
 
   @override
-  String get bioNone => 'নির্ধারিত নয়';
+  String get bioNone => 'নিবন্ধিত নয়';
 
   @override
   String get bioNoHardware => 'হার্ডওয়্যার নেই';
 
   @override
-  String get specDevOptions => 'ডেভেলপার অপশন';
+  String get specDevOptions => 'ডেভেলপার বিকল্প';
 
   @override
   String get specUsbDebugging => 'USB ডিবাগিং';
 
   @override
-  String get adbHint => 'প্রয়োজন না হলে বন্ধ রাখুন';
+  String get adbHint => 'অ্যাপ ডেভেলপমেন্টের কাজ না করলে বন্ধ রাখুন';
 
   @override
   String get specVerifiedBoot => 'যাচাইকৃত বুট (Verified boot)';
 
   @override
   String monthsOld(int months) {
+    final intl.NumberFormat monthsNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String monthsString = monthsNumberFormat.format(months);
+
     String _temp0 = intl.Intl.pluralLogic(
       months,
       locale: localeName,
-      other: '$months মাস পুরোনো',
+      other: '$monthsString মাস পুরোনো',
       zero: 'চলতি মাসের',
     );
     return '$_temp0';
@@ -1194,7 +1209,11 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String coreN(int index) {
-    return 'কোর $index';
+    final intl.NumberFormat indexNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String indexString = indexNumberFormat.format(index);
+
+    return 'কোর $indexString';
   }
 
   @override
@@ -1204,65 +1223,98 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String channelN(int channel) {
-    return 'চ্যানেল $channel';
+    final intl.NumberFormat channelNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String channelString = channelNumberFormat.format(channel);
+
+    return 'চ্যানেল $channelString';
   }
 
   @override
   String signalBars(int level) {
-    return '৪টির মধ্যে $levelটি বার';
+    final intl.NumberFormat levelNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String levelString = levelNumberFormat.format(level);
+
+    return '৪টির মধ্যে $levelStringটি বার';
   }
 
   @override
   String simN(int slot) {
-    return 'সিম $slot';
+    final intl.NumberFormat slotNumberFormat = intl.NumberFormat.decimalPattern(
+      localeName,
+    );
+    final String slotString = slotNumberFormat.format(slot);
+
+    return 'সিম $slotString';
   }
 
   @override
   String sensorCount(int count) {
+    final intl.NumberFormat countNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String countString = countNumberFormat.format(count);
+
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$countটি সেন্সর',
+      other: '$countStringটি সেন্সর',
     );
     return '$_temp0';
   }
 
   @override
   String coresCount(int count) {
+    final intl.NumberFormat countNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String countString = countNumberFormat.format(count);
+
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$countটি কোর',
+      other: '$countStringটি কোর',
     );
     return '$_temp0';
   }
 
   @override
   String cyclesCount(int count) {
+    final intl.NumberFormat countNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String countString = countNumberFormat.format(count);
+
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$countটি চক্র',
+      other: '$countStringটি চক্র',
     );
     return '$_temp0';
   }
 
   @override
   String slotsCount(int count) {
+    final intl.NumberFormat countNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String countString = countNumberFormat.format(count);
+
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$countটি স্লট',
+      other: '$countStringটি স্লট',
     );
     return '$_temp0';
   }
 
   @override
   String camerasCount(int count) {
+    final intl.NumberFormat countNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String countString = countNumberFormat.format(count);
+
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$countটি ক্যামেরা',
+      other: '$countStringটি ক্যামেরা',
     );
     return '$_temp0';
   }
@@ -1274,22 +1326,37 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String codecsCount(int count) {
+    final intl.NumberFormat countNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String countString = countNumberFormat.format(count);
+
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$countটি কোডেক',
+      other: '$countStringটি কোডেক',
     );
     return '$_temp0';
   }
 
   @override
   String checksPassed(int passed, int total) {
-    return '$totalটির মধ্যে $passedটি যাচাইয়ে উত্তীর্ণ';
+    final intl.NumberFormat passedNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String passedString = passedNumberFormat.format(passed);
+    final intl.NumberFormat totalNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String totalString = totalNumberFormat.format(total);
+
+    return '$totalStringটির মধ্যে $passedStringটি যাচাইয়ে উত্তীর্ণ';
   }
 
   @override
   String secAllFeatures(int count) {
-    return 'সকল সিস্টেম বৈশিষ্ট্য ($count)';
+    final intl.NumberFormat countNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String countString = countNumberFormat.format(count);
+
+    return 'সকল সিস্টেম বৈশিষ্ট্য ($countString)';
   }
 
   @override
@@ -1336,11 +1403,11 @@ class AppLocalizationsBn extends AppLocalizations {
   String get specSheetFooter => 'SystemX দিয়ে তৈরি';
 
   @override
-  String get permLocationTitle => 'Wi-Fi-এর নাম দেখান';
+  String get permLocationTitle => 'ওয়াই-ফাইয়ের নাম দেখান';
 
   @override
   String get permLocationReason =>
-      'লোকেশনের অনুমতি থাকা অ্যাপকেই শুধু অ্যান্ড্রয়েড Wi-Fi নেটওয়ার্কের নাম জানায়। SystemX এটি কেবল এই তথ্য ও জিপিএস পরীক্ষার জন্য ব্যবহার করে; আপনার অবস্থান কখনো অনুসরণ করে না।';
+      'লোকেশনের অনুমতি থাকা অ্যাপকেই শুধু অ্যান্ড্রয়েড ওয়াই-ফাই নেটওয়ার্কের নাম জানায়। SystemX এটি কেবল এই তথ্য ও জিপিএস পরীক্ষার জন্য ব্যবহার করে; আপনার অবস্থান কখনো অনুসরণ করে না।';
 
   @override
   String get permPhoneTitle => 'সিমের তথ্য দেখান';
@@ -1395,7 +1462,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get sensorRate => 'সর্বোচ্চ হার';
 
   @override
-  String get sensorWakeUp => 'জাগ্রতকারী সেন্সর';
+  String get sensorWakeUp => 'ওয়েক-আপ সেন্সর';
 
   @override
   String get sensorWakeUpHint =>
@@ -1423,10 +1490,10 @@ class AppLocalizationsBn extends AppLocalizations {
   String get thermalShutdown => 'বন্ধ হয়ে যাচ্ছে';
 
   @override
-  String get pause => 'বিরতি';
+  String get pause => 'বিরতি দিন';
 
   @override
-  String get resume => 'পুনরায় চালু';
+  String get resume => 'আবার চালু করুন';
 
   @override
   String get paused => 'বিরতিতে';
@@ -1442,7 +1509,7 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get loadEstimateHint =>
-      'অ্যান্ড্রয়েড ৮ ও পরবর্তী সংস্করণে অ্যাপ প্রকৃত CPU ব্যবহার দেখতে পারে না, তাই ক্লক স্পিড থেকে লোড অনুমান করা হয়।';
+      'অ্যান্ড্রয়েড ৮ ও পরবর্তী সংস্করণে অ্যাপ প্রকৃত সিপিইউ ব্যবহার দেখতে পারে না, তাই ক্লক স্পিড থেকে লোড অনুমান করা হয়।';
 
   @override
   String get chartCurrent => 'চার্জিং বিদ্যুৎপ্রবাহ';
@@ -1468,24 +1535,24 @@ class AppLocalizationsBn extends AppLocalizations {
       'এই ফোনের সকল অ্যাপের মোট ডেটা আদান-প্রদান। এটি গতি পরীক্ষা নয়।';
 
   @override
-  String get thermalStatus => 'তাপের অবস্থা';
+  String get thermalStatus => 'তাপীয় অবস্থা';
 
   @override
-  String get thermalHeadroom => 'গতি কমার আগে অবশিষ্ট সীমা';
+  String get thermalHeadroom => 'গতি কমার আগে অবশিষ্ট তাপসীমা';
 
   @override
   String get chartBatteryTemp => 'ব্যাটারির তাপমাত্রা';
 
   @override
-  String get chartCpuTemp => 'CPU-র তাপমাত্রা';
+  String get chartCpuTemp => 'সিপিইউ-এর তাপমাত্রা';
 
   @override
   String get cpuTempUnavailable =>
-      'আপনার ফোন অ্যাপকে CPU-র তাপমাত্রা জানতে দেয় না। এর পরিবর্তে ব্যাটারির তাপমাত্রা ও তাপের অবস্থা দেখানো হচ্ছে।';
+      'আপনার ফোন অ্যাপকে সিপিইউ-এর তাপমাত্রা জানতে দেয় না। এর পরিবর্তে ব্যাটারির তাপমাত্রা ও তাপের অবস্থা দেখানো হচ্ছে।';
 
   @override
   String get thermalHint =>
-      'ফোন গরম হলে অ্যান্ড্রয়েড প্রসেসরের গতি কমিয়ে তাপ নিয়ন্ত্রণ করে। অবশিষ্ট সীমা দেখায় ফোনটি সেই অবস্থা থেকে কত দূরে।';
+      'ফোন গরম হলে অ্যান্ড্রয়েড প্রসেসরের গতি কমিয়ে তাপ নিয়ন্ত্রণ করে। অবশিষ্ট তাপসীমা দেখায় ফোনটি সেই অবস্থা থেকে কত দূরে।';
 
   @override
   String get details => 'বিস্তারিত';
@@ -1541,7 +1608,11 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String weightN(int weight) {
-    return 'গুরুত্ব $weight';
+    final intl.NumberFormat weightNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String weightString = weightNumberFormat.format(weight);
+
+    return 'গুরুত্ব $weightString';
   }
 
   @override
@@ -1551,17 +1622,29 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String tipStorageLow(int percent) {
-    return 'স্টোরেজ $percent% পূর্ণ। অ্যাপ দ্রুত রাখতে জায়গা খালি করুন।';
+    final intl.NumberFormat percentNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String percentString = percentNumberFormat.format(percent);
+
+    return 'স্টোরেজ $percentString% পূর্ণ। অ্যাপ দ্রুত রাখতে জায়গা খালি করুন।';
   }
 
   @override
   String tipPatchOld(int months) {
-    return 'নিরাপত্তা প্যাচ $months মাস পুরোনো। সিস্টেম আপডেট আছে কি না দেখুন।';
+    final intl.NumberFormat monthsNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String monthsString = monthsNumberFormat.format(months);
+
+    return 'নিরাপত্তা প্যাচ $monthsString মাস পুরোনো। সিস্টেম আপডেট আছে কি না দেখুন।';
   }
 
   @override
   String tipUnplug(int level) {
-    return '$level% চার্জ হয়েছে। ৮০%-এর কাছাকাছি চার্জার খুলে ফেললে ব্যাটারির ক্ষয় কমে।';
+    final intl.NumberFormat levelNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String levelString = levelNumberFormat.format(level);
+
+    return '$levelString% চার্জ হয়েছে। ৮০%-এর কাছাকাছি চার্জার খুলে ফেললে ব্যাটারির ক্ষয় কমে।';
   }
 
   @override
@@ -1627,7 +1710,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get tProximity => 'প্রক্সিমিটি সেন্সর';
 
   @override
-  String get tLight => 'আলো সেন্সর';
+  String get tLight => 'আলোক সেন্সর';
 
   @override
   String get tBarometer => 'ব্যারোমিটার';
@@ -1680,7 +1763,7 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get checkupPrep =>
-      'সম্ভব হলে তারযুক্ত হেডফোন, একটি ইউএসবি অডিও ডিভাইস ও চার্জার কাছে রাখুন। লোকেশন চালু থাকলে জিপিএস পরীক্ষা সহজ হয়।';
+      'সম্ভব হলে তারযুক্ত হেডফোন, একটি USB অডিও ডিভাইস ও চার্জার কাছে রাখুন। লোকেশন চালু থাকলে জিপিএস পরীক্ষা সহজ হয়।';
 
   @override
   String get done => 'সম্পন্ন';
@@ -1737,7 +1820,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get holdPhone => 'ফোনটি হাতে ধরে রাখুন';
 
   @override
-  String get holdToEar => 'ফোন কানে ধরুন, তারপর বাজান চাপুন';
+  String get holdToEar => 'ফোন কানে ধরুন, তারপর ‘শব্দ বাজান’ চাপুন';
 
   @override
   String get iAccelerometer => 'ফোন কাত করে বলটিকে চারটি কোণে নিয়ে যান।';
@@ -1877,8 +1960,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get nNfcOff => 'NFC বন্ধ';
 
   @override
-  String get nNoBiometrics =>
-      'ফিঙ্গারপ্রিন্ট বা মুখমণ্ডল শনাক্তকরণের হার্ডওয়্যার নেই';
+  String get nNoBiometrics => 'ফিঙ্গারপ্রিন্ট বা ফেস আনলক হার্ডওয়্যার নেই';
 
   @override
   String get nNoBluetooth => 'এই ফোনে ব্লুটুথ নেই';
@@ -1971,7 +2053,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get nVibrationOk => 'কম্পন অনুভূত হয়েছে';
 
   @override
-  String get nWifiOff => 'Wi-Fi বন্ধ';
+  String get nWifiOff => 'ওয়াই-ফাই বন্ধ';
 
   @override
   String get noChargerAtHand => 'হাতের কাছে চার্জার নেই';
@@ -2042,7 +2124,7 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get reportDisclaimer =>
-      'এই ফোনে SystemX দ্বারা প্রস্তুত। ইন্টারেক্টিভ পরীক্ষার ফলাফল পরীক্ষার সময় দেওয়া উত্তরের ওপর ভিত্তি করে।';
+      'এই ফোনে SystemX দ্বারা প্রস্তুত। যেসব পরীক্ষায় আপনার উত্তর প্রয়োজন, সেগুলোর ফলাফল পরীক্ষার সময় দেওয়া উত্তরের ওপর ভিত্তি করে।';
 
   @override
   String get reportGreat => 'আপনার ফোন চমৎকার অবস্থায় আছে';
@@ -2093,7 +2175,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get skippedByYou => 'বাদ দেওয়া হয়েছে';
 
   @override
-  String get speakAfterTap => 'রেকর্ড চাপুন, তারপর বলুন';
+  String get speakAfterTap => '‘৩ সেকেন্ড রেকর্ড করুন’ চাপুন, তারপর কথা বলুন';
 
   @override
   String get start => 'শুরু করুন';
@@ -2149,22 +2231,47 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String gpsSatellites(int seen, int used) {
-    return '$seenটি স্যাটেলাইট শনাক্ত · $usedটি ব্যবহৃত';
+    final intl.NumberFormat seenNumberFormat = intl.NumberFormat.decimalPattern(
+      localeName,
+    );
+    final String seenString = seenNumberFormat.format(seen);
+    final intl.NumberFormat usedNumberFormat = intl.NumberFormat.decimalPattern(
+      localeName,
+    );
+    final String usedString = usedNumberFormat.format(used);
+
+    return '$seenStringটি স্যাটেলাইট শনাক্ত · $usedStringটি ব্যবহৃত';
   }
 
   @override
   String maxTouches(int count) {
-    return 'একসাথে সর্বোচ্চ: $count';
+    final intl.NumberFormat countNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String countString = countNumberFormat.format(count);
+
+    return 'একসাথে সর্বোচ্চ: $countString';
   }
 
   @override
   String nAllZones(int total) {
-    return '$totalটি ঘরই সাড়া দেয়';
+    final intl.NumberFormat totalNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String totalString = totalNumberFormat.format(total);
+
+    return '$totalStringটি ঘরই সাড়া দেয়';
   }
 
   @override
   String nSomeZones(int hit, int total) {
-    return '$totalটির মধ্যে $hitটি ঘর সাড়া দিয়েছে';
+    final intl.NumberFormat hitNumberFormat = intl.NumberFormat.decimalPattern(
+      localeName,
+    );
+    final String hitString = hitNumberFormat.format(hit);
+    final intl.NumberFormat totalNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String totalString = totalNumberFormat.format(total);
+
+    return '$totalStringটির মধ্যে $hitStringটি ঘর সাড়া দিয়েছে';
   }
 
   @override
@@ -2174,17 +2281,35 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String nChargingPeak(String source, int peak) {
-    return 'পাওয়া গেছে · $source · সর্বোচ্চ $peak mA';
+    final intl.NumberFormat peakNumberFormat = intl.NumberFormat.decimalPattern(
+      localeName,
+    );
+    final String peakString = peakNumberFormat.format(peak);
+
+    return 'পাওয়া গেছে · $source · সর্বোচ্চ $peakString mA';
   }
 
   @override
   String nGpsFix(int used, int accuracy) {
-    return 'অবস্থান নির্ণীত · $usedটি স্যাটেলাইট · ±$accuracy মি';
+    final intl.NumberFormat usedNumberFormat = intl.NumberFormat.decimalPattern(
+      localeName,
+    );
+    final String usedString = usedNumberFormat.format(used);
+    final intl.NumberFormat accuracyNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String accuracyString = accuracyNumberFormat.format(accuracy);
+
+    return 'অবস্থান পাওয়া গেছে · $usedStringটি স্যাটেলাইট · ±$accuracyString মি';
   }
 
   @override
   String nGpsNoFix(int seen) {
-    return '$seenটি স্যাটেলাইট শনাক্ত হয়েছে, তবে এখনো অবস্থান নির্ণয় হয়নি। খোলা জায়গায় চেষ্টা করুন।';
+    final intl.NumberFormat seenNumberFormat = intl.NumberFormat.decimalPattern(
+      localeName,
+    );
+    final String seenString = seenNumberFormat.format(seen);
+
+    return '$seenStringটি স্যাটেলাইট শনাক্ত হয়েছে, তবে এখনো অবস্থান নির্ণয় হয়নি। খোলা জায়গায় চেষ্টা করুন।';
   }
 
   @override
@@ -2194,47 +2319,107 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String nLoopOk(int db) {
-    return 'শব্দ শোনা গেছে (+$db dB)';
+    final intl.NumberFormat dbNumberFormat = intl.NumberFormat.decimalPattern(
+      localeName,
+    );
+    final String dbString = dbNumberFormat.format(db);
+
+    return 'শব্দ শোনা গেছে (+$dbString dB)';
   }
 
   @override
   String nLuxRange(int min, int max) {
-    return '$min–$max lx';
+    final intl.NumberFormat minNumberFormat = intl.NumberFormat.decimalPattern(
+      localeName,
+    );
+    final String minString = minNumberFormat.format(min);
+    final intl.NumberFormat maxNumberFormat = intl.NumberFormat.decimalPattern(
+      localeName,
+    );
+    final String maxString = maxNumberFormat.format(max);
+
+    return '$minString–$maxString lx';
   }
 
   @override
   String nPeakLevel(int db) {
-    return 'সর্বোচ্চ $db dBFS';
+    final intl.NumberFormat dbNumberFormat = intl.NumberFormat.decimalPattern(
+      localeName,
+    );
+    final String dbString = dbNumberFormat.format(db);
+
+    return 'সর্বোচ্চ $dbString dBFS';
   }
 
   @override
   String nStorageSpeed(int write, int read) {
-    return 'লেখার গতি $write MB/s · পড়ার গতি $read MB/s';
+    final intl.NumberFormat writeNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String writeString = writeNumberFormat.format(write);
+    final intl.NumberFormat readNumberFormat = intl.NumberFormat.decimalPattern(
+      localeName,
+    );
+    final String readString = readNumberFormat.format(read);
+
+    return 'লেখার গতি $writeString MB/s · পড়ার গতি $readString MB/s';
   }
 
   @override
   String nTouches(int count) {
-    return 'একসাথে সর্বোচ্চ $countটি স্পর্শ';
+    final intl.NumberFormat countNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String countString = countNumberFormat.format(count);
+
+    return 'একসাথে সর্বোচ্চ $countStringটি স্পর্শ';
   }
 
   @override
   String passedOf(int passed, int total) {
-    return '$totalটির মধ্যে $passedটি উত্তীর্ণ';
+    final intl.NumberFormat passedNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String passedString = passedNumberFormat.format(passed);
+    final intl.NumberFormat totalNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String totalString = totalNumberFormat.format(total);
+
+    return '$totalStringটির মধ্যে $passedStringটি উত্তীর্ণ';
   }
 
   @override
   String progressOf(int done, int total) {
-    return '$totalটির মধ্যে $doneটি';
+    final intl.NumberFormat doneNumberFormat = intl.NumberFormat.decimalPattern(
+      localeName,
+    );
+    final String doneString = doneNumberFormat.format(done);
+    final intl.NumberFormat totalNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String totalString = totalNumberFormat.format(total);
+
+    return '$totalStringটির মধ্যে $doneStringটি';
   }
 
   @override
   String reportCounts(int passed, int failed, int skipped) {
-    return '$passedটি উত্তীর্ণ · $failedটি ব্যর্থ · $skippedটি বাদ';
+    final intl.NumberFormat passedNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String passedString = passedNumberFormat.format(passed);
+    final intl.NumberFormat failedNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String failedString = failedNumberFormat.format(failed);
+    final intl.NumberFormat skippedNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String skippedString = skippedNumberFormat.format(skipped);
+
+    return '$passedStringটি উত্তীর্ণ · $failedStringটি ব্যর্থ · $skippedStringটি বাদ';
   }
 
   @override
   String secondsElapsed(int seconds) {
-    return '$seconds সে.';
+    final intl.NumberFormat secondsNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String secondsString = secondsNumberFormat.format(seconds);
+
+    return '$secondsString সে.';
   }
 
   @override
@@ -2257,20 +2442,35 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String minutesAgo(int n) {
-    return '$n মিনিট আগে';
+    final intl.NumberFormat nNumberFormat = intl.NumberFormat.decimalPattern(
+      localeName,
+    );
+    final String nString = nNumberFormat.format(n);
+
+    return '$nString মিনিট আগে';
   }
 
   @override
   String hoursAgo(int n) {
-    return '$n ঘণ্টা আগে';
+    final intl.NumberFormat nNumberFormat = intl.NumberFormat.decimalPattern(
+      localeName,
+    );
+    final String nString = nNumberFormat.format(n);
+
+    return '$nString ঘণ্টা আগে';
   }
 
   @override
   String daysAgo(int n) {
+    final intl.NumberFormat nNumberFormat = intl.NumberFormat.decimalPattern(
+      localeName,
+    );
+    final String nString = nNumberFormat.format(n);
+
     String _temp0 = intl.Intl.pluralLogic(
       n,
       locale: localeName,
-      other: '$n দিন আগে',
+      other: '$nString দিন আগে',
       one: 'গতকাল',
     );
     return '$_temp0';
@@ -2278,7 +2478,14 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String lastCheckupLine(String ago, int passed, int total) {
-    return 'সর্বশেষ পরীক্ষা $ago · $totalটির মধ্যে $passedটি উত্তীর্ণ';
+    final intl.NumberFormat passedNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String passedString = passedNumberFormat.format(passed);
+    final intl.NumberFormat totalNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String totalString = totalNumberFormat.format(total);
+
+    return 'সর্বশেষ পরীক্ষা $ago · $totalStringটির মধ্যে $passedStringটি উত্তীর্ণ';
   }
 
   @override
@@ -2383,7 +2590,7 @@ class AppLocalizationsBn extends AppLocalizations {
       'ইতিহাস ব্যাকগ্রাউন্ডে সংগৃহীত হয়। এক ঘণ্টা পর আবার দেখুন।';
 
   @override
-  String get chargingSessions => 'চার্জিংয়ের বিবরণ';
+  String get chargingSessions => 'চার্জিংয়ের রেকর্ড';
 
   @override
   String get chargingSessionsSub => 'প্রতিটি চার্জের গতি ও তাপমাত্রা';
@@ -2397,11 +2604,11 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get clearHistorySub =>
-      'ব্যাটারির ইতিহাস, চার্জিংয়ের বিবরণ ও পরীক্ষার ফলাফল';
+      'ব্যাটারির ইতিহাস, চার্জিংয়ের রেকর্ড ও পরীক্ষার ফলাফল';
 
   @override
   String get clearHistoryConfirm =>
-      'এতে এই ফোন থেকে ব্যাটারির ইতিহাস, চার্জিংয়ের বিবরণ ও সকল পরীক্ষার ফলাফল মুছে যাবে। সেটিংস অপরিবর্তিত থাকবে।';
+      'এতে এই ফোন থেকে ব্যাটারির ইতিহাস, চার্জিংয়ের রেকর্ড ও সকল পরীক্ষার ফলাফল মুছে যাবে। সেটিংস অপরিবর্তিত থাকবে।';
 
   @override
   String get clear => 'মুছুন';
@@ -2411,12 +2618,20 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String chargeAlarmSub(int level) {
-    return 'ব্যাটারি $level% হলে জানানো হবে';
+    final intl.NumberFormat levelNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String levelString = levelNumberFormat.format(level);
+
+    return 'ব্যাটারি $levelString% হলে জানানো হবে';
   }
 
   @override
   String batteryLowSub(int level) {
-    return 'চার্জে না থাকলে $level%-এ জানানো হবে';
+    final intl.NumberFormat levelNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String levelString = levelNumberFormat.format(level);
+
+    return 'চার্জে না থাকলে $levelString%-এ জানানো হবে';
   }
 
   @override
@@ -2426,19 +2641,27 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String storageAlertSub(int percent) {
-    return 'স্টোরেজ $percent% পূর্ণ হলে জানানো হবে';
+    final intl.NumberFormat percentNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String percentString = percentNumberFormat.format(percent);
+
+    return 'স্টোরেজ $percentString% পূর্ণ হলে জানানো হবে';
   }
 
   @override
   String historyNote(int count) {
-    return '$countটি মান, ব্যাকগ্রাউন্ডে প্রতি ১৫ মিনিটে সংগৃহীত';
+    final intl.NumberFormat countNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String countString = countNumberFormat.format(count);
+
+    return '$countStringটি মান, ব্যাকগ্রাউন্ডে প্রতি ১৫ মিনিটে সংগৃহীত';
   }
 
   @override
-  String get wifiMeter => 'Wi-Fi সিগন্যাল মিটার';
+  String get wifiMeter => 'ওয়াই-ফাই সিগন্যাল মিটার';
 
   @override
-  String get wifiMeterOff => 'সিগন্যাল পরিমাপ করতে Wi-Fi-তে সংযুক্ত হন।';
+  String get wifiMeterOff => 'সিগন্যাল পরিমাপ করতে ওয়াই-ফাইয়ে সংযুক্ত হন।';
 
   @override
   String get wifiMeterHint =>
@@ -2449,7 +2672,11 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String healthScoreSpoken(int score, String word) {
-    return 'স্বাস্থ্য স্কোর ১০০-এর মধ্যে $score, $word';
+    final intl.NumberFormat scoreNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String scoreString = scoreNumberFormat.format(score);
+
+    return 'স্বাস্থ্য স্কোর ১০০-এর মধ্যে $scoreString, $word';
   }
 
   @override
@@ -2494,7 +2721,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get specOemSkin => 'নির্মাতার ইন্টারফেস';
 
   @override
-  String get specLaunchedWith => 'বাজারে আসার সময়ের সংস্করণ';
+  String get specLaunchedWith => 'বাজারে আসার সময়ের অ্যান্ড্রয়েড সংস্করণ';
 
   @override
   String get specHwRevision => 'হার্ডওয়্যার সংস্করণ';
@@ -2562,7 +2789,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get specSensorKinds => 'সেন্সরের ধরন';
 
   @override
-  String get specSensorWakeUp => 'জাগ্রতকারী সেন্সর';
+  String get specSensorWakeUp => 'ওয়েক-আপ সেন্সর';
 
   @override
   String get specSensorVendor => 'নির্মাতার নিজস্ব';
@@ -2593,10 +2820,14 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String appsCount(int count) {
+    final intl.NumberFormat countNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String countString = countNumberFormat.format(count);
+
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$countটি অ্যাপ',
+      other: '$countStringটি অ্যাপ',
     );
     return '$_temp0';
   }
@@ -2637,7 +2868,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get appsSortName => 'নাম';
 
   @override
-  String get appsSortRecent => 'হালনাগাদ';
+  String get appsSortRecent => 'সর্বশেষ আপডেট';
 
   @override
   String get appsShowSystem => 'সিস্টেম অ্যাপ';
@@ -2660,14 +2891,18 @@ class AppLocalizationsBn extends AppLocalizations {
   String get bhEntry => 'ব্যাটারির স্বাস্থ্য';
 
   @override
-  String get bhEntryBody => 'পরিমাপকৃত ধারণক্ষমতা ও ঘণ্টাপ্রতি খরচ';
+  String get bhEntryBody => 'পরিমাপকৃত ধারণক্ষমতা ও ঘণ্টাপ্রতি চার্জ ক্ষয়';
 
   @override
   String bhBasedOn(int count) {
+    final intl.NumberFormat countNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String countString = countNumberFormat.format(count);
+
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$countটি পরিমাপকৃত চার্জের ভিত্তিতে',
+      other: '$countStringটি পরিমাপকৃত চার্জের ভিত্তিতে',
     );
     return '$_temp0';
   }
@@ -2684,7 +2919,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get bhTrend => 'প্রতি চার্জে পরিমাপকৃত ধারণক্ষমতা';
 
   @override
-  String get bhDrain => 'ঘণ্টাপ্রতি খরচ (গত ৭ দিন)';
+  String get bhDrain => 'ঘণ্টাপ্রতি চার্জ ক্ষয় (গত ৭ দিন)';
 
   @override
   String get bhScreenOn => 'স্ক্রিন চালু';
@@ -2732,10 +2967,14 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String stMinutes(int count) {
+    final intl.NumberFormat countNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String countString = countNumberFormat.format(count);
+
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$count মিনিট',
+      other: '$countString মিনিট',
     );
     return '$_temp0';
   }
@@ -2755,11 +2994,15 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get stRefusedBattery =>
-      'ব্যাটারি ২০%-এর নিচে। চার্জার সংযুক্ত করুন অথবা আগে চার্জ দিন।';
+      'ব্যাটারি ২০%-এর নিচে। আগে চার্জ দিন অথবা চার্জার সংযুক্ত করুন।';
 
   @override
   String stRunning(int seconds) {
-    return 'চলছে · আর $seconds সেকেন্ড বাকি';
+    final intl.NumberFormat secondsNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String secondsString = secondsNumberFormat.format(seconds);
+
+    return 'চলছে · আর $secondsString সেকেন্ড বাকি';
   }
 
   @override
@@ -2825,18 +3068,22 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String stSeconds(int seconds) {
-    return '$seconds সেকেন্ড';
+    final intl.NumberFormat secondsNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String secondsString = secondsNumberFormat.format(seconds);
+
+    return '$secondsString সেকেন্ড';
   }
 
   @override
   String get rrTitle => 'রিফ্রেশ রেট পরীক্ষা';
 
   @override
-  String get rrEntryBody => 'স্ক্রিন প্রকৃতপক্ষে কতটা মসৃণভাবে হালনাগাদ হয়';
+  String get rrEntryBody => 'স্ক্রিন প্রকৃতপক্ষে কতটা মসৃণভাবে রিফ্রেশ হয়';
 
   @override
   String get rrIntro =>
-      'বারটি চলার সময় স্ক্রিন প্রতি সেকেন্ডে কতবার হালনাগাদ হয় তা গণনা করে। SystemX প্রথমে ডিসপ্লের সর্বোচ্চ গতির মোড চালু করার অনুরোধ করে।';
+      'বারটি চলার সময় স্ক্রিন প্রতি সেকেন্ডে কতবার রিফ্রেশ হয় তা গণনা করে। SystemX প্রথমে ডিসপ্লের সর্বোচ্চ গতির মোড চালু করার অনুরোধ করে।';
 
   @override
   String get rrStart => 'পরিমাপ করুন';
@@ -2920,7 +3167,7 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get upCleanBody =>
-      'সকল যাচাইয়ে উত্তীর্ণ। মূল্য পরিশোধের আগে ক্রেতার যাচাই-তালিকা সম্পূর্ণ করুন।';
+      'ফোনটি সকল যাচাইয়ে উত্তীর্ণ হয়েছে। মূল্য পরিশোধের আগে ক্রেতার যাচাই-তালিকা সম্পূর্ণ করুন।';
 
   @override
   String get upCheckFirst => 'কেনার আগে এগুলো যাচাই করুন';
@@ -2988,7 +3235,7 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get upKnoxBad =>
-      'চিহ্নিত (0x1): কোনো এক সময় অনানুষ্ঠানিক সফটওয়্যার ইনস্টল করা হয়েছিল। Samsung Pay ও Secure Folder কাজ করবে না।';
+      'বাতিল (0x1): কোনো এক সময় অনানুষ্ঠানিক সফটওয়্যার ইনস্টল করা হয়েছিল। Samsung Pay ও Secure Folder কাজ করবে না।';
 
   @override
   String get upHealthOk => 'ভালো';
@@ -2998,7 +3245,12 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String upCapacity(int pct) {
-    return 'মূল ধারণক্ষমতার প্রায় $pct%';
+    final intl.NumberFormat pctNumberFormat = intl.NumberFormat.decimalPattern(
+      localeName,
+    );
+    final String pctString = pctNumberFormat.format(pct);
+
+    return 'মূল ধারণক্ষমতার প্রায় $pctString%';
   }
 
   @override
@@ -3038,7 +3290,14 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String upChecksPassed(int passed, int total) {
-    return '$totalটির মধ্যে $passedটি যাচাইয়ে উত্তীর্ণ';
+    final intl.NumberFormat passedNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String passedString = passedNumberFormat.format(passed);
+    final intl.NumberFormat totalNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String totalString = totalNumberFormat.format(total);
+
+    return '$totalStringটির মধ্যে $passedStringটি যাচাইয়ে উত্তীর্ণ';
   }
 
   @override
@@ -3046,20 +3305,28 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String upIssues(int count) {
+    final intl.NumberFormat countNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String countString = countNumberFormat.format(count);
+
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$countটি সমস্যা',
+      other: '$countStringটি সমস্যা',
     );
     return '$_temp0';
   }
 
   @override
   String upToReview(int count) {
+    final intl.NumberFormat countNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String countString = countNumberFormat.format(count);
+
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$countটি পর্যালোচনা প্রয়োজন',
+      other: '$countStringটি বিষয় পর্যালোচনা প্রয়োজন',
     );
     return '$_temp0';
   }
@@ -3069,7 +3336,14 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String upHardwareDoneAt(String time, int passed, int total) {
-    return '$time-এ সম্পন্ন · $totalটির মধ্যে $passedটি উত্তীর্ণ';
+    final intl.NumberFormat passedNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String passedString = passedNumberFormat.format(passed);
+    final intl.NumberFormat totalNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String totalString = totalNumberFormat.format(total);
+
+    return '$time-এ সম্পন্ন · $totalStringটির মধ্যে $passedStringটি উত্তীর্ণ';
   }
 
   @override
@@ -3088,7 +3362,15 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String upChecklistProgress(int done, int total) {
-    return '$totalটির মধ্যে $doneটি নিশ্চিত';
+    final intl.NumberFormat doneNumberFormat = intl.NumberFormat.decimalPattern(
+      localeName,
+    );
+    final String doneString = doneNumberFormat.format(done);
+    final intl.NumberFormat totalNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String totalString = totalNumberFormat.format(total);
+
+    return '$totalStringটির মধ্যে $doneStringটি নিশ্চিত';
   }
 
   @override
@@ -3177,7 +3459,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get csInsights => 'চার্জিংয়ের অভ্যাস';
 
   @override
-  String get csInsightToFull => 'অধিকাংশ চার্জ ১০০% পর্যন্ত দেওয়া হয়';
+  String get csInsightToFull => 'অধিকাংশ সময় ১০০% পর্যন্ত চার্জ দেওয়া হয়';
 
   @override
   String get csInsightToFullBody =>
@@ -3188,7 +3470,7 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get csInsightDeepBody =>
-      'ব্যাটারি প্রায় শূন্যে নামানো ব্যাটারির জন্য ক্ষতিকর। ২০–৩০%-এর মধ্যে চার্জে দেওয়া অধিক উপযোগী।';
+      'চার্জ প্রায় শূন্যে নামিয়ে আনা ব্যাটারির জন্য বেশি ক্ষতিকর। ২০–৩০%-এর মধ্যে চার্জে দেওয়া ভালো।';
 
   @override
   String get csInsightHot => 'চার্জের সময় ব্যাটারি অতিরিক্ত গরম হয়েছিল';
@@ -3215,7 +3497,7 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get csChartLegend =>
-      'কোনো বারে ট্যাপ করে সেই চার্জের বিবরণ দেখুন। হলুদ: ব্যাটারি ৪২ °C ছুঁয়েছিল; লাল: ৪৫ °C বা তার বেশি।';
+      'কোনো বারে ট্যাপ করে সেই চার্জের বিবরণ দেখুন। কমলা-হলুদ: ব্যাটারি ৪২ °C ছুঁয়েছিল; লাল: ৪৫ °C বা তার বেশি।';
 
   @override
   String get csToday => 'আজ';
@@ -3278,7 +3560,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get onbLanguage => 'ভাষা';
 
   @override
-  String get onbAppearance => 'থিম';
+  String get onbAppearance => 'থিম ও রং';
 
   @override
   String get onbUsedTitle => 'আত্মবিশ্বাসের সাথে ব্যবহৃত ফোন কিনুন';
@@ -3338,7 +3620,14 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String bhCollectingCharges(int count, int needed) {
-    return 'তথ্য সংগ্রহ: $neededটির মধ্যে $countটি চার্জ';
+    final intl.NumberFormat countNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String countString = countNumberFormat.format(count);
+    final intl.NumberFormat neededNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String neededString = neededNumberFormat.format(needed);
+
+    return 'তথ্য সংগ্রহ: $neededStringটির মধ্যে $countStringটি চার্জ';
   }
 
   @override
@@ -3384,30 +3673,53 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String csPerHourLong(int pct) {
-    return 'ঘণ্টায় $pct%';
+    final intl.NumberFormat pctNumberFormat = intl.NumberFormat.decimalPattern(
+      localeName,
+    );
+    final String pctString = pctNumberFormat.format(pct);
+
+    return 'ঘণ্টায় $pctString%';
   }
 
   @override
   String csOfCount(int count, int total) {
-    return '$totalটির মধ্যে $countটি';
+    final intl.NumberFormat countNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String countString = countNumberFormat.format(count);
+    final intl.NumberFormat totalNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String totalString = totalNumberFormat.format(total);
+
+    return '$totalStringটির মধ্যে $countStringটি';
   }
 
   @override
   String csBasedOnValid(int count, int minutes) {
+    final intl.NumberFormat countNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String countString = countNumberFormat.format(count);
+    final intl.NumberFormat minutesNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String minutesString = minutesNumberFormat.format(minutes);
+
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$countটি চার্জের',
+      other: '$countStringটি চার্জের',
     );
-    return '$minutes মিনিট বা তার বেশি সময়ের $_temp0 ভিত্তিতে।';
+    return '$minutesString মিনিট বা তার বেশি সময়ের $_temp0 ভিত্তিতে।';
   }
 
   @override
   String csExcluded(int count) {
+    final intl.NumberFormat countNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String countString = countNumberFormat.format(count);
+
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$countটি স্বল্পস্থায়ী সংযোগ গণনায় নেওয়া হয়নি।',
+      other: '$countStringটি স্বল্পস্থায়ী সংযোগ গণনায় নেওয়া হয়নি।',
     );
     return '$_temp0';
   }
@@ -3418,10 +3730,14 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String csInsightHotBody(String temp, int count) {
+    final intl.NumberFormat countNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String countString = countNumberFormat.format(count);
+
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$countটি চার্জের সময়',
+      other: '$countStringটি চার্জের সময়',
     );
     return '$_temp0 তাপমাত্রা $temp পর্যন্ত উঠেছিল। চার্জের সময় ভারী ব্যবহার এড়িয়ে চলুন, কভার খুলে রাখুন এবং ফোন রোদ থেকে দূরে রাখুন। বারবার এমন হলে অন্য চার্জার ব্যবহার করে দেখুন।';
   }
@@ -3431,7 +3747,11 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String csInsightWarmBody(int count, String temp) {
-    return '$countটি চার্জে তাপমাত্রা ৪২ °C বা তার বেশি হয়েছিল (সর্বোচ্চ $temp)। দ্রুত চার্জিংয়ে অল্প সময়ের জন্য গরম হওয়া স্বাভাবিক; কভার ছাড়া চার্জ দেওয়া উপকারী।';
+    final intl.NumberFormat countNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String countString = countNumberFormat.format(count);
+
+    return '$countStringটি চার্জে তাপমাত্রা ৪২ °C বা তার বেশি হয়েছিল (সর্বোচ্চ $temp)। দ্রুত চার্জিংয়ে অল্প সময়ের জন্য গরম হওয়া স্বাভাবিক; কভার ছাড়া চার্জ দেওয়া উপকারী।';
   }
 
   @override
@@ -3440,12 +3760,25 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String csChartSub(int count) {
-    return 'সর্বশেষ $countটি চার্জ · ব্যাটারিতে যুক্ত শতাংশ';
+    final intl.NumberFormat countNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String countString = countNumberFormat.format(count);
+
+    return 'সর্বশেষ $countStringটি চার্জ · ব্যাটারিতে যুক্ত শতাংশ';
   }
 
   @override
   String csShort(int from, int to) {
-    return 'স্বল্পস্থায়ী সংযোগ ($from% → $to%), পরিমাপের জন্য যথেষ্ট নয়। সারাংশে গণনা করা হয়নি।';
+    final intl.NumberFormat fromNumberFormat = intl.NumberFormat.decimalPattern(
+      localeName,
+    );
+    final String fromString = fromNumberFormat.format(from);
+    final intl.NumberFormat toNumberFormat = intl.NumberFormat.decimalPattern(
+      localeName,
+    );
+    final String toString = toNumberFormat.format(to);
+
+    return 'স্বল্পস্থায়ী সংযোগ ($fromString% → $toString%), পরিমাপের জন্য যথেষ্ট নয়। সারাংশে গণনা করা হয়নি।';
   }
 
   @override
@@ -3469,7 +3802,12 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String bhEstimatedPct(int pct) {
-    return '$pct% (আনুমানিক)';
+    final intl.NumberFormat pctNumberFormat = intl.NumberFormat.decimalPattern(
+      localeName,
+    );
+    final String pctString = pctNumberFormat.format(pct);
+
+    return '$pctString% (আনুমানিক)';
   }
 
   @override
@@ -3481,17 +3819,36 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String stmHm(int h, int m) {
-    return '$h ঘণ্টা $m মিনিট';
+    final intl.NumberFormat hNumberFormat = intl.NumberFormat.decimalPattern(
+      localeName,
+    );
+    final String hString = hNumberFormat.format(h);
+    final intl.NumberFormat mNumberFormat = intl.NumberFormat.decimalPattern(
+      localeName,
+    );
+    final String mString = mNumberFormat.format(m);
+
+    return '$hString ঘণ্টা $mString মিনিট';
   }
 
   @override
   String stmH(int h) {
-    return '$h ঘণ্টা';
+    final intl.NumberFormat hNumberFormat = intl.NumberFormat.decimalPattern(
+      localeName,
+    );
+    final String hString = hNumberFormat.format(h);
+
+    return '$hString ঘণ্টা';
   }
 
   @override
   String stmM(int m) {
-    return '$m মিনিট';
+    final intl.NumberFormat mNumberFormat = intl.NumberFormat.decimalPattern(
+      localeName,
+    );
+    final String mString = mNumberFormat.format(m);
+
+    return '$mString মিনিট';
   }
 
   @override
@@ -3513,10 +3870,14 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String stmOpens(int count) {
+    final intl.NumberFormat countNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String countString = countNumberFormat.format(count);
+
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$count বার খোলা হয়েছে',
+      other: '$countString বার খোলা হয়েছে',
       zero: 'খোলা হয়নি',
     );
     return '$_temp0';
@@ -3529,7 +3890,11 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String stmShowAll(int count) {
-    return 'সব দেখুন ($count)';
+    final intl.NumberFormat countNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String countString = countNumberFormat.format(count);
+
+    return 'সব দেখুন ($countString)';
   }
 
   @override
@@ -3562,10 +3927,14 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String featureCount(int count) {
+    final intl.NumberFormat countNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String countString = countNumberFormat.format(count);
+
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$countটি বৈশিষ্ট্য',
+      other: '$countStringটি বৈশিষ্ট্য',
     );
     return '$_temp0';
   }
@@ -3580,6 +3949,19 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String durDhm(int d, int h, int m) {
-    return '$d দিন $h ঘণ্টা $m মিনিট';
+    final intl.NumberFormat dNumberFormat = intl.NumberFormat.decimalPattern(
+      localeName,
+    );
+    final String dString = dNumberFormat.format(d);
+    final intl.NumberFormat hNumberFormat = intl.NumberFormat.decimalPattern(
+      localeName,
+    );
+    final String hString = hNumberFormat.format(h);
+    final intl.NumberFormat mNumberFormat = intl.NumberFormat.decimalPattern(
+      localeName,
+    );
+    final String mString = mNumberFormat.format(m);
+
+    return '$dString দিন $hString ঘণ্টা $mString মিনিট';
   }
 }

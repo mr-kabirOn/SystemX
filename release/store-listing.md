@@ -55,7 +55,7 @@ ALERTS YOU CONTROL
 
 HONEST AND PRIVATE
 • Every value comes from the system. Estimates are labelled, and anything Android hides says so instead of showing a guess
-• No "RAM cleaner" or "battery booster" tricks
+• No fake speed-ups: only real measurements
 • Works without any permissions; each one is asked only when you open the feature that needs it
 • Dark, light and pure-black themes, Material You colors, English and Bangla
 
@@ -115,7 +115,7 @@ SystemX দেখায় আপনার অ্যান্ড্রয়ে�
 
 সৎ আর প্রাইভেট
 • প্রতিটি মান সিস্টেম থেকে আসে। অনুমান হলে তা লেখা থাকে, আর অ্যান্ড্রয়েড যা লুকায় তা অনুমান না করে সেটাই জানানো হয়
-• কোনো "RAM ক্লিনার" বা "ব্যাটারি বুস্টার" কৌশল নেই
+• কোনো কৃত্রিম গতিবৃদ্ধির দাবি নেই: শুধু প্রকৃত পরিমাপ
 • কোনো অনুমতি ছাড়াই চলে; প্রতিটি অনুমতি শুধু দরকারি ফিচার খুললে চাওয়া হয়
 • ডার্ক, লাইট আর পিওর-ব্ল্যাক থিম, Material You রং, ইংরেজি আর বাংলা
 

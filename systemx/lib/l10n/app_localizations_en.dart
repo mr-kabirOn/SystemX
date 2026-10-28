@@ -102,7 +102,11 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String headroom(int percent) {
-    return 'Headroom $percent%';
+    final intl.NumberFormat percentNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String percentString = percentNumberFormat.format(percent);
+
+    return 'Headroom $percentString%';
   }
 
   @override
@@ -221,7 +225,14 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String checkupMeta(int count, int minutes) {
-    return '$count tests · about $minutes minutes';
+    final intl.NumberFormat countNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String countString = countNumberFormat.format(count);
+    final intl.NumberFormat minutesNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String minutesString = minutesNumberFormat.format(minutes);
+
+    return '$countString tests · about $minutesString minutes';
   }
 
   @override
@@ -354,7 +365,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get secLive => 'Live data';
 
   @override
-  String get refreshRate => 'Refresh rate';
+  String get refreshRate => 'Update interval';
 
   @override
   String seconds(String value) {
@@ -769,7 +780,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get cycleHint => 'Reported by the battery';
 
   @override
-  String get specChargeCounter => 'Charge left';
+  String get specChargeCounter => 'Charge counter';
 
   @override
   String get specEstCapacity => 'Estimated full capacity';
@@ -1056,7 +1067,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get specFlash => 'Flash';
 
   @override
-  String get specMaxVideo => 'Best video';
+  String get specMaxVideo => 'Maximum video resolution';
 
   @override
   String get specRaw => 'RAW photos';
@@ -1173,17 +1184,21 @@ class AppLocalizationsEn extends AppLocalizations {
   String get specUsbDebugging => 'USB debugging';
 
   @override
-  String get adbHint => 'Turn off when you are not developing';
+  String get adbHint => 'Turn off when you are not developing apps';
 
   @override
   String get specVerifiedBoot => 'Verified boot';
 
   @override
   String monthsOld(int months) {
+    final intl.NumberFormat monthsNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String monthsString = monthsNumberFormat.format(months);
+
     String _temp0 = intl.Intl.pluralLogic(
       months,
       locale: localeName,
-      other: '$months months old',
+      other: '$monthsString months old',
       one: '1 month old',
       zero: 'This month',
     );
@@ -1192,7 +1207,11 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String coreN(int index) {
-    return 'Core $index';
+    final intl.NumberFormat indexNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String indexString = indexNumberFormat.format(index);
+
+    return 'Core $indexString';
   }
 
   @override
@@ -1202,25 +1221,42 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String channelN(int channel) {
-    return 'channel $channel';
+    final intl.NumberFormat channelNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String channelString = channelNumberFormat.format(channel);
+
+    return 'channel $channelString';
   }
 
   @override
   String signalBars(int level) {
-    return '$level of 4 bars';
+    final intl.NumberFormat levelNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String levelString = levelNumberFormat.format(level);
+
+    return '$levelString of 4 bars';
   }
 
   @override
   String simN(int slot) {
-    return 'SIM $slot';
+    final intl.NumberFormat slotNumberFormat = intl.NumberFormat.decimalPattern(
+      localeName,
+    );
+    final String slotString = slotNumberFormat.format(slot);
+
+    return 'SIM $slotString';
   }
 
   @override
   String sensorCount(int count) {
+    final intl.NumberFormat countNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String countString = countNumberFormat.format(count);
+
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$count sensors',
+      other: '$countString sensors',
       one: '1 sensor',
     );
     return '$_temp0';
@@ -1228,10 +1264,14 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String coresCount(int count) {
+    final intl.NumberFormat countNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String countString = countNumberFormat.format(count);
+
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$count cores',
+      other: '$countString cores',
       one: '1 core',
     );
     return '$_temp0';
@@ -1239,10 +1279,14 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String cyclesCount(int count) {
+    final intl.NumberFormat countNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String countString = countNumberFormat.format(count);
+
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$count cycles',
+      other: '$countString cycles',
       one: '1 cycle',
     );
     return '$_temp0';
@@ -1250,10 +1294,14 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String slotsCount(int count) {
+    final intl.NumberFormat countNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String countString = countNumberFormat.format(count);
+
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$count slots',
+      other: '$countString slots',
       one: '1 slot',
     );
     return '$_temp0';
@@ -1261,10 +1309,14 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String camerasCount(int count) {
+    final intl.NumberFormat countNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String countString = countNumberFormat.format(count);
+
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$count cameras',
+      other: '$countString cameras',
       one: '1 camera',
     );
     return '$_temp0';
@@ -1277,10 +1329,14 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String codecsCount(int count) {
+    final intl.NumberFormat countNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String countString = countNumberFormat.format(count);
+
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$count codecs',
+      other: '$countString codecs',
       one: '1 codec',
     );
     return '$_temp0';
@@ -1288,12 +1344,23 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String checksPassed(int passed, int total) {
-    return '$passed of $total checks passed';
+    final intl.NumberFormat passedNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String passedString = passedNumberFormat.format(passed);
+    final intl.NumberFormat totalNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String totalString = totalNumberFormat.format(total);
+
+    return '$passedString of $totalString checks passed';
   }
 
   @override
   String secAllFeatures(int count) {
-    return 'All system features ($count)';
+    final intl.NumberFormat countNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String countString = countNumberFormat.format(count);
+
+    return 'All system features ($countString)';
   }
 
   @override
@@ -1546,7 +1613,11 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String weightN(int weight) {
-    return 'weight $weight';
+    final intl.NumberFormat weightNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String weightString = weightNumberFormat.format(weight);
+
+    return 'weight $weightString';
   }
 
   @override
@@ -1556,17 +1627,29 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String tipStorageLow(int percent) {
-    return 'Storage is $percent% full. Free up space to keep apps fast.';
+    final intl.NumberFormat percentNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String percentString = percentNumberFormat.format(percent);
+
+    return 'Storage is $percentString% full. Free up space to keep apps fast.';
   }
 
   @override
   String tipPatchOld(int months) {
-    return 'Security patch is $months months old. Check for a system update.';
+    final intl.NumberFormat monthsNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String monthsString = monthsNumberFormat.format(months);
+
+    return 'Security patch is $monthsString months old. Check for a system update.';
   }
 
   @override
   String tipUnplug(int level) {
-    return 'Charged to $level%. Unplugging around 80% slows battery wear.';
+    final intl.NumberFormat levelNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String levelString = levelNumberFormat.format(level);
+
+    return 'Charged to $levelString%. Unplugging around 80% slows battery wear.';
   }
 
   @override
@@ -1581,7 +1664,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get permMicReason =>
-      'SystemX records a few seconds only during the microphone tests, plays it back once, then discards it. Nothing is saved or uploaded.';
+      'SystemX records a few seconds only during the microphone test, plays it back once, then discards it. Nothing is saved or uploaded.';
 
   @override
   String get tDeadPixels => 'Dead pixels';
@@ -1739,7 +1822,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get holdPhone => 'Hold the phone in your hand';
 
   @override
-  String get holdToEar => 'Hold the phone to your ear, then tap Play';
+  String get holdToEar => 'Hold the phone to your ear, then tap Play tone';
 
   @override
   String get iAccelerometer =>
@@ -1818,7 +1901,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get iVolumeUp => 'Press the volume up button.';
 
   @override
-  String get itDoesntWork => 'It doesn\'t recognise me';
+  String get itDoesntWork => 'It doesn\'t recognize me';
 
   @override
   String get keepGoing => 'Keep going';
@@ -1926,7 +2009,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get nNoneEnrolled => 'No fingerprint or face is set up';
 
   @override
-  String get nNotRecognised => 'Not recognised';
+  String get nNotRecognised => 'Not recognized';
 
   @override
   String get nOnNotConnected => 'On, not connected';
@@ -1941,7 +2024,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get nPhotoOk => 'Preview and photo work';
 
   @override
-  String get nRecognised => 'Recognised';
+  String get nRecognised => 'Recognized';
 
   @override
   String get nSensorNoResponse => 'The sensor didn\'t respond';
@@ -2097,7 +2180,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get skippedByYou => 'Skipped';
 
   @override
-  String get speakAfterTap => 'Tap Record, then speak';
+  String get speakAfterTap => 'Tap Record 3 seconds, then speak';
 
   @override
   String get start => 'Start';
@@ -2152,22 +2235,47 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String gpsSatellites(int seen, int used) {
-    return '$seen satellites seen · $used in use';
+    final intl.NumberFormat seenNumberFormat = intl.NumberFormat.decimalPattern(
+      localeName,
+    );
+    final String seenString = seenNumberFormat.format(seen);
+    final intl.NumberFormat usedNumberFormat = intl.NumberFormat.decimalPattern(
+      localeName,
+    );
+    final String usedString = usedNumberFormat.format(used);
+
+    return '$seenString satellites seen · $usedString in use';
   }
 
   @override
   String maxTouches(int count) {
-    return 'Most at once: $count';
+    final intl.NumberFormat countNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String countString = countNumberFormat.format(count);
+
+    return 'Most at once: $countString';
   }
 
   @override
   String nAllZones(int total) {
-    return 'All $total zones respond';
+    final intl.NumberFormat totalNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String totalString = totalNumberFormat.format(total);
+
+    return 'All $totalString zones respond';
   }
 
   @override
   String nSomeZones(int hit, int total) {
-    return '$hit of $total zones responded';
+    final intl.NumberFormat hitNumberFormat = intl.NumberFormat.decimalPattern(
+      localeName,
+    );
+    final String hitString = hitNumberFormat.format(hit);
+    final intl.NumberFormat totalNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String totalString = totalNumberFormat.format(total);
+
+    return '$hitString of $totalString zones responded';
   }
 
   @override
@@ -2177,17 +2285,35 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String nChargingPeak(String source, int peak) {
-    return 'Detected · $source · $peak mA peak';
+    final intl.NumberFormat peakNumberFormat = intl.NumberFormat.decimalPattern(
+      localeName,
+    );
+    final String peakString = peakNumberFormat.format(peak);
+
+    return 'Detected · $source · $peakString mA peak';
   }
 
   @override
   String nGpsFix(int used, int accuracy) {
-    return 'Fix · $used satellites · ±$accuracy m';
+    final intl.NumberFormat usedNumberFormat = intl.NumberFormat.decimalPattern(
+      localeName,
+    );
+    final String usedString = usedNumberFormat.format(used);
+    final intl.NumberFormat accuracyNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String accuracyString = accuracyNumberFormat.format(accuracy);
+
+    return 'Location found · $usedString satellites · ±$accuracyString m';
   }
 
   @override
   String nGpsNoFix(int seen) {
-    return '$seen satellites seen, no fix yet. Try outdoors.';
+    final intl.NumberFormat seenNumberFormat = intl.NumberFormat.decimalPattern(
+      localeName,
+    );
+    final String seenString = seenNumberFormat.format(seen);
+
+    return '$seenString satellites seen, no fix yet. Try outdoors.';
   }
 
   @override
@@ -2197,47 +2323,107 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String nLoopOk(int db) {
-    return 'Tone heard (+$db dB)';
+    final intl.NumberFormat dbNumberFormat = intl.NumberFormat.decimalPattern(
+      localeName,
+    );
+    final String dbString = dbNumberFormat.format(db);
+
+    return 'Tone heard (+$dbString dB)';
   }
 
   @override
   String nLuxRange(int min, int max) {
-    return '$min–$max lx';
+    final intl.NumberFormat minNumberFormat = intl.NumberFormat.decimalPattern(
+      localeName,
+    );
+    final String minString = minNumberFormat.format(min);
+    final intl.NumberFormat maxNumberFormat = intl.NumberFormat.decimalPattern(
+      localeName,
+    );
+    final String maxString = maxNumberFormat.format(max);
+
+    return '$minString–$maxString lx';
   }
 
   @override
   String nPeakLevel(int db) {
-    return 'Peak $db dBFS';
+    final intl.NumberFormat dbNumberFormat = intl.NumberFormat.decimalPattern(
+      localeName,
+    );
+    final String dbString = dbNumberFormat.format(db);
+
+    return 'Peak $dbString dBFS';
   }
 
   @override
   String nStorageSpeed(int write, int read) {
-    return 'Write $write MB/s · read $read MB/s';
+    final intl.NumberFormat writeNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String writeString = writeNumberFormat.format(write);
+    final intl.NumberFormat readNumberFormat = intl.NumberFormat.decimalPattern(
+      localeName,
+    );
+    final String readString = readNumberFormat.format(read);
+
+    return 'Write $writeString MB/s · read $readString MB/s';
   }
 
   @override
   String nTouches(int count) {
-    return 'Up to $count touches at once';
+    final intl.NumberFormat countNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String countString = countNumberFormat.format(count);
+
+    return 'Up to $countString touches at once';
   }
 
   @override
   String passedOf(int passed, int total) {
-    return '$passed of $total passed';
+    final intl.NumberFormat passedNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String passedString = passedNumberFormat.format(passed);
+    final intl.NumberFormat totalNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String totalString = totalNumberFormat.format(total);
+
+    return '$passedString of $totalString passed';
   }
 
   @override
   String progressOf(int done, int total) {
-    return '$done of $total';
+    final intl.NumberFormat doneNumberFormat = intl.NumberFormat.decimalPattern(
+      localeName,
+    );
+    final String doneString = doneNumberFormat.format(done);
+    final intl.NumberFormat totalNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String totalString = totalNumberFormat.format(total);
+
+    return '$doneString of $totalString';
   }
 
   @override
   String reportCounts(int passed, int failed, int skipped) {
-    return '$passed passed · $failed failed · $skipped skipped';
+    final intl.NumberFormat passedNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String passedString = passedNumberFormat.format(passed);
+    final intl.NumberFormat failedNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String failedString = failedNumberFormat.format(failed);
+    final intl.NumberFormat skippedNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String skippedString = skippedNumberFormat.format(skipped);
+
+    return '$passedString passed · $failedString failed · $skippedString skipped';
   }
 
   @override
   String secondsElapsed(int seconds) {
-    return '$seconds s';
+    final intl.NumberFormat secondsNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String secondsString = secondsNumberFormat.format(seconds);
+
+    return '$secondsString s';
   }
 
   @override
@@ -2260,20 +2446,35 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String minutesAgo(int n) {
-    return '$n min ago';
+    final intl.NumberFormat nNumberFormat = intl.NumberFormat.decimalPattern(
+      localeName,
+    );
+    final String nString = nNumberFormat.format(n);
+
+    return '$nString min ago';
   }
 
   @override
   String hoursAgo(int n) {
-    return '$n h ago';
+    final intl.NumberFormat nNumberFormat = intl.NumberFormat.decimalPattern(
+      localeName,
+    );
+    final String nString = nNumberFormat.format(n);
+
+    return '$nString h ago';
   }
 
   @override
   String daysAgo(int n) {
+    final intl.NumberFormat nNumberFormat = intl.NumberFormat.decimalPattern(
+      localeName,
+    );
+    final String nString = nNumberFormat.format(n);
+
     String _temp0 = intl.Intl.pluralLogic(
       n,
       locale: localeName,
-      other: '$n days ago',
+      other: '$nString days ago',
       one: 'yesterday',
     );
     return '$_temp0';
@@ -2281,7 +2482,14 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String lastCheckupLine(String ago, int passed, int total) {
-    return 'Last checkup $ago · $passed of $total passed';
+    final intl.NumberFormat passedNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String passedString = passedNumberFormat.format(passed);
+    final intl.NumberFormat totalNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String totalString = totalNumberFormat.format(total);
+
+    return 'Last checkup $ago · $passedString of $totalString passed';
   }
 
   @override
@@ -2415,12 +2623,20 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String chargeAlarmSub(int level) {
-    return 'Notify when the battery reaches $level%';
+    final intl.NumberFormat levelNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String levelString = levelNumberFormat.format(level);
+
+    return 'Notify when the battery reaches $levelString%';
   }
 
   @override
   String batteryLowSub(int level) {
-    return 'Notify at $level% when not charging';
+    final intl.NumberFormat levelNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String levelString = levelNumberFormat.format(level);
+
+    return 'Notify at $levelString% when not charging';
   }
 
   @override
@@ -2430,12 +2646,20 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String storageAlertSub(int percent) {
-    return 'Notify when storage is $percent% full';
+    final intl.NumberFormat percentNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String percentString = percentNumberFormat.format(percent);
+
+    return 'Notify when storage is $percentString% full';
   }
 
   @override
   String historyNote(int count) {
-    return '$count readings, taken every 15 minutes in the background';
+    final intl.NumberFormat countNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String countString = countNumberFormat.format(count);
+
+    return '$countString readings, taken every 15 minutes in the background';
   }
 
   @override
@@ -2453,7 +2677,11 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String healthScoreSpoken(int score, String word) {
-    return 'Health score $score of 100, $word';
+    final intl.NumberFormat scoreNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String scoreString = scoreNumberFormat.format(score);
+
+    return 'Health score $scoreString of 100, $word';
   }
 
   @override
@@ -2597,10 +2825,14 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String appsCount(int count) {
+    final intl.NumberFormat countNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String countString = countNumberFormat.format(count);
+
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$count apps',
+      other: '$countString apps',
       one: '1 app',
     );
     return '$_temp0';
@@ -2669,10 +2901,14 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String bhBasedOn(int count) {
+    final intl.NumberFormat countNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String countString = countNumberFormat.format(count);
+
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: 'Based on $count measured charges',
+      other: 'Based on $countString measured charges',
       one: 'Based on 1 measured charge',
     );
     return '$_temp0';
@@ -2713,7 +2949,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get bhDrainNote =>
-      'Estimates from SystemX\'s background readings, not a prediction of remaining battery life. They become more reliable after 3+ hours of each; with Live status on, readings are more frequent.';
+      'Estimates from SystemX\'s background readings, not a prediction of remaining battery life. They become more reliable after 3+ hours of each; with live status on, readings are more frequent.';
 
   @override
   String get bhHow =>
@@ -2738,10 +2974,14 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String stMinutes(int count) {
+    final intl.NumberFormat countNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String countString = countNumberFormat.format(count);
+
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$count minutes',
+      other: '$countString minutes',
       one: '1 minute',
     );
     return '$_temp0';
@@ -2762,11 +3002,15 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get stRefusedBattery =>
-      'Battery is below 20%. Plug in the charger or charge first.';
+      'Battery is below 20%. Charge it first, or plug in the charger.';
 
   @override
   String stRunning(int seconds) {
-    return 'Running · $seconds s left';
+    final intl.NumberFormat secondsNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String secondsString = secondsNumberFormat.format(seconds);
+
+    return 'Running · $secondsString s left';
   }
 
   @override
@@ -2832,7 +3076,11 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String stSeconds(int seconds) {
-    return '$seconds s';
+    final intl.NumberFormat secondsNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String secondsString = secondsNumberFormat.format(seconds);
+
+    return '$secondsString s';
   }
 
   @override
@@ -2886,7 +3134,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get trNote =>
-      'This is the rate apps receive touch positions. The \"touch sampling rate\" in phone adverts can be higher, as some of it is used inside Android.';
+      'This is the rate apps receive touch positions. The \"touch sampling rate\" in phone ads can be higher, as some of it is used inside Android.';
 
   @override
   String get upTitle => 'Used phone check';
@@ -2996,7 +3244,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get upKnoxBad =>
-      'Tripped (0x1): unofficial software was installed at some point. Samsung Pay and Secure Folder won\'t work.';
+      'Void (0x1): unofficial software was installed at some point. Samsung Pay and Secure Folder won\'t work.';
 
   @override
   String get upHealthOk => 'Good';
@@ -3006,7 +3254,12 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String upCapacity(int pct) {
-    return 'About $pct% of the original capacity';
+    final intl.NumberFormat pctNumberFormat = intl.NumberFormat.decimalPattern(
+      localeName,
+    );
+    final String pctString = pctNumberFormat.format(pct);
+
+    return 'About $pctString% of the original capacity';
   }
 
   @override
@@ -3046,7 +3299,14 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String upChecksPassed(int passed, int total) {
-    return '$passed of $total checks passed';
+    final intl.NumberFormat passedNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String passedString = passedNumberFormat.format(passed);
+    final intl.NumberFormat totalNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String totalString = totalNumberFormat.format(total);
+
+    return '$passedString of $totalString checks passed';
   }
 
   @override
@@ -3054,10 +3314,14 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String upIssues(int count) {
+    final intl.NumberFormat countNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String countString = countNumberFormat.format(count);
+
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$count issues',
+      other: '$countString issues',
       one: '1 issue',
     );
     return '$_temp0';
@@ -3065,10 +3329,14 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String upToReview(int count) {
+    final intl.NumberFormat countNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String countString = countNumberFormat.format(count);
+
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$count to review',
+      other: '$countString to review',
       one: '1 to review',
     );
     return '$_temp0';
@@ -3079,7 +3347,14 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String upHardwareDoneAt(String time, int passed, int total) {
-    return 'Completed at $time · $passed of $total passed';
+    final intl.NumberFormat passedNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String passedString = passedNumberFormat.format(passed);
+    final intl.NumberFormat totalNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String totalString = totalNumberFormat.format(total);
+
+    return 'Completed at $time · $passedString of $totalString passed';
   }
 
   @override
@@ -3098,7 +3373,15 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String upChecklistProgress(int done, int total) {
-    return '$done of $total confirmed';
+    final intl.NumberFormat doneNumberFormat = intl.NumberFormat.decimalPattern(
+      localeName,
+    );
+    final String doneString = doneNumberFormat.format(done);
+    final intl.NumberFormat totalNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String totalString = totalNumberFormat.format(total);
+
+    return '$doneString of $totalString confirmed';
   }
 
   @override
@@ -3348,7 +3631,14 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String bhCollectingCharges(int count, int needed) {
-    return 'Collecting: $count of $needed charges';
+    final intl.NumberFormat countNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String countString = countNumberFormat.format(count);
+    final intl.NumberFormat neededNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String neededString = neededNumberFormat.format(needed);
+
+    return 'Collecting: $countString of $neededString charges';
   }
 
   @override
@@ -3394,31 +3684,54 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String csPerHourLong(int pct) {
-    return '$pct% per hour';
+    final intl.NumberFormat pctNumberFormat = intl.NumberFormat.decimalPattern(
+      localeName,
+    );
+    final String pctString = pctNumberFormat.format(pct);
+
+    return '$pctString% per hour';
   }
 
   @override
   String csOfCount(int count, int total) {
-    return '$count of $total';
+    final intl.NumberFormat countNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String countString = countNumberFormat.format(count);
+    final intl.NumberFormat totalNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String totalString = totalNumberFormat.format(total);
+
+    return '$countString of $totalString';
   }
 
   @override
   String csBasedOnValid(int count, int minutes) {
+    final intl.NumberFormat countNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String countString = countNumberFormat.format(count);
+    final intl.NumberFormat minutesNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String minutesString = minutesNumberFormat.format(minutes);
+
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$count charges',
+      other: '$countString charges',
       one: '1 charge',
     );
-    return 'Based on $_temp0 of $minutes minutes or longer.';
+    return 'Based on $_temp0 of $minutesString minutes or longer.';
   }
 
   @override
   String csExcluded(int count) {
+    final intl.NumberFormat countNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String countString = countNumberFormat.format(count);
+
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$count shorter connections aren\'t counted.',
+      other: '$countString shorter connections aren\'t counted.',
       one: '1 shorter connection isn\'t counted.',
     );
     return '$_temp0';
@@ -3430,10 +3743,14 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String csInsightHotBody(String temp, int count) {
+    final intl.NumberFormat countNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String countString = countNumberFormat.format(count);
+
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$count charges',
+      other: '$countString charges',
       one: '1 charge',
     );
     return 'It reached $temp during $_temp0. Stop heavy use while charging, remove the case, and keep the phone out of the sun. If it keeps happening, try another charger.';
@@ -3444,7 +3761,17 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String csInsightWarmBody(int count, String temp) {
-    return '$count charges reached 42 °C or more (highest $temp). A brief warm peak is normal with fast charging; charging without a case helps.';
+    final intl.NumberFormat countNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String countString = countNumberFormat.format(count);
+
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$countString charges reached 42 °C or more (highest $temp).',
+      one: '1 charge reached 42 °C or more (highest $temp).',
+    );
+    return '$_temp0 A brief warm peak is normal with fast charging; charging without a case helps.';
   }
 
   @override
@@ -3453,12 +3780,25 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String csChartSub(int count) {
-    return 'Last $count charges · percent of battery gained';
+    final intl.NumberFormat countNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String countString = countNumberFormat.format(count);
+
+    return 'Last $countString charges · percent of battery gained';
   }
 
   @override
   String csShort(int from, int to) {
-    return 'Short connection ($from% → $to%), too short to measure. Not counted in the summary.';
+    final intl.NumberFormat fromNumberFormat = intl.NumberFormat.decimalPattern(
+      localeName,
+    );
+    final String fromString = fromNumberFormat.format(from);
+    final intl.NumberFormat toNumberFormat = intl.NumberFormat.decimalPattern(
+      localeName,
+    );
+    final String toString = toNumberFormat.format(to);
+
+    return 'Short connection ($fromString% → $toString%), too short to measure. Not counted in the summary.';
   }
 
   @override
@@ -3482,7 +3822,12 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String bhEstimatedPct(int pct) {
-    return '$pct% (estimated)';
+    final intl.NumberFormat pctNumberFormat = intl.NumberFormat.decimalPattern(
+      localeName,
+    );
+    final String pctString = pctNumberFormat.format(pct);
+
+    return '$pctString% (estimated)';
   }
 
   @override
@@ -3493,17 +3838,36 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String stmHm(int h, int m) {
-    return '$h h $m min';
+    final intl.NumberFormat hNumberFormat = intl.NumberFormat.decimalPattern(
+      localeName,
+    );
+    final String hString = hNumberFormat.format(h);
+    final intl.NumberFormat mNumberFormat = intl.NumberFormat.decimalPattern(
+      localeName,
+    );
+    final String mString = mNumberFormat.format(m);
+
+    return '$hString h $mString min';
   }
 
   @override
   String stmH(int h) {
-    return '$h h';
+    final intl.NumberFormat hNumberFormat = intl.NumberFormat.decimalPattern(
+      localeName,
+    );
+    final String hString = hNumberFormat.format(h);
+
+    return '$hString h';
   }
 
   @override
   String stmM(int m) {
-    return '$m min';
+    final intl.NumberFormat mNumberFormat = intl.NumberFormat.decimalPattern(
+      localeName,
+    );
+    final String mString = mNumberFormat.format(m);
+
+    return '$mString min';
   }
 
   @override
@@ -3525,10 +3889,14 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String stmOpens(int count) {
+    final intl.NumberFormat countNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String countString = countNumberFormat.format(count);
+
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: 'Opened $count times',
+      other: 'Opened $countString times',
       one: 'Opened once',
       zero: 'Not opened',
     );
@@ -3542,7 +3910,11 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String stmShowAll(int count) {
-    return 'Show all ($count)';
+    final intl.NumberFormat countNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String countString = countNumberFormat.format(count);
+
+    return 'Show all ($countString)';
   }
 
   @override
@@ -3564,7 +3936,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get stmNoBattery =>
-      'Battery estimates need SystemX\'s battery history. Turn on Live status or any battery alert to start recording it.';
+      'Battery estimates need SystemX\'s battery history. Turn on live status or any battery alert to start recording it.';
 
   @override
   String get stmTimeNote =>
@@ -3575,10 +3947,14 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String featureCount(int count) {
+    final intl.NumberFormat countNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String countString = countNumberFormat.format(count);
+
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$count features',
+      other: '$countString features',
       one: '1 feature',
     );
     return '$_temp0';
@@ -3594,6 +3970,19 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String durDhm(int d, int h, int m) {
-    return '$d d $h h $m min';
+    final intl.NumberFormat dNumberFormat = intl.NumberFormat.decimalPattern(
+      localeName,
+    );
+    final String dString = dNumberFormat.format(d);
+    final intl.NumberFormat hNumberFormat = intl.NumberFormat.decimalPattern(
+      localeName,
+    );
+    final String hString = hNumberFormat.format(h);
+    final intl.NumberFormat mNumberFormat = intl.NumberFormat.decimalPattern(
+      localeName,
+    );
+    final String mString = mNumberFormat.format(m);
+
+    return '$dString d $hString h $mString min';
   }
 }

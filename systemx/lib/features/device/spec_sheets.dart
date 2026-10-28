@@ -952,7 +952,7 @@ class SpecBuilder {
       _add(label, value);
     }
 
-    _section('Bluetooth');
+    _section(l.testBluetooth);
     _add('LE Audio', _supported(f.leAudio));
     _add(l.featLe2m, _supported(f.le2mPhy));
     _add(l.featLeCoded, _supported(f.leCodedPhy));
