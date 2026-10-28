@@ -217,6 +217,10 @@ void main() {
         tester, '28_device_sensors', Routes.category(DeviceCategory.sensors));
     await _shoot(tester, '29_battery_health', Routes.batteryHealth, background: _manyCharges());
     await _shoot(tester, '30_screen_time', Routes.screenTime, usage: true);
+    const tall = Size(1080, 4400);
+    await _shoot(tester, '31_processor_full', Routes.category(DeviceCategory.processor), size: tall);
+    await _shoot(tester, '32_system_full', Routes.category(DeviceCategory.system), size: tall);
+    await _shoot(tester, '33_graphics', Routes.category(DeviceCategory.gpu));
     await _shoot(tester, '30b_screen_time_light', Routes.screenTime, usage: true, theme: ThemeMode.light);
     await _shoot(tester, '30c_screen_time_no_access', Routes.screenTime);
     await _shoot(tester, 'bn/screen_time', Routes.screenTime, usage: true, locale: 'bn');

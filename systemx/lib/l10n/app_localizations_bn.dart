@@ -3559,4 +3559,19 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get stmUnlocksLabel => 'আনলকের সংখ্যা';
+
+  @override
+  String featureCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$countটি বৈশিষ্ট্য',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String builtOn(String date) {
+    return 'তৈরির তারিখ $date';
+  }
 }

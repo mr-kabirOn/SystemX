@@ -46,10 +46,15 @@ class Spec {
     this.tone = SpecTone.neutral,
     this.action,
     this.available = true,
+    this.items,
   });
 
   final String label;
   final String value;
+
+  /// Separate entries shown as chips (ABIs, CPU features); [value] then
+  /// holds them joined, for copying, sharing and search.
+  final List<String>? items;
   final String? hint;
   final SpecTone tone;
   final SpecAction? action;

@@ -171,6 +171,10 @@ class StatTile extends StatelessWidget {
 
 /// Key / value row for spec lists. Long-press copies the value. An optional
 /// [statusIcon] repeats the value's status so it isn't shown by color alone.
+///
+/// Short values sit on the right of the label. Long values (build strings,
+/// kernel versions) go full width under the label, and [items] show as
+/// chips, so nothing wraps into a narrow ragged column.
 class InfoRow extends StatelessWidget {
   const InfoRow({
     super.key,
@@ -180,6 +184,7 @@ class InfoRow extends StatelessWidget {
     this.valueColor,
     this.statusIcon,
     this.onTap,
+    this.items,
   });
 
   final String label;
@@ -188,11 +193,113 @@ class InfoRow extends StatelessWidget {
   final Color? valueColor;
   final IconData? statusIcon;
   final VoidCallback? onTap;
+  final List<String>? items;
+
+  /// Values longer than this, or with line breaks, go under the label.
+  static const stackAt = 22;
+
+  bool get _stacked =>
+      items != null || value.length > stackAt || value.contains('\n');
+
+  /// Lets long identifiers break after separators instead of mid-token.
+  static String _breakable(String v) =>
+      v.replaceAllMapped(RegExp(r'[/_,]'), (m) => '${m[0]}\u200B');
 
   @override
   Widget build(BuildContext context) {
     final sx = context.sx;
     final color = valueColor ?? sx.ink;
+    final valueStyle =
+        SxText.readout(13.5, color, weight: FontWeight.w500, tabular: false);
+    final chevron = onTap == null
+        ? null
+        : Icon(Icons.chevron_right_rounded, size: 20, color: sx.muted);
+    final status = statusIcon == null
+        ? null
+        : Padding(
+            padding: const EdgeInsets.only(top: 1),
+            child: Icon(statusIcon, size: 16, color: color),
+          );
+    final labelBlock = Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(label, style: context.text.titleSmall),
+        if (hint != null) Text(hint!, style: context.text.bodySmall),
+      ],
+    );
+
+    final Widget body;
+    if (_stacked) {
+      final list = items;
+      body = Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(children: [Expanded(child: labelBlock), ?chevron]),
+          const SizedBox(height: 8),
+          if (list != null)
+            Wrap(
+              spacing: 6,
+              runSpacing: 6,
+              children: [
+                for (final item in list)
+                  Container(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 9, vertical: 4),
+                    decoration: BoxDecoration(
+                      color: sx.cardAlt,
+                      borderRadius: BorderRadius.circular(7),
+                      border: Border.all(color: sx.line),
+                    ),
+                    child: Text(item,
+                        style: SxText.readout(12.5, color,
+                            weight: FontWeight.w500, tabular: false)),
+                  ),
+              ],
+            )
+          else
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                if (status != null) ...[status, const SizedBox(width: 6)],
+                Expanded(
+                  child: Text(_breakable(value),
+                      style: valueStyle.copyWith(height: 1.4)),
+                ),
+              ],
+            ),
+        ],
+      );
+    } else {
+      // The hint spans the whole row so it doesn't wrap beside the value.
+      final row = Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Expanded(child: Text(label, style: context.text.titleSmall)),
+          const SizedBox(width: 16),
+          // Value, its status icon and the chevron hug the right edge.
+          Expanded(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                if (status != null) ...[status, const SizedBox(width: 6)],
+                Flexible(
+                  child: Text(value, textAlign: TextAlign.end, style: valueStyle),
+                ),
+                ?chevron,
+              ],
+            ),
+          ),
+        ],
+      );
+      body = hint == null
+          ? row
+          : Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [row, Text(hint!, style: context.text.bodySmall)],
+            );
+    }
+
     return InkWell(
       onTap: onTap,
       onLongPress: value.isEmpty
@@ -207,49 +314,7 @@ class InfoRow extends StatelessWidget {
             },
       child: Padding(
         padding: EdgeInsets.fromLTRB(16, 12, onTap == null ? 16 : 8, 12),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(label, style: context.text.titleSmall),
-                  if (hint != null)
-                    Text(hint!, style: context.text.bodySmall),
-                ],
-              ),
-            ),
-            const SizedBox(width: 16),
-            // Value, its status icon and the chevron hug the right edge.
-            Expanded(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  if (statusIcon != null) ...[
-                    Padding(
-                      padding: const EdgeInsets.only(top: 1),
-                      child: Icon(statusIcon, size: 16, color: color),
-                    ),
-                    const SizedBox(width: 6),
-                  ],
-                  Flexible(
-                    child: Text(
-                      value,
-                      textAlign: TextAlign.end,
-                      style: SxText.readout(13.5, color,
-                          weight: FontWeight.w500, tabular: false),
-                    ),
-                  ),
-                  if (onTap != null)
-                    Icon(Icons.chevron_right_rounded,
-                        size: 20, color: sx.muted),
-                ],
-              ),
-            ),
-          ],
-        ),
+        child: body,
       ),
     );
   }

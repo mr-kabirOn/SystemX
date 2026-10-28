@@ -6373,6 +6373,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Unlocks'**
   String get stmUnlocksLabel;
+
+  /// No description provided for @featureCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 feature} other{{count} features}}'**
+  String featureCount(int count);
+
+  /// No description provided for @builtOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Built {date}'**
+  String builtOn(String date);
 }
 
 class _AppLocalizationsDelegate

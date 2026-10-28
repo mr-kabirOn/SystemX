@@ -3572,4 +3572,20 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get stmUnlocksLabel => 'Unlocks';
+
+  @override
+  String featureCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count features',
+      one: '1 feature',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String builtOn(String date) {
+    return 'Built $date';
+  }
 }

@@ -64,6 +64,15 @@ class SpecBuilder {
     }
   }
 
+  /// Adds a row whose value is a list, shown as chips.
+  void _list(String label, List<String> items, {String? hint, String separator = ', '}) {
+    if (items.isEmpty) {
+      _add(label, null, hint: hint);
+    } else {
+      _specs.add(Spec(label, items.join(separator), hint: hint, items: items));
+    }
+  }
+
   /// Adds a row only when there is a value.
   void _opt(String label, String? value, {String? hint}) {
     if (value != null && value.isNotEmpty) _add(label, value, hint: hint);
@@ -206,8 +215,13 @@ class SpecBuilder {
 
     _section(l.secPlatform);
     _add(l.specKernel, s.kernel);
-    _add(l.specBootloader, s.bootloader);
-    _add(l.specBaseband, s.baseband);
+    _add(l.specBootloader, s.bootloader == 'unknown' ? l.unknown : s.bootloader);
+    final baseband = s.baseband == null ? <String>[] : distinctParts(s.baseband!);
+    if (baseband.length > 1) {
+      _list(l.specBaseband, baseband);
+    } else {
+      _add(l.specBaseband, baseband.firstOrNull);
+    }
     _add(l.specRuntime, s.vm);
     _add(l.specTreble, _supported(s.treble));
     _add(l.specSeamlessUpdates, _supported(s.seamlessUpdates));
@@ -267,20 +281,22 @@ class SpecBuilder {
     _opt(l.specSocModel, c.socModel);
     _add(l.specHardware, c.hardware);
     _add(l.specCores, '${c.cores}');
-    _add(l.specClusters, clusterSummary(c.coreList.map((e) => e.maxKhz)));
+    _list(l.specClusters, clusterItems(c.coreList.map((e) => e.maxKhz)), separator: ' + ');
     final parts = <String, int>{};
     for (final core in c.coreList) {
       final p = core.partName;
       if (p != null) parts[p] = (parts[p] ?? 0) + 1;
     }
-    _opt(
-      l.specCoreTypes,
-      parts.entries.map((e) => '${e.value}× ${e.key}').join('\n'),
-    );
+    if (parts.isNotEmpty) {
+      _list(l.specCoreTypes, [for (final e in parts.entries) '${e.value} × ${e.key}']);
+    }
     _add(l.specGovernor, c.governor);
     _add(l.specArchitecture, c.arch);
-    _add(l.specAbis, c.abis.join(', '));
-    _opt(l.specInstructions, c.features);
+    _list(l.specAbis, c.abis);
+    final features = (c.features ?? '').split(RegExp(r'\s+')).where((f) => f.isNotEmpty).toList();
+    if (features.isNotEmpty) {
+      _list(l.specInstructions, features, separator: ' ', hint: l.featureCount(features.length));
+    }
 
     _section(l.secCores);
     for (final core in c.coreList) {
@@ -303,10 +319,15 @@ class SpecBuilder {
   }
 
   void _gpu(GpuInfo g) {
-    _add(l.specRenderer, g.renderer);
+    _add(l.specRenderer, g.renderer == null ? null : cleanGpuName(g.renderer!));
     _add(l.specVendor, g.vendor);
     _add(l.specOpenGlEs, g.glEsVersion);
-    _add(l.specGlDriver, g.glVersion);
+    if (g.glVersion case final v? when v.isNotEmpty) {
+      final (version, built) = parseGlDriver(v);
+      _add(l.specGlDriver, version, hint: built == null ? null : l.builtOn(formatDate(built, l.localeName)));
+    } else {
+      _add(l.specGlDriver, null);
+    }
     _add(l.specVulkan, g.vulkanVersion ?? l.notSupported);
     _add(l.specGlExtensions, g.extensions > 0 ? '${g.extensions}' : null);
   }

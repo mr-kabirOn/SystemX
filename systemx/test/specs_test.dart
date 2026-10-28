@@ -98,10 +98,15 @@ void main() {
     test('processor shows the marketing chip name and process', () {
       expect(find(DeviceCategory.processor, 'Chip').value, 'Google Tensor G3');
       expect(find(DeviceCategory.processor, 'Process node').value, '4 nm');
-      expect(
-        find(DeviceCategory.processor, 'Clusters').value,
-        '1×2.91 + 4×2.37 + 4×1.7 GHz',
-      );
+      final clusters = find(DeviceCategory.processor, 'Clusters');
+      expect(clusters.items, ['1 × 2.91 GHz', '4 × 2.37 GHz', '4 × 1.70 GHz']);
+      expect(clusters.value, '1 × 2.91 GHz + 4 × 2.37 GHz + 4 × 1.70 GHz');
+      final features = find(DeviceCategory.processor, 'Instruction features');
+      expect(features.items!.take(3), ['fp', 'asimd', 'evtstrm']);
+      expect(features.hint, '16 features');
+      expect(find(DeviceCategory.processor, 'Supported ABIs').items,
+          ['arm64-v8a', 'armeabi-v7a', 'armeabi']);
+      expect(find(DeviceCategory.system, 'Baseband (modem)').value, 'g5300i-250605');
       expect(find(DeviceCategory.processor, 'Core 8').value, '1.46 GHz');
     });
 
@@ -316,5 +321,21 @@ void main() {
     expect(carrierFor(name: 'Robi Axiata')?.name, 'Robi');
     expect(carrierFor(name: 'GP')?.name, 'Grameenphone');
     expect(carrierFor(mccMnc: '31026', name: 'T-Mobile'), isNull);
+  });
+
+  test('long technical values are tidied for display', () {
+    expect(cleanGpuName('Adreno (TM) 650'), 'Adreno 650');
+    expect(cleanGpuName('Mali-G710®  MC10'), 'Mali-G710 MC10');
+    final (v, built) = parseGlDriver(
+        'OpenGL ES 3.2 V@0502.0 (GIT@db3d445dbc, Ia06b22fa1a, 1633355031) (Date:10/04/21)');
+    expect(v, '0502.0');
+    expect(built, DateTime(2021, 10, 4));
+    final (mali, none) = parseGlDriver('OpenGL ES 3.2 v1.r38p1-01eac0.c1a71ccca2acf211eb87c5db5322f569');
+    expect(mali, 'v1.r38p1-01eac0.c1a71ccca2acf211eb87c5db5322f569');
+    expect(none, isNull);
+    expect(distinctParts('2.5.c1-gl-1,2.5.c1-gl-1'), ['2.5.c1-gl-1']);
+    expect(distinctParts('a, b,'), ['a', 'b']);
+    expect(clusterItems([1800000, 3187000, 2419000, 2419000]),
+        ['1 × 3.19 GHz', '2 × 2.42 GHz', '1 × 1.80 GHz']);
   });
 }

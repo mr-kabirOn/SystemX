@@ -213,3 +213,48 @@ String formatRate(double bytesPerSec) {
   if (bytesPerSec < 1e6) return '${formatDouble(bytesPerSec / 1000, decimals: bytesPerSec < 1e4 ? 1 : 0)} KB/s';
   return '${formatDouble(bytesPerSec / 1e6, decimals: 1)} MB/s';
 }
+
+/// Clusters as separate entries, fastest first: ["1 × 3.19 GHz", "3 × 2.42 GHz"].
+List<String> clusterItems(Iterable<int?> maxKhz) {
+  final counts = <int, int>{};
+  for (final max in maxKhz) {
+    if (max == null || max <= 0) continue;
+    counts[max] = (counts[max] ?? 0) + 1;
+  }
+  final keys = counts.keys.toList()..sort((a, b) => b.compareTo(a));
+  return [
+    for (final k in keys) '${counts[k]} × ${(k / 1e6).toStringAsFixed(2)} GHz',
+  ];
+}
+
+/// "Adreno (TM) 650" -> "Adreno 650".
+String cleanGpuName(String name) => name
+    .replaceAll(RegExp(r'\((TM|R|C)\)|[™®©]', caseSensitive: false), '')
+    .replaceAll(RegExp(r'\s+'), ' ')
+    .trim();
+
+/// The driver part of the GL version string, without the repeated
+/// "OpenGL ES 3.2" prefix. Qualcomm strings carry a version and a build
+/// date: "OpenGL ES 3.2 V@0502.0 (GIT@…, …) (Date:10/04/21)" gives
+/// ("0502.0", 2021-10-04).
+(String, DateTime?) parseGlDriver(String glVersion) {
+  final qcom = RegExp(r'V@([\w.]+)').firstMatch(glVersion);
+  final date = RegExp(r'Date:(\d{2})/(\d{2})/(\d{2})').firstMatch(glVersion);
+  DateTime? built;
+  if (date != null) {
+    final m = int.parse(date[1]!), d = int.parse(date[2]!), y = 2000 + int.parse(date[3]!);
+    if (m >= 1 && m <= 12 && d >= 1 && d <= 31) built = DateTime(y, m, d);
+  }
+  if (qcom != null) return (qcom[1]!, built);
+  final rest = glVersion.replaceFirst(RegExp(r'^OpenGL ES[- ]?(CM )?\d+(\.\d+)*\s*'), '').trim();
+  return (rest.isEmpty ? glVersion.trim() : rest, built);
+}
+
+/// Comma-separated values with duplicates removed (dual-modem phones repeat
+/// the same baseband version for each SIM).
+List<String> distinctParts(String value) => [
+      ...{
+        for (final p in value.split(','))
+          if (p.trim().isNotEmpty) p.trim(),
+      },
+    ];

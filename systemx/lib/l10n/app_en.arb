@@ -1148,5 +1148,9 @@
   "stmBatteryNote": "Battery per app is an estimate. SystemX splits each battery drop it measures between the apps on screen at the time; background use isn't included. Android doesn't share exact per-app battery figures with apps.",
   "stmNoBattery": "Battery estimates need SystemX's battery history. Turn on Live status or any battery alert to start recording it.",
   "stmTimeNote": "Times come from Android's usage records. The home screen and lock screen count toward screen time but aren't listed as apps.",
-  "stmUnlocksLabel": "Unlocks"
+  "stmUnlocksLabel": "Unlocks",
+  "featureCount": "{count, plural, =1{1 feature} other{{count} features}}",
+  "@featureCount": {"placeholders": {"count": {"type": "int"}}},
+  "builtOn": "Built {date}",
+  "@builtOn": {"placeholders": {"date": {"type": "String"}}}
 }

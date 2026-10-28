@@ -51,7 +51,7 @@ class FakeDeviceApi extends DeviceInfoApi {
         tags: 'release-keys',
         buildTimeMs: DateTime(2026, 9, 1).millisecondsSinceEpoch,
         bootloader: 'ripcurrent-16.0',
-        baseband: 'g5300i-250605',
+        baseband: 'g5300i-250605,g5300i-250605',
         kernel: '6.1.124-android14-11',
         vm: 'Dalvik 2.1.0',
         uptimeMs: const Duration(hours: 50, minutes: 3).inMilliseconds,
@@ -87,8 +87,8 @@ class FakeDeviceApi extends DeviceInfoApi {
             core(8, 2914000, 'Cortex-X3'),
           ],
           governor: 'sched_pixel',
-          abis: ['arm64-v8a'],
-          features: 'fp asimd aes pmull sha1 sha2',
+          abis: ['arm64-v8a', 'armeabi-v7a', 'armeabi'],
+          features: 'fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm lrcpc dcpop asimddp',
           arch: 'aarch64',
         );
       });

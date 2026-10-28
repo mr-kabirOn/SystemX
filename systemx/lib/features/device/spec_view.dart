@@ -60,6 +60,7 @@ class SpecRow extends StatelessWidget {
       label: spec.label,
       value: spec.value,
       hint: spec.hint,
+      items: spec.items,
       valueColor: color,
       statusIcon: icon,
       onTap: onTap ??
