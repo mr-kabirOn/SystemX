@@ -87,8 +87,12 @@ dependencies {
 // An app bundle is what goes to Play, and Play rejects debug-signed uploads:
 // fail early instead of quietly signing with the debug key. APKs for local
 // testing may still use the debug key.
+// Only the requested task counts: an APK build also runs internal tasks
+// such as bundleReleaseResources.
 gradle.taskGraph.whenReady {
-    val bundlingRelease = allTasks.any { it.name.startsWith("bundle") && it.name.endsWith("Release") }
+    val bundlingRelease = gradle.startParameter.taskNames.any {
+        it.substringAfterLast(':') == "bundleRelease"
+    }
     if (bundlingRelease && !hasReleaseKey) {
         throw GradleException("Release bundles need android/key.properties with the upload key (see release/README.md).")
     }
