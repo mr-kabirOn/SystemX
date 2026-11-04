@@ -64,10 +64,8 @@ ThemeData buildTheme(SxColors c, Brightness brightness) {
     navigationBarTheme: NavigationBarThemeData(
       backgroundColor: c.card,
       surfaceTintColor: Colors.transparent,
-      // The accent blue; in dark themes the selected tab also glows.
-      indicatorColor: isDark
-          ? c.accent.withValues(alpha: 0.18)
-          : c.accent.withValues(alpha: 0.24),
+      // Solid accent pill with a white icon, like the selected segments.
+      indicatorColor: c.accent,
       height: 68,
       labelTextStyle: WidgetStateProperty.resolveWith((s) {
         final on = s.contains(WidgetState.selected);
@@ -75,42 +73,28 @@ ThemeData buildTheme(SxColors c, Brightness brightness) {
           SxFonts.body,
           12,
           FontWeight.w600,
-          color: on ? (isDark ? c.accent : c.ink) : c.muted,
+          color: on ? c.accent : c.muted,
         );
       }),
       iconTheme: WidgetStateProperty.resolveWith((s) {
         final on = s.contains(WidgetState.selected);
-        if (!isDark) {
-          return IconThemeData(size: 24, color: on ? c.accent : c.muted);
-        }
         return IconThemeData(
           size: 24,
-          color: on ? c.accent : c.accent.withValues(alpha: 0.55),
-          shadows: on
-              ? [Shadow(color: c.accent.withValues(alpha: 0.85), blurRadius: 16)]
-              : null,
+          color: on ? c.onAccent : (isDark ? c.accent.withValues(alpha: 0.55) : c.muted),
         );
       }),
     ),
     // Same look as the bottom bar, for the side rail on wide screens.
     navigationRailTheme: NavigationRailThemeData(
       backgroundColor: c.card,
-      indicatorColor: isDark
-          ? c.accent.withValues(alpha: 0.18)
-          : c.accent.withValues(alpha: 0.24),
-      selectedIconTheme: isDark
-          ? IconThemeData(
-              size: 24,
-              color: c.accent,
-              shadows: [Shadow(color: c.accent.withValues(alpha: 0.85), blurRadius: 16)],
-            )
-          : IconThemeData(size: 24, color: c.accent),
+      indicatorColor: c.accent,
+      selectedIconTheme: IconThemeData(size: 24, color: c.onAccent),
       unselectedIconTheme: IconThemeData(
         size: 24,
         color: isDark ? c.accent.withValues(alpha: 0.55) : c.muted,
       ),
       selectedLabelTextStyle:
-          sxStyle(SxFonts.body, 12, FontWeight.w600, color: isDark ? c.accent : c.ink),
+          sxStyle(SxFonts.body, 12, FontWeight.w600, color: c.accent),
       unselectedLabelTextStyle: sxStyle(SxFonts.body, 12, FontWeight.w600, color: c.muted),
     ),
     filledButtonTheme: FilledButtonThemeData(
@@ -141,8 +125,10 @@ ThemeData buildTheme(SxColors c, Brightness brightness) {
       style: SegmentedButton.styleFrom(
         backgroundColor: c.card,
         foregroundColor: c.muted,
-        selectedBackgroundColor: c.accent.withValues(alpha: 0.2),
-        selectedForegroundColor: c.ink,
+        // Selected segments are solid accent with white text, like the tab
+        // pills; a pale tint read as unselected in sunlight.
+        selectedBackgroundColor: c.accent,
+        selectedForegroundColor: c.onAccent,
         side: BorderSide(color: c.line),
         textStyle: text.labelMedium,
       ),
@@ -155,6 +141,26 @@ ThemeData buildTheme(SxColors c, Brightness brightness) {
       trackOutlineColor: WidgetStateProperty.resolveWith(
           (s) => s.contains(WidgetState.selected) ? c.accent : c.line),
     ),
+    chipTheme: ChipThemeData(
+      backgroundColor: c.card,
+      selectedColor: c.accent,
+      checkmarkColor: c.onAccent,
+      labelStyle: text.labelMedium?.copyWith(color: c.ink),
+      secondaryLabelStyle: text.labelMedium?.copyWith(color: c.onAccent),
+      side: BorderSide(color: c.line),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+    ),
+    radioTheme: RadioThemeData(
+      fillColor: WidgetStateProperty.resolveWith(
+          (s) => s.contains(WidgetState.selected) ? c.accent : c.muted),
+    ),
+    checkboxTheme: CheckboxThemeData(
+      fillColor: WidgetStateProperty.resolveWith(
+          (s) => s.contains(WidgetState.selected) ? c.accent : Colors.transparent),
+      checkColor: WidgetStatePropertyAll(c.onAccent),
+      side: BorderSide(color: c.muted, width: 1.5),
+    ),
+    progressIndicatorTheme: ProgressIndicatorThemeData(color: c.accent),
     listTileTheme: ListTileThemeData(
       iconColor: c.muted,
       textColor: c.ink,
