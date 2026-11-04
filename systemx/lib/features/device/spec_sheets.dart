@@ -4,6 +4,7 @@ import '../../core/format.dart';
 import '../../core/settings/settings.dart';
 import '../../l10n/app_localizations.dart';
 import '../../platform/platform.dart';
+import 'csc_codes.dart';
 import 'device_data.dart';
 import 'soc_names.dart';
 import 'specs.dart';
@@ -89,7 +90,7 @@ class SpecBuilder {
     _title = null;
     switch (category) {
       case DeviceCategory.device:
-        if (s.identity case final v?) _device(v);
+        if (s.identity case final v?) _device(v, s);
       case DeviceCategory.system:
         if (s.system case final v?) _system(v);
       case DeviceCategory.processor:
@@ -125,11 +126,22 @@ class SpecBuilder {
 
   // ---- Device & system ----
 
-  void _device(DeviceIdentity d) {
+  void _device(DeviceIdentity d, DeviceSnapshot s) {
     _add(l.specModelName, d.marketName);
     _add(l.specManufacturer, d.manufacturer);
     _add(l.specBrand, d.brand);
     _add(l.specModel, d.model);
+    final made = d.manufacturedDate == null ? null : DateTime.tryParse(d.manufacturedDate!);
+    if (made != null) {
+      _add(l.specManufactured, formatDate(made, l.localeName), hint: l.manufacturedHint);
+      final (y, m, days) = calendarAge(made, now);
+      _add(l.specDeviceAge, [
+        if (y > 0) l.ageYears(y),
+        if (y > 0 || m > 0) l.ageMonths(m),
+        l.ageDays(days),
+      ].join(', '));
+    }
+    _opt(l.specProductCode, d.productCode);
     _add(l.specCodename, d.codename);
     _add(l.specProduct, d.product);
     _add(l.specBoard, d.board);
@@ -143,16 +155,22 @@ class SpecBuilder {
 
     _section(l.secSales);
     _opt(l.specSalesCode, d.salesCode, hint: l.salesCodeHint);
+    final csc = lookupCsc(d.salesCode);
+    if (csc != null) _add(l.specSalesCarrier, csc.carrier ?? l.cscOpen);
     final iso = d.salesCountryIso;
+    final flag = flagEmoji(iso);
     _opt(
       l.specSalesCountry,
-      iso == null ? null : (d.salesCountry == null ? iso : '${d.salesCountry} ($iso)'),
+      iso == null
+          ? null
+          : [d.salesCountry == null ? iso : '${d.salesCountry} ($iso)', ?flag].join(' '),
     );
     _opt(l.specSalesRegion, _titleCase(d.salesRegion));
     _opt(l.specProductLocale, d.productLocale);
 
     _section(l.secIdentifiers);
     _opt(l.specAndroidId, d.androidId, hint: l.androidIdHint);
+    _opt(l.specFingerprint, s.system?.fingerprint);
     _specs.add(Spec(
       l.specImei,
       l.wifiNameHidden,
@@ -168,6 +186,30 @@ class SpecBuilder {
         hint: l.warrantyHint,
         tone: warranty ? SpecTone.warn : SpecTone.good,
       );
+    }
+
+    final phoneType = switch (d.phoneType) {
+      'gsm' => 'GSM',
+      'cdma' => 'CDMA',
+      'sip' => 'SIP',
+      'none' => l.none,
+      _ => null,
+    };
+    final n = s.network;
+    if (phoneType != null || d.esimSupported != null || n != null) {
+      _section(l.secMobile);
+      _opt(l.specPhoneType, phoneType);
+      if (d.esimSupported case final e?) _add(l.specEsim, _supported(e));
+      if (n != null) {
+        if (n.phonePermission) {
+          _opt(l.specNetworkType, n.dataNetworkType);
+        } else {
+          _add(l.specNetworkType, l.needsPhone, hint: l.needsPhoneHint, action: const AskPermission('phone'));
+        }
+        if (n.operatorName case final op?) {
+          _add(l.specOperator, [op, ?flagEmoji(n.networkCountry)].join(' '));
+        }
+      }
     }
   }
 

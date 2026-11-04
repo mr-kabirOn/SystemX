@@ -1155,5 +1155,19 @@
   "@builtOn": {"placeholders": {"date": {"type": "String"}}},
   "reportNoScore": "No test was completed",
   "durDhm": "{d} d {h} h {m} min",
-  "@durDhm": {"placeholders": {"d": {"type": "int", "format": "decimalPattern"}, "h": {"type": "int", "format": "decimalPattern"}, "m": {"type": "int", "format": "decimalPattern"}}}
+  "@durDhm": {"placeholders": {"d": {"type": "int", "format": "decimalPattern"}, "h": {"type": "int", "format": "decimalPattern"}, "m": {"type": "int", "format": "decimalPattern"}}},
+  "specManufactured": "Manufactured date",
+  "manufacturedHint": "Factory calibration date recorded on the phone",
+  "specDeviceAge": "Device age",
+  "ageYears": "{count, plural, =1{1 year} other{{count} years}}",
+  "@ageYears": {"placeholders": {"count": {"type": "int", "format": "decimalPattern"}}},
+  "ageMonths": "{count, plural, =1{1 month} other{{count} months}}",
+  "@ageMonths": {"placeholders": {"count": {"type": "int", "format": "decimalPattern"}}},
+  "ageDays": "{count, plural, =1{1 day} other{{count} days}}",
+  "@ageDays": {"placeholders": {"count": {"type": "int", "format": "decimalPattern"}}},
+  "specProductCode": "Product code",
+  "specSalesCarrier": "Carrier",
+  "cscOpen": "Unlocked (open market)",
+  "specPhoneType": "Phone type",
+  "specEsim": "eSIM"
 }

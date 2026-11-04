@@ -1057,5 +1057,16 @@
   "featureCount": "{count, plural, other{{count}টি বৈশিষ্ট্য}}",
   "builtOn": "তৈরির তারিখ {date}",
   "reportNoScore": "কোনো পরীক্ষা সম্পন্ন হয়নি",
-  "durDhm": "{d} দিন {h} ঘণ্টা {m} মিনিট"
+  "durDhm": "{d} দিন {h} ঘণ্টা {m} মিনিট",
+  "specManufactured": "তৈরির তারিখ",
+  "manufacturedHint": "ফোনে সংরক্ষিত কারখানার ক্যালিব্রেশনের তারিখ",
+  "specDeviceAge": "ডিভাইসের বয়স",
+  "ageYears": "{count, plural, other{{count} বছর}}",
+  "ageMonths": "{count, plural, other{{count} মাস}}",
+  "ageDays": "{count, plural, other{{count} দিন}}",
+  "specProductCode": "প্রোডাক্ট কোড",
+  "specSalesCarrier": "অপারেটর",
+  "cscOpen": "আনলকড (খোলা বাজার)",
+  "specPhoneType": "ফোনের ধরন",
+  "specEsim": "ই-সিম"
 }

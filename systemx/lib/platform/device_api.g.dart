@@ -119,6 +119,10 @@ class DeviceIdentity {
     this.hardwareRevision,
     this.oemSkin,
     this.warrantyVoid,
+    this.manufacturedDate,
+    this.productCode,
+    this.phoneType,
+    this.esimSupported,
   });
 
   String manufacturer;
@@ -171,6 +175,19 @@ class DeviceIdentity {
   /// Samsung Knox warranty bit: false while intact.
   bool? warrantyVoid;
 
+  /// Factory date as "yyyy-MM-dd", from the radio calibration date Samsung
+  /// phones record at the factory; null when the phone doesn't expose it.
+  String? manufacturedDate;
+
+  /// The maker's full product code, e.g. Samsung's "SM-S928NZYFLUC".
+  String? productCode;
+
+  /// "gsm", "cdma", "sip" or "none" (TelephonyManager.getPhoneType).
+  String? phoneType;
+
+  /// Whether the phone has an embedded SIM (eSIM).
+  bool? esimSupported;
+
   List<Object?> _toList() {
     return <Object?>[
       manufacturer,
@@ -193,6 +210,10 @@ class DeviceIdentity {
       hardwareRevision,
       oemSkin,
       warrantyVoid,
+      manufacturedDate,
+      productCode,
+      phoneType,
+      esimSupported,
     ];
   }
 
@@ -222,6 +243,10 @@ class DeviceIdentity {
       hardwareRevision: result[17] as String?,
       oemSkin: result[18] as String?,
       warrantyVoid: result[19] as bool?,
+      manufacturedDate: result[20] as String?,
+      productCode: result[21] as String?,
+      phoneType: result[22] as String?,
+      esimSupported: result[23] as bool?,
     );
   }
 
@@ -234,7 +259,7 @@ class DeviceIdentity {
     if (identical(this, other)) {
       return true;
     }
-    return _deepEquals(manufacturer, other.manufacturer) && _deepEquals(brand, other.brand) && _deepEquals(model, other.model) && _deepEquals(marketName, other.marketName) && _deepEquals(codename, other.codename) && _deepEquals(product, other.product) && _deepEquals(board, other.board) && _deepEquals(hardware, other.hardware) && _deepEquals(isTablet, other.isTablet) && _deepEquals(deviceName, other.deviceName) && _deepEquals(androidId, other.androidId) && _deepEquals(salesCode, other.salesCode) && _deepEquals(salesCountryIso, other.salesCountryIso) && _deepEquals(salesCountry, other.salesCountry) && _deepEquals(salesRegion, other.salesRegion) && _deepEquals(productLocale, other.productLocale) && _deepEquals(firstApiLevel, other.firstApiLevel) && _deepEquals(hardwareRevision, other.hardwareRevision) && _deepEquals(oemSkin, other.oemSkin) && _deepEquals(warrantyVoid, other.warrantyVoid);
+    return _deepEquals(manufacturer, other.manufacturer) && _deepEquals(brand, other.brand) && _deepEquals(model, other.model) && _deepEquals(marketName, other.marketName) && _deepEquals(codename, other.codename) && _deepEquals(product, other.product) && _deepEquals(board, other.board) && _deepEquals(hardware, other.hardware) && _deepEquals(isTablet, other.isTablet) && _deepEquals(deviceName, other.deviceName) && _deepEquals(androidId, other.androidId) && _deepEquals(salesCode, other.salesCode) && _deepEquals(salesCountryIso, other.salesCountryIso) && _deepEquals(salesCountry, other.salesCountry) && _deepEquals(salesRegion, other.salesRegion) && _deepEquals(productLocale, other.productLocale) && _deepEquals(firstApiLevel, other.firstApiLevel) && _deepEquals(hardwareRevision, other.hardwareRevision) && _deepEquals(oemSkin, other.oemSkin) && _deepEquals(warrantyVoid, other.warrantyVoid) && _deepEquals(manufacturedDate, other.manufacturedDate) && _deepEquals(productCode, other.productCode) && _deepEquals(phoneType, other.phoneType) && _deepEquals(esimSupported, other.esimSupported);
   }
 
   @override
@@ -243,7 +268,7 @@ class DeviceIdentity {
 
   @override
   String toString() {
-    return 'DeviceIdentity(manufacturer: $manufacturer, brand: $brand, model: $model, marketName: $marketName, codename: $codename, product: $product, board: $board, hardware: $hardware, isTablet: $isTablet, deviceName: $deviceName, androidId: $androidId, salesCode: $salesCode, salesCountryIso: $salesCountryIso, salesCountry: $salesCountry, salesRegion: $salesRegion, productLocale: $productLocale, firstApiLevel: $firstApiLevel, hardwareRevision: $hardwareRevision, oemSkin: $oemSkin, warrantyVoid: $warrantyVoid)';
+    return 'DeviceIdentity(manufacturer: $manufacturer, brand: $brand, model: $model, marketName: $marketName, codename: $codename, product: $product, board: $board, hardware: $hardware, isTablet: $isTablet, deviceName: $deviceName, androidId: $androidId, salesCode: $salesCode, salesCountryIso: $salesCountryIso, salesCountry: $salesCountry, salesRegion: $salesRegion, productLocale: $productLocale, firstApiLevel: $firstApiLevel, hardwareRevision: $hardwareRevision, oemSkin: $oemSkin, warrantyVoid: $warrantyVoid, manufacturedDate: $manufacturedDate, productCode: $productCode, phoneType: $phoneType, esimSupported: $esimSupported)';
   }
 }
 

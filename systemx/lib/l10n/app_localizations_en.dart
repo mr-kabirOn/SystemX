@@ -3985,4 +3985,74 @@ class AppLocalizationsEn extends AppLocalizations {
 
     return '$dString d $hString h $mString min';
   }
+
+  @override
+  String get specManufactured => 'Manufactured date';
+
+  @override
+  String get manufacturedHint =>
+      'Factory calibration date recorded on the phone';
+
+  @override
+  String get specDeviceAge => 'Device age';
+
+  @override
+  String ageYears(int count) {
+    final intl.NumberFormat countNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String countString = countNumberFormat.format(count);
+
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$countString years',
+      one: '1 year',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String ageMonths(int count) {
+    final intl.NumberFormat countNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String countString = countNumberFormat.format(count);
+
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$countString months',
+      one: '1 month',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String ageDays(int count) {
+    final intl.NumberFormat countNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String countString = countNumberFormat.format(count);
+
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$countString days',
+      one: '1 day',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get specProductCode => 'Product code';
+
+  @override
+  String get specSalesCarrier => 'Carrier';
+
+  @override
+  String get cscOpen => 'Unlocked (open market)';
+
+  @override
+  String get specPhoneType => 'Phone type';
+
+  @override
+  String get specEsim => 'eSIM';
 }

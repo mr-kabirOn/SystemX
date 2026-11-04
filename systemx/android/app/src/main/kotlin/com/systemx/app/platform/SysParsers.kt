@@ -5,6 +5,18 @@ package com.systemx.app.platform
  * run in plain JVM unit tests (app/src/test).
  */
 internal object SysParsers {
+
+    /**
+     * "2024.01.13", "20240113" or "2024-01-13" as "2024-01-13"; null for
+     * anything that isn't a plausible factory date.
+     */
+    fun factoryDate(raw: String?): String? {
+        val m = Regex("""(\d{4})[./-]?(\d{2})[./-]?(\d{2})""").find(raw?.trim() ?: return null) ?: return null
+        val (y, mo, d) = m.destructured.toList().map { it.toInt() }
+        if (y !in 2005..2100 || mo !in 1..12 || d !in 1..31) return null
+        return String.format(java.util.Locale.ROOT, "%04d-%02d-%02d", y, mo, d)
+    }
+
     private val PROP_LINE = Regex("""^\[(.+?)]: \[(.*)]$""")
     private val WHITESPACE = Regex("\\s+")
     private val BLANK_LINE = Regex("\\n\\s*\\n")

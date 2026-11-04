@@ -223,7 +223,18 @@ data class DeviceIdentity (
   /** The maker's Android skin and version, e.g. "One UI 8.0". */
   val oemSkin: String? = null,
   /** Samsung Knox warranty bit: false while intact. */
-  val warrantyVoid: Boolean? = null
+  val warrantyVoid: Boolean? = null,
+  /**
+   * Factory date as "yyyy-MM-dd", from the radio calibration date Samsung
+   * phones record at the factory; null when the phone doesn't expose it.
+   */
+  val manufacturedDate: String? = null,
+  /** The maker's full product code, e.g. Samsung's "SM-S928NZYFLUC". */
+  val productCode: String? = null,
+  /** "gsm", "cdma", "sip" or "none" (TelephonyManager.getPhoneType). */
+  val phoneType: String? = null,
+  /** Whether the phone has an embedded SIM (eSIM). */
+  val esimSupported: Boolean? = null
 )
  {
   companion object {
@@ -248,7 +259,11 @@ data class DeviceIdentity (
       val hardwareRevision = pigeonVar_list[17] as String?
       val oemSkin = pigeonVar_list[18] as String?
       val warrantyVoid = pigeonVar_list[19] as Boolean?
-      return DeviceIdentity(manufacturer, brand, model, marketName, codename, product, board, hardware, isTablet, deviceName, androidId, salesCode, salesCountryIso, salesCountry, salesRegion, productLocale, firstApiLevel, hardwareRevision, oemSkin, warrantyVoid)
+      val manufacturedDate = pigeonVar_list[20] as String?
+      val productCode = pigeonVar_list[21] as String?
+      val phoneType = pigeonVar_list[22] as String?
+      val esimSupported = pigeonVar_list[23] as Boolean?
+      return DeviceIdentity(manufacturer, brand, model, marketName, codename, product, board, hardware, isTablet, deviceName, androidId, salesCode, salesCountryIso, salesCountry, salesRegion, productLocale, firstApiLevel, hardwareRevision, oemSkin, warrantyVoid, manufacturedDate, productCode, phoneType, esimSupported)
     }
   }
   fun toList(): List<Any?> {
@@ -273,6 +288,10 @@ data class DeviceIdentity (
       hardwareRevision,
       oemSkin,
       warrantyVoid,
+      manufacturedDate,
+      productCode,
+      phoneType,
+      esimSupported,
     )
   }
   override fun equals(other: Any?): Boolean {
@@ -283,7 +302,7 @@ data class DeviceIdentity (
       return true
     }
     val other = other as DeviceIdentity
-    return DeviceApiPigeonUtils.deepEquals(this.manufacturer, other.manufacturer) && DeviceApiPigeonUtils.deepEquals(this.brand, other.brand) && DeviceApiPigeonUtils.deepEquals(this.model, other.model) && DeviceApiPigeonUtils.deepEquals(this.marketName, other.marketName) && DeviceApiPigeonUtils.deepEquals(this.codename, other.codename) && DeviceApiPigeonUtils.deepEquals(this.product, other.product) && DeviceApiPigeonUtils.deepEquals(this.board, other.board) && DeviceApiPigeonUtils.deepEquals(this.hardware, other.hardware) && DeviceApiPigeonUtils.deepEquals(this.isTablet, other.isTablet) && DeviceApiPigeonUtils.deepEquals(this.deviceName, other.deviceName) && DeviceApiPigeonUtils.deepEquals(this.androidId, other.androidId) && DeviceApiPigeonUtils.deepEquals(this.salesCode, other.salesCode) && DeviceApiPigeonUtils.deepEquals(this.salesCountryIso, other.salesCountryIso) && DeviceApiPigeonUtils.deepEquals(this.salesCountry, other.salesCountry) && DeviceApiPigeonUtils.deepEquals(this.salesRegion, other.salesRegion) && DeviceApiPigeonUtils.deepEquals(this.productLocale, other.productLocale) && DeviceApiPigeonUtils.deepEquals(this.firstApiLevel, other.firstApiLevel) && DeviceApiPigeonUtils.deepEquals(this.hardwareRevision, other.hardwareRevision) && DeviceApiPigeonUtils.deepEquals(this.oemSkin, other.oemSkin) && DeviceApiPigeonUtils.deepEquals(this.warrantyVoid, other.warrantyVoid)
+    return DeviceApiPigeonUtils.deepEquals(this.manufacturer, other.manufacturer) && DeviceApiPigeonUtils.deepEquals(this.brand, other.brand) && DeviceApiPigeonUtils.deepEquals(this.model, other.model) && DeviceApiPigeonUtils.deepEquals(this.marketName, other.marketName) && DeviceApiPigeonUtils.deepEquals(this.codename, other.codename) && DeviceApiPigeonUtils.deepEquals(this.product, other.product) && DeviceApiPigeonUtils.deepEquals(this.board, other.board) && DeviceApiPigeonUtils.deepEquals(this.hardware, other.hardware) && DeviceApiPigeonUtils.deepEquals(this.isTablet, other.isTablet) && DeviceApiPigeonUtils.deepEquals(this.deviceName, other.deviceName) && DeviceApiPigeonUtils.deepEquals(this.androidId, other.androidId) && DeviceApiPigeonUtils.deepEquals(this.salesCode, other.salesCode) && DeviceApiPigeonUtils.deepEquals(this.salesCountryIso, other.salesCountryIso) && DeviceApiPigeonUtils.deepEquals(this.salesCountry, other.salesCountry) && DeviceApiPigeonUtils.deepEquals(this.salesRegion, other.salesRegion) && DeviceApiPigeonUtils.deepEquals(this.productLocale, other.productLocale) && DeviceApiPigeonUtils.deepEquals(this.firstApiLevel, other.firstApiLevel) && DeviceApiPigeonUtils.deepEquals(this.hardwareRevision, other.hardwareRevision) && DeviceApiPigeonUtils.deepEquals(this.oemSkin, other.oemSkin) && DeviceApiPigeonUtils.deepEquals(this.warrantyVoid, other.warrantyVoid) && DeviceApiPigeonUtils.deepEquals(this.manufacturedDate, other.manufacturedDate) && DeviceApiPigeonUtils.deepEquals(this.productCode, other.productCode) && DeviceApiPigeonUtils.deepEquals(this.phoneType, other.phoneType) && DeviceApiPigeonUtils.deepEquals(this.esimSupported, other.esimSupported)
   }
 
   override fun hashCode(): Int {
@@ -308,10 +327,14 @@ data class DeviceIdentity (
     result = 31 * result + DeviceApiPigeonUtils.deepHash(this.hardwareRevision)
     result = 31 * result + DeviceApiPigeonUtils.deepHash(this.oemSkin)
     result = 31 * result + DeviceApiPigeonUtils.deepHash(this.warrantyVoid)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.manufacturedDate)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.productCode)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.phoneType)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.esimSupported)
     return result
   }
   override fun toString(): String {
-    return "DeviceIdentity(manufacturer=$manufacturer, brand=$brand, model=$model, marketName=$marketName, codename=$codename, product=$product, board=$board, hardware=$hardware, isTablet=$isTablet, deviceName=$deviceName, androidId=$androidId, salesCode=$salesCode, salesCountryIso=$salesCountryIso, salesCountry=$salesCountry, salesRegion=$salesRegion, productLocale=$productLocale, firstApiLevel=$firstApiLevel, hardwareRevision=$hardwareRevision, oemSkin=$oemSkin, warrantyVoid=$warrantyVoid)"
+    return "DeviceIdentity(manufacturer=$manufacturer, brand=$brand, model=$model, marketName=$marketName, codename=$codename, product=$product, board=$board, hardware=$hardware, isTablet=$isTablet, deviceName=$deviceName, androidId=$androidId, salesCode=$salesCode, salesCountryIso=$salesCountryIso, salesCountry=$salesCountry, salesRegion=$salesRegion, productLocale=$productLocale, firstApiLevel=$firstApiLevel, hardwareRevision=$hardwareRevision, oemSkin=$oemSkin, warrantyVoid=$warrantyVoid, manufacturedDate=$manufacturedDate, productCode=$productCode, phoneType=$phoneType, esimSupported=$esimSupported)"
   }
 }
 

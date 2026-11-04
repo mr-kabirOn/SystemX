@@ -103,7 +103,8 @@ enum DeviceCategory {
 
   /// Probes this category reads. SIM also shows the mobile network.
   Set<Probe> get probes => switch (this) {
-        device => {Probe.identity},
+        // System and network add the fingerprint and mobile network rows.
+        device => {Probe.identity, Probe.system, Probe.network},
         system => {Probe.system},
         processor => {Probe.cpu},
         gpu => {Probe.gpu},

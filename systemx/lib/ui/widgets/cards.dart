@@ -199,7 +199,7 @@ class InfoRow extends StatelessWidget {
   static const stackAt = 22;
 
   bool get _stacked =>
-      items != null || value.length > stackAt || value.contains('\n');
+      items != null || value.runes.length > stackAt || value.contains('\n');
 
   /// Lets long identifiers break after separators instead of mid-token.
   static String _breakable(String v) =>

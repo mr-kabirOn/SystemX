@@ -9,6 +9,7 @@ import android.hardware.biometrics.BiometricManager
 import android.os.Build
 import android.os.SystemClock
 import android.provider.Settings
+import android.telephony.TelephonyManager
 import java.io.File
 import java.util.Locale
 import java.util.TimeZone
@@ -60,6 +61,19 @@ internal class SystemProbe(private val ctx: Context) {
             hardwareRevision = Sys.firstProp("ro.revision", "ro.boot.revision", "ro.boot.hw_rev", "ro.boot.hardware.revision"),
             oemSkin = oemSkin(),
             warrantyVoid = Sys.prop("ro.boot.warranty_bit")?.let { if (it == "0") false else if (it == "1") true else null },
+            manufacturedDate = SysParsers.factoryDate(Sys.firstProp("ril.rfcal_date", "ro.vendor.rfcal_date")),
+            productCode = Sys.firstProp("ril.product_code", "ro.product.product_code")
+                ?.takeUnless { it.equals("unknown", ignoreCase = true) },
+            phoneType = Sys.safe {
+                when (ctx.getSystemService(TelephonyManager::class.java)?.phoneType) {
+                    TelephonyManager.PHONE_TYPE_GSM -> "gsm"
+                    TelephonyManager.PHONE_TYPE_CDMA -> "cdma"
+                    TelephonyManager.PHONE_TYPE_SIP -> "sip"
+                    TelephonyManager.PHONE_TYPE_NONE -> "none"
+                    else -> null
+                }
+            },
+            esimSupported = Sys.safe { ctx.packageManager.hasSystemFeature("android.hardware.telephony.euicc") },
         )
     }
 

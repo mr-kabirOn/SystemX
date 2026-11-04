@@ -6397,6 +6397,72 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{d} d {h} h {m} min'**
   String durDhm(int d, int h, int m);
+
+  /// No description provided for @specManufactured.
+  ///
+  /// In en, this message translates to:
+  /// **'Manufactured date'**
+  String get specManufactured;
+
+  /// No description provided for @manufacturedHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Factory calibration date recorded on the phone'**
+  String get manufacturedHint;
+
+  /// No description provided for @specDeviceAge.
+  ///
+  /// In en, this message translates to:
+  /// **'Device age'**
+  String get specDeviceAge;
+
+  /// No description provided for @ageYears.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 year} other{{count} years}}'**
+  String ageYears(int count);
+
+  /// No description provided for @ageMonths.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 month} other{{count} months}}'**
+  String ageMonths(int count);
+
+  /// No description provided for @ageDays.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 day} other{{count} days}}'**
+  String ageDays(int count);
+
+  /// No description provided for @specProductCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Product code'**
+  String get specProductCode;
+
+  /// No description provided for @specSalesCarrier.
+  ///
+  /// In en, this message translates to:
+  /// **'Carrier'**
+  String get specSalesCarrier;
+
+  /// No description provided for @cscOpen.
+  ///
+  /// In en, this message translates to:
+  /// **'Unlocked (open market)'**
+  String get cscOpen;
+
+  /// No description provided for @specPhoneType.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone type'**
+  String get specPhoneType;
+
+  /// No description provided for @specEsim.
+  ///
+  /// In en, this message translates to:
+  /// **'eSIM'**
+  String get specEsim;
 }
 
 class _AppLocalizationsDelegate

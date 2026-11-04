@@ -3964,4 +3964,70 @@ class AppLocalizationsBn extends AppLocalizations {
 
     return '$dString দিন $hString ঘণ্টা $mString মিনিট';
   }
+
+  @override
+  String get specManufactured => 'তৈরির তারিখ';
+
+  @override
+  String get manufacturedHint => 'ফোনে সংরক্ষিত কারখানার ক্যালিব্রেশনের তারিখ';
+
+  @override
+  String get specDeviceAge => 'ডিভাইসের বয়স';
+
+  @override
+  String ageYears(int count) {
+    final intl.NumberFormat countNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String countString = countNumberFormat.format(count);
+
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$countString বছর',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String ageMonths(int count) {
+    final intl.NumberFormat countNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String countString = countNumberFormat.format(count);
+
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$countString মাস',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String ageDays(int count) {
+    final intl.NumberFormat countNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String countString = countNumberFormat.format(count);
+
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$countString দিন',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get specProductCode => 'প্রোডাক্ট কোড';
+
+  @override
+  String get specSalesCarrier => 'অপারেটর';
+
+  @override
+  String get cscOpen => 'আনলকড (খোলা বাজার)';
+
+  @override
+  String get specPhoneType => 'ফোনের ধরন';
+
+  @override
+  String get specEsim => 'ই-সিম';
 }

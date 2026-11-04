@@ -4,6 +4,7 @@ import 'package:intl/date_symbol_data_local.dart';
 import 'package:systemx/core/format.dart';
 import 'package:systemx/core/settings/settings.dart';
 import 'package:systemx/features/device/carriers.dart';
+import 'package:systemx/features/device/csc_codes.dart';
 import 'package:systemx/features/device/device_data.dart';
 import 'package:systemx/features/device/sensor_sheet.dart';
 import 'package:systemx/features/device/spec_sheets.dart';
@@ -177,7 +178,7 @@ void main() {
     test('device sheet shows region and identifiers', () {
       expect(
         find(DeviceCategory.device, 'Sales country').value,
-        'United States (US)',
+        'United States (US) 🇺🇸',
       );
       expect(find(DeviceCategory.device, 'Launched with').value,
           'Android 14');
@@ -196,13 +197,23 @@ void main() {
           board: 'pineapple',
           hardware: 'qcom',
           isTablet: false,
-          salesCode: 'KOO',
+          salesCode: 'LUC',
           salesRegion: 'KOREA',
           oemSkin: 'One UI 8.0',
           warrantyVoid: false,
+          manufacturedDate: '2024-01-13',
+          productCode: 'SM-S928NZYFLUC',
+          phoneType: 'gsm',
+          esimSupported: true,
         ),
       );
-      expect(find(DeviceCategory.device, 'Sales code', samsung).value, 'KOO');
+      expect(find(DeviceCategory.device, 'Manufactured date', samsung).value, 'Jan 13, 2024');
+      expect(find(DeviceCategory.device, 'Product code', samsung).value, 'SM-S928NZYFLUC');
+      expect(find(DeviceCategory.device, 'Carrier', samsung).value, 'LG Uplus');
+      expect(find(DeviceCategory.device, 'Phone type', samsung).value, 'GSM');
+      expect(find(DeviceCategory.device, 'eSIM', samsung).value, 'Supported');
+      expect(find(DeviceCategory.device, 'Device age', samsung).value, contains('days'));
+      expect(find(DeviceCategory.device, 'Sales code', samsung).value, 'LUC');
       expect(find(DeviceCategory.device, 'Region', samsung).value, 'Korea');
       expect(find(DeviceCategory.device, 'Manufacturer UI', samsung).value,
           'One UI 8.0');
@@ -346,5 +357,14 @@ void main() {
     expect(formatDuration(d, en), '2 d 2 h 3 min');
     expect(formatDuration(d, bn), contains('দিন'));
     expect(formatDuration(const Duration(minutes: 7), en), '7 min');
+  });
+
+  test('device age counts calendar years, months and days', () {
+    expect(calendarAge(DateTime(2024, 1, 13), DateTime(2026, 11, 4)), (2, 9, 22));
+    expect(calendarAge(DateTime(2024, 1, 31), DateTime(2024, 3, 1)), (0, 1, 1));
+    expect(calendarAge(DateTime(2025, 6, 1), DateTime(2025, 6, 1)), (0, 0, 0));
+    expect(flagEmoji('kr'), '🇰🇷');
+    expect(flagEmoji('XYZ'), isNull);
+    expect(lookupCsc('KOO')!.open, isTrue);
   });
 }

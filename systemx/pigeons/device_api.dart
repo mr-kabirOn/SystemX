@@ -60,6 +60,19 @@ class DeviceIdentity {
 
   /// Samsung Knox warranty bit: false while intact.
   bool? warrantyVoid;
+
+  /// Factory date as "yyyy-MM-dd", from the radio calibration date Samsung
+  /// phones record at the factory; null when the phone doesn't expose it.
+  String? manufacturedDate;
+
+  /// The maker's full product code, e.g. Samsung's "SM-S928NZYFLUC".
+  String? productCode;
+
+  /// "gsm", "cdma", "sip" or "none" (TelephonyManager.getPhoneType).
+  String? phoneType;
+
+  /// Whether the phone has an embedded SIM (eSIM).
+  bool? esimSupported;
 }
 
 class SystemInfo {

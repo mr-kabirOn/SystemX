@@ -185,4 +185,14 @@ class SysParsersTest {
         assertNull(SysParsers.sessionCapacityMah(3300, 1000, 20, 70)) // went down
         assertNull(SysParsers.sessionCapacityMah(1000, 1100, 20, 70)) // 200 mAh: implausible
     }
+
+    @Test
+    fun factoryDateAcceptsSamsungFormats() {
+        assertEquals("2024-01-13", SysParsers.factoryDate("2024.01.13"))
+        assertEquals("2024-01-13", SysParsers.factoryDate("20240113"))
+        assertEquals("2024-01-13", SysParsers.factoryDate(" 2024-01-13 "))
+        assertEquals(null, SysParsers.factoryDate("unknown"))
+        assertEquals(null, SysParsers.factoryDate("2024.13.40"))
+        assertEquals(null, SysParsers.factoryDate(null))
+    }
 }
