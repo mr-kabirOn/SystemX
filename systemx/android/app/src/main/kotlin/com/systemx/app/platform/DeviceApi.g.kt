@@ -2156,8 +2156,8 @@ data class StressSample (
 data class BackgroundConfig (
   val liveStatus: Boolean,
   /**
-   * What the status bar icon shows: "battery_level", "battery_temp" or
-   * "net_speed".
+   * What the status bar icon shows: "net_speed" (the default),
+   * "battery_level" or "battery_temp".
    */
   val statusIcon: String,
   val chargeAlarm: Boolean,

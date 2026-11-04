@@ -768,8 +768,8 @@ class BackgroundConfig {
 
   bool liveStatus;
 
-  /// What the status bar icon shows: "battery_level", "battery_temp" or
-  /// "net_speed".
+  /// What the status bar icon shows: "net_speed" (the default),
+  /// "battery_level" or "battery_temp".
   String statusIcon;
   bool chargeAlarm;
   int chargeLimit;

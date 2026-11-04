@@ -15,7 +15,7 @@ internal object ConfigStore {
         val p = prefs(ctx)
         return BackgroundConfig(
             liveStatus = p.getBoolean("liveStatus", false),
-            statusIcon = p.getString("statusIcon", null) ?: "battery_level",
+            statusIcon = p.getString("statusIcon", null) ?: "net_speed", // download speed until the user picks another
             chargeAlarm = p.getBoolean("chargeAlarm", false),
             chargeLimit = p.getLong("chargeLimit", 80),
             batteryLow = p.getBoolean("batteryLow", false),

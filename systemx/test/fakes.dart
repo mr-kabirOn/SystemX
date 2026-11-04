@@ -636,7 +636,7 @@ class FakeHardwareTestApi extends HardwareTestApi {
 class FakeBackgroundApi extends BackgroundApi {
   BackgroundConfig config = BackgroundConfig(
     liveStatus: false,
-    statusIcon: 'battery_level',
+    statusIcon: 'net_speed',
     chargeAlarm: false,
     chargeLimit: 80,
     batteryLow: false,

@@ -75,9 +75,9 @@ class AlertsScreen extends ConsumerWidget {
                       note: l.statusBarShowsNote,
                       value: c.statusIcon,
                       options: {
+                        'net_speed': l.download,
                         'battery_level': l.metricBattery,
                         'battery_temp': l.temperature,
-                        'net_speed': l.download,
                       },
                       onChanged: (v) => set((c) => copyConfig(c, statusIcon: v)),
                     ),
