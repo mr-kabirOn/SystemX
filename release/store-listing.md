@@ -28,6 +28,7 @@ EVERY SPEC YOUR PHONE EXPOSES
 • Sales code and region, Android version it launched with, One UI / HyperOS version, Knox warranty status
 • Installed apps with their size and cache, one tap from each app's Clear cache page
 • Screen time: daily screen-on time, time and opens per app, and estimated battery use per app
+• Data usage: Wi-Fi and mobile data per app, for each of the last 7 days
 • Bangladeshi carrier codes for balance, internet, minutes and SMS: open the dialer with the right code
 
 BATTERY HEALTH

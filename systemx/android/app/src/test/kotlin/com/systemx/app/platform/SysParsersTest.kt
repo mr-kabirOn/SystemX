@@ -195,4 +195,12 @@ class SysParsersTest {
         assertEquals(null, SysParsers.factoryDate("2024.13.40"))
         assertEquals(null, SysParsers.factoryDate(null))
     }
+
+    @Test
+    fun packageDisplayNameUsesTheLastMeaningfulPart() {
+        assertEquals("Photopicker", SysParsers.packageDisplayName("com.google.android.photopicker"))
+        assertEquals("Whatsapp", SysParsers.packageDisplayName("com.whatsapp"))
+        assertEquals("Facebook", SysParsers.packageDisplayName("com.facebook.android"))
+        assertEquals("Snap", SysParsers.packageDisplayName("com.snap"))
+    }
 }

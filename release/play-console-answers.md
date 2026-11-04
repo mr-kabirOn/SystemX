@@ -90,7 +90,8 @@ Two things a reviewer may ask about:
   on in Android Settings from the Apps or Screen time screen. It is used to
   read each app's storage and cache size (StorageStatsManager) and, for
   Screen time, usage events (UsageStatsManager): time on screen per app,
-  opens, unlocks and daily screen-on time. Nothing is stored or sent; the
+  opens, unlocks and daily screen-on time; for Data usage, per-app Wi-Fi
+  and mobile data from NetworkStatsManager. Nothing is stored or sent; the
   app has no internet permission. Off unless the user enables it.
 - **Seeing installed apps**: the Apps screen lists apps with a launcher
   icon, through a `<queries>` launcher intent; a home-screen `<queries>`
@@ -99,8 +100,9 @@ Two things a reviewer may ask about:
   is not requested.
 
 If Play asks why the app needs Usage access, answer:
-"Screen time is a core feature: it shows the user's daily screen-on time and
-how long each app was used, with an on-device battery estimate per app. The
+"Screen time and Data usage are core features: it shows the user's daily screen-on time and
+how long each app was used, with an on-device battery estimate per app, and
+how much Wi-Fi and mobile data each app used. The
 same access shows each app's storage and cache size. It is optional,
 explained in the app before the user opens the system setting, and the data
 never leaves the device (the app has no internet permission)."

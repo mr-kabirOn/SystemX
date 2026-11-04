@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../apps/data_usage.dart';
 import '../apps/screen_time.dart';
 import '../../core/format.dart';
 import '../../core/router.dart';
@@ -105,6 +106,7 @@ class MonitorScreen extends ConsumerWidget {
         const Box(HistoryCard()),
         const Box(BatteryHealthTile()),
         const Box(ScreenTimeTile()),
+        const Box(DataUsageTile()),
         const Box(SessionsTile(), bottom: 0),
       ],
     );

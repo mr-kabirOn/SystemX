@@ -33,7 +33,7 @@ internal class ScreenTimeProbe(private val ctx: Context, private val apps: AppsP
         val icons = HashMap<String, ByteArray>()
         for (pkg in days.flatMap { d -> d.apps.map { it.pkg } }.toSet()) {
             val info = Sys.safe { pm.getApplicationInfo(pkg, 0) }
-            labels[pkg] = info?.let { Sys.safe { it.loadLabel(pm).toString() } } ?: pkg
+            labels[pkg] = info?.let { Sys.safe { it.loadLabel(pm).toString().takeUnless { l -> l == pkg } } } ?: SysParsers.packageDisplayName(pkg)
             info?.let { i -> Sys.safe { apps.png(i.loadIcon(pm)) } }?.let { icons[pkg] = it }
         }
         return ScreenTimeReport(

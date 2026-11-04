@@ -4030,4 +4030,44 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get specEsim => 'ই-সিম';
+
+  @override
+  String get stmAppBatteryLow => '১%-এর কম ব্যাটারি';
+
+  @override
+  String get duTitle => 'ডেটা ব্যবহার';
+
+  @override
+  String get duEntryBody => 'প্রতিটি অ্যাপের ওয়াই-ফাই ও মোবাইল ডেটা ব্যবহার';
+
+  @override
+  String get duApps => 'ডেটা ব্যবহারকারী অ্যাপ';
+
+  @override
+  String duDownUp(String down, String up) {
+    return '↓ $down · ↑ $up';
+  }
+
+  @override
+  String get duSystem => 'অ্যান্ড্রয়েড সিস্টেম';
+
+  @override
+  String get duRemoved => 'মুছে ফেলা অ্যাপ';
+
+  @override
+  String get duTethering => 'হটস্পট ও টেদারিং';
+
+  @override
+  String get duOther => 'অন্যান্য অ্যাপ';
+
+  @override
+  String get duNone => 'এই দিনে এই নেটওয়ার্কে কোনো ডেটা ব্যবহার হয়নি।';
+
+  @override
+  String get duAccessBody =>
+      'ডেটা ব্যবহারের তথ্য অ্যান্ড্রয়েডের নিজস্ব নেটওয়ার্ক পরিসংখ্যান থেকে নেওয়া হয়, যার জন্য ব্যবহারের তথ্যে প্রবেশাধিকার (Usage access) প্রয়োজন। কোনো তথ্য ফোনের বাইরে যায় না।';
+
+  @override
+  String get duNote =>
+      'হিসাবগুলো অ্যান্ড্রয়েডের নেটওয়ার্ক পরিসংখ্যান থেকে নেওয়া, যা ফোনের নিজস্ব ডেটা ব্যবহারের পাতার উৎসও। আপনার অপারেটরের হিসাব সামান্য ভিন্ন হতে পারে।';
 }

@@ -97,7 +97,7 @@ class _ScreenTimeScreenState extends ConsumerState<ScreenTimeScreen> {
       slivers: [
         if (granted == false)
           Box(
-            _AccessCard(
+            UsageAccessCard(
               onAllow: () => ref
                   .read(deviceApiProvider)
                   .openSettings(AppsActions.usageAccess),
@@ -384,7 +384,7 @@ class _AppRow extends StatelessWidget {
     final sx = context.sx;
     final details = [
       l.stmOpens(app.opens),
-      if (app.batteryPct case final b?) l.stmAppBattery(batteryPoints(b)),
+      if (app.batteryPct case final b?) b < 1 ? l.stmAppBatteryLow : l.stmAppBattery(batteryPoints(b)),
     ].join(' · ');
     return InkWell(
       onTap: onTap,
@@ -452,10 +452,20 @@ class _AppRow extends StatelessWidget {
   }
 }
 
-class _AccessCard extends StatelessWidget {
-  const _AccessCard({required this.onAllow});
+/// Explains why Usage access is needed and opens the setting.
+class UsageAccessCard extends StatelessWidget {
+  const UsageAccessCard({
+    super.key,
+    required this.onAllow,
+    this.icon = SxIcons.screenTime,
+    this.body,
+  });
 
   final VoidCallback onAllow;
+  final IconData icon;
+
+  /// Why this page needs it; the screen time text by default.
+  final String? body;
 
   @override
   Widget build(BuildContext context) {
@@ -466,12 +476,12 @@ class _AccessCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          IconBadge(SxIcons.screenTime, color: sx.accent, size: 44),
+          IconBadge(icon, color: sx.accent, size: 44),
           const SizedBox(height: 14),
           Text(l.stmAccessTitle, style: context.text.titleMedium),
           const SizedBox(height: 6),
           Text(
-            l.stmAccessBody,
+            body ?? l.stmAccessBody,
             style: context.text.bodyMedium?.copyWith(color: sx.muted),
           ),
           const SizedBox(height: 16),

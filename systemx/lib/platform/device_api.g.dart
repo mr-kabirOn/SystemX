@@ -1948,6 +1948,205 @@ class ScreenTimeReport {
   }
 }
 
+/// Data one app (or a system bucket) used on one network type in one day.
+class AppDataUsage {
+  AppDataUsage({
+    required this.key,
+    required this.kind,
+    this.label,
+    required this.rxBytes,
+    required this.txBytes,
+  });
+
+  /// Package name for apps; "system", "removed" or "tethering" otherwise.
+  String key;
+
+  /// "app", "system", "removed", "tethering" or "other" (apps Android
+  /// doesn't name to SystemX).
+  String kind;
+
+  /// App name; null for system buckets (the app names them).
+  String? label;
+
+  int rxBytes;
+
+  int txBytes;
+
+  List<Object?> _toList() {
+    return <Object?>[
+      key,
+      kind,
+      label,
+      rxBytes,
+      txBytes,
+    ];
+  }
+
+  Object encode() {
+    return _toList();  }
+
+  static AppDataUsage decode(Object result) {
+    result as List<Object?>;
+    return AppDataUsage(
+      key: result[0]! as String,
+      kind: result[1]! as String,
+      label: result[2] as String?,
+      rxBytes: result[3]! as int,
+      txBytes: result[4]! as int,
+    );
+  }
+
+  @override
+  // ignore: avoid_equals_and_hash_code_on_mutable_classes
+  bool operator ==(Object other) {
+    if (other is! AppDataUsage || other.runtimeType != runtimeType) {
+      return false;
+    }
+    if (identical(this, other)) {
+      return true;
+    }
+    return _deepEquals(key, other.key) && _deepEquals(kind, other.kind) && _deepEquals(label, other.label) && _deepEquals(rxBytes, other.rxBytes) && _deepEquals(txBytes, other.txBytes);
+  }
+
+  @override
+  // ignore: avoid_equals_and_hash_code_on_mutable_classes
+  int get hashCode => _deepHash(<Object?>[runtimeType, ..._toList()]);
+
+  @override
+  String toString() {
+    return 'AppDataUsage(key: $key, kind: $kind, label: $label, rxBytes: $rxBytes, txBytes: $txBytes)';
+  }
+}
+
+/// Wi-Fi and mobile data for one local day.
+class DataUsageDay {
+  DataUsageDay({
+    required this.dayStartMs,
+    required this.wifiRx,
+    required this.wifiTx,
+    required this.mobileRx,
+    required this.mobileTx,
+    required this.wifiApps,
+    required this.mobileApps,
+  });
+
+  int dayStartMs;
+
+  int wifiRx;
+
+  int wifiTx;
+
+  int mobileRx;
+
+  int mobileTx;
+
+  /// Most data first.
+  List<AppDataUsage> wifiApps;
+
+  List<AppDataUsage> mobileApps;
+
+  List<Object?> _toList() {
+    return <Object?>[
+      dayStartMs,
+      wifiRx,
+      wifiTx,
+      mobileRx,
+      mobileTx,
+      wifiApps,
+      mobileApps,
+    ];
+  }
+
+  Object encode() {
+    return _toList();  }
+
+  static DataUsageDay decode(Object result) {
+    result as List<Object?>;
+    return DataUsageDay(
+      dayStartMs: result[0]! as int,
+      wifiRx: result[1]! as int,
+      wifiTx: result[2]! as int,
+      mobileRx: result[3]! as int,
+      mobileTx: result[4]! as int,
+      wifiApps: (result[5]! as List<Object?>).cast<AppDataUsage>(),
+      mobileApps: (result[6]! as List<Object?>).cast<AppDataUsage>(),
+    );
+  }
+
+  @override
+  // ignore: avoid_equals_and_hash_code_on_mutable_classes
+  bool operator ==(Object other) {
+    if (other is! DataUsageDay || other.runtimeType != runtimeType) {
+      return false;
+    }
+    if (identical(this, other)) {
+      return true;
+    }
+    return _deepEquals(dayStartMs, other.dayStartMs) && _deepEquals(wifiRx, other.wifiRx) && _deepEquals(wifiTx, other.wifiTx) && _deepEquals(mobileRx, other.mobileRx) && _deepEquals(mobileTx, other.mobileTx) && _deepEquals(wifiApps, other.wifiApps) && _deepEquals(mobileApps, other.mobileApps);
+  }
+
+  @override
+  // ignore: avoid_equals_and_hash_code_on_mutable_classes
+  int get hashCode => _deepHash(<Object?>[runtimeType, ..._toList()]);
+
+  @override
+  String toString() {
+    return 'DataUsageDay(dayStartMs: $dayStartMs, wifiRx: $wifiRx, wifiTx: $wifiTx, mobileRx: $mobileRx, mobileTx: $mobileTx, wifiApps: $wifiApps, mobileApps: $mobileApps)';
+  }
+}
+
+class DataUsageReport {
+  DataUsageReport({
+    required this.days,
+    required this.icons,
+  });
+
+  /// Same order as the requested day starts.
+  List<DataUsageDay> days;
+
+  /// PNG, 96 px, by package name.
+  Map<String, Uint8List> icons;
+
+  List<Object?> _toList() {
+    return <Object?>[
+      days,
+      icons,
+    ];
+  }
+
+  Object encode() {
+    return _toList();  }
+
+  static DataUsageReport decode(Object result) {
+    result as List<Object?>;
+    return DataUsageReport(
+      days: (result[0]! as List<Object?>).cast<DataUsageDay>(),
+      icons: (result[1]! as Map<Object?, Object?>).cast<String, Uint8List>(),
+    );
+  }
+
+  @override
+  // ignore: avoid_equals_and_hash_code_on_mutable_classes
+  bool operator ==(Object other) {
+    if (other is! DataUsageReport || other.runtimeType != runtimeType) {
+      return false;
+    }
+    if (identical(this, other)) {
+      return true;
+    }
+    return _deepEquals(days, other.days) && _deepEquals(icons, other.icons);
+  }
+
+  @override
+  // ignore: avoid_equals_and_hash_code_on_mutable_classes
+  int get hashCode => _deepHash(<Object?>[runtimeType, ..._toList()]);
+
+  @override
+  String toString() {
+    return 'DataUsageReport(days: $days, icons: $icons)';
+  }
+}
+
 class CodecInfo {
   CodecInfo({
     required this.name,
@@ -2812,32 +3011,41 @@ class _PigeonCodec extends StandardMessageCodec {
     }    else if (value is ScreenTimeReport) {
       buffer.putUint8(147);
       writeValue(buffer, value.encode());
-    }    else if (value is CodecInfo) {
+    }    else if (value is AppDataUsage) {
       buffer.putUint8(148);
       writeValue(buffer, value.encode());
-    }    else if (value is MediaInfo) {
+    }    else if (value is DataUsageDay) {
       buffer.putUint8(149);
       writeValue(buffer, value.encode());
-    }    else if (value is FeaturesInfo) {
+    }    else if (value is DataUsageReport) {
       buffer.putUint8(150);
       writeValue(buffer, value.encode());
-    }    else if (value is SecurityInfo) {
+    }    else if (value is CodecInfo) {
       buffer.putUint8(151);
       writeValue(buffer, value.encode());
-    }    else if (value is LiveStats) {
+    }    else if (value is MediaInfo) {
       buffer.putUint8(152);
       writeValue(buffer, value.encode());
-    }    else if (value is StressSample) {
+    }    else if (value is FeaturesInfo) {
       buffer.putUint8(153);
       writeValue(buffer, value.encode());
-    }    else if (value is BackgroundConfig) {
+    }    else if (value is SecurityInfo) {
       buffer.putUint8(154);
       writeValue(buffer, value.encode());
-    }    else if (value is HistorySample) {
+    }    else if (value is LiveStats) {
       buffer.putUint8(155);
       writeValue(buffer, value.encode());
-    }    else if (value is ChargeSession) {
+    }    else if (value is StressSample) {
       buffer.putUint8(156);
+      writeValue(buffer, value.encode());
+    }    else if (value is BackgroundConfig) {
+      buffer.putUint8(157);
+      writeValue(buffer, value.encode());
+    }    else if (value is HistorySample) {
+      buffer.putUint8(158);
+      writeValue(buffer, value.encode());
+    }    else if (value is ChargeSession) {
+      buffer.putUint8(159);
       writeValue(buffer, value.encode());
     } else {
       super.writeValue(buffer, value);
@@ -2886,22 +3094,28 @@ class _PigeonCodec extends StandardMessageCodec {
       case 147:
         return ScreenTimeReport.decode(readValue(buffer)!);
       case 148:
-        return CodecInfo.decode(readValue(buffer)!);
+        return AppDataUsage.decode(readValue(buffer)!);
       case 149:
-        return MediaInfo.decode(readValue(buffer)!);
+        return DataUsageDay.decode(readValue(buffer)!);
       case 150:
-        return FeaturesInfo.decode(readValue(buffer)!);
+        return DataUsageReport.decode(readValue(buffer)!);
       case 151:
-        return SecurityInfo.decode(readValue(buffer)!);
+        return CodecInfo.decode(readValue(buffer)!);
       case 152:
-        return LiveStats.decode(readValue(buffer)!);
+        return MediaInfo.decode(readValue(buffer)!);
       case 153:
-        return StressSample.decode(readValue(buffer)!);
+        return FeaturesInfo.decode(readValue(buffer)!);
       case 154:
-        return BackgroundConfig.decode(readValue(buffer)!);
+        return SecurityInfo.decode(readValue(buffer)!);
       case 155:
-        return HistorySample.decode(readValue(buffer)!);
+        return LiveStats.decode(readValue(buffer)!);
       case 156:
+        return StressSample.decode(readValue(buffer)!);
+      case 157:
+        return BackgroundConfig.decode(readValue(buffer)!);
+      case 158:
+        return HistorySample.decode(readValue(buffer)!);
+      case 159:
         return ChargeSession.decode(readValue(buffer)!);
       default:
         return super.readValueOfType(type, buffer);
@@ -3364,6 +3578,28 @@ class DeviceInfoApi {
     )
     ;
     return pigeonVar_replyValue! as ScreenTimeReport;
+  }
+
+  /// Wi-Fi and mobile data per app for the days starting at [dayStartsMs]
+  /// (local midnights, oldest first), from Android's network statistics.
+  /// Needs Usage access; days are empty without it.
+  Future<DataUsageReport> dataUsage(List<int> dayStartsMs) async {
+    final pigeonVar_channelName = 'dev.flutter.pigeon.systemx.DeviceInfoApi.dataUsage$pigeonVar_messageChannelSuffix';
+    final pigeonVar_channel = BasicMessageChannel<Object?>(
+      pigeonVar_channelName,
+      pigeonChannelCodec,
+      binaryMessenger: pigeonVar_binaryMessenger,
+    );
+    final Future<Object?> pigeonVar_sendFuture = pigeonVar_channel.send(<Object?>[dayStartsMs]);
+    final pigeonVar_replyList = await pigeonVar_sendFuture as List<Object?>?;
+
+    final Object? pigeonVar_replyValue = _extractReplyValueOrThrow(
+        pigeonVar_replyList,
+        pigeonVar_channelName,
+        isNullValid: false,
+    )
+    ;
+    return pigeonVar_replyValue! as DataUsageReport;
   }
 }
 

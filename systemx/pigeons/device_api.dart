@@ -484,6 +484,55 @@ class ScreenTimeReport {
   Map<String, Uint8List> icons;
 }
 
+/// Data one app (or a system bucket) used on one network type in one day.
+class AppDataUsage {
+  AppDataUsage({required this.key, required this.kind, required this.rxBytes, required this.txBytes});
+
+  /// Package name for apps; "system", "removed" or "tethering" otherwise.
+  String key;
+
+  /// "app", "system", "removed", "tethering" or "other" (apps Android
+  /// doesn't name to SystemX).
+  String kind;
+
+  /// App name; null for system buckets (the app names them).
+  String? label;
+  int rxBytes;
+  int txBytes;
+}
+
+/// Wi-Fi and mobile data for one local day.
+class DataUsageDay {
+  DataUsageDay({
+    required this.dayStartMs,
+    required this.wifiRx,
+    required this.wifiTx,
+    required this.mobileRx,
+    required this.mobileTx,
+    required this.wifiApps,
+    required this.mobileApps,
+  });
+  int dayStartMs;
+  int wifiRx;
+  int wifiTx;
+  int mobileRx;
+  int mobileTx;
+
+  /// Most data first.
+  List<AppDataUsage> wifiApps;
+  List<AppDataUsage> mobileApps;
+}
+
+class DataUsageReport {
+  DataUsageReport({required this.days, required this.icons});
+
+  /// Same order as the requested day starts.
+  List<DataUsageDay> days;
+
+  /// PNG, 96 px, by package name.
+  Map<String, Uint8List> icons;
+}
+
 class CodecInfo {
   CodecInfo({required this.name, required this.encoder, required this.types});
   String name;
@@ -653,6 +702,12 @@ abstract class DeviceInfoApi {
   /// oldest first). Needs Usage access; days are empty without it.
   @TaskQueue(type: TaskQueueType.serialBackgroundThread)
   ScreenTimeReport screenTime(List<int> dayStartsMs);
+
+  /// Wi-Fi and mobile data per app for the days starting at [dayStartsMs]
+  /// (local midnights, oldest first), from Android's network statistics.
+  /// Needs Usage access; days are empty without it.
+  @TaskQueue(type: TaskQueueType.serialBackgroundThread)
+  DataUsageReport dataUsage(List<int> dayStartsMs);
 }
 
 /// Runtime permissions, asked from the current activity.

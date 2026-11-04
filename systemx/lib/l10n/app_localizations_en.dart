@@ -4055,4 +4055,44 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get specEsim => 'eSIM';
+
+  @override
+  String get stmAppBatteryLow => '< 1% battery';
+
+  @override
+  String get duTitle => 'Data usage';
+
+  @override
+  String get duEntryBody => 'Wi-Fi and mobile data used by each app';
+
+  @override
+  String get duApps => 'Apps using data';
+
+  @override
+  String duDownUp(String down, String up) {
+    return '↓ $down · ↑ $up';
+  }
+
+  @override
+  String get duSystem => 'Android system';
+
+  @override
+  String get duRemoved => 'Removed apps';
+
+  @override
+  String get duTethering => 'Hotspot and tethering';
+
+  @override
+  String get duOther => 'Other apps';
+
+  @override
+  String get duNone => 'No data used on this network on this day.';
+
+  @override
+  String get duAccessBody =>
+      'Data usage is read from Android\'s own network statistics, which need Usage access. Nothing leaves this phone.';
+
+  @override
+  String get duNote =>
+      'Figures come from Android\'s network statistics, the same source as the phone\'s own data usage screen. Your operator may count slightly differently.';
 }

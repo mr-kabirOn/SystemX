@@ -92,7 +92,10 @@ class _RefreshRateScreenState extends ConsumerState<RefreshRateScreen>
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context);
     final sx = context.sx;
-    final display = ref.watch(categorySnapshotProvider(DeviceCategory.display)).value?.display;
+    final display = ref
+        .watch(categorySnapshotProvider(DeviceCategory.display))
+        .value
+        ?.display;
     final maxHz = display == null || display.refreshRates.isEmpty
         ? display?.refreshRate
         : display.refreshRates.reduce(math.max);
@@ -102,69 +105,100 @@ class _RefreshRateScreenState extends ConsumerState<RefreshRateScreen>
       title: l.rrTitle,
       leading: const BackButton(),
       slivers: [
-        Box(SxCard(
-          child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Text(l.rrIntro, style: context.text.bodyMedium),
-            const SizedBox(height: 16),
-            // Something moving every frame, so the display has to redraw.
-            SizedBox(
-              height: 56,
-              child: LayoutBuilder(builder: (context, c) {
-                final period = const Duration(milliseconds: 900).inMicroseconds;
-                final phase = (_now.inMicroseconds % period) / period;
-                final x = (c.maxWidth - 48) * (0.5 - 0.5 * math.cos(phase * 2 * math.pi));
-                return Stack(children: [
-                  Positioned.fill(
-                    child: DecoratedBox(
-                      decoration: BoxDecoration(
-                        color: sx.cardAlt,
-                        borderRadius: BorderRadius.circular(14),
-                      ),
+        Box(
+          SxCard(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(l.rrIntro, style: context.text.bodyMedium),
+                const SizedBox(height: 16),
+                // Something moving every frame, so the display has to redraw.
+                SizedBox(
+                  height: 56,
+                  child: LayoutBuilder(
+                    builder: (context, c) {
+                      final period = const Duration(
+                        milliseconds: 900,
+                      ).inMicroseconds;
+                      final phase = (_now.inMicroseconds % period) / period;
+                      final x =
+                          (c.maxWidth - 48) *
+                          (0.5 - 0.5 * math.cos(phase * 2 * math.pi));
+                      return Stack(
+                        children: [
+                          Positioned.fill(
+                            child: DecoratedBox(
+                              decoration: BoxDecoration(
+                                color: sx.cardAlt,
+                                borderRadius: BorderRadius.circular(14),
+                              ),
+                            ),
+                          ),
+                          Positioned(
+                            left: x,
+                            top: 4,
+                            bottom: 4,
+                            width: 48,
+                            child: DecoratedBox(
+                              decoration: BoxDecoration(
+                                color: sx.display,
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                            ),
+                          ),
+                        ],
+                      );
+                    },
+                  ),
+                ),
+                const SizedBox(height: 16),
+                SizedBox(
+                  width: double.infinity,
+                  child: FilledButton(
+                    onPressed: _running ? null : _start,
+                    child: Text(
+                      _running
+                          ? l.rrMeasuring
+                          : (hz == null ? l.rrStart : l.stAgain),
                     ),
                   ),
-                  Positioned(
-                    left: x,
-                    top: 4,
-                    bottom: 4,
-                    width: 48,
-                    child: DecoratedBox(
-                      decoration: BoxDecoration(
-                        color: sx.display,
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                    ),
-                  ),
-                ]);
-              }),
+                ),
+              ],
             ),
-            const SizedBox(height: 16),
-            SizedBox(
-              width: double.infinity,
-              child: FilledButton(
-                onPressed: _running ? null : _start,
-                child: Text(_running ? l.rrMeasuring : (hz == null ? l.rrStart : l.stAgain)),
+          ),
+        ),
+        if (hz != null || maxHz != null)
+          Box(
+            SxCard(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  if (hz != null) ...[
+                    Eyebrow(l.rrMeasured, color: sx.display),
+                    const SizedBox(height: 6),
+                    Text(
+                      '${formatDouble(hz, decimals: 0)} Hz',
+                      style: context.text.displaySmall,
+                    ),
+                    const SizedBox(height: 6),
+                    Text(
+                      maxHz != null && hz < maxHz * 0.9
+                          ? l.rrLower(formatDouble(maxHz, decimals: 0))
+                          : l.rrMatches,
+                      style: context.text.bodySmall,
+                    ),
+                    const SizedBox(height: 12),
+                  ],
+                  if (maxHz != null)
+                    InfoRow(
+                      label: l.rrReported,
+                      value: '${formatDouble(maxHz, decimals: 0)} Hz',
+                    ),
+                ],
               ),
             ),
-          ]),
-        )),
-        if (hz != null || maxHz != null)
-          Box(SxCard(
-            child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              if (hz != null) ...[
-                Eyebrow(l.rrMeasured, color: sx.display),
-                const SizedBox(height: 6),
-                Text('${formatDouble(hz, decimals: 0)} Hz', style: context.text.displaySmall),
-                const SizedBox(height: 6),
-                Text(
-                  maxHz != null && hz < maxHz * 0.9 ? l.rrLower(formatDouble(maxHz, decimals: 0)) : l.rrMatches,
-                  style: context.text.bodySmall,
-                ),
-                const SizedBox(height: 12),
-              ],
-              if (maxHz != null)
-                InfoRow(label: l.rrReported, value: '${formatDouble(maxHz, decimals: 0)} Hz'),
-            ]),
-          ), bottom: 0),
+            bottom: 0,
+          ),
       ],
     );
   }
@@ -212,58 +246,85 @@ class _TouchRateScreenState extends State<TouchRateScreen> {
     final sx = context.sx;
     return Scaffold(
       appBar: AppBar(title: Text(l.trTitle)),
-      body: Column(children: [
-        Padding(
-          padding: const EdgeInsets.fromLTRB(20, 4, 20, 12),
-          child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Text(l.trIntro, style: context.text.bodyMedium),
-            const SizedBox(height: 12),
-            Row(children: [
-              Expanded(
-                child: _Stat(label: l.trNow, value: _rate == null ? '–' : '${_rate!.round()} Hz'),
-              ),
-              const SizedBox(width: 12),
-              Expanded(
-                child: _Stat(label: l.trBest, value: _best == null ? '–' : '${_best!.round()} Hz'),
-              ),
-            ]),
-            const SizedBox(height: 8),
-            Text(l.trNote, style: context.text.bodySmall?.copyWith(color: sx.muted)),
-          ]),
-        ),
-        Expanded(
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
-            child: Listener(
-              onPointerDown: _down,
-              onPointerMove: _move,
-              // Keeps the system back gesture and scrolling from taking the finger.
-              child: RawGestureDetector(
-                gestures: {
-                  PanGestureRecognizer: GestureRecognizerFactoryWithHandlers<PanGestureRecognizer>(
-                    PanGestureRecognizer.new,
-                    (r) => r.onUpdate = (_) {},
+      body: SafeArea(
+        top: false,
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.fromLTRB(20, 4, 20, 12),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(l.trIntro, style: context.text.bodyMedium),
+                  const SizedBox(height: 12),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: _Stat(
+                          label: l.trNow,
+                          value: _rate == null ? '–' : '${_rate!.round()} Hz',
+                        ),
+                      ),
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: _Stat(
+                          label: l.trBest,
+                          value: _best == null ? '–' : '${_best!.round()} Hz',
+                        ),
+                      ),
+                    ],
                   ),
-                },
-                child: DecoratedBox(
-                  decoration: BoxDecoration(
-                    color: sx.cardAlt,
-                    borderRadius: BorderRadius.circular(20),
+                  const SizedBox(height: 8),
+                  Text(
+                    l.trNote,
+                    style: context.text.bodySmall?.copyWith(color: sx.muted),
                   ),
-                  child: CustomPaint(
-                    painter: _TrailPainter(_points, sx.accent),
-                    child: Center(
-                      child: _points.isEmpty
-                          ? Text(l.trDraw, style: context.text.titleMedium?.copyWith(color: sx.muted))
-                          : null,
+                ],
+              ),
+            ),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+                child: Listener(
+                  onPointerDown: _down,
+                  onPointerMove: _move,
+                  // Keeps the system back gesture and scrolling from taking the finger.
+                  child: RawGestureDetector(
+                    gestures: {
+                      PanGestureRecognizer:
+                          GestureRecognizerFactoryWithHandlers<
+                            PanGestureRecognizer
+                          >(
+                            PanGestureRecognizer.new,
+                            (r) => r.onUpdate = (_) {},
+                          ),
+                    },
+                    child: DecoratedBox(
+                      decoration: BoxDecoration(
+                        color: sx.cardAlt,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: CustomPaint(
+                        painter: _TrailPainter(_points, sx.accent),
+                        child: Center(
+                          child: _points.isEmpty
+                              ? Text(
+                                  l.trDraw,
+                                  style: context.text.titleMedium?.copyWith(
+                                    color: sx.muted,
+                                  ),
+                                )
+                              : null,
+                        ),
+                      ),
                     ),
                   ),
                 ),
               ),
             ),
-          ),
+          ],
         ),
-      ]),
+      ),
     );
   }
 }
@@ -276,13 +337,16 @@ class _Stat extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => SxCard(
-        padding: const EdgeInsets.all(12),
-        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Eyebrow(label),
-          const SizedBox(height: 4),
-          Text(value, style: context.text.headlineSmall),
-        ]),
-      );
+    padding: const EdgeInsets.all(12),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Eyebrow(label),
+        const SizedBox(height: 4),
+        Text(value, style: context.text.headlineSmall),
+      ],
+    ),
+  );
 }
 
 class _TrailPainter extends CustomPainter {

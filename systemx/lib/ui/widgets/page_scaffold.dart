@@ -38,9 +38,12 @@ class PageScaffold extends StatelessWidget {
             leading: leading,
             actions: [...actions, const SizedBox(width: 8)],
           ),
+          // The bottom inset keeps the last lines above Android's navigation
+          // bar (buttons or gesture handle) on pages without the tab bar;
+          // inside the tabs the tab bar already takes it.
           SliverPadding(
-            padding: EdgeInsets.fromLTRB(
-                sidePadding(context), 4, sidePadding(context), 28),
+            padding: EdgeInsets.fromLTRB(sidePadding(context), 4,
+                sidePadding(context), 28 + MediaQuery.viewPaddingOf(context).bottom),
             sliver: SliverMainAxisGroup(slivers: slivers),
           ),
         ],

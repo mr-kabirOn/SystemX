@@ -6463,6 +6463,78 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'eSIM'**
   String get specEsim;
+
+  /// No description provided for @stmAppBatteryLow.
+  ///
+  /// In en, this message translates to:
+  /// **'< 1% battery'**
+  String get stmAppBatteryLow;
+
+  /// No description provided for @duTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Data usage'**
+  String get duTitle;
+
+  /// No description provided for @duEntryBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Wi-Fi and mobile data used by each app'**
+  String get duEntryBody;
+
+  /// No description provided for @duApps.
+  ///
+  /// In en, this message translates to:
+  /// **'Apps using data'**
+  String get duApps;
+
+  /// No description provided for @duDownUp.
+  ///
+  /// In en, this message translates to:
+  /// **'↓ {down} · ↑ {up}'**
+  String duDownUp(String down, String up);
+
+  /// No description provided for @duSystem.
+  ///
+  /// In en, this message translates to:
+  /// **'Android system'**
+  String get duSystem;
+
+  /// No description provided for @duRemoved.
+  ///
+  /// In en, this message translates to:
+  /// **'Removed apps'**
+  String get duRemoved;
+
+  /// No description provided for @duTethering.
+  ///
+  /// In en, this message translates to:
+  /// **'Hotspot and tethering'**
+  String get duTethering;
+
+  /// No description provided for @duOther.
+  ///
+  /// In en, this message translates to:
+  /// **'Other apps'**
+  String get duOther;
+
+  /// No description provided for @duNone.
+  ///
+  /// In en, this message translates to:
+  /// **'No data used on this network on this day.'**
+  String get duNone;
+
+  /// No description provided for @duAccessBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Data usage is read from Android\'s own network statistics, which need Usage access. Nothing leaves this phone.'**
+  String get duAccessBody;
+
+  /// No description provided for @duNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Figures come from Android\'s network statistics, the same source as the phone\'s own data usage screen. Your operator may count slightly differently.'**
+  String get duNote;
 }
 
 class _AppLocalizationsDelegate

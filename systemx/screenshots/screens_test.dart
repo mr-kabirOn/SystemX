@@ -217,6 +217,8 @@ void main() {
         tester, '28_device_sensors', Routes.category(DeviceCategory.sensors));
     await _shoot(tester, '29_battery_health', Routes.batteryHealth, background: _manyCharges());
     await _shoot(tester, '30_screen_time', Routes.screenTime, usage: true);
+    await _shoot(tester, '34_data_usage', Routes.dataUsage, usage: true);
+    await _shoot(tester, 'bn/data_usage', Routes.dataUsage, usage: true, locale: 'bn', theme: ThemeMode.light);
     const tall = Size(1080, 4400);
     await _shoot(tester, '31_processor_full', Routes.category(DeviceCategory.processor), size: tall);
     await _shoot(tester, '32_system_full', Routes.category(DeviceCategory.system), size: tall);

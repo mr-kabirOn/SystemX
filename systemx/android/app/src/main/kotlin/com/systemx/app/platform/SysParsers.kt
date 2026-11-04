@@ -17,6 +17,17 @@ internal object SysParsers {
         return String.format(java.util.Locale.ROOT, "%04d-%02d-%02d", y, mo, d)
     }
 
+    /**
+     * A readable name for an app Android won't name for us (no package
+     * visibility): "com.google.android.photopicker" -> "Photopicker".
+     */
+    fun packageDisplayName(pkg: String): String {
+        val generic = setOf("android", "app", "apps", "mobile", "client", "main")
+        val parts = pkg.split('.').filter { it.isNotBlank() }
+        val name = parts.lastOrNull { it.lowercase() !in generic } ?: return pkg
+        return name.replace('_', ' ').replaceFirstChar { it.uppercaseChar() }
+    }
+
     private val PROP_LINE = Regex("""^\[(.+?)]: \[(.*)]$""")
     private val WHITESPACE = Regex("\\s+")
     private val BLANK_LINE = Regex("\\n\\s*\\n")

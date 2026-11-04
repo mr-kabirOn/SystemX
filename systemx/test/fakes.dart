@@ -460,6 +460,39 @@ class FakeDeviceApi extends DeviceInfoApi {
   Future<void> openAppDetails(String packageName) async =>
       openedApps.add(packageName);
 
+  @override
+  Future<DataUsageReport> dataUsage(List<int> dayStartsMs) async {
+    const mb = 1000000;
+    AppDataUsage app(String key, String label, int rxMb, int txMb) =>
+        AppDataUsage(key: key, kind: 'app', label: label, rxBytes: rxMb * mb, txBytes: txMb * mb);
+    return DataUsageReport(
+      days: [
+        for (final (i, d) in dayStartsMs.indexed)
+          if (!usageGranted)
+            DataUsageDay(dayStartMs: d, wifiRx: 0, wifiTx: 0, mobileRx: 0, mobileTx: 0, wifiApps: [], mobileApps: [])
+          else
+            DataUsageDay(
+              dayStartMs: d,
+              wifiRx: (900 + i * 100) * mb,
+              wifiTx: 80 * mb,
+              mobileRx: (300 + i * 40) * mb,
+              mobileTx: 30 * mb,
+              wifiApps: [
+                app('com.google.android.youtube', 'YouTube', 600 + i * 100, 20),
+                app('com.whatsapp', 'WhatsApp', 200, 40),
+                AppDataUsage(key: 'system', kind: 'system', rxBytes: 100 * mb, txBytes: 20 * mb),
+              ],
+              mobileApps: [
+                app('com.facebook.katana', 'Facebook', 180 + i * 40, 12),
+                app('com.whatsapp', 'WhatsApp', 90, 15),
+                AppDataUsage(key: 'tethering', kind: 'tethering', rxBytes: 30 * mb, txBytes: 3 * mb),
+              ],
+            ),
+      ],
+      icons: {},
+    );
+  }
+
   /// Screen time per requested day: [screenTimeMinutes] cycles over the days
   /// (oldest first); apps share 80% of each day, the rest is the home screen.
   List<int> screenTimeMinutes = [195, 240, 160, 280, 210, 300, 252];

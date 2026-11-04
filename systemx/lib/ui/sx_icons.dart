@@ -23,6 +23,7 @@ abstract final class SxIcons {
   static const IconData apps = PhosphorIconsFill.squaresFour;
   static const IconData cache = PhosphorIconsFill.broom;
   static const IconData screenTime = PhosphorIconsFill.hourglassMedium;
+  static const IconData dataUsage = PhosphorIconsFill.arrowsDownUp;
 
   static const IconData brightness = PhosphorIconsFill.sun;
   static const IconData touch = PhosphorIconsFill.handTap;

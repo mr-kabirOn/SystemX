@@ -1169,5 +1169,18 @@
   "specSalesCarrier": "Carrier",
   "cscOpen": "Unlocked (open market)",
   "specPhoneType": "Phone type",
-  "specEsim": "eSIM"
+  "specEsim": "eSIM",
+  "stmAppBatteryLow": "< 1% battery",
+  "duTitle": "Data usage",
+  "duEntryBody": "Wi-Fi and mobile data used by each app",
+  "duApps": "Apps using data",
+  "duDownUp": "↓ {down} · ↑ {up}",
+  "@duDownUp": {"placeholders": {"down": {"type": "String"}, "up": {"type": "String"}}},
+  "duSystem": "Android system",
+  "duRemoved": "Removed apps",
+  "duTethering": "Hotspot and tethering",
+  "duOther": "Other apps",
+  "duNone": "No data used on this network on this day.",
+  "duAccessBody": "Data usage is read from Android's own network statistics, which need Usage access. Nothing leaves this phone.",
+  "duNote": "Figures come from Android's network statistics, the same source as the phone's own data usage screen. Your operator may count slightly differently."
 }
