@@ -6685,6 +6685,180 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'The floating monitor needs Android\'s \"Display over other apps\" setting. SystemX only draws its small box; it can\'t see or read other apps\' screens.'**
   String get permOverlayReason;
+
+  /// No description provided for @mtLevel.
+  ///
+  /// In en, this message translates to:
+  /// **'Bubble level'**
+  String get mtLevel;
+
+  /// No description provided for @mtLevelHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Lay the phone on the surface. Centered and green means level.'**
+  String get mtLevelHint;
+
+  /// No description provided for @mtLevelOk.
+  ///
+  /// In en, this message translates to:
+  /// **'Level'**
+  String get mtLevelOk;
+
+  /// No description provided for @mtCompass.
+  ///
+  /// In en, this message translates to:
+  /// **'Compass'**
+  String get mtCompass;
+
+  /// No description provided for @mtCompassHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Hold the phone flat, away from magnets and metal. Shows magnetic north.'**
+  String get mtCompassHint;
+
+  /// No description provided for @mtCompassCalibrate.
+  ///
+  /// In en, this message translates to:
+  /// **'If the heading jumps, move the phone in a figure 8 a few times.'**
+  String get mtCompassCalibrate;
+
+  /// No description provided for @mtSound.
+  ///
+  /// In en, this message translates to:
+  /// **'Sound meter'**
+  String get mtSound;
+
+  /// No description provided for @mtSoundHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Approximate level from the microphone. Phone microphones aren\'t calibrated, so treat it as a guide, not a measurement.'**
+  String get mtSoundHint;
+
+  /// No description provided for @mtSoundMax.
+  ///
+  /// In en, this message translates to:
+  /// **'Highest {db} dB'**
+  String mtSoundMax(int db);
+
+  /// No description provided for @mtSoundAvg.
+  ///
+  /// In en, this message translates to:
+  /// **'Average {db} dB'**
+  String mtSoundAvg(int db);
+
+  /// No description provided for @mtReset.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset'**
+  String get mtReset;
+
+  /// No description provided for @mtLight.
+  ///
+  /// In en, this message translates to:
+  /// **'Light meter'**
+  String get mtLight;
+
+  /// No description provided for @mtLightHint.
+  ///
+  /// In en, this message translates to:
+  /// **'The light sensor is near the top of the screen; point that edge at the light.'**
+  String get mtLightHint;
+
+  /// No description provided for @mtMagnet.
+  ///
+  /// In en, this message translates to:
+  /// **'Magnetic field'**
+  String get mtMagnet;
+
+  /// No description provided for @mtMagnetHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Earth\'s field reads about 25 to 65 µT. Much higher means a magnet or metal is close; move the top of the phone over it to find it.'**
+  String get mtMagnetHint;
+
+  /// No description provided for @mtMagnetHigh.
+  ///
+  /// In en, this message translates to:
+  /// **'Magnet or metal nearby'**
+  String get mtMagnetHigh;
+
+  /// No description provided for @mtMagnetNormal.
+  ///
+  /// In en, this message translates to:
+  /// **'Normal (Earth\'s field)'**
+  String get mtMagnetNormal;
+
+  /// No description provided for @mtNoSensor.
+  ///
+  /// In en, this message translates to:
+  /// **'This phone doesn\'t have the sensor this tool needs.'**
+  String get mtNoSensor;
+
+  /// No description provided for @mtNoMic.
+  ///
+  /// In en, this message translates to:
+  /// **'The sound meter needs the microphone. Allow it to start.'**
+  String get mtNoMic;
+
+  /// No description provided for @mtStart.
+  ///
+  /// In en, this message translates to:
+  /// **'Start'**
+  String get mtStart;
+
+  /// No description provided for @lightDark.
+  ///
+  /// In en, this message translates to:
+  /// **'Dark'**
+  String get lightDark;
+
+  /// No description provided for @lightDim.
+  ///
+  /// In en, this message translates to:
+  /// **'Dim'**
+  String get lightDim;
+
+  /// No description provided for @lightIndoor.
+  ///
+  /// In en, this message translates to:
+  /// **'Indoor light'**
+  String get lightIndoor;
+
+  /// No description provided for @lightBright.
+  ///
+  /// In en, this message translates to:
+  /// **'Bright'**
+  String get lightBright;
+
+  /// No description provided for @lightSun.
+  ///
+  /// In en, this message translates to:
+  /// **'Direct sunlight'**
+  String get lightSun;
+
+  /// No description provided for @soundQuiet.
+  ///
+  /// In en, this message translates to:
+  /// **'Quiet'**
+  String get soundQuiet;
+
+  /// No description provided for @soundModerate.
+  ///
+  /// In en, this message translates to:
+  /// **'Conversation'**
+  String get soundModerate;
+
+  /// No description provided for @soundLoud.
+  ///
+  /// In en, this message translates to:
+  /// **'Loud'**
+  String get soundLoud;
+
+  /// No description provided for @soundVeryLoud.
+  ///
+  /// In en, this message translates to:
+  /// **'Very loud'**
+  String get soundVeryLoud;
 }
 
 class _AppLocalizationsDelegate

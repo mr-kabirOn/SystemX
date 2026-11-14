@@ -19,6 +19,16 @@ Stream<List<double>> sensorReadings(int type) => _sensorChannel
 final sensorReadingsProvider =
     Provider<Stream<List<double>> Function(int type)>((ref) => sensorReadings);
 
+const _soundChannel = EventChannel('systemx/sound');
+
+/// Microphone level in dBFS about every 100 ms while listened to; ends at
+/// once without the microphone permission.
+Stream<double> soundLevels() =>
+    _soundChannel.receiveBroadcastStream().map((e) => (e as num).toDouble());
+
+/// [soundLevels], swappable in tests.
+final soundLevelsProvider = Provider<Stream<double> Function()>((ref) => soundLevels);
+
 final hardwareTestApiProvider =
     Provider<HardwareTestApi>((ref) => HardwareTestApi());
 

@@ -15,6 +15,7 @@ import com.systemx.app.platform.PermissionHost
 import com.systemx.app.platform.PlayApi
 import com.systemx.app.platform.PlayHost
 import com.systemx.app.platform.SensorStreamHandler
+import com.systemx.app.platform.SoundLevelStreamHandler
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.EventChannel
@@ -49,6 +50,7 @@ class MainActivity : FlutterActivity() {
         DeviceInfoApi.setUp(messenger, DeviceInfoHost(this))
         PermissionApi.setUp(messenger, permissions)
         EventChannel(messenger, "systemx/sensor").setStreamHandler(SensorStreamHandler(this))
+        EventChannel(messenger, "systemx/sound").setStreamHandler(SoundLevelStreamHandler(this))
     }
 
     override fun onStop() {

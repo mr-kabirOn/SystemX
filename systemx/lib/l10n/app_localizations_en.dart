@@ -4181,4 +4181,113 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get permOverlayReason =>
       'The floating monitor needs Android\'s \"Display over other apps\" setting. SystemX only draws its small box; it can\'t see or read other apps\' screens.';
+
+  @override
+  String get mtLevel => 'Bubble level';
+
+  @override
+  String get mtLevelHint =>
+      'Lay the phone on the surface. Centered and green means level.';
+
+  @override
+  String get mtLevelOk => 'Level';
+
+  @override
+  String get mtCompass => 'Compass';
+
+  @override
+  String get mtCompassHint =>
+      'Hold the phone flat, away from magnets and metal. Shows magnetic north.';
+
+  @override
+  String get mtCompassCalibrate =>
+      'If the heading jumps, move the phone in a figure 8 a few times.';
+
+  @override
+  String get mtSound => 'Sound meter';
+
+  @override
+  String get mtSoundHint =>
+      'Approximate level from the microphone. Phone microphones aren\'t calibrated, so treat it as a guide, not a measurement.';
+
+  @override
+  String mtSoundMax(int db) {
+    final intl.NumberFormat dbNumberFormat = intl.NumberFormat.decimalPattern(
+      localeName,
+    );
+    final String dbString = dbNumberFormat.format(db);
+
+    return 'Highest $dbString dB';
+  }
+
+  @override
+  String mtSoundAvg(int db) {
+    final intl.NumberFormat dbNumberFormat = intl.NumberFormat.decimalPattern(
+      localeName,
+    );
+    final String dbString = dbNumberFormat.format(db);
+
+    return 'Average $dbString dB';
+  }
+
+  @override
+  String get mtReset => 'Reset';
+
+  @override
+  String get mtLight => 'Light meter';
+
+  @override
+  String get mtLightHint =>
+      'The light sensor is near the top of the screen; point that edge at the light.';
+
+  @override
+  String get mtMagnet => 'Magnetic field';
+
+  @override
+  String get mtMagnetHint =>
+      'Earth\'s field reads about 25 to 65 µT. Much higher means a magnet or metal is close; move the top of the phone over it to find it.';
+
+  @override
+  String get mtMagnetHigh => 'Magnet or metal nearby';
+
+  @override
+  String get mtMagnetNormal => 'Normal (Earth\'s field)';
+
+  @override
+  String get mtNoSensor =>
+      'This phone doesn\'t have the sensor this tool needs.';
+
+  @override
+  String get mtNoMic =>
+      'The sound meter needs the microphone. Allow it to start.';
+
+  @override
+  String get mtStart => 'Start';
+
+  @override
+  String get lightDark => 'Dark';
+
+  @override
+  String get lightDim => 'Dim';
+
+  @override
+  String get lightIndoor => 'Indoor light';
+
+  @override
+  String get lightBright => 'Bright';
+
+  @override
+  String get lightSun => 'Direct sunlight';
+
+  @override
+  String get soundQuiet => 'Quiet';
+
+  @override
+  String get soundModerate => 'Conversation';
+
+  @override
+  String get soundLoud => 'Loud';
+
+  @override
+  String get soundVeryLoud => 'Very loud';
 }

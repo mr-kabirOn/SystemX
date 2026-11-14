@@ -82,6 +82,14 @@ Future<void> _shoot(
     hardwareTestApiProvider.overrideWithValue(FakeHardwareTestApi()),
     resultsStoreProvider.overrideWithValue(_sampleResults()),
     tempDirProvider.overrideWithValue(() async => Directory.systemTemp),
+    // Steady sample readings for the measurement tools.
+    sensorReadingsProvider.overrideWithValue((type) => Stream.value(switch (type) {
+          1 => [1.4, -0.9, 9.6],
+          2 => [21.0, 33.0, -28.0],
+          5 => [320.0],
+          11 => [0.0, 0.0, -0.34, 0.94],
+          _ => <double>[],
+        })),
   ]);
   if (onboarded) await c.read(settingsProvider.notifier).completeOnboarding();
   await c.read(settingsProvider.notifier).setThemeMode(theme);
@@ -217,6 +225,9 @@ void main() {
         tester, '28_device_sensors', Routes.category(DeviceCategory.sensors));
     await _shoot(tester, '29_battery_health', Routes.batteryHealth, background: _manyCharges());
     await _shoot(tester, '35_tools', Routes.tools);
+    await _shoot(tester, '36_floating_settings', Routes.floating);
+    await _shoot(tester, '37_level', Routes.level);
+    await _shoot(tester, '38_compass', Routes.compass);
     await _shoot(tester, 'bn/tools', Routes.tools, locale: 'bn', theme: ThemeMode.light);
     await _shoot(tester, '30_screen_time', Routes.screenTime, usage: true);
     await _shoot(tester, '34_data_usage', Routes.dataUsage, usage: true);

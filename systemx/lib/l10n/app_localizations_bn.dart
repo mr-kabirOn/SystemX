@@ -4156,4 +4156,112 @@ class AppLocalizationsBn extends AppLocalizations {
   @override
   String get permOverlayReason =>
       'ভাসমান মনিটরের জন্য অ্যান্ড্রয়েডের \"অন্য অ্যাপের ওপর দেখান\" সেটিং প্রয়োজন। SystemX শুধু নিজের ছোট বাক্সটি আঁকে; অন্য অ্যাপের স্ক্রিন দেখতে বা পড়তে পারে না।';
+
+  @override
+  String get mtLevel => 'বাবল লেভেল';
+
+  @override
+  String get mtLevelHint =>
+      'ফোনটি তলের ওপর রাখুন। মাঝখানে ও সবুজ হলে তলটি সমতল।';
+
+  @override
+  String get mtLevelOk => 'সমতল';
+
+  @override
+  String get mtCompass => 'কম্পাস';
+
+  @override
+  String get mtCompassHint =>
+      'ফোন সমতলভাবে ধরুন, চুম্বক ও ধাতব বস্তু থেকে দূরে। চৌম্বক উত্তর দিক দেখায়।';
+
+  @override
+  String get mtCompassCalibrate =>
+      'দিক লাফালাফি করলে ফোনটি কয়েকবার ইংরেজি ৮-এর মতো করে ঘোরান।';
+
+  @override
+  String get mtSound => 'শব্দ মিটার';
+
+  @override
+  String get mtSoundHint =>
+      'মাইক্রোফোন থেকে আনুমানিক শব্দের মাত্রা। ফোনের মাইক্রোফোন ক্যালিব্রেট করা নয়, তাই এটিকে নির্দেশিকা হিসেবে নিন, নির্ভুল পরিমাপ হিসেবে নয়।';
+
+  @override
+  String mtSoundMax(int db) {
+    final intl.NumberFormat dbNumberFormat = intl.NumberFormat.decimalPattern(
+      localeName,
+    );
+    final String dbString = dbNumberFormat.format(db);
+
+    return 'সর্বোচ্চ $dbString dB';
+  }
+
+  @override
+  String mtSoundAvg(int db) {
+    final intl.NumberFormat dbNumberFormat = intl.NumberFormat.decimalPattern(
+      localeName,
+    );
+    final String dbString = dbNumberFormat.format(db);
+
+    return 'গড় $dbString dB';
+  }
+
+  @override
+  String get mtReset => 'রিসেট';
+
+  @override
+  String get mtLight => 'আলো মিটার';
+
+  @override
+  String get mtLightHint =>
+      'আলোক সেন্সর স্ক্রিনের ওপরের দিকে থাকে; সেই প্রান্তটি আলোর দিকে ধরুন।';
+
+  @override
+  String get mtMagnet => 'চৌম্বক ক্ষেত্র';
+
+  @override
+  String get mtMagnetHint =>
+      'পৃথিবীর চৌম্বক ক্ষেত্র সাধারণত ২৫ থেকে ৬৫ µT। এর চেয়ে অনেক বেশি হলে কাছে চুম্বক বা ধাতু আছে; খুঁজতে ফোনের ওপরের অংশ সেটির ওপর দিয়ে সরান।';
+
+  @override
+  String get mtMagnetHigh => 'কাছে চুম্বক বা ধাতু আছে';
+
+  @override
+  String get mtMagnetNormal => 'স্বাভাবিক (পৃথিবীর চৌম্বক ক্ষেত্র)';
+
+  @override
+  String get mtNoSensor => 'এই ফোনে এই সরঞ্জামের জন্য প্রয়োজনীয় সেন্সর নেই।';
+
+  @override
+  String get mtNoMic =>
+      'শব্দ মিটারের জন্য মাইক্রোফোনের অনুমতি প্রয়োজন। শুরু করতে অনুমতি দিন।';
+
+  @override
+  String get mtStart => 'শুরু করুন';
+
+  @override
+  String get lightDark => 'অন্ধকার';
+
+  @override
+  String get lightDim => 'স্বল্প আলো';
+
+  @override
+  String get lightIndoor => 'ঘরের আলো';
+
+  @override
+  String get lightBright => 'উজ্জ্বল';
+
+  @override
+  String get lightSun => 'সরাসরি সূর্যালোক';
+
+  @override
+  String get soundQuiet => 'নীরব';
+
+  @override
+  String get soundModerate => 'কথোপকথন';
+
+  @override
+  String get soundLoud => 'উচ্চ';
+
+  @override
+  String get soundVeryLoud => 'অত্যন্ত উচ্চ';
 }

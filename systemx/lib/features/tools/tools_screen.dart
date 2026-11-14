@@ -43,6 +43,13 @@ List<(String, List<ToolEntry>)> toolSections(AppLocalizations l, SxColors sx) =>
       (l.tsNetwork, [
         ToolEntry(SxIcons.network, sx.network, l.wifiMeter, Routes.wifiMeter),
       ]),
+      (l.tsMeasure, [
+        ToolEntry(SxIcons.level, sx.good, l.mtLevel, Routes.level),
+        ToolEntry(SxIcons.sensors, sx.bad, l.mtCompass, Routes.compass),
+        ToolEntry(SxIcons.mic, sx.ram, l.mtSound, Routes.soundMeter),
+        ToolEntry(SxIcons.brightness, sx.display, l.mtLight, Routes.lightMeter),
+        ToolEntry(SxIcons.magnet, sx.cpu, l.mtMagnet, Routes.magnet),
+      ]),
     ];
 
 /// Every tool in one place, grouped like the sections above.

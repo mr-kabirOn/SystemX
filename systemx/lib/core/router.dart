@@ -26,6 +26,7 @@ import '../features/tests/test_catalog.dart';
 import '../features/tests/tests_screen.dart';
 import '../features/tools/display_tools.dart';
 import '../features/tools/floating_monitor.dart';
+import '../features/tools/measure_tools.dart';
 import '../features/tools/stress_test.dart';
 import '../features/tools/tools_screen.dart';
 import '../features/tools/used_phone_screen.dart';
@@ -41,6 +42,11 @@ abstract final class Routes {
   static const tools = '/tools';
   static const monitor = '/tools/monitor';
   static const floating = '/tools/floating';
+  static const level = '/tools/level';
+  static const compass = '/tools/compass';
+  static const soundMeter = '/tools/sound';
+  static const lightMeter = '/tools/light';
+  static const magnet = '/tools/magnet';
   static const settings = '/settings';
   static const privacy = '/settings/privacy';
   static const policy = '/settings/policy';
@@ -114,6 +120,11 @@ final routerProvider = Provider<GoRouter>((ref) {
               routes: [
                 GoRoute(path: 'monitor', builder: (_, _) => const MonitorScreen()),
                 GoRoute(path: 'floating', builder: (_, _) => const FloatingMonitorScreen()),
+                GoRoute(path: 'level', builder: (_, _) => const LevelScreen()),
+                GoRoute(path: 'compass', builder: (_, _) => const CompassScreen()),
+                GoRoute(path: 'sound', builder: (_, _) => const SoundMeterScreen()),
+                GoRoute(path: 'light', builder: (_, _) => const LightMeterScreen()),
+                GoRoute(path: 'magnet', builder: (_, _) => const MagnetScreen()),
               ],
             ),
           ]),

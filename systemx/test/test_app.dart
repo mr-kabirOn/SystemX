@@ -34,6 +34,7 @@ Future<ProviderContainer> pumpApp(
   FakeBackgroundApi? background,
   FakePlayApi? play,
   Stream<String> Function()? volumeKeys,
+  Stream<double> Function()? soundLevels,
 }) async {
   SharedPreferencesAsyncPlatform.instance =
       InMemorySharedPreferencesAsync.empty();
@@ -66,6 +67,7 @@ Future<ProviderContainer> pumpApp(
     volumeKeysProvider.overrideWithValue(volumeKeys ?? () => const Stream.empty()),
     sensorReadingsProvider.overrideWithValue(
         sensorReadings ?? (_) => const Stream.empty()),
+    soundLevelsProvider.overrideWithValue(soundLevels ?? () => const Stream.empty()),
   ]);
   addTearDown(c.dispose);
   if (onboarded) await c.read(settingsProvider.notifier).completeOnboarding();

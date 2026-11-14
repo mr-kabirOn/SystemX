@@ -47,6 +47,18 @@ internal object AudioMath {
     }
 
     /** Peak level in dBFS (0 = full scale, about -90 = silence). */
+    /** Root-mean-square level of the first [count] samples, in dBFS (≤ 0). */
+    fun rmsDbfs(samples: ShortArray, count: Int = samples.size): Double {
+        if (count <= 0) return -120.0
+        var sum = 0.0
+        for (i in 0 until count) {
+            val x = samples[i] / 32768.0
+            sum += x * x
+        }
+        val rms = kotlin.math.sqrt(sum / count)
+        return if (rms <= 1e-6) -120.0 else 20 * kotlin.math.log10(rms)
+    }
+
     fun peakDbfs(samples: ShortArray): Double {
         var peak = 0
         for (s in samples) peak = max(peak, abs(s.toInt()))
