@@ -26,6 +26,7 @@ List<(String, List<ToolEntry>)> toolSections(AppLocalizations l, SxColors sx) =>
         ToolEntry(SxIcons.tabMonitorOn, sx.accent, l.monitorTitle, Routes.monitor),
         ToolEntry(SxIcons.floating, sx.accent, l.fmTitle, Routes.floating),
         ToolEntry(SxIcons.notifications, sx.accent, l.tsLiveStatus, Routes.alerts),
+        ToolEntry(SxIcons.widgets, sx.network, l.tsWidgets, Routes.widgets),
       ]),
       (l.tsCheck, [
         ToolEntry(SxIcons.security, sx.good, l.upTitle, Routes.usedPhone),

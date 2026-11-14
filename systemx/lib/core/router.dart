@@ -30,6 +30,7 @@ import '../features/tools/ip_lookup.dart';
 import '../features/tools/measure_tools.dart';
 import '../features/tools/stress_test.dart';
 import '../features/tools/tools_screen.dart';
+import '../features/tools/widgets_screen.dart';
 import '../features/tools/used_phone_screen.dart';
 import 'settings/settings.dart';
 
@@ -49,6 +50,7 @@ abstract final class Routes {
   static const lightMeter = '/tools/light';
   static const magnet = '/tools/magnet';
   static const ipLookup = '/tools/ip';
+  static const widgets = '/tools/widgets';
   static const settings = '/settings';
   static const privacy = '/settings/privacy';
   static const policy = '/settings/policy';
@@ -128,6 +130,7 @@ final routerProvider = Provider<GoRouter>((ref) {
                 GoRoute(path: 'light', builder: (_, _) => const LightMeterScreen()),
                 GoRoute(path: 'magnet', builder: (_, _) => const MagnetScreen()),
                 GoRoute(path: 'ip', builder: (_, _) => const IpLookupScreen()),
+                GoRoute(path: 'widgets', builder: (_, _) => const WidgetsScreen()),
               ],
             ),
           ]),

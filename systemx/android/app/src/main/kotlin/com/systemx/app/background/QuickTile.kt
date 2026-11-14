@@ -31,7 +31,7 @@ class QuickTile : TileService() {
     @SuppressLint("StartActivityAndCollapseDeprecated")
     override fun onClick() {
         super.onClick()
-        val intent = Intent(Intent.ACTION_VIEW, Uri.parse("systemx://open/monitor"))
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse("systemx://open/tools/monitor"))
             .setPackage(packageName)
             .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {

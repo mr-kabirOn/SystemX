@@ -1,14 +1,23 @@
 package com.systemx.app.platform
 
+import android.app.StatusBarManager
+import android.appwidget.AppWidgetManager
 import android.content.ActivityNotFoundException
+import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
+import android.graphics.drawable.Icon
 import android.hardware.Sensor
 import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.net.Uri
+import android.os.Build
 import android.provider.Settings
+import com.systemx.app.R
+import com.systemx.app.background.MediumWidget
+import com.systemx.app.background.QuickTile
+import com.systemx.app.background.SmallWidget
 import io.flutter.plugin.common.EventChannel
 
 /** Implements the Pigeon API by delegating to the probes. */
@@ -44,6 +53,31 @@ class DeviceInfoHost(context: Context) : DeviceInfoApi {
     override fun usageAccessGranted() = appsProbe.usageAccessGranted()
     override fun screenTime(dayStartsMs: List<Long>) = screenTimeProbe.report(dayStartsMs)
     override fun dataUsage(dayStartsMs: List<Long>) = dataUsageProbe.report(dayStartsMs)
+
+    override fun pinWidget(kind: String): Boolean {
+        val awm = ctx.getSystemService(AppWidgetManager::class.java) ?: return false
+        if (!awm.isRequestPinAppWidgetSupported) return false
+        val provider = when (kind) {
+            "small" -> SmallWidget::class.java
+            "medium" -> MediumWidget::class.java
+            else -> return false
+        }
+        return Sys.safe { awm.requestPinAppWidget(ComponentName(ctx, provider), null, null) } ?: false
+    }
+
+    override fun addQuickTile(): Boolean {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) return false
+        val sbm = ctx.getSystemService(StatusBarManager::class.java) ?: return false
+        return Sys.safe {
+            sbm.requestAddTileService(
+                ComponentName(ctx, QuickTile::class.java),
+                ctx.getString(R.string.app_name),
+                Icon.createWithResource(ctx, R.drawable.ic_launcher_monochrome),
+                ctx.mainExecutor,
+            ) { }
+            true
+        } ?: false
+    }
 
     override fun openAppDetails(packageName: String) {
         val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)

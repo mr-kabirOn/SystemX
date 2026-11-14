@@ -6913,6 +6913,78 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Look up asks {host} where your public IP address is registered. That service sees your IP address, as every website you visit does; SystemX sends nothing else and connects nowhere until you tap. The location is the internet provider\'s, not your exact position.'**
   String ipNote(String host);
+
+  /// No description provided for @wgTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Widgets and Quick Settings'**
+  String get wgTitle;
+
+  /// No description provided for @wgBody.
+  ///
+  /// In en, this message translates to:
+  /// **'See battery and temperature without opening the app.'**
+  String get wgBody;
+
+  /// No description provided for @wgSmall.
+  ///
+  /// In en, this message translates to:
+  /// **'Battery widget'**
+  String get wgSmall;
+
+  /// No description provided for @wgSmallBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Battery level and temperature, 1 × 1.'**
+  String get wgSmallBody;
+
+  /// No description provided for @wgMedium.
+  ///
+  /// In en, this message translates to:
+  /// **'Dashboard widget'**
+  String get wgMedium;
+
+  /// No description provided for @wgMediumBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Battery, temperature, memory and free storage, 2 × 1.'**
+  String get wgMediumBody;
+
+  /// No description provided for @wgTile.
+  ///
+  /// In en, this message translates to:
+  /// **'Quick Settings tile'**
+  String get wgTile;
+
+  /// No description provided for @wgTileBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Battery level and temperature when you swipe down; tap it to open Monitor.'**
+  String get wgTileBody;
+
+  /// No description provided for @wgAdd.
+  ///
+  /// In en, this message translates to:
+  /// **'Add'**
+  String get wgAdd;
+
+  /// No description provided for @wgManualWidget.
+  ///
+  /// In en, this message translates to:
+  /// **'Your launcher can\'t add it from here. Touch and hold an empty spot on the home screen, tap Widgets, then find SystemX.'**
+  String get wgManualWidget;
+
+  /// No description provided for @wgManualTile.
+  ///
+  /// In en, this message translates to:
+  /// **'Swipe down twice from the top, tap the pencil (edit) icon, then drag the SystemX tile into place.'**
+  String get wgManualTile;
+
+  /// No description provided for @tsWidgets.
+  ///
+  /// In en, this message translates to:
+  /// **'Widgets'**
+  String get tsWidgets;
 }
 
 class _AppLocalizationsDelegate

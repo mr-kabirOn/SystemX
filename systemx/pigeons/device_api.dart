@@ -698,6 +698,14 @@ abstract class DeviceInfoApi {
   /// Opens Android's App info page, where Clear cache lives.
   void openAppDetails(String packageName);
 
+  /// Asks the launcher to add a home-screen widget, [kind] "small" or
+  /// "medium". False when the launcher can't (then the user adds it by hand).
+  bool pinWidget(String kind);
+
+  /// Asks Android to add the Quick Settings tile (Android 13+). False when
+  /// that isn't possible.
+  bool addQuickTile();
+
   /// Screen time for the days starting at [dayStartsMs] (local midnights,
   /// oldest first). Needs Usage access; days are empty without it.
   @TaskQueue(type: TaskQueueType.serialBackgroundThread)

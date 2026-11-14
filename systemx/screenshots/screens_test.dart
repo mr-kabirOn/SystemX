@@ -228,6 +228,8 @@ void main() {
     await _shoot(tester, '36_floating_settings', Routes.floating);
     await _shoot(tester, '37_level', Routes.level);
     await _shoot(tester, '38_compass', Routes.compass);
+    await _shoot(tester, '39_ip_lookup', Routes.ipLookup);
+    await _shoot(tester, '40_widgets', Routes.widgets);
     await _shoot(tester, 'bn/tools', Routes.tools, locale: 'bn', theme: ThemeMode.light);
     await _shoot(tester, '30_screen_time', Routes.screenTime, usage: true);
     await _shoot(tester, '34_data_usage', Routes.dataUsage, usage: true);

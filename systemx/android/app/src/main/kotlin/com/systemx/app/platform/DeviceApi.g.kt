@@ -2908,6 +2908,16 @@ interface DeviceInfoApi {
   /** Opens Android's App info page, where Clear cache lives. */
   fun openAppDetails(packageName: String)
   /**
+   * Asks the launcher to add a home-screen widget, [kind] "small" or
+   * "medium". False when the launcher can't (then the user adds it by hand).
+   */
+  fun pinWidget(kind: String): Boolean
+  /**
+   * Asks Android to add the Quick Settings tile (Android 13+). False when
+   * that isn't possible.
+   */
+  fun addQuickTile(): Boolean
+  /**
    * Screen time for the days starting at [dayStartsMs] (local midnights,
    * oldest first). Needs Usage access; days are empty without it.
    */
@@ -3260,6 +3270,38 @@ interface DeviceInfoApi {
             val wrapped: List<Any?> = try {
               api.openAppDetails(packageNameArg)
               listOf(null)
+            } catch (exception: Throwable) {
+              DeviceApiPigeonUtils.wrapError(exception)
+            }
+            reply.reply(wrapped)
+          }
+        } else {
+          channel.setMessageHandler(null)
+        }
+      }
+      run {
+        val channel = BasicMessageChannel<Any?>(binaryMessenger, "dev.flutter.pigeon.systemx.DeviceInfoApi.pinWidget$separatedMessageChannelSuffix", codec)
+        if (api != null) {
+          channel.setMessageHandler { message, reply ->
+            val args = message as List<Any?>
+            val kindArg = args[0] as String
+            val wrapped: List<Any?> = try {
+              listOf(api.pinWidget(kindArg))
+            } catch (exception: Throwable) {
+              DeviceApiPigeonUtils.wrapError(exception)
+            }
+            reply.reply(wrapped)
+          }
+        } else {
+          channel.setMessageHandler(null)
+        }
+      }
+      run {
+        val channel = BasicMessageChannel<Any?>(binaryMessenger, "dev.flutter.pigeon.systemx.DeviceInfoApi.addQuickTile$separatedMessageChannelSuffix", codec)
+        if (api != null) {
+          channel.setMessageHandler { _, reply ->
+            val wrapped: List<Any?> = try {
+              listOf(api.addQuickTile())
             } catch (exception: Throwable) {
               DeviceApiPigeonUtils.wrapError(exception)
             }

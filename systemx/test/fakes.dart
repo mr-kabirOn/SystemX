@@ -460,6 +460,21 @@ class FakeDeviceApi extends DeviceInfoApi {
   Future<void> openAppDetails(String packageName) async =>
       openedApps.add(packageName);
 
+  final pinned = <String>[];
+  bool canPin = true;
+
+  @override
+  Future<bool> pinWidget(String kind) async {
+    pinned.add(kind);
+    return canPin;
+  }
+
+  @override
+  Future<bool> addQuickTile() async {
+    pinned.add('tile');
+    return canPin;
+  }
+
   @override
   Future<DataUsageReport> dataUsage(List<int> dayStartsMs) async {
     const mb = 1000000;

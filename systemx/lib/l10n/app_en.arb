@@ -1249,5 +1249,17 @@
   "ipFailed": "Couldn't reach the lookup service. Check the internet connection and try again.",
   "ipRateLimited": "The lookup service is busy right now. Try again in a few minutes.",
   "ipNote": "Look up asks {host} where your public IP address is registered. That service sees your IP address, as every website you visit does; SystemX sends nothing else and connects nowhere until you tap. The location is the internet provider's, not your exact position.",
-  "@ipNote": {"placeholders": {"host": {"type": "String"}}}
+  "@ipNote": {"placeholders": {"host": {"type": "String"}}},
+  "wgTitle": "Widgets and Quick Settings",
+  "wgBody": "See battery and temperature without opening the app.",
+  "wgSmall": "Battery widget",
+  "wgSmallBody": "Battery level and temperature, 1 × 1.",
+  "wgMedium": "Dashboard widget",
+  "wgMediumBody": "Battery, temperature, memory and free storage, 2 × 1.",
+  "wgTile": "Quick Settings tile",
+  "wgTileBody": "Battery level and temperature when you swipe down; tap it to open Monitor.",
+  "wgAdd": "Add",
+  "wgManualWidget": "Your launcher can't add it from here. Touch and hold an empty spot on the home screen, tap Widgets, then find SystemX.",
+  "wgManualTile": "Swipe down twice from the top, tap the pencil (edit) icon, then drag the SystemX tile into place.",
+  "tsWidgets": "Widgets"
 }

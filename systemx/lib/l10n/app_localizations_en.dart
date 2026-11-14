@@ -4321,4 +4321,44 @@ class AppLocalizationsEn extends AppLocalizations {
   String ipNote(String host) {
     return 'Look up asks $host where your public IP address is registered. That service sees your IP address, as every website you visit does; SystemX sends nothing else and connects nowhere until you tap. The location is the internet provider\'s, not your exact position.';
   }
+
+  @override
+  String get wgTitle => 'Widgets and Quick Settings';
+
+  @override
+  String get wgBody => 'See battery and temperature without opening the app.';
+
+  @override
+  String get wgSmall => 'Battery widget';
+
+  @override
+  String get wgSmallBody => 'Battery level and temperature, 1 × 1.';
+
+  @override
+  String get wgMedium => 'Dashboard widget';
+
+  @override
+  String get wgMediumBody =>
+      'Battery, temperature, memory and free storage, 2 × 1.';
+
+  @override
+  String get wgTile => 'Quick Settings tile';
+
+  @override
+  String get wgTileBody =>
+      'Battery level and temperature when you swipe down; tap it to open Monitor.';
+
+  @override
+  String get wgAdd => 'Add';
+
+  @override
+  String get wgManualWidget =>
+      'Your launcher can\'t add it from here. Touch and hold an empty spot on the home screen, tap Widgets, then find SystemX.';
+
+  @override
+  String get wgManualTile =>
+      'Swipe down twice from the top, tap the pencil (edit) icon, then drag the SystemX tile into place.';
+
+  @override
+  String get tsWidgets => 'Widgets';
 }
