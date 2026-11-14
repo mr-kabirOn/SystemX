@@ -25,6 +25,11 @@ BackgroundConfig copyConfig(
   bool? checkupReminder,
   bool? fahrenheit,
   int? lastCheckupMs,
+  List<String>? liveItems,
+  bool? overlay,
+  List<String>? overlayItems,
+  int? overlayOpacity,
+  bool? overlayDark,
 }) =>
     BackgroundConfig(
       liveStatus: liveStatus ?? c.liveStatus,
@@ -42,6 +47,11 @@ BackgroundConfig copyConfig(
       checkupReminder: checkupReminder ?? c.checkupReminder,
       fahrenheit: fahrenheit ?? c.fahrenheit,
       lastCheckupMs: lastCheckupMs ?? c.lastCheckupMs,
+      liveItems: liveItems ?? c.liveItems,
+      overlay: overlay ?? c.overlay,
+      overlayItems: overlayItems ?? c.overlayItems,
+      overlayOpacity: overlayOpacity ?? c.overlayOpacity,
+      overlayDark: overlayDark ?? c.overlayDark,
     );
 
 /// Whether any alert or live status needs notifications.

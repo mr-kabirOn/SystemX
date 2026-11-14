@@ -20,6 +20,7 @@ import android.os.Handler
 import android.os.IBinder
 import android.os.Looper
 import android.os.PowerManager
+import android.view.View
 import android.widget.RemoteViews
 import com.systemx.app.R
 import com.systemx.app.platform.AlertRules
@@ -156,30 +157,52 @@ class LiveStatusService : Service() {
         )
 
         val (value, unit) = AlertRules.statusIconLines(c.statusIcon, r.level, r.tempC, c.fahrenheit, down)
-        val shown = listOf(battery, batteryLabel, temp, power, powerLabel, rate(down), rate(up), ram, value, unit, c.statusIcon)
+
+        // The values the user chose, in their order: icon, value, label.
+        val tiles = c.liveItems.mapNotNull { item ->
+            when (item) {
+                "battery" -> Triple(R.drawable.ic_n_battery, battery, batteryLabel)
+                "temp" -> Triple(R.drawable.ic_n_temp, temp, getString(R.string.n_label_temp))
+                "power" -> Triple(R.drawable.ic_n_power, power, powerLabel)
+                "down" -> Triple(R.drawable.ic_n_down, rate(down), getString(R.string.n_label_down))
+                "up" -> Triple(R.drawable.ic_n_up, rate(up), getString(R.string.n_label_up))
+                "ram" -> Triple(R.drawable.ic_n_ram, ram, getString(R.string.n_label_ram))
+                else -> null
+            }
+        }.take(6).ifEmpty { listOf(Triple(R.drawable.ic_n_battery, battery, batteryLabel)) }
+
+        val shown = (tiles.flatMap { listOf(it.second, it.third) } + listOf(value, unit, c.statusIcon))
             .joinToString("|")
         if (skipIfUnchanged && shown == lastShown) return null
         lastShown = shown
 
         val small = RemoteViews(packageName, R.layout.notif_live_small).apply {
-            setTextViewText(R.id.s_battery, battery)
-            setTextViewText(R.id.s_temp, temp)
-            setTextViewText(R.id.s_down, rate(down))
-            setTextViewText(R.id.s_ram, ram)
+            SMALL_SLOTS.forEachIndexed { i, (box, icon, text) ->
+                val t = tiles.getOrNull(i)
+                setViewVisibility(box, if (t == null) View.GONE else View.VISIBLE)
+                if (t != null) {
+                    setImageViewResource(icon, t.first)
+                    setTextViewText(text, t.second)
+                }
+            }
         }
+        // Up to three a row; four or five split evenly over two rows.
+        val firstRow = if (tiles.size <= 3) tiles.size else (tiles.size + 1) / 2
         val big = RemoteViews(packageName, R.layout.notif_live_big).apply {
-            setTextViewText(R.id.battery_value, battery)
-            setTextViewText(R.id.battery_label, batteryLabel)
-            setTextViewText(R.id.temp_value, temp)
-            setTextViewText(R.id.temp_label, getString(R.string.n_label_temp))
-            setTextViewText(R.id.power_value, power)
-            setTextViewText(R.id.power_label, powerLabel)
-            setTextViewText(R.id.down_value, rate(down))
-            setTextViewText(R.id.down_label, getString(R.string.n_label_down))
-            setTextViewText(R.id.up_value, rate(up))
-            setTextViewText(R.id.up_label, getString(R.string.n_label_up))
-            setTextViewText(R.id.ram_value, ram)
-            setTextViewText(R.id.ram_label, getString(R.string.n_label_ram))
+            setViewVisibility(R.id.row2, if (tiles.size > firstRow) View.VISIBLE else View.GONE)
+            // Slots 0–2 are the first row, 3–5 the second.
+            val tileFor = IntArray(BIG_SLOTS.size) { -1 }
+            for (k in 0 until firstRow) tileFor[k] = k
+            for (k in firstRow until tiles.size) tileFor[3 + k - firstRow] = k
+            BIG_SLOTS.forEachIndexed { i, (box, icon, valueId, labelId) ->
+                val t = tiles.getOrNull(tileFor[i])
+                setViewVisibility(box, if (t == null) View.GONE else View.VISIBLE)
+                if (t != null) {
+                    setImageViewResource(icon, t.first)
+                    setTextViewText(valueId, t.second)
+                    setTextViewText(labelId, t.third)
+                }
+            }
         }
 
         val stop = PendingIntent.getService(
@@ -263,6 +286,23 @@ class LiveStatusService : Service() {
     companion object {
         private const val INTERVAL = 2_000L
         private const val SCREEN_OFF_INTERVAL = 60_000L
+
+        private data class Slot(val box: Int, val icon: Int, val value: Int, val label: Int)
+
+        private val BIG_SLOTS = listOf(
+            Slot(R.id.t1, R.id.t1_icon, R.id.t1_value, R.id.t1_label),
+            Slot(R.id.t2, R.id.t2_icon, R.id.t2_value, R.id.t2_label),
+            Slot(R.id.t3, R.id.t3_icon, R.id.t3_value, R.id.t3_label),
+            Slot(R.id.t4, R.id.t4_icon, R.id.t4_value, R.id.t4_label),
+            Slot(R.id.t5, R.id.t5_icon, R.id.t5_value, R.id.t5_label),
+            Slot(R.id.t6, R.id.t6_icon, R.id.t6_value, R.id.t6_label),
+        )
+        private val SMALL_SLOTS = listOf(
+            Triple(R.id.s1, R.id.s1_icon, R.id.s1_text),
+            Triple(R.id.s2, R.id.s2_icon, R.id.s2_text),
+            Triple(R.id.s3, R.id.s3_icon, R.id.s3_text),
+            Triple(R.id.s4, R.id.s4_icon, R.id.s4_text),
+        )
         private const val ACTION_STOP = "com.systemx.app.STOP_LIVE_STATUS"
 
         fun start(ctx: Context) {

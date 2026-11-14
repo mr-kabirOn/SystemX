@@ -2675,6 +2675,11 @@ class StressSample {
 class BackgroundConfig {
   BackgroundConfig({
     required this.liveStatus,
+    required this.liveItems,
+    required this.overlay,
+    required this.overlayItems,
+    required this.overlayOpacity,
+    required this.overlayDark,
     required this.statusIcon,
     required this.chargeAlarm,
     required this.chargeLimit,
@@ -2692,6 +2697,22 @@ class BackgroundConfig {
   });
 
   bool liveStatus;
+
+  /// Values the live notification shows, in order: "battery", "temp",
+  /// "power", "down", "up", "ram". At least one.
+  List<String> liveItems;
+
+  /// Floating monitor over other apps.
+  bool overlay;
+
+  /// Values it shows, in order: "fps", "ram_used", "ram_free", "current",
+  /// "power", "temp", "down". At least one.
+  List<String> overlayItems;
+
+  /// Background opacity, 20–100 (percent).
+  int overlayOpacity;
+
+  bool overlayDark;
 
   /// What the status bar icon shows: "net_speed" (the default),
   /// "battery_level" or "battery_temp".
@@ -2727,6 +2748,11 @@ class BackgroundConfig {
   List<Object?> _toList() {
     return <Object?>[
       liveStatus,
+      liveItems,
+      overlay,
+      overlayItems,
+      overlayOpacity,
+      overlayDark,
       statusIcon,
       chargeAlarm,
       chargeLimit,
@@ -2751,20 +2777,25 @@ class BackgroundConfig {
     result as List<Object?>;
     return BackgroundConfig(
       liveStatus: result[0]! as bool,
-      statusIcon: result[1]! as String,
-      chargeAlarm: result[2]! as bool,
-      chargeLimit: result[3]! as int,
-      batteryLow: result[4]! as bool,
-      lowLevel: result[5]! as int,
-      batteryHot: result[6]! as bool,
-      hotC: result[7]! as int,
-      chargingDone: result[8]! as bool,
-      storageFull: result[9]! as bool,
-      storagePercent: result[10]! as int,
-      weeklySummary: result[11]! as bool,
-      checkupReminder: result[12]! as bool,
-      fahrenheit: result[13]! as bool,
-      lastCheckupMs: result[14]! as int,
+      liveItems: (result[1]! as List<Object?>).cast<String>(),
+      overlay: result[2]! as bool,
+      overlayItems: (result[3]! as List<Object?>).cast<String>(),
+      overlayOpacity: result[4]! as int,
+      overlayDark: result[5]! as bool,
+      statusIcon: result[6]! as String,
+      chargeAlarm: result[7]! as bool,
+      chargeLimit: result[8]! as int,
+      batteryLow: result[9]! as bool,
+      lowLevel: result[10]! as int,
+      batteryHot: result[11]! as bool,
+      hotC: result[12]! as int,
+      chargingDone: result[13]! as bool,
+      storageFull: result[14]! as bool,
+      storagePercent: result[15]! as int,
+      weeklySummary: result[16]! as bool,
+      checkupReminder: result[17]! as bool,
+      fahrenheit: result[18]! as bool,
+      lastCheckupMs: result[19]! as int,
     );
   }
 
@@ -2777,7 +2808,7 @@ class BackgroundConfig {
     if (identical(this, other)) {
       return true;
     }
-    return _deepEquals(liveStatus, other.liveStatus) && _deepEquals(statusIcon, other.statusIcon) && _deepEquals(chargeAlarm, other.chargeAlarm) && _deepEquals(chargeLimit, other.chargeLimit) && _deepEquals(batteryLow, other.batteryLow) && _deepEquals(lowLevel, other.lowLevel) && _deepEquals(batteryHot, other.batteryHot) && _deepEquals(hotC, other.hotC) && _deepEquals(chargingDone, other.chargingDone) && _deepEquals(storageFull, other.storageFull) && _deepEquals(storagePercent, other.storagePercent) && _deepEquals(weeklySummary, other.weeklySummary) && _deepEquals(checkupReminder, other.checkupReminder) && _deepEquals(fahrenheit, other.fahrenheit) && _deepEquals(lastCheckupMs, other.lastCheckupMs);
+    return _deepEquals(liveStatus, other.liveStatus) && _deepEquals(liveItems, other.liveItems) && _deepEquals(overlay, other.overlay) && _deepEquals(overlayItems, other.overlayItems) && _deepEquals(overlayOpacity, other.overlayOpacity) && _deepEquals(overlayDark, other.overlayDark) && _deepEquals(statusIcon, other.statusIcon) && _deepEquals(chargeAlarm, other.chargeAlarm) && _deepEquals(chargeLimit, other.chargeLimit) && _deepEquals(batteryLow, other.batteryLow) && _deepEquals(lowLevel, other.lowLevel) && _deepEquals(batteryHot, other.batteryHot) && _deepEquals(hotC, other.hotC) && _deepEquals(chargingDone, other.chargingDone) && _deepEquals(storageFull, other.storageFull) && _deepEquals(storagePercent, other.storagePercent) && _deepEquals(weeklySummary, other.weeklySummary) && _deepEquals(checkupReminder, other.checkupReminder) && _deepEquals(fahrenheit, other.fahrenheit) && _deepEquals(lastCheckupMs, other.lastCheckupMs);
   }
 
   @override
@@ -2786,7 +2817,7 @@ class BackgroundConfig {
 
   @override
   String toString() {
-    return 'BackgroundConfig(liveStatus: $liveStatus, statusIcon: $statusIcon, chargeAlarm: $chargeAlarm, chargeLimit: $chargeLimit, batteryLow: $batteryLow, lowLevel: $lowLevel, batteryHot: $batteryHot, hotC: $hotC, chargingDone: $chargingDone, storageFull: $storageFull, storagePercent: $storagePercent, weeklySummary: $weeklySummary, checkupReminder: $checkupReminder, fahrenheit: $fahrenheit, lastCheckupMs: $lastCheckupMs)';
+    return 'BackgroundConfig(liveStatus: $liveStatus, liveItems: $liveItems, overlay: $overlay, overlayItems: $overlayItems, overlayOpacity: $overlayOpacity, overlayDark: $overlayDark, statusIcon: $statusIcon, chargeAlarm: $chargeAlarm, chargeLimit: $chargeLimit, batteryLow: $batteryLow, lowLevel: $lowLevel, batteryHot: $batteryHot, hotC: $hotC, chargingDone: $chargingDone, storageFull: $storageFull, storagePercent: $storagePercent, weeklySummary: $weeklySummary, checkupReminder: $checkupReminder, fahrenheit: $fahrenheit, lastCheckupMs: $lastCheckupMs)';
   }
 }
 

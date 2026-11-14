@@ -4091,4 +4091,17 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get tsMeasure => 'পরিমাপের সরঞ্জাম';
+
+  @override
+  String get liveShows => 'বিজ্ঞপ্তিতে যে মানগুলো দেখাবে';
+
+  @override
+  String get liveShowsNote =>
+      'বিজ্ঞপ্তি ছোট অবস্থায় প্রথম চারটি দেখা যায়। অন্তত একটি চালু থাকবে।';
+
+  @override
+  String get liPower => 'বিদ্যুৎ (W)';
+
+  @override
+  String get liRam => 'ব্যবহৃত র‍্যাম';
 }

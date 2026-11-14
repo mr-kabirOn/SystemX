@@ -819,9 +819,29 @@ class BackgroundConfig {
     required this.checkupReminder,
     required this.fahrenheit,
     required this.lastCheckupMs,
+    required this.liveItems,
+    required this.overlay,
+    required this.overlayItems,
+    required this.overlayOpacity,
+    required this.overlayDark,
   });
 
   bool liveStatus;
+
+  /// Values the live notification shows, in order: "battery", "temp",
+  /// "power", "down", "up", "ram". At least one.
+  List<String> liveItems;
+
+  /// Floating monitor over other apps.
+  bool overlay;
+
+  /// Values it shows, in order: "fps", "ram_used", "ram_free", "current",
+  /// "power", "temp", "down". At least one.
+  List<String> overlayItems;
+
+  /// Background opacity, 20–100 (percent).
+  int overlayOpacity;
+  bool overlayDark;
 
   /// What the status bar icon shows: "net_speed" (the default),
   /// "battery_level" or "battery_temp".

@@ -29,6 +29,11 @@ internal object ConfigStore {
             checkupReminder = p.getBoolean("checkupReminder", false),
             fahrenheit = p.getBoolean("fahrenheit", false),
             lastCheckupMs = p.getLong("lastCheckupMs", 0),
+            liveItems = list(p.getString("liveItems", null), LIVE_ITEMS),
+            overlay = p.getBoolean("overlay", false),
+            overlayItems = list(p.getString("overlayItems", null), listOf("fps")),
+            overlayOpacity = p.getLong("overlayOpacity", 85).coerceIn(20, 100),
+            overlayDark = p.getBoolean("overlayDark", true),
         )
     }
 
@@ -49,7 +54,22 @@ internal object ConfigStore {
             .putBoolean("checkupReminder", c.checkupReminder)
             .putBoolean("fahrenheit", c.fahrenheit)
             .putLong("lastCheckupMs", c.lastCheckupMs)
+            .putString("liveItems", c.liveItems.joinToString(","))
+            .putBoolean("overlay", c.overlay)
+            .putString("overlayItems", c.overlayItems.joinToString(","))
+            .putLong("overlayOpacity", c.overlayOpacity)
+            .putBoolean("overlayDark", c.overlayDark)
             .apply()
+    }
+
+    /** Every live notification value, in the default order. */
+    val LIVE_ITEMS = listOf("battery", "temp", "power", "down", "up", "ram")
+
+    private fun list(saved: String?, default: List<String>): List<String> =
+        saved?.split(',')?.map { it.trim() }?.filter { it.isNotEmpty() }?.ifEmpty { null } ?: default
+
+    fun setOverlay(ctx: Context, on: Boolean) {
+        prefs(ctx).edit().putBoolean("overlay", on).apply()
     }
 
     fun setLiveStatus(ctx: Context, on: Boolean) {

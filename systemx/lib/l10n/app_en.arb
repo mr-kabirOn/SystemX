@@ -1189,5 +1189,9 @@
   "tsCheck": "Phone check",
   "tsUsage": "Usage and battery",
   "tsNetwork": "Network",
-  "tsMeasure": "Measurement tools"
+  "tsMeasure": "Measurement tools",
+  "liveShows": "Values in the notification",
+  "liveShowsNote": "The first four also show when the notification is collapsed. At least one stays on.",
+  "liPower": "Power (W)",
+  "liRam": "RAM in use"
 }

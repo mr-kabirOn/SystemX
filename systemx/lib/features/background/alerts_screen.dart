@@ -70,6 +70,21 @@ class AlertsScreen extends ConsumerWidget {
                     onChanged: (v) => set((c) => copyConfig(c, liveStatus: v)),
                   ),
                   if (c.liveStatus)
+                    ItemPicker(
+                      title: l.liveShows,
+                      note: l.liveShowsNote,
+                      options: {
+                        'battery': l.metricBattery,
+                        'temp': l.temperature,
+                        'power': l.liPower,
+                        'down': l.download,
+                        'up': l.upload,
+                        'ram': l.liRam,
+                      },
+                      selected: c.liveItems,
+                      onChanged: (v) => set((c) => copyConfig(c, liveItems: v)),
+                    ),
+                  if (c.liveStatus)
                     _Chips<String>(
                       title: l.statusBarShows,
                       note: l.statusBarShowsNote,
@@ -195,6 +210,54 @@ class AlertsScreen extends ConsumerWidget {
 
 /// A labelled single choice. Segments share the width equally and never
 /// re-wrap when the selection changes, so the card stays steady.
+/// Several values to show, as chips; at least one stays selected. The
+/// result keeps the order of [options].
+class ItemPicker extends StatelessWidget {
+  const ItemPicker({
+    super.key,
+    required this.title,
+    required this.options,
+    required this.selected,
+    required this.onChanged,
+    this.note,
+  });
+
+  final String title;
+  final String? note;
+  final Map<String, String> options;
+  final List<String> selected;
+  final ValueChanged<List<String>> onChanged;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(16, 4, 16, 14),
+      child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+        Text(title, style: context.text.labelLarge),
+        if (note != null) ...[
+          const SizedBox(height: 2),
+          Text(note!, style: context.text.bodySmall),
+        ],
+        const SizedBox(height: 8),
+        Wrap(spacing: 8, runSpacing: 8, children: [
+          for (final MapEntry(:key, value: label) in options.entries)
+            FilterChip(
+              label: Text(label),
+              selected: selected.contains(key),
+              onSelected: (on) {
+                if (!on && selected.length == 1 && selected.contains(key)) return;
+                onChanged([
+                  for (final k in options.keys)
+                    if (k == key ? on : selected.contains(k)) k,
+                ]);
+              },
+            ),
+        ]),
+      ]),
+    );
+  }
+}
+
 class _Chips<T> extends StatelessWidget {
   const _Chips({
     required this.title,

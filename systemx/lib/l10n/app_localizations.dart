@@ -6577,6 +6577,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Measurement tools'**
   String get tsMeasure;
+
+  /// No description provided for @liveShows.
+  ///
+  /// In en, this message translates to:
+  /// **'Values in the notification'**
+  String get liveShows;
+
+  /// No description provided for @liveShowsNote.
+  ///
+  /// In en, this message translates to:
+  /// **'The first four also show when the notification is collapsed. At least one stays on.'**
+  String get liveShowsNote;
+
+  /// No description provided for @liPower.
+  ///
+  /// In en, this message translates to:
+  /// **'Power (W)'**
+  String get liPower;
+
+  /// No description provided for @liRam.
+  ///
+  /// In en, this message translates to:
+  /// **'RAM in use'**
+  String get liRam;
 }
 
 class _AppLocalizationsDelegate

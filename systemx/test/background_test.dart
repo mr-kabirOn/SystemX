@@ -3,6 +3,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
 import 'package:systemx/core/router.dart';
 import 'package:systemx/core/settings/settings.dart';
+import 'package:systemx/features/background/background.dart' show copyConfig;
+import 'package:systemx/platform/platform.dart';
 
 import 'fakes.dart';
 import 'test_app.dart';
@@ -33,6 +35,25 @@ void main() {
     await tester.pumpAndSettle();
     expect(bg.config.chargeLimit, 90);
     expect(find.text('Notify when the battery reaches 90%'), findsOneWidget);
+  });
+
+  testWidgets('live status values can be chosen; one always stays', (tester) async {
+    final bg = FakeBackgroundApi()
+      ..config = copyConfigForTest(FakeBackgroundApi().config, liveStatus: true, liveItems: ['battery', 'ram']);
+    await pumpApp(tester, background: bg);
+    await go(tester, Routes.alerts);
+
+    await tester.tap(find.widgetWithText(FilterChip, 'Download'));
+    await tester.pumpAndSettle();
+    expect(bg.config.liveItems, ['battery', 'down', 'ram']); // catalog order
+    await tester.tap(find.widgetWithText(FilterChip, 'Battery'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.widgetWithText(FilterChip, 'Download'));
+    await tester.pumpAndSettle();
+    expect(bg.config.liveItems, ['ram']);
+    await tester.tap(find.widgetWithText(FilterChip, 'RAM in use'));
+    await tester.pumpAndSettle();
+    expect(bg.config.liveItems, ['ram']); // the last one can't be turned off
   });
 
   testWidgets('refusing notifications keeps the alert off', (tester) async {
@@ -85,3 +106,6 @@ void main() {
     expect(find.text('History cleared'), findsOneWidget);
   });
 }
+
+BackgroundConfig copyConfigForTest(BackgroundConfig c, {bool? liveStatus, List<String>? liveItems}) =>
+    copyConfig(c, liveStatus: liveStatus, liveItems: liveItems);

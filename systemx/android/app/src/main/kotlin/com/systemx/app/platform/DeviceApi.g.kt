@@ -2328,6 +2328,21 @@ data class StressSample (
 data class BackgroundConfig (
   val liveStatus: Boolean,
   /**
+   * Values the live notification shows, in order: "battery", "temp",
+   * "power", "down", "up", "ram". At least one.
+   */
+  val liveItems: List<String>,
+  /** Floating monitor over other apps. */
+  val overlay: Boolean,
+  /**
+   * Values it shows, in order: "fps", "ram_used", "ram_free", "current",
+   * "power", "temp", "down". At least one.
+   */
+  val overlayItems: List<String>,
+  /** Background opacity, 20–100 (percent). */
+  val overlayOpacity: Long,
+  val overlayDark: Boolean,
+  /**
    * What the status bar icon shows: "net_speed" (the default),
    * "battery_level" or "battery_temp".
    */
@@ -2351,26 +2366,36 @@ data class BackgroundConfig (
   companion object {
     fun fromList(pigeonVar_list: List<Any?>): BackgroundConfig {
       val liveStatus = pigeonVar_list[0] as Boolean
-      val statusIcon = pigeonVar_list[1] as String
-      val chargeAlarm = pigeonVar_list[2] as Boolean
-      val chargeLimit = pigeonVar_list[3] as Long
-      val batteryLow = pigeonVar_list[4] as Boolean
-      val lowLevel = pigeonVar_list[5] as Long
-      val batteryHot = pigeonVar_list[6] as Boolean
-      val hotC = pigeonVar_list[7] as Long
-      val chargingDone = pigeonVar_list[8] as Boolean
-      val storageFull = pigeonVar_list[9] as Boolean
-      val storagePercent = pigeonVar_list[10] as Long
-      val weeklySummary = pigeonVar_list[11] as Boolean
-      val checkupReminder = pigeonVar_list[12] as Boolean
-      val fahrenheit = pigeonVar_list[13] as Boolean
-      val lastCheckupMs = pigeonVar_list[14] as Long
-      return BackgroundConfig(liveStatus, statusIcon, chargeAlarm, chargeLimit, batteryLow, lowLevel, batteryHot, hotC, chargingDone, storageFull, storagePercent, weeklySummary, checkupReminder, fahrenheit, lastCheckupMs)
+      val liveItems = pigeonVar_list[1] as List<String>
+      val overlay = pigeonVar_list[2] as Boolean
+      val overlayItems = pigeonVar_list[3] as List<String>
+      val overlayOpacity = pigeonVar_list[4] as Long
+      val overlayDark = pigeonVar_list[5] as Boolean
+      val statusIcon = pigeonVar_list[6] as String
+      val chargeAlarm = pigeonVar_list[7] as Boolean
+      val chargeLimit = pigeonVar_list[8] as Long
+      val batteryLow = pigeonVar_list[9] as Boolean
+      val lowLevel = pigeonVar_list[10] as Long
+      val batteryHot = pigeonVar_list[11] as Boolean
+      val hotC = pigeonVar_list[12] as Long
+      val chargingDone = pigeonVar_list[13] as Boolean
+      val storageFull = pigeonVar_list[14] as Boolean
+      val storagePercent = pigeonVar_list[15] as Long
+      val weeklySummary = pigeonVar_list[16] as Boolean
+      val checkupReminder = pigeonVar_list[17] as Boolean
+      val fahrenheit = pigeonVar_list[18] as Boolean
+      val lastCheckupMs = pigeonVar_list[19] as Long
+      return BackgroundConfig(liveStatus, liveItems, overlay, overlayItems, overlayOpacity, overlayDark, statusIcon, chargeAlarm, chargeLimit, batteryLow, lowLevel, batteryHot, hotC, chargingDone, storageFull, storagePercent, weeklySummary, checkupReminder, fahrenheit, lastCheckupMs)
     }
   }
   fun toList(): List<Any?> {
     return listOf(
       liveStatus,
+      liveItems,
+      overlay,
+      overlayItems,
+      overlayOpacity,
+      overlayDark,
       statusIcon,
       chargeAlarm,
       chargeLimit,
@@ -2395,12 +2420,17 @@ data class BackgroundConfig (
       return true
     }
     val other = other as BackgroundConfig
-    return DeviceApiPigeonUtils.deepEquals(this.liveStatus, other.liveStatus) && DeviceApiPigeonUtils.deepEquals(this.statusIcon, other.statusIcon) && DeviceApiPigeonUtils.deepEquals(this.chargeAlarm, other.chargeAlarm) && DeviceApiPigeonUtils.deepEquals(this.chargeLimit, other.chargeLimit) && DeviceApiPigeonUtils.deepEquals(this.batteryLow, other.batteryLow) && DeviceApiPigeonUtils.deepEquals(this.lowLevel, other.lowLevel) && DeviceApiPigeonUtils.deepEquals(this.batteryHot, other.batteryHot) && DeviceApiPigeonUtils.deepEquals(this.hotC, other.hotC) && DeviceApiPigeonUtils.deepEquals(this.chargingDone, other.chargingDone) && DeviceApiPigeonUtils.deepEquals(this.storageFull, other.storageFull) && DeviceApiPigeonUtils.deepEquals(this.storagePercent, other.storagePercent) && DeviceApiPigeonUtils.deepEquals(this.weeklySummary, other.weeklySummary) && DeviceApiPigeonUtils.deepEquals(this.checkupReminder, other.checkupReminder) && DeviceApiPigeonUtils.deepEquals(this.fahrenheit, other.fahrenheit) && DeviceApiPigeonUtils.deepEquals(this.lastCheckupMs, other.lastCheckupMs)
+    return DeviceApiPigeonUtils.deepEquals(this.liveStatus, other.liveStatus) && DeviceApiPigeonUtils.deepEquals(this.liveItems, other.liveItems) && DeviceApiPigeonUtils.deepEquals(this.overlay, other.overlay) && DeviceApiPigeonUtils.deepEquals(this.overlayItems, other.overlayItems) && DeviceApiPigeonUtils.deepEquals(this.overlayOpacity, other.overlayOpacity) && DeviceApiPigeonUtils.deepEquals(this.overlayDark, other.overlayDark) && DeviceApiPigeonUtils.deepEquals(this.statusIcon, other.statusIcon) && DeviceApiPigeonUtils.deepEquals(this.chargeAlarm, other.chargeAlarm) && DeviceApiPigeonUtils.deepEquals(this.chargeLimit, other.chargeLimit) && DeviceApiPigeonUtils.deepEquals(this.batteryLow, other.batteryLow) && DeviceApiPigeonUtils.deepEquals(this.lowLevel, other.lowLevel) && DeviceApiPigeonUtils.deepEquals(this.batteryHot, other.batteryHot) && DeviceApiPigeonUtils.deepEquals(this.hotC, other.hotC) && DeviceApiPigeonUtils.deepEquals(this.chargingDone, other.chargingDone) && DeviceApiPigeonUtils.deepEquals(this.storageFull, other.storageFull) && DeviceApiPigeonUtils.deepEquals(this.storagePercent, other.storagePercent) && DeviceApiPigeonUtils.deepEquals(this.weeklySummary, other.weeklySummary) && DeviceApiPigeonUtils.deepEquals(this.checkupReminder, other.checkupReminder) && DeviceApiPigeonUtils.deepEquals(this.fahrenheit, other.fahrenheit) && DeviceApiPigeonUtils.deepEquals(this.lastCheckupMs, other.lastCheckupMs)
   }
 
   override fun hashCode(): Int {
     var result = javaClass.hashCode()
     result = 31 * result + DeviceApiPigeonUtils.deepHash(this.liveStatus)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.liveItems)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.overlay)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.overlayItems)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.overlayOpacity)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.overlayDark)
     result = 31 * result + DeviceApiPigeonUtils.deepHash(this.statusIcon)
     result = 31 * result + DeviceApiPigeonUtils.deepHash(this.chargeAlarm)
     result = 31 * result + DeviceApiPigeonUtils.deepHash(this.chargeLimit)
@@ -2418,7 +2448,7 @@ data class BackgroundConfig (
     return result
   }
   override fun toString(): String {
-    return "BackgroundConfig(liveStatus=$liveStatus, statusIcon=$statusIcon, chargeAlarm=$chargeAlarm, chargeLimit=$chargeLimit, batteryLow=$batteryLow, lowLevel=$lowLevel, batteryHot=$batteryHot, hotC=$hotC, chargingDone=$chargingDone, storageFull=$storageFull, storagePercent=$storagePercent, weeklySummary=$weeklySummary, checkupReminder=$checkupReminder, fahrenheit=$fahrenheit, lastCheckupMs=$lastCheckupMs)"
+    return "BackgroundConfig(liveStatus=$liveStatus, liveItems=$liveItems, overlay=$overlay, overlayItems=$overlayItems, overlayOpacity=$overlayOpacity, overlayDark=$overlayDark, statusIcon=$statusIcon, chargeAlarm=$chargeAlarm, chargeLimit=$chargeLimit, batteryLow=$batteryLow, lowLevel=$lowLevel, batteryHot=$batteryHot, hotC=$hotC, chargingDone=$chargingDone, storageFull=$storageFull, storagePercent=$storagePercent, weeklySummary=$weeklySummary, checkupReminder=$checkupReminder, fahrenheit=$fahrenheit, lastCheckupMs=$lastCheckupMs)"
   }
 }
 

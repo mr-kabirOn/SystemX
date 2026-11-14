@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Collapsed live status: battery, temperature, download and RAM in one row. -->
+<!-- Collapsed live status: the first four of the values the user chose. -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -8,18 +8,19 @@
     android:paddingTop="2dp"
     android:paddingBottom="2dp">
     <LinearLayout
+        android:id="@+id/s1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:gravity="center_vertical"
         android:orientation="horizontal">
         <ImageView
+            android:id="@+id/s1_icon"
             android:layout_width="16dp"
             android:layout_height="16dp"
-            android:importantForAccessibility="no"
-            android:src="@drawable/ic_n_battery" />
+            android:importantForAccessibility="no" />
         <TextView
-            android:id="@+id/s_battery"
+            android:id="@+id/s1_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
@@ -29,18 +30,19 @@
             android:textSize="13sp" />
     </LinearLayout>
     <LinearLayout
+        android:id="@+id/s2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:gravity="center_vertical"
         android:orientation="horizontal">
         <ImageView
+            android:id="@+id/s2_icon"
             android:layout_width="16dp"
             android:layout_height="16dp"
-            android:importantForAccessibility="no"
-            android:src="@drawable/ic_n_temp" />
+            android:importantForAccessibility="no" />
         <TextView
-            android:id="@+id/s_temp"
+            android:id="@+id/s2_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
@@ -50,18 +52,19 @@
             android:textSize="13sp" />
     </LinearLayout>
     <LinearLayout
+        android:id="@+id/s3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:gravity="center_vertical"
         android:orientation="horizontal">
         <ImageView
+            android:id="@+id/s3_icon"
             android:layout_width="16dp"
             android:layout_height="16dp"
-            android:importantForAccessibility="no"
-            android:src="@drawable/ic_n_down" />
+            android:importantForAccessibility="no" />
         <TextView
-            android:id="@+id/s_down"
+            android:id="@+id/s3_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
@@ -71,18 +74,19 @@
             android:textSize="13sp" />
     </LinearLayout>
     <LinearLayout
+        android:id="@+id/s4"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:gravity="center_vertical"
         android:orientation="horizontal">
         <ImageView
+            android:id="@+id/s4_icon"
             android:layout_width="16dp"
             android:layout_height="16dp"
-            android:importantForAccessibility="no"
-            android:src="@drawable/ic_n_ram" />
+            android:importantForAccessibility="no" />
         <TextView
-            android:id="@+id/s_ram"
+            android:id="@+id/s4_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"

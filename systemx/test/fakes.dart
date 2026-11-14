@@ -683,6 +683,11 @@ class FakeBackgroundApi extends BackgroundApi {
     checkupReminder: false,
     fahrenheit: false,
     lastCheckupMs: 0,
+    liveItems: const ['battery', 'temp', 'power', 'down', 'up', 'ram'],
+    overlay: false,
+    overlayItems: const ['fps'],
+    overlayOpacity: 85,
+    overlayDark: true,
   );
   final List<BackgroundConfig> saved = [];
   bool cleared = false;

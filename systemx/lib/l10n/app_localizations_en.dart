@@ -4116,4 +4116,17 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get tsMeasure => 'Measurement tools';
+
+  @override
+  String get liveShows => 'Values in the notification';
+
+  @override
+  String get liveShowsNote =>
+      'The first four also show when the notification is collapsed. At least one stays on.';
+
+  @override
+  String get liPower => 'Power (W)';
+
+  @override
+  String get liRam => 'RAM in use';
 }
