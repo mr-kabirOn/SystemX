@@ -13,7 +13,7 @@ Phone specs, battery health, 32 hardware tests and a used phone check. Private.
 
 **Full description** (4000 max)
 
-SystemX shows what is inside your Android phone and checks that every part works. Everything happens on your phone: no account, no ads, no tracking, and no internet access at all.
+SystemX shows what is inside your Android phone and checks that every part works. Everything happens on your phone: no account, no ads, no tracking. The app goes online only when you tap Look up in IP lookup.
 
 LIVE DASHBOARD
 • A health score from battery health, temperature, storage and memory, with an explanation of how it is calculated
@@ -54,6 +54,12 @@ ALERTS YOU CONTROL
 • Optional live status notification: battery, health, temperature, power, network speed and RAM at a glance
 • Home screen widgets, a Quick Settings tile and shortcuts
 
+TOOLS
+• Floating monitor over any app: screen FPS, RAM, battery current and power, temperature, download speed
+• Bubble level, compass, sound meter, light meter and magnetic field meter
+• IP lookup: your public IP, internet provider and approximate location, plus your local network addresses
+• Live status notification with the values you choose
+
 HONEST AND PRIVATE
 • Every value comes from the system. Estimates are labelled, and anything Android hides says so instead of showing a guess
 • No fake speed-ups: only real measurements
@@ -75,7 +81,7 @@ SystemX: ডিভাইস তথ্য ও টেস্ট
 
 **Full description**
 
-SystemX দেখায় আপনার অ্যান্ড্রয়েড ফোনের ভেতরে কী আছে, আর পরীক্ষা করে প্রতিটি অংশ ঠিকমতো কাজ করছে কিনা। সবকিছু আপনার ফোনেই হয়: কোনো অ্যাকাউন্ট নেই, বিজ্ঞাপন নেই, ট্র্যাকিং নেই, এমনকি ইন্টারনেট অ্যাক্সেসও নেই।
+SystemX দেখায় আপনার অ্যান্ড্রয়েড ফোনের ভেতরে কী আছে, আর পরীক্ষা করে প্রতিটি অংশ ঠিকমতো কাজ করছে কিনা। সবকিছু আপনার ফোনেই হয়: কোনো অ্যাকাউন্ট নেই, বিজ্ঞাপন নেই, ট্র্যাকিং নেই। শুধু আইপি অনুসন্ধানে ট্যাপ করলে অ্যাপটি অনলাইনে যায়।
 
 লাইভ ড্যাশবোর্ড
 • ব্যাটারির স্বাস্থ্য, তাপমাত্রা, স্টোরেজ আর মেমোরি থেকে একটি স্বাস্থ্য স্কোর, কীভাবে হিসাব হয় তার ব্যাখ্যাসহ
@@ -113,6 +119,12 @@ SystemX দেখায় আপনার অ্যান্ড্রয়ে�
 • ৮০, ৮৫, ৯০ বা ১০০%-এ চার্জ অ্যালার্ম, ব্যাটারি কম, ব্যাটারি গরম, চার্জ শেষ, স্টোরেজ প্রায় পূর্ণ
 • ঐচ্ছিক লাইভ স্ট্যাটাস নোটিফিকেশন, স্ট্যাটাস বারে সংখ্যাসহ
 • হোম স্ক্রিন উইজেট, কুইক সেটিংস টাইল আর শর্টকাট
+
+সরঞ্জাম
+• যেকোনো অ্যাপের ওপর ভাসমান মনিটর: স্ক্রিনের FPS, র‍্যাম, ব্যাটারির বিদ্যুৎপ্রবাহ ও বিদ্যুৎ, তাপমাত্রা, ডাউনলোডের গতি
+• বাবল লেভেল, কম্পাস, শব্দ মিটার, আলো মিটার ও চৌম্বক ক্ষেত্র মিটার
+• আইপি অনুসন্ধান: আপনার পাবলিক আইপি, ইন্টারনেট সেবাদাতা ও আনুমানিক অবস্থান, সঙ্গে স্থানীয় নেটওয়ার্ক ঠিকানা
+• পছন্দমতো মানসহ তাৎক্ষণিক অবস্থার বিজ্ঞপ্তি
 
 সৎ আর প্রাইভেট
 • প্রতিটি মান সিস্টেম থেকে আসে। অনুমান হলে তা লেখা থাকে, আর অ্যান্ড্রয়েড যা লুকায় তা অনুমান না করে সেটাই জানানো হয়

@@ -4290,4 +4290,35 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get soundVeryLoud => 'Very loud';
+
+  @override
+  String get ipTitle => 'IP lookup';
+
+  @override
+  String get ipPublic => 'Public IP address';
+
+  @override
+  String get ipLookUp => 'Look up';
+
+  @override
+  String get ipAgain => 'Look up again';
+
+  @override
+  String get ipIsp => 'Internet provider';
+
+  @override
+  String get ipLocal => 'This phone on the network';
+
+  @override
+  String get ipFailed =>
+      'Couldn\'t reach the lookup service. Check the internet connection and try again.';
+
+  @override
+  String get ipRateLimited =>
+      'The lookup service is busy right now. Try again in a few minutes.';
+
+  @override
+  String ipNote(String host) {
+    return 'Look up asks $host where your public IP address is registered. That service sees your IP address, as every website you visit does; SystemX sends nothing else and connects nowhere until you tap. The location is the internet provider\'s, not your exact position.';
+  }
 }

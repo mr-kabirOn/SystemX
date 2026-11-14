@@ -1239,5 +1239,15 @@
   "soundQuiet": "Quiet",
   "soundModerate": "Conversation",
   "soundLoud": "Loud",
-  "soundVeryLoud": "Very loud"
+  "soundVeryLoud": "Very loud",
+  "ipTitle": "IP lookup",
+  "ipPublic": "Public IP address",
+  "ipLookUp": "Look up",
+  "ipAgain": "Look up again",
+  "ipIsp": "Internet provider",
+  "ipLocal": "This phone on the network",
+  "ipFailed": "Couldn't reach the lookup service. Check the internet connection and try again.",
+  "ipRateLimited": "The lookup service is busy right now. Try again in a few minutes.",
+  "ipNote": "Look up asks {host} where your public IP address is registered. That service sees your IP address, as every website you visit does; SystemX sends nothing else and connects nowhere until you tap. The location is the internet provider's, not your exact position.",
+  "@ipNote": {"placeholders": {"host": {"type": "String"}}}
 }

@@ -1,9 +1,9 @@
 # SystemX privacy policy
-Effective 26 October 2026
+Effective 14 November 2026
 SystemX shows information about your Android phone and tests its hardware. It is built so that your data stays on your phone.
 ## The short version
 - SystemX has no account, no ads, no analytics and no tracking.
-- SystemX does not have internet access. It cannot send anything anywhere.
+- SystemX connects to the internet only when you tap Look up in IP lookup. Nothing else in the app sends anything anywhere.
 - Everything it reads or records stays on your phone, unless you choose to share a spec sheet or a report yourself.
 ## What SystemX reads
 To show device information and live readings, SystemX reads what Android makes available to apps: model and system version, processor, memory, storage, battery, display, network status, SIM and mobile network details, cameras, sensors, media capabilities and security settings. It does not read your contacts, messages, call logs, photos, files, phone number, IMEI or location history.
@@ -17,6 +17,8 @@ SystemX works without any of these. Each one is asked for only when you open the
 - Notifications: only for the alerts and live status you turn on.
 - Usage access: to show how much storage each app and its cache use on the Apps screen, for Screen time: how long each app was on screen, how often it was opened, unlocks and daily screen-on time, and for Data usage: how much Wi-Fi and mobile data each app used, from Android's own network statistics. SystemX reads this on the phone only, never stores a copy and never sends it anywhere.
 Fingerprint and face checks use Android's own prompt. SystemX only learns whether it matched; it never receives biometric data.
+## IP lookup
+When you tap Look up in Tools › IP lookup, SystemX asks ipapi.co where your public IP address is registered. Like every website, that service receives your IP address with the request; SystemX sends nothing else (no device details, no identifiers). It returns the approximate city, region, country, internet provider and time zone of your IP address, which SystemX shows and does not store. ipapi.co handles the request under its own privacy policy. Nothing is sent until you tap.
 ## What SystemX stores on your phone
 - Your settings.
 - Battery, temperature and memory history for the last 8 days, and a log of recent charging sessions, if the app has run in the background.

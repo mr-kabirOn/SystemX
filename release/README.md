@@ -58,8 +58,9 @@ flutter build apk --release
 & "$env:LOCALAPPDATA\Android\Sdk\build-tools\36.0.0\aapt.exe" dump permissions build\app\outputs\flutter-apk\app-release.apk
 ```
 
-The list must **not** contain `android.permission.INTERNET` (the privacy
-policy and Data safety answers depend on it). Use whichever build-tools
+The list contains `android.permission.INTERNET` (IP lookup only) and
+`SYSTEM_ALERT_WINDOW` (floating monitor). It must not contain anything the
+privacy policy and Data safety answers don't mention. Use whichever build-tools
 version folder you have. Then install that APK on your phone
 (`flutter install --release`) and open each tab once: release builds
 shrink code, and this is where a missing keep rule would show up.

@@ -6859,6 +6859,60 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Very loud'**
   String get soundVeryLoud;
+
+  /// No description provided for @ipTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'IP lookup'**
+  String get ipTitle;
+
+  /// No description provided for @ipPublic.
+  ///
+  /// In en, this message translates to:
+  /// **'Public IP address'**
+  String get ipPublic;
+
+  /// No description provided for @ipLookUp.
+  ///
+  /// In en, this message translates to:
+  /// **'Look up'**
+  String get ipLookUp;
+
+  /// No description provided for @ipAgain.
+  ///
+  /// In en, this message translates to:
+  /// **'Look up again'**
+  String get ipAgain;
+
+  /// No description provided for @ipIsp.
+  ///
+  /// In en, this message translates to:
+  /// **'Internet provider'**
+  String get ipIsp;
+
+  /// No description provided for @ipLocal.
+  ///
+  /// In en, this message translates to:
+  /// **'This phone on the network'**
+  String get ipLocal;
+
+  /// No description provided for @ipFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn\'t reach the lookup service. Check the internet connection and try again.'**
+  String get ipFailed;
+
+  /// No description provided for @ipRateLimited.
+  ///
+  /// In en, this message translates to:
+  /// **'The lookup service is busy right now. Try again in a few minutes.'**
+  String get ipRateLimited;
+
+  /// No description provided for @ipNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Look up asks {host} where your public IP address is registered. That service sees your IP address, as every website you visit does; SystemX sends nothing else and connects nowhere until you tap. The location is the internet provider\'s, not your exact position.'**
+  String ipNote(String host);
 }
 
 class _AppLocalizationsDelegate

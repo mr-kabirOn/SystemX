@@ -4264,4 +4264,35 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get soundVeryLoud => 'অত্যন্ত উচ্চ';
+
+  @override
+  String get ipTitle => 'আইপি অনুসন্ধান';
+
+  @override
+  String get ipPublic => 'পাবলিক আইপি ঠিকানা';
+
+  @override
+  String get ipLookUp => 'অনুসন্ধান করুন';
+
+  @override
+  String get ipAgain => 'আবার অনুসন্ধান করুন';
+
+  @override
+  String get ipIsp => 'ইন্টারনেট সেবাদাতা';
+
+  @override
+  String get ipLocal => 'নেটওয়ার্কে এই ফোন';
+
+  @override
+  String get ipFailed =>
+      'অনুসন্ধান সেবায় সংযোগ করা যায়নি। ইন্টারনেট সংযোগ দেখে আবার চেষ্টা করুন।';
+
+  @override
+  String get ipRateLimited =>
+      'অনুসন্ধান সেবাটি এখন ব্যস্ত। কয়েক মিনিট পর আবার চেষ্টা করুন।';
+
+  @override
+  String ipNote(String host) {
+    return 'অনুসন্ধান করলে $host-কে জিজ্ঞেস করা হয় আপনার পাবলিক আইপি ঠিকানাটি কোথায় নিবন্ধিত। যেকোনো ওয়েবসাইটের মতোই সেই সেবা আপনার আইপি ঠিকানা দেখতে পায়; SystemX এর বাইরে কিছু পাঠায় না এবং আপনি ট্যাপ না করা পর্যন্ত কোথাও সংযোগ করে না। অবস্থানটি ইন্টারনেট সেবাদাতার, আপনার সুনির্দিষ্ট অবস্থান নয়।';
+  }
 }

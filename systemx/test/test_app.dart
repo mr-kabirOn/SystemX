@@ -4,6 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shared_preferences_platform_interface/in_memory_shared_preferences_async.dart';
 import 'package:shared_preferences_platform_interface/shared_preferences_async_platform_interface.dart';
+import 'package:systemx/features/tools/ip_lookup.dart';
 import 'package:systemx/app.dart';
 import 'package:systemx/core/settings/settings.dart';
 import 'package:systemx/features/device/share.dart';
@@ -35,6 +36,7 @@ Future<ProviderContainer> pumpApp(
   FakePlayApi? play,
   Stream<String> Function()? volumeKeys,
   Stream<double> Function()? soundLevels,
+  Future<IpInfo> Function()? ipLookup,
 }) async {
   SharedPreferencesAsyncPlatform.instance =
       InMemorySharedPreferencesAsync.empty();
@@ -68,6 +70,8 @@ Future<ProviderContainer> pumpApp(
     sensorReadingsProvider.overrideWithValue(
         sensorReadings ?? (_) => const Stream.empty()),
     soundLevelsProvider.overrideWithValue(soundLevels ?? () => const Stream.empty()),
+    // Tests never touch the network.
+    ipLookupProvider.overrideWithValue(ipLookup ?? () async => throw const IpLookupException(false)),
   ]);
   addTearDown(c.dispose);
   if (onboarded) await c.read(settingsProvider.notifier).completeOnboarding();

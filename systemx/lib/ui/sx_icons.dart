@@ -27,6 +27,7 @@ abstract final class SxIcons {
   static const IconData floating = PhosphorIconsFill.selectionForeground;
   static const IconData level = PhosphorIconsFill.ruler;
   static const IconData magnet = PhosphorIconsFill.magnet;
+  static const IconData globe = PhosphorIconsFill.globe;
 
   static const IconData brightness = PhosphorIconsFill.sun;
   static const IconData touch = PhosphorIconsFill.handTap;

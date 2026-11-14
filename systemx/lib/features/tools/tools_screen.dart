@@ -42,6 +42,7 @@ List<(String, List<ToolEntry>)> toolSections(AppLocalizations l, SxColors sx) =>
       ]),
       (l.tsNetwork, [
         ToolEntry(SxIcons.network, sx.network, l.wifiMeter, Routes.wifiMeter),
+        ToolEntry(SxIcons.globe, sx.network, l.ipTitle, Routes.ipLookup),
       ]),
       (l.tsMeasure, [
         ToolEntry(SxIcons.level, sx.good, l.mtLevel, Routes.level),

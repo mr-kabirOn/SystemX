@@ -1,7 +1,8 @@
 # Play Console answers
 
 Prepared answers for the forms under Play Console › Policy and programs ›
-App content. They match the code as built: no internet permission, no
+App content. They match the code as built: internet used only for the
+on-demand IP lookup, no
 SDKs that collect data, all data on the device.
 
 ## Privacy policy
@@ -41,11 +42,17 @@ Expected result: Everyone / PEGI 3.
 
 ## Data safety
 - Does your app collect or share any of the required user data types? **No.**
-  - Reason: SystemX has no INTERNET permission and no third-party SDKs that
-    collect data. Everything it reads stays on the device ("collected" in
-    Play's sense means sent off the device).
-- Is all user data encrypted in transit? Not applicable (nothing is
-  transmitted). If the form insists, answer **Yes**.
+  - Reason: the only network request is IP lookup, sent when the user taps
+    Look up. It goes to ipapi.co and carries nothing but the request itself
+    (the phone's IP address is visible to the server, as for any website);
+    the answer is shown and not stored. Play treats data sent at the user's
+    request to show a result, and not kept by the app, as not "collected".
+    No analytics or third-party SDKs. Everything else stays on the device.
+  - Before submitting, read ipapi.co's current terms and privacy policy. If
+    they say requests are logged or shared, answer **Yes** for "Location ›
+    Approximate location" as *shared*, purpose "App functionality", and
+    mention ipapi.co in the policy (already named there).
+- Is all user data encrypted in transit? **Yes** (the lookup uses HTTPS).
 - Do you provide a way for users to request that their data is deleted?
   **Yes**: Settings › Clear all history, or uninstall.
 - Note for review: Google Play's in-app review and update libraries run
@@ -92,7 +99,8 @@ Two things a reviewer may ask about:
   Screen time, usage events (UsageStatsManager): time on screen per app,
   opens, unlocks and daily screen-on time; for Data usage, per-app Wi-Fi
   and mobile data from NetworkStatsManager. Nothing is stored or sent; the
-  app has no internet permission. Off unless the user enables it.
+  app sends nothing off the phone except the on-demand IP lookup. Off
+  unless the user enables it.
 - **Seeing installed apps**: the Apps screen lists apps with a launcher
   icon, through a `<queries>` launcher intent; a home-screen `<queries>`
   entry lets Screen time leave launchers out of its list. Screen time
@@ -105,7 +113,8 @@ how long each app was used, with an on-device battery estimate per app, and
 how much Wi-Fi and mobile data each app used. The
 same access shows each app's storage and cache size. It is optional,
 explained in the app before the user opens the system setting, and the data
-never leaves the device (the app has no internet permission)."
+never leaves the device (the only network request is the IP lookup the
+user taps)."
 
 ## Note for reviewers: CPU stress test
 The CPU stress test only runs while its screen is open, at background
@@ -123,3 +132,12 @@ bn-BD: "প্রথম সংস্করণ: প্রতিটি স্প�
 ৩২টি পরীক্ষার পূর্ণাঙ্গ চেকআপ, PDF প্রতিবেদনসহ ব্যবহৃত ফোন যাচাই, সিপিইউ
 চাপ পরীক্ষা, রিফ্রেশ রেট ও স্পর্শ পরীক্ষা, সতর্কবার্তা, উইজেট এবং তাৎক্ষণিক
 অবস্থার বিজ্ঞপ্তি। ইংরেজি ও বাংলা।"
+
+## Note for reviewers: IP lookup and Display over other apps
+- INTERNET is used only by Tools › IP lookup, when the user taps Look up
+  (HTTPS request to ipapi.co). Nothing runs in the background online.
+- SYSTEM_ALERT_WINDOW ("Display over other apps") is used only for the
+  optional floating monitor (FPS, RAM, battery) that the user turns on in
+  Tools › Floating monitor. It is explained before Android's settings page
+  opens, draws only its own small box and runs inside the live status
+  foreground service (no second service).

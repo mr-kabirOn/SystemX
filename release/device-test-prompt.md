@@ -160,7 +160,8 @@ Open all 15 categories and compare with ground truth:
 1. `flutter build apk --release`.
 2. Check permissions:
    `& "$env:LOCALAPPDATA\Android\Sdk\build-tools\<version>\aapt.exe" dump permissions build\app\outputs\flutter-apk\app-release.apk`
-   — must **not** list `android.permission.INTERNET`.
+   — lists INTERNET (IP lookup only) and SYSTEM_ALERT_WINDOW (floating
+   monitor); nothing the privacy policy doesn't mention.
 3. `flutter install --release`, open every tab and each tool once: release
    builds shrink code, so look for anything that works in debug but not
    here. Check logcat.
