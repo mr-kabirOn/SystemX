@@ -4070,4 +4070,25 @@ class AppLocalizationsBn extends AppLocalizations {
   @override
   String get duNote =>
       'হিসাবগুলো অ্যান্ড্রয়েডের নেটওয়ার্ক পরিসংখ্যান থেকে নেওয়া, যা ফোনের নিজস্ব ডেটা ব্যবহারের পাতার উৎসও। আপনার অপারেটরের হিসাব সামান্য ভিন্ন হতে পারে।';
+
+  @override
+  String get navTools => 'সরঞ্জাম';
+
+  @override
+  String get tsMonitor => 'তাৎক্ষণিক পর্যবেক্ষণ';
+
+  @override
+  String get tsLiveStatus => 'অবস্থা ও সতর্কবার্তা';
+
+  @override
+  String get tsCheck => 'ফোন যাচাই';
+
+  @override
+  String get tsUsage => 'ব্যবহার ও ব্যাটারি';
+
+  @override
+  String get tsNetwork => 'নেটওয়ার্ক';
+
+  @override
+  String get tsMeasure => 'পরিমাপের সরঞ্জাম';
 }

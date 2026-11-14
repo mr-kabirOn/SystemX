@@ -55,4 +55,6 @@ abstract final class SxIcons {
   static const IconData tabTestsOn = PhosphorIconsFill.listChecks;
   static const IconData tabMonitor = PhosphorIconsRegular.chartLineUp;
   static const IconData tabMonitorOn = PhosphorIconsFill.chartLineUp;
+  static const IconData tabTools = PhosphorIconsRegular.squaresFour;
+  static const IconData tabToolsOn = PhosphorIconsFill.squaresFour;
 }

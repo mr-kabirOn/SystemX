@@ -4095,4 +4095,25 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get duNote =>
       'Figures come from Android\'s network statistics, the same source as the phone\'s own data usage screen. Your operator may count slightly differently.';
+
+  @override
+  String get navTools => 'Tools';
+
+  @override
+  String get tsMonitor => 'Live monitoring';
+
+  @override
+  String get tsLiveStatus => 'Live status & alerts';
+
+  @override
+  String get tsCheck => 'Phone check';
+
+  @override
+  String get tsUsage => 'Usage and battery';
+
+  @override
+  String get tsNetwork => 'Network';
+
+  @override
+  String get tsMeasure => 'Measurement tools';
 }

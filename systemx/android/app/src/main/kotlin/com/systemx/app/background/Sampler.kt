@@ -89,7 +89,7 @@ internal object Sampler {
             } else ""
             Notifications.post(
                 ctx, Notifications.ID_FULL, Notifications.BATTERY,
-                ctx.getString(R.string.n_full_title), text, "/monitor",
+                ctx.getString(R.string.n_full_title), text, "/tools/monitor",
             )
         }
 

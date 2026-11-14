@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import '../apps/data_usage.dart';
-import '../apps/screen_time.dart';
 import '../../core/format.dart';
 import '../../core/router.dart';
 import '../../core/settings/settings.dart';
@@ -13,7 +11,6 @@ import '../../l10n/app_localizations.dart';
 import '../../ui/widgets/cards.dart';
 import '../../ui/widgets/live_chart.dart';
 import '../../ui/widgets/page_scaffold.dart';
-import '../background/battery_health.dart';
 import '../background/history_widgets.dart';
 import '../live/live_data.dart';
 import '../live/live_screens.dart';
@@ -56,6 +53,7 @@ class MonitorScreen extends ConsumerWidget {
 
     return PageScaffold(
       title: l.monitorTitle,
+      leading: const BackButton(),
       actions: [
         IconButton(
           tooltip: live.paused ? l.resume : l.pause,
@@ -103,11 +101,7 @@ class MonitorScreen extends ConsumerWidget {
           },
         ),
         const SliverToBoxAdapter(child: SizedBox(height: 12)),
-        const Box(HistoryCard()),
-        const Box(BatteryHealthTile()),
-        const Box(ScreenTimeTile()),
-        const Box(DataUsageTile()),
-        const Box(SessionsTile(), bottom: 0),
+        const Box(HistoryCard(), bottom: 0),
       ],
     );
   }

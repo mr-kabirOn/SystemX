@@ -71,7 +71,7 @@ class _AppShellState extends ConsumerState<AppShell> {
       (SxIcons.tabHome, SxIcons.tabHomeOn, l.navHome),
       (SxIcons.tabDevice, SxIcons.tabDeviceOn, l.navDevice),
       (SxIcons.tabTests, SxIcons.tabTestsOn, l.navTests),
-      (SxIcons.tabMonitor, SxIcons.tabMonitorOn, l.navMonitor),
+      (SxIcons.tabTools, SxIcons.tabToolsOn, l.navTools),
     ];
 
     if (MediaQuery.sizeOf(context).width >= railBreakpoint) {

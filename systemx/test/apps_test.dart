@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:systemx/core/router.dart';
 import 'package:systemx/features/apps/apps_screen.dart';
-import 'package:systemx/features/device/device_screen.dart';
 
 import 'fakes.dart';
 import 'permissions_test.dart' show go;
@@ -64,16 +63,11 @@ void main() {
     expect(find.text('Chrome'), findsOneWidget);
   });
 
-  testWidgets('the Device tab links to Apps', (tester) async {
+  testWidgets('the Tools tab links to Apps', (tester) async {
     await pumpApp(tester);
-    await go(tester, Routes.device);
-    final list = find
-        .descendant(
-            of: find.byType(DeviceScreen), matching: find.byType(Scrollable))
-        .first;
-    await tester.scrollUntilVisible(find.text('Installed apps'), 300,
-        scrollable: list);
-    await tester.tap(find.text('Installed apps'));
+    await tester.tap(find.text('Tools').last);
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Apps'));
     await tester.pumpAndSettle();
     expect(find.byType(TextField), findsOneWidget);
   });

@@ -199,7 +199,7 @@ class LiveStatusService : Service() {
             .setOnlyAlertOnce(true)
             .setShowWhen(false)
             .setCategory(Notification.CATEGORY_STATUS)
-            .setContentIntent(Notifications.openApp(this, "/monitor", 2))
+            .setContentIntent(Notifications.openApp(this, "/tools/monitor", 2))
             .addAction(Notification.Action.Builder(null as Icon?, getString(R.string.live_stop), stop).build())
             .build()
     }

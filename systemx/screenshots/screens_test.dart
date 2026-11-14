@@ -216,6 +216,8 @@ void main() {
     await _shoot(
         tester, '28_device_sensors', Routes.category(DeviceCategory.sensors));
     await _shoot(tester, '29_battery_health', Routes.batteryHealth, background: _manyCharges());
+    await _shoot(tester, '35_tools', Routes.tools);
+    await _shoot(tester, 'bn/tools', Routes.tools, locale: 'bn', theme: ThemeMode.light);
     await _shoot(tester, '30_screen_time', Routes.screenTime, usage: true);
     await _shoot(tester, '34_data_usage', Routes.dataUsage, usage: true);
     await _shoot(tester, 'bn/data_usage', Routes.dataUsage, usage: true, locale: 'bn', theme: ThemeMode.light);

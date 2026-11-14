@@ -119,37 +119,6 @@ class DeviceScreen extends ConsumerWidget {
             ]),
           ),
         ),
-        Box(
-          SxCard(
-            padding: const EdgeInsets.symmetric(vertical: 6),
-            child: Column(children: [
-              CategoryRow(
-                icon: SxIcons.apps,
-                color: sx.storage,
-                title: l.appsEntry,
-                subtitle: l.appsEntryBody,
-                onTap: () => context.push(Routes.apps),
-              ),
-              const Divider(indent: 66, endIndent: 14),
-              CategoryRow(
-                icon: SxIcons.screenTime,
-                color: sx.accent,
-                title: l.stmTitle,
-                subtitle: l.stmEntryBody,
-                onTap: () => context.push(Routes.screenTime),
-              ),
-              const Divider(indent: 66, endIndent: 14),
-              CategoryRow(
-                icon: SxIcons.dataUsage,
-                color: sx.accent,
-                title: l.duTitle,
-                subtitle: l.duEntryBody,
-                onTap: () => context.push(Routes.dataUsage),
-              ),
-            ]),
-          ),
-          bottom: 0,
-        ),
       ],
     );
   }

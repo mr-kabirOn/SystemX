@@ -63,7 +63,7 @@ class WeeklySummaryWorker(ctx: Context, params: WorkerParameters) : Worker(ctx, 
             ctx, Notifications.ID_WEEKLY, Notifications.SUMMARY,
             ctx.getString(R.string.n_weekly_title),
             ctx.getString(R.string.n_weekly_text, charges, AlertRules.temp(maxTemp, c.fahrenheit), minLevel.toInt()),
-            "/monitor",
+            "/tools/monitor",
         )
         return Result.success()
     }

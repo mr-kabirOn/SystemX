@@ -26,6 +26,7 @@ import '../features/tests/test_catalog.dart';
 import '../features/tests/tests_screen.dart';
 import '../features/tools/display_tools.dart';
 import '../features/tools/stress_test.dart';
+import '../features/tools/tools_screen.dart';
 import '../features/tools/used_phone_screen.dart';
 import 'settings/settings.dart';
 
@@ -34,9 +35,10 @@ abstract final class Routes {
   static const home = '/home';
   static const device = '/device';
   static const search = '/device/search';
-  static const apps = '/device/apps';
+  static const apps = '/apps';
   static const tests = '/tests';
-  static const monitor = '/monitor';
+  static const tools = '/tools';
+  static const monitor = '/tools/monitor';
   static const settings = '/settings';
   static const privacy = '/settings/privacy';
   static const policy = '/settings/policy';
@@ -85,7 +87,6 @@ final routerProvider = Provider<GoRouter>((ref) {
                   path: 'search',
                   builder: (_, _) => const SearchScreen(),
                 ),
-                GoRoute(path: 'apps', builder: (_, _) => const AppsScreen()),
                 GoRoute(
                   path: ':category',
                   redirect: (_, state) =>
@@ -106,10 +107,18 @@ final routerProvider = Provider<GoRouter>((ref) {
           ]),
           StatefulShellBranch(routes: [
             GoRoute(
-                path: Routes.monitor, builder: (_, _) => const MonitorScreen()),
+              path: Routes.tools,
+              builder: (_, _) => const ToolsScreen(),
+              routes: [
+                GoRoute(path: 'monitor', builder: (_, _) => const MonitorScreen()),
+              ],
+            ),
           ]),
         ],
       ),
+      // Notifications from earlier versions open "/monitor".
+      GoRoute(path: '/monitor', redirect: (_, _) => Routes.monitor),
+      GoRoute(path: Routes.apps, builder: (_, _) => const AppsScreen()),
       GoRoute(path: Routes.checkup, builder: (_, _) => const CheckupScreen()),
       GoRoute(path: Routes.sessions, builder: (_, _) => const SessionsScreen()),
       GoRoute(

@@ -1182,5 +1182,12 @@
   "duOther": "Other apps",
   "duNone": "No data used on this network on this day.",
   "duAccessBody": "Data usage is read from Android's own network statistics, which need Usage access. Nothing leaves this phone.",
-  "duNote": "Figures come from Android's network statistics, the same source as the phone's own data usage screen. Your operator may count slightly differently."
+  "duNote": "Figures come from Android's network statistics, the same source as the phone's own data usage screen. Your operator may count slightly differently.",
+  "navTools": "Tools",
+  "tsMonitor": "Live monitoring",
+  "tsLiveStatus": "Live status & alerts",
+  "tsCheck": "Phone check",
+  "tsUsage": "Usage and battery",
+  "tsNetwork": "Network",
+  "tsMeasure": "Measurement tools"
 }

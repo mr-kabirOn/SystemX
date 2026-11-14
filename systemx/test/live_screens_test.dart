@@ -75,7 +75,9 @@ void main() {
 
   testWidgets('Monitor charts follow the live readings', (tester) async {
     final c = await pumpApp(tester);
-    await tester.tap(find.text('Monitor').last);
+    await tester.tap(find.text('Tools').last);
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Monitor'));
     await tester.pumpAndSettle();
     await ticks(tester, c, 4);
 

@@ -6535,6 +6535,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Figures come from Android\'s network statistics, the same source as the phone\'s own data usage screen. Your operator may count slightly differently.'**
   String get duNote;
+
+  /// No description provided for @navTools.
+  ///
+  /// In en, this message translates to:
+  /// **'Tools'**
+  String get navTools;
+
+  /// No description provided for @tsMonitor.
+  ///
+  /// In en, this message translates to:
+  /// **'Live monitoring'**
+  String get tsMonitor;
+
+  /// No description provided for @tsLiveStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'Live status & alerts'**
+  String get tsLiveStatus;
+
+  /// No description provided for @tsCheck.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone check'**
+  String get tsCheck;
+
+  /// No description provided for @tsUsage.
+  ///
+  /// In en, this message translates to:
+  /// **'Usage and battery'**
+  String get tsUsage;
+
+  /// No description provided for @tsNetwork.
+  ///
+  /// In en, this message translates to:
+  /// **'Network'**
+  String get tsNetwork;
+
+  /// No description provided for @tsMeasure.
+  ///
+  /// In en, this message translates to:
+  /// **'Measurement tools'**
+  String get tsMeasure;
 }
 
 class _AppLocalizationsDelegate

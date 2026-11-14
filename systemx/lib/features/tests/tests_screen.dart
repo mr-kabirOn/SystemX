@@ -6,7 +6,6 @@ import '../../core/format.dart';
 import '../../core/router.dart';
 import '../../core/theme/sx_colors.dart';
 import '../../l10n/app_localizations.dart';
-import '../../ui/sx_icons.dart';
 import '../../ui/widgets/cards.dart';
 import '../../ui/widgets/page_scaffold.dart';
 import '../../ui/widgets/test_tile.dart';
@@ -75,43 +74,6 @@ class TestsScreen extends ConsumerWidget {
               Icon(Icons.chevron_right_rounded, color: sx.muted),
             ]),
           )),
-        SliverToBoxAdapter(child: SectionLabel(l.toolsTitle)),
-        Box(SxCard(
-          padding: const EdgeInsets.symmetric(vertical: 6),
-          child: Column(children: [
-            CategoryRow(
-              icon: SxIcons.security,
-              color: sx.good,
-              title: l.upTitle,
-              subtitle: l.upEntryBody,
-              onTap: () => context.push(Routes.usedPhone),
-            ),
-            const Divider(indent: 66, endIndent: 14),
-            CategoryRow(
-              icon: SxIcons.speed,
-              color: sx.cpu,
-              title: l.stTitle,
-              subtitle: l.stEntryBody,
-              onTap: () => context.push(Routes.stress),
-            ),
-            const Divider(indent: 66, endIndent: 14),
-            CategoryRow(
-              icon: SxIcons.display,
-              color: sx.display,
-              title: l.rrTitle,
-              subtitle: l.rrEntryBody,
-              onTap: () => context.push(Routes.refreshRate),
-            ),
-            const Divider(indent: 66, endIndent: 14),
-            CategoryRow(
-              icon: SxIcons.touch,
-              color: sx.accent,
-              title: l.trTitle,
-              subtitle: l.trEntryBody,
-              onTap: () => context.push(Routes.touchRate),
-            ),
-          ]),
-        )),
         for (final g in TestGroup.values) ...[
           SliverToBoxAdapter(child: SectionLabel(groupTitle(l, g))),
           SliverGrid.builder(
