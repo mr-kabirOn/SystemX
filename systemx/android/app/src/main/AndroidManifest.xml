@@ -27,6 +27,8 @@
     <!-- Notifications (Android 13+): asked when an alert or live status is turned on. -->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <!-- Special access the user turns on in Settings; only for app sizes. -->
+    <!-- Floating monitor over other apps; the user turns it on in Settings. -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS"
         tools:ignore="ProtectedPermissions" />
 

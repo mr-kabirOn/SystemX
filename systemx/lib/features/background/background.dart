@@ -57,6 +57,7 @@ BackgroundConfig copyConfig(
 /// Whether any alert or live status needs notifications.
 bool needsNotifications(BackgroundConfig c) =>
     c.liveStatus ||
+    c.overlay ||
     c.chargeAlarm ||
     c.batteryLow ||
     c.batteryHot ||

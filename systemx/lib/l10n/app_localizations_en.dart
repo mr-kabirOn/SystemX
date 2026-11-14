@@ -4129,4 +4129,56 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get liRam => 'RAM in use';
+
+  @override
+  String get fmTitle => 'Floating monitor';
+
+  @override
+  String get fmBody =>
+      'A small box over other apps with the values you choose. Drag it anywhere on the screen.';
+
+  @override
+  String get fmShow => 'Show over other apps';
+
+  @override
+  String get fmItems => 'Values to show';
+
+  @override
+  String get fmOpacity => 'Background opacity';
+
+  @override
+  String fmOpacityValue(int percent) {
+    final intl.NumberFormat percentNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String percentString = percentNumberFormat.format(percent);
+
+    return '$percentString%';
+  }
+
+  @override
+  String get fmDark => 'Dark box';
+
+  @override
+  String get fmFpsNote =>
+      'FPS is how many frames the screen draws each second. Android doesn\'t let apps read another app\'s own frame rate, so a game can run slower than the number shown.';
+
+  @override
+  String get fmNotifNote =>
+      'While the box shows, the live status notification stays in the notification panel: Android requires it for apps that keep running.';
+
+  @override
+  String get fmFps => 'FPS';
+
+  @override
+  String get fmRamFree => 'Free RAM';
+
+  @override
+  String get fmCurrent => 'Battery current';
+
+  @override
+  String get permOverlayTitle => 'Allow display over other apps';
+
+  @override
+  String get permOverlayReason =>
+      'The floating monitor needs Android\'s \"Display over other apps\" setting. SystemX only draws its small box; it can\'t see or read other apps\' screens.';
 }

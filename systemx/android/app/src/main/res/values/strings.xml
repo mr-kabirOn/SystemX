@@ -62,4 +62,7 @@
 
     <!-- Foreground service declaration shown to Play reviewers -->
     <string name="fgs_reason" translatable="false">Optional live device status (battery, temperature, charging power, network speed, memory) that the user turns on in Settings and can stop from the notification.</string>
+
+    <string name="o_free">Free</string>
+    <string name="o_temp">Temp</string>
 </resources>

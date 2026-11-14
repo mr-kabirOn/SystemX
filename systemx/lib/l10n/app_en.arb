@@ -1193,5 +1193,20 @@
   "liveShows": "Values in the notification",
   "liveShowsNote": "The first four also show when the notification is collapsed. At least one stays on.",
   "liPower": "Power (W)",
-  "liRam": "RAM in use"
+  "liRam": "RAM in use",
+  "fmTitle": "Floating monitor",
+  "fmBody": "A small box over other apps with the values you choose. Drag it anywhere on the screen.",
+  "fmShow": "Show over other apps",
+  "fmItems": "Values to show",
+  "fmOpacity": "Background opacity",
+  "fmOpacityValue": "{percent}%",
+  "@fmOpacityValue": {"placeholders": {"percent": {"type": "int", "format": "decimalPattern"}}},
+  "fmDark": "Dark box",
+  "fmFpsNote": "FPS is how many frames the screen draws each second. Android doesn't let apps read another app's own frame rate, so a game can run slower than the number shown.",
+  "fmNotifNote": "While the box shows, the live status notification stays in the notification panel: Android requires it for apps that keep running.",
+  "fmFps": "FPS",
+  "fmRamFree": "Free RAM",
+  "fmCurrent": "Battery current",
+  "permOverlayTitle": "Allow display over other apps",
+  "permOverlayReason": "The floating monitor needs Android's \"Display over other apps\" setting. SystemX only draws its small box; it can't see or read other apps' screens."
 }

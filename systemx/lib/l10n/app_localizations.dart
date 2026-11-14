@@ -6601,6 +6601,90 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'RAM in use'**
   String get liRam;
+
+  /// No description provided for @fmTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Floating monitor'**
+  String get fmTitle;
+
+  /// No description provided for @fmBody.
+  ///
+  /// In en, this message translates to:
+  /// **'A small box over other apps with the values you choose. Drag it anywhere on the screen.'**
+  String get fmBody;
+
+  /// No description provided for @fmShow.
+  ///
+  /// In en, this message translates to:
+  /// **'Show over other apps'**
+  String get fmShow;
+
+  /// No description provided for @fmItems.
+  ///
+  /// In en, this message translates to:
+  /// **'Values to show'**
+  String get fmItems;
+
+  /// No description provided for @fmOpacity.
+  ///
+  /// In en, this message translates to:
+  /// **'Background opacity'**
+  String get fmOpacity;
+
+  /// No description provided for @fmOpacityValue.
+  ///
+  /// In en, this message translates to:
+  /// **'{percent}%'**
+  String fmOpacityValue(int percent);
+
+  /// No description provided for @fmDark.
+  ///
+  /// In en, this message translates to:
+  /// **'Dark box'**
+  String get fmDark;
+
+  /// No description provided for @fmFpsNote.
+  ///
+  /// In en, this message translates to:
+  /// **'FPS is how many frames the screen draws each second. Android doesn\'t let apps read another app\'s own frame rate, so a game can run slower than the number shown.'**
+  String get fmFpsNote;
+
+  /// No description provided for @fmNotifNote.
+  ///
+  /// In en, this message translates to:
+  /// **'While the box shows, the live status notification stays in the notification panel: Android requires it for apps that keep running.'**
+  String get fmNotifNote;
+
+  /// No description provided for @fmFps.
+  ///
+  /// In en, this message translates to:
+  /// **'FPS'**
+  String get fmFps;
+
+  /// No description provided for @fmRamFree.
+  ///
+  /// In en, this message translates to:
+  /// **'Free RAM'**
+  String get fmRamFree;
+
+  /// No description provided for @fmCurrent.
+  ///
+  /// In en, this message translates to:
+  /// **'Battery current'**
+  String get fmCurrent;
+
+  /// No description provided for @permOverlayTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Allow display over other apps'**
+  String get permOverlayTitle;
+
+  /// No description provided for @permOverlayReason.
+  ///
+  /// In en, this message translates to:
+  /// **'The floating monitor needs Android\'s \"Display over other apps\" setting. SystemX only draws its small box; it can\'t see or read other apps\' screens.'**
+  String get permOverlayReason;
 }
 
 class _AppLocalizationsDelegate

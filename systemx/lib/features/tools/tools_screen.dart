@@ -24,6 +24,7 @@ class ToolEntry {
 List<(String, List<ToolEntry>)> toolSections(AppLocalizations l, SxColors sx) => [
       (l.tsMonitor, [
         ToolEntry(SxIcons.tabMonitorOn, sx.accent, l.monitorTitle, Routes.monitor),
+        ToolEntry(SxIcons.floating, sx.accent, l.fmTitle, Routes.floating),
         ToolEntry(SxIcons.notifications, sx.accent, l.tsLiveStatus, Routes.alerts),
       ]),
       (l.tsCheck, [

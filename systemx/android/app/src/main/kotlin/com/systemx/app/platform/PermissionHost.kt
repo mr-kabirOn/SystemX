@@ -3,8 +3,11 @@ package com.systemx.app.platform
 import android.Manifest
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Build
+import android.provider.Settings
 
 /**
  * Runtime permission requests. Android only says "permanently denied" indirectly:
@@ -31,6 +34,10 @@ class PermissionHost(private val activity: Activity) : PermissionApi {
     private fun primary(kind: String) = permissionsFor(kind).firstOrNull()
 
     override fun status(kind: String): String {
+        // "Display over other apps" is a special access set in Settings, not a dialog.
+        if (kind == "overlay") {
+            return if (com.systemx.app.background.FloatingMonitor.canDraw(activity)) "granted" else "denied"
+        }
         val p = primary(kind) ?: return "granted"
         if (activity.checkSelfPermission(p) == PackageManager.PERMISSION_GRANTED) return "granted"
         val asked = prefs.getBoolean(kind, false)
@@ -38,6 +45,17 @@ class PermissionHost(private val activity: Activity) : PermissionApi {
     }
 
     override fun request(kind: String, callback: (Result<String>) -> Unit) {
+        if (kind == "overlay") {
+            // Opens this app's page in Settings; the app checks again on return.
+            if (status(kind) != "granted") {
+                Sys.safe {
+                    activity.startActivity(
+                        Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:${activity.packageName}")),
+                    )
+                }
+            }
+            return callback(Result.success(status(kind)))
+        }
         val perms = permissionsFor(kind)
         if (perms.isEmpty() || status(kind) == "granted") return callback(Result.success("granted"))
         if (pending != null) return callback(Result.success(status(kind)))

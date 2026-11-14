@@ -4104,4 +4104,56 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get liRam => 'ব্যবহৃত র‍্যাম';
+
+  @override
+  String get fmTitle => 'ভাসমান মনিটর';
+
+  @override
+  String get fmBody =>
+      'অন্য অ্যাপের ওপর একটি ছোট বাক্সে আপনার বেছে নেওয়া মানগুলো দেখায়। স্ক্রিনের যেকোনো জায়গায় টেনে সরাতে পারবেন।';
+
+  @override
+  String get fmShow => 'অন্য অ্যাপের ওপর দেখান';
+
+  @override
+  String get fmItems => 'যে মানগুলো দেখাবে';
+
+  @override
+  String get fmOpacity => 'পটভূমির অস্বচ্ছতা';
+
+  @override
+  String fmOpacityValue(int percent) {
+    final intl.NumberFormat percentNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String percentString = percentNumberFormat.format(percent);
+
+    return '$percentString%';
+  }
+
+  @override
+  String get fmDark => 'গাঢ় বাক্স';
+
+  @override
+  String get fmFpsNote =>
+      'FPS হলো স্ক্রিন প্রতি সেকেন্ডে কতটি ফ্রেম আঁকে। অ্যান্ড্রয়েড অন্য অ্যাপের নিজস্ব ফ্রেম রেট জানতে দেয় না, তাই কোনো গেম দেখানো সংখ্যার চেয়ে কম গতিতে চলতে পারে।';
+
+  @override
+  String get fmNotifNote =>
+      'বাক্সটি দেখানোর সময় তাৎক্ষণিক অবস্থার বিজ্ঞপ্তিও প্যানেলে থাকবে: চালু থাকা অ্যাপের জন্য অ্যান্ড্রয়েড এটি বাধ্যতামূলক করে।';
+
+  @override
+  String get fmFps => 'FPS';
+
+  @override
+  String get fmRamFree => 'খালি র‍্যাম';
+
+  @override
+  String get fmCurrent => 'ব্যাটারির বিদ্যুৎপ্রবাহ';
+
+  @override
+  String get permOverlayTitle => 'অন্য অ্যাপের ওপর দেখানোর অনুমতি দিন';
+
+  @override
+  String get permOverlayReason =>
+      'ভাসমান মনিটরের জন্য অ্যান্ড্রয়েডের \"অন্য অ্যাপের ওপর দেখান\" সেটিং প্রয়োজন। SystemX শুধু নিজের ছোট বাক্সটি আঁকে; অন্য অ্যাপের স্ক্রিন দেখতে বা পড়তে পারে না।';
 }

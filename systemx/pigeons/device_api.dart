@@ -711,7 +711,8 @@ abstract class DeviceInfoApi {
 }
 
 /// Runtime permissions, asked from the current activity.
-/// [kind] is "location", "phone", "camera", "microphone" or "notifications".
+/// [kind] is "location", "phone", "camera", "microphone", "notifications" or
+/// "overlay" (Display over other apps, which opens Settings instead).
 /// Status is "granted", "denied" or "blocked" (denied with "don't ask again";
 /// only the system settings screen can change it).
 @HostApi()

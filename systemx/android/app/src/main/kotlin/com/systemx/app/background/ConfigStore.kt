@@ -32,7 +32,7 @@ internal object ConfigStore {
             liveItems = list(p.getString("liveItems", null), LIVE_ITEMS),
             overlay = p.getBoolean("overlay", false),
             overlayItems = list(p.getString("overlayItems", null), listOf("fps")),
-            overlayOpacity = p.getLong("overlayOpacity", 85).coerceIn(20, 100),
+            overlayOpacity = p.getLong("overlayOpacity", 85).coerceIn(20L, 100L),
             overlayDark = p.getBoolean("overlayDark", true),
         )
     }

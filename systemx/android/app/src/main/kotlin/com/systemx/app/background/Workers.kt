@@ -122,7 +122,9 @@ internal object Scheduler {
             wm.cancelUniqueWork("reminder")
         }
 
-        if (c.liveStatus) LiveStatusService.start(ctx) else LiveStatusService.stop(ctx)
+        // The floating monitor runs inside the same service.
+        val overlay = c.overlay && FloatingMonitor.canDraw(ctx)
+        if (c.liveStatus || overlay) LiveStatusService.start(ctx) else LiveStatusService.stop(ctx)
     }
 
     /** [delayMs] null waits for a charger to be connected. */

@@ -13,7 +13,10 @@ enum AppPermission {
   phone,
   camera,
   microphone,
-  notifications;
+  notifications,
+
+  /// Display over other apps, for the floating monitor (opens Settings).
+  overlay;
 
   IconData get icon => switch (this) {
         location => SxIcons.gps,
@@ -21,13 +24,14 @@ enum AppPermission {
         camera => SxIcons.camera,
         microphone => SxIcons.mic,
         notifications => SxIcons.notifications,
+        overlay => SxIcons.floating,
       };
 
   Color color(SxColors sx) => switch (this) {
         location || phone => sx.network,
         camera => sx.camera,
         microphone => sx.ram,
-        notifications => sx.accent,
+        notifications || overlay => sx.accent,
       };
 
   String title(AppLocalizations l) => switch (this) {
@@ -36,6 +40,7 @@ enum AppPermission {
         camera => l.permCameraTitle,
         microphone => l.permMicTitle,
         notifications => l.permNotifTitle,
+        overlay => l.permOverlayTitle,
       };
 
   String reason(AppLocalizations l) => switch (this) {
@@ -44,6 +49,7 @@ enum AppPermission {
         camera => l.permCameraReason,
         microphone => l.permMicReason,
         notifications => l.permNotifReason,
+        overlay => l.permOverlayReason,
       };
 
   static AppPermission? byName(String name) {

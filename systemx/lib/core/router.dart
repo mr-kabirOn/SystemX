@@ -25,6 +25,7 @@ import '../features/tests/report_screen.dart';
 import '../features/tests/test_catalog.dart';
 import '../features/tests/tests_screen.dart';
 import '../features/tools/display_tools.dart';
+import '../features/tools/floating_monitor.dart';
 import '../features/tools/stress_test.dart';
 import '../features/tools/tools_screen.dart';
 import '../features/tools/used_phone_screen.dart';
@@ -39,6 +40,7 @@ abstract final class Routes {
   static const tests = '/tests';
   static const tools = '/tools';
   static const monitor = '/tools/monitor';
+  static const floating = '/tools/floating';
   static const settings = '/settings';
   static const privacy = '/settings/privacy';
   static const policy = '/settings/policy';
@@ -111,6 +113,7 @@ final routerProvider = Provider<GoRouter>((ref) {
               builder: (_, _) => const ToolsScreen(),
               routes: [
                 GoRoute(path: 'monitor', builder: (_, _) => const MonitorScreen()),
+                GoRoute(path: 'floating', builder: (_, _) => const FloatingMonitorScreen()),
               ],
             ),
           ]),

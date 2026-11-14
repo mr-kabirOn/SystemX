@@ -52,4 +52,7 @@
     <string name="sc_checkup">পরীক্ষা শুরু করুন</string>
     <string name="sc_battery">ব্যাটারি</string>
     <string name="sc_monitor">পর্যবেক্ষণ</string>
+
+    <string name="o_free">খালি</string>
+    <string name="o_temp">তাপ</string>
 </resources>

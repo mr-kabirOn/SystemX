@@ -40,6 +40,7 @@ class LiveStatusService : Service() {
     private var screenOn = true
     private var lastShown: String? = null
     private var receiverRegistered = false
+    private val overlay by lazy { FloatingMonitor(this) }
 
     private val tick = object : Runnable {
         override fun run() {
@@ -53,6 +54,7 @@ class LiveStatusService : Service() {
     private val screenReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
             screenOn = intent.action != Intent.ACTION_SCREEN_OFF
+            overlay.setScreenOn(screenOn)
             if (screenOn) {
                 // Speeds are measured across the gap; start fresh.
                 prev = null
@@ -66,7 +68,10 @@ class LiveStatusService : Service() {
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         if (intent?.action == ACTION_STOP) {
+            // Stop turns off everything this service runs.
             ConfigStore.setLiveStatus(this, false)
+            ConfigStore.setOverlay(this, false)
+            overlay.hide()
             stopForeground(STOP_FOREGROUND_REMOVE)
             stopSelf()
             return START_NOT_STICKY
@@ -97,6 +102,8 @@ class LiveStatusService : Service() {
             receiverRegistered = true
         }
         screenOn = getSystemService(PowerManager::class.java)?.isInteractive ?: true
+        overlay.apply(ConfigStore.load(this))
+        overlay.setScreenOn(screenOn)
         prev = r
         handler.removeCallbacks(tick)
         handler.postDelayed(tick, INTERVAL)
@@ -105,6 +112,7 @@ class LiveStatusService : Service() {
 
     override fun onDestroy() {
         handler.removeCallbacks(tick)
+        overlay.hide()
         if (receiverRegistered) {
             try {
                 unregisterReceiver(screenReceiver)
@@ -126,6 +134,7 @@ class LiveStatusService : Service() {
         val up = if (p == null) 0.0 else AlertRules.byteRate(p.txBytes, r.txBytes, p.timeMs, r.timeMs)
         prev = r
         Sampler.onReading(this, r)
+        if (overlay.isShowing) overlay.update(r, down, ConfigStore.load(this).fahrenheit)
         val n = build(r, down, up, skipIfUnchanged = true)
         if (n != null) {
             try {
