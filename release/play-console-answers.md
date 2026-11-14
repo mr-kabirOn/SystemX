@@ -43,15 +43,18 @@ Expected result: Everyone / PEGI 3.
 ## Data safety
 - Does your app collect or share any of the required user data types? **No.**
   - Reason: the only network request is IP lookup, sent when the user taps
-    Look up. It goes to ipapi.co and carries nothing but the request itself
+    Look up. It goes to ipinfo.io (then ipwho.is, ipapi.co or ipify.org only
+    if the one before fails) and carries nothing but the request itself
     (the phone's IP address is visible to the server, as for any website);
     the answer is shown and not stored. Play treats data sent at the user's
     request to show a result, and not kept by the app, as not "collected".
     No analytics or third-party SDKs. Everything else stays on the device.
-  - Before submitting, read ipapi.co's current terms and privacy policy. If
+  - Before submitting, read these services' current terms and privacy
+    policies (remove any you're not comfortable with from
+    `ipLookupServices` in lib/features/tools/ip_lookup.dart). If
     they say requests are logged or shared, answer **Yes** for "Location ›
     Approximate location" as *shared*, purpose "App functionality", and
-    mention ipapi.co in the policy (already named there).
+    name the service in the policy (all four are named there).
 - Is all user data encrypted in transit? **Yes** (the lookup uses HTTPS).
 - Do you provide a way for users to request that their data is deleted?
   **Yes**: Settings › Clear all history, or uninstall.
@@ -135,7 +138,8 @@ bn-BD: "প্রথম সংস্করণ: প্রতিটি স্প�
 
 ## Note for reviewers: IP lookup and Display over other apps
 - INTERNET is used only by Tools › IP lookup, when the user taps Look up
-  (HTTPS request to ipapi.co). Nothing runs in the background online.
+  (HTTPS request to ipinfo.io, falling back to ipwho.is, ipapi.co or
+  ipify.org). Nothing runs in the background online.
 - SYSTEM_ALERT_WINDOW ("Display over other apps") is used only for the
   optional floating monitor (FPS, RAM, battery) that the user turns on in
   Tools › Floating monitor. It is explained before Android's settings page

@@ -6911,7 +6911,7 @@ abstract class AppLocalizations {
   /// No description provided for @ipNote.
   ///
   /// In en, this message translates to:
-  /// **'Look up asks {host} where your public IP address is registered. That service sees your IP address, as every website you visit does; SystemX sends nothing else and connects nowhere until you tap. The location is the internet provider\'s, not your exact position.'**
+  /// **'Look up asks a lookup service where your public IP address is registered: {host}, trying the next only if one doesn\'t answer. That service sees your IP address, as every website you visit does; SystemX sends nothing else and connects nowhere until you tap. The location is the internet provider\'s, not your exact position.'**
   String ipNote(String host);
 
   /// No description provided for @wgTitle.
@@ -6985,6 +6985,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Widgets'**
   String get tsWidgets;
+
+  /// No description provided for @ipSource.
+  ///
+  /// In en, this message translates to:
+  /// **'Answered by'**
+  String get ipSource;
 }
 
 class _AppLocalizationsDelegate

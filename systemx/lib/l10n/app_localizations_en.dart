@@ -4319,7 +4319,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String ipNote(String host) {
-    return 'Look up asks $host where your public IP address is registered. That service sees your IP address, as every website you visit does; SystemX sends nothing else and connects nowhere until you tap. The location is the internet provider\'s, not your exact position.';
+    return 'Look up asks a lookup service where your public IP address is registered: $host, trying the next only if one doesn\'t answer. That service sees your IP address, as every website you visit does; SystemX sends nothing else and connects nowhere until you tap. The location is the internet provider\'s, not your exact position.';
   }
 
   @override
@@ -4361,4 +4361,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get tsWidgets => 'Widgets';
+
+  @override
+  String get ipSource => 'Answered by';
 }
