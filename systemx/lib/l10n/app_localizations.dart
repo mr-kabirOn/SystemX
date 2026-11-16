@@ -6602,6 +6602,24 @@ abstract class AppLocalizations {
   /// **'RAM in use'**
   String get liRam;
 
+  /// No description provided for @liSpeed.
+  ///
+  /// In en, this message translates to:
+  /// **'Internet speed'**
+  String get liSpeed;
+
+  /// No description provided for @liData.
+  ///
+  /// In en, this message translates to:
+  /// **'Data used (last 30 days)'**
+  String get liData;
+
+  /// No description provided for @liDataNeedsAccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Data used is read from Android\'s network statistics, which need Usage access.'**
+  String get liDataNeedsAccess;
+
   /// No description provided for @fmTitle.
   ///
   /// In en, this message translates to:

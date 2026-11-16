@@ -41,16 +41,32 @@ internal object AlertRules {
      * Status bar icon for [kind] ("battery_level", "battery_temp" or
      * "net_speed") as a number and its unit. Battery values put the unit
      * beside the number ("63" "%"); network speed puts it underneath
-     * ([unitBelow]) so "0" never reads as the letter O.
+     * ([unitBelow]) so "0" never reads as the letter O. [speedBps] is the
+     * internet speed, download and upload together.
      */
-    fun statusIconLines(kind: String, level: Int, tempC: Double, fahrenheit: Boolean, downBps: Double): Pair<String, String> =
+    fun statusIconLines(kind: String, level: Int, tempC: Double, fahrenheit: Boolean, speedBps: Double): Pair<String, String> =
         when (kind) {
             "battery_temp" -> "${(if (fahrenheit) toF(tempC) else tempC).roundToInt()}" to (if (fahrenheit) "°F" else "°C")
-            "net_speed" -> rateParts(downBps)
+            "net_speed" -> rateParts(speedBps)
             else -> "$level" to "%"
         }
 
     fun unitBelow(kind: String) = kind == "net_speed"
+
+    /**
+     * Live notification and floating monitor values, with the separate
+     * download and upload of earlier versions merged into one internet
+     * speed value. Order kept, duplicates dropped.
+     */
+    fun normalizeItems(items: List<String>): List<String> =
+        items.map { if (it == "down" || it == "up") "speed" else it }.distinct()
+
+    /** "12.4 GB", base 1000 like Android's own data usage screen. */
+    fun dataAmount(bytes: Long): String = when {
+        bytes < 1_000_000 -> "${(bytes / 1000.0).roundToInt()} KB"
+        bytes < 1_000_000_000 -> "${(bytes / 1e6).roundToInt()} MB"
+        else -> String.format(java.util.Locale.ROOT, "%.1f GB", bytes / 1e9)
+    }
 
     /** Bytes per second between two counter readings, 0 on reset or missing data. */
     fun byteRate(prev: Long, now: Long, prevMs: Long, nowMs: Long): Double =

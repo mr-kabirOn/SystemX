@@ -134,7 +134,7 @@ class LiveStatusService : Service() {
         val up = if (p == null) 0.0 else AlertRules.byteRate(p.txBytes, r.txBytes, p.timeMs, r.timeMs)
         prev = r
         Sampler.onReading(this, r)
-        if (overlay.isShowing) overlay.update(r, down, ConfigStore.load(this).fahrenheit)
+        if (overlay.isShowing) overlay.update(r, down + up, ConfigStore.load(this).fahrenheit)
         val n = build(r, down, up, skipIfUnchanged = true)
         if (n != null) {
             try {
@@ -165,7 +165,10 @@ class LiveStatusService : Service() {
             },
         )
 
-        val (value, unit) = AlertRules.statusIconLines(c.statusIcon, r.level, r.tempC, c.fahrenheit, down)
+        val speed = down + up
+        val (value, unit) = AlertRules.statusIconLines(c.statusIcon, r.level, r.tempC, c.fahrenheit, speed)
+        // Read only when shown; cached for a few minutes inside.
+        val data = if ("data" in c.liveItems) DataTotals.last30Days(this) else null
 
         // The values the user chose, in their order: icon, value, label.
         val tiles = c.liveItems.mapNotNull { item ->
@@ -173,8 +176,12 @@ class LiveStatusService : Service() {
                 "battery" -> Triple(R.drawable.ic_n_battery, battery, batteryLabel)
                 "temp" -> Triple(R.drawable.ic_n_temp, temp, getString(R.string.n_label_temp))
                 "power" -> Triple(R.drawable.ic_n_power, power, powerLabel)
-                "down" -> Triple(R.drawable.ic_n_down, rate(down), getString(R.string.n_label_down))
-                "up" -> Triple(R.drawable.ic_n_up, rate(up), getString(R.string.n_label_up))
+                "speed" -> Triple(R.drawable.ic_n_speed, rate(speed), getString(R.string.n_label_speed))
+                "data" -> Triple(
+                    R.drawable.ic_n_data,
+                    data?.let { AlertRules.dataAmount(it.total) } ?: "–",
+                    getString(R.string.n_label_data),
+                )
                 "ram" -> Triple(R.drawable.ic_n_ram, ram, getString(R.string.n_label_ram))
                 else -> null
             }

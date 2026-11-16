@@ -698,7 +698,7 @@ class FakeBackgroundApi extends BackgroundApi {
     checkupReminder: false,
     fahrenheit: false,
     lastCheckupMs: 0,
-    liveItems: const ['battery', 'temp', 'power', 'down', 'up', 'ram'],
+    liveItems: const ['battery', 'temp', 'power', 'speed', 'data', 'ram'],
     overlay: false,
     overlayItems: const ['fps'],
     overlayOpacity: 85,

@@ -60,4 +60,17 @@ class AlertRulesTest {
         assertEquals(2000.0, AlertRules.byteRate(1000, 3000, 0, 1000), 0.0)
         assertEquals(0.0, AlertRules.byteRate(5000, 1000, 0, 1000), 0.0)
     }
+
+    @Test
+    fun downloadAndUploadBecomeOneSpeedValue() {
+        assertEquals(listOf("battery", "speed", "ram"), AlertRules.normalizeItems(listOf("battery", "down", "up", "ram")))
+        assertEquals(listOf("fps", "speed"), AlertRules.normalizeItems(listOf("fps", "up")))
+    }
+
+    @Test
+    fun dataAmountsUseBase1000() {
+        assertEquals("950 KB", AlertRules.dataAmount(950_000))
+        assertEquals("420 MB", AlertRules.dataAmount(420_000_000))
+        assertEquals("12.4 GB", AlertRules.dataAmount(12_400_000_000))
+    }
 }

@@ -21,6 +21,8 @@
     <string name="n_label_power">বিদ্যুৎ</string>
     <string name="n_label_down">ডাউনলোড</string>
     <string name="n_label_up">আপলোড</string>
+    <string name="n_label_speed">ইন্টারনেটের গতি</string>
+    <string name="n_label_data">ডেটা · ৩০ দিন</string>
     <string name="n_label_ram">ব্যবহৃত র‍্যাম</string>
     <string name="live_stop">তাৎক্ষণিক অবস্থা বন্ধ করুন</string>
 

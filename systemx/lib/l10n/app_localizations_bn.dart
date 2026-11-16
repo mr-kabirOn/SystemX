@@ -4106,6 +4106,16 @@ class AppLocalizationsBn extends AppLocalizations {
   String get liRam => 'ব্যবহৃত র‍্যাম';
 
   @override
+  String get liSpeed => 'ইন্টারনেটের গতি';
+
+  @override
+  String get liData => 'ব্যবহৃত ডেটা (গত ৩০ দিন)';
+
+  @override
+  String get liDataNeedsAccess =>
+      'ব্যবহৃত ডেটার হিসাব অ্যান্ড্রয়েডের নেটওয়ার্ক পরিসংখ্যান থেকে নেওয়া হয়, যার জন্য ব্যবহারের তথ্যে প্রবেশাধিকার প্রয়োজন।';
+
+  @override
   String get fmTitle => 'ভাসমান মনিটর';
 
   @override

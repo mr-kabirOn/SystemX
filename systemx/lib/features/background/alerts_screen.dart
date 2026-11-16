@@ -9,6 +9,7 @@ import '../../platform/platform.dart';
 import '../../ui/sx_icons.dart';
 import '../../ui/widgets/cards.dart';
 import '../../ui/widgets/page_scaffold.dart';
+import '../apps/apps_screen.dart' show AppsActions, usageAccessProvider;
 import 'background.dart';
 
 /// Live status and alerts. Each is off until the user turns it on; the
@@ -77,12 +78,28 @@ class AlertsScreen extends ConsumerWidget {
                         'battery': l.metricBattery,
                         'temp': l.temperature,
                         'power': l.liPower,
-                        'down': l.download,
-                        'up': l.upload,
+                        'speed': l.liSpeed,
+                        'data': l.liData,
                         'ram': l.liRam,
                       },
                       selected: c.liveItems,
                       onChanged: (v) => set((c) => copyConfig(c, liveItems: v)),
+                    ),
+                  // The 30-day total comes from Android's network statistics,
+                  // which need Usage access.
+                  if (c.liveStatus &&
+                      c.liveItems.contains('data') &&
+                      ref.watch(usageAccessProvider).value == false)
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
+                      child: Row(children: [
+                        Expanded(child: Text(l.liDataNeedsAccess, style: context.text.bodySmall)),
+                        const SizedBox(width: 8),
+                        TextButton(
+                          onPressed: () => ref.read(deviceApiProvider).openSettings(AppsActions.usageAccess),
+                          child: Text(l.permAllow),
+                        ),
+                      ]),
                     ),
                   if (c.liveStatus)
                     _Chips<String>(
@@ -90,7 +107,7 @@ class AlertsScreen extends ConsumerWidget {
                       note: l.statusBarShowsNote,
                       value: c.statusIcon,
                       options: {
-                        'net_speed': l.download,
+                        'net_speed': l.liSpeed,
                         'battery_level': l.metricBattery,
                         'battery_temp': l.temperature,
                       },

@@ -2,6 +2,7 @@ package com.systemx.app.background
 
 import android.content.Context
 import android.content.SharedPreferences
+import com.systemx.app.platform.AlertRules
 import com.systemx.app.platform.BackgroundConfig
 
 /** Background settings and alert bookkeeping, readable without Flutter running. */
@@ -29,9 +30,9 @@ internal object ConfigStore {
             checkupReminder = p.getBoolean("checkupReminder", false),
             fahrenheit = p.getBoolean("fahrenheit", false),
             lastCheckupMs = p.getLong("lastCheckupMs", 0),
-            liveItems = list(p.getString("liveItems", null), LIVE_ITEMS),
+            liveItems = AlertRules.normalizeItems(list(p.getString("liveItems", null), LIVE_ITEMS)),
             overlay = p.getBoolean("overlay", false),
-            overlayItems = list(p.getString("overlayItems", null), listOf("fps")),
+            overlayItems = AlertRules.normalizeItems(list(p.getString("overlayItems", null), listOf("fps"))),
             overlayOpacity = p.getLong("overlayOpacity", 85).coerceIn(20L, 100L),
             overlayDark = p.getBoolean("overlayDark", true),
         )
@@ -63,7 +64,7 @@ internal object ConfigStore {
     }
 
     /** Every live notification value, in the default order. */
-    val LIVE_ITEMS = listOf("battery", "temp", "power", "down", "up", "ram")
+    val LIVE_ITEMS = listOf("battery", "temp", "power", "speed", "data", "ram")
 
     private fun list(saved: String?, default: List<String>): List<String> =
         saved?.split(',')?.map { it.trim() }?.filter { it.isNotEmpty() }?.ifEmpty { null } ?: default

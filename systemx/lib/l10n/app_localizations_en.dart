@@ -4131,6 +4131,16 @@ class AppLocalizationsEn extends AppLocalizations {
   String get liRam => 'RAM in use';
 
   @override
+  String get liSpeed => 'Internet speed';
+
+  @override
+  String get liData => 'Data used (last 30 days)';
+
+  @override
+  String get liDataNeedsAccess =>
+      'Data used is read from Android\'s network statistics, which need Usage access.';
+
+  @override
   String get fmTitle => 'Floating monitor';
 
   @override
