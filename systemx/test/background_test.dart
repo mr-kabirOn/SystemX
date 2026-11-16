@@ -43,15 +43,15 @@ void main() {
     await pumpApp(tester, background: bg);
     await go(tester, Routes.alerts);
 
-    await tester.tap(find.widgetWithText(FilterChip, 'Download'));
+    await tester.tap(find.widgetWithText(SwitchListTile, 'Download'));
     await tester.pumpAndSettle();
     expect(bg.config.liveItems, ['battery', 'down', 'ram']); // catalog order
-    await tester.tap(find.widgetWithText(FilterChip, 'Battery'));
+    await tester.tap(find.widgetWithText(SwitchListTile, 'Battery'));
     await tester.pumpAndSettle();
-    await tester.tap(find.widgetWithText(FilterChip, 'Download'));
+    await tester.tap(find.widgetWithText(SwitchListTile, 'Download'));
     await tester.pumpAndSettle();
     expect(bg.config.liveItems, ['ram']);
-    await tester.tap(find.widgetWithText(FilterChip, 'RAM in use'));
+    await tester.tap(find.widgetWithText(SwitchListTile, 'RAM in use'));
     await tester.pumpAndSettle();
     expect(bg.config.liveItems, ['ram']); // the last one can't be turned off
   });

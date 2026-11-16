@@ -210,8 +210,8 @@ class AlertsScreen extends ConsumerWidget {
 
 /// A labelled single choice. Segments share the width equally and never
 /// re-wrap when the selection changes, so the card stays steady.
-/// Several values to show, as chips; at least one stays selected. The
-/// result keeps the order of [options].
+/// Several values to show, each with its own switch; at least one stays
+/// on (its switch is disabled). The result keeps the order of [options].
 class ItemPicker extends StatelessWidget {
   const ItemPicker({
     super.key,
@@ -230,29 +230,32 @@ class ItemPicker extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final lastOn = selected.length == 1 ? selected.first : null;
     return Padding(
-      padding: const EdgeInsets.fromLTRB(16, 4, 16, 14),
+      padding: const EdgeInsets.fromLTRB(0, 4, 0, 6),
       child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-        Text(title, style: context.text.labelLarge),
-        if (note != null) ...[
-          const SizedBox(height: 2),
-          Text(note!, style: context.text.bodySmall),
-        ],
-        const SizedBox(height: 8),
-        Wrap(spacing: 8, runSpacing: 8, children: [
-          for (final MapEntry(:key, value: label) in options.entries)
-            FilterChip(
-              label: Text(label),
-              selected: selected.contains(key),
-              onSelected: (on) {
-                if (!on && selected.length == 1 && selected.contains(key)) return;
-                onChanged([
-                  for (final k in options.keys)
-                    if (k == key ? on : selected.contains(k)) k,
-                ]);
-              },
-            ),
-        ]),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+            Text(title, style: context.text.labelLarge),
+            if (note != null) ...[
+              const SizedBox(height: 2),
+              Text(note!, style: context.text.bodySmall),
+            ],
+          ]),
+        ),
+        for (final MapEntry(:key, value: label) in options.entries)
+          SwitchListTile(
+            dense: true,
+            title: Text(label, style: context.text.bodyLarge),
+            value: selected.contains(key),
+            onChanged: key == lastOn
+                ? null
+                : (on) => onChanged([
+                      for (final k in options.keys)
+                        if (k == key ? on : selected.contains(k)) k,
+                    ]),
+          ),
       ]),
     );
   }

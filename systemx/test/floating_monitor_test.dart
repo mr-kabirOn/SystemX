@@ -25,7 +25,7 @@ void main() {
     expect(perms.requested, ['notifications', 'overlay']);
     expect(bg.config.overlay, isTrue);
 
-    await tester.tap(find.widgetWithText(FilterChip, 'Free RAM'));
+    await tester.tap(find.widgetWithText(SwitchListTile, 'Free RAM'));
     await tester.pumpAndSettle();
     expect(bg.config.overlayItems, ['fps', 'ram_free']);
   });
