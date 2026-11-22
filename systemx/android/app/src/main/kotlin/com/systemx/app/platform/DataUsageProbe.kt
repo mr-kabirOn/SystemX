@@ -12,25 +12,6 @@ import android.net.ConnectivityManager
  */
 internal class DataUsageProbe(private val ctx: Context, private val apps: AppsProbe) {
 
-    /** Whole-phone mobile and Wi-Fi bytes per day; zeros without Usage access. */
-    fun history(dayStarts: List<Long>): List<DataTotalDay> {
-        val starts = dayStarts.sorted()
-        val nsm = if (apps.usageAccessGranted()) ctx.getSystemService(NetworkStatsManager::class.java) else null
-        val now = System.currentTimeMillis()
-        fun device(type: Int, start: Long, end: Long): Pair<Long, Long> {
-            if (nsm == null || end <= start) return 0L to 0L
-            // A null subscriber means every SIM (Android 10+).
-            val b = Sys.safe { nsm.querySummaryForDevice(type, null, start, end) } ?: return 0L to 0L
-            return b.rxBytes.coerceAtLeast(0) to b.txBytes.coerceAtLeast(0)
-        }
-        return starts.mapIndexed { i, start ->
-            val end = minOf(starts.getOrNull(i + 1) ?: (start + DAY_MS), now)
-            val (mRx, mTx) = device(ConnectivityManager.TYPE_MOBILE, start, end)
-            val (wRx, wTx) = device(ConnectivityManager.TYPE_WIFI, start, end)
-            DataTotalDay(dayStartMs = start, mobileRx = mRx, mobileTx = mTx, wifiRx = wRx, wifiTx = wTx)
-        }
-    }
-
     fun report(dayStarts: List<Long>): DataUsageReport {
         val starts = dayStarts.sorted()
         if (starts.isEmpty() || !apps.usageAccessGranted()) {

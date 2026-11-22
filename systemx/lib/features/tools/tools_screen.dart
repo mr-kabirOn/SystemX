@@ -42,7 +42,6 @@ List<(String, List<ToolEntry>)> toolSections(AppLocalizations l, SxColors sx) =>
         ToolEntry(SxIcons.apps, sx.storage, l.appsTitle, Routes.apps),
       ]),
       (l.tsNetwork, [
-        ToolEntry(SxIcons.dataUsage, sx.network, l.ihTitle, Routes.internetHistory),
         ToolEntry(SxIcons.network, sx.network, l.wifiMeter, Routes.wifiMeter),
         ToolEntry(SxIcons.globe, sx.network, l.ipTitle, Routes.ipLookup),
       ]),

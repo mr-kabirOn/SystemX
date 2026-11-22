@@ -1194,8 +1194,6 @@
   "liveShowsNote": "The first four also show when the notification is collapsed. At least one stays on.",
   "liPower": "Power (W)",
   "liRam": "RAM in use",
-  "liData": "Data used (last 30 days)",
-  "liDataNeedsAccess": "Data used is read from Android's network statistics, which need Usage access.",
   "fmTitle": "Floating monitor",
   "fmBody": "A small box over other apps with the values you choose. Drag it anywhere on the screen.",
   "fmShow": "Show over other apps",
@@ -1265,10 +1263,6 @@
   "wgManualTile": "Swipe down twice from the top, tap the pencil (edit) icon, then drag the SystemX tile into place.",
   "tsWidgets": "Widgets",
   "ipSource": "Answered by",
-  "ihTitle": "Internet usage",
   "ihMonth": "Last 30 days",
-  "ihDaily": "Day by day",
-  "ihChart": "Daily usage",
-  "ihNone": "No data used",
-  "ihAccessBody": "Internet usage is read from Android's own network statistics, which need Usage access. Nothing leaves this phone."
+  "ihDaily": "Day by day"
 }

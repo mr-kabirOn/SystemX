@@ -3,7 +3,6 @@ import 'package:go_router/go_router.dart';
 
 import '../features/apps/apps_screen.dart';
 import '../features/apps/data_usage.dart';
-import '../features/apps/internet_history.dart';
 import '../features/apps/screen_time.dart';
 import '../features/background/alerts_screen.dart';
 import '../features/background/battery_health.dart';
@@ -51,7 +50,6 @@ abstract final class Routes {
   static const lightMeter = '/tools/light';
   static const magnet = '/tools/magnet';
   static const ipLookup = '/tools/ip';
-  static const internetHistory = '/tools/internet';
   static const widgets = '/tools/widgets';
   static const settings = '/settings';
   static const privacy = '/settings/privacy';
@@ -132,7 +130,6 @@ final routerProvider = Provider<GoRouter>((ref) {
                 GoRoute(path: 'light', builder: (_, _) => const LightMeterScreen()),
                 GoRoute(path: 'magnet', builder: (_, _) => const MagnetScreen()),
                 GoRoute(path: 'ip', builder: (_, _) => const IpLookupScreen()),
-                GoRoute(path: 'internet', builder: (_, _) => const InternetHistoryScreen()),
                 GoRoute(path: 'widgets', builder: (_, _) => const WidgetsScreen()),
               ],
             ),

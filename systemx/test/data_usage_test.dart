@@ -43,15 +43,19 @@ void main() {
     await pumpApp(tester, api: api);
     await go(tester, Routes.dataUsage);
 
-    expect(find.text('570 MB'), findsOneWidget); // today's mobile data
-    expect(find.text('Daily average 430 MB'), findsOneWidget);
+    // 30 days in the fake: today's mobile data is 1,460 MB down + 30 MB up.
+    expect(find.text('1.5 GB'), findsWidgets);
+    expect(find.text('Daily average 890 MB'), findsOneWidget);
+    // Totals table: today, yesterday, 7 and 30 days, mobile and Wi-Fi apart.
+    expect(find.text('Last 30 days'), findsWidgets);
+    expect(find.text('Yesterday'), findsOneWidget);
     expect(find.text('Facebook'), findsOneWidget);
-    expect(find.text('↓ 420 MB · ↑ 12 MB'), findsOneWidget);
+    expect(find.text('↓ 1.3 GB · ↑ 12 MB'), findsOneWidget);
     expect(find.text('Hotspot and tethering'), findsOneWidget);
 
-    await tester.tap(find.text('Wi-Fi'));
+    await tester.tap(find.text('Wi-Fi').first);
     await tester.pumpAndSettle();
-    expect(find.text('1.6 GB'), findsOneWidget); // today's Wi-Fi
+    expect(find.text('3.9 GB'), findsWidgets); // today's Wi-Fi
     expect(find.text('YouTube'), findsOneWidget);
     expect(find.text('Facebook'), findsNothing);
   });

@@ -65,14 +65,9 @@ class AlertRulesTest {
     fun liveShowsDownloadAndUploadSeparatelyOverlayHasNoSpeed() {
         assertEquals(listOf("battery", "down", "up", "ram"), AlertRules.normalizeLiveItems(listOf("battery", "speed", "ram")))
         assertEquals(listOf("down", "up"), AlertRules.normalizeLiveItems(listOf("down", "speed", "up")))
+        assertEquals(listOf("battery"), AlertRules.normalizeLiveItems(listOf("data")))
         assertEquals(listOf("fps", "ram_used"), AlertRules.normalizeOverlayItems(listOf("fps", "speed", "ram_used")))
         assertEquals(listOf("fps"), AlertRules.normalizeOverlayItems(listOf("down")))
     }
 
-    @Test
-    fun dataAmountsUseBase1000() {
-        assertEquals("950 KB", AlertRules.dataAmount(950_000))
-        assertEquals("420 MB", AlertRules.dataAmount(420_000_000))
-        assertEquals("12.4 GB", AlertRules.dataAmount(12_400_000_000))
-    }
 }

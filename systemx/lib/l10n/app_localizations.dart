@@ -6602,18 +6602,6 @@ abstract class AppLocalizations {
   /// **'RAM in use'**
   String get liRam;
 
-  /// No description provided for @liData.
-  ///
-  /// In en, this message translates to:
-  /// **'Data used (last 30 days)'**
-  String get liData;
-
-  /// No description provided for @liDataNeedsAccess.
-  ///
-  /// In en, this message translates to:
-  /// **'Data used is read from Android\'s network statistics, which need Usage access.'**
-  String get liDataNeedsAccess;
-
   /// No description provided for @fmTitle.
   ///
   /// In en, this message translates to:
@@ -7004,12 +6992,6 @@ abstract class AppLocalizations {
   /// **'Answered by'**
   String get ipSource;
 
-  /// No description provided for @ihTitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Internet usage'**
-  String get ihTitle;
-
   /// No description provided for @ihMonth.
   ///
   /// In en, this message translates to:
@@ -7021,24 +7003,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Day by day'**
   String get ihDaily;
-
-  /// No description provided for @ihChart.
-  ///
-  /// In en, this message translates to:
-  /// **'Daily usage'**
-  String get ihChart;
-
-  /// No description provided for @ihNone.
-  ///
-  /// In en, this message translates to:
-  /// **'No data used'**
-  String get ihNone;
-
-  /// No description provided for @ihAccessBody.
-  ///
-  /// In en, this message translates to:
-  /// **'Internet usage is read from Android\'s own network statistics, which need Usage access. Nothing leaves this phone.'**
-  String get ihAccessBody;
 }
 
 class _AppLocalizationsDelegate

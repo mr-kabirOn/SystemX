@@ -55,11 +55,13 @@ internal object AlertRules {
 
     /**
      * Live notification values: download and upload are shown separately,
-     * so a combined "speed" saved by an earlier version becomes both.
-     * Order kept, duplicates dropped.
+     * so a combined "speed" saved by an earlier version becomes both; the
+     * 30-day data total moved to Data usage and is dropped. Order kept,
+     * duplicates dropped; battery when nothing is left.
      */
     fun normalizeLiveItems(items: List<String>): List<String> =
-        items.flatMap { if (it == "speed") listOf("down", "up") else listOf(it) }.distinct()
+        items.flatMap { if (it == "speed") listOf("down", "up") else listOf(it) }
+            .filter { it != "data" }.distinct().ifEmpty { listOf("battery") }
 
     /**
      * Floating monitor values: it has no internet speed, so any saved by an
@@ -68,12 +70,6 @@ internal object AlertRules {
     fun normalizeOverlayItems(items: List<String>): List<String> =
         items.filter { it != "speed" && it != "down" && it != "up" }.distinct().ifEmpty { listOf("fps") }
 
-    /** "12.4 GB", base 1000 like Android's own data usage screen. */
-    fun dataAmount(bytes: Long): String = when {
-        bytes < 1_000_000 -> "${(bytes / 1000.0).roundToInt()} KB"
-        bytes < 1_000_000_000 -> "${(bytes / 1e6).roundToInt()} MB"
-        else -> String.format(java.util.Locale.ROOT, "%.1f GB", bytes / 1e9)
-    }
 
     /** Bytes per second between two counter readings, 0 on reset or missing data. */
     fun byteRate(prev: Long, now: Long, prevMs: Long, nowMs: Long): Double =

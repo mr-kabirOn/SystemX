@@ -53,7 +53,6 @@ class DeviceInfoHost(context: Context) : DeviceInfoApi {
     override fun usageAccessGranted() = appsProbe.usageAccessGranted()
     override fun screenTime(dayStartsMs: List<Long>) = screenTimeProbe.report(dayStartsMs)
     override fun dataUsage(dayStartsMs: List<Long>) = dataUsageProbe.report(dayStartsMs)
-    override fun dataHistory(dayStartsMs: List<Long>) = dataUsageProbe.history(dayStartsMs)
 
     override fun pinWidget(kind: String): Boolean {
         val awm = ctx.getSystemService(AppWidgetManager::class.java) ?: return false

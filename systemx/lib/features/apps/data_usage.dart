@@ -19,8 +19,21 @@ import 'screen_time.dart';
 
 enum DataNetwork { mobile, wifi }
 
+/// Days of history: the last 30, like a data meter app.
+const dataUsageDays = 30;
+
 final dataUsageProvider = FutureProvider.autoDispose<DataUsageReport>((ref) =>
-    ref.watch(deviceApiProvider).dataUsage(lastDayStarts(DateTime.now(), screenTimeDays)));
+    ref.watch(deviceApiProvider).dataUsage(lastDayStarts(DateTime.now(), dataUsageDays)));
+
+/// Mobile and Wi-Fi bytes summed over [days].
+({int mobile, int wifi}) sumData(Iterable<DataUsageDay> days) {
+  var mobile = 0, wifi = 0;
+  for (final d in days) {
+    mobile += d.mobileRx + d.mobileTx;
+    wifi += d.wifiRx + d.wifiTx;
+  }
+  return (mobile: mobile, wifi: wifi);
+}
 
 /// Received and sent bytes for [network] on [day].
 (int, int) dayTotals(DataUsageDay day, DataNetwork network) => switch (network) {
@@ -140,6 +153,7 @@ class _DataUsageScreenState extends ConsumerState<DataUsageScreen> {
         }),
       )),
       Box(_DayCard(day: day, network: _network, isToday: index == r.days.length - 1)),
+      Box(_Totals(days: r.days)),
       Box(_WeekChart(
         days: r.days,
         network: _network,
@@ -176,11 +190,96 @@ class _DataUsageScreenState extends ConsumerState<DataUsageScreen> {
               ),
           ]),
         )),
+      SliverToBoxAdapter(child: SectionLabel(l.ihDaily)),
+      Box(_DayByDay(
+        days: r.days,
+        onSelect: (i) => setState(() {
+          _day = i;
+          _all = false;
+        }),
+      )),
       Box(Padding(
         padding: const EdgeInsets.symmetric(horizontal: 4),
         child: Text(l.duNote, style: context.text.bodySmall?.copyWith(color: sx.muted)),
       )),
     ];
+  }
+}
+
+/// A row of the usage tables: label, mobile, Wi-Fi and total.
+TableRow _usageRow(BuildContext context, String label, ({int mobile, int wifi}) v,
+    {bool bold = false, VoidCallback? onTap}) {
+  final style = bold ? context.text.titleSmall : context.text.bodyMedium;
+  Widget cell(String t, {TextAlign align = TextAlign.end}) => InkWell(
+        onTap: onTap,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 8),
+          child: Text(t, textAlign: align, style: style),
+        ),
+      );
+  return TableRow(children: [
+    cell(label, align: TextAlign.start),
+    cell(formatStorage(v.mobile)),
+    cell(formatStorage(v.wifi)),
+    cell(formatStorage(v.mobile + v.wifi)),
+  ]);
+}
+
+TableRow _usageHeader(BuildContext context) {
+  final l = AppLocalizations.of(context);
+  final sx = context.sx;
+  return TableRow(children: [
+    const SizedBox(),
+    for (final h in [l.netMobile, l.specWifi, l.specTotal])
+      Text(h, textAlign: TextAlign.end, style: context.text.labelSmall?.copyWith(color: sx.muted)),
+  ]);
+}
+
+const _usageColumns = {0: FlexColumnWidth(1.5), 1: FlexColumnWidth(), 2: FlexColumnWidth(), 3: FlexColumnWidth()};
+
+/// Today, yesterday, 7 and 30 days, mobile data and Wi-Fi side by side.
+class _Totals extends StatelessWidget {
+  const _Totals({required this.days});
+  final List<DataUsageDay> days;
+
+  @override
+  Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context);
+    return SxCard(
+      child: Table(columnWidths: _usageColumns, children: [
+        _usageHeader(context),
+        _usageRow(context, l.csToday, sumData([days.last])),
+        _usageRow(context, l.csYesterday, sumData(days.length > 1 ? [days[days.length - 2]] : const [])),
+        _usageRow(context, l.stmWeek, sumData(days.skip(days.length > 7 ? days.length - 7 : 0))),
+        _usageRow(context, l.ihMonth, sumData(days), bold: true),
+      ]),
+    );
+  }
+}
+
+/// Every day of the period, newest first; tap a day to show its apps.
+class _DayByDay extends StatelessWidget {
+  const _DayByDay({required this.days, required this.onSelect});
+  final List<DataUsageDay> days;
+  final ValueChanged<int> onSelect;
+
+  @override
+  Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context);
+    final date = DateFormat.MMMEd(l.localeName);
+    return SxCard(
+      padding: const EdgeInsets.fromLTRB(16, 12, 16, 6),
+      child: Table(columnWidths: _usageColumns, children: [
+        _usageHeader(context),
+        for (var i = days.length - 1; i >= 0; i--)
+          _usageRow(
+            context,
+            i == days.length - 1 ? l.csToday : date.format(DateTime.fromMillisecondsSinceEpoch(days[i].dayStartMs)),
+            sumData([days[i]]),
+            onTap: () => onSelect(i),
+          ),
+      ]),
+    );
   }
 }
 
@@ -242,14 +341,14 @@ class _WeekChart extends StatelessWidget {
     final avg = dailyAverageBytes(days, network);
     return SxCard(
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Text(l.stmWeek, style: context.text.titleMedium),
+        Text(l.ihMonth, style: context.text.titleMedium),
         if (avg != null) ...[
           const SizedBox(height: 2),
           Text(l.stmAverage(formatStorage(avg)), style: context.text.bodySmall?.copyWith(color: sx.muted)),
         ],
         const SizedBox(height: 14),
         SizedBox(
-          height: 128,
+          height: 110,
           child: Row(crossAxisAlignment: CrossAxisAlignment.end, children: [
             for (final (i, d) in days.indexed)
               Expanded(
@@ -261,23 +360,13 @@ class _WeekChart extends StatelessWidget {
                     borderRadius: BorderRadius.circular(8),
                     onTap: () => onSelect(i),
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 5),
+                      padding: EdgeInsets.symmetric(horizontal: days.length > 7 ? 1.5 : 5),
                       child: Column(mainAxisAlignment: MainAxisAlignment.end, children: [
                         Container(
-                          height: 4 + 88 * total(d) / maxBytes,
+                          height: 4 + 100 * total(d) / maxBytes,
                           decoration: BoxDecoration(
                             color: i == selected ? sx.accent : sx.accent.withValues(alpha: 0.3),
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                        ),
-                        const SizedBox(height: 8),
-                        Text(
-                          weekday.format(DateTime.fromMillisecondsSinceEpoch(d.dayStartMs)),
-                          maxLines: 1,
-                          overflow: TextOverflow.clip,
-                          style: context.text.labelSmall?.copyWith(
-                            color: i == selected ? sx.ink : sx.muted,
-                            fontWeight: i == selected ? FontWeight.w600 : null,
+                            borderRadius: BorderRadius.circular(days.length > 7 ? 2 : 5),
                           ),
                         ),
                       ]),
@@ -287,6 +376,14 @@ class _WeekChart extends StatelessWidget {
               ),
           ]),
         ),
+        const SizedBox(height: 8),
+        // Thirty bars are too narrow for names: the first day and today.
+        Row(children: [
+          Text(DateFormat.MMMd(l.localeName).format(DateTime.fromMillisecondsSinceEpoch(days.first.dayStartMs)),
+              style: context.text.labelSmall?.copyWith(color: sx.muted)),
+          const Spacer(),
+          Text(l.csToday, style: context.text.labelSmall?.copyWith(color: sx.muted)),
+        ]),
       ]),
     );
   }

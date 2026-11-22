@@ -167,8 +167,6 @@ class LiveStatusService : Service() {
 
         // The status bar shows the download speed, as before.
         val (value, unit) = AlertRules.statusIconLines(c.statusIcon, r.level, r.tempC, c.fahrenheit, down)
-        // Read only when shown; cached for a few minutes inside.
-        val data = if ("data" in c.liveItems) DataTotals.last30Days(this) else null
 
         // The values the user chose, in their order: icon, value, label.
         val tiles = c.liveItems.mapNotNull { item ->
@@ -178,11 +176,6 @@ class LiveStatusService : Service() {
                 "power" -> Triple(R.drawable.ic_n_power, power, powerLabel)
                 "down" -> Triple(R.drawable.ic_n_down, rate(down), getString(R.string.n_label_down))
                 "up" -> Triple(R.drawable.ic_n_up, rate(up), getString(R.string.n_label_up))
-                "data" -> Triple(
-                    R.drawable.ic_n_data,
-                    data?.let { AlertRules.dataAmount(it.total) } ?: "–",
-                    getString(R.string.n_label_data),
-                )
                 "ram" -> Triple(R.drawable.ic_n_ram, ram, getString(R.string.n_label_ram))
                 else -> null
             }
