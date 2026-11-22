@@ -109,7 +109,6 @@ class _FloatingMonitorScreenState extends ConsumerState<FloatingMonitorScreen> {
                     'current': l.fmCurrent,
                     'power': l.liPower,
                     'temp': l.temperature,
-                    'speed': l.liSpeed,
                   },
                   selected: c.overlayItems,
                   onChanged: (v) => _set((c) => copyConfig(c, overlayItems: v)),

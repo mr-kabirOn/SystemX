@@ -4106,9 +4106,6 @@ class AppLocalizationsBn extends AppLocalizations {
   String get liRam => 'ব্যবহৃত র‍্যাম';
 
   @override
-  String get liSpeed => 'ইন্টারনেটের গতি';
-
-  @override
   String get liData => 'ব্যবহৃত ডেটা (গত ৩০ দিন)';
 
   @override
@@ -4348,4 +4345,23 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get ipSource => 'উত্তর দিয়েছে';
+
+  @override
+  String get ihTitle => 'ইন্টারনেট ব্যবহার';
+
+  @override
+  String get ihMonth => 'গত ৩০ দিন';
+
+  @override
+  String get ihDaily => 'দিনভিত্তিক';
+
+  @override
+  String get ihChart => 'দৈনিক ব্যবহার';
+
+  @override
+  String get ihNone => 'কোনো ডেটা ব্যবহার হয়নি';
+
+  @override
+  String get ihAccessBody =>
+      'ইন্টারনেট ব্যবহারের তথ্য অ্যান্ড্রয়েডের নিজস্ব নেটওয়ার্ক পরিসংখ্যান থেকে নেওয়া হয়, যার জন্য ব্যবহারের তথ্যে প্রবেশাধিকার (Usage access) প্রয়োজন। কোনো তথ্য ফোনের বাইরে যায় না।';
 }

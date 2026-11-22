@@ -80,8 +80,7 @@ internal class FloatingMonitor(private val ctx: Context) {
     }
 
     /** New readings from the service tick. */
-    /** [speedBps] is the internet speed, download and upload together. */
-    fun update(r: Reading, speedBps: Double, fahrenheit: Boolean) {
+    fun update(r: Reading, fahrenheit: Boolean) {
         if (root == null) return
         val ma = r.currentMa
         rows["ram_used"]?.text = "${(r.memUsed * 100).roundToInt()}%"
@@ -91,7 +90,6 @@ internal class FloatingMonitor(private val ctx: Context) {
             String.format(Locale.ROOT, "%.1f W", abs(ma) * r.voltageMv / 1e6)
         } else "–"
         rows["temp"]?.text = AlertRules.temp(r.tempC, fahrenheit)
-        rows["speed"]?.text = AlertRules.rateParts(speedBps).let { (v, u) -> "$v $u" }
     }
 
     fun hide() {
@@ -219,7 +217,6 @@ internal class FloatingMonitor(private val ctx: Context) {
         "current" -> "mA"
         "power" -> "W"
         "temp" -> ctx.getString(com.systemx.app.R.string.o_temp)
-        "speed" -> "⇅"
         else -> item
     }
 

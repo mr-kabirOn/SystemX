@@ -62,9 +62,11 @@ class AlertRulesTest {
     }
 
     @Test
-    fun downloadAndUploadBecomeOneSpeedValue() {
-        assertEquals(listOf("battery", "speed", "ram"), AlertRules.normalizeItems(listOf("battery", "down", "up", "ram")))
-        assertEquals(listOf("fps", "speed"), AlertRules.normalizeItems(listOf("fps", "up")))
+    fun liveShowsDownloadAndUploadSeparatelyOverlayHasNoSpeed() {
+        assertEquals(listOf("battery", "down", "up", "ram"), AlertRules.normalizeLiveItems(listOf("battery", "speed", "ram")))
+        assertEquals(listOf("down", "up"), AlertRules.normalizeLiveItems(listOf("down", "speed", "up")))
+        assertEquals(listOf("fps", "ram_used"), AlertRules.normalizeOverlayItems(listOf("fps", "speed", "ram_used")))
+        assertEquals(listOf("fps"), AlertRules.normalizeOverlayItems(listOf("down")))
     }
 
     @Test

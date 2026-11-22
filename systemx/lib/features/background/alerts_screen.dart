@@ -78,7 +78,8 @@ class AlertsScreen extends ConsumerWidget {
                         'battery': l.metricBattery,
                         'temp': l.temperature,
                         'power': l.liPower,
-                        'speed': l.liSpeed,
+                        'down': l.download,
+                        'up': l.upload,
                         'data': l.liData,
                         'ram': l.liRam,
                       },
@@ -107,7 +108,7 @@ class AlertsScreen extends ConsumerWidget {
                       note: l.statusBarShowsNote,
                       value: c.statusIcon,
                       options: {
-                        'net_speed': l.liSpeed,
+                        'net_speed': l.download,
                         'battery_level': l.metricBattery,
                         'battery_temp': l.temperature,
                       },

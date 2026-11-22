@@ -4131,9 +4131,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get liRam => 'RAM in use';
 
   @override
-  String get liSpeed => 'Internet speed';
-
-  @override
   String get liData => 'Data used (last 30 days)';
 
   @override
@@ -4374,4 +4371,23 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get ipSource => 'Answered by';
+
+  @override
+  String get ihTitle => 'Internet usage';
+
+  @override
+  String get ihMonth => 'Last 30 days';
+
+  @override
+  String get ihDaily => 'Day by day';
+
+  @override
+  String get ihChart => 'Daily usage';
+
+  @override
+  String get ihNone => 'No data used';
+
+  @override
+  String get ihAccessBody =>
+      'Internet usage is read from Android\'s own network statistics, which need Usage access. Nothing leaves this phone.';
 }

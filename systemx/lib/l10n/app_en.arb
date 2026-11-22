@@ -1194,7 +1194,6 @@
   "liveShowsNote": "The first four also show when the notification is collapsed. At least one stays on.",
   "liPower": "Power (W)",
   "liRam": "RAM in use",
-  "liSpeed": "Internet speed",
   "liData": "Data used (last 30 days)",
   "liDataNeedsAccess": "Data used is read from Android's network statistics, which need Usage access.",
   "fmTitle": "Floating monitor",
@@ -1265,5 +1264,11 @@
   "wgManualWidget": "Your launcher can't add it from here. Touch and hold an empty spot on the home screen, tap Widgets, then find SystemX.",
   "wgManualTile": "Swipe down twice from the top, tap the pencil (edit) icon, then drag the SystemX tile into place.",
   "tsWidgets": "Widgets",
-  "ipSource": "Answered by"
+  "ipSource": "Answered by",
+  "ihTitle": "Internet usage",
+  "ihMonth": "Last 30 days",
+  "ihDaily": "Day by day",
+  "ihChart": "Daily usage",
+  "ihNone": "No data used",
+  "ihAccessBody": "Internet usage is read from Android's own network statistics, which need Usage access. Nothing leaves this phone."
 }

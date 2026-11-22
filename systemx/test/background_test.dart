@@ -43,14 +43,13 @@ void main() {
     await pumpApp(tester, background: bg);
     await go(tester, Routes.alerts);
 
-    // Download and upload are one value now.
-    expect(find.widgetWithText(SwitchListTile, 'Upload'), findsNothing);
-    await tester.tap(find.widgetWithText(SwitchListTile, 'Internet speed'));
+    // Download and upload are separate values.
+    await tester.tap(find.widgetWithText(SwitchListTile, 'Upload'));
     await tester.pumpAndSettle();
-    expect(bg.config.liveItems, ['battery', 'speed', 'ram']); // catalog order
+    expect(bg.config.liveItems, ['battery', 'up', 'ram']); // catalog order
     await tester.tap(find.widgetWithText(SwitchListTile, 'Battery'));
     await tester.pumpAndSettle();
-    await tester.tap(find.widgetWithText(SwitchListTile, 'Internet speed'));
+    await tester.tap(find.widgetWithText(SwitchListTile, 'Upload'));
     await tester.pumpAndSettle();
     expect(bg.config.liveItems, ['ram']);
     await tester.tap(find.widgetWithText(SwitchListTile, 'RAM in use'));

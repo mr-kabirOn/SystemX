@@ -54,12 +54,19 @@ internal object AlertRules {
     fun unitBelow(kind: String) = kind == "net_speed"
 
     /**
-     * Live notification and floating monitor values, with the separate
-     * download and upload of earlier versions merged into one internet
-     * speed value. Order kept, duplicates dropped.
+     * Live notification values: download and upload are shown separately,
+     * so a combined "speed" saved by an earlier version becomes both.
+     * Order kept, duplicates dropped.
      */
-    fun normalizeItems(items: List<String>): List<String> =
-        items.map { if (it == "down" || it == "up") "speed" else it }.distinct()
+    fun normalizeLiveItems(items: List<String>): List<String> =
+        items.flatMap { if (it == "speed") listOf("down", "up") else listOf(it) }.distinct()
+
+    /**
+     * Floating monitor values: it has no internet speed, so any saved by an
+     * earlier version is dropped; FPS when nothing is left.
+     */
+    fun normalizeOverlayItems(items: List<String>): List<String> =
+        items.filter { it != "speed" && it != "down" && it != "up" }.distinct().ifEmpty { listOf("fps") }
 
     /** "12.4 GB", base 1000 like Android's own data usage screen. */
     fun dataAmount(bytes: Long): String = when {

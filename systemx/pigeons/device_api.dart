@@ -523,6 +523,22 @@ class DataUsageDay {
   List<AppDataUsage> mobileApps;
 }
 
+/// Whole-phone data for one local day, in bytes.
+class DataTotalDay {
+  DataTotalDay({
+    required this.dayStartMs,
+    required this.mobileRx,
+    required this.mobileTx,
+    required this.wifiRx,
+    required this.wifiTx,
+  });
+  int dayStartMs;
+  int mobileRx;
+  int mobileTx;
+  int wifiRx;
+  int wifiTx;
+}
+
 class DataUsageReport {
   DataUsageReport({required this.days, required this.icons});
 
@@ -716,6 +732,12 @@ abstract class DeviceInfoApi {
   /// Needs Usage access; days are empty without it.
   @TaskQueue(type: TaskQueueType.serialBackgroundThread)
   DataUsageReport dataUsage(List<int> dayStartsMs);
+
+  /// Whole-phone mobile data (every SIM) and Wi-Fi per day for the days
+  /// starting at [dayStartsMs] (local midnights, oldest first). Cheaper than
+  /// [dataUsage]: no per-app split. Needs Usage access; zeros without it.
+  @TaskQueue(type: TaskQueueType.serialBackgroundThread)
+  List<DataTotalDay> dataHistory(List<int> dayStartsMs);
 }
 
 /// Runtime permissions, asked from the current activity.

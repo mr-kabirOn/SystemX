@@ -25,7 +25,6 @@
     <string name="n_label_power">Power</string>
     <string name="n_label_down">Download</string>
     <string name="n_label_up">Upload</string>
-    <string name="n_label_speed">Internet speed</string>
     <string name="n_label_data">Data · 30 days</string>
     <string name="n_label_ram">RAM used</string>
     <string name="live_stop">Stop live status</string>

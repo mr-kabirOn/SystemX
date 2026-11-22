@@ -476,6 +476,17 @@ class FakeDeviceApi extends DeviceInfoApi {
   }
 
   @override
+  Future<List<DataTotalDay>> dataHistory(List<int> dayStartsMs) async {
+    const mb = 1000000;
+    return [
+      for (final (i, d) in dayStartsMs.indexed)
+        usageGranted
+            ? DataTotalDay(dayStartMs: d, mobileRx: (200 + i * 10) * mb, mobileTx: 20 * mb, wifiRx: 800 * mb, wifiTx: 50 * mb)
+            : DataTotalDay(dayStartMs: d, mobileRx: 0, mobileTx: 0, wifiRx: 0, wifiTx: 0),
+    ];
+  }
+
+  @override
   Future<DataUsageReport> dataUsage(List<int> dayStartsMs) async {
     const mb = 1000000;
     AppDataUsage app(String key, String label, int rxMb, int txMb) =>
@@ -698,7 +709,7 @@ class FakeBackgroundApi extends BackgroundApi {
     checkupReminder: false,
     fahrenheit: false,
     lastCheckupMs: 0,
-    liveItems: const ['battery', 'temp', 'power', 'speed', 'data', 'ram'],
+    liveItems: const ['battery', 'temp', 'power', 'down', 'up', 'ram'],
     overlay: false,
     overlayItems: const ['fps'],
     overlayOpacity: 85,

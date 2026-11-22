@@ -1843,6 +1843,63 @@ data class DataUsageDay (
   }
 }
 
+/**
+ * Whole-phone data for one local day, in bytes.
+ *
+ * Generated class from Pigeon that represents data sent in messages.
+ */
+data class DataTotalDay (
+  val dayStartMs: Long,
+  val mobileRx: Long,
+  val mobileTx: Long,
+  val wifiRx: Long,
+  val wifiTx: Long
+)
+ {
+  companion object {
+    fun fromList(pigeonVar_list: List<Any?>): DataTotalDay {
+      val dayStartMs = pigeonVar_list[0] as Long
+      val mobileRx = pigeonVar_list[1] as Long
+      val mobileTx = pigeonVar_list[2] as Long
+      val wifiRx = pigeonVar_list[3] as Long
+      val wifiTx = pigeonVar_list[4] as Long
+      return DataTotalDay(dayStartMs, mobileRx, mobileTx, wifiRx, wifiTx)
+    }
+  }
+  fun toList(): List<Any?> {
+    return listOf(
+      dayStartMs,
+      mobileRx,
+      mobileTx,
+      wifiRx,
+      wifiTx,
+    )
+  }
+  override fun equals(other: Any?): Boolean {
+    if (other == null || other.javaClass != javaClass) {
+      return false
+    }
+    if (this === other) {
+      return true
+    }
+    val other = other as DataTotalDay
+    return DeviceApiPigeonUtils.deepEquals(this.dayStartMs, other.dayStartMs) && DeviceApiPigeonUtils.deepEquals(this.mobileRx, other.mobileRx) && DeviceApiPigeonUtils.deepEquals(this.mobileTx, other.mobileTx) && DeviceApiPigeonUtils.deepEquals(this.wifiRx, other.wifiRx) && DeviceApiPigeonUtils.deepEquals(this.wifiTx, other.wifiTx)
+  }
+
+  override fun hashCode(): Int {
+    var result = javaClass.hashCode()
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.dayStartMs)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.mobileRx)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.mobileTx)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.wifiRx)
+    result = 31 * result + DeviceApiPigeonUtils.deepHash(this.wifiTx)
+    return result
+  }
+  override fun toString(): String {
+    return "DataTotalDay(dayStartMs=$dayStartMs, mobileRx=$mobileRx, mobileTx=$mobileTx, wifiRx=$wifiRx, wifiTx=$wifiTx)"
+  }
+}
+
 /** Generated class from Pigeon that represents data sent in messages. */
 data class DataUsageReport (
   /** Same order as the requested day starts. */
@@ -2691,50 +2748,55 @@ private open class DeviceApiPigeonCodec : StandardMessageCodec() {
       }
       150.toByte() -> {
         return (readValue(buffer) as? List<Any?>)?.let {
-          DataUsageReport.fromList(it)
+          DataTotalDay.fromList(it)
         }
       }
       151.toByte() -> {
         return (readValue(buffer) as? List<Any?>)?.let {
-          CodecInfo.fromList(it)
+          DataUsageReport.fromList(it)
         }
       }
       152.toByte() -> {
         return (readValue(buffer) as? List<Any?>)?.let {
-          MediaInfo.fromList(it)
+          CodecInfo.fromList(it)
         }
       }
       153.toByte() -> {
         return (readValue(buffer) as? List<Any?>)?.let {
-          FeaturesInfo.fromList(it)
+          MediaInfo.fromList(it)
         }
       }
       154.toByte() -> {
         return (readValue(buffer) as? List<Any?>)?.let {
-          SecurityInfo.fromList(it)
+          FeaturesInfo.fromList(it)
         }
       }
       155.toByte() -> {
         return (readValue(buffer) as? List<Any?>)?.let {
-          LiveStats.fromList(it)
+          SecurityInfo.fromList(it)
         }
       }
       156.toByte() -> {
         return (readValue(buffer) as? List<Any?>)?.let {
-          StressSample.fromList(it)
+          LiveStats.fromList(it)
         }
       }
       157.toByte() -> {
         return (readValue(buffer) as? List<Any?>)?.let {
-          BackgroundConfig.fromList(it)
+          StressSample.fromList(it)
         }
       }
       158.toByte() -> {
         return (readValue(buffer) as? List<Any?>)?.let {
-          HistorySample.fromList(it)
+          BackgroundConfig.fromList(it)
         }
       }
       159.toByte() -> {
+        return (readValue(buffer) as? List<Any?>)?.let {
+          HistorySample.fromList(it)
+        }
+      }
+      160.toByte() -> {
         return (readValue(buffer) as? List<Any?>)?.let {
           ChargeSession.fromList(it)
         }
@@ -2828,44 +2890,48 @@ private open class DeviceApiPigeonCodec : StandardMessageCodec() {
         stream.write(149)
         writeValue(stream, value.toList())
       }
-      is DataUsageReport -> {
+      is DataTotalDay -> {
         stream.write(150)
         writeValue(stream, value.toList())
       }
-      is CodecInfo -> {
+      is DataUsageReport -> {
         stream.write(151)
         writeValue(stream, value.toList())
       }
-      is MediaInfo -> {
+      is CodecInfo -> {
         stream.write(152)
         writeValue(stream, value.toList())
       }
-      is FeaturesInfo -> {
+      is MediaInfo -> {
         stream.write(153)
         writeValue(stream, value.toList())
       }
-      is SecurityInfo -> {
+      is FeaturesInfo -> {
         stream.write(154)
         writeValue(stream, value.toList())
       }
-      is LiveStats -> {
+      is SecurityInfo -> {
         stream.write(155)
         writeValue(stream, value.toList())
       }
-      is StressSample -> {
+      is LiveStats -> {
         stream.write(156)
         writeValue(stream, value.toList())
       }
-      is BackgroundConfig -> {
+      is StressSample -> {
         stream.write(157)
         writeValue(stream, value.toList())
       }
-      is HistorySample -> {
+      is BackgroundConfig -> {
         stream.write(158)
         writeValue(stream, value.toList())
       }
-      is ChargeSession -> {
+      is HistorySample -> {
         stream.write(159)
+        writeValue(stream, value.toList())
+      }
+      is ChargeSession -> {
+        stream.write(160)
         writeValue(stream, value.toList())
       }
       else -> super.writeValue(stream, value)
@@ -2928,6 +2994,12 @@ interface DeviceInfoApi {
    * Needs Usage access; days are empty without it.
    */
   fun dataUsage(dayStartsMs: List<Long>): DataUsageReport
+  /**
+   * Whole-phone mobile data (every SIM) and Wi-Fi per day for the days
+   * starting at [dayStartsMs] (local midnights, oldest first). Cheaper than
+   * [dataUsage]: no per-app split. Needs Usage access; zeros without it.
+   */
+  fun dataHistory(dayStartsMs: List<Long>): List<DataTotalDay>
 
   companion object {
     /** The codec used by DeviceInfoApi. */
@@ -3336,6 +3408,23 @@ interface DeviceInfoApi {
             val dayStartsMsArg = args[0] as List<Long>
             val wrapped: List<Any?> = try {
               listOf(api.dataUsage(dayStartsMsArg))
+            } catch (exception: Throwable) {
+              DeviceApiPigeonUtils.wrapError(exception)
+            }
+            reply.reply(wrapped)
+          }
+        } else {
+          channel.setMessageHandler(null)
+        }
+      }
+      run {
+        val channel = BasicMessageChannel<Any?>(binaryMessenger, "dev.flutter.pigeon.systemx.DeviceInfoApi.dataHistory$separatedMessageChannelSuffix", codec, taskQueue)
+        if (api != null) {
+          channel.setMessageHandler { message, reply ->
+            val args = message as List<Any?>
+            val dayStartsMsArg = args[0] as List<Long>
+            val wrapped: List<Any?> = try {
+              listOf(api.dataHistory(dayStartsMsArg))
             } catch (exception: Throwable) {
               DeviceApiPigeonUtils.wrapError(exception)
             }
