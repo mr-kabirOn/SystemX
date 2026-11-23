@@ -77,12 +77,14 @@ class AlertsScreen extends ConsumerWidget {
                         'battery': l.metricBattery,
                         'temp': l.temperature,
                         'power': l.liPower,
-                        'down': l.download,
-                        'up': l.upload,
+                        'net': l.liSpeedMeter,
                         'ram': l.liRam,
                       },
-                      selected: c.liveItems,
-                      onChanged: (v) => set((c) => copyConfig(c, liveItems: v)),
+                      subtitles: {'net': l.liSpeedMeterSub},
+                      // One switch for the speed meter; the notification
+                      // still shows download and upload as two values.
+                      selected: liveChoices(c.liveItems),
+                      onChanged: (v) => set((c) => copyConfig(c, liveItems: liveItemsFrom(v))),
                     ),
                   if (c.liveStatus)
                     _Chips<String>(
@@ -208,8 +210,18 @@ class AlertsScreen extends ConsumerWidget {
   }
 }
 
-/// A labelled single choice. Segments share the width equally and never
-/// re-wrap when the selection changes, so the card stays steady.
+/// Live notification values as the switches show them: download and upload
+/// are one switch ("net"), though the notification shows them apart.
+List<String> liveChoices(List<String> items) => <String>{
+      for (final i in items)
+        if (i == 'down' || i == 'up') 'net' else i,
+    }.toList();
+
+/// The notification values for the switches' [choices].
+List<String> liveItemsFrom(List<String> choices) => [
+      for (final c in choices) ...(c == 'net' ? const ['down', 'up'] : [c]),
+    ];
+
 /// Several values to show, each with its own switch; at least one stays
 /// on (its switch is disabled). The result keeps the order of [options].
 class ItemPicker extends StatelessWidget {
@@ -220,11 +232,15 @@ class ItemPicker extends StatelessWidget {
     required this.selected,
     required this.onChanged,
     this.note,
+    this.subtitles = const {},
   });
 
   final String title;
   final String? note;
   final Map<String, String> options;
+
+  /// Optional second line under an option, by key.
+  final Map<String, String> subtitles;
   final List<String> selected;
   final ValueChanged<List<String>> onChanged;
 
@@ -248,6 +264,7 @@ class ItemPicker extends StatelessWidget {
           SwitchListTile(
             dense: true,
             title: Text(label, style: context.text.bodyLarge),
+            subtitle: subtitles[key] == null ? null : Text(subtitles[key]!, style: context.text.bodySmall),
             value: selected.contains(key),
             onChanged: key == lastOn
                 ? null
@@ -261,6 +278,8 @@ class ItemPicker extends StatelessWidget {
   }
 }
 
+/// A labelled single choice. Segments share the width equally and never
+/// re-wrap when the selection changes, so the card stays steady.
 class _Chips<T> extends StatelessWidget {
   const _Chips({
     required this.title,

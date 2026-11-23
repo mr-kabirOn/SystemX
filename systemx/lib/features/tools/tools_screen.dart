@@ -71,8 +71,9 @@ class ToolsScreen extends StatelessWidget {
             itemCount: tools.length,
             gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
               maxCrossAxisExtent: 100,
-              // Grows with the font size so two-line labels still fit.
-              mainAxisExtent: 66 + MediaQuery.textScalerOf(context).scale(36),
+              // Grows with the font size so three-line labels (long Bangla
+              // names) still fit.
+              mainAxisExtent: 66 + MediaQuery.textScalerOf(context).scale(52),
               mainAxisSpacing: 8,
               crossAxisSpacing: 8,
             ),
@@ -104,7 +105,7 @@ class ToolTile extends StatelessWidget {
             Text(
               tool.label,
               textAlign: TextAlign.center,
-              maxLines: 2,
+              maxLines: 3,
               overflow: TextOverflow.ellipsis,
               style: context.text.labelSmall,
             ),

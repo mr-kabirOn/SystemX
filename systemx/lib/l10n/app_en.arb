@@ -748,7 +748,7 @@
   "@daysAgo": {"placeholders": {"n": {"type": "int", "format": "decimalPattern"}}},
   "lastCheckupLine": "Last checkup {ago} · {passed} of {total} passed",
   "@lastCheckupLine": {"placeholders": {"ago": {"type": "String"}, "passed": {"type": "int", "format": "decimalPattern"}, "total": {"type": "int", "format": "decimalPattern"}}},
-  "alertsTitle": "Alerts and live status",
+  "alertsTitle": "Alerts & Live status",
   "alertsRowSub": "Charge alarm, battery and storage alerts, live notification",
   "alertsUnavailable": "Alerts are not available on this phone.",
   "alertsIntro": "Everything here is off until you turn it on. Each type has its own notification channel, so you can also mute it in Android settings.",
@@ -1185,7 +1185,7 @@
   "duNote": "Figures come from Android's network statistics, the same source as the phone's own data usage screen. Your operator may count slightly differently.",
   "navTools": "Tools",
   "tsMonitor": "Live monitoring",
-  "tsLiveStatus": "Live status & alerts",
+  "tsLiveStatus": "Alerts & Live status",
   "tsCheck": "Phone check",
   "tsUsage": "Usage and battery",
   "tsNetwork": "Network",
@@ -1264,5 +1264,7 @@
   "tsWidgets": "Widgets",
   "ipSource": "Answered by",
   "ihMonth": "Last 30 days",
-  "ihDaily": "Day by day"
+  "ihDaily": "Day by day",
+  "liSpeedMeter": "Internet speed meter",
+  "liSpeedMeterSub": "Live download and upload speeds, shown side by side"
 }

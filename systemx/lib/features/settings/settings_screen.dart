@@ -147,19 +147,6 @@ class SettingsScreen extends ConsumerWidget {
             ]),
           ),
 
-          // Alerts
-          SectionLabel(l.secAlerts),
-          SxCard(
-            padding: const EdgeInsets.symmetric(vertical: 6),
-            child: ListTile(
-              leading: IconBadge(SxIcons.notifications, color: sx.accent, size: 36),
-              title: Text(l.alertsTitle),
-              subtitle: Text(l.alertsRowSub),
-              trailing: const Icon(Icons.chevron_right_rounded),
-              onTap: () => context.push(Routes.alerts),
-            ),
-          ),
-
           // Privacy
           SectionLabel(l.secPrivacy),
           SxCard(

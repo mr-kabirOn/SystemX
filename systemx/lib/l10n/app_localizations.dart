@@ -4235,7 +4235,7 @@ abstract class AppLocalizations {
   /// No description provided for @alertsTitle.
   ///
   /// In en, this message translates to:
-  /// **'Alerts and live status'**
+  /// **'Alerts & Live status'**
   String get alertsTitle;
 
   /// No description provided for @alertsRowSub.
@@ -6551,7 +6551,7 @@ abstract class AppLocalizations {
   /// No description provided for @tsLiveStatus.
   ///
   /// In en, this message translates to:
-  /// **'Live status & alerts'**
+  /// **'Alerts & Live status'**
   String get tsLiveStatus;
 
   /// No description provided for @tsCheck.
@@ -7003,6 +7003,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Day by day'**
   String get ihDaily;
+
+  /// No description provided for @liSpeedMeter.
+  ///
+  /// In en, this message translates to:
+  /// **'Internet speed meter'**
+  String get liSpeedMeter;
+
+  /// No description provided for @liSpeedMeterSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Live download and upload speeds, shown side by side'**
+  String get liSpeedMeterSub;
 }
 
 class _AppLocalizationsDelegate

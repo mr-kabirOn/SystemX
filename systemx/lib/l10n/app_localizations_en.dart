@@ -2493,7 +2493,7 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get alertsTitle => 'Alerts and live status';
+  String get alertsTitle => 'Alerts & Live status';
 
   @override
   String get alertsRowSub =>
@@ -4103,7 +4103,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get tsMonitor => 'Live monitoring';
 
   @override
-  String get tsLiveStatus => 'Live status & alerts';
+  String get tsLiveStatus => 'Alerts & Live status';
 
   @override
   String get tsCheck => 'Phone check';
@@ -4370,4 +4370,11 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get ihDaily => 'Day by day';
+
+  @override
+  String get liSpeedMeter => 'Internet speed meter';
+
+  @override
+  String get liSpeedMeterSub =>
+      'Live download and upload speeds, shown side by side';
 }

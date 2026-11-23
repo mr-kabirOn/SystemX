@@ -4078,7 +4078,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get tsMonitor => 'তাৎক্ষণিক পর্যবেক্ষণ';
 
   @override
-  String get tsLiveStatus => 'অবস্থা ও সতর্কবার্তা';
+  String get tsLiveStatus => 'সতর্কবার্তা ও তাৎক্ষণিক অবস্থা';
 
   @override
   String get tsCheck => 'ফোন যাচাই';
@@ -4344,4 +4344,11 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get ihDaily => 'দিনভিত্তিক';
+
+  @override
+  String get liSpeedMeter => 'ইন্টারনেট স্পিড মিটার';
+
+  @override
+  String get liSpeedMeterSub =>
+      'তাৎক্ষণিক ডাউনলোড ও আপলোডের গতি, পাশাপাশি দেখানো হয়';
 }

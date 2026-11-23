@@ -43,13 +43,14 @@ void main() {
     await pumpApp(tester, background: bg);
     await go(tester, Routes.alerts);
 
-    // Download and upload are separate values.
-    await tester.tap(find.widgetWithText(SwitchListTile, 'Upload'));
+    // One switch turns on both download and upload, shown apart.
+    expect(find.widgetWithText(SwitchListTile, 'Upload'), findsNothing);
+    await tester.tap(find.widgetWithText(SwitchListTile, 'Internet speed meter'));
     await tester.pumpAndSettle();
-    expect(bg.config.liveItems, ['battery', 'up', 'ram']); // catalog order
+    expect(bg.config.liveItems, ['battery', 'down', 'up', 'ram']); // catalog order
     await tester.tap(find.widgetWithText(SwitchListTile, 'Battery'));
     await tester.pumpAndSettle();
-    await tester.tap(find.widgetWithText(SwitchListTile, 'Upload'));
+    await tester.tap(find.widgetWithText(SwitchListTile, 'Internet speed meter'));
     await tester.pumpAndSettle();
     expect(bg.config.liveItems, ['ram']);
     await tester.tap(find.widgetWithText(SwitchListTile, 'RAM in use'));
@@ -99,6 +100,8 @@ void main() {
     await go(tester, Routes.settings);
     await tester.scrollUntilVisible(find.text('Clear all history'), 300,
         scrollable: find.byType(Scrollable).last);
+    await tester.ensureVisible(find.text('Clear all history'));
+    await tester.pumpAndSettle();
     await tester.tap(find.text('Clear all history'));
     await tester.pumpAndSettle();
     await tester.tap(find.text('Clear'));
